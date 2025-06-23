@@ -6,6 +6,8 @@ import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
+import GoogleLoginButton from '@/Components/GoogleLoginButton.vue';
+import Divider from '@/Components/Divider.vue';
 
 defineProps({
     canResetPassword: {
@@ -36,6 +38,10 @@ const submit = () => {
         <div v-if="status" class="mb-4 text-sm font-medium text-green-600">
             {{ status }}
         </div>
+        
+        <GoogleLoginButton />
+
+        <Divider />
 
         <form @submit.prevent="submit">
             <div>
