@@ -52,6 +52,6 @@ class GoogleAuthController extends Controller
         // Логін
         Auth::login($user);
 
-        return redirect('/dashboard');
+        return redirect()->route('dashboard');
     }
 }

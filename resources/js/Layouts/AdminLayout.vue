@@ -1,13 +1,20 @@
 <script setup>
 import { ref } from 'vue';
-import ApplicationLogo from '@/Components/ApplicationLogo.vue';
-import Dropdown from '@/Components/Dropdown.vue';
-import DropdownLink from '@/Components/DropdownLink.vue';
-import NavLink from '@/Components/NavLink.vue';
-import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
+import ApplicationLogo from '@/Components/Default/ApplicationLogo.vue';
+import Dropdown from '@/Components/Default/Dropdown.vue';
+import DropdownLink from '@/Components/Default/DropdownLink.vue';
+import NavLink from '@/Components/Default/NavLink.vue';
+import ResponsiveNavLink from '@/Components/Default/ResponsiveNavLink.vue';
 import { Link } from '@inertiajs/vue3';
 
 const showingNavigationDropdown = ref(false);
+
+import { usePage } from '@inertiajs/vue3';
+import { UserRole } from '@/Helpers/UserRole.js';
+
+const page = usePage();
+const user = page.props.auth.user;
+
 </script>
 
 <template>
@@ -37,7 +44,36 @@ const showingNavigationDropdown = ref(false);
                                     :href="route('dashboard')"
                                     :active="route().current('dashboard')"
                                 >
-                                    Dashboard
+                                    Адмінпанель
+                                </NavLink>
+
+                                <NavLink
+                                    :href="route('admin.parks')"
+                                    :active="route().current('admin.parks')"
+                                >
+                                    Парки
+                                </NavLink>
+                                <NavLink
+                                    :href="route('admin.news')"
+                                    :active="route().current('admin.news')"
+                                >
+                                    Новини
+                                </NavLink>
+
+                                <NavLink
+                                    :href="route('admin.dictionaries')"
+                                    :active="route().current('admin.dictionaries')"
+                                    v-if="UserRole.atLeast(user.role, UserRole.ADMIN)"
+                                >
+                                    Словники
+                                </NavLink>
+
+                                <NavLink
+                                    :href="route('admin.users')"
+                                    :active="route().current('admin.users')"
+                                    v-if="UserRole.atLeast(user.role, UserRole.ADMIN)"
+                                >
+                                    Користувачі
                                 </NavLink>
                             </div>
                         </div>
@@ -52,7 +88,7 @@ const showingNavigationDropdown = ref(false);
                                                 type="button"
                                                 class="inline-flex items-center rounded-md border border-transparent bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out hover:text-gray-700 focus:outline-none"
                                             >
-                                                {{ $page.props.auth.user.name }}
+                                                {{ user.name }}
 
                                                 <svg
                                                     class="-me-0.5 ms-2 h-4 w-4"
@@ -144,7 +180,14 @@ const showingNavigationDropdown = ref(false);
                             :href="route('dashboard')"
                             :active="route().current('dashboard')"
                         >
-                            Dashboard
+                            Інструкції
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            :href="route('admin.users')"
+                            :active="route().current('admin.users')"
+                            v-if="UserRole.atLeast(user.role, UserRole.ADMIN)"
+                        >
+                            Користувачі
                         </ResponsiveNavLink>
                     </div>
 
@@ -156,10 +199,10 @@ const showingNavigationDropdown = ref(false);
                             <div
                                 class="text-base font-medium text-gray-800"
                             >
-                                {{ $page.props.auth.user.name }}
+                                {{ user.name }}
                             </div>
                             <div class="text-sm font-medium text-gray-500">
-                                {{ $page.props.auth.user.email }}
+                                {{ user.email }}
                             </div>
                         </div>
 

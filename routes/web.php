@@ -5,25 +5,54 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
+// Main nav
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+    return Inertia::render('Home');
+})->name('home');
+Route::get('/home', function () {
+    return Inertia::render('Home');
 });
 
-// Roles examps
-/*
-Route::middleware(['auth', 'role:isOnly,admin'])->group(function () { ... });
-Route::middleware(['auth', 'role:admin'])->group(function () { ... });
-Route::middleware(['auth', 'role:atLeast,admin'])->group(function () { ... });
-*/
+Route::get('/parks', function () {
+    return Inertia::render('Parks');
+})->name('parks');
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/news', function () {
+    return Inertia::render('News');
+})->name('news');
+
+// END main nav
+
+Route::middleware('auth')->group(function () {
+
+    Route::prefix('admin')->group(function () {
+        // General admin page
+        Route::get('/', function () {
+            return Inertia::render('Admin/Dashboard');
+        })->name('dashboard');
+
+        // Admin versions of default pages
+        Route::get('/parks', function () {
+            return Inertia::render('Parks');
+        })->name('admin.parks');
+
+        // Role specific pages
+        
+        Route::get('/news', function () {
+            return Inertia::render('Admin/News');
+        })->name('admin.news');
+
+        Route::middleware('auth', 'role:admin')->group(function () {
+            Route::get('users', function () {
+                return Inertia::render('Admin/Users');
+            })->name('admin.users');
+            Route::get('dictionaries', function () {
+                return Inertia::render('Admin/Dictionaries');
+            })->name('admin.dictionaries');
+        });
+    });
+});
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

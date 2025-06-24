@@ -1,13 +1,13 @@
 <script setup>
-import Checkbox from '@/Components/Checkbox.vue';
-import GuestLayout from '@/Layouts/GuestLayout.vue';
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
+import Checkbox from '@/Components/Default/Checkbox.vue';
+import AuthLayout from '@/Layouts/AuthLayout.vue';
+import InputError from '@/Components/Default/InputError.vue';
+import InputLabel from '@/Components/Default/InputLabel.vue';
+import PrimaryButton from '@/Components/Default/PrimaryButton.vue';
+import TextInput from '@/Components/Default/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
-import GoogleLoginButton from '@/Components/GoogleLoginButton.vue';
-import Divider from '@/Components/Divider.vue';
+import GoogleLoginButton from '@/Components/Custom/GoogleLoginButton.vue';
+import Divider from '@/Components/Custom/Divider.vue';
 
 defineProps({
     canResetPassword: {
@@ -32,7 +32,7 @@ const submit = () => {
 </script>
 
 <template>
-    <GuestLayout>
+    <AuthLayout>
         <Head title="Log in" />
 
         <div v-if="status" class="mb-4 text-sm font-medium text-green-600">
@@ -102,5 +102,5 @@ const submit = () => {
                 </PrimaryButton>
             </div>
         </form>
-    </GuestLayout>
+    </AuthLayout>
 </template>

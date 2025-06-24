@@ -1,12 +1,12 @@
 <script setup>
-import GuestLayout from '@/Layouts/GuestLayout.vue';
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
+import AuthLayout from '@/Layouts/AuthLayout.vue';
+import InputError from '@/Components/Default/InputError.vue';
+import InputLabel from '@/Components/Default/InputLabel.vue';
+import PrimaryButton from '@/Components/Default/PrimaryButton.vue';
+import TextInput from '@/Components/Default/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
-import GoogleLoginButton from '@/Components/GoogleLoginButton.vue';
-import Divider from '@/Components/Divider.vue';
+import GoogleLoginButton from '@/Components/Custom/GoogleLoginButton.vue';
+import Divider from '@/Components/Custom/Divider.vue';
 
 const form = useForm({
     name: '',
@@ -23,7 +23,7 @@ const submit = () => {
 </script>
 
 <template>
-    <GuestLayout>
+    <AuthLayout>
         <Head title="Register" />
 
         <GoogleLoginButton />
@@ -114,5 +114,5 @@ const submit = () => {
                 </PrimaryButton>
             </div>
         </form>
-    </GuestLayout>
+    </AuthLayout>
 </template>
