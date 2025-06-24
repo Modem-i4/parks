@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Enums\UserRole;
 
 class User extends Authenticatable
 {
@@ -45,4 +46,24 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function roleEnum(): UserRole
+    {
+        return UserRole::fromString($this->role);
+    }
+
+    public function isOnly(UserRole|string $role): bool
+    {
+        $target = $role instanceof UserRole ? $role->value : $role;
+        return $this->role === $target;
+    }
+
+    public function atLeast(UserRole|string $role): bool
+    {
+        $current = $this->roleEnum();
+        $target = $role instanceof UserRole ? $role : UserRole::fromString($role);
+
+        return $current->level() >= $target->level();
+    }
+
 }

@@ -14,6 +14,13 @@ Route::get('/', function () {
     ]);
 });
 
+// Roles examps
+/*
+Route::middleware(['auth', 'role:isOnly,admin'])->group(function () { ... });
+Route::middleware(['auth', 'role:admin'])->group(function () { ... });
+Route::middleware(['auth', 'role:atLeast,admin'])->group(function () { ... });
+*/
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
