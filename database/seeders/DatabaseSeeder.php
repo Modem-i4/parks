@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RecommendationsTableSeeder::class,
             TagsTableSeeder::class,
+            ParkSeeder::class,
         ]);
         // User::factory(10)->create();
         /*

@@ -21,23 +21,34 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Media extends Model
 {
-	protected $table = 'media';
+    protected $table = 'media';
 
-	protected $casts = [
-		'model_id' => 'int',
-		'order' => 'int'
-	];
+    protected $casts = [
+        'model_id' => 'int',
+        'order' => 'int',
+        'file_path' => 'string',
+    ];
 
-	protected $fillable = [
-		'model_type',
-		'model_id',
-		'file_path',
-		'description',
-		'order'
-	];
+    protected $fillable = [
+        'model_type',
+        'model_id',
+        'file_path',
+        'description',
+        'order'
+    ];
+
+    protected $hidden = ['model_type', 'model_id'];
 
     public function model()
     {
         return $this->morphTo();
+    }
+
+    public function getFilePathAttribute($value)
+    {
+        if (str_starts_with($value, '/storage/')) {
+            return $value;
+        }
+        return '/storage/' . ltrim($value, '/');
     }
 }

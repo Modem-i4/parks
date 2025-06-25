@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ParkController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -13,9 +14,7 @@ Route::get('/home', function () {
     return Inertia::render('Home');
 });
 
-Route::get('/parks', function () {
-    return Inertia::render('Parks');
-})->name('parks');
+Route::get('/parks', [ParkController::class, 'index'])->name('parks');
 
 Route::get('/news', function () {
     return Inertia::render('News');

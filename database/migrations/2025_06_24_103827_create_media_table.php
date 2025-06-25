@@ -11,8 +11,8 @@ return new class extends Migration
     {
         Schema::create('media', function (Blueprint $table) {
             $table->id();
-            $table->string('mediaable_type');
-            $table->unsignedBigInteger('mediaable_id');
+            $table->string('model_type');
+            $table->unsignedBigInteger('model_id');
             $table->string('file_path');
             $table->text('description')->nullable();
             $table->integer('order')->default(0);
