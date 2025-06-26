@@ -12,6 +12,10 @@ const props = defineProps({
   selectedParkId: {
     type: Number,
     default: null
+  },
+  showPanel: {
+    type: Boolean,
+    default: false
   }
 })
 
@@ -43,18 +47,23 @@ onMounted(async () => {
     fullscreenControl: false,
     gestureHandling: 'none',
     clickableIcons: false,
+    rotateControl: false,
+    cameraControl: false
   })
 })
-
 watch(
-  () => [map.value, props.parks, props.selectedParkId],
+  () => [map.value, props.parks, props.selectedParkId, props.showPanel],
   () => {
     const mapInstance = map.value
     if (!mapInstance) return
 
+    const isMobile = window.innerWidth <= 768
+    const adjustment = isMobile && props.showPanel ? -0.03 : 0
+
     const selectedId = props.selectedParkId
     if (!selectedId) {
-      mapInstance.panTo(defaultCenter)
+      const adjustedLat = defaultCenter.lat + adjustment
+      mapInstance.panTo({ lat: adjustedLat, lng: defaultCenter.lng })
       return
     }
 
@@ -65,7 +74,8 @@ watch(
       const { properties } = JSON.parse(park.geo_json)
       const [lng, lat] = properties?.center || []
       if (lat && lng) {
-        mapInstance.panTo({ lat, lng })
+        const adjustedLat = lat + adjustment
+        mapInstance.panTo({ lat: adjustedLat, lng })
       }
     } catch (e) {
       console.warn(`Не вдалося центрувати парк "${park.name}":`, e)
@@ -73,6 +83,7 @@ watch(
   },
   { immediate: true }
 )
+
 </script>
 
 <template>

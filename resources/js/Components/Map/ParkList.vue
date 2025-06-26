@@ -6,7 +6,7 @@
       class="p-4 border-b hover:bg-gray-100 cursor-pointer"
       @click="$emit('select', park)"
     >
-      <div class="max-w-sm bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer">
+      <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer">
         <div class="flex items-center p-4 space-x-4">
           <div class="flex-shrink-0 w-16 h-16 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center">
             <img v-if="park.icon" :src="park.icon.file_path" alt="Icon" class="w-12 h-12 object-contain" />
