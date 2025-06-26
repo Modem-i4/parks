@@ -54,7 +54,7 @@ class Park extends Model
 
 	public function media()
 	{
-		return $this->morphMany(Media::class, 'model');
+		return $this->morphMany(Media::class, 'model')->where('type', MediaType::IMAGE->value)->orderBy('order');
 	}
 
 	public function icon(): MorphOne

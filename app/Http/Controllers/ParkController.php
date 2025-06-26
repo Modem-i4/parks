@@ -19,4 +19,9 @@ class ParkController extends Controller
     {
         return Park::with('icon')->select('id', 'name', 'address', 'area', 'description', 'geo_json')->get();
     }
+
+    public function media($id)
+    {
+        return Park::with('media')->findOrFail($id);
+    }
 }

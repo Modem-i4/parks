@@ -26,6 +26,7 @@
         "vue": "^3.4.0"
     },
     "dependencies": {
-        "@googlemaps/js-api-loader": "^1.16.8"
+        "@googlemaps/js-api-loader": "^1.16.8",
+        "swiper": "^11.2.8"
     }
 }

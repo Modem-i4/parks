@@ -52,6 +52,11 @@ Route::middleware('auth')->group(function () {
     });
 });
 
+Route::prefix('api')->group(function () {
+
+    Route::get('/parks/{id}/media', [ParkController::class, 'media'])->name('parks.media');
+
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

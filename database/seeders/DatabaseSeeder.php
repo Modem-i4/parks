@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             RecommendationsTableSeeder::class,
             TagsTableSeeder::class,
             ParkSeeder::class,
+            MediaSeeder::class,
         ]);
         // User::factory(10)->create();
         /*
