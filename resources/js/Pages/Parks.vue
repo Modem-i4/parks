@@ -1,122 +1,81 @@
 <script setup>
-import MapView from '@/Components/Map/MapView.vue'
-import ParkDetails from '@/Components/Map/ParkDetails.vue'
+import MapWithPanel from '@/Components/Map/MapWithPanel.vue'
 import ParkList from '@/Components/Map/ParkList.vue'
-import ResolveLayout from '@/Helpers/ResolveLayout.js'
-import { ref } from 'vue'
+import ParkDetails from '@/Components/Map/ParkDetails.vue'
+import MapView from '@/Components/Map/MapView.vue'
+import ResolveLayout from '@/Helpers/ResolveLayout.js';
+import { onMounted, watch } from 'vue';
+import axios from 'axios';
+import { useParkStore } from '@/Stores/useParkStore.js';
 
-defineOptions({ layout: ResolveLayout })
-defineProps({ parks: Array })
+defineOptions({
+  layout: ResolveLayout,
+});
 
-const selectedPark = ref(null)
-const showPanel = ref(false)
+const props = defineProps({ 
+  isSingleParkView: Boolean,
+  selectedMarker: Object
+})
 
-const touchStartY = ref(0)
-const panelOffsetY = ref(0)
-const isDragging = ref(false)
+const parkStore = useParkStore()
 
-function selectPark(park) {
-  selectedPark.value = park
-  showPanel.value = true
+parkStore.isSingleParkView = props.isSingleParkView;
+parkStore.markers = props.markers;
+parkStore.selectedMarker = props.selectedMarker;
+
+function getMarkers($type = null) {
+  const markersSource = parkStore.isSingleParkView ? `/api/parks/${parkStore.selectedMarker.id}/markers` : `/api/parks`
+
+  axios.get(markersSource)
+    .then(response => {
+      parkStore.markers = response.data;
+    })
+    .catch(error => {
+      console.error('Error fetching markers:', error);
+    });
 }
 
-function onTouchStart(event) {
-  touchStartY.value = event.touches[0].clientY
-  isDragging.value = true
-}
-
-function onTouchMove(event) {
-  if (!isDragging.value) return
-  const currentY = event.touches[0].clientY
-  const delta = currentY - touchStartY.value
-  panelOffsetY.value = Math.max(0, delta)
-}
-
-function onTouchEnd() {
-  isDragging.value = false
-  if (panelOffsetY.value > 80) {
-    showPanel.value = false
-    selectedPark.value = null
-  }
-  panelOffsetY.value = 0
-}
+watch(
+  () => [parkStore.isSingleParkView],
+  () => {
+    getMarkers()
+  },
+  { immediate: true }
+)
 </script>
 
 <template>
-  <div class="flex h-[calc(100vh-65px)]">
-    <!-- Desktop sidebar -->
-    <div class="hidden md:block w-1/3 border-r overflow-y-auto">
-      <ParkList
-        v-if="!selectedPark"
-        :parks="parks"
-        @select="selectPark"
-      />
+  <MapWithPanel>
+    <template #sidebar>
+      <template v-if="!parkStore.isSingleParkView">
+        <ParkList
+          v-if="!parkStore.selectedMarker"
+        />
+      </template>
       <ParkDetails
-        v-else
-        :park="selectedPark"
-        :selectedParkId="selectedPark?.id"
-        @back="selectedPark = null"
+        v-if="parkStore.selectedMarker"
       />
-    </div>
+      <template v-if="parkStore.isSingleParkView">
+        <!-- Filters -->
+      </template>
+    </template>
 
-    <!-- Main map -->
-    <div class="w-full md:w-2/3 relative touch-none">
-      <MapView
-        :parks="parks"
-        :selectedParkId="selectedPark?.id"
-        :showPanel="showPanel"
-        @select="selectPark"
+    <template #map>
+      <MapView/>
+    </template>
+
+    <template #panel>
+      <ParkDetails
+        v-if="parkStore.selectedMarker"
       />
-
-      <!-- Mobile Slide-up Panel -->
-      <div
-        class="md:hidden fixed bottom-0 left-0 right-0 bg-white shadow-lg rounded-t-xl z-50"
-        :class="!isDragging ? 'transition-transform duration-300' : ''"
-        :style="{
-          transform: showPanel
-            ? `translateY(${isDragging ? panelOffsetY + 'px' : '0'})`
-            : 'translateY(100%)'
-        }"
-      >
-        <div
-          class="p-2 border-b flex justify-between items-center active:cursor-grabbing"
-          style="touch-action: none"
-          @touchstart="onTouchStart"
-          @touchmove="onTouchMove"
-          @touchend="onTouchEnd"
-        >
-          <span class="font-semibold">
-            {{ selectedPark?.name || 'Список парків' }}
-          </span>
-          <button
-            @click="() => { showPanel = false; selectedPark = null }"
-            class="text-gray-600 text-4xl"
-          >×</button>
-        </div>
-
-        <div class="max-h-[60vh] overflow-y-auto">
-          <ParkDetails
-            v-if="selectedPark"
-            :park="selectedPark"
-            :selectedParkId="selectedPark?.id"
-            @back="selectedPark = null"
-          />
-          <ParkList
-            v-else
-            :parks="parks"
-            @select="selectPark"
-          />
-        </div>
-      </div>
-
-      <!-- Toggle button -->
-      <button
-        v-if="!showPanel"
-        class="md:hidden fixed bottom-4 right-4 z-50 bg-white/80 backdrop-blur p-5 rounded-full shadow-lg hover:bg-white transition"
-        @click="showPanel = true"
-      >
-        МЕНЮ
-      </button>
-    </div>
-  </div>
+      <template v-if="!parkStore.isSingleParkView">
+        <ParkList
+          v-if="!parkStore.selectedMarker"
+        />
+      </template>
+      <template v-else>
+        <!-- Filters -->
+      </template>
+    </template>
+  </MapWithPanel>
 </template>

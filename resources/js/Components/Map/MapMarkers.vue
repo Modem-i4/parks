@@ -2,74 +2,66 @@
 import { ref, watch } from 'vue'
 import loader from '@/Helpers/GoogleMapsLoader'
 import { CreatePinIcon } from '@/Helpers/CreatePinIcon.js'
+import getCoordsFromMarker from '@/Helpers/GetCoordsFromMarker'
+import { useParkStore } from '@/Stores/useParkStore.js'
 
-const props = defineProps({
-  map: Object,
-  parks: Array,
-  selectedParkId: Number
-})
-
-const emit = defineEmits(['select'])
-const markers = ref([])
+const parkStore = useParkStore()
+const mapMarkers = ref([])
 
 async function renderMarkers() {
-  markers.value.forEach(marker => marker.setMap(null))
-  markers.value = []
+  mapMarkers.value.forEach(m => m.mapMarker.setMap(null))
+  mapMarkers.value = []
 
-  if (!props.map) return
+  if (!parkStore.map) return
 
   const { AdvancedMarkerElement } = await loader.importLibrary('marker')
 
-  for (const park of props.parks) { 
-    const feature = JSON.parse(park.geo_json)
-    const [lng, lat] = feature.properties.center
+  for (const marker of parkStore.markers) {
+    const [lng, lat] = getCoordsFromMarker(marker)
 
-    const pin = await CreatePinIcon({ 
-      glyph: park.icon?.file_path
+    const pin = await CreatePinIcon({
+      glyph: marker.icon?.file_path
     })
 
-    const marker = new AdvancedMarkerElement({
-      map: props.map,
+    const mapMarker = new AdvancedMarkerElement({
+      map: parkStore.map,
       position: { lat, lng },
-      title: park.name,
+      title: marker.name,
       content: pin.element
     })
 
-    marker.addListener('click', () => {
-      emit('select', park)
+    mapMarker.addListener('click', () => {
+      parkStore.selectedMarker = marker
     })
-    markers.value.push({ marker, park })
+    mapMarkers.value.push({ mapMarker, marker })
   }
 }
 
 watch(
-  () => props.map,
-  (mapInstance) => {
-    console.log('Map instance changed:', mapInstance)
-    if (mapInstance) {
-      renderMarkers()
-    }
+  () => [parkStore.map, parkStore.markers],
+  () => { 
+    renderMarkers()
   },
   { immediate: true }
 )
 
 async function updateMarkerBackgrounds(newId, oldId) {
-  const markersToUpdate = markers.value.filter(
-    ({ park }) => park.id === newId || park.id === oldId
+  const mapMarkersToUpdate = mapMarkers.value.filter(
+    ({ marker }) => marker.id === newId || marker.id === oldId
   )
 
-  for (const { marker, park } of markersToUpdate) {
-    const isSelected = park.id === newId
+  for (const { mapMarker, marker } of mapMarkersToUpdate) {
+    const isSelected = marker.id === newId
     const pin = await CreatePinIcon({
-      glyph: park.icon?.file_path,
+      glyph: marker.icon?.file_path,
       background: isSelected ? '#FF0000' : '#4285F4'
     })
-    marker.content = pin.element
+    mapMarker.content = pin.element
   }
 }
 
 watch(
-  () => props.selectedParkId,
+  () => parkStore.selectedMarker?.id,
   (newId, oldId) => {
     updateMarkerBackgrounds(newId, oldId)
   }

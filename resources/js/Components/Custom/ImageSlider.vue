@@ -12,7 +12,7 @@
         <SwiperSlide v-for="img in images" :key="img.id">
           <img
             :src="img.file_path"
-            :alt="img.description || 'Park Image'"
+            :alt="img.description || 'Image'"
             class="w-full h-64 object-cover"
           />
         </SwiperSlide>
@@ -61,9 +61,13 @@ import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 
 const props = defineProps({
-  selectedParkId: {
-    type: Number,
-    required: true,
+  model: {
+    type: String,
+    required: true
+  },
+  modelId: {
+    type: [Number, String, null],
+    required: true
   },
 })
 
@@ -72,12 +76,12 @@ const currentIndex = ref(0)
 const swiper = ref(null)
 
 watch(
-  () => props.selectedParkId,
+  () => props.modelId,
   async (newId) => {
     if (!newId) return
     images.value = []
     try {
-      const { data } = await axios.get(`/api/parks/${newId}/media`)
+      const { data } = await axios.get(`/api/${props.model}/${newId}/media`)
       images.value = data.media || []
       currentIndex.value = 0
     } catch (e) {

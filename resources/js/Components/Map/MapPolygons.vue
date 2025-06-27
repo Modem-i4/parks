@@ -1,27 +1,21 @@
 <script setup>
-import { watch } from 'vue'
+import { onMounted, watch } from 'vue'
+import { useParkStore } from '@/Stores/useParkStore.js'
 
-const props = defineProps({
-  map: Object,
-  parks: Array,
-  selectedParkId: Number
-})
-
-const emit = defineEmits(['select'])
+const parkStore = useParkStore()
 
 function renderPolygons() {
-  if (!props.map) return
+  if (!parkStore.map) return
 
-  props.map.data.forEach(feature => props.map.data.remove(feature))
+  parkStore.map.data.forEach(feature => parkStore.map.data.remove(feature))
 
-  props.parks.forEach(park => {
+  parkStore.markers.forEach(marker => {
     try {
-      const feature = JSON.parse(park.geo_json)
-      props.map.data.addGeoJson(feature).forEach(f => {
-        f.setProperty('id', park.id)
+      parkStore.map.data.addGeoJson(marker.geo_json).forEach(f => {
+        f.setProperty('id', marker.id)
       })
     } catch (e) {
-      console.warn(`Не вдалося обробити парк ${park.name}:`, e)
+      console.warn(`Не вдалося обробити маркер ${marker.name}:`, e)
     }
   })
 
@@ -29,27 +23,27 @@ function renderPolygons() {
 }
 
 function setMapStyle() {
-  props.map.data.setStyle(feature => ({
-    fillColor: feature.getProperty('id') === props.selectedParkId ? '#4285F4' : '#9CCC65',
+  parkStore.map.data.setStyle(feature => ({
+    fillColor: feature.getProperty('id') === parkStore.selectedMarker?.id ? '#4285F4' : '#9CCC65',
     strokeColor: '#333',
     strokeWeight: 1,
-    fillOpacity: feature.getProperty('id') === props.selectedParkId ? 0.8 : 0.6,
+    fillOpacity: feature.getProperty('id') === parkStore.selectedMarker?.id ? 0.8 : 0.6,
     clickable: true,
   }))
 }
 
-watch(() => [props.map, props.parks, props.selectedParkId], () => {
-  if (props.map) {
+watch(() => [parkStore.map, parkStore.markers, parkStore.selectedMarker?.id], () => {
+  if (parkStore.map) {
     renderPolygons()
   }
 }, { immediate: true })
 
-watch(() => props.map, () => {
-  if (props.map) {
-    props.map.data.addListener('click', event => {
+watch(() => parkStore.map, () => {
+  if (parkStore.map) {
+    parkStore.map.data.addListener('click', event => {
       const id = event.feature.getProperty('id')
-      const park = props.parks.find(p => p.id === id)
-      if (park) emit('select', park)
+      const marker = parkStore.markers.find(p => p.id === id)
+      if (marker) parkStore.selectedMarker = marker
     })
   }
 }, { immediate: true })

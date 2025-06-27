@@ -8,20 +8,49 @@ use Inertia\Inertia;
 
 class ParkController extends Controller
 {
+    /*
     public function index()
     {
-        return Inertia::render('Parks', [
+        return Inertia::render('Parks/Index', [
             'parks' => $this->getAllParks(),
         ]);
     }
-
-    protected function getAllParks()
+    public function single($id)
     {
-        return Park::with('icon')->select('id', 'name', 'address', 'area', 'description', 'geo_json')->get();
+        $park = Park::findOrFail($id);
+        $tab = request('tab');
+
+        return Inertia::render('Parks/Single', [
+            'park' => $park,
+            'tab' => $tab,
+        ]);
+    }
+        */
+
+    public function index($id = null)
+    {
+        $isSingleParkView = $id !== null;
+        $park = $id ? Park::find($id) : null;
+        return Inertia::render('Parks', [
+            'isSingleParkView' => $isSingleParkView,
+            'selectedMarker' => $park
+        ]);
+    }
+
+    public function getParksList()
+    {
+        return Park::with('icon')
+            ->select('id', 'name', 'address', 'area', 'description', 'geo_json')
+            ->get()
+            ->map(function ($park) {
+                $park->coordinates = $park->geo_json['properties']['center'] ?? null;
+                return $park;
+            });
     }
 
     public function media($id)
     {
         return Park::with('media')->findOrFail($id);
     }
+
 }

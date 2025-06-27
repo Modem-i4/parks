@@ -1,10 +1,16 @@
+<script setup>
+import { useParkStore } from '@/Stores/useParkStore.js'
+
+const parkStore = useParkStore()
+</script>
+
 <template>
   <ul>
     <li
-      v-for="park in parks"
+      v-for="park in parkStore.markers"
       :key="park.id"
       class="p-4 border-b hover:bg-gray-100 cursor-pointer"
-      @click="$emit('select', park)"
+      @click="parkStore.selectedMarker=park"
     >
       <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer">
         <div class="flex items-center p-4 space-x-4">
@@ -25,8 +31,3 @@
     </li>
   </ul>
 </template>
-
-<script setup>
-defineProps({ parks: Array })
-
-</script>

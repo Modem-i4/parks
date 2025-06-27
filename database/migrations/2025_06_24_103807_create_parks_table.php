@@ -11,6 +11,7 @@ return new class extends Migration
         Schema::create('parks', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('slug')->unique()->nullable();
             $table->string('address');
             $table->float('area')->default(0);
             $table->text('description')->nullable();

@@ -31,14 +31,15 @@ class Park extends Model
 
 	protected $casts = [
 		'area' => 'float',
-		'coordinates' => 'json',
+		'geo_json' => 'json',
 	];
 
 	protected $fillable = [
 		'name',
+		'slug',
 		'address',
 		'area',
-		'description',
+		'geo_json',
 		'coordinates'
 	];
 
