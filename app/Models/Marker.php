@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use App\Enums\MarkerType;
+use App\Enums\MediaType;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 /**
  * Class Marker
@@ -13,7 +15,7 @@ use App\Enums\MarkerType;
  * @property int $id
  * @property int $park_id
  * @property int|null $plot_id
- * @property string $type
+ * @property enum $type
  * @property array $coordinated
  * @property string|null $description
  * @property Carbon|null $created_at
@@ -33,7 +35,7 @@ class Marker extends Model
 	protected $casts = [
 		'park_id' => 'int',
 		'plot_id' => 'int',
-		'coordinated' => 'json'
+		'coordinates' => 'json',
 		'type' => MarkerType::class,
 	];
 
@@ -41,7 +43,7 @@ class Marker extends Model
 		'park_id',
 		'plot_id',
 		'type',
-		'coordinated',
+		'coordinates',
 		'description'
 	];
 
@@ -69,4 +71,11 @@ class Marker extends Model
 	{
 		return $this->morphMany(Media::class, 'model');
 	}
+
+
+	public function icon(): MorphOne
+	{
+		return $this->morphOne(Media::class, 'model')->where('type', MediaType::ICON->value);
+	}
+	
 }

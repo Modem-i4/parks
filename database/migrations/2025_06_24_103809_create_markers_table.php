@@ -14,7 +14,7 @@ return new class extends Migration
             $table->foreignId('park_id')->constrained('parks')->cascadeOnDelete();
             $table->foreignId('plot_id')->nullable()->constrained('plots')->nullOnDelete();
             $table->enum('type', MarkerType::Values());
-            $table->json('geo_json')->default(json_encode([]));
+            $table->json('coordinates')->default(json_encode([null,null]));
             $table->text('description')->nullable();
             $table->timestamps();
         });

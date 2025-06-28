@@ -10,6 +10,10 @@ function back() {
   parkStore.selectedMarker = null
   parkStore.isSingleParkView = false
 }
+function openInfrastructure() {
+  parkStore.showPanel = false
+  parkStore.isSingleParkView = true
+}
 </script>
 
 <template>
@@ -35,7 +39,7 @@ function back() {
     </div>
 
     <div class="mt-6 space-y-3">
-      <ArrowButton @click="parkStore.isSingleParkView = true">Інфраструктура парку</ArrowButton>
+      <ArrowButton @click="openInfrastructure">Інфраструктура парку</ArrowButton>
       <ArrowButton :primary="false" @click="router.get(`/parks/${parkStore.selectedMarker?.id}`, { tab: 'plants' })">
         Насадження парку
       </ArrowButton>

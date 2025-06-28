@@ -2,7 +2,7 @@
 import { ref, watch } from 'vue'
 import loader from '@/Helpers/GoogleMapsLoader'
 import { CreatePinIcon } from '@/Helpers/CreatePinIcon.js'
-import getCoordsFromMarker from '@/Helpers/GetCoordsFromMarker'
+import { getCoordsFromMarker } from '@/Helpers/MapHelper.js'
 import { useParkStore } from '@/Stores/useParkStore.js'
 
 const parkStore = useParkStore()
@@ -16,32 +16,40 @@ async function renderMarkers() {
 
   const { AdvancedMarkerElement } = await loader.importLibrary('marker')
 
-  for (const marker of parkStore.markers) {
-    const [lng, lat] = getCoordsFromMarker(marker)
+  const pinPromises = parkStore.markers.map(marker =>
+    CreatePinIcon({ glyph: marker.icon?.file_path })
+  )
+  const pins = await Promise.all(pinPromises)
 
-    const pin = await CreatePinIcon({
-      glyph: marker.icon?.file_path
-    })
+  for (let i = 0; i < parkStore.markers.length; i++) {
+    const marker = parkStore.markers[i]
+    const pin = pins[i]
+
+    const [lng, lat] = getCoordsFromMarker(marker)
+    const pinClone = pin.element.cloneNode(true)
 
     const mapMarker = new AdvancedMarkerElement({
       map: parkStore.map,
       position: { lat, lng },
       title: marker.name,
-      content: pin.element
+      content: pinClone
     })
 
     mapMarker.addListener('click', () => {
       parkStore.selectedMarker = marker
     })
+
     mapMarkers.value.push({ mapMarker, marker })
+
+    await new Promise(resolve => setTimeout(resolve, 0.001))
   }
 }
 
+
+
 watch(
   () => [parkStore.map, parkStore.markers],
-  () => { 
-    renderMarkers()
-  },
+  () => { renderMarkers() },
   { immediate: true }
 )
 
@@ -52,11 +60,13 @@ async function updateMarkerBackgrounds(newId, oldId) {
 
   for (const { mapMarker, marker } of mapMarkersToUpdate) {
     const isSelected = marker.id === newId
+
     const pin = await CreatePinIcon({
       glyph: marker.icon?.file_path,
       background: isSelected ? '#FF0000' : '#4285F4'
     })
-    mapMarker.content = pin.element
+
+    mapMarker.content = pin.element.cloneNode(true)
   }
 }
 

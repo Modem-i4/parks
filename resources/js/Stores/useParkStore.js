@@ -8,6 +8,7 @@ export const useParkStore = defineStore('park', () => {
   const showPanel = ref(false)
 
   const map = shallowRef(null)
+  const mapElement = ref(null)
   const defaultCenter = { lat: 48.918, lng: 24.7137 }
 
   // Actions
@@ -27,6 +28,10 @@ export const useParkStore = defineStore('park', () => {
     map.value = mapInstance
   }
 
+  function setMapElement(element) {
+    mapElement.value = element
+  }
+
   function setShowPanel(value) {
     showPanel.value = value
   }
@@ -43,6 +48,7 @@ export const useParkStore = defineStore('park', () => {
     markers,
     showPanel,
     map,
+    mapElement,
     defaultCenter,
 
     // Actions
@@ -50,6 +56,7 @@ export const useParkStore = defineStore('park', () => {
     setSelectedMarker,
     setMarkers,
     setMap,
+    setMapElement,
     setShowPanel
   }
 })

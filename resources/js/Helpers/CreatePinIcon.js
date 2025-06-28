@@ -1,5 +1,11 @@
 import loader from '@/Helpers/GoogleMapsLoader'
 
+const pinCache = new Map()
+
+function getCacheKey({ glyph, background, borderColor, scale, width, height }) {
+  return [glyph, background, borderColor, scale, width, height].join('|')
+}
+
 export async function CreatePinIcon({
   glyph = '/storage/img/icons/examp-icon.svg',
   background = '#4285F4',
@@ -8,6 +14,12 @@ export async function CreatePinIcon({
   width = 24,
   height = 24,
 } = {}) {
+  const cacheKey = getCacheKey({ glyph, background, borderColor, scale, width, height })
+
+  if (pinCache.has(cacheKey)) {
+    return pinCache.get(cacheKey)
+  }
+
   const { PinElement } = await loader.importLibrary('marker')
 
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
@@ -26,6 +38,8 @@ export async function CreatePinIcon({
     borderColor,
     scale
   })
+
+  pinCache.set(cacheKey, pin)
 
   return pin
 }
