@@ -4,6 +4,7 @@ import loader from '@/Helpers/GoogleMapsLoader'
 import { CreatePinIcon } from '@/Helpers/CreatePinIcon.js'
 import { getCoordsFromMarker } from '@/Helpers/MapHelper.js'
 import { useParkStore } from '@/Stores/useParkStore.js'
+import { CreateSimpleIcon, getColorByQualityState } from '@/Helpers/CreateSimpleIcon'
 
 const parkStore = useParkStore()
 const mapMarkers = ref([])
@@ -13,26 +14,25 @@ async function renderMarkers() {
   mapMarkers.value = []
 
   if (!parkStore.map) return
-
   const { AdvancedMarkerElement } = await loader.importLibrary('marker')
 
-  const pinPromises = parkStore.markers.map(marker =>
-    CreatePinIcon({ glyph: marker.icon?.file_path })
-  )
-  const pins = await Promise.all(pinPromises)
-
-  for (let i = 0; i < parkStore.markers.length; i++) {
-    const marker = parkStore.markers[i]
-    const pin = pins[i]
-
+  for (const marker of parkStore.markers) {
     const [lng, lat] = getCoordsFromMarker(marker)
-    const pinClone = pin.element.cloneNode(true)
 
+    let content
+    if (marker.green) { // green markers
+      content = await CreateSimpleIcon({ 
+        iconPath: `/storage/img/icons/${marker.type || 'tree'}-map_icon.svg`, 
+        fill: getColorByQualityState(marker.green?.quality_state) 
+      })
+    } else { // parks & infrastructure markers
+      content = await CreatePinIcon({ glyph: marker.icon?.file_path })
+    }
     const mapMarker = new AdvancedMarkerElement({
       map: parkStore.map,
       position: { lat, lng },
       title: marker.name,
-      content: pinClone
+      content
     })
 
     mapMarker.addListener('click', () => {
@@ -40,12 +40,9 @@ async function renderMarkers() {
     })
 
     mapMarkers.value.push({ mapMarker, marker })
-
-    await new Promise(resolve => setTimeout(resolve, 0.001))
+    await new Promise(r => setTimeout(r, 0))
   }
 }
-
-
 
 watch(
   () => [parkStore.map, parkStore.markers],
@@ -60,13 +57,21 @@ async function updateMarkerBackgrounds(newId, oldId) {
 
   for (const { mapMarker, marker } of mapMarkersToUpdate) {
     const isSelected = marker.id === newId
-
-    const pin = await CreatePinIcon({
-      glyph: marker.icon?.file_path,
-      background: isSelected ? '#FF0000' : '#4285F4'
-    })
-
-    mapMarker.content = pin.element.cloneNode(true)
+    if(marker.green) {
+      const highlightClasses = [
+        'scale-[3]',
+        'transition-transform']
+      console.log('mapMarker.content', mapMarker.content)
+      isSelected
+        ? mapMarker.content.classList.add(...highlightClasses)
+        : mapMarker.content.classList.remove(...highlightClasses)
+    }
+    else {
+      mapMarker.content = await CreatePinIcon({
+        glyph: marker.icon?.file_path,
+        background: isSelected ? '#FF0000' : '#4285F4'
+      })
+    }
   }
 }
 

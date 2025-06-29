@@ -17,7 +17,7 @@ export async function CreatePinIcon({
   const cacheKey = getCacheKey({ glyph, background, borderColor, scale, width, height })
 
   if (pinCache.has(cacheKey)) {
-    return pinCache.get(cacheKey)
+    return pinCache.get(cacheKey).element.cloneNode(true)
   }
 
   const { PinElement } = await loader.importLibrary('marker')
@@ -41,5 +41,5 @@ export async function CreatePinIcon({
 
   pinCache.set(cacheKey, pin)
 
-  return pin
+  return pin.element.cloneNode(true)
 }

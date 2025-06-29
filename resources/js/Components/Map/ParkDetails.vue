@@ -1,18 +1,31 @@
 <script setup>
 import ImageSlider from '@/Components/Custom/ImageSlider.vue'
 import ArrowButton from '../Custom/ArrowButton.vue'
-import { router } from '@inertiajs/vue3'
 import { useParkStore } from '@/Stores/useParkStore.js'
 
 const parkStore = useParkStore()
 
 function back() {
   parkStore.selectedMarker = null
+  if(parkStore.isSingleParkView) {
+    parkStore.showPanel = false
+    parkStore.lockMapChange = true
+  }
   parkStore.isSingleParkView = false
+  window.history.pushState(null, '', `/parks`)
 }
-function openInfrastructure() {
+function openSinglePark() {
   parkStore.showPanel = false
   parkStore.isSingleParkView = true
+  parkStore.selectedPark = structuredClone(parkStore.selectedMarker)
+  window.history.pushState(null, '', `/parks/${parkStore.selectedMarker?.id}`)
+
+}
+function openInfrastructure() {
+  openSinglePark()
+}
+function openGreen() {
+  openSinglePark()
 }
 </script>
 
@@ -37,12 +50,14 @@ function openInfrastructure() {
       <h3 class="text-lg font-semibold pb-2">Про парк</h3>
       <p>{{ parkStore.selectedMarker.description }}</p>
     </div>
-
-    <div class="mt-6 space-y-3">
+    <div class="mt-6 space-y-3 transform transition-transform duration-300"
+      :class="{
+        '-translate-x-[120%]': parkStore.isSingleParkView
+      }"
+      v-if="!parkStore.isSingleParkView || parkStore.lockMapChange">
       <ArrowButton @click="openInfrastructure">Інфраструктура парку</ArrowButton>
-      <ArrowButton :primary="false" @click="router.get(`/parks/${parkStore.selectedMarker?.id}`, { tab: 'plants' })">
-        Насадження парку
-      </ArrowButton>
+      <ArrowButton :primary="false" @click="openGreen">Насадження парку</ArrowButton>
     </div>
+
   </div>
 </template>

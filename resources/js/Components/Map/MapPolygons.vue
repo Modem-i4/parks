@@ -9,7 +9,7 @@ function renderPolygons() {
 
   parkStore.map.data.forEach(feature => parkStore.map.data.remove(feature))
 
-  parkStore.markers.forEach(marker => {
+  parkStore.markers?.forEach(marker => {
     try {
       parkStore.map.data.addGeoJson(marker.geo_json).forEach(f => {
         f.setProperty('id', marker.id)

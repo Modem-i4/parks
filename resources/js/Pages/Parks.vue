@@ -20,8 +20,8 @@ const props = defineProps({
 const parkStore = useParkStore()
 
 parkStore.isSingleParkView = props.isSingleParkView;
-parkStore.markers = props.markers;
 parkStore.selectedMarker = props.selectedMarker;
+parkStore.selectedPark = props.selectedMarker;
 
 function getMarkers($type = null) {
   const markersSource = parkStore.isSingleParkView ? `/api/parks/${parkStore.selectedMarker.id}/markers` : `/api/parks`

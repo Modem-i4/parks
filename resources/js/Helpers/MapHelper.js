@@ -12,13 +12,17 @@ export const defaultMapOptions = {
   mapTypeControl: false,
   fullscreenControl: false,
   clickableIcons: false,
-  cameraControl: false
+  cameraControl: false,
 }
 
 export const isMobile = window.innerWidth <= 768
+const defaultCoords = [
+      parseFloat(import.meta.env.VITE_DEFAULT_LNG),
+      parseFloat(import.meta.env.VITE_DEFAULT_LAT)
+    ]
 
 export function getCoordsFromMarker(marker) {
-  if (marker.geo_json) {
+  if (marker?.geo_json) {
     try {
       const properties = marker.geo_json.properties
       if (properties?.center) {
@@ -27,11 +31,12 @@ export function getCoordsFromMarker(marker) {
     } catch (e) {
       console.warn(`Не вдалося центрувати маркер "${marker.name}":`, e)
     }
+    return defaultCoords
   }
-  return marker.coordinates ?? [0, 0]
+  return marker?.coordinates ?? defaultCoords
 }
 export function getAdjustedCoords(map, [lng, lat]) {
-  if (!map) return [lng, lat];
+  if (!map || !isMobile) return [lng, lat];
 
   const offsetY = (window.innerHeight - 56) * (0.25);
 
@@ -102,7 +107,8 @@ export async function smoothZoomToPark(map, isSingleParkView, selectedMarker) {
   })
 
   const [lng, lat] = getCoordsFromMarker(selectedMarker)
-  map.panTo({ lat, lng })
+  if(map.getZoom() < 15) 
+    map.panTo({ lat, lng })
   await smoothZoom(map, targetZoom)
 
   map.setOptions({
@@ -137,3 +143,4 @@ export function smoothZoom(map, targetZoom, delay = 16) {
     step()
   })
 }
+
