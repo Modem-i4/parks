@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Model;
  * 
  * @property int $id
  * @property string $name
- * @property string $icon
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * 
@@ -30,7 +29,6 @@ class Infrastructure extends Model
 	protected $fillable = [
 		'id',
 		'name',
-		'icon'
 	];
 
 	public function marker()

@@ -44,11 +44,6 @@ class Green extends Model
 		'quality_state_note'
 	];
 
-	public function quality_state()
-	{
-		return $this->belongsTo(QualityState::class, 'quality_state');
-	}
-
 	public function species()
 	{
 		return $this->belongsTo(Species::class);

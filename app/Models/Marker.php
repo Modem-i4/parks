@@ -5,7 +5,6 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
-use App\Enums\MarkerType;
 use App\Enums\MediaType;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 
@@ -15,7 +14,7 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
  * @property int $id
  * @property int $park_id
  * @property int|null $plot_id
- * @property enum $type
+ * @property string|null $type
  * @property array $coordinated
  * @property string|null $description
  * @property Carbon|null $created_at
@@ -36,7 +35,7 @@ class Marker extends Model
 		'park_id' => 'int',
 		'plot_id' => 'int',
 		'coordinates' => 'json',
-		'type' => MarkerType::class,
+		'type' => 'string',
 	];
 
 	protected $fillable = [
@@ -56,6 +55,12 @@ class Marker extends Model
 	{
 		return $this->belongsTo(Plot::class);
 	}
+
+	public function green()
+	{
+		return $this->hasOne(Green::class, 'id', 'id');
+	}
+
 
 	public function infrastructure()
 	{
@@ -77,5 +82,20 @@ class Marker extends Model
 	{
 		return $this->morphOne(Media::class, 'model')->where('type', MediaType::ICON->value);
 	}
+
+	public function getSubclassDataAttributes()
+	{
+		return [
+			'quality_state' => $this->type === 'green' && $this->green
+				? $this->green->quality_state
+				: null,
+
+			'name' => $this->type === 'infrastructure' && $this->infrastructure
+				? $this->infrastructure->name
+				: null,
+		];
+	}
+
+
 	
 }

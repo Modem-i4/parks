@@ -3,7 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Enums\MarkerType;
 
 return new class extends Migration
 {
@@ -13,7 +12,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('park_id')->constrained('parks')->cascadeOnDelete();
             $table->foreignId('plot_id')->nullable()->constrained('plots')->nullOnDelete();
-            $table->enum('type', MarkerType::Values());
+            $table->string('type')->nullable();
             $table->json('coordinates')->default(json_encode([null,null]));
             $table->text('description')->nullable();
             $table->timestamps();

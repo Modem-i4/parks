@@ -22,7 +22,7 @@ class MarkerController extends Controller
 
     protected function getMarkers($parkId, $type = null)
     {
-        return Marker::with('icon')
+        return Marker::with(['icon', 'green', 'infrastructure'])
             ->select('id', 'coordinates', 'description', 'type')
             ->where('park_id', $parkId)
             ->when($type, fn($query) => $query->where('type', $type))
