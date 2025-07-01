@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Model;
  * Class Tree
  * 
  * @property int $id
- * @property string|null $inventory_number
  * @property float|null $height_m
  * @property float|null $trunk_diameter_cm
  * @property float|null $trunk_circumference_cm
@@ -25,7 +24,6 @@ use Illuminate\Database\Eloquent\Model;
 class Tree extends Model
 {
 	protected $table = 'trees';
-	protected $primaryKey = 'inventory_number';
 	public $incrementing = false;
 
 	protected $casts = [

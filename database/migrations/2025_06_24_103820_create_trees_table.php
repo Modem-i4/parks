@@ -10,7 +10,6 @@ return new class extends Migration
     {
         Schema::create('trees', function (Blueprint $table) {
             $table->foreignId('id')->constrained('green')->cascadeOnDelete();
-            $table->string('inventory_number')->unique()->nullable();
             $table->float('height_m')->nullable();
             $table->float('trunk_diameter_cm')->nullable();
             $table->float('trunk_circumference_cm')->nullable();

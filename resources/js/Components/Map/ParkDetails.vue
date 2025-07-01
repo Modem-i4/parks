@@ -7,17 +7,11 @@ const parkStore = useParkStore()
 
 function back() {
   parkStore.selectedMarker = null
-  if(parkStore.isSingleParkView) {
-    parkStore.showPanel = false
-    parkStore.lockMapChange = true
-  }
-  parkStore.isSingleParkView = false
-  window.history.pushState(null, '', `/parks`)
 }
 function openSinglePark() {
   parkStore.showPanel = false
   parkStore.isSingleParkView = true
-  parkStore.selectedPark = structuredClone(parkStore.selectedMarker)
+  parkStore.selectedPark = parkStore.selectedMarker
   window.history.pushState(null, '', `/parks/${parkStore.selectedMarker?.id}`)
 
 }

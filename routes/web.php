@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FilterConfigController;
 use App\Http\Controllers\MarkerController;
 use App\Http\Controllers\ParkController;
 use App\Http\Controllers\ProfileController;
@@ -57,7 +58,9 @@ Route::prefix('api')->group(function () {
 
     Route::get('/parks/{id}/media', [ParkController::class, 'media'])->name('parks.media');
     Route::get('/parks', [ParkController::class, 'getParksList'])->name('parks.list');
-    Route::get('/parks/{id}/markers/{type?}', [MarkerController::class, 'getParkMarkers'])->name('parks.markers');
+    Route::post('/parks/{id}/markers', [MarkerController::class, 'filterParkMarkers'])->name('parks.markers');
+    Route::get('/markers/filters-config', [MarkerController::class, 'getFilters'])->name('filters');
+    Route::get('/markers/{id}', [MarkerController::class, 'getSingleMarker'])->name('marker');
 
 });
 

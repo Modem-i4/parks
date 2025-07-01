@@ -49,6 +49,11 @@ class Green extends Model
 		return $this->belongsTo(Species::class);
 	}
 
+	public function tree()
+	{
+		return $this->hasOne(Tree::class, 'id');
+	}
+
 	public function bush()
 	{
 		return $this->hasOne(Bush::class, 'id');

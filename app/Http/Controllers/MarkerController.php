@@ -4,29 +4,59 @@ namespace App\Http\Controllers;
 
 use App\Models\Marker;
 use App\Models\Park;
+use Illuminate\Http\Request;
+use App\Http\Services\MarkerFilterService;
 
 class MarkerController extends Controller
 {
-    public function getParkMarkers($id, $type = null)
+    protected $filterService;
+
+    public function __construct(MarkerFilterService $filterService)
     {
+        $this->filterService = $filterService;
+    }
+
+    public function getFilters() {
+        $config =  $this->filterService->getFiltersConfig();
+        return response()->json($config);
+    }
+
+    public function getSingleMarker($id)
+    {
+        $marker = Marker::with([
+            'icon',
+            'green.species',
+            'green.tree',
+            'green.bush',
+            'green.hedge',
+            'green.flower',
+            'infrastructure',
+        ])->findOrFail($id);
+
+        if ($marker->green) {
+            $detailsOptions = ['tree', 'bush', 'hedge', 'flower'];
+            foreach ($detailsOptions as $option) {
+                $marker->green->details ??= $marker->green->$option;
+                unset($marker->green->$option);
+            }
+        }
+        return response()->json($marker);
+    }
+
+
+    public function filterParkMarkers(Request $request, $id)
+    {
+        $filters = $request->input('filters', '{}');
+        $markers = $this->filterService->filter($id, $filters);
+
         $park = Park::with('icon')->findOrFail($id);
         $center = $park->coordinates;
-        $markers = $this->getMarkers($id, $type);
         if (!$center) {
             return $markers;
         }
         
         $markers = $this->addDistanceToCenter($markers, $center);
         return $markers->sortBy('distanceToCenter')->values();
-    }
-
-    protected function getMarkers($parkId, $type = null)
-    {
-        return Marker::with(['icon', 'green', 'infrastructure'])
-            ->select('id', 'coordinates', 'description', 'type')
-            ->where('park_id', $parkId)
-            ->when($type, fn($query) => $query->where('type', $type))
-            ->get();
     }
 
     protected function addDistanceToCenter($markers, array $center)

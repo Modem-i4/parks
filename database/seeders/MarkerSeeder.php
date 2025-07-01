@@ -28,7 +28,7 @@ class MarkerSeeder extends Seeder
             if (!$geojson) continue;
 
             $polygon = $geojson['geometry']['coordinates'][0];
-            $types = TagType::values();
+            $types = array_diff(TagType::values(), ['all']);
 
             for ($i = 0; $i < 100; $i++) { 
                 $point = $this->generateRandomPointInPolygon($polygon);
@@ -52,9 +52,7 @@ class MarkerSeeder extends Seeder
                         'quality_state_note' => 'No issues',
                     ]);
 
-                    $subtype = ['tree', 'bush', 'hedge', 'flower'][array_rand(['tree', 'bush', 'hedge', 'flower'])];
-
-                    if ($subtype === 'tree') {
+                    if ($type === 'tree') {
                         Tree::create([
                             'id' => $green->id,
                             'height_m' => rand(5, 20),
@@ -63,19 +61,19 @@ class MarkerSeeder extends Seeder
                             'tilt_degree' => rand(0, 10),
                             'crown_condition_percent' => rand(60, 100),
                         ]);
-                    } elseif ($subtype === 'bush') {
+                    } elseif ($type === 'bush') {
                         Bush::create([
                             'id' => $green->id,
                             'quantity' => rand(1, 10),
                         ]);
-                    } elseif ($subtype === 'hedge') {
+                    } elseif ($type === 'hedge') {
                         Hedge::create([
                             'id' => $green->id,
                             'length_m' => rand(5, 50),
                             'hedge_type_row' => null,
                             'hedge_type_shape' => null,
                         ]);
-                    } elseif ($subtype === 'flower') {
+                    } elseif ($type === 'flower') {
                         Flower::create([
                             'id' => $green->id,
                         ]);

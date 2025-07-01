@@ -1,3 +1,5 @@
+import { isMobile } from "@/Helpers/isMobileHelper"
+
 export function calculateZoom(width) {
   if (width >= 1200) return 14
   if (width >= 768) return 13.4
@@ -15,7 +17,6 @@ export const defaultMapOptions = {
   cameraControl: false,
 }
 
-export const isMobile = window.innerWidth <= 768
 const defaultCoords = [
       parseFloat(import.meta.env.VITE_DEFAULT_LNG),
       parseFloat(import.meta.env.VITE_DEFAULT_LAT)
@@ -29,16 +30,16 @@ export function getCoordsFromMarker(marker) {
         return properties.center
       }
     } catch (e) {
-      console.warn(`Не вдалося центрувати маркер "${marker.name}":`, e)
+      console.warn(`Не вдалося отримати центр маркера "${marker.name}":`, e)
     }
     return defaultCoords
   }
   return marker?.coordinates ?? defaultCoords
 }
 export function getAdjustedCoords(map, [lng, lat]) {
-  if (!map || !isMobile) return [lng, lat];
+  if (!map || !isMobile.value) return [lng, lat];
 
-  const offsetY = (window.innerHeight - 56) * (0.25);
+  const offsetY = (window.innerHeight - 56) * (0.2);
 
   const zoom = map.getZoom();
   const scale = Math.pow(2, zoom);
@@ -79,8 +80,9 @@ export function getMapRestrictions(isSingleParkView = false) {
       west: 24.674101425875925
     }
 
-    if(isMobile) {
-      bounds.south -= 0.02
+    if(isMobile.value) {
+      bounds.south -= 0.06
+      zoom.minZoom -= 2
     }
 
   return {
@@ -93,11 +95,11 @@ export function getMapRestrictions(isSingleParkView = false) {
 
 
 export async function smoothZoomToPark(map, isSingleParkView, selectedMarker) {
-  const targetZoom = isSingleParkView ? 22 : 12
+  const targetZoom = isSingleParkView ? 22 : 13
 
   map.setOptions({
-    minZoom: null,
-    maxZoom: null,
+    minZoom: null, // minZoom: !isSingleParkView ? targetZoom : null
+    maxZoom: null, //maxZoom: isSingleParkView ? targetZoom : null
     restriction: null,
     draggable: false,
     scrollwheel: false,

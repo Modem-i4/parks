@@ -1,6 +1,9 @@
 <script setup>
 import { useParkStore } from '@/Stores/useParkStore.js'
 import { ref, watch, onMounted } from 'vue'
+import BtnWhite from '@/Components/Custom/BtnWhite.vue'
+import MapView from './MapView.vue'
+import { isMobile } from '@/Helpers/isMobileHelper'
 
 const parkStore = useParkStore()
 
@@ -30,18 +33,25 @@ function onTouchEnd() {
   panelOffsetY.value = 0
 }
 
+function back() {
+  parkStore.selectedMarker = null
+  parkStore.showPanel = false
+  parkStore.lockMapChange = true
+  parkStore.isSingleParkView = false
+  window.history.pushState(null, '', `/parks`)
+}
 </script>
 
 <template>
   <div class="flex h-[calc(100vh-65px)]">
     <!-- Desktop sidebar -->
-    <div class="hidden md:block w-1/3 border-r overflow-y-auto">
-      <slot name="sidebar"/>
+    <div class="hidden md:block w-1/3 border-r overflow-y-auto" id="sidebar-target">
+          <!-- Panel Teleport -->
     </div>
 
     <!-- Main map -->
     <div class="w-full md:w-2/3 relative touch-none">
-      <slot name="map"/>
+      <MapView />
 
       <!-- Mobile Slide-up Panel -->
       <div
@@ -70,19 +80,33 @@ function onTouchEnd() {
           >×</button>
         </div>
 
-        <div class="max-h-[60vh] overflow-y-auto">
-          <slot name="panel"/>
+        <div class="max-h-[60vh] overflow-y-auto" id="mobile-panel-target">
+          <!-- Panel Teleport -->
         </div>
       </div>
 
-      <!-- Toggle button -->
-      <button
-        v-if="!parkStore.showPanel"
-        class="md:hidden fixed bottom-4 right-4 z-50 bg-white/80 backdrop-blur p-5 rounded-full shadow-lg hover:bg-white transition"
-        @click="parkStore.showPanel = true"
-      >
-        МЕНЮ
-      </button>
+      <!-- Toggle buttons -->
+      <div class="fixed bottom-4 right-4 z-50">
+        <BtnWhite
+          v-if="!parkStore.showPanel"
+          class="ml-auto md:hidden"
+          @click="parkStore.showPanel = true"
+        >
+          {{ parkStore.isSingleParkView ? 'ФІЛЬТРИ' : 'МЕНЮ' }}
+        </BtnWhite>
+        <BtnWhite
+          v-if="parkStore.isSingleParkView && !parkStore.showPanel"
+          class="ml-auto"
+          @click="back"
+        >
+          < ДО ПАРКІВ
+        </BtnWhite>
+      </div>
+      
+      <!-- Map panel -->
+      <Teleport defer :to="isMobile ? '#mobile-panel-target' : '#sidebar-target'">
+          <slot name="panelContent" />
+      </Teleport>
     </div>
   </div>
 </template>

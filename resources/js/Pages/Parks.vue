@@ -1,12 +1,14 @@
 <script setup>
-import MapWithPanel from '@/Components/Map/MapWithPanel.vue'
-import ParkList from '@/Components/Map/ParkList.vue'
-import ParkDetails from '@/Components/Map/ParkDetails.vue'
-import MapView from '@/Components/Map/MapView.vue'
-import ResolveLayout from '@/Helpers/ResolveLayout.js';
 import { onMounted, watch } from 'vue';
 import axios from 'axios';
+
 import { useParkStore } from '@/Stores/useParkStore.js';
+
+import ResolveLayout from '@/Helpers/ResolveLayout.js';
+import MapWithPanel from '@/Components/Map/MapWithPanel.vue'
+import ParkList from '@/Components/Map/ParkList.vue';
+import ParkDetails from '@/Components/Map/ParkDetails.vue';
+import MapFilters from '@/Components/Filters/MapFilters.vue';
 
 defineOptions({
   layout: ResolveLayout,
@@ -18,15 +20,14 @@ const props = defineProps({
 })
 
 const parkStore = useParkStore()
+parkStore.$reset()
 
 parkStore.isSingleParkView = props.isSingleParkView;
 parkStore.selectedMarker = props.selectedMarker;
 parkStore.selectedPark = props.selectedMarker;
 
-function getMarkers($type = null) {
-  const markersSource = parkStore.isSingleParkView ? `/api/parks/${parkStore.selectedMarker.id}/markers` : `/api/parks`
-
-  axios.get(markersSource)
+function getParks() {
+  axios.get(`/api/parks`)
     .then(response => {
       parkStore.markers = response.data;
     })
@@ -38,7 +39,8 @@ function getMarkers($type = null) {
 watch(
   () => [parkStore.isSingleParkView],
   () => {
-    getMarkers()
+    if(!parkStore.isSingleParkView)
+      getParks()
   },
   { immediate: true }
 )
@@ -46,35 +48,13 @@ watch(
 
 <template>
   <MapWithPanel>
-    <template #sidebar>
+    <template #panelContent>
       <template v-if="!parkStore.isSingleParkView">
-        <ParkList
-          v-if="!parkStore.selectedMarker"
-        />
+        <ParkList v-if="!parkStore.selectedMarker"/>
+        <ParkDetails v-else />
       </template>
-      <ParkDetails
-        v-if="parkStore.selectedMarker"
-      />
       <template v-if="parkStore.isSingleParkView">
-        <!-- Filters -->
-      </template>
-    </template>
-
-    <template #map>
-      <MapView/>
-    </template>
-
-    <template #panel>
-      <ParkDetails
-        v-if="parkStore.selectedMarker"
-      />
-      <template v-if="!parkStore.isSingleParkView">
-        <ParkList
-          v-if="!parkStore.selectedMarker"
-        />
-      </template>
-      <template v-else>
-        <!-- Filters -->
+        <!-- <MapFilters/> -->
       </template>
     </template>
   </MapWithPanel>
