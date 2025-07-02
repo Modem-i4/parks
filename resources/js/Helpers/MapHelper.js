@@ -94,7 +94,7 @@ export function getMapRestrictions(isSingleParkView = false) {
 }
 
 
-export async function smoothZoomToPark(map, isSingleParkView, selectedMarker) {
+export async function smoothZoomToPark(map, isSingleParkView, selectedPark) {
   const targetZoom = isSingleParkView ? 22 : 13
 
   map.setOptions({
@@ -108,7 +108,7 @@ export async function smoothZoomToPark(map, isSingleParkView, selectedMarker) {
     rotateControl: false
   })
 
-  const [lng, lat] = getCoordsFromMarker(selectedMarker)
+  const [lng, lat] = getCoordsFromMarker(selectedPark)
   if(map.getZoom() < 15) 
     map.panTo({ lat, lng })
   await smoothZoom(map, targetZoom)

@@ -54,7 +54,7 @@ watch(
         <ParkDetails v-else />
       </template>
       <template v-if="parkStore.isSingleParkView">
-        <!-- <MapFilters/> -->
+        <MapFilters/>
       </template>
     </template>
   </MapWithPanel>

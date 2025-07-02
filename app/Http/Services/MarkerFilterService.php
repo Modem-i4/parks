@@ -3,6 +3,7 @@
 namespace App\Http\Services;
 
 use App\Enums\QualityState;
+use App\Enums\UserRole;
 use Illuminate\Http\Request;
 use App\Models\Recommendation;
 use App\Models\Species;
@@ -12,6 +13,7 @@ use App\Models\Infrastructure;
 use App\Models\Marker;
 use App\Models\Park;
 use App\Models\Tag;
+use Illuminate\Support\Facades\Auth;
 
 class MarkerFilterService
 {
@@ -26,10 +28,12 @@ class MarkerFilterService
         $tags = Tag::select('name', 'type')->get()->groupBy('type')->toArray();
         
         $config = [ 
-            [
+            'green' =>[
                 'name' => 'Зелені насадження',
                 'slug' => 'green',
                 'type' => 'group',
+                'open' => true,
+                'checked' => true,
                 'children' => [
                     [
                         'name' => 'Загальні фільтри',
@@ -54,6 +58,7 @@ class MarkerFilterService
                                 'slug' => 'recommendations',
                                 'type' => 'multiselect',
                                 'options' => $recommendations,
+                                'role' => 'worker'
                             ],
                             [
                                 'name' => 'Спільні теги',
@@ -202,10 +207,11 @@ class MarkerFilterService
                     ],
                 ],
             ],
-            [
+            'infrastructure' => [
                 'name' => 'Інфраструктура',
                 'slug' => 'infrastructure',
                 'type' => 'group',
+                'checked' => true,
                 'children' => [
                     [
                         'name' => 'Типи інфраструктури',
@@ -222,9 +228,33 @@ class MarkerFilterService
                 ],
             ],
         ];
-
+        $userRole = Auth::check()
+            ? Auth::user()->role
+            : UserRole::UNAUTHORIZED;
+        $config = $this->filterConfigByRole($config, $userRole);
         return $config;
     }
+
+    protected function filterConfigByRole(array $config, $userRole): array
+    {
+        foreach ($config as $key => &$node) {
+            if (isset($node['role'])) {
+                $requiredRole = UserRole::fromString($node['role']);
+
+                if ($userRole->level() < $requiredRole->level()) {
+                    unset($config[$key]);
+                    continue;
+                }
+            }
+
+            if (isset($node['children']) && is_array($node['children'])) {
+                $node['children'] = $this->filterConfigByRole($node['children'], $userRole);
+            }
+        }
+
+        return array_values($config);
+    }
+
 
     public function filter($parkId, $filters)
     {
@@ -232,13 +262,20 @@ class MarkerFilterService
             ->with(['icon', 'green:id,quality_state', 'infrastructure'])
             ->select('id', 'coordinates', 'description', 'type')
             ->where('park_id', $parkId);
-
-        if (!empty($filters['green'])) {
-            $this->applyGreenFilters($query, $filters['green']);
-        }
-
-        if (!empty($filters['infrastructure'])) {
-            $this->applyInfrastructureFilters($query, $filters['infrastructure']);
+        if(isset($filters)) {
+            if(!isset($filters['green']) && !isset($filters['infrastructure'])) {
+                return collect();
+            }
+            if (!isset($filters['green'])) {
+                $query->where('type', 'infrastructure');
+            } elseif (!empty($filters['green'])) {
+                $this->applyGreenFilters($query, $filters['green']);
+            }
+            if (!isset($filters['infrastructure'])) {
+                $query->where('type', '<>', 'infrastructure');
+            } elseif (!empty($filters['infrastructure'])) {
+                $this->applyInfrastructureFilters($query, $filters['infrastructure']);
+            }
         }
 
         return $query->get();

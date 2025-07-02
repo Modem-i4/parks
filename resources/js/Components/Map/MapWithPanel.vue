@@ -1,9 +1,11 @@
 <script setup>
 import { useParkStore } from '@/Stores/useParkStore.js'
-import { ref, watch, onMounted } from 'vue'
+import { ref, watch, onMounted, toRef } from 'vue'
 import BtnWhite from '@/Components/Custom/BtnWhite.vue'
 import MapView from './MapView.vue'
 import { isMobile } from '@/Helpers/isMobileHelper'
+import { setParkView } from '@/Helpers/SetParkView'
+import { useUserLocationMarker } from '@/Helpers/ShowGeolocationHelper'
 
 const parkStore = useParkStore()
 
@@ -11,6 +13,8 @@ const touchStartY = ref(0)
 const panelOffsetY = ref(0)
 const panelRef = ref(null)
 const isDragging = ref(false)
+
+const { showUserPosition } = useUserLocationMarker(toRef(parkStore, 'map'))
 
 function onTouchStart(event) {
   touchStartY.value = event.touches[0].clientY
@@ -31,14 +35,6 @@ function onTouchEnd() {
     parkStore.showPanel = false
   }
   panelOffsetY.value = 0
-}
-
-function back() {
-  parkStore.selectedMarker = null
-  parkStore.showPanel = false
-  parkStore.lockMapChange = true
-  parkStore.isSingleParkView = false
-  window.history.pushState(null, '', `/parks`)
 }
 </script>
 
@@ -71,9 +67,15 @@ function back() {
           @touchmove="onTouchMove"
           @touchend="onTouchEnd"
         >
-          <span class="font-semibold">
-            {{ parkStore.selectedMarker?.name || 'Список' }}
-          </span>
+          <div class="flex items-center px-3 space-x-2 text-lg font-semibold">
+            <div class="flex-shrink-0 w-8 h-8 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center">
+              <img v-if="parkStore.selectedPark?.icon?.file_path" :src="parkStore.selectedPark.icon?.file_path"
+                alt="Icon" class="w-8 h-8 object-contain" 
+              />
+              <div v-else class="text-gray-400 text-xl">🌳</div>
+            </div class="text-md">
+            <div>{{ parkStore.selectedPark?.name || parkStore.selectedMarker?.name || 'Список' }}</div>
+        </div>
           <button
             @click="() => { parkStore.selectedMarker = null; parkStore.showPanel = false }"
             class="text-gray-600 text-4xl"
@@ -95,14 +97,20 @@ function back() {
           {{ parkStore.isSingleParkView ? 'ФІЛЬТРИ' : 'МЕНЮ' }}
         </BtnWhite>
         <BtnWhite
-          v-if="parkStore.isSingleParkView && !parkStore.showPanel"
+          v-if="parkStore.isSingleParkView && (!isMobile || !parkStore.showPanel)"
           class="ml-auto"
-          @click="back"
+          @click="setParkView(parkStore, 'parks')"
         >
           < ДО ПАРКІВ
         </BtnWhite>
       </div>
       
+      <div>
+        <BtnWhite class="fixed bottom-4 left-4 bg-white border px-3 py-1 rounded shadow" @click="showUserPosition">
+          📍 Моя позиція
+        </BtnWhite>
+      </div>
+
       <!-- Map panel -->
       <Teleport defer :to="isMobile ? '#mobile-panel-target' : '#sidebar-target'">
           <slot name="panelContent" />
@@ -110,3 +118,20 @@ function back() {
     </div>
   </div>
 </template>
+
+<!-- Map position centering effect -->
+<style>
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.33);
+    opacity: 0.6;
+  }
+  80% {
+    transform: scale(6);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+</style>

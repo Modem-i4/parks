@@ -25,7 +25,7 @@ onMounted(async () => {
 async function handleTransitToSingleParkView(isSingleParkView) {
   if (!parkStore.map) return
   parkStore.lockMapChange = true
-  await smoothZoomToPark(parkStore.map, isSingleParkView, parkStore.selectedMarker)
+  await smoothZoomToPark(parkStore.map, isSingleParkView, parkStore.selectedPark)
   parkStore.lockMapChange = false
 }
 

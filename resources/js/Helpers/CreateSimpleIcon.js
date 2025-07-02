@@ -36,7 +36,7 @@ export async function CreateSimpleIcon({ iconPath, fill = null, width = 24, heig
 export function getColorByQualityState(state) {
   switch (state) {
     case 'good': return 'green'
-    case 'medium': return 'yellow'
+    case 'normal': return '#fcd45b'
     case 'bad': return 'red'
     case 'empty': return 'blue'
     case 'removed': return 'black'

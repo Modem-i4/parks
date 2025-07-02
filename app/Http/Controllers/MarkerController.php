@@ -46,7 +46,7 @@ class MarkerController extends Controller
 
     public function filterParkMarkers(Request $request, $id)
     {
-        $filters = $request->input('filters', '{}');
+        $filters = $request->input('filters');
         $markers = $this->filterService->filter($id, $filters);
 
         $park = Park::with('icon')->findOrFail($id);

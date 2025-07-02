@@ -9,7 +9,11 @@ function renderPolygons() {
 
   parkStore.map.data.forEach(feature => parkStore.map.data.remove(feature))
 
-  parkStore.markers?.forEach(marker => {
+  let markersToRender = parkStore.isSingleParkView 
+    ? [parkStore.selectedPark] 
+    : parkStore.markers
+
+  markersToRender?.forEach(marker => {
     try {
       parkStore.map.data.addGeoJson(marker.geo_json).forEach(f => {
         f.setProperty('id', marker.id)
@@ -23,13 +27,23 @@ function renderPolygons() {
 }
 
 function setMapStyle() {
-  parkStore.map.data.setStyle(feature => ({
-    fillColor: feature.getProperty('id') === parkStore.selectedMarker?.id ? '#4285F4' : '#9CCC65',
-    strokeColor: '#333',
-    strokeWeight: 1,
-    fillOpacity: feature.getProperty('id') === parkStore.selectedMarker?.id ? 0.8 : 0.6,
-    clickable: true,
-  }))
+  parkStore.map.data.setStyle(feature => {
+    const fillColor = !parkStore.isSingleParkView 
+      && feature.getProperty('id') === parkStore.selectedMarker?.id 
+      ? '#4285F4' : '#9CCC65'
+
+    const fillOpacity = !parkStore.isSingleParkView
+      ? feature.getProperty('id') === parkStore.selectedMarker?.id ? 0.8 : 0.6
+      : 0.2
+      
+      return {
+      fillColor,
+      fillOpacity,
+      strokeColor: '#333',
+      strokeWeight: 1,
+      clickable: true,
+    }
+  })
 }
 
 watch(() => [parkStore.map, parkStore.markers, parkStore.selectedMarker?.id], () => {
