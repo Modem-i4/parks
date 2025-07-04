@@ -1,13 +1,9 @@
 import { isMobile } from "@/Helpers/isMobileHelper"
-
-export function calculateZoom(width) {
-  if (width >= 1200) return 14
-  if (width >= 768) return 13.4
-  return 12.6
-}
+import { Group, Tween, Easing } from '@tweenjs/tween.js'
+import { computed } from "vue"
 
 export const defaultMapOptions = {
-  zoom: calculateZoom(window.innerWidth),
+  zoom: 13,
   mapId: import.meta.env.VITE_GOOGLE_MAP_ID,
   zoomControl: false,
   streetViewControl: false,
@@ -17,76 +13,115 @@ export const defaultMapOptions = {
   cameraControl: false,
 }
 
-const defaultCoords = [
-      parseFloat(import.meta.env.VITE_DEFAULT_LNG),
-      parseFloat(import.meta.env.VITE_DEFAULT_LAT)
-    ]
+const defaultCoords = {
+  lng: parseFloat(import.meta.env.VITE_DEFAULT_LNG),
+  lat: parseFloat(import.meta.env.VITE_DEFAULT_LAT)
+}
+
+export const zoom = {
+  mobile: {
+    default: 13,
+    singlePark: 19,
+    panelOpen: 15,
+    bounds: {
+      min: 12,
+      max: 19
+    }
+  },
+  desktop: {
+    default: 14,
+    singlePark: 20,
+    panelOpen: 15,
+    bounds: {
+      min: 13,
+      max: 20
+    }
+  }
+}
+
+export const defaultBounds = {
+    north: 48.96906027460897,
+    south: 48.89167859502078 - (isMobile.value ? 0.03 : 0),
+    east: 24.785674018094288,
+    west: 24.654101425875925,
+  }
+
+export const deviceZoom = computed(() => zoom[isMobile.value ? 'mobile' : 'desktop'])
 
 export function getCoordsFromMarker(marker) {
   if (marker?.geo_json) {
     try {
       const properties = marker.geo_json.properties
       if (properties?.center) {
-        return properties.center
+        return { lng: properties.center[0], lat: properties.center[1] }
       }
     } catch (e) {
       console.warn(`Не вдалося отримати центр маркера "${marker.name}":`, e)
     }
-    return defaultCoords
   }
-  return marker?.coordinates ?? defaultCoords
-}
-export function getAdjustedCoords(map, [lng, lat]) {
-  if (!map || !isMobile.value) return [lng, lat];
-
-  const offsetY = (window.innerHeight - 56) * (0.2);
-
-  const zoom = map.getZoom();
-  const scale = Math.pow(2, zoom);
-  const metersPerPixel = 40075016.686 / (256 * scale);
-
-  const offsetMeters = offsetY * metersPerPixel;
-  const offsetLat = (offsetMeters / 40075016.686) * 360;
-  return [lng, lat - offsetLat];
+  if (marker?.coordinates?.length === 2) {
+    return { lng: marker.coordinates[0], lat: marker.coordinates[1] }
+  }
+  return { lng: defaultCoords.lng, lat: defaultCoords.lat }
 }
 
+export function getAdjustedCoords(coords, targetZoom) {
+  const { lng, lat } = coords
+  if (!isMobile.value) return { lng, lat }
 
-export function getAdjustedCoordsFromMarker(map, marker) {
-  const markerCoords = getCoordsFromMarker(marker)
-  return getAdjustedCoords(map, markerCoords)
-}
-
-export function getMapRestrictions(isSingleParkView = false) {
-  const zoom = isSingleParkView 
-  ? {
-    minZoom: 13,
-    maxZoom: 20,
-  }
-  : {
-    minZoom: 14,
-    maxZoom: 16,
-  }
-  const bounds = isSingleParkView
-    ? {
-      north: 48.94906027460897,
-      south: 48.89167859502078,
-      east: 24.745674018094288,
-      west: 24.674101425875925
-    }
-    : {
-      north: 48.94906027460897,
-      south: 48.89167859502078,
-      east: 24.745674018094288,
-      west: 24.674101425875925
-    }
-
-    if(isMobile.value) {
-      bounds.south -= 0.06
-      zoom.minZoom -= 2
-    }
+  const offsetY = (window.innerHeight - 56) * 0.2
+  const scale = Math.pow(2, targetZoom)
+  const metersPerPixel = 40075016.686 / (256 * scale)
+  const offsetMeters = offsetY * metersPerPixel
+  const offsetLat = (offsetMeters / 40075016.686) * 360
 
   return {
-    ...zoom,
+    lng,
+    lat: lat - offsetLat
+  }
+}
+
+export function getAdjustedCoordsFromMarker(marker, targetZoom) {
+  const coords = getCoordsFromMarker(marker)
+  return getAdjustedCoords(coords, targetZoom)
+}
+
+export function getSingleParkMapRestrictions(park) {
+  if(park?.geo_json?.geometry?.type === 'Polygon' 
+    && Array.isArray(park.geo_json.geometry.coordinates?.[0])) {
+
+    const ring = park.geo_json.geometry.coordinates[0]
+    const lngs = ring.map(coord => coord?.[0]).filter(Number.isFinite)
+    const lats = ring.map(coord => coord?.[1]).filter(Number.isFinite)
+
+    if (lats.length && lngs.length) {
+      const margin = 0.002
+
+      return {
+        north: Math.max(...lats) + margin,
+        south: Math.min(...lats) - margin - (isMobile.value ? 0.01 : 0),
+        east: Math.max(...lngs) + margin,
+        west: Math.min(...lngs) - margin,
+      }
+    }
+  }
+
+  return null
+}
+
+export function getMapRestrictions(isSingleParkView = false, park = null) {
+  const deviceZoom = zoom[isMobile.value ? 'mobile' : 'desktop']
+  let bounds = null
+
+  if (isSingleParkView) {
+    bounds ??= getSingleParkMapRestrictions(park)
+  }
+
+  bounds ??= defaultBounds
+
+  return {
+    minZoom: deviceZoom.bounds.min,
+    maxZoom: isSingleParkView ? deviceZoom.bounds.max : deviceZoom.panelOpen,
     restriction: {
       latLngBounds: bounds,
     }
@@ -94,55 +129,46 @@ export function getMapRestrictions(isSingleParkView = false) {
 }
 
 
-export async function smoothZoomToPark(map, isSingleParkView, selectedPark) {
-  const targetZoom = isSingleParkView ? 22 : 13
+const tweenGroup = new Group()
 
-  map.setOptions({
-    minZoom: null, // minZoom: !isSingleParkView ? targetZoom : null
-    maxZoom: null, //maxZoom: isSingleParkView ? targetZoom : null
-    restriction: null,
-    draggable: false,
-    scrollwheel: false,
-    disableDoubleClickZoom: true,
-    gestureHandling: 'none',
-    rotateControl: false
-  })
-
-  const [lng, lat] = getCoordsFromMarker(selectedPark)
-  if(map.getZoom() < 15) 
-    map.panTo({ lat, lng })
-  await smoothZoom(map, targetZoom)
-
-  map.setOptions({
-    ...getMapRestrictions(isSingleParkView),
-    draggable: true,
-    scrollwheel: true,
-    disableDoubleClickZoom: false,
-    gestureHandling: 'auto',
-    rotateControl: true
-  })
-}
-
-// TODO: make smooth finish
-export function smoothZoom(map, targetZoom, delay = 16) {
+export function tweenCameraTo(map, targetLatLng, targetZoom, duration = 1000) {
   return new Promise(resolve => {
-    const delta = targetZoom > map.getZoom() ? 0.1 : -0.1
-    let currentZoom = map.getZoom()
-
-    function step() {
-      currentZoom += delta
-
-      if (Math.abs(targetZoom - currentZoom) <= Math.abs(delta*10)) {
-        map.setZoom(targetZoom)
-        resolve()
-        return
-      }
-
-      map.setZoom(currentZoom)
-      setTimeout(() => requestAnimationFrame(step), delay)
+    const from = {
+      lat: map.getCenter().lat(),
+      lng: map.getCenter().lng(),
+      zoom: map.getZoom()
     }
 
-    step()
+    const to = {
+      lat: targetLatLng.lat,
+      lng: targetLatLng.lng,
+      zoom: targetZoom ?? from.zoom
+    }
+
+    const tween = new Tween(from, tweenGroup)
+      .to(to, duration)
+      .easing(Easing.Quadratic.Out)
+      .onUpdate(() => {
+        map.moveCamera({
+          center: { lat: from.lat, lng: from.lng },
+          zoom: from.zoom,
+        })
+      })
+      .onComplete(() => {
+        map.moveCamera({
+          center: { lat: to.lat, lng: to.lng },
+          zoom: to.zoom,
+        })
+        resolve()
+      })
+
+    tween.start()
+
+    const animate = (time) => {
+      tweenGroup.update(time)
+      requestAnimationFrame(animate)
+    }
+
+    requestAnimationFrame(animate)
   })
 }
-

@@ -37,12 +37,12 @@ function setMapStyle() {
       : 0.2
       
       return {
-      fillColor,
-      fillOpacity,
-      strokeColor: '#333',
-      strokeWeight: 1,
-      clickable: true,
-    }
+        fillColor,
+        fillOpacity,
+        strokeColor: '#333',
+        strokeWeight: 1,
+        clickable: true,
+      }
   })
 }
 
@@ -55,9 +55,14 @@ watch(() => [parkStore.map, parkStore.markers, parkStore.selectedMarker?.id], ()
 watch(() => parkStore.map, () => {
   if (parkStore.map) {
     parkStore.map.data.addListener('click', event => {
-      const id = event.feature.getProperty('id')
-      const marker = parkStore.markers.find(p => p.id === id)
-      if (marker) parkStore.selectedMarker = marker
+      if(parkStore.isSingleParkView) {
+        parkStore.selectedMarker = null
+      }
+      else {
+        const id = event.feature.getProperty('id')
+        const marker = parkStore.markers.find(p => p.id === id)
+        if (marker) parkStore.selectedMarker = marker
+      }
     })
   }
 }, { immediate: true })

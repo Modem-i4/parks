@@ -8,16 +8,17 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('infrastructure', function (Blueprint $table) {
-            $table->foreignId('id')->constrained('markers')->cascadeOnDelete();
+        Schema::create('infrastructure_type', function (Blueprint $table) {
+            $table->id();
             $table->string('name');
-            $table->foreignId('infrastructure_type_id')->constrained('infrastructure_type')->cascadeOnUpdate()->restrictOnDelete();
+            $table->text('description')->nullable();
+            $table->boolean('custom')->default(true);
             $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('infrastructure');
+        Schema::dropIfExists('infrastructure_type');
     }
 };

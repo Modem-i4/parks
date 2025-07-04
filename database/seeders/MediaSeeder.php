@@ -95,6 +95,57 @@ class MediaSeeder extends Seeder
                 'order' => '2',
                 'type' => 'image'
             ],
+
+
+            
+            [
+                'model_type' => 'App\Models\InfrastructureType',
+                'model_id' => '1',
+                'file_path' => 'img/icons/tree-park.svg',
+                'description' => 'default description',
+                'order' => '0',
+                'type' => 'icon'
+            ],
+            [
+                'model_type' => 'App\Models\InfrastructureType',
+                'model_id' => '2',
+                'file_path' => 'img/icons/tree-park.svg',
+                'description' => 'default description',
+                'order' => '0',
+                'type' => 'icon'
+            ],
+            [
+                'model_type' => 'App\Models\InfrastructureType',
+                'model_id' => '3',
+                'file_path' => 'img/icons/tree-park.svg',
+                'description' => 'default description',
+                'order' => '0',
+                'type' => 'icon'
+            ],
+            [
+                'model_type' => 'App\Models\InfrastructureType',
+                'model_id' => '4',
+                'file_path' => 'img/icons/tree-park.svg',
+                'description' => 'default description',
+                'order' => '0',
+                'type' => 'icon'
+            ],
+            [
+                'model_type' => 'App\Models\InfrastructureType',
+                'model_id' => '5',
+                'file_path' => 'img/icons/tree-park.svg',
+                'description' => 'default description',
+                'order' => '0',
+                'type' => 'icon'
+            ],
+            [
+                'model_type' => 'App\Models\InfrastructureType',
+                'model_id' => '6',
+                'file_path' => 'img/icons/tree-park.svg',
+                'description' => 'default description',
+                'order' => '0',
+                'type' => 'icon'
+            ],
         ];
 
         foreach ($standardMedia as $media) {

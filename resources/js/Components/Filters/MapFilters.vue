@@ -6,7 +6,7 @@ import { useParkStore } from '@/Stores/useParkStore'
 import PrimaryButton from '@/Components/Default/PrimaryButton.vue'
 import SecondaryButton from '@/Components/Default/SecondaryButton.vue'
 import { isMobile } from '@/Helpers/isMobileHelper'
-import ParkHeader from '@/Components/Custom/ParkHeader.vue'
+import PanelHeader from '@/Components/Custom/PanelHeader.vue'
 import { setParkView } from '@/Helpers/SetParkView'
 
 const parkStore = useParkStore()
@@ -21,7 +21,7 @@ const filterPresets = {
 
 const getFilters = async () => {
   try {
-    const response = await axios.get('/api/markers/filters-config')
+    const response = await axios.get(`/api/markers/filters-config?mode=${parkStore.singleParkContentMode}`)
     filtersConfig.value = response.data
   } catch (error) {
     console.error('Помилка завантаження конфігурації фільтрів:', error)
@@ -44,38 +44,50 @@ const filterMarkers = async () => {
   }
 }
 
+watch(() => parkStore.singleParkContentMode,
+ () => getFilters(),
+ { immediate:true }
+)
+
 onMounted(() => {
-  getFilters()
   setPreset()
   filterMarkers()
 })
 </script>
 
 <template>
-  <ParkHeader v-if="!isMobile" :park="parkStore.selectedPark">
-    <template #right>
-      <SecondaryButton class="ml-auto" @click="setParkView(parkStore, 'parks')">< Назад</SecondaryButton>
-    </template>
-  </ParkHeader>
-  <div class="flex items-center justify-between border-b px-5 py-3 border-gray-200">
-    <div class="text-lg font-medium text-gray-700">
-      Фільтр
+  <div>
+    <PanelHeader v-if="!isMobile" 
+      :title="parkStore.selectedPark.name" :subtitle="parkStore.selectedPark.address" :icon="parkStore.selectedPark.icon?.file_path"
+    >
+      <template #right>
+        <SecondaryButton class="ml-auto" @click="setParkView(parkStore, 'parks')">< Назад</SecondaryButton>
+      </template>
+    </PanelHeader>
+    <div class="flex items-center justify-between border-b px-5 py-3 border-gray-200">
+      <div class="text-lg font-medium text-gray-700">
+        Фільтр
+      </div>
+      <div class="flex items-center gap-2">
+        <PrimaryButton @click="setPreset('all')">Все</PrimaryButton>
+        <SecondaryButton @click="setPreset('nothing')">Нічого</SecondaryButton>
+      </div>
     </div>
-    <div class="flex items-center gap-2">
-      <PrimaryButton @click="setPreset('all')">Все</PrimaryButton>
-      <SecondaryButton @click="setPreset('nothing')">Нічого</SecondaryButton>
-    </div>
-  </div>
 
-  <div class="p-4 space-y-2"> 
-    <FilterNode
-      v-for="item in filtersConfig"
-      :key="item.slug"
-      :node="item"
-      :filters="filters"
-      :path="[]"
-      :renderKey
-    />
-    <PrimaryButton @click="filterMarkers" >Застосувати фільтри</PrimaryButton>
+    <div class="p-4 space-y-2"> 
+      <FilterNode
+        v-for="item in filtersConfig"
+        :key="item.slug"
+        :node="item"
+        :filters="filters"
+        :path="[]"
+        :renderKey
+      />
+    </div>
+    <div class="sticky bottom-0 p-4 bg-white md:bg-[#f3f4f6] ">
+      <PrimaryButton @click="filterMarkers" class="w-full">
+        Застосувати фільтри
+      </PrimaryButton>
+    </div>
   </div>
 </template>

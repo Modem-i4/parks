@@ -8,8 +8,10 @@ import { CreateSimpleIcon, getColorByQualityState } from '@/Helpers/CreateSimple
 
 const parkStore = useParkStore()
 const mapMarkers = ref([])
+const renderCancelled = ref(false)
 
 async function renderMarkers() {
+  renderCancelled.value = false
   mapMarkers.value.forEach(m => m.mapMarker.setMap(null))
   mapMarkers.value = []
 
@@ -17,7 +19,7 @@ async function renderMarkers() {
   const { AdvancedMarkerElement } = await loader.importLibrary('marker')
 
   for (const marker of parkStore.markers) {
-    const [lng, lat] = getCoordsFromMarker(marker)
+    const {lng, lat} = getCoordsFromMarker(marker)
 
     let content
     if (marker.green) { // green markers
@@ -28,6 +30,7 @@ async function renderMarkers() {
     } else { // parks & infrastructure markers
       content = await CreatePinIcon({ glyph: marker.icon?.file_path })
     }
+    if(renderCancelled.value) return
     const mapMarker = new AdvancedMarkerElement({
       map: parkStore.map,
       position: { lat, lng },
@@ -50,6 +53,12 @@ watch(
   { immediate: true }
 )
 
+watch(
+  () => [parkStore.isSingleParkView],
+  () => { renderCancelled.value = true },
+  { immediate: true }
+)
+
 async function updateMarkerBackgrounds(newId, oldId) {
   const mapMarkersToUpdate = mapMarkers.value.filter(
     ({ marker }) => marker.id === newId || marker.id === oldId
@@ -61,7 +70,6 @@ async function updateMarkerBackgrounds(newId, oldId) {
       const highlightClasses = [
         'scale-[3]',
         'transition-transform']
-      console.log('mapMarker.content', mapMarker.content)
       isSelected
         ? mapMarker.content.classList.add(...highlightClasses)
         : mapMarker.content.classList.remove(...highlightClasses)

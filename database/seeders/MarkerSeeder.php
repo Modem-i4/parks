@@ -14,6 +14,7 @@ use App\Models\Park;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use App\Enums\TagType;
+use App\Models\InfrastructureType;
 
 class MarkerSeeder extends Seeder
 {
@@ -80,10 +81,14 @@ class MarkerSeeder extends Seeder
                     }
                 }
                 elseif ($type === 'infrastructure') {
+                    $inf_type = InfrastructureType::inRandomOrder()->first();
+
                     Infrastructure::create([
                         'id' => $marker->id,
-                        'name' => 'Bench ' . $i,
+                        'name' => $inf_type->name . ' ' . $i,
+                        'infrastructure_type_id' => $inf_type->id,
                     ]);
+
                 }
             }
         }

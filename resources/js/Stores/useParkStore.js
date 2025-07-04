@@ -7,7 +7,7 @@ export const useParkStore = defineStore('park', () => {
   const selectedPark = ref(null)
   const markers = ref([])
   const showPanel = ref(false)
-  const lockMapChange = ref(false)
+  const singleParkContentMode = ref('infrastructure')
   const defaultCenter = { 
     lng: parseFloat(import.meta.env.VITE_DEFAULT_LNG),
     lat: parseFloat(import.meta.env.VITE_DEFAULT_LAT)
@@ -22,7 +22,6 @@ export const useParkStore = defineStore('park', () => {
     selectedPark.value = null
     markers.value = []
     showPanel.value = false
-    lockMapChange.value = false
     map.value = null
     mapElement.value = null
   }
@@ -56,8 +55,8 @@ export const useParkStore = defineStore('park', () => {
     showPanel.value = value
   }
 
-  function setLockMapChange(value) {
-    lockMapChange.value = value
+  function setSingleParkContentMode(value) {
+    singleParkContentMode.value = value
   }
 
   watch(
@@ -76,7 +75,7 @@ export const useParkStore = defineStore('park', () => {
     map,
     mapElement,
     defaultCenter,
-    lockMapChange,
+    singleParkContentMode,
 
     // Actions
     setIsSingleParkView,
@@ -86,6 +85,6 @@ export const useParkStore = defineStore('park', () => {
     setMap,
     setMapElement,
     setShowPanel,
-    setLockMapChange,
+    setSingleParkContentMode,
   }
 })

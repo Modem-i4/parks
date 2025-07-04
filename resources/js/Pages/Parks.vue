@@ -9,6 +9,7 @@ import MapWithPanel from '@/Components/Map/MapWithPanel.vue'
 import ParkList from '@/Components/Map/ParkList.vue';
 import ParkDetails from '@/Components/Map/ParkDetails.vue';
 import MapFilters from '@/Components/Filters/MapFilters.vue';
+import MarkerDetails from '@/Components/Markers/MarkerDetails.vue';
 
 defineOptions({
   layout: ResolveLayout,
@@ -23,7 +24,6 @@ const parkStore = useParkStore()
 parkStore.$reset()
 
 parkStore.isSingleParkView = props.isSingleParkView;
-parkStore.selectedMarker = props.selectedMarker;
 parkStore.selectedPark = props.selectedMarker;
 
 function getParks() {
@@ -54,7 +54,8 @@ watch(
         <ParkDetails v-else />
       </template>
       <template v-if="parkStore.isSingleParkView">
-        <MapFilters/>
+        <MapFilters v-show="!parkStore.selectedMarker"/>
+        <MarkerDetails v-if="parkStore.selectedMarker" />
       </template>
     </template>
   </MapWithPanel>

@@ -4,7 +4,16 @@ import loader from '@/Helpers/GoogleMapsLoader'
 import MapMarkers from './MapMarkers.vue'
 import MapPolygons from './MapPolygons.vue'
 import { useParkStore } from '@/Stores/useParkStore.js'
-import { defaultMapOptions, getMapRestrictions, smoothZoomToPark, getAdjustedCoords, getAdjustedCoordsFromMarker, smoothZoom } from '@/Helpers/MapHelper.js'
+import {
+  defaultMapOptions,
+  getMapRestrictions,
+  getAdjustedCoords,
+  getAdjustedCoordsFromMarker,
+  tweenCameraTo,
+  deviceZoom,
+  defaultBounds
+} from '@/Helpers/MapHelper.js'
+import { isMobile } from '@/Helpers/isMobileHelper'
 
 const parkStore = useParkStore()
 const mapElement = ref(null)
@@ -20,62 +29,75 @@ onMounted(async () => {
   })
 })
 
-// single park view transit
+const isParkViewInTransit = ref(false)
 
+// single park view transit
 async function handleTransitToSingleParkView(isSingleParkView) {
   if (!parkStore.map) return
-  parkStore.lockMapChange = true
-  await smoothZoomToPark(parkStore.map, isSingleParkView, parkStore.selectedPark)
-  parkStore.lockMapChange = false
+  isParkViewInTransit.value = true
+  const targetZoom = isSingleParkView ? deviceZoom.value.singlePark : deviceZoom.value.default
+  parkStore.map.setOptions({
+    minZoom: null,
+    maxZoom: null,
+    restriction: {latLngBounds: defaultBounds}
+  })
+  const coords = getAdjustedCoordsFromMarker(parkStore.selectedPark, targetZoom)
+  await tweenCameraTo(parkStore.map, coords, targetZoom, 2500)
+  parkStore.map.setOptions({
+    ...getMapRestrictions(isSingleParkView, parkStore.selectedPark),
+  })
+  isParkViewInTransit.value = false
 }
 
 watch(
-  () => [parkStore.isSingleParkView, parkStore.map],
-  ([isSingleParkView]) => handleTransitToSingleParkView(isSingleParkView),
+  () => parkStore.isSingleParkView,
+  (isSingleParkView) => handleTransitToSingleParkView(isSingleParkView),
   { immediate: true }
 )
+watch(
+  () => parkStore.map,
+  (map) => {
+    if (parkStore.isSingleParkView && map) {
+      handleTransitToSingleParkView(true)
+    }
+  }
+)
+
 
 // centres control
 watch(
   () => [parkStore.map, parkStore.markers, parkStore.selectedMarker, parkStore.showPanel],
-  () => {
-    if (!parkStore.map || parkStore.lockMapChange) return
-    
-    const defaultCenterArray = [parkStore.defaultCenter.lng, parkStore.defaultCenter.lat]
-    let lng, lat
+  async () => {
+    if (!parkStore.map || isParkViewInTransit.value) return
 
-    // "AdjustedCoords" handles mobile automatically
-    if (parkStore.showPanel) {
-      if (parkStore.selectedMarker) {
-        [lng, lat] = getAdjustedCoordsFromMarker(parkStore.map, parkStore.selectedMarker)
-      } else if (!parkStore.isSingleParkView) {
-        [lng, lat] = getAdjustedCoords(parkStore.map, defaultCenterArray)
+    const defaultCenter = parkStore.defaultCenter
+    let zoomLevel = deviceZoom.value.default
+    let coords = null
+    let duration = 1000
+
+    if (parkStore.showPanel && parkStore.selectedMarker) {
+      if (parkStore.isSingleParkView) {
+        zoomLevel = parkStore.map.getZoom()
+        duration = 200
+      } else {
+        zoomLevel = deviceZoom.value.panelOpen
       }
+      coords = getAdjustedCoordsFromMarker(parkStore.selectedMarker, zoomLevel)
     } else if (!parkStore.isSingleParkView) {
-      [lng, lat] = defaultCenterArray
+      coords = getAdjustedCoords(defaultCenter, zoomLevel)
     }
 
-
-    if(lat && lng)
-      parkStore.map.panTo({ lat, lng })
-    
-    if(!parkStore.isSingleParkView) {
-      if(!parkStore.selectedMarker) 
-        smoothZoom(parkStore.map, 13)
-      // else
-      //   smoothZoom(parkStore.map, 15)
+    if (coords?.lat && coords?.lng) {
+      await tweenCameraTo(parkStore.map, coords, zoomLevel, duration)
     }
-
-    
   },
   { immediate: true }
 )
-
 </script>
 
 <template>
   <div ref="mapElement" class="w-full h-full">
-    <MapPolygons/>
-    <MapMarkers/>
+    <MapPolygons />
+    <MapMarkers />
   </div>
 </template>

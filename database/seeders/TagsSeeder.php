@@ -4,8 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Models\Tag;
 
-class TagsTableSeeder extends Seeder
+class TagsSeeder extends Seeder
 {
     public function run()
     {
@@ -25,6 +26,17 @@ class TagsTableSeeder extends Seeder
                 ['name' => $tag['name'], 'type' => $tag['type']],
                 ['public' => $tag['public'], 'custom' => false],
             );
+        }
+
+        $types = ['all', 'infrastructure', 'tree', 'bush', 'hedge', 'flower'];
+
+        foreach (range(1, 10) as $i) {
+            Tag::create([
+                'name' => 'Custom Tag ' . $i,
+                'type' => $types[array_rand($types)],
+                'public' => (bool)random_int(0, 1),
+                'custom' => true,
+            ]);
         }
     }
 }

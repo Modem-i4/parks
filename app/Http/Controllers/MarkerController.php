@@ -16,8 +16,9 @@ class MarkerController extends Controller
         $this->filterService = $filterService;
     }
 
-    public function getFilters() {
-        $config =  $this->filterService->getFiltersConfig();
+    public function getFilters(Request $request) {
+        $mode = $request->query('mode', 'infrastructure');
+        $config =  $this->filterService->getFiltersConfig($mode);
         return response()->json($config);
     }
 
@@ -31,6 +32,7 @@ class MarkerController extends Controller
             'green.hedge',
             'green.flower',
             'infrastructure',
+            'tags:id,name,public,custom,type',
         ])->findOrFail($id);
 
         if ($marker->green) {
@@ -80,4 +82,26 @@ class MarkerController extends Controller
 
         return $markers;
     }
+
+    public function media($id)
+    {
+        $marker = Marker::with('media')->findOrFail($id);
+
+        /*
+        if ($marker->media->isNotEmpty()) {
+            return $marker;
+        }
+        
+        if ($marker->type === 'infrastructure') {
+            $typeMedia = $marker->infrastructureType()->with('media')->first()?->media ?? collect();
+            $marker->setRelation('media', $typeMedia);
+        }
+        else {
+            $speciesMedia = $marker->species()->with('media')->first()?->media ?? collect();
+            $marker->setRelation('media', $speciesMedia);
+        } 
+        */
+        return $marker;
+    }
+
 }

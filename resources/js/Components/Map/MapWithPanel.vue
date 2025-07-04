@@ -3,6 +3,7 @@ import { useParkStore } from '@/Stores/useParkStore.js'
 import { ref, watch, onMounted, toRef } from 'vue'
 import BtnWhite from '@/Components/Custom/BtnWhite.vue'
 import MapView from './MapView.vue'
+import MobileSlidePanel from '@/Components/Custom/MobileSlidePanel.vue'
 import { isMobile } from '@/Helpers/isMobileHelper'
 import { setParkView } from '@/Helpers/SetParkView'
 import { useUserLocationMarker } from '@/Helpers/ShowGeolocationHelper'
@@ -50,42 +51,27 @@ function onTouchEnd() {
       <MapView />
 
       <!-- Mobile Slide-up Panel -->
-      <div
-        class="md:hidden fixed bottom-0 left-0 right-0 bg-white shadow-lg rounded-t-xl z-50"
-        :class="!isDragging ? 'transition-transform duration-300 ease-in-out' : ''"
-        ref="panelRef"
-        :style="{
-          transform: parkStore.showPanel
-            ? `translateY(${isDragging ? panelOffsetY + 'px' : '0'})`
-            : 'translateY(100%)'
-        }"
+      <MobileSlidePanel
+        :show="parkStore.showPanel"
+        @close="() => { parkStore.selectedMarker = null; parkStore.showPanel = false }"
       >
-        <div
-          class="p-2 border-b flex justify-between items-center active:cursor-grabbing"
-          style="touch-action: none"
-          @touchstart="onTouchStart"
-          @touchmove="onTouchMove"
-          @touchend="onTouchEnd"
-        >
-          <div class="flex items-center px-3 space-x-2 text-lg font-semibold">
-            <div class="flex-shrink-0 w-8 h-8 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center">
-              <img v-if="parkStore.selectedPark?.icon?.file_path" :src="parkStore.selectedPark.icon?.file_path"
-                alt="Icon" class="w-8 h-8 object-contain" 
-              />
-              <div v-else class="text-gray-400 text-xl">🌳</div>
-            </div class="text-md">
-            <div>{{ parkStore.selectedPark?.name || parkStore.selectedMarker?.name || 'Список' }}</div>
-        </div>
-          <button
-            @click="() => { parkStore.selectedMarker = null; parkStore.showPanel = false }"
-            class="text-gray-600 text-4xl"
-          >×</button>
-        </div>
+        <template #header>
+          <div class="flex-shrink-0 w-8 h-8 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center">
+            <img
+              v-if="parkStore.selectedPark?.icon?.file_path"
+              :src="parkStore.selectedPark.icon?.file_path"
+              alt="Icon"
+              class="w-8 h-8 object-contain"
+            />
+            <div v-else class="text-gray-400 text-xl">🌳</div>
+          </div>
+          <div>{{ parkStore.selectedPark?.name || parkStore.selectedMarker?.name || 'Список' }}</div>
+        </template>
 
         <div class="max-h-[60vh] overflow-y-auto" id="mobile-panel-target">
           <!-- Panel Teleport -->
         </div>
-      </div>
+      </MobileSlidePanel>
 
       <!-- Toggle buttons -->
       <div class="fixed bottom-4 right-4 z-50">

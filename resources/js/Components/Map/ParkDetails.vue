@@ -2,7 +2,7 @@
 import ImageSlider from '@/Components/Custom/ImageSlider.vue'
 import ArrowButton from '../Custom/ArrowButton.vue'
 import { useParkStore } from '@/Stores/useParkStore.js'
-import ParkHeader from '../Custom/ParkHeader.vue'
+import PanelHeader from '../Custom/PanelHeader.vue'
 import { setParkView } from '@/Helpers/SetParkView'
 
 const parkStore = useParkStore()
@@ -12,10 +12,10 @@ function back() {
 }
 
 function openInfrastructure() {
-  setParkView(parkStore, 'single')
+  setParkView(parkStore, 'single', 'infrastructure')
 }
 function openGreen() {
-  setParkView(parkStore, 'single')
+  setParkView(parkStore, 'single', 'green')
 }
 </script>
 
@@ -23,7 +23,9 @@ function openGreen() {
   <div class="p-4">
     <button @click="back" class="text-blue-500 mb-2">← Назад</button>
 
-    <ParkHeader :park="parkStore.selectedMarker" />
+    <PanelHeader
+      :title="parkStore.selectedMarker.name" :subtitle="parkStore.selectedMarker.address" :icon="parkStore.selectedMarker.icon?.file_path"
+    />
 
     <ImageSlider :modelId="parkStore.selectedMarker?.id || null" model="parks" class="my-2" />
 
@@ -31,11 +33,8 @@ function openGreen() {
       <h3 class="text-lg font-semibold pb-2">Про парк</h3>
       <p>{{ parkStore.selectedMarker.description }}</p>
     </div>
-    <div class="mt-6 space-y-3 transform transition-transform duration-300"
-      :class="{
-        '-translate-x-[120%]': parkStore.isSingleParkView
-      }"
-      v-if="!parkStore.isSingleParkView || parkStore.lockMapChange">
+    <div class="mt-6 space-y-3"
+      v-if="!parkStore.isSingleParkView">
       <ArrowButton @click="openInfrastructure">Інфраструктура парку</ArrowButton>
       <ArrowButton :primary="false" @click="openGreen">Насадження парку</ArrowButton>
     </div>

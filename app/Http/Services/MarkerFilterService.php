@@ -10,6 +10,7 @@ use App\Models\Species;
 use App\Models\HedgeTypeRow;
 use App\Models\HedgeTypeShape;
 use App\Models\Infrastructure;
+use App\Models\InfrastructureType;
 use App\Models\Marker;
 use App\Models\Park;
 use App\Models\Tag;
@@ -17,23 +18,58 @@ use Illuminate\Support\Facades\Auth;
 
 class MarkerFilterService
 {
-    public function getFiltersConfig()
+    public function getFiltersConfig($mode = 'infrastructure')
+    {        
+        $config = $this->getDefaultFilters();
+        $config = $this->filterConfigByMode($config, $mode);
+        $userRole = Auth::check()
+            ? Auth::user()->role
+            : UserRole::UNAUTHORIZED;
+        $config = $this->filterConfigByRole($config, $userRole);
+        return $config;
+    }
+
+    protected function getDefaultFilters(): array
     {
         // Get dynamic options
-        $recommendations = Recommendation::pluck('name')->toArray();
+        $recommendations = Recommendation::select('id', 'name')->get()->toArray();
         $species = Species::select('id', 'name_ukr', 'type')->get()->groupBy('type')->toArray();
         $hedgeTypeRows = HedgeTypeRow::pluck('name')->toArray();
         $hedgeTypeShapes = HedgeTypeShape::pluck('name')->toArray();
-        $infrastructureTypes = Infrastructure::distinct('name')->pluck('name')->toArray();
-        $tags = Tag::select('name', 'type')->get()->groupBy('type')->toArray();
-        
-        $config = [ 
+        $infrastructureTypes = InfrastructureType::with('icon')
+            ->get()->map(function ($type) {
+                return [
+                    'id' => $type->id,
+                    'name' => $type->name,
+                    'icon' => $type->icon?->file_path,
+                ];
+            })->toArray();
+
+        $tags = Tag::select('id', 'name', 'type')->get()->groupBy('type')->map->toArray();
+        return [ 
+            'infrastructure' => [
+                'name' => 'Інфраструктура',
+                'slug' => 'infrastructure',
+                'type' => 'group',
+                'children' => [
+                    [
+                        'name' => 'Типи інфраструктури',
+                        'slug' => 'types',
+                        'type' => 'infrastructureSelect',
+                        'options' => $infrastructureTypes,
+                    ],
+                    [
+                        'name' => 'Теги',
+                        'slug' => 'tags',
+                        'type' => 'multiselect',
+                        'options' => $tags['infrastructure'] ?? [],
+                    ],
+                ],
+            ],
             'green' =>[
                 'name' => 'Зелені насадження',
                 'slug' => 'green',
                 'type' => 'group',
-                'open' => true,
-                'checked' => true,
                 'children' => [
                     [
                         'name' => 'Загальні фільтри',
@@ -43,7 +79,7 @@ class MarkerFilterService
                             [
                                 'name' => 'Стан',
                                 'slug' => 'quality_state',
-                                'type' => 'multiselect',
+                                'type' => 'stateSelect',
                                 'options' => QualityState::values(),
                             ],
                             [
@@ -64,7 +100,7 @@ class MarkerFilterService
                                 'name' => 'Спільні теги',
                                 'slug' => 'common_tags',
                                 'type' => 'multiselect',
-                                'options' => isset($tags['all']) ? array_column($tags['all'], 'name') : [],
+                                'options' => $tags['all'] ?? [],
                             ],
                         ],
                     ],
@@ -77,13 +113,13 @@ class MarkerFilterService
                                 'name' => 'Теги',
                                 'slug' => 'tags',
                                 'type' => 'multiselect',
-                                'options' => isset($tags['tree']) ? array_column($tags['tree'], 'name') : [],
+                                'options' => $tags['tree'] ?? [],
                             ],
                             [
                                 'name' => 'Види дерев',
                                 'slug' => 'species',
                                 'type' => 'multiselect',
-                                'options' => isset($species['tree']) ? array_column($species['tree'], 'name_ukr') : [],
+                                'options' => $species['tree'] ?? [],
                             ],
                             [
                                 'name' => 'Висота (м)',
@@ -131,13 +167,13 @@ class MarkerFilterService
                                 'name' => 'Теги',
                                 'slug' => 'tags',
                                 'type' => 'multiselect',
-                                'options' => isset($tags['bush']) ? array_column($tags['bush'], 'name') : [],
+                                'options' => $tags['bush'] ?? [],
                             ],
                             [
                                 'name' => 'Види кущів',
                                 'slug' => 'species',
                                 'type' => 'multiselect',
-                                'options' => isset($species['bush']) ? array_column($species['bush'], 'name_ukr') : [],
+                                'options' => $species['bush'] ?? [],
                             ],
                             [
                                 'name' => 'Кількість',
@@ -157,13 +193,13 @@ class MarkerFilterService
                                 'name' => 'Теги',
                                 'slug' => 'tags',
                                 'type' => 'multiselect',
-                                'options' => isset($tags['hedge']) ? array_column($tags['hedge'], 'name') : [],
+                                'options' => $tags['hedge'] ?? [],
                             ],
                             [
                                 'name' => 'Види живоплотів',
                                 'slug' => 'species',
                                 'type' => 'multiselect',
-                                'options' => isset($species['hedge']) ? array_column($species['hedge'], 'name_ukr') : [],
+                                'options' => $species['hedge'] ?? [],
                             ],
                             [
                                 'name' => 'Довжина (м)',
@@ -195,44 +231,19 @@ class MarkerFilterService
                                 'name' => 'Теги',
                                 'slug' => 'tags',
                                 'type' => 'multiselect',
-                                'options' => isset($tags['flower']) ? array_column($tags['flower'], 'name') : [],
+                                'options' => $tags['flower'] ?? [],
                             ],
                             [
                                 'name' => 'Види квітів',
                                 'slug' => 'species',
                                 'type' => 'multiselect',
-                                'options' => isset($species['flower']) ? array_column($species['flower'], 'name_ukr') : [],
+                                'options' => $species['flower'] ?? [],
                             ],
                         ],
                     ],
                 ],
             ],
-            'infrastructure' => [
-                'name' => 'Інфраструктура',
-                'slug' => 'infrastructure',
-                'type' => 'group',
-                'checked' => true,
-                'children' => [
-                    [
-                        'name' => 'Типи інфраструктури',
-                        'slug' => 'types',
-                        'type' => 'multiselect',
-                        'options' => $infrastructureTypes,
-                    ],
-                    [
-                        'name' => 'Теги',
-                        'slug' => 'tags',
-                        'type' => 'multiselect',
-                        'options' => isset($tags['infrastructure']) ? array_column($tags['infrastructure'], 'name') : [],
-                    ],
-                ],
-            ],
         ];
-        $userRole = Auth::check()
-            ? Auth::user()->role
-            : UserRole::UNAUTHORIZED;
-        $config = $this->filterConfigByRole($config, $userRole);
-        return $config;
     }
 
     protected function filterConfigByRole(array $config, $userRole): array
@@ -253,6 +264,24 @@ class MarkerFilterService
         }
 
         return array_values($config);
+    }
+
+    protected function filterConfigByMode(array $config, string $mode): array
+    {
+        $config[$mode]['checked'] = true;
+        $config[$mode]['open'] = true;
+
+        if ($mode === 'infrastructure') {
+            return [
+                'infrastructure' => $config['infrastructure'],
+                'green' => $config['green'],
+            ];
+        } else {
+            return [
+                'green' => $config['green'],
+                'infrastructure' => $config['infrastructure'],
+            ];
+        }
     }
 
 
