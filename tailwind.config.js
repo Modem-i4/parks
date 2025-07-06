@@ -14,23 +14,17 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
-            },
-            colors: {
-                yellow: {
-                    50:  '#fffbea',
-                    100: '#fff3c4',
-                    200: '#fce588',
-                    300: '#fadb5f',
-                    400: '#f7c948',
-                    500: '#f0b429',
-                    600: '#fcd45b',
-                    700: '#c69400',
-                    800: '#997100',
-                    900: '#7c5e00'
-                }
             }
         },
     },
+
+    safelist: [
+        'text-yellow-600',
+        'border-yellow-600',
+        'bg-yellow-600',
+        'border-red-600',
+        'border-green-600'
+    ],
 
     plugins: [forms],
 };
