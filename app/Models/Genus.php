@@ -23,7 +23,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Genus extends Model
 {
-	protected $table = 'genera';
+	protected $table = 'genus';
 
 	protected $casts = [
 		'family_id' => 'int'

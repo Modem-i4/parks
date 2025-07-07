@@ -15,6 +15,18 @@ import { UserRole } from '@/Helpers/UserRole.js';
 const page = usePage();
 const user = page.props.auth.user;
 
+const pages = [
+  { label: 'Інструкції', routeName: 'dashboard' },
+  { label: 'Парки', routeName: 'admin.parks' },
+  { label: 'Новини', routeName: 'admin.news' },
+  { label: 'Словники', routeName: 'admin.dictionaries', role: 'ADMIN' },
+  { label: 'Користувачі', routeName: 'admin.users', role: 'ADMIN' },
+]
+
+function canView(page) {
+  if (!page.roles) return true
+  return UserRole.atLeast(props.user.role, page.role)
+}
 </script>
 
 <template>
@@ -41,39 +53,13 @@ const user = page.props.auth.user;
                                 class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex"
                             >
                                 <NavLink
-                                    :href="route('dashboard')"
-                                    :active="route().current('dashboard')"
-                                >
-                                    Адмінпанель
-                                </NavLink>
-
-                                <NavLink
-                                    :href="route('admin.parks')"
-                                    :active="route().current('admin.parks')"
-                                >
-                                    Парки
-                                </NavLink>
-                                <NavLink
-                                    :href="route('admin.news')"
-                                    :active="route().current('admin.news')"
-                                >
-                                    Новини
-                                </NavLink>
-
-                                <NavLink
-                                    :href="route('admin.dictionaries')"
-                                    :active="route().current('admin.dictionaries')"
-                                    v-if="UserRole.atLeast(user.role, UserRole.ADMIN)"
-                                >
-                                    Словники
-                                </NavLink>
-
-                                <NavLink
-                                    :href="route('admin.users')"
-                                    :active="route().current('admin.users')"
-                                    v-if="UserRole.atLeast(user.role, UserRole.ADMIN)"
-                                >
-                                    Користувачі
+                                    v-for="page in pages"
+                                    v-if="!page.mobileOnly && canView(page)"
+                                    :key="page.routeName"
+                                    :href="route(page.routeName)"
+                                    :active="route().current(page.routeName)"
+                                    >
+                                {{ page.label }}
                                 </NavLink>
                             </div>
                         </div>
@@ -177,17 +163,13 @@ const user = page.props.auth.user;
                 >
                     <div class="space-y-1 pb-3 pt-2">
                         <ResponsiveNavLink
-                            :href="route('dashboard')"
-                            :active="route().current('dashboard')"
+                        v-for="page in pages"
+                        v-if="!page.desktopOnly && canView(page)"
+                        :key="page.routeName"
+                        :href="route(page.routeName)"
+                        :active="route().current(page.routeName)"
                         >
-                            Інструкції
-                        </ResponsiveNavLink>
-                        <ResponsiveNavLink
-                            :href="route('admin.users')"
-                            :active="route().current('admin.users')"
-                            v-if="UserRole.atLeast(user.role, UserRole.ADMIN)"
-                        >
-                            Користувачі
+                        {{ page.label }}
                         </ResponsiveNavLink>
                     </div>
 

@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Species\FamilyController;
+use App\Http\Controllers\Species\GenusController;
+use App\Http\Controllers\Species\SpeciesController;
 use App\Http\Controllers\FilterConfigController;
 use App\Http\Controllers\MarkerController;
 use App\Http\Controllers\ParkController;
@@ -56,14 +59,32 @@ Route::middleware('auth')->group(function () {
 
 Route::prefix('api')->group(function () {
 
+    // Parks
     Route::get('/parks/{id}/media', [ParkController::class, 'media'])->name('parks.media');
     Route::get('/parks', [ParkController::class, 'getParksList'])->name('parks.list');
     Route::post('/parks/{id}/markers', [MarkerController::class, 'filterParkMarkers'])->name('parks.markers');
 
+    // Markers
     Route::get('/markers/filters-config', [MarkerController::class, 'getFilters'])->name('filters');
     Route::get('/markers/{id}', [MarkerController::class, 'getSingleMarker'])->name('marker');
     Route::get('/markers/{id}/media', [MarkerController::class, 'media'])->name('marker.media');
 
+    // Families
+    Route::get('/families', [FamilyController::class, 'index']);
+    Route::get('/families-full-structure/{type}', [FamilyController::class, 'getWithStructure']);
+    Route::post('/families', [FamilyController::class, 'store']);
+    Route::patch('/families/{id}', [FamilyController::class, 'update']);
+    Route::delete('/families/{id}', [FamilyController::class, 'destroy']);
+
+    // Genus
+    Route::post('/genus', [GenusController::class, 'store']);
+    Route::patch('/genus/{id}', [GenusController::class, 'update']);
+    Route::delete('/genus/{id}', [GenusController::class, 'destroy']);
+
+    // Species
+    Route::post('/species', [SpeciesController::class, 'store']);
+    Route::patch('/species/{id}', [SpeciesController::class, 'update']);
+    Route::delete('/species/{id}', [SpeciesController::class, 'destroy']);
 });
 
 Route::middleware('auth')->group(function () {

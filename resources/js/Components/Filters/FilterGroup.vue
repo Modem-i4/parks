@@ -2,6 +2,7 @@
 import { ref, computed, watch } from 'vue'
 import FilterNode from './FilterNode.vue'
 import { GetFilterTargetNode } from '@/Helpers/Maps/GetFilterTargetNode'
+import ArrowIcon from '@/Components/Custom/Icons/ArrowIcon.vue'
 
 const props = defineProps({
   node: Object,
@@ -81,9 +82,7 @@ function afterLeave(el) {
   <div class="space-y-2">
     <div class="flex items-center justify-between bg-gray-100 px-2 py-1 rounded cursor-pointer hover:bg-gray-200" @click="toggle">
       <div class="flex items-center space-x-2">
-        <svg :class="{'transform rotate-90': isOpen}" class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-        </svg>
+        <ArrowIcon :class="{'transform rotate-90': isOpen}"/>
         <span class="font-semibold">{{ node.name }}</span>
       </div>
       <input

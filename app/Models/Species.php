@@ -5,13 +5,12 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
-use App\Enums\SpeciesType;
+use App\Enums\GreenType;
 
 /**
  * Class Species
  * 
  * @property int $id
- * @property string $type
  * @property int $genus_id
  * @property string $name_ukr
  * @property string $name_lat
@@ -29,11 +28,9 @@ class Species extends Model
 
 	protected $casts = [
 		'genus_id' => 'int',
-		'type' => SpeciesType::class,
 	];
 
 	protected $fillable = [
-		'type',
 		'genus_id',
 		'name_ukr',
 		'name_lat'

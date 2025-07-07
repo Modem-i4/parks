@@ -1,7 +1,7 @@
 <?php
 namespace App\Enums;
 
-enum SpeciesType: string
+enum GreenType: string
 {
     case TREE = 'tree';
     case BUSH = 'bush';

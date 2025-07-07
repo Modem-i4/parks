@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('genera', function (Blueprint $table) {
+        Schema::create('genus', function (Blueprint $table) {
             $table->id();
             $table->foreignId('family_id')->constrained('families')->cascadeOnDelete();
             $table->string('name_ukr');
@@ -19,6 +19,6 @@ return new class extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('genera');
+        Schema::dropIfExists('genus');
     }
 };

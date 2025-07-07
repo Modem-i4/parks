@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\GreenType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,6 +13,7 @@ return new class extends Migration
             $table->id();
             $table->string('name_ukr');
             $table->string('name_lat');
+            $table->enum('type', GreenType::Values());
             $table->timestamps();
         });
     }

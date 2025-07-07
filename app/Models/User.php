@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Enums\UserRole;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * Class User
@@ -14,7 +15,7 @@ use App\Enums\UserRole;
  * @property int $id
  * @property string $name
  * @property string $email
- * @property string $role
+ * @property UserRole|string $role
  * @property Carbon|null $email_verified_at
  * @property string $password
  * @property string|null $remember_token
@@ -26,6 +27,7 @@ use App\Enums\UserRole;
 class User extends Authenticatable
 {
     use Notifiable;
+    use HasFactory;
 	protected $table = 'users';
 
 	protected $casts = [
