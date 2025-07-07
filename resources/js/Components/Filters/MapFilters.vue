@@ -7,7 +7,7 @@ import PrimaryButton from '@/Components/Default/PrimaryButton.vue'
 import SecondaryButton from '@/Components/Default/SecondaryButton.vue'
 import { isMobile } from '@/Helpers/isMobileHelper'
 import PanelHeader from '@/Components/Custom/PanelHeader.vue'
-import { setParkView } from '@/Helpers/SetParkView'
+import { setParkView } from '@/Helpers/Maps/SetParkView'
 
 const parkStore = useParkStore()
 const filtersConfig = ref([])

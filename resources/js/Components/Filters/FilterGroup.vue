@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed, watch } from 'vue'
 import FilterNode from './FilterNode.vue'
-import { GetFilterTargetNode } from '@/Helpers/GetFilterTargetNode'
+import { GetFilterTargetNode } from '@/Helpers/Maps/GetFilterTargetNode'
 
 const props = defineProps({
   node: Object,

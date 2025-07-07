@@ -1,5 +1,5 @@
 <script setup>
-import { GetOrCreateFilterTargetNode } from '@/Helpers/GetFilterTargetNode'
+import { GetOrCreateFilterTargetNode } from '@/Helpers/Maps/GetFilterTargetNode'
 
 const props = defineProps({
   node: Object,

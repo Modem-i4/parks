@@ -1,4 +1,4 @@
-import loader from '@/Helpers/GoogleMapsLoader'
+import loader from '@/Helpers/Maps/GoogleMapsLoader'
 
 const pinCache = new Map()
 

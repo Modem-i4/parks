@@ -1,10 +1,10 @@
 <script setup>
 import { ref, watch } from 'vue'
-import loader from '@/Helpers/GoogleMapsLoader'
-import { CreatePinIcon } from '@/Helpers/CreatePinIcon.js'
-import { getCoordsFromMarker } from '@/Helpers/MapHelper.js'
+import loader from '@/Helpers/Maps/GoogleMapsLoader'
+import { CreatePinIcon } from '@/Helpers/Maps/CreatePinIcon.js'
+import { getCoordsFromMarker } from '@/Helpers/Maps/MapHelper.js'
 import { useParkStore } from '@/Stores/useParkStore.js'
-import { CreateSimpleIcon, getColorByQualityState } from '@/Helpers/CreateSimpleIcon'
+import { CreateSimpleIcon, getColorByQualityState } from '@/Helpers/Maps/CreateSimpleIcon'
 
 const parkStore = useParkStore()
 const mapMarkers = ref([])

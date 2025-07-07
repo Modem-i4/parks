@@ -3,7 +3,7 @@ import ImageSlider from '@/Components/Custom/ImageSlider.vue'
 import ArrowButton from '../Custom/ArrowButton.vue'
 import { useParkStore } from '@/Stores/useParkStore.js'
 import PanelHeader from '../Custom/PanelHeader.vue'
-import { setParkView } from '@/Helpers/SetParkView'
+import { setParkView } from '@/Helpers/Maps/SetParkView'
 
 const parkStore = useParkStore()
 

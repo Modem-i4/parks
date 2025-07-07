@@ -5,8 +5,8 @@ import BtnWhite from '@/Components/Custom/BtnWhite.vue'
 import MapView from './MapView.vue'
 import MobileSlidePanel from '@/Components/Custom/MobileSlidePanel.vue'
 import { isMobile } from '@/Helpers/isMobileHelper'
-import { setParkView } from '@/Helpers/SetParkView'
-import { useUserLocationMarker } from '@/Helpers/ShowGeolocationHelper'
+import { setParkView } from '@/Helpers/Maps/SetParkView'
+import { useUserLocationMarker } from '@/Helpers/Maps/ShowGeolocationHelper'
 
 const parkStore = useParkStore()
 

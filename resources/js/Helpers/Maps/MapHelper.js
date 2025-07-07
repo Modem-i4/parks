@@ -41,7 +41,7 @@ export const zoom = {
 
 export const defaultBounds = {
     north: 48.96906027460897,
-    south: 48.89167859502078 - (isMobile.value ? 0.03 : 0),
+    south: 48.89167859502078 - (isMobile.value ? 0.06 : 0),
     east: 24.785674018094288,
     west: 24.654101425875925,
   }

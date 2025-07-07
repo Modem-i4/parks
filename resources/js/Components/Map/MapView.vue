@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, watch } from 'vue'
-import loader from '@/Helpers/GoogleMapsLoader'
+import loader from '@/Helpers/Maps/GoogleMapsLoader'
 import MapMarkers from './MapMarkers.vue'
 import MapPolygons from './MapPolygons.vue'
 import { useParkStore } from '@/Stores/useParkStore.js'
@@ -12,7 +12,7 @@ import {
   tweenCameraTo,
   deviceZoom,
   defaultBounds
-} from '@/Helpers/MapHelper.js'
+} from '@/Helpers/Maps/MapHelper.js'
 import { isMobile } from '@/Helpers/isMobileHelper'
 
 const parkStore = useParkStore()
@@ -79,12 +79,13 @@ watch(
       if (parkStore.isSingleParkView) {
         zoomLevel = parkStore.map.getZoom()
         duration = 200
-      } else {
-        zoomLevel = deviceZoom.value.panelOpen
-      }
+      } else zoomLevel = deviceZoom.value.panelOpen
+      
       coords = getAdjustedCoordsFromMarker(parkStore.selectedMarker, zoomLevel)
     } else if (!parkStore.isSingleParkView) {
-      coords = getAdjustedCoords(defaultCenter, zoomLevel)
+      if(parkStore.showPanel)
+        coords = getAdjustedCoords(defaultCenter, zoomLevel)
+      else coords = defaultCenter
     }
 
     if (coords?.lat && coords?.lng) {
