@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class InfrastructureTypeController extends Controller
 {
     public function get() {
-        return InfrastructureType::all();
+        return InfrastructureType::with('icon')->get();
     }
 
     public function store(Request $request)
