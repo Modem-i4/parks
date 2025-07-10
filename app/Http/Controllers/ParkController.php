@@ -28,9 +28,7 @@ class ParkController extends Controller
 
     public function getParksList()
     {
-        return Park::with('icon')
-            ->select('id', 'name', 'address', 'area', 'description', 'geo_json')
-            ->get();
+        return Park::with('icon')->select('id', 'name', 'address', 'area', 'description', 'geo_json')->get();
     }
 
     public function media($id)

@@ -149,16 +149,28 @@ class MediaSeeder extends Seeder
         ];
 
         foreach ($standardMedia as $media) {
+            $mediaLibraryId = DB::table('media_library')->where('file_path', $media['file_path'])->value('id');
+
+            if (!$mediaLibraryId) {
+                $mediaLibraryId = DB::table('media_library')->insertGetId([
+                    'file_path' => $media['file_path'],
+                    'type' => $media['type'],
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]);
+            }
+
             DB::table('media')->updateOrInsert(
                 [
+                    'media_library_id' => $mediaLibraryId,
                     'model_type' => $media['model_type'],
                     'model_id' => $media['model_id'],
                     'order' => $media['order'],
-                    'type' => $media['type']
                 ],
                 [
-                    'file_path' => $media['file_path'],
-                    'description' => $media['description']
+                    'description' => $media['description'],
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ]
             );
         }

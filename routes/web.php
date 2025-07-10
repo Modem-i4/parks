@@ -7,6 +7,8 @@ use App\Http\Controllers\InfrastructureTypeController;
 use App\Http\Controllers\MarkerController;
 use App\Http\Controllers\ParkController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\MediaController;
+use App\Http\Controllers\MediaLibraryController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -56,6 +58,7 @@ Route::middleware('auth')->group(function () {
     });
 });
 
+// TODO: Don't forget to assign correct roles access
 Route::prefix('api')->group(function () {
 
     // Parks
@@ -91,6 +94,18 @@ Route::prefix('api')->group(function () {
     Route::post('/infrastructureType', [InfrastructureTypeController::class, 'store']);
     Route::patch('/infrastructureType/{id}', [InfrastructureTypeController::class, 'update']);
     Route::delete('/infrastructureType/{id}', [InfrastructureTypeController::class, 'destroy']);
+
+    //// Media
+    Route::prefix('media-library')->group(function () {
+        Route::get('/', [MediaLibraryController::class, 'index']);
+        Route::post('/', [MediaLibraryController::class, 'store']);
+        Route::delete('/{mediaLibrary}', [MediaLibraryController::class, 'destroy']);
+    });
+
+    Route::prefix('media')->group(function () {
+        Route::get('/', [MediaController::class, 'index']);
+        Route::post('/sync', [MediaController::class, 'sync']);
+    });
 });
 
 Route::middleware('auth')->group(function () {

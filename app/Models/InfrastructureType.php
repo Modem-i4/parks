@@ -27,6 +27,6 @@ class InfrastructureType extends Model
 
 	public function icon(): MorphOne
 	{
-		return $this->morphOne(Media::class, 'model')->where('type', MediaType::ICON->value);
+		return $this->morphOne(Media::class, 'model')->ofType(MediaType::ICON->value)->with('mediaFile')->orderBy('order');
 	}
 }

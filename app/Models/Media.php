@@ -2,20 +2,24 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 /**
  * Class Media
  * 
  * @property int $id
+ * @property int $media_library_id
  * @property string $model_type
  * @property int $model_id
- * @property string $file_path
- * @property string|null $description
  * @property int $order
+ * @property string|null $description
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ * 
+ * @property-read MediaLibrary $mediaFile
+ * @property-read Model $model
  *
  * @package App\Models
  */
@@ -23,32 +27,41 @@ class Media extends Model
 {
     protected $table = 'media';
 
-    protected $casts = [
-        'model_id' => 'int',
-        'order' => 'int',
-        'file_path' => 'string',
-    ];
-
     protected $fillable = [
+        'media_library_id',
         'model_type',
         'model_id',
-        'file_path',
+        'order',
         'description',
-        'order'
     ];
 
-    protected $hidden = ['model_type', 'model_id'];
+    protected $appends = [
+        'file_path',
+    ];
+    protected $hidden = ['mediaFile'];
 
-    public function model()
+    public function mediaFile(): BelongsTo
+    {
+        return $this->belongsTo(MediaLibrary::class, 'media_library_id');
+    }
+
+    public function model(): MorphTo
     {
         return $this->morphTo();
     }
 
-    public function getFilePathAttribute($value)
+    public function getFilePathAttribute(): ?string
     {
-        if (str_starts_with($value, '/storage/')) {
-            return $value;
-        }
-        return '/storage/' . ltrim($value, '/');
+        return $this->mediaFile?->file_path;
+    }
+
+    public function getTypeAttribute(): ?string
+    {
+        return $this->mediaFile?->type;
+    }
+
+    public function scopeOfType($query, string $type)
+    {
+        return $query->whereHas('mediaFile', fn($q) => $q->where('type', $type));
     }
 }
