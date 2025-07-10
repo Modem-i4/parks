@@ -1,7 +1,8 @@
 <script setup>
 import { ref } from 'vue'
 import AdminLayout from '@/Layouts/AdminLayout.vue'
-import DictTaxonomy from '@/Components/Taxonomy/DictTaxonomy.vue'
+import DictTaxonomy from '@/Components/Dictionaries/DictTaxonomy.vue'
+import DictInfrastructureType from '@/Components/Dictionaries/DictInfrastructureType.vue'
 import { isMobile } from '@/Helpers/isMobileHelper'
 import ArrowIcon from '@/Components/Custom/Icons/ArrowIcon.vue'
 
@@ -21,7 +22,7 @@ const dictionaryItems = [
       { slug: 'Hedges', name: 'Живоплоти', props: { type: 'hedge' } }
     ]
   },
-  { type: 'item', slug: 'Infrastructure', name: 'Інфраструктура', component: DictTaxonomy },
+  { type: 'item', slug: 'Infrastructure', name: 'Типи інфраструктури', component: DictInfrastructureType },
   { type: 'item', slug: 'TreeTypes', name: 'Типи дерев', component: DictTaxonomy },
   { type: 'item', slug: 'ObjectState', name: 'Стан об’єкта', component: DictTaxonomy }
 ]

@@ -3,11 +3,10 @@
 use App\Http\Controllers\Species\FamilyController;
 use App\Http\Controllers\Species\GenusController;
 use App\Http\Controllers\Species\SpeciesController;
-use App\Http\Controllers\FilterConfigController;
+use App\Http\Controllers\InfrastructureTypeController;
 use App\Http\Controllers\MarkerController;
 use App\Http\Controllers\ParkController;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -69,6 +68,7 @@ Route::prefix('api')->group(function () {
     Route::get('/markers/{id}', [MarkerController::class, 'getSingleMarker'])->name('marker');
     Route::get('/markers/{id}/media', [MarkerController::class, 'media'])->name('marker.media');
 
+    //// Taxonomy
     // Families
     Route::get('/families', [FamilyController::class, 'index']);
     Route::get('/families-full-structure/{type}', [FamilyController::class, 'getWithStructure']);
@@ -85,6 +85,12 @@ Route::prefix('api')->group(function () {
     Route::post('/species', [SpeciesController::class, 'store']);
     Route::patch('/species/{id}', [SpeciesController::class, 'update']);
     Route::delete('/species/{id}', [SpeciesController::class, 'destroy']);
+
+    // InfrastructureType
+    Route::get('/infrastructureType', [InfrastructureTypeController::class, 'get']);
+    Route::post('/infrastructureType', [InfrastructureTypeController::class, 'store']);
+    Route::patch('/infrastructureType/{id}', [InfrastructureTypeController::class, 'update']);
+    Route::delete('/infrastructureType/{id}', [InfrastructureTypeController::class, 'destroy']);
 });
 
 Route::middleware('auth')->group(function () {

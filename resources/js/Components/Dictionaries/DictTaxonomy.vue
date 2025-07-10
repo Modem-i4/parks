@@ -2,7 +2,7 @@
 import { ref, onMounted, watch, computed } from 'vue'
 import axios from 'axios'
 import TaxonItem from '@/Components/Taxonomy/TaxonItem.vue'
-import TaxonAddForm from './TaxonAddForm.vue'
+import TaxonAddForm from '@/Components/Taxonomy/TaxonAddForm.vue'
 import LoadingLineIndicator from '@/Components/Custom/LoadingLineIndicator.vue'
 
 const families = ref([])
