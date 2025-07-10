@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('infrastructure', function (Blueprint $table) {
             $table->foreignId('id')->constrained('markers')->cascadeOnDelete();
             $table->string('name');
-            $table->foreignId('infrastructure_type_id')->constrained('infrastructure_type')->cascadeOnUpdate()->restrictOnDelete();
+            $table->foreignId('infrastructure_type_id')->nullable()->constrained('infrastructure_type')->cascadeOnUpdate()->nullOnDelete();
             $table->timestamps();
         });
     }

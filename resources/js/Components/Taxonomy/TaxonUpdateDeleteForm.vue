@@ -4,6 +4,7 @@ import ArrowIcon from '@/Components/Custom/Icons/ArrowIcon.vue'
 import SecondaryButton from '@/Components/Default/SecondaryButton.vue'
 import FloatingInput from '@/Components/Custom/FloatingInput.vue'
 import Tooltip from '@/Components/Custom/Tooltip.vue'
+import DeleteForm from '@/Components/Custom/DeleteForm.vue'
 
 const props = defineProps({
   item: Object,
@@ -75,16 +76,12 @@ const confirmDelete = () => {
 
 <template>
   <div class="space-y-1">
-    <div
+    <DeleteForm
       v-if="confirmingDelete"
-      class="flex items-center justify-between bg-red-50 border border-red-300 text-sm text-red-700 px-3 py-2 rounded"
-    >
-      <span>Справді видалити "{{ item.name_ukr }}"?</span>
-      <div class="space-x-1 flex">
-        <SecondaryButton size="sm" variant="danger" @click="confirmDelete">Так</SecondaryButton>
-        <SecondaryButton size="sm" @click="cancelDelete">Ні</SecondaryButton>
-      </div>
-    </div>
+      :label="item.name_ukr"
+      @confirmDelete="confirmDelete"
+      @cancelDelete="cancelDelete"
+    />
 
     <div
       class="flex items-center px-2 py-1 rounded cursor-pointer"
