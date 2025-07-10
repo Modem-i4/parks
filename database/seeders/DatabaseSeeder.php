@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             MediaSeeder::class,
             InfrastructureTypeSeeder::class,
             MarkerSeeder::class,
+            MarkersTagSeeder::class,
         ]);
 
         User::factory()->create([

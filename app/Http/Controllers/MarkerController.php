@@ -5,20 +5,23 @@ namespace App\Http\Controllers;
 use App\Models\Marker;
 use App\Models\Park;
 use Illuminate\Http\Request;
-use App\Http\Services\MarkerFilterService;
+use App\Http\Services\MarkerFilters\MarkerFilterConfigService;
+use App\Http\Services\MarkerFilters\MarkerFilterService;
 
 class MarkerController extends Controller
 {
     protected $filterService;
+    protected $filterConfigService;
 
-    public function __construct(MarkerFilterService $filterService)
+    public function __construct(MarkerFilterConfigService $filterConfigService, MarkerFilterService $filterService)
     {
+        $this->filterConfigService = $filterConfigService;
         $this->filterService = $filterService;
     }
 
     public function getFilters(Request $request) {
         $mode = $request->query('mode', 'infrastructure');
-        $config =  $this->filterService->getFiltersConfig($mode);
+        $config =  $this->filterConfigService->get($mode);
         return response()->json($config);
     }
 

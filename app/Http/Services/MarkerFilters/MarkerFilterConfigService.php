@@ -1,24 +1,18 @@
 <?php
-
-namespace App\Http\Services;
+namespace App\Http\Services\MarkerFilters;
 
 use App\Enums\QualityState;
 use App\Enums\UserRole;
-use Illuminate\Http\Request;
 use App\Models\Recommendation;
 use App\Models\Species;
 use App\Models\HedgeTypeRow;
 use App\Models\HedgeTypeShape;
-use App\Models\Infrastructure;
 use App\Models\InfrastructureType;
-use App\Models\Marker;
-use App\Models\Park;
 use App\Models\Tag;
 use Illuminate\Support\Facades\Auth;
 
-class MarkerFilterService
-{
-    public function getFiltersConfig($mode = 'infrastructure')
+class MarkerFilterConfigService {
+    public function get($mode = 'infrastructure'): array
     {        
         $config = $this->getDefaultFilters();
         $config = $this->filterConfigByMode($config, $mode);
@@ -33,7 +27,7 @@ class MarkerFilterService
     {
         // Get dynamic options
         $recommendations = Recommendation::select('id', 'name')->get()->toArray();
-        $species = Species::select('id', 'name_ukr', 'type')->get()->groupBy('type')->toArray();
+        $species = Species::with('genus.family')->select('id', 'name_ukr')->get()->groupBy('type')->toArray();
         $hedgeTypeRows = HedgeTypeRow::pluck('name')->toArray();
         $hedgeTypeShapes = HedgeTypeShape::pluck('name')->toArray();
         $infrastructureTypes = InfrastructureType::with('icon')
@@ -51,6 +45,7 @@ class MarkerFilterService
                 'name' => 'Інфраструктура',
                 'slug' => 'infrastructure',
                 'type' => 'group',
+                'checked' => true,
                 'children' => [
                     [
                         'name' => 'Типи інфраструктури',
@@ -70,6 +65,7 @@ class MarkerFilterService
                 'name' => 'Зелені насадження',
                 'slug' => 'green',
                 'type' => 'group',
+                'checked' => true,
                 'children' => [
                     [
                         'name' => 'Загальні фільтри',
@@ -268,7 +264,6 @@ class MarkerFilterService
 
     protected function filterConfigByMode(array $config, string $mode): array
     {
-        $config[$mode]['checked'] = true;
         $config[$mode]['open'] = true;
 
         if ($mode === 'infrastructure') {
@@ -283,156 +278,4 @@ class MarkerFilterService
             ];
         }
     }
-
-
-    public function filter($parkId, $filters)
-    {
-        $query = Marker::query()
-            ->with(['icon', 'green:id,quality_state', 'infrastructure'])
-            ->select('id', 'coordinates', 'description', 'type')
-            ->where('park_id', $parkId);
-        if(isset($filters)) {
-            if(!isset($filters['green']) && !isset($filters['infrastructure'])) {
-                return collect();
-            }
-            if (!isset($filters['green'])) {
-                $query->where('type', 'infrastructure');
-            } elseif (!empty($filters['green'])) {
-                $this->applyGreenFilters($query, $filters['green']);
-            }
-            if (!isset($filters['infrastructure'])) {
-                $query->where('type', '<>', 'infrastructure');
-            } elseif (!empty($filters['infrastructure'])) {
-                $this->applyInfrastructureFilters($query, $filters['infrastructure']);
-            }
-        }
-
-        return $query->get();
-    }
-
-
-    private function applyGreenFilters($query, $green_filters)
-    {
-        $types = array_filter([
-            !empty($green_filters['trees']) ? 'tree' : null,
-            !empty($green_filters['bushes']) ? 'bush' : null,
-            !empty($green_filters['hedges']) ? 'hedge' : null,
-            !empty($green_filters['flowers']) ? 'flower' : null,
-        ]);
-
-        if (!empty($types)) {
-            $query->whereIn('type', $types);
-        }
-
-        // General filters (AND)
-        if (!empty($green_filters['general']['quality_state'])) {
-            $query->whereHas('green', function ($q) use ($green_filters) {
-                $q->whereIn('quality_state', $green_filters['general']['quality_state']);
-            });
-        }
-
-        if (!empty($green_filters['general']['age'])) {
-            $query->whereHas('green', function ($q) use ($green_filters) {
-                $q->whereBetween('planting_date', [
-                    now()->subYears($green_filters['general']['age'][1]),
-                    now()->subYears($green_filters['general']['age'][0]),
-                ]);
-            });
-        }
-
-        if (!empty($green_filters['general']['recommendations'])) {
-            $query->whereHas('green.greenWorksHistory.recommendations', function ($q) use ($green_filters) {
-                $q->whereIn('name', $green_filters['general']['recommendations']);
-            });
-        }
-
-        // Specific filters (OR)
-        $query->where(function ($q) use ($green_filters) {
-
-            // trees
-            if (!empty($green_filters['trees'])) {
-                $q->orWhereHas('green.tree', function ($sub) use ($green_filters) {
-                    if (!empty($green_filters['trees']['height_m'])) {
-                        $sub->whereBetween('height_m', $green_filters['trees']['height_m']);
-                    }
-                    if (!empty($green_filters['trees']['trunk_diameter_cm'])) {
-                        $sub->whereBetween('trunk_diameter_cm', $green_filters['trees']['trunk_diameter_cm']);
-                    }
-                    if (!empty($green_filters['trees']['trunk_circumference_cm'])) {
-                        $sub->whereBetween('trunk_circumference_cm', $green_filters['trees']['trunk_circumference_cm']);
-                    }
-                    if (!empty($green_filters['trees']['tilt_degree'])) {
-                        $sub->whereBetween('tilt_degree', $green_filters['trees']['tilt_degree']);
-                    }
-                    if (!empty($green_filters['trees']['crown_condition_percent'])) {
-                        $sub->whereBetween('crown_condition_percent', $green_filters['trees']['crown_condition_percent']);
-                    }
-                    if (!empty($green_filters['trees']['species'])) {
-                        $sub->whereHas('species', function ($s) use ($green_filters) {
-                            $s->whereIn('name_ukr', $green_filters['trees']['species']);
-                        });
-                    }
-                });
-            }
-
-            // bushes
-            if (!empty($green_filters['bushes'])) {
-                $q->orWhereHas('green.bush', function ($sub) use ($green_filters) {
-                    if (!empty($green_filters['bushes']['quantity'])) {
-                        $sub->whereBetween('quantity', $green_filters['bushes']['quantity']);
-                    }
-                    if (!empty($green_filters['bushes']['species'])) {
-                        $sub->whereHas('species', function ($s) use ($green_filters) {
-                            $s->whereIn('name_ukr', $green_filters['bushes']['species']);
-                        });
-                    }
-                });
-            }
-
-            // hedges
-            if (!empty($green_filters['hedges'])) {
-                $q->orWhereHas('green.hedge', function ($sub) use ($green_filters) {
-                    if (!empty($green_filters['hedges']['length'])) {
-                        $sub->whereBetween('length_m', $green_filters['hedges']['length']);
-                    }
-                    if (!empty($green_filters['hedges']['type_row'])) {
-                        $sub->whereIn('hedge_type_row', $green_filters['hedges']['type_row']);
-                    }
-                    if (!empty($green_filters['hedges']['type_shape'])) {
-                        $sub->whereIn('hedge_type_shape', $green_filters['hedges']['type_shape']);
-                    }
-                    if (!empty($green_filters['hedges']['species'])) {
-                        $sub->whereHas('species', function ($s) use ($green_filters) {
-                            $s->whereIn('name_ukr', $green_filters['hedges']['species']);
-                        });
-                    }
-                });
-            }
-
-            // flowers
-            if (!empty($green_filters['flowers'])) {
-                $q->orWhereHas('green.flower', function ($sub) use ($green_filters) {
-                    if (!empty($green_filters['flowers']['species'])) {
-                        $sub->whereHas('species', function ($s) use ($green_filters) {
-                            $s->whereIn('name_ukr', $green_filters['flowers']['species']);
-                        });
-                    }
-                });
-            }
-        });
-    }
-    private function applyInfrastructureFilters($query, $infra_filters)
-    {
-        $query->orWhere(function ($q) use ($infra_filters) {
-            $q->where('type', 'infrastructure');
-
-            if (!empty($infra_filters['type'])) {
-                $q->whereHas('infrastructure', function ($sub) use ($infra_filters) {
-                    $sub->whereIn('name', $infra_filters['type']);
-                });
-            }
-        });
-    }
-
-
 }

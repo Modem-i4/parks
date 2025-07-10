@@ -45,4 +45,9 @@ class Species extends Model
 	{
 		return $this->hasMany(Green::class);
 	}
+	
+	public function getTypeAttribute()
+	{
+		return $this->genus?->family?->type;
+	}
 }
