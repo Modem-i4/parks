@@ -29,6 +29,7 @@
         "@googlemaps/js-api-loader": "^1.16.8",
         "@tweenjs/tween.js": "^25.0.0",
         "pinia": "^3.0.3",
-        "swiper": "^11.2.8"
+        "swiper": "^11.2.8",
+        "vuedraggable": "^4.1.0"
     }
 }
