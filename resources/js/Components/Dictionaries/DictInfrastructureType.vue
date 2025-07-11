@@ -3,6 +3,7 @@ import { ref, onMounted, watch, computed } from 'vue'
 import axios from 'axios'
 import LoadingLineIndicator from '@/Components/Custom/LoadingLineIndicator.vue'
 import InfrastructureTypeItem from './InfrastructureTypeItem.vue'
+import MediaPickerModal from '@/Components/Media/MediaPickerModal.vue'
 
 const infrastructure = ref([])
 const isLoading = ref(false)
@@ -49,6 +50,29 @@ async function handleDelete({ id }) {
   })
 }
 
+// icon picker
+const showPicker = ref(false)
+const pickerModelId = ref(null)
+const pickerType = ref(null)
+
+function startIconChange(model_id) {
+  pickerModelId.value = model_id
+  pickerType.value = 'icon'
+  showPicker.value = true
+}
+
+function startGalleryChange(model_id) {
+  pickerModelId.value = model_id
+  pickerType.value = 'image'
+  showPicker.value = true
+}
+
+function closeImagePicker() {
+  pickerModelId.value = null
+  pickerModelId.value = null
+  showPicker.value = false
+}
+
 // search
 const searchQuery = ref('');
 
@@ -68,6 +92,16 @@ const filteredInfrastructure = computed(() => {
 
 <template>
   <div class="space-y-4 relative">
+      <div>
+        <MediaPickerModal
+          v-if="showPicker"
+          :type="pickerType"
+          modelType="App\Models\InfrastructureType"
+          :modelId="pickerModelId"
+          @close="closeImagePicker"
+          @saved="load"
+        />
+      </div>
     <div class="sticky top-0 z-10 bg-white">
       <LoadingLineIndicator :isLoading/>
       <input
@@ -84,6 +118,8 @@ const filteredInfrastructure = computed(() => {
       @create="handleCreate"
       @update="handleUpdate"
       @delete="handleDelete"
+      @changeIcon="startIconChange"
+      @changeGallery="startGalleryChange"
     />
   </div>
 </template>

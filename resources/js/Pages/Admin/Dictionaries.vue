@@ -127,7 +127,7 @@ function openSidebar() {
     </div>
 
     <!-- Mobile btn -->
-    <div class="fixed bottom-4 right-4 z-50 md:hidden" v-if="!showSidebar">
+    <div class="fixed bottom-4 right-4 z-20 md:hidden" v-if="!showSidebar">
       <button
         class="bg-white border px-4 py-2 rounded shadow"
         @click="openSidebar"
