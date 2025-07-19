@@ -2,6 +2,15 @@
 namespace App\Http\Services\MarkerFilters;
 
 class MarkerGreenFilterService {
+
+    private array $typeMap = [
+        'trees' => 'tree',
+        'bushes' => 'bush',
+        'hedges' => 'hedge',
+        'flowers' => 'flower',
+        'tags' => 'tags'
+    ];
+
     public function apply($query, array $filters): void
     {
         $types = $this->extractTypes($filters);
@@ -17,12 +26,7 @@ class MarkerGreenFilterService {
         }
 
         $query->where(function ($q) use ($filters) {
-            foreach ([
-                'trees' => 'tree',
-                'bushes' => 'bush',
-                'hedges' => 'hedge',
-                'flowers' => 'flower',
-            ] as $slug => $type) {
+            foreach ($this->typeMap as $slug => $type) {
                 if (!empty($filters[$slug])) {
                     $q->orWhere(function ($q1) use ($filters, $slug, $type) {
                         $q1->where('type', $type);
@@ -33,7 +37,7 @@ class MarkerGreenFilterService {
                             });
                         }
 
-                        $this->applySpecific($q1, $filters[$slug], $slug);
+                        $this->applySpecific($q1, $filters[$slug], $type);
                     });
                 }
             }
@@ -43,12 +47,7 @@ class MarkerGreenFilterService {
     private function extractTypes($filters): array
     {
         $types = [];
-        foreach ([
-            'trees' => 'tree',
-            'bushes' => 'bush',
-            'hedges' => 'hedge',
-            'flowers' => 'flower',
-        ] as $slug => $type) {
+        foreach ($this->typeMap as $slug => $type) {
             if (isset($filters[$slug])) {
                 $types[] = $type;
             }
@@ -79,9 +78,9 @@ class MarkerGreenFilterService {
         });
     }
 
-    private function applySpecific($query, $filters, $slug): void
+    private function applySpecific($query, $filters, $type): void
     {
-        $query->whereHas("green.$slug", function ($q) use ($filters, $slug) {
+        $query->whereHas("green.$type", function ($q) use ($filters, $type) {
             foreach ($filters as $key => $value) {
                 if (in_array($key, ['tags', 'species']) || empty($value)) {
                     continue;

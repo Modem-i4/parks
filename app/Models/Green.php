@@ -73,9 +73,4 @@ class Green extends Model
 	{
 		return $this->hasOne(Hedge::class, 'id');
 	}
-
-	public function trees()
-	{
-		return $this->hasMany(Tree::class, 'id');
-	}
 }

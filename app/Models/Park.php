@@ -42,7 +42,7 @@ class Park extends Model
         'geo_json',
     ];
 
-    protected $appends = ['coordinates'];
+    protected $appends = ['coordinates', 'type'];
 
     public function getCoordinatesAttribute(): ?array
     {
@@ -68,5 +68,10 @@ class Park extends Model
     public function icon(): MorphOne
     {
         return $this->morphOne(Media::class, 'model')->ofType(MediaType::ICON->value)->with('mediaFile')->orderBy('order');
+    }
+        
+    public function getTypeAttribute()
+    {
+        return 'park';
     }
 }

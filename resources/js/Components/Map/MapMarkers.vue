@@ -12,13 +12,23 @@ const renderCancelled = ref(false)
 
 async function renderMarkers() {
   renderCancelled.value = false
-  mapMarkers.value.forEach(m => m.mapMarker.setMap(null))
-  mapMarkers.value = []
-
   if (!parkStore.map) return
-  const { AdvancedMarkerElement } = await loader.importLibrary('marker')
+  const keyOf = m => `${m.id}_${m.type}`
+  const currentKeys = new Set(mapMarkers.value.map(m => keyOf(m.marker)))
+  const newKeys = new Set(parkStore.markers.map(m => keyOf(m)))
+  for (const m of mapMarkers.value) {
+    if (!newKeys.has(keyOf(m.marker))) {
+      m.mapMarker.setMap(null)
+    }
+  }
+  mapMarkers.value = mapMarkers.value.filter(m => newKeys.has(keyOf(m.marker)))
+  const newMarkers = parkStore.markers.filter(m => !currentKeys.has(keyOf(m)))
+  addNewMarkers(newMarkers)
+}
 
-  for (const marker of parkStore.markers) {
+async function addNewMarkers(newMarkers) {
+  const { AdvancedMarkerElement } = await loader.importLibrary('marker')
+  for (const marker of newMarkers) {
     const {lng, lat} = getCoordsFromMarker(marker)
 
     let content
@@ -35,7 +45,8 @@ async function renderMarkers() {
       map: parkStore.map,
       position: { lat, lng },
       title: marker.name,
-      content
+      content,
+      zIndex: Math.round(-lat * 1e6)
     })
 
     mapMarker.addListener('click', () => {

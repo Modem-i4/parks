@@ -31,14 +31,15 @@ watch(() => props.filters,
 )
 
 watch(isChecked, (val) => {
+  if(!val) {
+    isOpen.value = false
+  }
   const target = GetFilterTargetNode(props.filters, props.path)
   if(!target) return
-
   if (val) {
     target[props.node.slug] = {}
   } else {
     delete target[props.node.slug]
-    isOpen.value = false
   }
 })
 
@@ -107,7 +108,7 @@ function afterLeave(el) {
         >
           <FilterNode
               v-for="child in node.children"
-              :key="child.type === 'group' ? child.slug : `${child.slug}-${props.renderKey}`"
+              :key="child.type === 'group' ? child.slug : `${child.slug}-${props.renderKey}-${isChecked}`"
               :node="child"
               :filters="filters"
               :path="currentPath"

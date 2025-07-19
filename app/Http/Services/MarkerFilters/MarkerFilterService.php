@@ -18,26 +18,28 @@ class MarkerFilterService
         }
 
         $query = Marker::query()
-            ->with(['icon', 'green:id,quality_state', 'infrastructure', 'green.species.genus.family'])
+            ->with(['icon', 'green:id,quality_state', 'infrastructure:id,infrastructure_type_id', 'green.species.genus.family'])
             ->select('id', 'coordinates', 'description', 'type')
             ->where('park_id', $parkId);
 
         $query->where(function ($q) use ($filters) {
-            if (!isset($filters['green'])) {
-                $q->where('type', 'infrastructure');
-            }
             if (!empty($filters['green'])) {
-                $this->greenFilter->apply($q, $filters['green']);
-            }
-
-            if (!isset($filters['infrastructure'])) {
-                $q->whereIn('type', GreenType::Values());
+                $q->orWhere(function ($sub) use ($filters) {
+                    $sub->whereIn('type', GreenType::values());
+                    $this->greenFilter->apply($sub, $filters['green']);
+                });
             }
             if (!empty($filters['infrastructure'])) {
                 $this->infrastructureFilter->apply($q, $filters['infrastructure']);
             }
-        });
 
+            if (isset($filters['green']) && empty($filters['green'])) {
+                $q->orWhereIn('type', GreenType::values());
+            }
+            if (isset($filters['infrastructure']) && empty($filters['infrastructure'])) {
+                $q->orWhere('type', 'infrastructure');
+            }
+        });
         return $query->get();
     }
 }
