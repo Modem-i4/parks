@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\GreenType;
+use App\Enums\MediaType;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -38,5 +39,10 @@ class Family extends Model
 	public function genus()
 	{
 		return $this->hasMany(Genus::class);
+	}
+
+	public function media()
+	{
+		return $this->morphMany(Media::class, 'model')->ofType(MediaType::IMAGE->value)->with('mediaFile')->orderBy('order');
 	}
 }

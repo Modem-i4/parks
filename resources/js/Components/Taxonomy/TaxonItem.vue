@@ -12,7 +12,7 @@ const props = defineProps({
 const expanded = ref(props.item.expanded || false)
 watch(() => props.item.expanded, val => {expanded.value = val})
 const toggle = () => (expanded.value = !expanded.value)
-const emit = defineEmits(['create', 'update', 'delete'])
+const emit = defineEmits(['create', 'update', 'delete', 'changeGallery'])
 
 const children = computed(() =>
   props.level === 'family' ? props.item.genus :
@@ -35,6 +35,7 @@ const nextLevel = computed(() =>
       @toggle="toggle"
       @update="$emit('update', $event)"
       @delete="$emit('delete', $event)"
+      @changeGallery="$emit('changeGallery', $event)"
     />
 
     <Transition name="accordion">
@@ -59,6 +60,7 @@ const nextLevel = computed(() =>
             @create="$emit('create', $event)"
             @update="$emit('update', $event)"
             @delete="$emit('delete', $event)"
+            @changeGallery="$emit('changeGallery', $event)"
           />
         </div>
       </div>

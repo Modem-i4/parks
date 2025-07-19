@@ -22,18 +22,15 @@ export async function CreatePinIcon({
 
   const { PinElement } = await loader.importLibrary('marker')
 
-  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
-  svg.setAttribute('width', width)
-  svg.setAttribute('height', height)
-  svg.setAttribute('viewBox', `0 0 ${width} ${height}`)
-
-  const use = document.createElementNS('http://www.w3.org/2000/svg', 'use')
-  use.setAttribute('href', glyph)
-  svg.appendChild(use)
+  const img = document.createElement('img')
+  img.src = glyph
+  img.width = width
+  img.height = height
+  img.style.objectFit = 'contain'
+  img.style.display = 'block'
 
   const pin = new PinElement({
-    glyph: svg,
-    glyphColor: '#000000',
+    glyph: img,
     background,
     borderColor,
     scale

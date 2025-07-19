@@ -25,8 +25,13 @@ class InfrastructureType extends Model
         return $this->hasMany(Infrastructure::class);
     }
 
-	public function icon(): MorphOne
+	public function icon()
 	{
 		return $this->morphOne(Media::class, 'model')->ofType(MediaType::ICON->value)->with('mediaFile')->orderBy('order');
+	}
+
+	public function media()
+	{
+		return $this->morphMany(Media::class, 'model')->ofType(MediaType::IMAGE->value)->with('mediaFile')->orderBy('order');
 	}
 }

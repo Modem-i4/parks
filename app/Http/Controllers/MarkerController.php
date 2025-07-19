@@ -88,23 +88,29 @@ class MarkerController extends Controller
 
     public function media($id)
     {
-        $marker = Marker::with('media')->findOrFail($id);
+        $marker = Marker::with([
+            'media.mediaFile',
+            'infrastructure.infrastructureType.media.mediaFile',
+            'green.species.media.mediaFile',
+            'green.species.genus.media.mediaFile',
+            'green.species.genus.family.media.mediaFile'
+        ])->findOrFail($id);
 
-        /*
         if ($marker->media->isNotEmpty()) {
             return $marker;
         }
-        
+
         if ($marker->type === 'infrastructure') {
-            $typeMedia = $marker->infrastructureType()->with('media')->first()?->media ?? collect();
-            $marker->setRelation('media', $typeMedia);
+            $fallback = $marker->infrastructure->infrastructureType?->media ?? collect();
+        } else {
+            $fallback =
+                $marker->green->species?->media->isNotEmpty() ? $marker->green->species->media :
+                ($marker->green->species?->genus?->media->isNotEmpty() ? $marker->green->species->genus->media :
+                ($marker->green->species?->genus?->family?->media ?? collect()));
         }
-        else {
-            $speciesMedia = $marker->species()->with('media')->first()?->media ?? collect();
-            $marker->setRelation('media', $speciesMedia);
-        } 
-        */
+
+        $marker->setRelation('media', $fallback);
+
         return $marker;
     }
-
 }

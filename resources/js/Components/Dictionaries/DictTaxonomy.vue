@@ -4,6 +4,7 @@ import axios from 'axios'
 import TaxonItem from '@/Components/Taxonomy/TaxonItem.vue'
 import TaxonAddForm from '@/Components/Taxonomy/TaxonAddForm.vue'
 import LoadingLineIndicator from '@/Components/Custom/LoadingLineIndicator.vue'
+import MediaPickerModal from '../Media/MediaPickerModal.vue'
 
 const families = ref([])
 const isLoading = ref(false)
@@ -74,6 +75,27 @@ async function handleDelete({ id, level }) {
   })
 }
 
+// gallery change
+const showPicker = ref(false)
+const pickerModelId = ref(null)
+const pickerModelType = ref(null)
+
+function startGalleryChange({ model_id, level }) {
+  pickerModelId.value = model_id
+  pickerModelType.value = {
+      family: () => 'App\\Models\\Family',
+      genus: () => 'App\\Models\\Genus',
+      species: () => 'App\\Models\\Species'
+    }[level]?.()
+  showPicker.value = true
+}
+
+function closeImagePicker() {
+  pickerModelId.value = null
+  pickerModelId.value = null
+  showPicker.value = false
+}
+
 // search
 const searchQuery = ref('')
 
@@ -114,6 +136,14 @@ const filteredFamilies = computed(() => {
 </script>
 
 <template>
+  <MediaPickerModal
+    v-if="showPicker"
+    type="image"
+    :modelType="pickerModelType"
+    :modelId="pickerModelId"
+    @close="closeImagePicker"
+    @saved="loadFamilies"
+  />
   <div class="space-y-4 relative">
     <div class="sticky top-0 z-10 bg-white">
       <LoadingLineIndicator :isLoading/>
@@ -140,6 +170,7 @@ const filteredFamilies = computed(() => {
       @create="handleCreate"
       @update="handleUpdate"
       @delete="handleDelete"
+      @changeGallery="startGalleryChange"
     />
   </div>
 </template>

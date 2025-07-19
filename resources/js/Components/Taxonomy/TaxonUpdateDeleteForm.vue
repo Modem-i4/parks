@@ -5,6 +5,7 @@ import SecondaryButton from '@/Components/Default/SecondaryButton.vue'
 import FloatingInput from '@/Components/Custom/FloatingInput.vue'
 import Tooltip from '@/Components/Custom/Tooltip.vue'
 import DeleteForm from '@/Components/Custom/DeleteForm.vue'
+import { isMobile } from '@/Helpers/isMobileHelper'
 
 const props = defineProps({
   item: Object,
@@ -13,7 +14,7 @@ const props = defineProps({
   expanded: Boolean
 })
 
-const emit = defineEmits(['toggle', 'update', 'delete'])
+const emit = defineEmits(['toggle', 'update', 'delete', 'changeGallery'])
 
 const isEditing = ref(false)
 const showErrors = ref(false)
@@ -119,6 +120,10 @@ const confirmDelete = () => {
           <SecondaryButton class="bg-inherit" size="sm" @click.stop="cancelEdit">❌</SecondaryButton>
         </template>
         <template v-else>
+          <SecondaryButton 
+            class="bg-inherit" :size="isMobile ? 'sm' : 'md'"
+            @click.stop="emit('changeGallery', {model_id: item.id, level})"
+          >🖼️</SecondaryButton>
           <SecondaryButton class="bg-inherit" @click.stop="startEdit">✏️</SecondaryButton>
           <SecondaryButton
             size="sm"

@@ -15,14 +15,23 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use App\Enums\TagType;
 use App\Models\InfrastructureType;
+use App\Models\Species;
 
 class MarkerSeeder extends Seeder
 {
     public function run()
     {
         $parksGeo = include database_path('data/ParksGeoJSON.php');
-
         $parks = Park::all();
+
+        $speciesByType = [];
+        $allSpecies = Species::with('genus.family')->get();
+
+        foreach (['tree', 'bush', 'hedge', 'flower'] as $type) {
+            $speciesByType[$type] = $allSpecies->filter(fn($sp) =>
+                $sp->genus?->family?->type?->value === $type
+            )->values();
+        }
 
         foreach ($parks as $park) {
             $geojson = $parksGeo[$park->slug ?? ''] ?? null;
@@ -31,7 +40,7 @@ class MarkerSeeder extends Seeder
             $polygon = $geojson['geometry']['coordinates'][0];
             $types = array_diff(TagType::values(), ['all']);
 
-            for ($i = 0; $i < 100; $i++) { 
+            for ($i = 0; $i < 100; $i++) {
                 $point = $this->generateRandomPointInPolygon($polygon);
                 $type = $types[array_rand($types)];
                 $marker = Marker::create([
@@ -41,54 +50,51 @@ class MarkerSeeder extends Seeder
                     'description' => 'descr',
                     'type' => $type
                 ]);
-                
+
                 if ($type !== 'infrastructure') {
                     $qualityStates = QualityState::values();
+
+                    $species = $speciesByType[$type]->random(null);
+
                     $green = Green::create([
                         'id' => $marker->id,
                         'inventory_number' => 'INV-' . $i,
-                        'species_id' => null,
+                        'species_id' => $species?->id,
                         'planting_date' => now()->subYears(rand(1, 20)),
                         'quality_state' => $qualityStates[array_rand($qualityStates)],
                         'quality_state_note' => 'No issues',
                     ]);
 
-                    if ($type === 'tree') {
-                        Tree::create([
+                    match ($type) {
+                        'tree' => Tree::create([
                             'id' => $green->id,
                             'height_m' => rand(5, 20),
                             'trunk_diameter_cm' => rand(10, 60),
                             'trunk_circumference_cm' => rand(30, 180),
                             'tilt_degree' => rand(0, 10),
                             'crown_condition_percent' => rand(60, 100),
-                        ]);
-                    } elseif ($type === 'bush') {
-                        Bush::create([
+                        ]),
+                        'bush' => Bush::create([
                             'id' => $green->id,
                             'quantity' => rand(1, 10),
-                        ]);
-                    } elseif ($type === 'hedge') {
-                        Hedge::create([
+                        ]),
+                        'hedge' => Hedge::create([
                             'id' => $green->id,
                             'length_m' => rand(5, 50),
                             'hedge_type_row' => null,
                             'hedge_type_shape' => null,
-                        ]);
-                    } elseif ($type === 'flower') {
-                        Flower::create([
+                        ]),
+                        'flower' => Flower::create([
                             'id' => $green->id,
-                        ]);
-                    }
-                }
-                elseif ($type === 'infrastructure') {
+                        ]),
+                    };
+                } else {
                     $inf_type = InfrastructureType::inRandomOrder()->first();
-
                     Infrastructure::create([
                         'id' => $marker->id,
                         'name' => $inf_type->name . ' ' . $i,
                         'infrastructure_type_id' => $inf_type->id,
                     ]);
-
                 }
             }
         }

@@ -33,6 +33,12 @@ class Infrastructure extends Model
 
 	public function marker()
 	{
-		return $this->belongsTo(Marker::class, 'id');
+		return $this->belongsTo(Marker::class);
+	}
+
+	
+	public function infrastructureType()
+	{
+		return $this->belongsTo(InfrastructureType::class);
 	}
 }
