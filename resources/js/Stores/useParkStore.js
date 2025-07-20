@@ -12,6 +12,11 @@ export const useParkStore = defineStore('park', () => {
     lng: parseFloat(import.meta.env.VITE_DEFAULT_LNG),
     lat: parseFloat(import.meta.env.VITE_DEFAULT_LAT)
   }
+  const messageBoxConditions = ref({
+    isLoadingMarkers: false,
+    areMarkersLimited: false,
+    markersLoaded: false
+  })
 
   const map = shallowRef(null)
   const mapElement = ref(null)
@@ -58,7 +63,7 @@ export const useParkStore = defineStore('park', () => {
   function setSingleParkContentMode(value) {
     singleParkContentMode.value = value
   }
-
+  
   watch(
     () => selectedMarker.value,
     (selectedMarker) => selectedMarker && (showPanel.value = true)
@@ -76,6 +81,7 @@ export const useParkStore = defineStore('park', () => {
     mapElement,
     defaultCenter,
     singleParkContentMode,
+    messageBoxConditions,
 
     // Actions
     setIsSingleParkView,

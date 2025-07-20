@@ -1,10 +1,11 @@
 import { isMobile } from "@/Helpers/isMobileHelper"
 import { Group, Tween, Easing } from '@tweenjs/tween.js'
-import { computed } from "vue"
+import { ref } from 'vue'
 
 export const defaultMapOptions = {
   zoom: 13,
   mapId: import.meta.env.VITE_GOOGLE_MAP_ID,
+  strictBounds: false,
   zoomControl: false,
   streetViewControl: false,
   mapTypeControl: false,
@@ -20,35 +21,57 @@ const defaultCoords = {
 
 export const zoom = {
   mobile: {
-    default: 13,
-    singlePark: 19,
-    panelOpen: 15,
-    bounds: {
+    parks : {
+      default: 13,
+      panelOpen: 15,
       min: 12,
       max: 19
-    }
+    },
+    singlePark: {
+      default: 19.5,
+      panelOpen: 20.5,
+      min: 16,
+      max: 23,
+    },
   },
   desktop: {
-    default: 14,
-    singlePark: 20,
-    panelOpen: 15,
-    bounds: {
+    parks : {
+      default: 14,
+      panelOpen: 15,
       min: 13,
       max: 20
-    }
+    },
+    singlePark: {
+      default: 20,
+      panelOpen: 21,
+      min: 16,
+      max: 23,
+    },
+  },
+  singlePark: {
+    threshold: 20.5 // disable green at
   }
 }
 
 export const defaultBounds = {
     north: 48.96906027460897,
     south: 48.89167859502078 - (isMobile.value ? 0.06 : 0),
-    east: 24.785674018094288,
+    east: 24.835674018094288,
     west: 24.654101425875925,
   }
 
-export const deviceZoom = computed(() => zoom[isMobile.value ? 'mobile' : 'desktop'])
+export const getDevicePageZoom = (isSingleParkView) => zoom[isMobile.value ? 'mobile' : 'desktop'][isSingleParkView ? 'singlePark' : 'parks' ];
+
 
 export function getCoordsFromMarker(marker) {
+  if(!marker) return defaultCoords
+  if (!marker.cachedCoords) {
+    marker.cachedCoords = getNewCoordsFromMarker(marker)
+  }
+  return marker.cachedCoords
+}
+
+export function getNewCoordsFromMarker(marker) {
   if (marker?.geo_json) {
     try {
       const properties = marker.geo_json.properties
@@ -110,41 +133,50 @@ export function getSingleParkMapRestrictions(park) {
 }
 
 export function getMapRestrictions(isSingleParkView = false, park = null) {
-  const deviceZoom = zoom[isMobile.value ? 'mobile' : 'desktop']
   let bounds = null
 
   if (isSingleParkView) {
-    bounds ??= getSingleParkMapRestrictions(park)
+    bounds = getSingleParkMapRestrictions(park)
   }
 
   bounds ??= defaultBounds
+  
+  const devicePageZoom = getDevicePageZoom(isSingleParkView)
 
   return {
-    minZoom: deviceZoom.bounds.min,
-    maxZoom: isSingleParkView ? deviceZoom.bounds.max : deviceZoom.panelOpen,
+    minZoom: devicePageZoom.min,
+    maxZoom: devicePageZoom.max,
     restriction: {
       latLngBounds: bounds,
     }
   }
 }
 
-
+export const isTweening = ref(false)
 const tweenGroup = new Group()
+let currentTween = null
 
-export function tweenCameraTo(map, targetLatLng, targetZoom, duration = 1000) {
+export async function tweenCameraTo(map, targetLatLng, targetZoom, duration = 1000) {
+  isTweening.value = true
+
+  if (currentTween) {
+    tweenGroup.remove(currentTween)
+    currentTween = null
+  }
+
+  const from = {
+    lat: map.getCenter().lat(),
+    lng: map.getCenter().lng(),
+    zoom: map.getZoom()
+  }
+
+  const to = {
+    lat: targetLatLng.lat,
+    lng: targetLatLng.lng,
+    zoom: targetZoom ?? from.zoom
+  }
+
   return new Promise(resolve => {
-    const from = {
-      lat: map.getCenter().lat(),
-      lng: map.getCenter().lng(),
-      zoom: map.getZoom()
-    }
-
-    const to = {
-      lat: targetLatLng.lat,
-      lng: targetLatLng.lng,
-      zoom: targetZoom ?? from.zoom
-    }
-
     const tween = new Tween(from, tweenGroup)
       .to(to, duration)
       .easing(Easing.Quadratic.Out)
@@ -155,18 +187,20 @@ export function tweenCameraTo(map, targetLatLng, targetZoom, duration = 1000) {
         })
       })
       .onComplete(() => {
-        map.moveCamera({
-          center: { lat: to.lat, lng: to.lng },
-          zoom: to.zoom,
-        })
+        map.moveCamera({ center: to, zoom: to.zoom })
+        isTweening.value = false
+        currentTween = null
         resolve()
       })
 
+    currentTween = tween
     tween.start()
 
     const animate = (time) => {
-      tweenGroup.update(time)
-      requestAnimationFrame(animate)
+      if (currentTween) {
+        tweenGroup.update(time)
+        requestAnimationFrame(animate)
+      }
     }
 
     requestAnimationFrame(animate)

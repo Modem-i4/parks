@@ -10,7 +10,7 @@ import {
   getAdjustedCoords,
   getAdjustedCoordsFromMarker,
   tweenCameraTo,
-  deviceZoom,
+  getDevicePageZoom,
   defaultBounds
 } from '@/Helpers/Maps/MapHelper.js'
 import { isMobile } from '@/Helpers/isMobileHelper'
@@ -35,14 +35,19 @@ const isParkViewInTransit = ref(false)
 async function handleTransitToSingleParkView(isSingleParkView) {
   if (!parkStore.map) return
   isParkViewInTransit.value = true
-  const targetZoom = isSingleParkView ? deviceZoom.value.singlePark : deviceZoom.value.default
-  parkStore.map.setOptions({
-    minZoom: null,
-    maxZoom: null,
-    restriction: {latLngBounds: defaultBounds}
-  })
+  const targetZoom = getDevicePageZoom(isSingleParkView).default
   const coords = getAdjustedCoordsFromMarker(parkStore.selectedPark, targetZoom)
-  await tweenCameraTo(parkStore.map, coords, targetZoom, 2500)
+  
+  if(isSingleParkView) {
+    parkStore.map.setOptions({
+      minZoom: 12,
+      maxZoom: 23,
+      restriction: {latLngBounds: defaultBounds}
+    })
+    await tweenCameraTo(parkStore.map, coords, targetZoom, 2500)
+  }
+
+  // for both transits
   parkStore.map.setOptions({
     ...getMapRestrictions(isSingleParkView, parkStore.selectedPark),
   })
@@ -69,9 +74,9 @@ watch(
   () => [parkStore.map, parkStore.markers, parkStore.selectedMarker, parkStore.showPanel],
   async () => {
     if (!parkStore.map || isParkViewInTransit.value) return
-
+    const devicePageZoom = getDevicePageZoom(parkStore.isSingleParkView)
     const defaultCenter = parkStore.defaultCenter
-    let zoomLevel = deviceZoom.value.default
+    let zoomLevel = devicePageZoom.default
     let coords = null
     let duration = 1000
 
@@ -79,10 +84,12 @@ watch(
       if (parkStore.isSingleParkView) {
         zoomLevel = parkStore.map.getZoom()
         duration = 200
-      } else zoomLevel = deviceZoom.value.panelOpen
+      } else zoomLevel = devicePageZoom.panelOpen
       
       coords = getAdjustedCoordsFromMarker(parkStore.selectedMarker, zoomLevel)
     } else if (!parkStore.isSingleParkView) {
+      if(parkStore.map.getZoom() > devicePageZoom.max)
+        duration = 2500
       if(parkStore.showPanel)
         coords = getAdjustedCoords(defaultCenter, zoomLevel)
       else coords = defaultCenter

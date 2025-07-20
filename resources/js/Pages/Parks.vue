@@ -10,6 +10,7 @@ import ParkList from '@/Components/Map/ParkList.vue';
 import ParkDetails from '@/Components/Map/ParkDetails.vue';
 import MapFilters from '@/Components/Filters/MapFilters.vue';
 import MarkerDetails from '@/Components/Markers/MarkerDetails.vue';
+import { zoom } from '@/Helpers/Maps/MapHelper';
 
 defineOptions({
   layout: ResolveLayout,
@@ -23,26 +24,18 @@ const props = defineProps({
 const parkStore = useParkStore()
 parkStore.$reset()
 
-parkStore.isSingleParkView = props.isSingleParkView;
 parkStore.selectedPark = props.selectedMarker;
+parkStore.isSingleParkView = props.isSingleParkView;
 
-function getParks() {
-  axios.get(`/api/parks`)
-    .then(response => {
-      parkStore.markers = response.data;
-    })
-    .catch(error => {
-      console.error('Error fetching markers:', error);
-    });
-}
-
-watch(
-  () => [parkStore.isSingleParkView],
+watch( 
+  () => [parkStore.map], 
   () => {
-    if(!parkStore.isSingleParkView)
-      getParks()
-  },
-  { immediate: true }
+      if(props.isSingleParkView) {
+        const coords = parkStore.selectedPark.coordinates
+        parkStore.map.setCenter( { lat: coords[0], lng: coords[1] })
+        parkStore.map.setZoom(zoom.singlePark.threshold)
+      }
+  }
 )
 </script>
 
@@ -50,8 +43,8 @@ watch(
   <MapWithPanel>
     <template #panelContent>
       <template v-if="!parkStore.isSingleParkView">
-        <ParkList v-if="!parkStore.selectedMarker"/>
-        <ParkDetails v-else />
+        <ParkList v-show="!parkStore.selectedMarker"/>
+        <ParkDetails v-if="parkStore.selectedMarker" />
       </template>
       <template v-if="parkStore.isSingleParkView">
         <MapFilters v-show="!parkStore.selectedMarker"/>

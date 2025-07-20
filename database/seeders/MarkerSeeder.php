@@ -38,9 +38,15 @@ class MarkerSeeder extends Seeder
             if (!$geojson) continue;
 
             $polygon = $geojson['geometry']['coordinates'][0];
-            $types = array_diff(TagType::values(), ['all']);
+            $types = array_merge(
+                array_fill(0, 50, 'tree'),
+                array_fill(0, 30, 'bush'),
+                array_fill(0, 10, 'hedge'),
+                array_fill(0, 10, 'flower'),
+                array_fill(0, 1, 'infrastructure')
+            );
 
-            for ($i = 0; $i < 100; $i++) {
+            for ($i = 0; $i < 2000; $i++) {
                 $point = $this->generateRandomPointInPolygon($polygon);
                 $type = $types[array_rand($types)];
                 $marker = Marker::create([

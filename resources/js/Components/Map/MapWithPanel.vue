@@ -7,47 +7,22 @@ import MobileSlidePanel from '@/Components/Custom/MobileSlidePanel.vue'
 import { isMobile } from '@/Helpers/isMobileHelper'
 import { setParkView } from '@/Helpers/Maps/SetParkView'
 import { useUserLocationMarker } from '@/Helpers/Maps/ShowGeolocationHelper'
+import MapUpperMessage from '@/Components/Map/MapUpperMessage.vue';
 
 const parkStore = useParkStore()
-
-const touchStartY = ref(0)
-const panelOffsetY = ref(0)
-const panelRef = ref(null)
-const isDragging = ref(false)
-
 const { showUserPosition } = useUserLocationMarker(toRef(parkStore, 'map'))
-
-function onTouchStart(event) {
-  touchStartY.value = event.touches[0].clientY
-  isDragging.value = true
-}
-
-function onTouchMove(event) {
-  if (!isDragging.value) return
-  const currentY = event.touches[0].clientY
-  const delta = currentY - touchStartY.value
-  panelOffsetY.value = Math.max(0, delta)
-}
-
-function onTouchEnd() {
-  isDragging.value = false
-  if (panelOffsetY.value > 80) {
-    parkStore.selectedMarker = null
-    parkStore.showPanel = false
-  }
-  panelOffsetY.value = 0
-}
 </script>
 
 <template>
   <div class="flex h-[calc(100vh-65px)]">
     <!-- Desktop sidebar -->
     <div class="hidden md:block w-1/3 border-r overflow-y-auto" id="sidebar-target">
-          <!-- Panel Teleport -->
+      <!-- Panel Teleport -->
     </div>
 
     <!-- Main map -->
-    <div class="w-full md:w-2/3 relative touch-none">
+    <div class="w-full md:w-2/3 relative touch-none focus:ring-0 focus:outline-none">
+      <MapUpperMessage />
       <MapView />
 
       <!-- Mobile Slide-up Panel -->
@@ -92,7 +67,7 @@ function onTouchEnd() {
       </div>
       
       <div>
-        <BtnWhite class="fixed bottom-4 left-4 bg-white border px-3 py-1 rounded shadow" @click="showUserPosition">
+        <BtnWhite class="absolute bottom-4 left-4 bg-white border px-3 py-1 rounded shadow" @click="showUserPosition">
           📍 Моя позиція
         </BtnWhite>
       </div>
@@ -120,4 +95,5 @@ function onTouchEnd() {
     opacity: 0;
   }
 }
+
 </style>

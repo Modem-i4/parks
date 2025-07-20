@@ -34,6 +34,7 @@ function setPreset(preset = 'all') {
 }
 
 const filterMarkers = async () => {
+  parkStore.messageBoxConditions.isLoadingMarkers = true
   try {
     const response = await axios.post(`/api/parks/${parkStore.selectedPark.id}/markers`, {
       filters: filters.value
@@ -41,6 +42,9 @@ const filterMarkers = async () => {
     parkStore.markers = response.data
   } catch (error) {
     console.error('Помилка фільтрації парків:', error)
+  } finally {
+    parkStore.messageBoxConditions.isLoadingMarkers = false
+    parkStore.messageBoxConditions.markersLoaded = true
   }
 }
 

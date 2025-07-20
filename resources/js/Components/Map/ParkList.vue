@@ -1,12 +1,27 @@
 <script setup>
 import { useParkStore } from '@/Stores/useParkStore.js'
 import PanelHeader from '../Custom/PanelHeader.vue';
+import { ref, onMounted } from 'vue';
 
 const parkStore = useParkStore()
+const parksLoaded = ref(false)
+
+function getParks() {
+  parksLoaded.value = false
+  axios.get(`/api/parks`)
+    .then(response => {
+      parkStore.markers = response.data;
+      parksLoaded.value = true
+    })
+    .catch(error => {
+      console.error('Error fetching markers:', error);
+    });
+}
+onMounted(getParks)
 </script>
 
 <template>
-  <ul>
+  <ul v-if="parksLoaded">
     <li
       v-for="park in parkStore.markers"
       :key="park.id"
