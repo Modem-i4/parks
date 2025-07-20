@@ -29,13 +29,17 @@ class MarkerController extends Controller
     {
         $marker = Marker::with([
             'icon',
-            'green.species',
             'green.tree',
             'green.bush',
             'green.hedge',
             'green.flower',
             'infrastructure',
             'tags:id,name,public,custom,type',
+
+            'infrastructure.infrastructureType:id,name,description',
+            'green.species:id,genus_id,name_ukr,name_lat',
+            'green.species.genus:id,family_id,name_ukr,name_lat',
+            'green.species.genus.family:id,name_ukr,name_lat',
         ])->findOrFail($id);
 
         if ($marker->green) {
@@ -58,29 +62,23 @@ class MarkerController extends Controller
 
     public function media($id)
     {
-        $marker = Marker::with([
-            'media.mediaFile',
-            'infrastructure.infrastructureType.media.mediaFile',
-            'green.species.media.mediaFile',
-            'green.species.genus.media.mediaFile',
-            'green.species.genus.family.media.mediaFile'
-        ])->findOrFail($id);
-
+        $marker = Marker::findOrFail($id);
+        $media = collect();
         if ($marker->media->isNotEmpty()) {
-            return $marker;
-        }
-
-        if ($marker->type === 'infrastructure') {
-            $fallback = $marker->infrastructure->infrastructureType?->media ?? collect();
+            $media = $marker->media;
+        } elseif ($marker->type === 'infrastructure') {
+            $media = $marker->infrastructure->infrastructureType?->media ?? collect();
         } else {
-            $fallback =
-                $marker->green->species?->media->isNotEmpty() ? $marker->green->species->media :
-                ($marker->green->species?->genus?->media->isNotEmpty() ? $marker->green->species->genus->media :
-                ($marker->green->species?->genus?->family?->media ?? collect()));
+            $media =
+                $marker->green->species?->media->isNotEmpty()
+                    ? $marker->green->species->media
+                    : (
+                        $marker->green->species?->genus?->media->isNotEmpty()
+                            ? $marker->green->species->genus->media
+                            : ($marker->green->species?->genus?->family?->media ?? collect())
+                    );
         }
 
-        $marker->setRelation('media', $fallback);
-
-        return $marker;
+        return response()->json(['media' => $media]);
     }
 }

@@ -22,12 +22,14 @@
       <button
         @click="swiper?.slidePrev()"
         class="absolute top-1/2 left-0 z-10 transform -translate-y-1/2 bg-white/70 px-3 py-1 rounded-r-lg shadow hover:bg-white transition"
+        v-show="images.length > 1"
       >
         ‹
       </button>
       <button
         @click="swiper?.slideNext()"
         class="absolute top-1/2 right-0 z-10 transform -translate-y-1/2 bg-white/70 px-3 py-1 rounded-l-lg shadow hover:bg-white transition"
+        v-show="images.length > 1"
       >
         ›
       </button>
@@ -46,7 +48,10 @@
         ></span>
       </div>
     </template>
-    <div v-else class="text-center text-gray-500">Зображення відсутні</div>
+    <div v-else class="text-center text-gray-500 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+      Зображення відсутні
+    </div>
+
   </div>
 </template>
 

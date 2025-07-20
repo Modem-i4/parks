@@ -4,7 +4,7 @@ import PanelHeader from '@/Components/Custom/PanelHeader.vue'
 import TagList from './TagList.vue'
 import QualityStateIndicator from './QualityStateIndicator.vue'
 import { useParkStore } from '@/Stores/useParkStore.js'
-import { ref, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import axios from 'axios'
 import GreenDetails from './GreenDetails.vue'
 import Tooltip from '../Custom/Tooltip.vue'
@@ -46,13 +46,36 @@ const copyToClipboard = async (text) => {
     console.error('Не вдалося скопіювати:', err)
   }
 }
+
+const title = computed(
+  () => marker.value.green?.species?.name_ukr || marker.value.infrastructure?.infrastructure_type?.name || marker.value.type
+)
+
+const fullNameLat = computed(
+  () => [
+    marker.value.green?.species?.name_lat,
+    marker.value.green?.species?.genus?.name_lat,
+    marker.value.green?.species?.genus?.family?.name_lat
+  ].filter(Boolean).join(' / ')
+)
+
+const description = computed(() => {
+  if(marker.value.green)
+    return `${marker.value.green?.species?.genus?.name_ukr} / ${marker.value.green?.species?.genus?.family?.name_ukr}`
+  if(marker.value.infrastructure) 
+    return 'Інфраструктура'
+  return ''
+})
 </script>
 
 <template>
   <div class="p-4 overflow-x-hidden" v-if="marker">
     <button @click="back" class="text-blue-500 mb-2">← Назад</button>
 
-    <PanelHeader :subtitle="marker.type" :icon="marker.icon?.file_path">
+    <PanelHeader 
+      :title="title"
+      :subtitle="description" 
+      :icon="marker.icon?.file_path">
       <template #right>
         <QualityStateIndicator :green="marker.green" />
       </template>
@@ -84,6 +107,11 @@ const copyToClipboard = async (text) => {
     </div>
     
     <GreenDetails :details="marker.green?.details" :type="marker?.type" />
+
+    <div v-if="fullNameLat" class="bg-white rounded px-4 text-gray-600">
+      <h3 class="text-lg font-semibold pb-2">Ім'я латиною</h3>
+      <b>{{ fullNameLat }}</b>
+    </div>
 
     <TagList :tags="marker.tags" :loading="loading" />
   </div>

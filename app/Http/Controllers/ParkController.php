@@ -33,7 +33,9 @@ class ParkController extends Controller
 
     public function media($id)
     {
-        return Park::with('media')->findOrFail($id);
+        $park = Park::with('media.mediaFile')->findOrFail($id);
+
+        return response()->json(['media' => $park->media]);
     }
 
 }

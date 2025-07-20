@@ -1,17 +1,21 @@
 <script setup>
+import { computed } from 'vue';
 import Tooltip from '../Custom/Tooltip.vue';
 
 const props = defineProps({
   green: Object
 })
 
-const state = props.green?.quality_state ?? null
+const state = computed(() => props.green?.quality_state ?? null)
 
-const stateLabel = {
-  good: 'Хорший',
-  normal: 'Нормальний',
-  bad: 'Поганий',
-}[state] ?? state
+const stateLabel = computed(() => {
+  return {
+    good: 'Хороший',
+    normal: 'Нормальний',
+    bad: 'Поганий',
+  }[state.value] ?? state.value
+})
+
 </script>
 
 <template>
