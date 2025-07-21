@@ -23,8 +23,7 @@ watch(
   () => parkStore.selectedMarker,
   async (newVal) => {
     marker.value = newVal
-    if (!newVal) return
-
+    if (!newVal || newVal.isDraft) return
     loading.value = true
     try {
       const { data } = await axios.get(`/api/markers/${marker.value.id}`)
@@ -81,7 +80,7 @@ const description = computed(() => {
       </template>
     </PanelHeader>
 
-    <ImageSlider :modelId="marker.id" model="markers" class="my-2" />
+    <ImageSlider :modelId="marker.id" :isDraft="marker.isDraft" model="markers" class="my-2" />
 
     <div
       v-if="marker.green?.inventory_number"

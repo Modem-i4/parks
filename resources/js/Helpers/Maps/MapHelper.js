@@ -62,6 +62,11 @@ export const defaultBounds = {
 
 export const getDevicePageZoom = (isSingleParkView) => zoom[isMobile.value ? 'mobile' : 'desktop'][isSingleParkView ? 'singlePark' : 'parks' ];
 
+export function distanceInMeters(a, b) {
+  const latDist = (a.lat - b.lat) * 111_000
+  const lngDist = (a.lng - b.lng) * 111_000 * Math.cos((a.lat + b.lat) * Math.PI / 360)
+  return Math.hypot(latDist, lngDist)
+}
 
 export function getCoordsFromMarker(marker) {
   if(!marker) return defaultCoords

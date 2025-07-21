@@ -8,15 +8,17 @@ import { isMobile } from '@/Helpers/isMobileHelper'
 import { setParkView } from '@/Helpers/Maps/SetParkView'
 import { useUserLocationMarker } from '@/Helpers/Maps/ShowGeolocationHelper'
 import MapUpperMessage from '@/Components/Map/MapUpperMessage.vue';
+import { useAddMarkerHelper } from '@/Helpers/Admin/AddMarkerHelper'
 
 const parkStore = useParkStore()
 const { showUserPosition } = useUserLocationMarker(toRef(parkStore, 'map'))
+const { addMarker } = useAddMarkerHelper(parkStore)
 </script>
 
 <template>
   <div class="flex h-[calc(100vh-65px)]">
     <!-- Desktop sidebar -->
-    <div class="hidden md:block w-1/3 border-r overflow-y-auto" id="sidebar-target">
+    <div class="hidden md:block w-1/3 border-r overflow-y-auto relative" id="sidebar-target">
       <!-- Panel Teleport -->
     </div>
 
@@ -66,8 +68,13 @@ const { showUserPosition } = useUserLocationMarker(toRef(parkStore, 'map'))
         </BtnWhite>
       </div>
       
-      <div>
-        <BtnWhite class="absolute bottom-4 left-4 bg-white border px-3 py-1 rounded shadow" @click="showUserPosition">
+      <div class="absolute bottom-4 left-4">
+        <template v-if="parkStore.isSingleParkView">
+          <BtnWhite class="bg-white border px-3 py-1 rounded shadow" @click="addMarker">
+            ➕ Додати маркер
+          </BtnWhite>
+        </template>
+        <BtnWhite class=" bg-white border px-3 py-1 rounded shadow" @click="showUserPosition">
           📍 Моя позиція
         </BtnWhite>
       </div>

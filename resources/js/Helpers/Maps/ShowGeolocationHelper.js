@@ -1,32 +1,51 @@
-export function useUserLocationMarker(mapRef) {
-  let marker = null
-  let watcherId = null
+let marker = null
+let watcherId = null
+let el = null
 
-  const createArrowElement = () => {
-    const el = document.createElement('div')
-    el.style.width = '56px'
-    el.style.height = '56px'
-    el.style.position = 'relative'
+export function useUserLocationMarker(mapRef) {
+  const createSharedElement = () => {
+    el = document.createElement('div')
+    Object.assign(el.style, {
+      position: 'absolute',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      transform: 'translate(-50%, -50%)',
+      pointerEvents: 'none',
+    })
+    return el
+  }
+
+  const setAsArrow = (heading) => {
+    Object.assign(el.style, {
+      width: '56px',
+      height: '56px',
+      backgroundColor: '',
+      borderRadius: '',
+      boxShadow: '',
+    })
     el.innerHTML = `
       <svg viewBox="0 0 24 24" width="56" height="56" fill="#4285F4" stroke="white" stroke-width="1">
         <path d="M12 4 L16 20 L12 16 L8 20 Z" />
       </svg>
     `
-    return el
+    el.style.rotate = !isNaN(heading) ? `${heading}deg` : '0deg'
   }
 
-  const createCircleElement = () => {
-    const el = document.createElement('div')
-    el.style.width = '25px'
-    el.style.height = '25px'
-    el.style.borderRadius = '50%'
-    el.style.backgroundColor = '#4285F4'
-    el.style.boxShadow = '0 0 0 2px white'
-    el.style.position = 'relative'
-    return el
+  const setAsCircle = () => {
+    Object.assign(el.style, {
+      width: '25px',
+      height: '25px',
+      backgroundColor: '#4285F4',
+      borderRadius: '50%',
+      boxShadow: '0 0 0 2px white',
+      rotate: '0deg',
+    })
+    el.innerHTML = ''
   }
 
-  const triggerPulse = (el) => {
+  const triggerPulse = () => {
+    if (!el) return
     const pulse = document.createElement('div')
     Object.assign(pulse.style, {
       position: 'absolute',
@@ -38,10 +57,10 @@ export function useUserLocationMarker(mapRef) {
       animation: 'pulse-ring 1.5s ease-out forwards',
       zIndex: '-2',
       left: '-2px',
-      top: '-2px'
+      top: '-2px',
     })
     el.appendChild(pulse)
-    setTimeout(() => el.removeChild(pulse), 1500)
+    setTimeout(() => pulse.remove(), 1500)
   }
 
   const updatePosition = ({ coords }) => {
@@ -50,17 +69,16 @@ export function useUserLocationMarker(mapRef) {
 
     const pos = { lat: coords.latitude, lng: coords.longitude }
     const heading = coords.heading
+    const hasHeading = heading != null && !isNaN(heading)
 
     if (!marker) {
-      const el = heading != null && !isNaN(heading)
-        ? createArrowElement()
-        : createCircleElement()
-
-      if (heading && el.tagName === 'DIV') {
-        el.style.transform = `rotate(${heading}deg)`
+      createSharedElement()
+      if (hasHeading) {
+        setAsArrow(heading)
+      } else {
+        setAsCircle()
       }
-
-      triggerPulse(el)
+      triggerPulse()
 
       marker = new google.maps.marker.AdvancedMarkerElement({
         map,
@@ -71,26 +89,18 @@ export function useUserLocationMarker(mapRef) {
     } else {
       marker.position = pos
 
-      const hasHeading = heading != null && !isNaN(heading)
-      const currentIsArrow = marker.content?.querySelector('svg')
+      const isCurrentlyArrow = !!el.querySelector('svg')
 
-      if (hasHeading && !currentIsArrow) {
-        const el = createArrowElement()
-        el.style.transform = `rotate(${heading}deg)`
-        triggerPulse(el)
-        marker.content = el
-      } else if (!hasHeading && currentIsArrow) {
-        const el = createCircleElement()
-        triggerPulse(el)
-        marker.content = el
-      } else {
-        if (hasHeading) {
-          marker.content.style.transform = `rotate(${heading}deg)`
-        } else {
-          marker.content.style.transform = 'none'
-        }
-        triggerPulse(marker.content)
+      if (hasHeading && !isCurrentlyArrow) {
+        setAsArrow(heading)
+      } else if (!hasHeading && isCurrentlyArrow) {
+        setAsCircle()
+      } else if (hasHeading && isCurrentlyArrow) {
+        el.style.rotate = `${heading}deg`
       }
+
+      if (!hasHeading) el.style.rotate = '0deg'
+      triggerPulse()
     }
   }
 
@@ -109,6 +119,21 @@ export function useUserLocationMarker(mapRef) {
     }
   }
 
+  const getUserPosition = () => {
+    return new Promise((resolve, reject) => {
+      if (!navigator.geolocation) {
+        reject(new Error('Geolocation не підтримується'))
+        return
+      }
+
+      navigator.geolocation.getCurrentPosition(
+        ({ coords }) => resolve({ lat: coords.latitude, lng: coords.longitude }),
+        reject,
+        { enableHighAccuracy: true }
+      )
+    })
+  }
+
   const stop = () => {
     if (watcherId !== null) {
       navigator.geolocation.clearWatch(watcherId)
@@ -118,7 +143,13 @@ export function useUserLocationMarker(mapRef) {
       marker.map = null
       marker = null
     }
+    el = null
   }
 
-  return { showUserPosition, stop }
+  return {
+    showUserPosition,
+    getUserPosition,
+    triggerPulse,
+    stop,
+  }
 }

@@ -74,6 +74,7 @@ const props = defineProps({
     type: [Number, String, null],
     required: true
   },
+  isDraft: Boolean
 })
 
 const images = ref([])
@@ -83,7 +84,7 @@ const swiper = ref(null)
 watch(
   () => props.modelId,
   async (newId) => {
-    if (!newId) return
+    if (!newId || props.isDraft) return
     images.value = []
     try {
       const { data } = await axios.get(`/api/${props.model}/${newId}/media`)
