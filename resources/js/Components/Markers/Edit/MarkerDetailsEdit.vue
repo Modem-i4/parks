@@ -7,6 +7,9 @@ import { createDraggableMarkerWithLine } from '@/Helpers/Admin/CreateDraggableMa
 import { useParkStore } from '@/Stores/useParkStore'
 import axios from 'axios'
 import { onBeforeUnmount, onMounted, ref, watch, computed } from 'vue'
+import SpeciesSelectWithAdd from './SpeciesSelectWithAdd.vue'
+import Modal from '@/Components/Default/Modal.vue'
+import DictTaxonomy from '@/Components/Dictionaries/DictTaxonomy.vue'
 
 const props = defineProps({ marker: Object })
 
@@ -19,6 +22,8 @@ const destroyLine = ref(null)
 const tagOptions = ref([])
 const speciesOptions = ref([])
 const infraTypeOptions = ref([])
+
+const showSpeciesModal = ref(false)
 
 onMounted(async () => {
   originalPosition.value = {
@@ -115,6 +120,12 @@ const plantingMonth = computed({
   }
 })
 
+const selectSpecies = (species) => {
+  species.edited = true
+  marker.value.green.species = species
+  marker.value.green.species_id = species.id
+  showSpeciesModal.value = false
+}
 </script>
 <template>
   <div class="py-4 flex flex-col gap-6 max-w-xl">
@@ -154,13 +165,20 @@ const plantingMonth = computed({
         <input v-model="marker.green.quality_state_note" class="w-full border border-gray-300 rounded px-2 py-1" />
       </div>
 
-      <div class="space-y-1"> <!-- TODO -->
-        <label class="text-sm font-medium text-gray-700">Вид</label>
-        <select v-model="marker.green.species_id" class="w-full border border-gray-300 rounded px-2 py-1">
-          <option :value="null">-- Оберіть --</option>
-          <option v-for="sp in speciesOptions" :key="sp.id" :value="sp.id">{{ sp.name_ukr }}</option>
-        </select>
-      </div>
+      <SpeciesSelectWithAdd
+        class="space-y-1"
+        v-model="marker.green.species_id"
+        :startingSpecies="marker.green.species"
+        :type="marker.type"
+        @open-species-modal="showSpeciesModal = true"
+      />
+        
+      <Modal :show="showSpeciesModal" maxWidth="4xl" @close="showSpeciesModal = false">
+        <DictTaxonomy
+          :type="marker.type"
+          @selectSpecies="selectSpecies"
+        />
+      </Modal>
 
       <div class="space-y-1">
         <label class="text-sm font-medium text-gray-700">Приблизна дата посадки</label>

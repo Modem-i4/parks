@@ -86,6 +86,7 @@ Route::prefix('api')->group(function () {
     Route::delete('/genus/{id}', [GenusController::class, 'destroy']);
 
     // Species
+    Route::get('/species/{type}', [SpeciesController::class, 'index']);
     Route::post('/species', [SpeciesController::class, 'store']);
     Route::patch('/species/{id}', [SpeciesController::class, 'update']);
     Route::delete('/species/{id}', [SpeciesController::class, 'destroy']);

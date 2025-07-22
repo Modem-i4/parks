@@ -9,7 +9,9 @@ class SpeciesController extends Controller
 {
     public function index($type)
     {
-        return Species::where('type', $type)->get();
+        return Species::whereHas('genus.family', function ($query) use ($type) {
+            $query->where('type', $type);
+        })->get();
     }
 
     public function byGenus($type, $genus_id)

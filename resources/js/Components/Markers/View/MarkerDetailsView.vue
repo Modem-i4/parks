@@ -58,8 +58,8 @@ const fullNameLat = computed(
       <h3 class="text-lg font-semibold pb-2">Опис</h3>
       <p>{{ props.marker.description }}</p>
     </div>
-    
-    <GreenDetails :green="props.marker?.green" :type="props.marker?.type" />
+
+    <GreenDetails :green="props.marker?.green" :type="props.marker?.type" v-if="props.marker?.green" />
 
     <div v-if="fullNameLat" class="bg-white rounded px-4 text-gray-600">
       <h3 class="text-lg font-semibold pb-2">Ім'я латиною</h3>

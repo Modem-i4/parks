@@ -1,73 +1,147 @@
 <script setup>
-import { ref, computed, watch } from 'vue'
-import TaxonAddForm from '@/Components/Taxonomy/TaxonAddForm.vue'
-import TaxonUpdateDeleteForm from '@/Components/Taxonomy/TaxonUpdateDeleteForm.vue'
-import TaxonItem from '@/Components/Taxonomy/TaxonItem.vue'
+import { ref, computed } from 'vue'
+import ArrowIcon from '@/Components/Custom/Icons/ArrowIcon.vue'
+import SecondaryButton from '@/Components/Default/SecondaryButton.vue'
+import FloatingInput from '@/Components/Custom/FloatingInput.vue'
+import Tooltip from '@/Components/Custom/Tooltip.vue'
+import DeleteForm from '@/Components/Custom/DeleteForm.vue'
+import { isMobile } from '@/Helpers/isMobileHelper'
 
 const props = defineProps({
   item: Object,
-  level: String // 'family' | 'genus' | 'species'
+  level: String,
+  nextLevel: String,
+  expanded: Boolean
 })
 
-const expanded = ref(props.item.expanded || false)
-watch(() => props.item.expanded, val => {expanded.value = val})
-const toggle = () => (expanded.value = !expanded.value)
-const emit = defineEmits(['create', 'update', 'delete', 'changeGallery'])
+const emit = defineEmits(['toggle', 'update', 'delete', 'changeGallery', 'selectSpecies'])
 
-const children = computed(() =>
-  props.level === 'family' ? props.item.genus :
-  props.level === 'genus' ? props.item.species : []
-)
+const isEditing = ref(false)
+const showErrors = ref(false)
+const confirmingDelete = ref(false)
 
-const nextLevel = computed(() =>
-  props.level === 'family' ? 'genus' :
-  props.level === 'genus' ? 'species' : null
-)
+const form = ref({
+  name_ukr: props.item.name_ukr,
+  name_lat: props.item.name_lat
+})
+
+const startEdit = () => {
+  form.value.name_ukr = props.item.name_ukr
+  form.value.name_lat = props.item.name_lat
+  showErrors.value = false
+  isEditing.value = true
+}
+
+const cancelEdit = () => {
+  isEditing.value = false
+  showErrors.value = false
+}
+
+const nameUkrError = computed(() => {
+  if (!showErrors.value) return ''
+  if (!form.value.name_ukr.trim()) return 'Поле обовʼязкове'
+  if (form.value.name_ukr.trim().length < 3) return 'Щонайменше 3 літери'
+  return ''
+})
+
+const saveEdit = () => {
+  showErrors.value = true
+  if (nameUkrError.value) return
+
+  emit('update', {
+    id: props.item.id,
+    data: form.value,
+    level: props.level
+  })
+
+  isEditing.value = false
+  showErrors.value = false
+}
+
+const toggleDelete = () => {
+  confirmingDelete.value = !confirmingDelete.value
+}
+
+const cancelDelete = () => {
+  confirmingDelete.value = false
+}
+
+const confirmDelete = () => {
+  emit('delete', {
+    id: props.item.id,
+    level: props.level
+  })
+  confirmingDelete.value = false
+}
 </script>
 
 <template>
-  <div class="space-y-2">
-    <TaxonUpdateDeleteForm
-      :level
-      :nextLevel
-      :item
-      :expanded="expanded"
-      @toggle="toggle"
-      @update="$emit('update', $event)"
-      @delete="$emit('delete', $event)"
-      @changeGallery="$emit('changeGallery', $event)"
+  <div class="space-y-1">
+    <DeleteForm
+      v-if="confirmingDelete"
+      :label="item.name_ukr"
+      @confirmDelete="confirmDelete"
+      @cancelDelete="cancelDelete"
     />
 
-    <Transition name="accordion">
-      <div
-        v-if="expanded && level !== 'species'"
-        class="ml-4 pl-2 border-l border-gray-300 space-y-2"
-      >
-        <TaxonAddForm
-          v-if="level !== 'species'"
-          :level
-          :nextLevel
-          :item
-          @create="$emit('create', $event)"
-        />
+    <div
+      class="flex items-center px-2 py-1 rounded cursor-pointer"
+      :class="[level === 'species' ? 'bg-white border' : 'bg-gray-100 hover:bg-gray-200']"
+      @click="() => {
+        if (!isEditing) {
+          level !== 'species'
+            ? emit('toggle')
+            : emit('selectSpecies', item)
+        }
+      }"
 
-        <div v-if="children.length" class="space-y-1">
-          <TaxonItem
-            v-for="child in children"
-            :key="child.id"
-            :item="child"
-            :level="nextLevel"
-            @create="$emit('create', $event)"
-            @update="$emit('update', $event)"
-            @delete="$emit('delete', $event)"
-            @changeGallery="$emit('changeGallery', $event)"
-          />
-        </div>
+    >
+      <div 
+      class="flex items-center space-x-2 flex-1 relative group"
+      >
+        <ArrowIcon v-if="level !== 'species'" :class="{ 'rotate-90': expanded }" />
+        <span v-if="level === 'species'">🌳</span>
+
+        <template v-if="isEditing">
+          <div class="relative flex flex-col md:flex-row md:items-start md:gap-2 w-full">
+            <div class="relative w-full md:w-1/2">
+              <FloatingInput v-model="form.name_ukr" label="Назва українською" inputClasses="font-semibold"
+                :inputClasses="nameUkrError ? 'border-red-500' : null"
+              />
+              <Tooltip v-if="nameUkrError">{{ nameUkrError }}</Tooltip>
+            </div>
+
+            <div class="w-full md:w-1/2">
+              <FloatingInput v-model="form.name_lat" label="Назва латиною" labelClasses="italic" inputClasses="italic" />
+            </div>
+          </div>
+        </template>
+
+        <template v-else>
+          <span class="font-semibold text-sm">{{ item.name_ukr }}</span>
+          <span class="text-gray-500 italic text-sm">({{ item.name_lat }})</span>
+        </template>
       </div>
-    </Transition>
+
+      <div class="space-x-1 flex-shrink-0 ml-2">
+        <template v-if="isEditing">
+          <SecondaryButton class="bg-inherit" @click.stop="saveEdit">✔️</SecondaryButton>
+          <SecondaryButton class="bg-inherit" size="sm" @click.stop="cancelEdit">❌</SecondaryButton>
+        </template>
+        <template v-else>
+          <SecondaryButton 
+            class="bg-inherit" :size="isMobile ? 'sm' : 'md'"
+            @click.stop="emit('changeGallery', {model_id: item.id, level})"
+          >🖼️</SecondaryButton>
+          <SecondaryButton class="bg-inherit" @click.stop="startEdit">✏️</SecondaryButton>
+          <SecondaryButton
+            size="sm"
+            variant="danger"
+            class="bg-inherit"
+            @click.stop="toggleDelete"
+          >🗑️</SecondaryButton>
+        </template>
+      </div>
+    </div>
   </div>
 </template>
-
-<style scoped>
-@import '@/../css/assets/accordion.css';
-</style>

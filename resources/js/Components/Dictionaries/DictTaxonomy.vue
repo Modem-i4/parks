@@ -1,10 +1,10 @@
 <script setup>
 import { ref, onMounted, watch, computed } from 'vue'
 import axios from 'axios'
-import TaxonItem from '@/Components/Taxonomy/TaxonItem.vue'
 import TaxonAddForm from '@/Components/Taxonomy/TaxonAddForm.vue'
 import LoadingLineIndicator from '@/Components/Custom/LoadingLineIndicator.vue'
 import MediaPickerModal from '../Media/MediaPickerModal.vue'
+import TaxonNode from '@/Components/Taxonomy/TaxonNode.vue'
 
 const families = ref([])
 const isLoading = ref(false)
@@ -133,6 +133,7 @@ const filteredFamilies = computed(() => {
     : families.value
 })
 
+const emit = defineEmits(['selectSpecies'])
 </script>
 
 <template>
@@ -144,7 +145,7 @@ const filteredFamilies = computed(() => {
     @close="closeImagePicker"
     @saved="loadFamilies"
   />
-  <div class="space-y-4 relative">
+  <div class="space-y-4 relative pb-3">
     <div class="sticky top-0 z-10 bg-white">
       <LoadingLineIndicator :isLoading/>
       <input
@@ -162,7 +163,7 @@ const filteredFamilies = computed(() => {
       @create="handleCreate"
     />
 
-    <TaxonItem
+    <TaxonNode
       v-for="family in filteredFamilies"
       :key="family.id"
       :item="family"
@@ -171,6 +172,7 @@ const filteredFamilies = computed(() => {
       @update="handleUpdate"
       @delete="handleDelete"
       @changeGallery="startGalleryChange"
+      @selectSpecies="emit('selectSpecies', $event)"
     />
   </div>
 </template>

@@ -1,42 +1,44 @@
 <template>
-  <div class="fixed inset-0 bg-black/50 z-50 flex justify-center items-center px-2">
-    <div class="bg-white w-full max-w-4xl rounded-lg shadow-lg overflow-hidden flex flex-col h-[90vh]">
-      <div class="p-4 border-b flex justify-between items-start">
-        <div>
-          <h2 class="text-lg font-semibold">Обрати зображення</h2>
-          <p class="text-xs text-gray-500">Для: {{ shortModel(modelType) }}#{{ modelId }} ({{ type }})</p>
+  <Teleport :disabled="!overlaySlotExists" to="#overlay-modal-slot">
+    <div class="fixed inset-0 bg-black/50 z-[100] flex justify-center items-center px-2">
+      <div class="bg-white w-full max-w-4xl rounded-lg shadow-lg overflow-hidden flex flex-col h-[90vh]">
+        <div class="p-4 border-b flex justify-between items-start">
+          <div>
+            <h2 class="text-lg font-semibold">Обрати зображення</h2>
+            <p class="text-xs text-gray-500">Для: {{ shortModel(modelType) }}#{{ modelId }} ({{ type }})</p>
+          </div>
+          <button @click="cancel" class="text-gray-400 hover:text-gray-600">✕</button>
         </div>
-        <button @click="cancel" class="text-gray-400 hover:text-gray-600">✕</button>
-      </div>
 
-      <div class="flex-1 flex flex-col gap-4 p-4 overflow-y-auto">
-        <div class="min-h-0 overflow-y-auto"
-          :class="type === 'icon' ? 'flex-[4]' : 'flex-[2]'"
-        >
-          <MediaUploader :type="type" @uploaded="fetchLibrary" />
-          <MediaLibraryGrid
-            :library="library"
-            :selected="selected"
-            :multiple="isMultiple"
-            @toggle="toggleSelect"
-          />
+        <div class="flex-1 flex flex-col gap-4 p-4 overflow-y-auto">
+          <div class="min-h-0 overflow-y-auto"
+            :class="type === 'icon' ? 'flex-[4]' : 'flex-[2]'"
+          >
+            <MediaUploader :type="type" @uploaded="fetchLibrary" />
+            <MediaLibraryGrid
+              :library="library"
+              :selected="selected"
+              :multiple="isMultiple"
+              @toggle="toggleSelect"
+            />
+          </div>
+          <div class="flex-[1] min-h-0 overflow-y-auto">
+            <MediaSelectedList
+              :selected="selected"
+              :multiple="isMultiple"
+              @remove="removeSelected"
+              @reorder="updateOrder"
+            />
+          </div>
         </div>
-        <div class="flex-[1] min-h-0 overflow-y-auto">
-          <MediaSelectedList
-            :selected="selected"
-            :multiple="isMultiple"
-            @remove="removeSelected"
-            @reorder="updateOrder"
-          />
-        </div>
-      </div>
 
-      <div class="p-4 border-t flex justify-between items-center">
-        <button @click="cancel" class="text-sm text-gray-500 hover:text-black">Скасувати</button>
-        <button @click="save" class="text-sm bg-blue-600 hover:bg-blue-700 text-white px-4 py-1 rounded">Зберегти</button>
+        <div class="p-4 border-t flex justify-between items-center">
+          <button @click="cancel" class="text-sm text-gray-500 hover:text-black">Скасувати</button>
+          <button @click="save" class="text-sm bg-blue-600 hover:bg-blue-700 text-white px-4 py-1 rounded">Зберегти</button>
+        </div>
       </div>
     </div>
-  </div>
+  </Teleport>
 </template>
 
 <script setup>
@@ -136,6 +138,11 @@ const cancel = () => {
 };
 
 const shortModel = (type) => type.split('\\').pop();
+
+const overlaySlotExists = ref(false)
+onMounted(() => {
+  overlaySlotExists.value = !!document.getElementById('overlay-modal-slot')
+})
 
 onMounted(async () => {
   await fetchSelected();
