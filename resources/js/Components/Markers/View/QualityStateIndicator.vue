@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from 'vue';
-import Tooltip from '../Custom/Tooltip.vue';
+import Tooltip from '@/Components/Custom/Tooltip.vue';
 
 const props = defineProps({
   green: Object

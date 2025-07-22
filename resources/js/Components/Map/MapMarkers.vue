@@ -234,6 +234,28 @@ watch(
   () => parkStore.selectedMarker?.id,
   (newId, oldId) => updateMarkerBackgrounds(newId, oldId)
 )
+watch(
+  () => parkStore.selectedMarker?.edited,
+  async (edited) => {
+    if(!edited) return
+    const marker = parkStore.selectedMarker
+    if (!marker) return
+    const index = mapMarkers.value.findIndex(m => m.marker.id === marker.id)
+    if (index === -1) return
+    const newMapMarker = await createMarker(marker, marker.coordinates[1], marker.coordinates[0], currentCancelToken)
+    if (currentCancelToken.cancelled) return
+    mapMarkers.value[index].mapMarker.setMap(null)
+    newMapMarker.addListener('click', () => {
+      parkStore.selectedMarker = marker
+    })
+    newMapMarker.setMap(parkStore.map)
+    mapMarkers.value.splice(index, 1, { marker, mapMarker: newMapMarker })
+    parkStore.selectedMarker.edited = false
+    parkStore.selectedMarker = null
+    await new Promise(resolve => setTimeout(resolve, 0))
+    parkStore.selectedMarker = marker
+  }
+)
 </script>
 
 <template></template>

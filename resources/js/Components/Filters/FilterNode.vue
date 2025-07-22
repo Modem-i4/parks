@@ -16,6 +16,7 @@ import FilterGroup from './FilterGroup.vue'
 import FilterMultiselect from './FilterMultiselect.vue'
 import FilterSlider from './FilterSlider.vue'
 import FilterButton from './FilterButton.vue'
+import FilterStateSelect from './FilterStateSelect.vue'
 
 const props = defineProps({
   node: Object,
@@ -27,7 +28,7 @@ const props = defineProps({
 const componentsMap = {
   group: FilterGroup,
   multiselect: FilterMultiselect,
-  stateSelect: FilterMultiselect,
+  stateSelect: FilterStateSelect,
   infrastructureSelect: FilterMultiselect,
   slider: FilterSlider,
   button: FilterButton

@@ -15,7 +15,7 @@ defineEmits(['update:modelValue'])
 </script>
 
 <template>
-  <div class="relative mt-3">
+  <div class="relative p-1 pt-4 rounded">
     <label class="block relative" :class="labelClasses">
       <input
         :value="modelValue"

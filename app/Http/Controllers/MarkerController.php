@@ -7,6 +7,8 @@ use App\Models\Park;
 use Illuminate\Http\Request;
 use App\Http\Services\MarkerFilters\MarkerFilterConfigService;
 use App\Http\Services\MarkerFilters\MarkerFilterService;
+use App\Http\Services\UpdateMarkerService;
+use Illuminate\Validation\ValidationException;
 
 class MarkerController extends Controller
 {
@@ -41,14 +43,6 @@ class MarkerController extends Controller
             'green.species.genus:id,family_id,name_ukr,name_lat',
             'green.species.genus.family:id,name_ukr,name_lat',
         ])->findOrFail($id);
-
-        if ($marker->green) {
-            $detailsOptions = ['tree', 'bush', 'hedge', 'flower'];
-            foreach ($detailsOptions as $option) {
-                $marker->green->details ??= $marker->green->$option;
-                unset($marker->green->$option);
-            }
-        }
         return response()->json($marker);
     }
 
@@ -81,4 +75,23 @@ class MarkerController extends Controller
 
         return response()->json(['media' => $media]);
     }
+
+    public function update(Request $request, $id)
+    {
+        $marker = Marker::findOrFail($id);
+        try {
+            app(UpdateMarkerService::class)->handle($marker, $request->all());
+            return response()->json(['success' => true]);
+        } catch (ValidationException $e) {
+            return response()->json([
+                'message' => 'Validation failed',
+                'errors' => $e->errors(),
+            ], 422);
+        } catch (\Throwable $e) {
+            report($e);
+            return throw($e);
+            return response()->json(['error' => 'Failed to update marker'], 500);
+        }
+    }
+
 }

@@ -70,6 +70,7 @@ Route::prefix('api')->group(function () {
     Route::get('/markers/filters-config', [MarkerController::class, 'getFilters'])->name('filters');
     Route::get('/markers/{id}', [MarkerController::class, 'getSingleMarker'])->name('marker');
     Route::get('/markers/{id}/media', [MarkerController::class, 'media'])->name('marker.media');
+    Route::patch('/markers/{id}', [MarkerController::class, 'update'])->name('marker.update');
 
     //// Taxonomy
     // Families

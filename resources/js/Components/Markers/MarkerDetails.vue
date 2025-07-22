@@ -1,23 +1,31 @@
 <script setup>
-import ImageSlider from '@/Components/Custom/ImageSlider.vue'
-import PanelHeader from '@/Components/Custom/PanelHeader.vue'
-import TagList from './TagList.vue'
-import QualityStateIndicator from './QualityStateIndicator.vue'
 import { useParkStore } from '@/Stores/useParkStore.js'
 import { computed, ref, watch } from 'vue'
 import axios from 'axios'
-import GreenDetails from './GreenDetails.vue'
-import Tooltip from '../Custom/Tooltip.vue'
+import BtnWhite from '@/Components/Custom/BtnWhite.vue'
+import { usePage } from '@inertiajs/vue3';
+import { UserRole } from '@/Helpers/UserRole.js';
+import MarkerDetailsView from './View/MarkerDetailsView.vue'
+import MarkerDetailsEdit from './Edit/MarkerDetailsEdit.vue';
+import PanelHeader from '../Custom/PanelHeader.vue';
+import QualityStateIndicator from './View/QualityStateIndicator.vue';
+
+const page = usePage()
+const role = page.props.auth.user?.role
 
 const parkStore = useParkStore()
 const marker = ref(null)
 const loading = ref(true)
-
-const copyCompleted = ref(false)
+const editing = ref(false)
+const canEdit = UserRole.atLeast(role, page.role)
+const editRef = ref(null)
 
 function back() {
   parkStore.selectedMarker = null
 }
+// watch(
+//   () => editing
+// )
 
 watch(
   () => parkStore.selectedMarker,
@@ -34,28 +42,11 @@ watch(
       loading.value = false
     }
   },
-  { immediate: true }
+  { immediate: true, deep: true }
 )
-
-const copyToClipboard = async (text) => {
-  try {
-    await navigator.clipboard.writeText(text)
-    copyCompleted.value = true
-  } catch (err) {
-    console.error('Не вдалося скопіювати:', err)
-  }
-}
 
 const title = computed(
   () => marker.value.green?.species?.name_ukr || marker.value.infrastructure?.infrastructure_type?.name || marker.value.type
-)
-
-const fullNameLat = computed(
-  () => [
-    marker.value.green?.species?.name_lat,
-    marker.value.green?.species?.genus?.name_lat,
-    marker.value.green?.species?.genus?.family?.name_lat
-  ].filter(Boolean).join(' / ')
 )
 
 const description = computed(() => {
@@ -71,7 +62,7 @@ const description = computed(() => {
   <div class="p-4 overflow-x-hidden" v-if="marker">
     <button @click="back" class="text-blue-500 mb-2">← Назад</button>
 
-    <PanelHeader 
+    <PanelHeader
       :title="title"
       :subtitle="description" 
       :icon="marker.icon?.file_path">
@@ -80,38 +71,27 @@ const description = computed(() => {
       </template>
     </PanelHeader>
 
-    <ImageSlider :modelId="marker.id" :isDraft="marker.isDraft" model="markers" class="my-2" />
-
-    <div
-      v-if="marker.green?.inventory_number"
-      class="bg-white rounded px-4 py-3 flex items-center justify-between text-gray-700 my-2"
-    >
-      <span class="font-medium">Інвентарний номер: {{ marker.green.inventory_number }}</span>
-      <div class="relative group">
-        <button
-          @click="copyToClipboard(marker.green.inventory_number)"
-          @mouseenter="copyCompleted = false"
-        >
-          <img src="/storage/img/icons/copy-icon.svg" alt="Скопіювати" class="w-5 h-5" />
-        </button>
-        <Tooltip>
-          {{ copyCompleted ? 'Скопійовано!' : 'Скопіювати' }}
-        </Tooltip>
+    <template v-if="!editing">
+      <MarkerDetailsView :marker="marker" />
+      <div class="absolute right-[4.5rem]">
+        <BtnWhite v-if="canEdit" class="fixed bottom-2"
+          @click="editing = true"
+        >✏️</BtnWhite>
       </div>
-    </div>
-
-    <div v-if="marker.description" class="bg-white rounded px-4 py-6 text-gray-600">
-      <h3 class="text-lg font-semibold pb-2">Опис</h3>
-      <p>{{ marker.description }}</p>
-    </div>
-    
-    <GreenDetails :details="marker.green?.details" :type="marker?.type" />
-
-    <div v-if="fullNameLat" class="bg-white rounded px-4 text-gray-600">
-      <h3 class="text-lg font-semibold pb-2">Ім'я латиною</h3>
-      <b>{{ fullNameLat }}</b>
-    </div>
-
-    <TagList :tags="marker.tags" :loading="loading" />
+    </template>
+    <template v-if="editing">
+      <MarkerDetailsEdit :marker="marker" ref="editRef" />
+      <div class="absolute right-[4.5rem]">
+        <div class="fixed bottom-2">
+          <BtnWhite
+            @click="editing = false"
+            class="p-[0.7rem] ms-auto"
+          >❌</BtnWhite>
+          <BtnWhite
+            @click="() => { editRef.save(); editing = false }"
+          >✔️</BtnWhite>
+        </div>
+      </div>
+    </template>
   </div>
 </template>

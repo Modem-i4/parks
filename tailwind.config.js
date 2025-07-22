@@ -21,6 +21,7 @@ export default {
     safelist: [
         'text-yellow-600',
         'border-yellow-600',
+        'bg-yellow-400',
         'bg-yellow-600',
         'border-red-600',
         'border-green-600'

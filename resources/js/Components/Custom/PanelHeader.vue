@@ -1,6 +1,6 @@
 <template>
   <div class="flex items-center p-4 space-x-4">
-    <div class="flex-shrink-0 w-16 h-16 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center">
+    <div class="flex-shrink-0 w-16 h-16 rounded-full overflow-hidden bg-white flex items-center justify-center">
       <img v-if="icon" :src="icon" alt="Icon" class="w-12 h-12 object-contain" />
       <div v-else class="text-gray-400 text-xl">{{ fallbackEmoji }}</div>
     </div>

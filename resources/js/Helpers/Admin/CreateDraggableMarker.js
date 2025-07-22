@@ -1,9 +1,16 @@
-export async function createDraggableMarker({
+let lastMarker
+
+export async function createDraggableMarker(options) {
+  return createDraggableMarkerBase(options)
+}
+
+async function createDraggableMarkerBase({
   map,
   position,
-  iconUrl,
+  iconUrl = '/storage/img/icons/new-marker.svg',
   zIndex = 999999,
-  onDrag }) {
+  onDrag
+}) {
   const { AdvancedMarkerElement } = await import('@/Helpers/Maps/GoogleMapsLoader').then(m => m.default.importLibrary('marker'))
 
   const el = document.createElement('div')
@@ -29,6 +36,9 @@ export async function createDraggableMarker({
     zIndex
   })
 
+  if (lastMarker) lastMarker.setMap(null)
+  lastMarker = marker
+
   let isDragging = false
   let startLatLng = null
   let wasDraggable = map.get('draggable')
@@ -53,6 +63,7 @@ export async function createDraggableMarker({
 
       const latLng = map.getProjection().fromPointToLatLng(startLatLng)
       marker.position = latLng
+
       if (onDrag) onDrag(latLng)
     }
 
@@ -69,4 +80,48 @@ export async function createDraggableMarker({
   })
 
   return marker
+}
+
+export async function createDraggableMarkerWithLine({
+  map,
+  position,
+  iconUrl = '/storage/img/icons/new-marker.svg',
+  zIndex = 9999,
+  onDrag,
+  drawLineFrom
+}) {
+  const marker = await createDraggableMarkerBase({
+    map,
+    position,
+    iconUrl,
+    zIndex,
+    onDrag: (latLng) => {
+      if (onDrag) onDrag(latLng)
+      if (connectingLine && drawLineFrom) {
+        connectingLine.setPath([drawLineFrom, latLng])
+      }
+    }
+  })
+
+  const connectingLine = new google.maps.Polyline({
+    path: [drawLineFrom, position],
+    geodesic: true,
+    strokeColor: '#808080',
+    strokeOpacity: 0,
+    icons: [
+      {
+        icon: { path: 'M 0,-1 0,1', strokeOpacity: 1, scale: 3, strokeColor: '#808080' },
+        offset: '0',
+        repeat: '15px'
+      }
+    ],
+    map
+  })
+
+  const destroy = () => {
+    marker.setMap(null)
+    connectingLine.setMap(null)
+  }
+
+  return { marker, destroy }
 }
