@@ -5,6 +5,7 @@ import DictTaxonomy from '@/Components/Dictionaries/DictTaxonomy.vue'
 import DictInfrastructureType from '@/Components/Dictionaries/DictInfrastructureType.vue'
 import { isMobile } from '@/Helpers/isMobileHelper'
 import ArrowIcon from '@/Components/Custom/Icons/ArrowIcon.vue'
+import DictTags from '@/Components/Dictionaries/DictTags.vue'
 
 defineOptions({
   layout: AdminLayout,
@@ -23,7 +24,7 @@ const dictionaryItems = [
     ]
   },
   { type: 'item', slug: 'Infrastructure', name: 'Типи інфраструктури', component: DictInfrastructureType },
-  { type: 'item', slug: 'TreeTypes', name: 'Типи дерев', component: DictTaxonomy },
+  { type: 'item', slug: 'Tags', name: 'Теги', component: DictTags },
   { type: 'item', slug: 'ObjectState', name: 'Стан об’єкта', component: DictTaxonomy }
 ]
 

@@ -1,6 +1,6 @@
 <template>
   <div class="space-y-2">
-    <p class="text-sm font-semibold">Обрані зображення</p>
+    <p class="text-sm font-semibold">{{ title }}</p>
 
     <div v-if="!selected.length" class="text-sm text-gray-500 italic">
       Нічого не обрано
@@ -23,7 +23,7 @@
             class="w-12 h-12 object-cover rounded"
           />
           <div class="flex-1 text-sm truncate">
-            <FloatingInput v-model="element.description" label="Публічний опис зображення" labelClasses="italic"/>
+            <FloatingInput v-if="props.type === 'image'" v-model="element.description" label="Публічний опис зображення" labelClasses="italic"/>
           </div>
 
           <div class="flex items-center gap-2">
@@ -55,7 +55,8 @@ import { computed } from 'vue';
 
 const props = defineProps({
   selected: { type: Array, required: true },
-  multiple: { type: Boolean, default: false }
+  multiple: { type: Boolean, default: false },
+  type: { type: String, required: true }, // 'icon' or 'image'
 });
 const emit = defineEmits(['remove', 'reorder']);
 
@@ -63,10 +64,9 @@ const ordered = computed({
   get: () => props.selected,
   set: (val) => emit('reorder', val)
 });
-</script>
 
-<style scoped>
-.handle {
-  cursor: grab;
-}
-</style>
+const title = computed(() => {
+  if (props.type === 'icon') return 'Обрана іконка'
+  return 'Обрані зображення'
+});
+</script>

@@ -7,7 +7,7 @@
         type="text"
         class="w-full border border-gray-300 rounded px-2 py-1"
         placeholder="Пошук..."
-        @focus="openDropdown"
+        @click="openDropdown"
         @blur="handleBlur"
       />
 
@@ -40,8 +40,8 @@ import { ref, computed, watch } from 'vue'
 import axios from 'axios'
 
 const props = defineProps({
-  modelValue: [Number, null],
-  mode: { type: String, required: true }, // 'species' | 'infrastructureType'
+  modelValue: [Number, Array, null],
+  mode: { type: String, required: true }, // 'species' | 'infrastructureType' | 'tags'
   startingItem: [Object, null],
   type: String,
 })
@@ -57,6 +57,7 @@ const labelField = computed(() => {
   switch (props.mode) {
     case 'species': return 'name_ukr'
     case 'infrastructureType': return 'name'
+    case 'tags': return 'name'
     default: return 'name'
   }
 })
@@ -65,6 +66,7 @@ const label = computed(() => {
   switch (props.mode) {
     case 'species': return 'Вид'
     case 'infrastructureType': return 'Тип інфраструктури'
+    case 'tags': return 'Вибір тегів'
     default: return 'Пошук'
   }
 })
@@ -72,6 +74,7 @@ const labelShort = computed(() => {
   switch (props.mode) {
     case 'species': return 'вид'
     case 'infrastructureType': return 'тип'
+    case 'tags': return 'тег'
   }
 })
 
@@ -80,7 +83,7 @@ watch(() => props.startingItem, (item) => {
   selectedName.value = name
   search.value = name
 
-  if (item?.edited) {
+  if (item?.edited && props.mode !== 'tags') {
     preventNextOpen.value = true
     delete item.edited
   }
@@ -98,22 +101,37 @@ const endpoint = computed(() => {
   switch (props.mode) {
     case 'species': return `/api/species/${props.type}`
     case 'infrastructureType': return `/api/infrastructureType`
+    case 'tags': return `/api/tags/${props.type}`
   }
 })
 
 async function loadData() {
   try {
     const { data } = await axios.get(endpoint.value)
-    dataList.value = data
+    if (props.mode === 'tags') {
+      dataList.value = data.filter(item => !props.modelValue.some(tag => tag.id === item.id))
+    } else {
+      dataList.value = data
+    }
   } catch (err) {
     console.error('Помилка завантаження даних', err)
   }
 }
 
 function select(item) {
-  emit('update:modelValue', item.id)
-  selectedName.value = item[labelField.value]
-  search.value = item[labelField.value]
+  if(props.mode !== 'tags') {
+    emit('update:modelValue', item.id)
+    selectedName.value = item[labelField.value]
+    search.value = item[labelField.value]
+  }
+  if(props.mode === 'tags') {
+    const exists = props.modelValue.some(t => t.id === item.id)
+    if (!exists)
+      props.modelValue.push(item)
+    dataList.value = dataList.value.filter(i => i.id !== item.id)
+    selectedName.value = ''
+    search.value = ''
+  }
   dropdownVisible.value = false
 }
 

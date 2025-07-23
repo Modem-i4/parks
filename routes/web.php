@@ -9,6 +9,7 @@ use App\Http\Controllers\ParkController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\MediaLibraryController;
+use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -96,6 +97,12 @@ Route::prefix('api')->group(function () {
     Route::post('/infrastructureType', [InfrastructureTypeController::class, 'store']);
     Route::patch('/infrastructureType/{id}', [InfrastructureTypeController::class, 'update']);
     Route::delete('/infrastructureType/{id}', [InfrastructureTypeController::class, 'destroy']);
+
+    // Tags
+    Route::get('/tags/{type?}', [TagController::class, 'index']);
+    Route::post('/tags', [TagController::class, 'store']);
+    Route::patch('/tags/{id}', [TagController::class, 'update']);
+    Route::delete('/tags/{id}', [TagController::class, 'destroy']);
 
     //// Media
     Route::prefix('media-library')->group(function () {

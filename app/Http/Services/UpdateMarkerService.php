@@ -27,8 +27,9 @@ class UpdateMarkerService
                 $marker->save();
             }
 
-            if (array_key_exists('tag_ids', $data)) {
-                $marker->tags()->sync($data['tag_ids']);
+            if (array_key_exists('tags', $data)) {
+                $tagIds = collect($data['tags'])->pluck('id')->toArray();
+                $marker->tags()->sync($tagIds);
             }
 
             if ($typeChanged) {
@@ -103,8 +104,8 @@ class UpdateMarkerService
             'coordinates.0' => ['sometimes', 'numeric'],
             'coordinates.1' => ['sometimes', 'numeric'],
             'description' => ['sometimes', 'nullable', 'string'],
-            'tag_ids' => ['sometimes', 'array'],
-            'tag_ids.*' => ['integer', 'exists:tags,id'],
+            'tags' => ['sometimes', 'array'],
+            'tags.*.id' => ['required', 'integer', 'exists:tags,id'],
 
             'green.inventory_number' => ['sometimes', 'string'],
             'green.species_id' => ['sometimes', 'exists:species,id'],

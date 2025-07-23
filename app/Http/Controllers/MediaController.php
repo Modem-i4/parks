@@ -31,8 +31,8 @@ class MediaController extends Controller
             'model_type' => 'required|string',
             'model_id' => 'required|integer',
             'type' => 'required|string', 
-            'media' => 'required|array',
-            'media.*.media_library_id' => 'required|integer',
+            'media' => 'array',
+            'media.*.media_library_id' => 'integer',
             'media.*.order' => 'nullable|integer',
             'media.*.description' => 'nullable|string',
         ]);

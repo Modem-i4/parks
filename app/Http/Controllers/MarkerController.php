@@ -58,23 +58,33 @@ class MarkerController extends Controller
     {
         $marker = Marker::findOrFail($id);
         $media = collect();
+        $source = null;
+
         if ($marker->media->isNotEmpty()) {
             $media = $marker->media;
+            $source = 'marker';
         } elseif ($marker->type === 'infrastructure') {
             $media = $marker->infrastructure->infrastructureType?->media ?? collect();
-        } else {
-            $media =
-                $marker->green->species?->media->isNotEmpty()
-                    ? $marker->green->species->media
-                    : (
-                        $marker->green->species?->genus?->media->isNotEmpty()
-                            ? $marker->green->species->genus->media
-                            : ($marker->green->species?->genus?->family?->media ?? collect())
-                    );
+            $source = 'infrastructure_type';
+        } elseif ($marker->green) {
+            if ($marker->green->species?->media->isNotEmpty()) {
+                $media = $marker->green->species->media;
+                $source = 'species';
+            } elseif ($marker->green->species?->genus?->media->isNotEmpty()) {
+                $media = $marker->green->species->genus->media;
+                $source = 'genus';
+            } elseif ($marker->green->species?->genus?->family?->media) {
+                $media = $marker->green->species->genus->family->media;
+                $source = 'family';
+            }
         }
 
-        return response()->json(['media' => $media]);
+        return response()->json([
+            'media' => $media,
+            'source' => $source,
+        ]);
     }
+
 
     public function update(Request $request, $id)
     {

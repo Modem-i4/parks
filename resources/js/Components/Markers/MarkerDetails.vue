@@ -9,6 +9,7 @@ import MarkerDetailsView from './View/MarkerDetailsView.vue'
 import MarkerDetailsEdit from './Edit/MarkerDetailsEdit.vue';
 import PanelHeader from '../Custom/PanelHeader.vue';
 import QualityStateIndicator from './View/QualityStateIndicator.vue';
+import MediaPickerModal from '../Media/MediaPickerModal.vue';
 
 const page = usePage()
 const role = page.props.auth.user?.role
@@ -17,8 +18,10 @@ const parkStore = useParkStore()
 const marker = ref(null)
 const loading = ref(true)
 const editing = ref(false)
-const canEdit = UserRole.atLeast(role, page.role)
+const canEdit = UserRole.atLeast(role, 'admin')
+const canUpload = UserRole.atLeast(role, 'editor')
 const editRef = ref(null)
+const viewRef = ref(null)
 
 function back() {
   parkStore.selectedMarker = null
@@ -29,21 +32,23 @@ function back() {
 
 watch(
   () => parkStore.selectedMarker,
-  async (newVal) => {
-    marker.value = newVal
-    if (!newVal || newVal.isDraft) return
-    loading.value = true
-    try {
-      const { data } = await axios.get(`/api/markers/${marker.value.id}`)
-      marker.value = data
-    } catch (e) {
-      console.error('Не вдалося довантажити маркер:', e)
-    } finally {
-      loading.value = false
-    }
-  },
+  update,
   { immediate: true, deep: true }
 )
+
+async function update(newVal) {
+  marker.value = newVal
+  if (!newVal || newVal.isDraft) return
+  loading.value = true
+  try {
+    const { data } = await axios.get(`/api/markers/${marker.value.id}`)
+    marker.value = data
+  } catch (e) {
+    console.error('Не вдалося довантажити маркер:', e)
+  } finally {
+    loading.value = false
+  }
+}
 
 const title = computed(
   () => marker.value.green?.species?.name_ukr || marker.value.infrastructure?.infrastructure_type?.name || marker.value.type
@@ -56,6 +61,26 @@ const description = computed(() => {
     return 'Інфраструктура'
   return ''
 })
+
+// Image pickers
+const showPicker = ref(false)
+const pickerType = ref(null)
+
+function startIconChange() {
+  pickerType.value = 'icon'
+  showPicker.value = true
+}
+
+function startGalleryChange() {
+  console.log('aa')
+  pickerType.value = 'image'
+  showPicker.value = true
+}
+
+function closeImagePicker() {
+  pickerType.value = null
+  showPicker.value = false
+}
 </script>
 
 <template>
@@ -65,14 +90,18 @@ const description = computed(() => {
     <PanelHeader
       :title="title"
       :subtitle="description" 
-      :icon="marker.icon?.file_path">
+      :icon="marker.icon?.file_path"
+      @onIconClick="() => { if(canUpload) startIconChange() }">
       <template #right>
         <QualityStateIndicator :green="marker.green" />
       </template>
     </PanelHeader>
 
     <template v-if="!editing">
-      <MarkerDetailsView :marker="marker" />
+      <MarkerDetailsView :marker="marker" ref="viewRef" 
+        :canUpload="canUpload"
+        @onImageClick="() => { if(canUpload) startGalleryChange() }" 
+      />
       <div class="absolute right-[4.5rem]">
         <BtnWhite v-if="canEdit" class="fixed bottom-2"
           @click="editing = true"
@@ -94,4 +123,12 @@ const description = computed(() => {
       </div>
     </template>
   </div>
+  <MediaPickerModal
+    v-if="showPicker"
+    :type="pickerType"
+    modelType="App\Models\Marker"
+    :modelId="marker.id"
+    @close="closeImagePicker"
+    @saved="() => { viewRef.forceImageUpdate(); closeImagePicker() }"
+  />
 </template>

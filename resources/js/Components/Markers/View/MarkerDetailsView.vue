@@ -1,17 +1,17 @@
 <script setup>
 import ImageSlider from '@/Components/Custom/ImageSlider.vue'
-import PanelHeader from '@/Components/Custom/PanelHeader.vue'
-import TagList from './TagList.vue'
-import QualityStateIndicator from './QualityStateIndicator.vue'
+import TagList from '../TagList.vue'
 import { computed, ref } from 'vue'
 import GreenDetails from './GreenDetails.vue'
 import Tooltip from '@/Components/Custom/Tooltip.vue'
 
 const loading = ref(true)
 const copyCompleted = ref(false)
+const imageSliderRef = ref(null)
 
 const props = defineProps({
-    marker: Object
+    marker: Object,
+    canUpload: { type: Boolean, default: false }
 })
 
 const copyToClipboard = async (text) => {
@@ -30,11 +30,19 @@ const fullNameLat = computed(
     props.marker.green?.species?.genus?.family?.name_lat
   ].filter(Boolean).join(' / ')
 )
-
+const forceImageUpdate = () => {
+  imageSliderRef.value?.update(props.marker?.id)
+}
+const emit = defineEmits(['onImageClick'])
+defineExpose({ forceImageUpdate })
 </script>
 
 <template>
-    <ImageSlider :modelId="props.marker.id" :isDraft="props.marker.isDraft" model="markers" class="my-2" />
+    <ImageSlider :modelId="props.marker.id" :isDraft="props.marker.isDraft" model="markers" ref="imageSliderRef"
+      class="my-2"
+      :editable="props.canUpload"
+      @onImageClick="emit('onImageClick')"
+    />
 
     <div
       v-if="props.marker.green?.inventory_number"
@@ -58,6 +66,9 @@ const fullNameLat = computed(
       <h3 class="text-lg font-semibold pb-2">Опис</h3>
       <p>{{ props.marker.description }}</p>
     </div>
+    <div v-if="props.marker.infrastructure?.infrastructure_type" class="bg-white rounded px-4 text-gray-600">
+      <p v-if="props.marker.infrastructure?.infrastructure_type?.name"><b>Тип:</b> {{ props.marker.infrastructure?.infrastructure_type?.name }}</p>
+    </div>
 
     <GreenDetails :green="props.marker?.green" :type="props.marker?.type" v-if="props.marker?.green" />
 
@@ -66,5 +77,5 @@ const fullNameLat = computed(
       <b>{{ fullNameLat }}</b>
     </div>
 
-    <TagList :tags="props.marker.tags" :loading="loading" />
+    <TagList v-model="props.marker.tags" :loading="loading" />
 </template>

@@ -9,6 +9,8 @@ import SelectWithSearchAndAdd from '@/Components/Custom/SelectWithSearchAndAdd.v
 import Modal from '@/Components/Default/Modal.vue'
 import DictTaxonomy from '@/Components/Dictionaries/DictTaxonomy.vue'
 import DictInfrastructureType from '@/Components/Dictionaries/DictInfrastructureType.vue'
+import TagList from '../TagList.vue'
+import DictTags from '@/Components/Dictionaries/DictTags.vue'
 
 const props = defineProps({ marker: Object })
 
@@ -18,13 +20,10 @@ const googleMapMarker = ref(null)
 const originalPosition = ref(null)
 const destroyLine = ref(null)
 
-const tagOptions = ref([])
-const speciesOptions = ref([])
-const infraTypeOptions = ref([])
-
 const showModal = ref({
   species: false,
-  infrastructureType: false
+  infrastructureType: false,
+  tags: false
 })
 
 onMounted(async () => {
@@ -43,20 +42,7 @@ onMounted(async () => {
   })
   googleMapMarker.value = result.marker
   destroyLine.value = result.destroy
-
-  loadSelectOptions()
 })
-
-async function loadSelectOptions() {
-  const [tags, species, infra] = await Promise.all([
-    axios.get('/api/tags'),
-    axios.get('/api/species'),
-    axios.get('/api/infrastructureType'),
-  ])
-  tagOptions.value = tags.data
-  speciesOptions.value = species.data
-  infraTypeOptions.value = infra.data
-}
 
 watch(() => marker.value.type, (newType) => {
   initializeMarkerType(marker.value, newType)
@@ -134,6 +120,13 @@ const selectInfrastructureType = (infraType) => {
   marker.value.infrastructure.infrastructure_type_id = infraType.id
   showModal.value.infrastructureType = false
 }
+const selectTag = (tag) => {
+  const exists = marker.value.tags.some(t => t.id === tag.id)
+  if (!exists)
+    marker.value.tags.push(tag)
+  showModal.value.tags = false
+}
+
 </script>
 <template>
   <div class="py-4 flex flex-col gap-6 max-w-xl">
@@ -248,10 +241,27 @@ const selectInfrastructureType = (infraType) => {
       </Modal>
 
     </div>
-  </div>
+    
+    <div v-if="marker" class="bg-white rounded px-4 py-4 space-y-1">
+      <h3 class="text-lg font-semibold text-gray-800">Теги</h3>
+      <SelectWithSearchAndAdd
+        mode="tags"
+        class="space-y-1"
+        v-model="marker.tags"
+        :type="marker.type"
+        @show-modal="() => showModal.tags = true"
+      />
 
-   <!-- Tags TODO -->
-  <div class="h-[100px]"></div> <!-- Spacer -->
+      <Modal :show="showModal.tags" maxWidth="4xl" @close="showModal.tags = false">
+        <DictTags
+          @selectTag="selectTag"
+          :type="marker.type"
+        />
+      </Modal>
+      <TagList v-model="marker.tags" :edit="true"/>
+    </div>
+  </div>
+  <div class="h-[5rem]"></div> <!-- Spacer -->
 </template>
 
 <style scoped>
