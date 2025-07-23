@@ -8,6 +8,7 @@
         />
         <div
             class="flex items-center px-2 py-1 rounded cursor-pointer bg-gray-100 hover:bg-gray-200"
+            @click="emit('selectInfrastructureType', item)"
         >
             <div class="flex items-center space-x-2 flex-1 relative group">
                 <img :src="item.icon?.file_path" alt="Іконка" class="w-5 h-5" />
@@ -66,7 +67,7 @@ const props = defineProps({
   item: Object,
 })
 
-const emit = defineEmits(['update', 'delete', 'changeIcon'])
+const emit = defineEmits(['update', 'delete', 'changeIcon', 'changeGallery', 'selectInfrastructureType'])
 
 const isEditing = ref(false)
 const showErrors = ref(false)

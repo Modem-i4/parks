@@ -29,6 +29,7 @@ class Infrastructure extends Model
 	protected $fillable = [
 		'id',
 		'name',
+		'infrastructure_type_id'
 	];
 
 	public function marker()

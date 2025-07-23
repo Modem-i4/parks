@@ -1,15 +1,14 @@
 <script setup>
-import BtnWhite from '@/Components/Custom/BtnWhite.vue'
-import FloatingInput from '@/Components/Custom/FloatingInput.vue'
 import NumberSelect from '@/Components/Custom/NumberSelect.vue'
 import StateSelector from '@/Components/Custom/StateSelector.vue'
 import { createDraggableMarkerWithLine } from '@/Helpers/Admin/CreateDraggableMarker'
 import { useParkStore } from '@/Stores/useParkStore'
 import axios from 'axios'
 import { onBeforeUnmount, onMounted, ref, watch, computed } from 'vue'
-import SpeciesSelectWithAdd from './SpeciesSelectWithAdd.vue'
+import SelectWithSearchAndAdd from '@/Components/Custom/SelectWithSearchAndAdd.vue'
 import Modal from '@/Components/Default/Modal.vue'
 import DictTaxonomy from '@/Components/Dictionaries/DictTaxonomy.vue'
+import DictInfrastructureType from '@/Components/Dictionaries/DictInfrastructureType.vue'
 
 const props = defineProps({ marker: Object })
 
@@ -23,7 +22,10 @@ const tagOptions = ref([])
 const speciesOptions = ref([])
 const infraTypeOptions = ref([])
 
-const showSpeciesModal = ref(false)
+const showModal = ref({
+  species: false,
+  infrastructureType: false
+})
 
 onMounted(async () => {
   originalPosition.value = {
@@ -124,7 +126,13 @@ const selectSpecies = (species) => {
   species.edited = true
   marker.value.green.species = species
   marker.value.green.species_id = species.id
-  showSpeciesModal.value = false
+  showModal.value.species = false
+}
+const selectInfrastructureType = (infraType) => {
+  infraType.edited = true
+  marker.value.infrastructure.infrastructure_type = infraType
+  marker.value.infrastructure.infrastructure_type_id = infraType.id
+  showModal.value.infrastructureType = false
 }
 </script>
 <template>
@@ -165,15 +173,16 @@ const selectSpecies = (species) => {
         <input v-model="marker.green.quality_state_note" class="w-full border border-gray-300 rounded px-2 py-1" />
       </div>
 
-      <SpeciesSelectWithAdd
+      <SelectWithSearchAndAdd
+        mode="species"
         class="space-y-1"
         v-model="marker.green.species_id"
-        :startingSpecies="marker.green.species"
+        :startingItem="marker.green.species"
         :type="marker.type"
-        @open-species-modal="showSpeciesModal = true"
+        @show-modal="() => showModal.species = true"
       />
-        
-      <Modal :show="showSpeciesModal" maxWidth="4xl" @close="showSpeciesModal = false">
+
+      <Modal :show="showModal.species" maxWidth="4xl" @close="showModal.species = false">
         <DictTaxonomy
           :type="marker.type"
           @selectSpecies="selectSpecies"
@@ -223,12 +232,21 @@ const selectSpecies = (species) => {
         <input v-model="marker.infrastructure.name" class="w-full border border-gray-300 rounded px-2 py-1" />
       </div>
 
-      <div class="space-y-1">
-        <label class="text-sm font-medium text-gray-700">Тип</label>
-        <select v-model="marker.infrastructure.infrastructure_type" class="w-full border border-gray-300 rounded px-2 py-1">
-          <option v-for="type in infraTypeOptions" :key="type.id" :value="type.name">{{ type.name }}</option>
-        </select>
-      </div>
+      <SelectWithSearchAndAdd
+        mode="infrastructureType"
+        class="space-y-1"
+        v-model="marker.infrastructure.infrastructure_type_id"
+        :startingItem="marker.infrastructure.infrastructure_type"
+        :type="marker.type"
+        @show-modal="() => showModal.infrastructureType = true"
+      />
+
+      <Modal :show="showModal.infrastructureType" maxWidth="4xl" @close="showModal.infrastructureType = false">
+        <DictInfrastructureType
+          @selectInfrastructureType="selectInfrastructureType"
+        />
+      </Modal>
+
     </div>
   </div>
 

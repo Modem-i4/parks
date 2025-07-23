@@ -22,7 +22,6 @@ class UpdateMarkerService
             $marker->fill(array_intersect_key($data, array_flip($fillableMarkerFields)));
 
             $typeChanged = $marker->isDirty('type');
-            $newType = $marker->type;
 
             if ($marker->isDirty()) {
                 $marker->save();
@@ -53,9 +52,9 @@ class UpdateMarkerService
             if ($marker->type === TagType::INFRASTRUCTURE->value && isset($data['infrastructure'])) {
                 $infra = $marker->infrastructure ?? $marker->infrastructure()->firstOrNew();
                 $infra->fill(array_intersect_key($data['infrastructure'], array_flip([
-                    'name', 'infrastructure_type'
+                    'name', 'infrastructure_type_id'
                 ])));
-
+                
                 if (!$infra->exists || $infra->isDirty()) {
                     $infra->save();
                 }
@@ -127,7 +126,7 @@ class UpdateMarkerService
             'green.hedge.hedge_type_shape' => ['sometimes', 'string'],
 
             'infrastructure.name' => ['sometimes', 'string'],
-            'infrastructure.infrastructure_type' => ['sometimes', 'string'],
+            'infrastructure.infrastructure_type_id' => ['sometimes', 'exists:infrastructure_type,id'],
         ]);
 
         if ($validator->fails()) {

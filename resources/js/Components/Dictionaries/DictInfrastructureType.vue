@@ -88,10 +88,11 @@ const filteredInfrastructure = computed(() => {
     : infrastructure.value;
 });
 
+const emit = defineEmits(['selectInfrastructureType'])
 </script>
 
 <template>
-  <div class="space-y-4 relative">
+  <div class="space-y-4 relative pb-3">
       <div>
         <MediaPickerModal
           v-if="showPicker"
@@ -120,6 +121,7 @@ const filteredInfrastructure = computed(() => {
       @delete="handleDelete"
       @changeIcon="startIconChange"
       @changeGallery="startGalleryChange"
+      @selectInfrastructureType="emit('selectInfrastructureType', $event)"
     />
   </div>
 </template>
