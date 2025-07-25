@@ -1,7 +1,11 @@
 let lastMarker
 
 export async function createDraggableMarker(options) {
-  return createDraggableMarkerBase(options)
+  const marker = await createDraggableMarkerBase(options)
+  const destroy = () => {
+    marker.setMap(null)
+  }
+  return { marker, destroy }
 }
 
 async function createDraggableMarkerBase({
@@ -36,7 +40,7 @@ async function createDraggableMarkerBase({
     zIndex
   })
 
-  if (lastMarker) lastMarker.setMap(null)
+  lastMarker?.setMap(null)
   lastMarker = marker
 
   let isDragging = false

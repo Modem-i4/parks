@@ -1,7 +1,7 @@
 <script setup>
 import NumberSelect from '@/Components/Custom/NumberSelect.vue'
 import StateSelector from '@/Components/Custom/StateSelector.vue'
-import { createDraggableMarkerWithLine } from '@/Helpers/Admin/CreateDraggableMarker'
+import { createDraggableMarkerWithLine, createDraggableMarker } from '@/Helpers/Admin/CreateDraggableMarker'
 import { useParkStore } from '@/Stores/useParkStore'
 import axios from 'axios'
 import { onBeforeUnmount, onMounted, ref, watch, computed } from 'vue'
@@ -16,9 +16,10 @@ const props = defineProps({ marker: Object })
 
 const marker = ref(JSON.parse(JSON.stringify(props.marker)))
 const parkStore = useParkStore()
+const isAddingNew = ref(!!props.marker.isDraft)
 const googleMapMarker = ref(null)
 const originalPosition = ref(null)
-const destroyLine = ref(null)
+const destroyDraggableMarker = ref(null)
 
 const showModal = ref({
   species: false,
@@ -32,7 +33,9 @@ onMounted(async () => {
     lat: marker.value.coordinates[1]
   }
 
-  const result = await createDraggableMarkerWithLine({
+  const draggableMarkerFactory = isAddingNew.value ? createDraggableMarker : createDraggableMarkerWithLine
+
+  const result = await draggableMarkerFactory({
     map: parkStore.map,
     position: { ...originalPosition.value },
     drawLineFrom: originalPosition.value,
@@ -41,7 +44,7 @@ onMounted(async () => {
     }
   })
   googleMapMarker.value = result.marker
-  destroyLine.value = result.destroy
+  destroyDraggableMarker.value = result.destroy
 })
 
 watch(() => marker.value.type, (newType) => {
@@ -49,7 +52,7 @@ watch(() => marker.value.type, (newType) => {
 })
 
 onBeforeUnmount(() => {
-  destroyLine.value?.()
+  destroyDraggableMarker.value?.()
 })
 
 defineExpose({ save })
@@ -57,15 +60,26 @@ defineExpose({ save })
 function save() {
   cleanupMarkerType(marker.value, marker.value.type)
 
-  axios.patch(`/api/markers/${marker.value.id}`, marker.value).then(() => {
-    const keysToCopy = ['coordinates', 'description', 'type', 'plot_id', 'green', 'infrastructure']
-    for (const key of keysToCopy) {
-      if (key in marker.value)
-        parkStore.selectedMarker[key] = marker.value[key]
-    }
-    parkStore.selectedMarker.cachedCoords = null
-    parkStore.selectedMarker.edited = true
-  })
+  if(isAddingNew.value) {
+    marker.value.park_id = parkStore.selectedPark.id
+    return axios.post('/api/markers', marker.value).then((response) => {
+      marker.value.id = response.data.id
+      marker.value.isDraft = false
+      parkStore.markers.push(marker.value)
+      parkStore.selectedMarker = marker.value
+      parkStore.selectedMarker.edited = true
+    })
+  } else {
+    axios.patch(`/api/markers/${marker.value.id}`, marker.value).then(() => {
+      const keysToCopy = ['coordinates', 'description', 'type', 'plot_id', 'green', 'infrastructure']
+      for (const key of keysToCopy) {
+        if (key in marker.value)
+          parkStore.selectedMarker[key] = marker.value[key]
+      }
+      parkStore.selectedMarker.cachedCoords = null
+      parkStore.selectedMarker.edited = true
+    })
+  }
 }
 
 const isGreen = computed(() => ['tree', 'bush', 'hedge', 'flower'].includes(marker.value.type))
@@ -121,6 +135,7 @@ const selectInfrastructureType = (infraType) => {
   showModal.value.infrastructureType = false
 }
 const selectTag = (tag) => {
+  marker.value.tags ||= [];
   const exists = marker.value.tags.some(t => t.id === tag.id)
   if (!exists)
     marker.value.tags.push(tag)

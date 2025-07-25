@@ -56,7 +56,7 @@ watch(() => parkStore.map, () => {
   if (parkStore.map) {
     parkStore.map.data.addListener('click', event => {
       if(parkStore.isSingleParkView) {
-        parkStore.selectedMarker = null
+        parkStore.setSelectedMarker(null) // with validation
       }
       else {
         const id = event.feature.getProperty('id')

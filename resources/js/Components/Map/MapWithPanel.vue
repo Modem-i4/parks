@@ -1,6 +1,6 @@
 <script setup>
 import { useParkStore } from '@/Stores/useParkStore.js'
-import { ref, watch, onMounted, toRef } from 'vue'
+import { ref, watch, toRef } from 'vue'
 import BtnWhite from '@/Components/Custom/BtnWhite.vue'
 import MapView from './MapView.vue'
 import MobileSlidePanel from '@/Components/Custom/MobileSlidePanel.vue'
@@ -12,7 +12,22 @@ import { useAddMarkerHelper } from '@/Helpers/Admin/AddMarkerHelper'
 
 const parkStore = useParkStore()
 const { showUserPosition } = useUserLocationMarker(toRef(parkStore, 'map'))
-const { addMarker } = useAddMarkerHelper(parkStore)
+const { addMarker, addMarkerFinished } = useAddMarkerHelper(parkStore)
+
+const addingMarker = ref(false)
+watch(addingMarker, (newVal) => {
+  parkStore.selectedMarkerLocked = newVal
+  if (!newVal) addMarkerFinished()
+})
+watch(() => parkStore.selectedMarker, (newVal) => {
+  if(newVal === null) {
+    if(addingMarker.value) {
+      addingMarker.value = false
+    } else {
+      parkStore.selectedMarkerLocked = false // reset lock when marker is deselected
+    }
+  }
+})
 </script>
 
 <template>
@@ -70,8 +85,17 @@ const { addMarker } = useAddMarkerHelper(parkStore)
       
       <div class="absolute bottom-4 left-4">
         <template v-if="parkStore.isSingleParkView">
-          <BtnWhite class="bg-white border px-3 py-1 rounded shadow" @click="addMarker">
+          <BtnWhite class="bg-white border px-3 py-1 rounded shadow" 
+            v-if="!parkStore.selectedMarkerLocked"
+            @click="() => { addMarker(); addingMarker = true }"
+          >
             ➕ Додати маркер
+          </BtnWhite>
+          <BtnWhite class="bg-white border px-3 py-1 rounded shadow ms-2" 
+            v-if="addingMarker"
+            @click="() => { addingMarker = false; }"
+          >
+            ❌ Скасувати
           </BtnWhite>
         </template>
         <BtnWhite class=" bg-white border px-3 py-1 rounded shadow" @click="showUserPosition">

@@ -1,6 +1,6 @@
 <script setup>
 import { useParkStore } from '@/Stores/useParkStore.js'
-import { computed, ref, watch } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import axios from 'axios'
 import BtnWhite from '@/Components/Custom/BtnWhite.vue'
 import { usePage } from '@inertiajs/vue3';
@@ -17,18 +17,21 @@ const role = page.props.auth.user?.role
 const parkStore = useParkStore()
 const marker = ref(null)
 const loading = ref(true)
+const isAddingNew = computed(() => !!parkStore.selectedMarker?.isDraft)
 const editing = ref(false)
+watch(() => isAddingNew.value, (newVal) => {
+  editing.value = newVal
+}, { immediate: true })
+
 const canEdit = UserRole.atLeast(role, 'admin')
 const canUpload = UserRole.atLeast(role, 'editor')
+
 const editRef = ref(null)
 const viewRef = ref(null)
 
 function back() {
   parkStore.selectedMarker = null
 }
-// watch(
-//   () => editing
-// )
 
 watch(
   () => parkStore.selectedMarker,
@@ -50,11 +53,33 @@ async function update(newVal) {
   }
 }
 
+watch(editing, (newVal) => {
+  parkStore.selectedMarkerLocked = newVal
+})
+
+const typeUkr = {
+  tree: 'Дерево',
+  bush: 'Кущ',
+  hedge: 'Живопліт',
+  flower: 'Квіти',
+  infrastructure: 'Інфраструктура',
+}
 const title = computed(
-  () => marker.value.green?.species?.name_ukr || marker.value.infrastructure?.infrastructure_type?.name || marker.value.type
+  () => {
+    if(isAddingNew.value) {
+      return 'Додавання маркера'
+    }
+    return marker.value.green?.species?.name_ukr 
+      || marker.value.infrastructure?.name || marker.value.infrastructure?.infrastructure_type?.name 
+      || typeUkr[marker.value.type]
+  }
 )
 
 const description = computed(() => {
+  if(loading.value) 
+    return 'Завантаження...'
+  if(isAddingNew.value) 
+    return 'Введіть властивості нижче'
   if(marker.value.green)
     return `${marker.value.green?.species?.genus?.name_ukr} / ${marker.value.green?.species?.genus?.family?.name_ukr}`
   if(marker.value.infrastructure) 
@@ -72,7 +97,6 @@ function startIconChange() {
 }
 
 function startGalleryChange() {
-  console.log('aa')
   pickerType.value = 'image'
   showPicker.value = true
 }
@@ -85,13 +109,14 @@ function closeImagePicker() {
 
 <template>
   <div class="p-4 overflow-x-hidden" v-if="marker">
-    <button @click="back" class="text-blue-500 mb-2">← Назад</button>
-
+    <button @click="back" class="text-blue-500 mb-2" v-if="!parkStore.selectedMarkerLocked">← Назад</button>
     <PanelHeader
       :title="title"
       :subtitle="description" 
       :icon="marker.icon?.file_path"
-      @onIconClick="() => { if(canUpload) startIconChange() }">
+      @onIconClick="() => { if(canUpload && !editing) startIconChange() }"
+      :editable="canEdit && !editing"
+      >
       <template #right>
         <QualityStateIndicator :green="marker.green" />
       </template>
@@ -102,7 +127,7 @@ function closeImagePicker() {
         :canUpload="canUpload"
         @onImageClick="() => { if(canUpload) startGalleryChange() }" 
       />
-      <div class="absolute right-[4.5rem]">
+      <div class="absolute right-[4.5rem] z-[3]">
         <BtnWhite v-if="canEdit" class="fixed bottom-2"
           @click="editing = true"
         >✏️</BtnWhite>
@@ -110,7 +135,7 @@ function closeImagePicker() {
     </template>
     <template v-if="editing">
       <MarkerDetailsEdit :marker="marker" ref="editRef" />
-      <div class="absolute right-[4.5rem]">
+      <div class="absolute right-[4.5rem] z-[3]">
         <div class="fixed bottom-2">
           <BtnWhite
             @click="editing = false"

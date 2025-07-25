@@ -22,7 +22,6 @@ class FamilyController extends Controller
     {
         $validated = $request->validate([
             'name_ukr' => 'required|string',
-            'name_lat' => 'string',
             'name_lat' => 'nullable|string',
             'type' => ['required', new Enum(GreenType::class)],
         ]);

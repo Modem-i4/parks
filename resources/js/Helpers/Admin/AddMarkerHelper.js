@@ -1,6 +1,5 @@
 import { useUserLocationMarker } from '@/Helpers/Maps/ShowGeolocationHelper'
 import { toRef } from 'vue'
-import { createDraggableMarker } from '@/Helpers/Admin/CreateDraggableMarker'
 import { distanceInMeters } from '../Maps/MapHelper'
 
 let newMarker
@@ -32,18 +31,13 @@ export function useAddMarkerHelper(parkStore) {
     }
 
     parkStore.selectedMarker = newMarker
-    parkStore.showPanel = true
-
-    googleMapMarker = await createDraggableMarker({
-      map,
-      position,
-      iconUrl: '/storage/img/icons/new-marker.svg',
-      onDrag: (latLng) => {
-        newMarker.coordinates = [latLng.lng(), latLng.lat()]
-      }
-    })
-    googleMapMarker.addListener('click', () => parkStore.selectedMarker = newMarker)
   }
 
-  return { addMarker }
+  function addMarkerFinished() {
+    if (googleMapMarker) {
+      googleMapMarker.setMap(null)
+      googleMapMarker = null
+    }
+  }
+  return { addMarker, addMarkerFinished }
 }

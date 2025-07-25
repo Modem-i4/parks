@@ -7,6 +7,7 @@ export const useParkStore = defineStore('park', () => {
   const selectedPark = ref(null)
   const markers = ref([])
   const showPanel = ref(false)
+  const selectedMarkerLocked = ref(false)
   const singleParkContentMode = ref('infrastructure')
   const defaultCenter = { 
     lng: parseFloat(import.meta.env.VITE_DEFAULT_LNG),
@@ -37,6 +38,7 @@ export const useParkStore = defineStore('park', () => {
   }
 
   function setSelectedMarker(marker) {
+    if(selectedMarkerLocked.value) return
     selectedMarker.value = marker
   }
 
@@ -63,6 +65,10 @@ export const useParkStore = defineStore('park', () => {
   function setSingleParkContentMode(value) {
     singleParkContentMode.value = value
   }
+
+  function setSelectedMarkerLocked(value) {
+    selectedMarkerLocked.value = value
+  }
   
   watch(
     () => selectedMarker.value,
@@ -82,6 +88,7 @@ export const useParkStore = defineStore('park', () => {
     defaultCenter,
     singleParkContentMode,
     messageBoxConditions,
+    selectedMarkerLocked,
 
     // Actions
     setIsSingleParkView,
@@ -92,5 +99,6 @@ export const useParkStore = defineStore('park', () => {
     setMapElement,
     setShowPanel,
     setSingleParkContentMode,
+    setSelectedMarkerLocked,
   }
 })

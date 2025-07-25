@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Services\MarkerFilters\MarkerFilterConfigService;
 use App\Http\Services\MarkerFilters\MarkerFilterService;
 use App\Http\Services\UpdateMarkerService;
+use App\Http\Services\ValidateMarkerService;
 use Illuminate\Validation\ValidationException;
 
 class MarkerController extends Controller
@@ -90,7 +91,8 @@ class MarkerController extends Controller
     {
         $marker = Marker::findOrFail($id);
         try {
-            app(UpdateMarkerService::class)->handle($marker, $request->all());
+            $data = app(ValidateMarkerService::class)->validate($request->all());
+            app(UpdateMarkerService::class)->handle($marker, $data);
             return response()->json(['success' => true]);
         } catch (ValidationException $e) {
             return response()->json([
@@ -99,8 +101,26 @@ class MarkerController extends Controller
             ], 422);
         } catch (\Throwable $e) {
             report($e);
-            return throw($e);
             return response()->json(['error' => 'Failed to update marker'], 500);
+        }
+    }
+
+    public function store(Request $request)
+    {
+        try {
+            $data = app(ValidateMarkerService::class)->validate($request->all());
+            $marker = new Marker();
+            app(UpdateMarkerService::class)->handle($marker, $data);
+            return response()->json(['success' => true, 'id' => $marker->id]);
+        } catch (ValidationException $e) {
+            return response()->json([
+                'message' => 'Validation failed',
+                'errors' => $e->errors(),
+            ], 422);
+        } catch (\Throwable $e) {
+            report($e);
+            throw($e); 
+            return response()->json(['error' => 'Failed to create marker'], 500);
         }
     }
 
