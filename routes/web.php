@@ -76,13 +76,14 @@ Route::prefix('api')->group(function () {
 
     //// Taxonomy
     // Families
-    Route::get('/families', [FamilyController::class, 'index']);
+    Route::get('/families/{type}', [FamilyController::class, 'index']);
     Route::get('/families-full-structure/{type}', [FamilyController::class, 'getWithStructure']);
     Route::post('/families', [FamilyController::class, 'store']);
     Route::patch('/families/{id}', [FamilyController::class, 'update']);
     Route::delete('/families/{id}', [FamilyController::class, 'destroy']);
 
     // Genus
+    Route::get('/genus/{type}', [GenusController::class, 'index']);
     Route::post('/genus', [GenusController::class, 'store']);
     Route::patch('/genus/{id}', [GenusController::class, 'update']);
     Route::delete('/genus/{id}', [GenusController::class, 'destroy']);

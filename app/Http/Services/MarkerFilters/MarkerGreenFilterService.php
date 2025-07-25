@@ -107,10 +107,30 @@ class MarkerGreenFilterService {
                     }
                 }
             }
+                            
+            if (!empty($filters['taxonomy'])) {
+                $q->whereHas('green', function ($gq) use ($filters) {
+                    $gq->where(function ($taxQuery) use ($filters) {
+                        foreach ($filters['taxonomy'] as $tax) {
+                            if (isset($tax['family'])) {
+                                $taxQuery->orWhereHas("species.genus.family", function ($f) use ($tax) {
+                                    $f->where('id', $tax['family']);
+                                });
+                            }
 
-            if (!empty($filters['species'])) {
-                $q->whereHas('species', function ($s) use ($filters) {
-                    $s->whereIn('name_ukr', $filters['species']);
+                            if (isset($tax['genus'])) {
+                                $taxQuery->orWhereHas("species.genus", function ($g) use ($tax) {
+                                    $g->where('id', $tax['genus']);
+                                });
+                            }
+
+                            if (isset($tax['species'])) {
+                                $taxQuery->orWhereHas("species", function ($s) use ($tax) {
+                                    $s->where('id', $tax['species']);
+                                });
+                            }
+                        }
+                    });
                 });
             }
         });

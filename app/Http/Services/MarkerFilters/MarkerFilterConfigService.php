@@ -112,10 +112,9 @@ class MarkerFilterConfigService {
                                 'options' => $tags['tree'] ?? [],
                             ],
                             [
-                                'name' => 'Види дерев',
+                                'name' => 'Класифікація дерев',
                                 'slug' => 'species',
-                                'type' => 'multiselect',
-                                'options' => $species['tree'] ?? [],
+                                'type' => 'taxonomy',
                             ],
                             [
                                 'name' => 'Висота (м)',
@@ -166,10 +165,9 @@ class MarkerFilterConfigService {
                                 'options' => $tags['bush'] ?? [],
                             ],
                             [
-                                'name' => 'Види кущів',
+                                'name' => 'Класифікація кущів',
                                 'slug' => 'species',
-                                'type' => 'multiselect',
-                                'options' => $species['bush'] ?? [],
+                                'type' => 'taxonomy',
                             ],
                             [
                                 'name' => 'Кількість',
@@ -192,10 +190,9 @@ class MarkerFilterConfigService {
                                 'options' => $tags['hedge'] ?? [],
                             ],
                             [
-                                'name' => 'Види живоплотів',
+                                'name' => 'Класифікація живоплотів',
                                 'slug' => 'species',
-                                'type' => 'multiselect',
-                                'options' => $species['hedge'] ?? [],
+                                'type' => 'taxonomy',
                             ],
                             [
                                 'name' => 'Довжина (м)',
@@ -230,10 +227,9 @@ class MarkerFilterConfigService {
                                 'options' => $tags['flower'] ?? [],
                             ],
                             [
-                                'name' => 'Види квітів',
+                                'name' => 'Класифікація квітів',
                                 'slug' => 'species',
-                                'type' => 'multiselect',
-                                'options' => $species['flower'] ?? [],
+                                'type' => 'taxonomy',
                             ],
                         ],
                     ],

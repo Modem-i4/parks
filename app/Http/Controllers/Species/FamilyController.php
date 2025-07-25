@@ -9,9 +9,9 @@ use Illuminate\Validation\Rules\Enum;
 
 class FamilyController extends Controller
 {
-    public function index()
+    public function index($type)
     {
-        return Family::all();
+        return Family::where('type', $type)->get();
     }
 
     public function getWithStructure(String $type) {

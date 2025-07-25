@@ -17,6 +17,7 @@
       >
         <li
           class="px-3 py-2 text-blue-600 hover:underline cursor-pointer border-b border-gray-100"
+          v-if="props.canAddNew"
           @mousedown.prevent="$emit('show-modal', props.mode)"
         >
           + Додати новий {{ labelShort }}
@@ -43,7 +44,10 @@ const props = defineProps({
   modelValue: [Number, Array, null],
   mode: { type: String, required: true }, // 'species' | 'infrastructureType' | 'tags'
   startingItem: [Object, null],
-  type: String,
+  type: String, // 'trees', 'bushes', 'hedges', 'flowers'
+  showLabel: { type: Boolean, default: true },
+  canAddNew: { type: Boolean, default: true },
+  preloadedOptions: Array,
 })
 const emit = defineEmits(['update:modelValue', 'show-modal'])
 
@@ -55,7 +59,10 @@ const preventNextOpen = ref(false)
 
 const labelField = computed(() => {
   switch (props.mode) {
-    case 'species': return 'name_ukr'
+    case 'species':
+    case 'genus':
+    case 'families':
+      return 'name_ukr'
     case 'infrastructureType': return 'name'
     case 'tags': return 'name'
     default: return 'name'
@@ -63,16 +70,18 @@ const labelField = computed(() => {
 })
 
 const label = computed(() => {
+  if(!props.showLabel) return
   switch (props.mode) {
     case 'species': return 'Вид'
     case 'infrastructureType': return 'Тип інфраструктури'
     case 'tags': return 'Вибір тегів'
-    default: return 'Пошук'
   }
 })
 const labelShort = computed(() => {
   switch (props.mode) {
     case 'species': return 'вид'
+    case 'genus': return 'рід'
+    case 'families': return 'родина'
     case 'infrastructureType': return 'тип'
     case 'tags': return 'тег'
   }
@@ -99,13 +108,22 @@ const filteredList = computed(() => {
 
 const endpoint = computed(() => {
   switch (props.mode) {
-    case 'species': return `/api/species/${props.type}`
-    case 'infrastructureType': return `/api/infrastructureType`
-    case 'tags': return `/api/tags/${props.type}`
+    case 'species': 
+    case 'genus':
+    case 'families':
+    case 'tags':
+      return `/api/${props.mode}/${props.type}`
+    case 'infrastructureType': return `/api/${props.mode}`
   }
 })
 
+watch(() => props.preloadedOptions, loadData, { immediate: true })
+
 async function loadData() {
+  if (props.preloadedOptions?.length) {
+    dataList.value = props.preloadedOptions
+    return
+  }
   try {
     const { data } = await axios.get(endpoint.value)
     if (props.mode === 'tags') {
@@ -146,9 +164,7 @@ function openDropdown() {
 }
 
 function handleBlur() {
-  setTimeout(() => {
-    dropdownVisible.value = false
-    search.value = selectedName.value
-  }, 150)
+  dropdownVisible.value = false
+  search.value = selectedName.value
 }
 </script>

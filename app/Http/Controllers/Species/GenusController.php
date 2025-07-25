@@ -7,7 +7,13 @@ use Illuminate\Http\Request;
 
 class GenusController extends Controller
 {
-    
+    public function index($type)
+    {
+        return Genus::whereHas('family', function ($query) use ($type) {
+            $query->where('type', $type);
+        })->get();
+    }
+
     public function store(Request $request)
     {
         $validated = $request->validate([
