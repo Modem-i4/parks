@@ -6,6 +6,7 @@ import DictInfrastructureType from '@/Components/Dictionaries/DictInfrastructure
 import { isMobile } from '@/Helpers/isMobileHelper'
 import ArrowIcon from '@/Components/Custom/Icons/ArrowIcon.vue'
 import DictTags from '@/Components/Dictionaries/DictTags.vue'
+import DictRecommendations from '@/Components/Dictionaries/DictRecommendations.vue'
 
 defineOptions({
   layout: AdminLayout,
@@ -24,8 +25,8 @@ const dictionaryItems = [
     ]
   },
   { type: 'item', slug: 'Infrastructure', name: 'Типи інфраструктури', component: DictInfrastructureType },
+  { type: 'item', slug: 'ObjectState', name: 'Види рекомендацій', component: DictRecommendations },
   { type: 'item', slug: 'Tags', name: 'Теги', component: DictTags },
-  { type: 'item', slug: 'ObjectState', name: 'Стан об’єкта', component: DictTaxonomy }
 ]
 
 // map dicts
