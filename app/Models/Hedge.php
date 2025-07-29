@@ -10,8 +10,8 @@ use Illuminate\Database\Eloquent\Model;
  * 
  * @property int $id
  * @property float|null $length_m
- * @property string|null $hedge_type_row
- * @property string|null $hedge_type_shape
+ * @property string|null $hedge_row
+ * @property string|null $hedge_shape
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * 
@@ -32,18 +32,18 @@ class Hedge extends Model
 	protected $fillable = [
 		'id',
 		'length_m',
-		'hedge_type_row',
-		'hedge_type_shape'
+		'hedge_row',
+		'hedge_shape'
 	];
 
-	public function hedge_type_row()
+	public function hedge_row()
 	{
-		return $this->belongsTo(HedgeTypeRow::class, 'hedge_type_row');
+		return $this->belongsTo(HedgeRow::class, 'hedge_row');
 	}
 
-	public function hedge_type_shape()
+	public function hedge_shape()
 	{
-		return $this->belongsTo(HedgeTypeShape::class, 'hedge_type_shape');
+		return $this->belongsTo(HedgeShape::class, 'hedge_shape');
 	}
 
 	public function green()

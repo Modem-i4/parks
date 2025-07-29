@@ -87,8 +87,8 @@ class MarkerSeeder extends Seeder
                         'hedge' => Hedge::create([
                             'id' => $green->id,
                             'length_m' => rand(5, 50),
-                            'hedge_type_row' => null,
-                            'hedge_type_shape' => null,
+                            'hedge_row_id' => null,
+                            'hedge_shape_id' => null,
                         ]),
                         'flower' => Flower::create([
                             'id' => $green->id,

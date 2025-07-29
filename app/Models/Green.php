@@ -5,6 +5,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 /**
  * Class Green
@@ -43,6 +44,15 @@ class Green extends Model
 		'quality_state',
 		'quality_state_note'
 	];
+
+	protected $appends = ['age'];
+
+	protected function age(): Attribute
+	{
+		return Attribute::get(fn () =>
+			$this->planting_date ? $this->planting_date->diffInYears(now()) : null
+		);
+	}
 
 	public function species()
 	{

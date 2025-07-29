@@ -39,8 +39,8 @@ class ValidateMarkerService
             'green.bush.quantity' => ['sometimes', 'nullable', 'integer'],
 
             'green.hedge.length_m' => ['sometimes', 'nullable', 'numeric'],
-            'green.hedge.hedge_type_row' => ['sometimes', 'nullable', 'string'],
-            'green.hedge.hedge_type_shape' => ['sometimes', 'nullable', 'string'],
+            'green.hedge.hedge_row' => ['sometimes', 'nullable', 'string'],
+            'green.hedge.hedge_shape' => ['sometimes', 'nullable', 'string'],
 
             'infrastructure.name' => ['sometimes', 'nullable', 'string'],
             'infrastructure.infrastructure_type_id' => ['sometimes', 'nullable', 'exists:infrastructure_type,id'],

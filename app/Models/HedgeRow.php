@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class HedgeTypeRow
+ * Class HedgeRow
  * 
  * @property string $name
  * @property string|null $description
@@ -14,9 +14,9 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @package App\Models
  */
-class HedgeTypeRow extends Model
+class HedgeRow extends Model
 {
-	protected $table = 'hedge_type_rows';
+	protected $table = 'hedge_rows';
 	protected $primaryKey = 'name';
 	public $incrementing = false;
 	public $timestamps = false;
@@ -27,6 +27,6 @@ class HedgeTypeRow extends Model
 
 	public function hedge()
 	{
-		return $this->hasOne(Hedge::class, 'hedge_type_row');
+		return $this->hasOne(Hedge::class, 'hedge_row');
 	}
 }

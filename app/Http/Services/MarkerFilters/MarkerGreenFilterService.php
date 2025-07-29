@@ -94,8 +94,8 @@ class MarkerGreenFilterService {
                     'crown_condition_percent' => 'crown_condition_percent',
                     'quantity' => 'quantity',
                     'length' => 'length_m',
-                    'type_row' => 'hedge_type_row',
-                    'type_shape' => 'hedge_type_shape',
+                    'type_row' => 'hedge_row',
+                    'type_shape' => 'hedge_shape',
                     default => null,
                 };
 

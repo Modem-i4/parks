@@ -73,7 +73,7 @@ class UpdateMarkerService
             )),
             GreenType::HEDGE->value => $green->hedge()->updateOrCreate([], array_intersect_key(
                 $greenData['hedge'] ?? [],
-                array_flip(['length_m', 'hedge_type_row', 'hedge_type_shape'])
+                array_flip(['length_m', 'hedge_row', 'hedge_shape'])
             )),
             GreenType::FLOWER->value => $green->flower()->updateOrCreate([], []),
             default => null,

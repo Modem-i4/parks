@@ -8,14 +8,15 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('hedge_type_rows', function (Blueprint $table) {
-            $table->string('name')->primary();
+        Schema::create('hedge_rows', function (Blueprint $table) {
+            $table->id();
+            $table->string('name')->unique();
             $table->text('description')->nullable();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('hedge_type_rows');
+        Schema::dropIfExists('hedge_rows');
     }
 };

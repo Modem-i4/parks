@@ -5,8 +5,8 @@ use App\Enums\QualityState;
 use App\Enums\UserRole;
 use App\Models\Recommendation;
 use App\Models\Species;
-use App\Models\HedgeTypeRow;
-use App\Models\HedgeTypeShape;
+use App\Models\HedgeRow;
+use App\Models\HedgeShape;
 use App\Models\InfrastructureType;
 use App\Models\Tag;
 use Illuminate\Support\Facades\Auth;
@@ -28,8 +28,8 @@ class MarkerFilterConfigService {
         // Get dynamic options
         $recommendations = Recommendation::select('id', 'name')->get()->toArray();
         $species = Species::with('genus.family')->select('id', 'name_ukr')->get()->groupBy('type')->toArray();
-        $hedgeTypeRows = HedgeTypeRow::pluck('name')->toArray();
-        $hedgeTypeShapes = HedgeTypeShape::pluck('name')->toArray();
+        $hedgeTypeRows = HedgeRow::pluck('name')->toArray();
+        $hedgeTypeShapes = HedgeShape::pluck('name')->toArray();
         $infrastructureTypes = InfrastructureType::with('icon')
             ->get()->map(function ($type) {
                 return [
