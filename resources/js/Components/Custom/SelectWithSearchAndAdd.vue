@@ -118,6 +118,7 @@ const endpoint = computed(() => {
 })
 
 watch(() => props.preloadedOptions, loadData, { immediate: true })
+watch(() => props.type, loadData)
 
 async function loadData() {
   if (props.preloadedOptions?.length) {

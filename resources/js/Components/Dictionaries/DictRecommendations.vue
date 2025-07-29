@@ -1,70 +1,28 @@
 <script setup>
-import { ref, onMounted, computed } from 'vue'
-import axios from 'axios'
-import LoadingLineIndicator from '@/Components/Custom/LoadingLineIndicator.vue'
-import RecommendationsAddForm from '../Recommendations/RecommendationsAddForm.vue'
+import { useCrudList } from '@/Helpers/Dictionaries/useCrudList'
+import { useSearchFilter } from '@/Helpers/Dictionaries/useSearchFilter'
 import RecommendationItem from '../Recommendations/RecommendationItem.vue'
+import { onMounted } from 'vue'
+import LoadingLineIndicator from '@/Components/Custom/LoadingLineIndicator.vue'
+import BasicAddForm from '../Custom/BasicAddForm.vue'
 
-const recommendations = ref([])
-const isLoading = ref(false)
+const {
+  items: recommendations,
+  isLoading,
+  load,
+  handleCreate,
+  handleUpdate,
+  handleDelete
+} = useCrudList('/api/recommendations')
 
-const endpoint = '/api/recommendations'
-
-onMounted(load)
-
-async function handleLoading(fn) {
-  isLoading.value = true
-  try {
-    await fn()
-  } finally {
-    isLoading.value = false
-  }
-}
-
-async function load() {
-  await handleLoading(async () => {
-    const res = await axios.get(endpoint)
-    recommendations.value = res.data
-  })
-}
-
-async function handleCreate({ data }) {
-  await handleLoading(async () => {
-    await axios.post(endpoint, data)
-    await load()
-  })
-}
-
-async function handleUpdate({ id, data }) {
-  await handleLoading(async () => {
-    await axios.patch(`${endpoint}/${id}`, data)
-    await load()
-  })
-}
-
-async function handleDelete({ id }) {
-  await handleLoading(async () => {
-    await axios.delete(`${endpoint}/${id}`)
-    await load()
-  })
-}
-
-// search
-const searchQuery = ref('');
-
-function matches(item, query) {
-  const q = query.toLowerCase();
-  return item.name?.toLowerCase().includes(q);
-}
-
-const filteredRecommendations = computed(() => {
-  const q = searchQuery.value.trim();
-  return q
-    ? recommendations.value.filter(item => matches(item, q))
-    : recommendations.value;
-});
+const {
+  query: searchQuery,
+  filtered: filteredRecommendations
+} = useSearchFilter(recommendations)
 
 const emit = defineEmits(['selectRecommendation'])
+
+onMounted(load)
 </script>
 
 <template>
@@ -78,7 +36,12 @@ const emit = defineEmits(['selectRecommendation'])
         class="w-full px-3 py-2 border rounded"
       />
     </div>
-    <RecommendationsAddForm @create="handleCreate" />
+    <BasicAddForm
+      label="вид рекомендацій"
+      :fields="['name']"
+      :defaultForm="{ name: '' }"
+      @create="handleCreate"
+    />
     <div v-for="rec in filteredRecommendations" :key="rec.id">
       <RecommendationItem
         :item="rec"

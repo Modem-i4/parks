@@ -49,7 +49,7 @@ onMounted(async () => {
 
 watch(() => marker.value.type, (newType) => {
   initializeMarkerType(marker.value, newType)
-})
+}, { immediate: true })
 
 onBeforeUnmount(() => {
   destroyDraggableMarker.value?.()
@@ -85,14 +85,21 @@ function save() {
 const isGreen = computed(() => ['tree', 'bush', 'hedge', 'flower'].includes(marker.value.type))
 
 function initializeMarkerType(marker, type) {
+  marker.tags ||= []
   if (['tree', 'bush', 'hedge', 'flower'].includes(type)) {
     marker.green ||= {}
+    marker.green.inventory_number ||= null
+    marker.green.quality_state ||= null
+    marker.green.quality_state_note ||= null
+    marker.green.species_id ||= null
     if (type === 'tree') marker.green.tree ||= {}
     if (type === 'bush') marker.green.bush ||= {}
     if (type === 'hedge') marker.green.hedge ||= {}
   }
   if (type === 'infrastructure') {
     marker.infrastructure ||= {}
+    marker.infrastructure.name ||= ''
+    marker.infrastructure.infrastructure_type_id ||= null
   }
 }
 

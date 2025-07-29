@@ -76,10 +76,10 @@ const title = computed(
 )
 
 const description = computed(() => {
-  if(loading.value) 
-    return 'Завантаження...'
   if(isAddingNew.value) 
     return 'Введіть властивості нижче'
+  if(loading.value) 
+    return 'Завантаження...'
   if(marker.value.green)
     return `${marker.value.green?.species?.genus?.name_ukr} / ${marker.value.green?.species?.genus?.family?.name_ukr}`
   if(marker.value.infrastructure) 

@@ -1,55 +1,43 @@
 <script setup>
 import { ref, onMounted, watch, computed } from 'vue'
-import axios from 'axios'
+import { handleLoading } from '@/Helpers/Dictionaries/handleLoading'
 import TaxonAddForm from '@/Components/Taxonomy/TaxonAddForm.vue'
 import LoadingLineIndicator from '@/Components/Custom/LoadingLineIndicator.vue'
-import MediaPickerModal from '../Media/MediaPickerModal.vue'
+import MediaPickerModal from '@/Components/Media/MediaPickerModal.vue'
 import TaxonNode from '@/Components/Taxonomy/TaxonNode.vue'
+
+const props = defineProps({
+  type: {
+    type: String,
+    required: true
+  }
+})
 
 const families = ref([])
 const isLoading = ref(false)
 
-const props = defineProps({
-    type: {
-        type: String,
-        required: true
-    }
-})
-
-onMounted(loadFamilies)
-watch(
-  () => [props.type], 
-  () => {
-    families.value = []
-    loadFamilies()
-  }
-)
-
-async function handleLoading(fn) {
-  isLoading.value = true
-  try {
-    await fn()
-  } finally {
-    isLoading.value = false
-  }
-}
-
 async function loadFamilies() {
-  await handleLoading(async () => {
+  await handleLoading(isLoading, async () => {
     const res = await axios.get(`/api/families-full-structure/${props.type}`)
     families.value = res.data
   })
 }
 
-// CRUD
+onMounted(loadFamilies)
+watch(() => props.type, () => {
+  families.value = []
+  loadFamilies()
+})
+
+// CRUD з кастомним формуванням даних
 const endpoints = {
   family: '/api/families',
   genus: '/api/genus',
-  species: '/api/species',
+  species: '/api/species'
 }
 
 async function handleCreate({ parent, data, level }) {
-  await handleLoading(async () => {
+  await handleLoading(isLoading, async () => {
     const formData = {
       family: () => ({ ...data, type: props.type }),
       genus: () => ({ ...data, family_id: parent.id }),
@@ -62,20 +50,20 @@ async function handleCreate({ parent, data, level }) {
 }
 
 async function handleUpdate({ id, data, level }) {
-  await handleLoading(async () => {
+  await handleLoading(isLoading, async () => {
     await axios.patch(`${endpoints[level]}/${id}`, data)
     await loadFamilies()
   })
 }
 
 async function handleDelete({ id, level }) {
-  await handleLoading(async () => {
+  await handleLoading(isLoading, async () => {
     await axios.delete(`${endpoints[level]}/${id}`)
     await loadFamilies()
   })
 }
 
-// gallery change
+// image picker
 const showPicker = ref(false)
 const pickerModelId = ref(null)
 const pickerModelType = ref(null)
@@ -83,16 +71,16 @@ const pickerModelType = ref(null)
 function startGalleryChange({ model_id, level }) {
   pickerModelId.value = model_id
   pickerModelType.value = {
-      family: () => 'App\\Models\\Family',
-      genus: () => 'App\\Models\\Genus',
-      species: () => 'App\\Models\\Species'
-    }[level]?.()
+    family: () => 'App\\Models\\Family',
+    genus: () => 'App\\Models\\Genus',
+    species: () => 'App\\Models\\Species'
+  }[level]?.()
   showPicker.value = true
 }
 
 function closeImagePicker() {
   pickerModelId.value = null
-  pickerModelId.value = null
+  pickerModelType.value = null
   showPicker.value = false
 }
 
@@ -126,7 +114,6 @@ function filterTree(families, query) {
     .filter(Boolean)
 }
 
-
 const filteredFamilies = computed(() => {
   return searchQuery.value.trim()
     ? filterTree(families.value, searchQuery.value)
@@ -135,6 +122,7 @@ const filteredFamilies = computed(() => {
 
 const emit = defineEmits(['selectSpecies'])
 </script>
+
 
 <template>
   <MediaPickerModal
