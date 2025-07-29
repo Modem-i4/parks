@@ -1,92 +1,16 @@
-<template>
-  <div class="space-y-1">
-        <DeleteForm
-            v-if="confirmingDelete"
-            :label="item.name"
-            @confirmDelete="confirmDelete"
-            @cancelDelete="cancelDelete"
-        />
-        <div
-            class="flex items-center px-2 py-1 rounded cursor-pointer bg-gray-100 hover:bg-gray-200"
-            @click="emit('selectInfrastructureType', item)"
-        >
-            <div class="flex items-center space-x-2 flex-1 relative group">
-                <img :src="item.icon?.file_path" alt="Іконка" class="w-5 h-5" />
-                <template v-if="isEditing">
-                    <div class="relative flex flex-col md:flex-row md:items-start md:gap-2 w-full">
-                        <div class="relative w-full md:w-1/2">
-                            <FloatingInput v-model="form.name" label="Назва типу" inputClasses="font-semibold"
-                                :inputClasses="nameError ? 'border-red-500' : null"
-                            />
-                            <Tooltip v-if="nameError">{{ nameError }}</Tooltip>
-                        </div>
-                    </div>
-                </template>
-                <template v-else>
-                    <span class="font-semibold text-sm">{{ item.name }}</span>
-                </template>
-            </div>
-
-            <div class="space-x-1 flex-shrink-0 ml-2">
-                <template v-if="isEditing">
-                    <SecondaryButton class="bg-inherit" @click.stop="saveEdit">✔️</SecondaryButton>
-                    <SecondaryButton class="bg-inherit" size="sm" @click.stop="cancelEdit">❌</SecondaryButton>
-                </template>
-                <template v-else>
-                    <SecondaryButton 
-                      class="bg-inherit" :size="isMobile ? 'sm' : 'md'"
-                      @click.stop="emit('changeGallery', item.id)"
-                    >🖼️</SecondaryButton>
-                    <SecondaryButton 
-                      class="bg-inherit" :size="isMobile ? 'sm' : 'md'"
-                      @click.stop="emit('changeIcon', item.id)"
-                    >🎨</SecondaryButton>
-                    <SecondaryButton
-                      class="bg-inherit" @click.stop="startEdit" :size="isMobile ? 'sm' : 'md'"
-                    >✏️</SecondaryButton>
-                    <SecondaryButton
-                      size="sm" variant="danger" class="bg-inherit"
-                      @click.stop="toggleDelete"
-                    >🗑️</SecondaryButton>
-                </template>
-            </div>
-        </div>
-    </div>
-</template>
-
 <script setup>
-import SecondaryButton from '@/Components/Default/SecondaryButton.vue';
-import FloatingInput from '@/Components/Custom/FloatingInput.vue';
-import Tooltip from '@/Components/Custom/Tooltip.vue';
-import DeleteForm from '@/Components/Custom/DeleteForm.vue';
-import { ref, computed } from 'vue';
-import { isMobile } from '@/Helpers/isMobileHelper';
+import EditableItemWrapper from '@/Components/Custom/EditableDictItemWrapper.vue'
+import SecondaryButton from '@/Components/Default/SecondaryButton.vue'
+import { ref, computed } from 'vue'
+import { isMobile } from '@/Helpers/isMobileHelper'
 
-
-const props = defineProps({
-  item: Object,
-})
-
+const props = defineProps({ item: Object })
 const emit = defineEmits(['update', 'delete', 'changeIcon', 'changeGallery', 'selectInfrastructureType'])
 
 const isEditing = ref(false)
-const showErrors = ref(false)
 const confirmingDelete = ref(false)
-
-const form = ref({
-  name: props.item.name
-})
-
-const startEdit = () => {
-  form.value.name = props.item.name
-  showErrors.value = false
-  isEditing.value = true
-}
-
-const cancelEdit = () => {
-  isEditing.value = false
-  showErrors.value = false
-}
+const showErrors = ref(false)
+const form = ref({ name: props.item.name })
 
 const nameError = computed(() => {
   if (!showErrors.value) return ''
@@ -95,32 +19,59 @@ const nameError = computed(() => {
   return ''
 })
 
-const saveEdit = () => {
+function saveEdit() {
   showErrors.value = true
   if (nameError.value) return
-
-  emit('update', {
-    id: props.item.id,
-    data: form.value,
-  })
-
+  emit('update', { id: props.item.id, data: form.value })
   isEditing.value = false
   showErrors.value = false
 }
 
-const confirmDelete = () => {
-  emit('delete', {
-    id: props.item.id,
-    level: props.level
-  })
-  confirmingDelete.value = false
+function startEdit() {
+  form.value.name = props.item.name
+  showErrors.value = false
+  isEditing.value = true
 }
 
-const toggleDelete = () => {
+function cancelEdit() {
+  isEditing.value = false
+  showErrors.value = false
+}
+
+function toggleDelete() {
   confirmingDelete.value = !confirmingDelete.value
 }
 
-const cancelDelete = () => {
+function confirmDelete() {
+  emit('delete', { id: props.item.id })
+  confirmingDelete.value = false
+}
+
+function cancelDelete() {
   confirmingDelete.value = false
 }
 </script>
+
+<template>
+  <EditableItemWrapper
+    :item="props.item"
+    :form="form"
+    :isEditing="isEditing"
+    :confirmingDelete="confirmingDelete"
+    :nameError="nameError"
+    @saveEdit="saveEdit"
+    @startEdit="startEdit"
+    @cancelEdit="cancelEdit"
+    @confirmDelete="confirmDelete"
+    @cancelDelete="cancelDelete"
+    @toggleDelete="toggleDelete"
+    @select="() => emit('selectInfrastructureType', props.item)"
+  >
+    <template #actions>
+      <SecondaryButton class="bg-inherit" :size="isMobile ? 'sm' : 'md'" @click.stop="emit('changeGallery', props.item.id)">🖼️</SecondaryButton>
+      <SecondaryButton class="bg-inherit" :size="isMobile ? 'sm' : 'md'" @click.stop="emit('changeIcon', props.item.id)">🎨</SecondaryButton>
+      <SecondaryButton class="bg-inherit" @click.stop="startEdit" :size="isMobile ? 'sm' : 'md'">✏️</SecondaryButton>
+      <SecondaryButton size="sm" variant="danger" class="bg-inherit" @click.stop="toggleDelete">🗑️</SecondaryButton>
+    </template>
+  </EditableItemWrapper>
+</template>
