@@ -21,6 +21,8 @@ const {
 } = useSearchFilter(hedgeRows)
 
 onMounted(load)
+
+const emit = defineEmits(['selectHedgeRow'])
 </script>
 
 <template>
@@ -45,6 +47,7 @@ onMounted(load)
         :item="row"
         @update="handleUpdate"
         @delete="handleDelete"
+        @selectHedgeRow="emit('selectHedgeRow', $event)"
       />
     </div>
   </div>

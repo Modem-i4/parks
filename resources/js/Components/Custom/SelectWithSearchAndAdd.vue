@@ -20,7 +20,7 @@
           v-if="props.canAddNew"
           @mousedown.prevent="$emit('show-modal', props.mode)"
         >
-          + Додати новий {{ labelShort }}
+          + Додати {{ labelNewShort }}
         </li>
 
         <li
@@ -42,7 +42,7 @@ import axios from 'axios'
 
 const props = defineProps({
   modelValue: [Number, Array, null],
-  mode: { type: String, required: true }, // 'species' | 'infrastructureType' | 'tags'
+  mode: { type: String, required: true }, // 'species' | 'infrastructureType' | 'tags' | 'hedgeRows' | 'hedgeShapes'
   startingItem: [Object, null],
   type: String, // 'trees', 'bushes', 'hedges', 'flowers'
   showLabel: { type: Boolean, default: true },
@@ -63,9 +63,12 @@ const labelField = computed(() => {
     case 'genus':
     case 'families':
       return 'name_ukr'
-    case 'infrastructureType': return 'name'
-    case 'tags': return 'name'
-    default: return 'name'
+    case 'infrastructureType': 
+    case 'hedgeRows':
+    case 'hedgeShapes':
+    case 'tags': 
+    default: 
+      return 'name'
   }
 })
 
@@ -75,15 +78,19 @@ const label = computed(() => {
     case 'species': return 'Вид'
     case 'infrastructureType': return 'Тип інфраструктури'
     case 'tags': return 'Вибір тегів'
+    case 'hedgeRows': return 'Тип ряду'
+    case 'hedgeShapes': return 'Форма'
   }
 })
-const labelShort = computed(() => {
+const labelNewShort = computed(() => {
   switch (props.mode) {
-    case 'species': return 'вид'
-    case 'genus': return 'рід'
-    case 'families': return 'родина'
-    case 'infrastructureType': return 'тип'
-    case 'tags': return 'тег'
+    case 'species': return 'новий вид'
+    case 'genus': return 'новий рід'
+    case 'families': return 'нову родину'
+    case 'infrastructureType': return 'новий тип'
+    case 'tags': return 'новий тег'
+    case 'hedgeRows': return 'новий ряд'
+    case 'hedgeShapes': return 'нову форму'
   }
 })
 
@@ -113,7 +120,11 @@ const endpoint = computed(() => {
     case 'families':
     case 'tags':
       return `/api/${props.mode}/${props.type}`
-    case 'infrastructureType': return `/api/${props.mode}`
+    case 'infrastructureType':
+    case 'hedgeRows':
+    case 'hedgeShapes':
+    case 'infrastructureType':
+       return `/api/${props.mode}`
   }
 })
 

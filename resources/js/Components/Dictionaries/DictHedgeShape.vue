@@ -21,6 +21,8 @@ const {
 } = useSearchFilter(hedgeShapes)
 
 onMounted(load)
+
+const emit = defineEmits(['selectHedgeShape'])
 </script>
 
 <template>
@@ -45,6 +47,7 @@ onMounted(load)
         :item="shape"
         @update="handleUpdate"
         @delete="handleDelete"
+        @selectHedgeShape="emit('selectHedgeShape', $event)"
       />
     </div>
   </div>

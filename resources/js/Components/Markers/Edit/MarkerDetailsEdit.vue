@@ -11,6 +11,8 @@ import DictTaxonomy from '@/Components/Dictionaries/DictTaxonomy.vue'
 import DictInfrastructureType from '@/Components/Dictionaries/DictInfrastructureType.vue'
 import TagList from '../TagList.vue'
 import DictTags from '@/Components/Dictionaries/DictTags.vue'
+import DictHedgeRow from '@/Components/Dictionaries/DictHedgeRow.vue'
+import DictHedgeShape from '@/Components/Dictionaries/DictHedgeShape.vue'
 
 const props = defineProps({ marker: Object })
 
@@ -24,7 +26,9 @@ const destroyDraggableMarker = ref(null)
 const showModal = ref({
   species: false,
   infrastructureType: false,
-  tags: false
+  tags: false,
+  hedgeShape: false,
+  hedgeRow: false
 })
 
 onMounted(async () => {
@@ -149,6 +153,19 @@ const selectTag = (tag) => {
   showModal.value.tags = false
 }
 
+const selectHedgeShape = (shape) => {
+  // shape.edited = true
+  marker.value.green.hedge.hedge_shape = shape
+  marker.value.green.hedge.hedge_shape_id = shape.id
+  showModal.value.hedgeShape = false
+}
+const selectHedgeRow = (row) => {
+  // row.edited = true
+  marker.value.green.hedge.hedge_row = row
+  marker.value.green.hedge.hedge_row_id = row.id
+  showModal.value.hedgeRow = false
+}
+
 </script>
 <template>
   <div class="py-4 flex flex-col gap-6 max-w-xl">
@@ -228,13 +245,37 @@ const selectTag = (tag) => {
         <NumberSelect v-model="marker.green.hedge.length_m" :min="0" :max="500" label="Довжина (м)" />
 
         <div class="space-y-1">
-          <label class="text-sm font-medium text-gray-700">Тип ряду</label>
-          <input v-model="marker.green.hedge.hedge_row.name" class="w-full border border-gray-300 rounded px-2 py-1" />
+          <SelectWithSearchAndAdd
+            mode="hedgeRows"
+            class="space-y-1"
+            v-model="marker.green.hedge.hedge_row_id"
+            :startingItem="marker.green.hedge.hedge_row"
+            :type="marker.type"
+            @show-modal="() => showModal.hedgeRow = true"
+          />
+
+          <Modal :show="showModal.hedgeRow" maxWidth="4xl" @close="showModal.hedgeRow = false">
+            <DictHedgeRow
+              @selectHedgeRow="selectHedgeRow"
+            />
+          </Modal>
         </div>
 
         <div class="space-y-1">
-          <label class="text-sm font-medium text-gray-700">Форма</label>
-          <input v-model="marker.green.hedge.hedge_shape.name" class="w-full border border-gray-300 rounded px-2 py-1" />
+          <SelectWithSearchAndAdd
+            mode="hedgeShapes"
+            class="space-y-1"
+            v-model="marker.green.hedge.hedge_shape_id"
+            :startingItem="marker.green.hedge.hedge_shape"
+            :type="marker.type"
+            @show-modal="() => showModal.hedgeShape = true"
+          />
+
+          <Modal :show="showModal.hedgeShape" maxWidth="4xl" @close="showModal.hedgeShape = false">
+            <DictHedgeShape
+              @selectHedgeShape="selectHedgeShape"
+            />
+          </Modal>
         </div>
       </div>
     </div>

@@ -4,7 +4,7 @@ import SecondaryButton from '@/Components/Default/SecondaryButton.vue'
 import { ref, computed } from 'vue'
 
 const props = defineProps({ item: Object })
-const emit = defineEmits(['update', 'delete'])
+const emit = defineEmits(['update', 'delete', 'selectHedgeRow'])
 
 const isEditing = ref(false)
 const confirmingDelete = ref(false)
@@ -53,7 +53,7 @@ function cancelDelete() {
     @confirmDelete="confirmDelete"
     @cancelDelete="cancelDelete"
     @toggleDelete="toggleDelete"
-    @select="() => {}"
+    @select="() => emit('selectHedgeRow', props.item)"
   >
     <template #actions>
       <SecondaryButton class="bg-inherit" @click.stop="isEditing = true">✏️</SecondaryButton>

@@ -27,9 +27,8 @@ class MarkerFilterConfigService {
     {
         // Get dynamic options
         $recommendations = Recommendation::select('id', 'name')->get()->toArray();
-        $species = Species::with('genus.family')->select('id', 'name_ukr')->get()->groupBy('type')->toArray();
-        $hedgeTypeRows = HedgeRow::pluck('name')->toArray();
-        $hedgeTypeShapes = HedgeShape::pluck('name')->toArray();
+        $hedgeRows = HedgeRow::select('id', 'name')->get()->toArray();
+        $hedgeShapes = HedgeShape::select('id', 'name')->get()->toArray();
         $infrastructureTypes = InfrastructureType::with('icon')
             ->get()->map(function ($type) {
                 return [
@@ -205,13 +204,13 @@ class MarkerFilterConfigService {
                                 'name' => 'Тип ряду',
                                 'slug' => 'type_row',
                                 'type' => 'multiselect',
-                                'options' => $hedgeTypeRows,
+                                'options' => $hedgeRows,
                             ],
                             [
                                 'name' => 'Форма',
                                 'slug' => 'type_shape',
                                 'type' => 'multiselect',
-                                'options' => $hedgeTypeShapes,
+                                'options' => $hedgeShapes,
                             ],
                         ],
                     ],
