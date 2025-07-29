@@ -16,8 +16,8 @@ const showDetails = computed(() => (props.green[props.type] && ['tree', 'bush', 
 
     <div v-if="type === 'hedge'" class="space-y-1">
       <p><strong>Довжина:</strong> {{ green.hedge.length_m }} м</p>
-      <p v-if="green.hedge.hedge_row"><strong>Тип ряду:</strong> {{ green.hedge.hedge_row }}</p>
-      <p v-if="green.hedge.hedge_shape"><strong>Форма:</strong> {{ green.hedge.hedge_shape }}</p>
+      <p v-if="green.hedge.hedge_row"><strong>Тип ряду:</strong> {{ green.hedge.hedge_row.name }}</p>
+      <p v-if="green.hedge.hedge_shape"><strong>Форма:</strong> {{ green.hedge.hedge_shape.name }}</p>
     </div>
 
     <div v-else-if="type === 'bush'" class="space-y-1">

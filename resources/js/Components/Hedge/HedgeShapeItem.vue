@@ -1,0 +1,63 @@
+<script setup>
+import EditableItemWrapper from '@/Components/Custom/EditableDictItemWrapper.vue'
+import SecondaryButton from '@/Components/Default/SecondaryButton.vue'
+import { ref, computed } from 'vue'
+
+const props = defineProps({ item: Object })
+const emit = defineEmits(['update', 'delete'])
+
+const isEditing = ref(false)
+const confirmingDelete = ref(false)
+const showErrors = ref(false)
+const form = ref({ name: props.item.name })
+
+const nameError = computed(() => {
+  if (!showErrors.value) return ''
+  if (!form.value.name.trim()) return 'Поле обовʼязкове'
+  if (form.value.name.trim().length < 3) return 'Щонайменше 3 літери'
+  return ''
+})
+
+function saveEdit() {
+  showErrors.value = true
+  if (nameError.value) return
+  emit('update', { id: props.item.id, data: form.value })
+  isEditing.value = false
+  showErrors.value = false
+}
+
+function toggleDelete() {
+  confirmingDelete.value = !confirmingDelete.value
+}
+
+function confirmDelete() {
+  emit('delete', { id: props.item.id })
+  confirmingDelete.value = false
+}
+
+function cancelDelete() {
+  confirmingDelete.value = false
+}
+</script>
+
+<template>
+  <EditableItemWrapper
+    :item="props.item"
+    :form="form"
+    :isEditing="isEditing"
+    :confirmingDelete="confirmingDelete"
+    :nameError="nameError"
+    @saveEdit="saveEdit"
+    @startEdit="() => isEditing = true"
+    @cancelEdit="() => isEditing = false"
+    @confirmDelete="confirmDelete"
+    @cancelDelete="cancelDelete"
+    @toggleDelete="toggleDelete"
+    @select="() => {}"
+  >
+    <template #actions>
+      <SecondaryButton class="bg-inherit" @click.stop="isEditing = true">✏️</SecondaryButton>
+      <SecondaryButton size="sm" variant="danger" class="bg-inherit" @click.stop="toggleDelete">🗑️</SecondaryButton>
+    </template>
+  </EditableItemWrapper>
+</template>

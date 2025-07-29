@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class HedgeShape
  * 
+ * @property int $id
  * @property string $name
  * @property string|null $description
  * 
@@ -17,11 +18,10 @@ use Illuminate\Database\Eloquent\Model;
 class HedgeShape extends Model
 {
 	protected $table = 'hedge_shapes';
-	protected $primaryKey = 'name';
-	public $incrementing = false;
 	public $timestamps = false;
 
 	protected $fillable = [
+		'name',
 		'description'
 	];
 

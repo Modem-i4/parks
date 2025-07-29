@@ -14,6 +14,8 @@ use App\Models\Park;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use App\Enums\TagType;
+use App\Models\HedgeRow;
+use App\Models\HedgeShape;
 use App\Models\InfrastructureType;
 use App\Models\Species;
 
@@ -87,8 +89,8 @@ class MarkerSeeder extends Seeder
                         'hedge' => Hedge::create([
                             'id' => $green->id,
                             'length_m' => rand(5, 50),
-                            'hedge_row_id' => null,
-                            'hedge_shape_id' => null,
+                            'hedge_row_id' => HedgeRow::inRandomOrder()->value('id'),
+                            'hedge_shape_id' => HedgeShape::inRandomOrder()->value('id'),
                         ]),
                         'flower' => Flower::create([
                             'id' => $green->id,

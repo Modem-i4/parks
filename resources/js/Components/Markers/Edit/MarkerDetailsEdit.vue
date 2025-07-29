@@ -229,12 +229,12 @@ const selectTag = (tag) => {
 
         <div class="space-y-1">
           <label class="text-sm font-medium text-gray-700">Тип ряду</label>
-          <input v-model="marker.green.hedge.hedge_row" class="w-full border border-gray-300 rounded px-2 py-1" />
+          <input v-model="marker.green.hedge.hedge_row.name" class="w-full border border-gray-300 rounded px-2 py-1" />
         </div>
 
         <div class="space-y-1">
           <label class="text-sm font-medium text-gray-700">Форма</label>
-          <input v-model="marker.green.hedge.hedge_shape" class="w-full border border-gray-300 rounded px-2 py-1" />
+          <input v-model="marker.green.hedge.hedge_shape.name" class="w-full border border-gray-300 rounded px-2 py-1" />
         </div>
       </div>
     </div>

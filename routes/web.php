@@ -11,6 +11,8 @@ use App\Http\Controllers\MediaController;
 use App\Http\Controllers\MediaLibraryController;
 use App\Http\Controllers\RecommendationController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\HedgeRowController;
+use App\Http\Controllers\HedgeShapeController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -107,11 +109,23 @@ Route::prefix('api')->group(function () {
     Route::patch('/tags/{id}', [TagController::class, 'update']);
     Route::delete('/tags/{id}', [TagController::class, 'destroy']);
 
-    // Tags
+    // Recommendations
     Route::get('/recommendations', [RecommendationController::class, 'index']);
     Route::post('/recommendations', [RecommendationController::class, 'store']);
     Route::patch('/recommendations/{id}', [RecommendationController::class, 'update']);
     Route::delete('/recommendations/{id}', [RecommendationController::class, 'destroy']);
+
+    // Hedge Rows
+    Route::get('/hedgeRows', [HedgeRowController::class, 'index']);
+    Route::post('/hedgeRows', [HedgeRowController::class, 'store']);
+    Route::patch('/hedgeRows/{id}', [HedgeRowController::class, 'update']);
+    Route::delete('/hedgeRows/{id}', [HedgeRowController::class, 'destroy']);
+
+    // Hedge Shapes
+    Route::get('/hedgeShapes', [HedgeShapeController::class, 'index']);
+    Route::post('/hedgeShapes', [HedgeShapeController::class, 'store']);
+    Route::patch('/hedgeShapes/{id}', [HedgeShapeController::class, 'update']);
+    Route::delete('/hedgeShapes/{id}', [HedgeShapeController::class, 'destroy']);
 
     //// Media
     Route::prefix('media-library')->group(function () {

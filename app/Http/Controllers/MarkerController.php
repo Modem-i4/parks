@@ -39,6 +39,9 @@ class MarkerController extends Controller
             'infrastructure',
             'tags:id,name,public,custom,type',
 
+            'green.hedge.hedge_row',
+            'green.hedge.hedge_shape',
+
             'infrastructure.infrastructureType:id,name,description',
             'green.species:id,genus_id,name_ukr,name_lat',
             'green.species.genus:id,family_id,name_ukr,name_lat',

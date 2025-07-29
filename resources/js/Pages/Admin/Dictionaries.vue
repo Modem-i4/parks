@@ -7,6 +7,8 @@ import { isMobile } from '@/Helpers/isMobileHelper'
 import ArrowIcon from '@/Components/Custom/Icons/ArrowIcon.vue'
 import DictTags from '@/Components/Dictionaries/DictTags.vue'
 import DictRecommendations from '@/Components/Dictionaries/DictRecommendations.vue'
+import DictHedgeShape from '@/Components/Dictionaries/DictHedgeShape.vue'
+import DictHedgeRow from '@/Components/Dictionaries/DictHedgeRow.vue'
 
 defineOptions({
   layout: AdminLayout,
@@ -27,6 +29,14 @@ const dictionaryItems = [
   { type: 'item', slug: 'Infrastructure', name: 'Типи інфраструктури', component: DictInfrastructureType },
   { type: 'item', slug: 'ObjectState', name: 'Види рекомендацій', component: DictRecommendations },
   { type: 'item', slug: 'Tags', name: 'Теги', component: DictTags },
+  {
+    type: 'group',
+    label: 'Живоплоти',
+    children: [
+      { slug: 'HedgeShape', name: 'Форма живоплоту', component: DictHedgeShape },
+      { slug: 'HedgeRow', name: 'Тип ряду живоплоту', component: DictHedgeRow }
+    ]
+  }
 ]
 
 // map dicts
@@ -38,7 +48,7 @@ dictionaryItems.forEach(entry => {
     entry.children.forEach(child => {
       dictionaries[child.slug] = {
         ...child,
-        component: entry.component,
+        component: child.component ?? entry.component ?? null,
         props: child.props || {}
       }
     })
