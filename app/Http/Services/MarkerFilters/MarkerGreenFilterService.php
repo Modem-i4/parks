@@ -71,7 +71,7 @@ class MarkerGreenFilterService {
             }
 
             if (!empty($filters['general']['recommendations'])) {
-                $q->whereHas('greenWorksHistory.recommendations', function ($s) use ($filters) {
+                $q->whereHas('works.recommendations', function ($s) use ($filters) {
                     $s->whereIn('name', $filters['general']['recommendations']);
                 });
             }

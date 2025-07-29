@@ -7,36 +7,46 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class GreenWorksHistory
+ * Class Work
  * 
  * @property int $id
  * @property int $green_id
+ * @property int $recommendation_id
  * @property Carbon $recommendation_date
+ * @property int|null $recommender_id
  * @property Carbon|null $execution_date
+ * @property int|null $executor_id
  * @property string|null $notes
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * 
  * @property Green $green
- * @property Collection|GreenWorkRecommendation[] $green_work_recommendations
+ * @property Recommendation $recommendation
+ * @property User $recommender
+ * @property User $executor
  *
  * @package App\Models
  */
-class GreenWorksHistory extends Model
+class Work extends Model
 {
-	protected $table = 'green_works_history';
+	protected $table = 'works';
 
 	protected $casts = [
 		'green_id' => 'int',
+		'recommendation_id' => 'int',
 		'recommendation_date' => 'datetime',
+		'green_id' => 'int',
 		'execution_date' => 'datetime'
 	];
 
 	protected $fillable = [
 		'green_id',
+		'recommendation_id',
 		'recommendation_date',
 		'execution_date',
-		'notes'
+		'notes',
+		'recommender_id',
+		'executor_id',
 	];
 
 	public function green()
@@ -44,8 +54,19 @@ class GreenWorksHistory extends Model
 		return $this->belongsTo(Green::class);
 	}
 
-	public function green_work_recommendations()
+	public function recommendation()
 	{
-		return $this->hasMany(GreenWorkRecommendation::class, 'green_work_id');
+    	return $this->belongsTo(Recommendation::class);
 	}
+
+	public function recommender()
+	{
+		return $this->belongsTo(User::class, 'recommender_id');
+	}
+
+	public function executor()
+	{
+		return $this->belongsTo(User::class, 'executor_id');
+	}
+
 }

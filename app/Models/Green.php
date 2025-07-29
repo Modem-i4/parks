@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use Doctrine\Inflector\Rules\Word;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -22,7 +23,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
  * @property Species $species
  * @property Bush|null $bush
  * @property Flower|null $flower
- * @property Collection|GreenWorksHistory[] $green_works_histories
+ * @property Collection|Work[] $works
  * @property Hedge|null $hedge
  * @property Collection|Tree[] $trees
  *
@@ -74,9 +75,9 @@ class Green extends Model
 		return $this->hasOne(Flower::class, 'id');
 	}
 
-	public function green_works_histories()
+	public function works()
 	{
-		return $this->hasMany(GreenWorksHistory::class);
+		return $this->hasMany(Work::class);
 	}
 
 	public function hedge()

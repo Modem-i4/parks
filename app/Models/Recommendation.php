@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * 
- * @property Collection|GreenWorkRecommendation[] $green_work_recommendations
+ * @property Collection|Work[] $work
  *
  * @package App\Models
  */
@@ -32,8 +32,8 @@ class Recommendation extends Model
 		'custom'
 	];
 
-	public function green_work_recommendations()
+	public function works()
 	{
-		return $this->hasMany(GreenWorkRecommendation::class);
+		return $this->hasMany(Work::class);
 	}
 }
