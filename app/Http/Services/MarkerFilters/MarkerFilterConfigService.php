@@ -67,6 +67,36 @@ class MarkerFilterConfigService {
                 'checked' => true,
                 'children' => [
                     [
+                        'name' => 'Роботи',
+                        'slug' => 'works',
+                        'type' => 'group',
+                        'role' => 'worker',
+                        'children' => [
+                            [
+                                'name' => 'Виконання',
+                                'slug' => 'completion',
+                                'type' => 'multiselect',
+                                'options' => [['name' => 'Виконані', 'id' => 'completed'], ['name'=>'Невиконані', 'id'=>'uncompleted']],
+                            ],
+                            [
+                                'name' => 'Рекомендації',
+                                'slug' => 'recommendations',
+                                'type' => 'multiselect',
+                                'options' => $recommendations,
+                            ],
+                            [
+                                'name' => 'Дата доручення',
+                                'slug' => 'recommendation_date_range',
+                                'type' => 'dates',
+                            ],
+                            [
+                                'name' => 'Дата виконання',
+                                'slug' => 'execution_date_range',
+                                'type' => 'dates',
+                            ],
+                        ],
+                    ],
+                    [
                         'name' => 'Загальні фільтри',
                         'slug' => 'general',
                         'type' => 'group',
@@ -85,13 +115,6 @@ class MarkerFilterConfigService {
                                 'max' => 150,
                             ],
                             [
-                                'name' => 'Рекомендації',
-                                'slug' => 'recommendations',
-                                'type' => 'multiselect',
-                                'options' => $recommendations,
-                                'role' => 'worker'
-                            ],
-                            [
                                 'name' => 'Спільні теги',
                                 'slug' => 'common_tags',
                                 'type' => 'multiselect',
@@ -105,15 +128,15 @@ class MarkerFilterConfigService {
                         'type' => 'group',
                         'children' => [
                             [
+                                'name' => 'Класифікація дерев',
+                                'slug' => 'species',
+                                'type' => 'taxonomy',
+                            ],
+                            [
                                 'name' => 'Теги',
                                 'slug' => 'tags',
                                 'type' => 'multiselect',
                                 'options' => $tags['tree'] ?? [],
-                            ],
-                            [
-                                'name' => 'Класифікація дерев',
-                                'slug' => 'species',
-                                'type' => 'taxonomy',
                             ],
                             [
                                 'name' => 'Висота (м)',
@@ -158,15 +181,15 @@ class MarkerFilterConfigService {
                         'type' => 'group',
                         'children' => [
                             [
+                                'name' => 'Класифікація кущів',
+                                'slug' => 'species',
+                                'type' => 'taxonomy',
+                            ],
+                            [
                                 'name' => 'Теги',
                                 'slug' => 'tags',
                                 'type' => 'multiselect',
                                 'options' => $tags['bush'] ?? [],
-                            ],
-                            [
-                                'name' => 'Класифікація кущів',
-                                'slug' => 'species',
-                                'type' => 'taxonomy',
                             ],
                             [
                                 'name' => 'Кількість',
@@ -183,15 +206,15 @@ class MarkerFilterConfigService {
                         'type' => 'group',
                         'children' => [
                             [
+                                'name' => 'Класифікація живоплотів',
+                                'slug' => 'species',
+                                'type' => 'taxonomy',
+                            ],
+                            [
                                 'name' => 'Теги',
                                 'slug' => 'tags',
                                 'type' => 'multiselect',
                                 'options' => $tags['hedge'] ?? [],
-                            ],
-                            [
-                                'name' => 'Класифікація живоплотів',
-                                'slug' => 'species',
-                                'type' => 'taxonomy',
                             ],
                             [
                                 'name' => 'Довжина (м)',
@@ -220,15 +243,15 @@ class MarkerFilterConfigService {
                         'type' => 'group',
                         'children' => [
                             [
+                                'name' => 'Класифікація квітів',
+                                'slug' => 'species',
+                                'type' => 'taxonomy',
+                            ],
+                            [
                                 'name' => 'Теги',
                                 'slug' => 'tags',
                                 'type' => 'multiselect',
                                 'options' => $tags['flower'] ?? [],
-                            ],
-                            [
-                                'name' => 'Класифікація квітів',
-                                'slug' => 'species',
-                                'type' => 'taxonomy',
                             ],
                         ],
                     ],
@@ -242,7 +265,6 @@ class MarkerFilterConfigService {
         foreach ($config as $key => &$node) {
             if (isset($node['role'])) {
                 $requiredRole = UserRole::fromString($node['role']);
-
                 if ($userRole->level() < $requiredRole->level()) {
                     unset($config[$key]);
                     continue;
@@ -259,8 +281,16 @@ class MarkerFilterConfigService {
 
     protected function filterConfigByMode(array $config, string $mode): array
     {
-        $config[$mode]['open'] = true;
+        if($mode === 'works') {
+            $config['green']['open'] = true;
+            $config['green'][$mode]['open'] = true;
+            return [
+                'green' => $config['green'],
+                'infrastructure' => $config['infrastructure'],
+            ];
+        }
 
+        $config[$mode]['open'] = true;
         if ($mode === 'infrastructure') {
             return [
                 'infrastructure' => $config['infrastructure'],

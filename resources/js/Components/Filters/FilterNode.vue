@@ -18,6 +18,7 @@ import FilterSlider from './FilterSlider.vue'
 import FilterButton from './FilterButton.vue'
 import FilterStateSelect from './FilterStateSelect.vue'
 import FilterTaxonomySelect from './FilterTaxonomySelect.vue'
+import FilterDates from './FilterDates.vue'
 
 const props = defineProps({
   node: Object,
@@ -32,6 +33,7 @@ const componentsMap = {
   stateSelect: FilterStateSelect,
   infrastructureSelect: FilterMultiselect,
   taxonomy: FilterTaxonomySelect,
+  dates: FilterDates,
   slider: FilterSlider,
   button: FilterButton
 }

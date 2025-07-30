@@ -7,11 +7,6 @@ const props = defineProps({
   path: Array
 })
 
-const stateMap = {
-  good: { label: 'Ідеальний', color: 'green' },
-  normal: { label: 'Хороший', color: 'yellow' },
-  bad: { label: 'Поганий', color: 'red' }
-}
 const handleCheckboxChange = (id, event) => {
   const val = event.target.checked
 
@@ -50,23 +45,6 @@ const handleCheckboxChange = (id, event) => {
         </label>
       </template>
 
-
-      <template v-if="node.type === 'stateSelect'">
-        <label v-for="opt in node.options" :key="opt" class="inline-flex items-center space-x-1">
-          <input
-            type="checkbox"
-            :value="opt"
-            @change="handleCheckboxChange(opt, $event)"
-            :class="`border-2 rounded p-2 border-${stateMap[opt].color}-600 text-${stateMap[opt]?.color}-600`"
-          >
-          <span :class="`text-${stateMap[opt]?.color}-600`">
-            {{ stateMap[opt]?.label }}
-          </span>
-        </label>
-      </template>
-
-
-
       <template v-if="node.type === 'infrastructureSelect'">
 
         <label
@@ -90,8 +68,6 @@ const handleCheckboxChange = (id, event) => {
           />
         </label>
       </template>
-
-
     </div>
   </div>
 </template>

@@ -17,6 +17,9 @@ function openInfrastructure() {
 function openGreen() {
   setParkView(parkStore, 'single', 'green')
 }
+function openWorks() {
+  setParkView(parkStore, 'single', 'works')
+}
 </script>
 
 <template>
@@ -35,8 +38,9 @@ function openGreen() {
     </div>
     <div class="mt-6 space-y-3"
       v-if="!parkStore.isSingleParkView">
-      <ArrowButton @click="openInfrastructure">Інфраструктура парку</ArrowButton>
-      <ArrowButton :primary="false" @click="openGreen">Насадження парку</ArrowButton>
+      <ArrowButton variant="secondaryBlack" @click="openWorks">Роботи парку</ArrowButton>
+      <ArrowButton variant="primary" @click="openInfrastructure">Інфраструктура парку</ArrowButton>
+      <ArrowButton variant="secondary" @click="openGreen">Насадження парку</ArrowButton>
     </div>
 
   </div>

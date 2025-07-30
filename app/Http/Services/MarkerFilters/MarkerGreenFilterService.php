@@ -13,11 +13,9 @@ class MarkerGreenFilterService {
 
     public function apply($query, array $filters): void
     {
-        $types = $this->extractTypes($filters);
-
-        $query->whereIn('type', $types);
-
+        $this->applyTypes($query, $filters);
         $this->applyGeneral($query, $filters);
+        $this->applyWorks($query, $filters);
 
         if (!empty($filters['general']['common_tags'])) {
             $query->whereHas('tags', function ($q) use ($filters) {
@@ -27,7 +25,7 @@ class MarkerGreenFilterService {
 
         $query->where(function ($q) use ($filters) {
             foreach ($this->typeMap as $slug => $type) {
-                if (!empty($filters[$slug])) {
+                if (array_key_exists($slug, $filters)) {
                     $q->orWhere(function ($q1) use ($filters, $slug, $type) {
                         $q1->where('type', $type);
 
@@ -43,17 +41,16 @@ class MarkerGreenFilterService {
             }
         });
     }
-
-    private function extractTypes($filters): array
-    {
+    private function applyTypes($query, $filters) {
+        
         $types = [];
         foreach ($this->typeMap as $slug => $type) {
             if (isset($filters[$slug])) {
                 $types[] = $type;
             }
         }
-
-        return !empty($types) ? $types : ['tree', 'bush', 'hedge', 'flower'];
+        if(empty($types)) return;
+        $query->whereIn('type', $types);
     }
 
     private function applyGeneral($query, $filters): void
@@ -77,6 +74,43 @@ class MarkerGreenFilterService {
             }
         });
     }
+
+    private function applyWorks($query, $filters): void
+    {
+        if (empty($filters['works'])) return;
+
+        $query->whereHas('green.works', function ($wq) use ($filters) {
+            $works = $filters['works'];
+            if (!empty($works['recommendation_date_range'])) {
+                [$from, $to] = $works['recommendation_date_range'];
+                if ($from) $wq->whereDate('recommendation_date', '>=', $from);
+                if ($to) $wq->whereDate('recommendation_date', '<=', $to);
+            }
+
+            if (!empty($works['execution_date_range'])) {
+                [$from, $to] = $works['execution_date_range'];
+                if ($from) $wq->whereDate('execution_date', '>=', $from);
+                if ($to) $wq->whereDate('execution_date', '<=', $to);
+            }
+
+            if (!empty($works['recommendations'])) {
+                $wq->whereIn('recommendation_id', $works['recommendations']);
+            }
+
+            if (!empty($works['completion'])) {
+                $wq->where(function ($cq) use ($works) {
+                    $states = $works['completion'];
+                    if (in_array('completed', $states)) {
+                        $cq->orWhereNotNull('execution_date');
+                    }
+                    if (in_array('uncompleted', $states)) {
+                        $cq->orWhereNull('execution_date');
+                    }
+                });
+            }
+        });
+    }
+
 
     private function applySpecific($query, $filters, $type): void
     {
