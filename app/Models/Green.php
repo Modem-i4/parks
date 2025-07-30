@@ -77,7 +77,7 @@ class Green extends Model
 
 	public function works()
 	{
-		return $this->hasMany(Work::class);
+		return $this->hasMany(Work::class)->orderByDesc('recommendation_date');
 	}
 
 	public function hedge()

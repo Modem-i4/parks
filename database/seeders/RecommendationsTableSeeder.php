@@ -10,12 +10,14 @@ class RecommendationsTableSeeder extends Seeder
     public function run()
     {
         $standardRecommendations = [
-            ['name' => 'видалення'],
-            ['name' => 'обстеження'],
-            ['name' => 'лікування'],
-            ['name' => 'санітарна обрізка'],
-            ['name' => 'формуюча обрізка'],
-            ['name' => 'встановлення огорожі'],
+            ['name' => 'Видалення'],
+            ['name' => 'Обстеження'],
+            ['name' => 'Лікування'],
+            ['name' => 'Санітарна обрізка'],
+            ['name' => 'Формуюча обрізка'],
+            ['name' => 'Встановлення огорожі'],
+            ['name' => 'Полив'],
+            ['name' => 'Підживлення'],
         ];
 
         foreach ($standardRecommendations as $recommendation) {

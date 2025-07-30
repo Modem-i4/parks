@@ -27,7 +27,7 @@ const dictionaryItems = [
     ]
   },
   { type: 'item', slug: 'Infrastructure', name: 'Типи інфраструктури', component: DictInfrastructureType },
-  { type: 'item', slug: 'ObjectState', name: 'Види рекомендацій', component: DictRecommendations },
+  { type: 'item', slug: 'ObjectState', name: 'Види робіт', component: DictRecommendations },
   { type: 'item', slug: 'Tags', name: 'Теги', component: DictTags },
   {
     type: 'group',

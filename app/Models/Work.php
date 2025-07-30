@@ -34,9 +34,9 @@ class Work extends Model
 	protected $casts = [
 		'green_id' => 'int',
 		'recommendation_id' => 'int',
-		'recommendation_date' => 'datetime',
+		'recommendation_date' => 'date',
 		'green_id' => 'int',
-		'execution_date' => 'datetime'
+		'execution_date' => 'date'
 	];
 
 	protected $fillable = [

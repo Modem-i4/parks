@@ -42,7 +42,7 @@ import axios from 'axios'
 
 const props = defineProps({
   modelValue: [Number, Array, null],
-  mode: { type: String, required: true }, // 'species' | 'infrastructureType' | 'tags' | 'hedgeRows' | 'hedgeShapes'
+  mode: { type: String, required: true }, // 'species' | 'infrastructureType' | 'tags' | 'hedgeRows' | 'hedgeShapes' | 'recommendations' 
   startingItem: [Object, null],
   type: String, // 'trees', 'bushes', 'hedges', 'flowers'
   showLabel: { type: Boolean, default: true },
@@ -67,6 +67,7 @@ const labelField = computed(() => {
     case 'hedgeRows':
     case 'hedgeShapes':
     case 'tags': 
+    case 'recommendations':
     default: 
       return 'name'
   }
@@ -80,6 +81,7 @@ const label = computed(() => {
     case 'tags': return 'Вибір тегів'
     case 'hedgeRows': return 'Тип ряду'
     case 'hedgeShapes': return 'Форма'
+    case 'recommendations': return 'Рекомендація'
   }
 })
 const labelNewShort = computed(() => {
@@ -91,6 +93,7 @@ const labelNewShort = computed(() => {
     case 'tags': return 'новий тег'
     case 'hedgeRows': return 'новий ряд'
     case 'hedgeShapes': return 'нову форму'
+    case 'recommendations': return 'нову рекомендацію'
   }
 })
 
@@ -124,6 +127,7 @@ const endpoint = computed(() => {
     case 'hedgeRows':
     case 'hedgeShapes':
     case 'infrastructureType':
+    case 'recommendations':
        return `/api/${props.mode}`
   }
 })

@@ -13,6 +13,7 @@ use App\Http\Controllers\RecommendationController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\HedgeRowController;
 use App\Http\Controllers\HedgeShapeController;
+use App\Http\Controllers\WorkController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -133,6 +134,14 @@ Route::prefix('api')->group(function () {
         Route::post('/', [MediaLibraryController::class, 'store']);
         Route::delete('/{mediaLibrary}', [MediaLibraryController::class, 'destroy']);
     });
+
+    //// Works
+    Route::post('/works', [WorkController::class, 'store']);
+    Route::patch('/works/{id}', [WorkController::class, 'update']);
+    Route::patch('/works/{id}/complete', [WorkController::class, 'complete']);
+    Route::patch('/works/{id}/revert', [WorkController::class, 'revert']);
+    Route::delete('/works/{id}', [WorkController::class, 'destroy']);
+
 
     Route::prefix('media')->group(function () {
         Route::get('/', [MediaController::class, 'index']);

@@ -4,6 +4,7 @@ import TagList from '../TagList.vue'
 import { computed, ref } from 'vue'
 import GreenDetails from './GreenDetails.vue'
 import Tooltip from '@/Components/Custom/Tooltip.vue'
+import WorkHistory from '@/Components/WorkHistory/WorkHistory.vue'
 
 const loading = ref(true)
 const copyCompleted = ref(false)
@@ -61,6 +62,8 @@ defineExpose({ forceImageUpdate })
         </Tooltip>
       </div>
     </div>
+    <WorkHistory v-if="props.marker.green?.works" 
+      v-model="props.marker.green.works" :loading="loading" :greenId="props.marker.green.id"/>
 
     <div v-if="props.marker.description" class="bg-white rounded px-4 py-6 text-gray-600">
       <h3 class="text-lg font-semibold pb-2">Опис</h3>
