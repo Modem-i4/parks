@@ -13,6 +13,7 @@ use App\Http\Controllers\RecommendationController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\HedgeRowController;
 use App\Http\Controllers\HedgeShapeController;
+use App\Http\Controllers\PlotController;
 use App\Http\Controllers\WorkController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -127,6 +128,12 @@ Route::prefix('api')->group(function () {
     Route::post('/hedgeShapes', [HedgeShapeController::class, 'store']);
     Route::patch('/hedgeShapes/{id}', [HedgeShapeController::class, 'update']);
     Route::delete('/hedgeShapes/{id}', [HedgeShapeController::class, 'destroy']);
+
+    // Plots
+    Route::get('/plots', [PlotController::class, 'index']);
+    Route::post('/plots', [PlotController::class, 'store']);
+    Route::patch('/plots/{id}', [PlotController::class, 'update']);
+    Route::delete('/plots/{id}', [PlotController::class, 'destroy']);
 
     //// Media
     Route::prefix('media-library')->group(function () {

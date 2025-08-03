@@ -9,6 +9,7 @@ import DictTags from '@/Components/Dictionaries/DictTags.vue'
 import DictRecommendations from '@/Components/Dictionaries/DictRecommendations.vue'
 import DictHedgeShape from '@/Components/Dictionaries/DictHedgeShape.vue'
 import DictHedgeRow from '@/Components/Dictionaries/DictHedgeRow.vue'
+import DictPlots from '@/Components/Dictionaries/DictPlots.vue'
 
 defineOptions({
   layout: AdminLayout,
@@ -29,6 +30,7 @@ const dictionaryItems = [
   { type: 'item', slug: 'Infrastructure', name: 'Типи інфраструктури', component: DictInfrastructureType },
   { type: 'item', slug: 'ObjectState', name: 'Види робіт', component: DictRecommendations },
   { type: 'item', slug: 'Tags', name: 'Теги', component: DictTags },
+  { type: 'item', slug: 'Plots', name: 'Виділи', component: DictPlots },
   {
     type: 'group',
     label: 'Живоплоти',

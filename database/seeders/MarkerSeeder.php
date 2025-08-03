@@ -24,7 +24,7 @@ class MarkerSeeder extends Seeder
     public function run()
     {
         $parksGeo = include database_path('data/ParksGeoJSON.php');
-        $parks = Park::all();
+        $parks = Park::with('plots')->get();
 
         $speciesByType = [];
         $allSpecies = Species::with('genus.family')->get();
@@ -53,7 +53,7 @@ class MarkerSeeder extends Seeder
                 $type = $types[array_rand($types)];
                 $marker = Marker::create([
                     'park_id' => $park->id,
-                    'plot_id' => null,
+                    'plot_id' => $park->plots->random()->id ?? null,
                     'coordinates' => $point,
                     'description' => 'descr',
                     'type' => $type

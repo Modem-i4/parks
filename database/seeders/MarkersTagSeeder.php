@@ -11,25 +11,26 @@ class MarkersTagSeeder extends Seeder
 {
     public function run()
     {
-        $markers = Marker::all();
-        $allTags = Tag::where('type', 'all')->get()->keyBy('id');
+        $tags = Tag::all()->groupBy('type');
+
+        $markers = Marker::select('id', 'type')->get();
+
+        $inserts = [];
 
         foreach ($markers as $marker) {
-            $typeTags = Tag::where('type', $marker->type)->get()->keyBy('id');
+            $typeTags = $tags[$marker->type] ?? collect();
+            $genericTags = $tags['all'] ?? collect();
 
-            $availableTags = $typeTags->merge($allTags)->shuffle();
+            $availableTags = $typeTags->merge($genericTags)->shuffle();
 
-            $selectedTags = $availableTags->take(rand(2, 3));
-
-            foreach ($selectedTags as $tag) {
-                DB::table('markers_tags')->updateOrInsert(
-                    [
-                        'marker_id' => $marker->id,
-                        'tag_id' => $tag->id,
-                    ],
-                    []
-                );
+            foreach ($availableTags->take(rand(2, 3)) as $tag) {
+                $inserts[] = [
+                    'marker_id' => $marker->id,
+                    'tag_id' => $tag->id,
+                ];
             }
         }
+
+        DB::table('markers_tags')->insertOrIgnore($inserts);
     }
 }

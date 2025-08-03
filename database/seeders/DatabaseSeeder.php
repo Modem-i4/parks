@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             InfrastructureTypeSeeder::class,
             HedgeRowSeeder::class,
             HedgeShapeSeeder::class,
+            PlotSeeder::class,
             MarkerSeeder::class,
             MarkersTagSeeder::class,
         ]);

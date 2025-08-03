@@ -12,9 +12,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('park_id')->constrained('parks')->cascadeOnDelete();
             $table->string('name');
-            $table->text('description')->nullable();
-            $table->float('area')->default(0);
-            $table->json('geo_json')->default(json_encode([]));
+            $table->json('coordinates')->default(json_encode([null,null]));
             $table->timestamps();
         });
     }

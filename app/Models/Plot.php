@@ -12,9 +12,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property int $park_id
  * @property string $name
- * @property string|null $description
- * @property float $area
- * @property array $geo_json
+ * @property array $coordinates
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * 
@@ -29,16 +27,13 @@ class Plot extends Model
 
 	protected $casts = [
 		'park_id' => 'int',
-		'area' => 'float',
-		'geo_json' => 'json'
+		'coordinates' => 'json'
 	];
 
 	protected $fillable = [
 		'park_id',
 		'name',
-		'description',
-		'area',
-		'geo_json'
+		'coordinates'
 	];
 
 	public function park()
