@@ -1,10 +1,10 @@
 <template>
   <div class="flex items-center p-4 space-x-4">
     <div
-      class="flex-shrink-0 w-16 h-16 rounded-full overflow-hidden bg-white relative cursor-pointer"
+      class="flex-shrink-0 rounded-full overflow-hidden bg-white relative cursor-pointer" :class="variants[variant].iconWrapperClasses"
       @click="$emit('onIconClick')"
     >
-      <img v-if="icon" :src="icon" alt="Icon" class="w-12 h-12 object-contain mx-auto my-auto" />
+      <img v-if="icon" :src="icon" alt="Icon" class="object-contain mx-auto my-auto" :class="variants[variant].iconClasses" />
       <div v-else class="text-gray-400 text-xl flex items-center justify-center h-full">{{ fallbackEmoji }}</div>
       <div
         v-if="editable"
@@ -13,7 +13,7 @@
     </div>
 
     <div>
-      <h3 class="text-lg font-semibold text-gray-900">{{ title }}</h3>
+      <h3 class="text-gray-900" :class="variants[variant].titleTextClasses">{{ title }}</h3>
       <p v-if="subtitle" class="text-sm text-gray-500">{{ subtitle }}</p>
     </div>
 
@@ -37,6 +37,22 @@ defineProps({
     type: Boolean,
     default: false,
   },
+  variant: {
+    type: String,
+    default: 'md' // | 'sm'
+  }
 })
+
+const variants = {
+  md: {
+    titleTextClasses: 'text-lg font-semibold',
+    iconWrapperClasses: 'w-16 h-16',
+    iconClasses:'w-12 h-12'
+  }, 
+  sm: {
+
+  }
+}
+
 const emit = defineEmits(['onIconClick'])
 </script>

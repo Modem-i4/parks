@@ -10,6 +10,10 @@ import MarkerDetailsEdit from './Edit/MarkerDetailsEdit.vue';
 import PanelHeader from '../Custom/PanelHeader.vue';
 import QualityStateIndicator from './View/QualityStateIndicator.vue';
 import MediaPickerModal from '../Media/MediaPickerModal.vue';
+import { getMarkerTitle } from '@/Helpers/Maps/GetMarkerTitle';
+
+import Modal from '@/Components/Default/Modal.vue'
+import GroupAssign from '@/Components/WorkHistory/GroupAssign.vue'
 
 const page = usePage()
 const role = page.props.auth.user?.role
@@ -28,6 +32,10 @@ const canUpload = UserRole.atLeast(role, 'editor')
 
 const editRef = ref(null)
 const viewRef = ref(null)
+
+const showModal = ref({
+  groupAssign: false
+})
 
 function back() {
   parkStore.selectedMarker = null
@@ -57,21 +65,12 @@ watch(editing, (newVal) => {
   parkStore.selectedMarkerLocked = newVal
 })
 
-const typeUkr = {
-  tree: 'Дерево',
-  bush: 'Кущ',
-  hedge: 'Живопліт',
-  flower: 'Квіти',
-  infrastructure: 'Інфраструктура',
-}
 const title = computed(
   () => {
     if(isAddingNew.value) {
       return 'Додавання маркера'
     }
-    return marker.value.green?.species?.name_ukr 
-      || marker.value.infrastructure?.name || marker.value.infrastructure?.infrastructure_type?.name 
-      || typeUkr[marker.value.type]
+    return getMarkerTitle(marker.value)
   }
 )
 
@@ -127,10 +126,16 @@ function closeImagePicker() {
         :canUpload="canUpload"
         @onImageClick="() => { if(canUpload) startGalleryChange() }" 
       />
-      <div class="absolute right-[4.5rem] z-[3]">
-        <BtnWhite v-if="canEdit" class="fixed bottom-2"
-          @click="editing = true"
-        >✏️</BtnWhite>
+        <div class="absolute right-[4.5rem] z-[3]">
+          <div class="fixed bottom-2">
+          <BtnWhite
+            @click="showModal.groupAssign = true"
+            class="p-[0.7rem] ms-auto"
+          >👷</BtnWhite>
+          <BtnWhite v-if="canEdit"
+            @click="editing = true"
+          >✏️</BtnWhite>
+        </div>
       </div>
     </template>
     <template v-if="editing">
@@ -156,4 +161,11 @@ function closeImagePicker() {
     @close="closeImagePicker"
     @saved="() => { viewRef.forceImageUpdate(); closeImagePicker() }"
   />
+  <Modal :show="showModal.groupAssign" maxWidth="xl" @close="showModal.groupAssign = false">
+    <GroupAssign
+      @close="showModal.groupAssign = false"
+      assignMode="picked"
+      @update="update(parkStore.selectedMarker)"
+    />
+  </Modal>
 </template>

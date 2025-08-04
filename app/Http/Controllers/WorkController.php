@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Work;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class WorkController extends Controller
 {
@@ -58,4 +60,34 @@ class WorkController extends Controller
         $works->delete();
         return response()->noContent();
     }
+
+    public function bulkStore(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'markers' => 'required|array|min:1|max:200',
+            'markers.*' => 'required|integer|exists:green,id',
+            'recommendation_id' => 'required|integer|exists:recommendations,id',
+            'notes' => 'nullable|string',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
+
+        $data = $validator->validated();
+        $now = now();
+
+        $records = array_map(fn($greenId) => [
+            'green_id' => $greenId,
+            'recommendation_id' => $data['recommendation_id'],
+            'notes' => $data['notes'] ?? null,
+            'created_at' => $now,
+            'updated_at' => $now,
+        ], $data['markers']);
+
+        DB::table('works')->insert($records);
+
+        return response()->noContent();
+    }
+
 }

@@ -33,7 +33,7 @@ watch(() => parkStore.selectedMarker, (newVal) => {
 <template>
   <div class="flex h-[calc(100vh-65px)]">
     <!-- Desktop sidebar -->
-    <div class="hidden md:block w-1/3 border-r overflow-y-auto relative" id="sidebar-target">
+    <div class="hidden md:block w-1/3 border-r overflow-y-auto overflow-x-clip relative" id="sidebar-target">
       <!-- Panel Teleport -->
     </div>
 

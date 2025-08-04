@@ -144,6 +144,7 @@ Route::prefix('api')->group(function () {
 
     //// Works
     Route::post('/works', [WorkController::class, 'store']);
+    Route::post('/works/bulk', [WorkController::class, 'bulkStore']);
     Route::patch('/works/{id}', [WorkController::class, 'update']);
     Route::patch('/works/{id}/complete', [WorkController::class, 'complete']);
     Route::patch('/works/{id}/revert', [WorkController::class, 'revert']);

@@ -6,6 +6,7 @@ export const useParkStore = defineStore('park', () => {
   const selectedMarker = ref(null)
   const selectedPark = ref(null)
   const markers = ref([])
+  const pickedMarkers = ref([])
   const showPanel = ref(false)
   const selectedMarkerLocked = ref(false)
   const singleParkContentMode = ref('infrastructure')
@@ -82,6 +83,7 @@ export const useParkStore = defineStore('park', () => {
     selectedMarker,
     selectedPark,
     markers,
+    pickedMarkers,
     showPanel,
     map,
     mapElement,

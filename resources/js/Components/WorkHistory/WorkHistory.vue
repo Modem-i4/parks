@@ -4,6 +4,7 @@ import axios from 'axios'
 import WorkItem from './WorkItem.vue'
 import WorkAddForm from './WorkAddForm.vue'
 import ArrowIcon from '../Custom/Icons/ArrowIcon.vue'
+import GroupAssignAddForm from './GroupAssignAddForm.vue'
 
 const props = defineProps({
   modelValue: Array,
@@ -57,6 +58,10 @@ function updateWork(work) {
 </script>
 
 <template>
+  <div class="space-y-2 bg-white rounded px-4 py-4 mb-2 text-gray-700">
+    <GroupAssignAddForm />
+  </div>
+
   <div class="space-y-2 bg-white rounded px-4 py-4 mb-2 text-gray-700">
     <WorkAddForm @create="createWork" />
 

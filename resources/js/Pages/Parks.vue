@@ -1,6 +1,5 @@
 <script setup>
-import { onMounted, watch } from 'vue';
-import axios from 'axios';
+import { ref, watch } from 'vue';
 
 import { useParkStore } from '@/Stores/useParkStore.js';
 
@@ -44,10 +43,10 @@ watch(
     <template #panelContent>
       <template v-if="!parkStore.isSingleParkView">
         <ParkList v-show="!parkStore.selectedMarker"/>
-        <ParkDetails v-if="parkStore.selectedMarker" />
+        <ParkDetails v-if="parkStore.selectedMarker"/>
       </template>
       <template v-if="parkStore.isSingleParkView">
-        <MapFilters v-show="!parkStore.selectedMarker"/>
+        <MapFilters v-show="!parkStore.selectedMarker" />
         <MarkerDetails v-if="parkStore.selectedMarker" />
       </template>
     </template>

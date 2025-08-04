@@ -9,6 +9,9 @@ import { isMobile } from '@/Helpers/isMobileHelper'
 import PanelHeader from '@/Components/Custom/PanelHeader.vue'
 import { setParkView } from '@/Helpers/Maps/SetParkView'
 
+import Modal from '@/Components/Default/Modal.vue'
+import GroupAssign from '@/Components/WorkHistory/GroupAssign.vue'
+
 const parkStore = useParkStore()
 const filtersConfig = ref([])
 const filters = ref({})
@@ -18,6 +21,10 @@ const filterPresets = {
   all: { green: {}, infrastructure: {} },
   nothing: {}
 }
+
+const showModal = ref({
+  groupAssign: false
+})
 
 const getFilters = async () => {
   try {
@@ -88,10 +95,22 @@ onMounted(() => {
         :renderKey
       />
     </div>
-    <div class="sticky bottom-0 p-4 bg-white md:bg-[#f3f4f6] ">
-      <PrimaryButton @click="filterMarkers" class="w-full">
+    <div class="sticky bottom-0 p-4 bg-white md:bg-[#f3f4f6] flex space-x-1">
+      <PrimaryButton @click="filterMarkers" class="flex flex-1">
         Застосувати фільтри
       </PrimaryButton>
+      <SecondaryButton size="sm"> <!-- TODO: export -->
+        ⏬
+      </SecondaryButton>
+      <SecondaryButton size="sm" @click="showModal.groupAssign = true">
+        👷
+      </SecondaryButton>
     </div>
+    <Modal :show="showModal.groupAssign" maxWidth="xl" @close="showModal.groupAssign = false">
+      <GroupAssign
+        @close="showModal.groupAssign = false"
+        assignMode="filtered"
+      />
+    </Modal>
   </div>
 </template>
