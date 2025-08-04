@@ -108,6 +108,11 @@ class MarkerFilterConfigService {
                                 'options' => QualityState::values(),
                             ],
                             [
+                                'name' => 'Виділ',
+                                'slug' => 'plot',
+                                'type' => 'plots',
+                            ],
+                            [
                                 'name' => 'Вік – від і до',
                                 'slug' => 'age_range',
                                 'type' => 'slider',

@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import axios from 'axios'
-import TaxonOption from './TaxonOption.vue'
+import TaxonOption from '@/Components/Taxonomy/TaxonOption.vue'
 import { GetOrCreateFilterTargetNode } from '@/Helpers/Maps/GetFilterTargetNode'
 
 const props = defineProps({

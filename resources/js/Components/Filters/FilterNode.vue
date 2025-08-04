@@ -19,6 +19,7 @@ import FilterButton from './FilterButton.vue'
 import FilterStateSelect from './FilterStateSelect.vue'
 import FilterTaxonomySelect from './FilterTaxonomySelect.vue'
 import FilterDates from './FilterDates.vue'
+import FilterPlotsSelect from './FilterPlotsSelect.vue'
 
 const props = defineProps({
   node: Object,
@@ -35,7 +36,8 @@ const componentsMap = {
   taxonomy: FilterTaxonomySelect,
   dates: FilterDates,
   slider: FilterSlider,
-  button: FilterButton
+  button: FilterButton,
+  plots: FilterPlotsSelect
 }
 
 function getComponentName(type) {

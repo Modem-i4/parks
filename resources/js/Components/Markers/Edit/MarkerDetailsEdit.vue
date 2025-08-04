@@ -13,6 +13,7 @@ import TagList from '../TagList.vue'
 import DictTags from '@/Components/Dictionaries/DictTags.vue'
 import DictHedgeRow from '@/Components/Dictionaries/DictHedgeRow.vue'
 import DictHedgeShape from '@/Components/Dictionaries/DictHedgeShape.vue'
+import DictPlots from '@/Components/Dictionaries/DictPlots.vue'
 
 const props = defineProps({ marker: Object })
 
@@ -28,7 +29,8 @@ const showModal = ref({
   infrastructureType: false,
   tags: false,
   hedgeShape: false,
-  hedgeRow: false
+  hedgeRow: false,
+  plot: false
 })
 
 onMounted(async () => {
@@ -139,6 +141,12 @@ const selectSpecies = (species) => {
   marker.value.green.species_id = species.id
   showModal.value.species = false
 }
+const selectPlot = (plot) => {
+  // species.edited = true
+  marker.value.green.plot = plot
+  marker.value.green.plot_id = plot.id
+  showModal.value.plot = false
+}
 const selectInfrastructureType = (infraType) => {
   infraType.edited = true
   marker.value.infrastructure.infrastructure_type = infraType
@@ -202,7 +210,7 @@ const selectHedgeRow = (row) => {
 
       <div class="space-y-1">
         <label class="text-sm font-medium text-gray-700">Коментар до стану</label>
-        <input v-model="marker.green.quality_state_note" class="w-full border border-gray-300 rounded px-2 py-1" />
+        <textarea v-model="marker.green.quality_state_note" class="w-full border border-gray-300 rounded px-2 py-1" rows="3" />
       </div>
 
       <SelectWithSearchAndAdd
@@ -218,6 +226,22 @@ const selectHedgeRow = (row) => {
         <DictTaxonomy
           :type="marker.type"
           @selectSpecies="selectSpecies"
+        />
+      </Modal>
+
+      <SelectWithSearchAndAdd
+        mode="plots"
+        class="space-y-1"
+        v-model="marker.green.plot_id"
+        :startingItem="marker.green.plot"
+        :parkId="marker.park_id"
+        @show-modal="() => showModal.plot = true"
+      />
+
+      <Modal :show="showModal.plot" maxWidth="4xl" @close="showModal.plot = false">
+        <DictPlots
+          :parkId="marker.park_id"
+          @select="selectPlot"
         />
       </Modal>
 

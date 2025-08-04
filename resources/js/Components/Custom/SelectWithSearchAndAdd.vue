@@ -42,9 +42,10 @@ import axios from 'axios'
 
 const props = defineProps({
   modelValue: [Number, Array, null],
-  mode: { type: String, required: true }, // 'species' | 'infrastructureType' | 'tags' | 'hedgeRows' | 'hedgeShapes' | 'recommendations' 
+  mode: { type: String, required: true }, // 'species' | 'infrastructureType' | 'tags' | 'hedgeRows' | 'hedgeShapes' | 'recommendations' | 'plot'
   startingItem: [Object, null],
   type: String, // 'trees', 'bushes', 'hedges', 'flowers'
+  parkId: Number,
   showLabel: { type: Boolean, default: true },
   canAddNew: { type: Boolean, default: true },
   preloadedOptions: Array,
@@ -68,6 +69,7 @@ const labelField = computed(() => {
     case 'hedgeShapes':
     case 'tags': 
     case 'recommendations':
+    case 'plots':
     default: 
       return 'name'
   }
@@ -82,6 +84,7 @@ const label = computed(() => {
     case 'hedgeRows': return 'Тип ряду'
     case 'hedgeShapes': return 'Форма'
     case 'recommendations': return 'Рекомендація'
+    case 'plots': return 'Виділ'
   }
 })
 const labelNewShort = computed(() => {
@@ -94,6 +97,7 @@ const labelNewShort = computed(() => {
     case 'hedgeRows': return 'новий ряд'
     case 'hedgeShapes': return 'нову форму'
     case 'recommendations': return 'нову рекомендацію'
+    case 'plots': return 'новий виділ'
   }
 })
 
@@ -128,7 +132,9 @@ const endpoint = computed(() => {
     case 'hedgeShapes':
     case 'infrastructureType':
     case 'recommendations':
-       return `/api/${props.mode}`
+      return `/api/${props.mode}`
+    case 'plots': 
+      return `/api/${props.mode}?parkId=${props.parkId}`
   }
 })
 

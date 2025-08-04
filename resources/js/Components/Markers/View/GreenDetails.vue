@@ -12,6 +12,7 @@ const showDetails = computed(() => (props.green[props.type] && ['tree', 'bush', 
   <div v-if="showDetails" class="text-gray-600 bg-white rounded px-4 py-6">
     <h3 class="text-lg font-semibold pb-2">Деталі насадження</h3>
 
+    <p v-if="green.plot.name"><strong>Виділ:</strong> {{ green.plot.name }}</p>
     <p v-if="green.age"><strong>Вік:</strong> {{ Math.floor(green.age%12) }} р. {{ Math.floor(green.age/12) }} м.</p>
 
     <div v-if="type === 'hedge'" class="space-y-1">
