@@ -91,7 +91,7 @@ async function deleteWork() {
             :showLabel="false"
             @show-modal="showModal.recommendation = true"
           />
-          <Modal :show="showModal.recommendation" maxWidth="4xl" @close="showModal.recommendation = false">
+          <Modal :show="showModal.recommendation" maxWidth="2xl" @close="showModal.recommendation = false">
             <DictRecommendations @select="selectRecommendation" />
           </Modal>
         </template>

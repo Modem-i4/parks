@@ -39,7 +39,7 @@
       </div>
     </Transition>
 
-    <Modal :show="showModal.recommendation" maxWidth="4xl" @close="showModal.recommendation = false">
+    <Modal :show="showModal.recommendation" maxWidth="2xl" @close="showModal.recommendation = false">
       <DictRecommendations @select="selectRecommendation" />
     </Modal>
   </div>

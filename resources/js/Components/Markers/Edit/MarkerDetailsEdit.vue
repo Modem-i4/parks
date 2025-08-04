@@ -222,7 +222,7 @@ const selectHedgeRow = (row) => {
         @show-modal="() => showModal.species = true"
       />
 
-      <Modal :show="showModal.species" maxWidth="4xl" @close="showModal.species = false">
+      <Modal :show="showModal.species" maxWidth="2xl" @close="showModal.species = false">
         <DictTaxonomy
           :type="marker.type"
           @selectSpecies="selectSpecies"
@@ -238,7 +238,7 @@ const selectHedgeRow = (row) => {
         @show-modal="() => showModal.plot = true"
       />
 
-      <Modal :show="showModal.plot" maxWidth="4xl" @close="showModal.plot = false">
+      <Modal :show="showModal.plot" maxWidth="2xl" @close="showModal.plot = false">
         <DictPlots
           :parkId="marker.park_id"
           @select="selectPlot"
@@ -278,7 +278,7 @@ const selectHedgeRow = (row) => {
             @show-modal="() => showModal.hedgeRow = true"
           />
 
-          <Modal :show="showModal.hedgeRow" maxWidth="4xl" @close="showModal.hedgeRow = false">
+          <Modal :show="showModal.hedgeRow" maxWidth="2xl" @close="showModal.hedgeRow = false">
             <DictHedgeRow
               @selectHedgeRow="selectHedgeRow"
             />
@@ -295,7 +295,7 @@ const selectHedgeRow = (row) => {
             @show-modal="() => showModal.hedgeShape = true"
           />
 
-          <Modal :show="showModal.hedgeShape" maxWidth="4xl" @close="showModal.hedgeShape = false">
+          <Modal :show="showModal.hedgeShape" maxWidth="2xl" @close="showModal.hedgeShape = false">
             <DictHedgeShape
               @selectHedgeShape="selectHedgeShape"
             />
@@ -321,7 +321,7 @@ const selectHedgeRow = (row) => {
         @show-modal="() => showModal.infrastructureType = true"
       />
 
-      <Modal :show="showModal.infrastructureType" maxWidth="4xl" @close="showModal.infrastructureType = false">
+      <Modal :show="showModal.infrastructureType" maxWidth="2xl" @close="showModal.infrastructureType = false">
         <DictInfrastructureType
           @selectInfrastructureType="selectInfrastructureType"
         />
@@ -339,7 +339,7 @@ const selectHedgeRow = (row) => {
         @show-modal="() => showModal.tags = true"
       />
 
-      <Modal :show="showModal.tags" maxWidth="4xl" @close="showModal.tags = false">
+      <Modal :show="showModal.tags" maxWidth="2xl" @close="showModal.tags = false">
         <DictTags
           @selectTag="selectTag"
           :type="marker.type"

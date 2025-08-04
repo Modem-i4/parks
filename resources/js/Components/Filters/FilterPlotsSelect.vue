@@ -110,7 +110,7 @@ watch(() => parkStore.selectedPark, async (newVal) => {
       class="text-md text-blue-600 hover:underline"
       @click="addPlotsOption"
     >+ Додати фільтр за виділом</button>
-    <Modal :show="showModal.plots" maxWidth="4xl" @close="showModal.recommendation = false">
+    <Modal :show="showModal.plots" maxWidth="2xl" @close="showModal.plots = false">
       <DictPlots @select="selectPlot" :parkId="parkStore.selectedPark.id" />
     </Modal>
   </div>

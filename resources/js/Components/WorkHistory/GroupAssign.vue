@@ -91,7 +91,7 @@
 
     <Modal
       :show="showModal.recommendation"
-      maxWidth="4xl"
+      maxWidth="2xl"
       @close="showModal.recommendation = false"
     >
       <DictRecommendations @selectRecommendation="selectRecommendation" />
