@@ -13,7 +13,7 @@ class UpdateMarkerService
     public function handle(Marker $marker, array $data): void
     {
         DB::transaction(function () use ($marker, $data) {
-            $fillableMarkerFields = ['park_id', 'plot_id', 'type', 'coordinates', 'description'];
+            $fillableMarkerFields = ['park_id', 'type', 'coordinates', 'description'];
             $marker->fill(array_intersect_key($data, array_flip($fillableMarkerFields)));
 
             $typeChanged = $marker->isDirty('type');
@@ -35,7 +35,7 @@ class UpdateMarkerService
             if (TagType::isGreenType($marker->type)) {
                 $green = $marker->green ?? $marker->green()->firstOrNew();
                 $green->fill(array_intersect_key($data['green'], array_flip([
-                    'inventory_number', 'species_id', 'planting_date', 'quality_state', 'quality_state_note'
+                    'inventory_number','plot_id', 'species_id', 'planting_date', 'quality_state', 'quality_state_note'
                 ])));
 
                 if (!$green->exists || $green->isDirty()) {

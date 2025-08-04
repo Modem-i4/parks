@@ -13,7 +13,6 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
  * 
  * @property int $id
  * @property int $park_id
- * @property int|null $plot_id
  * @property string|null $type
  * @property array $coordinated
  * @property string|null $description
@@ -21,7 +20,6 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
  * @property Carbon|null $updated_at
  * 
  * @property Park $park
- * @property Plot|null $plot
  * @property Infrastructure|null $infrastructure
  * @property Collection|Tag[] $tags
  *
@@ -33,14 +31,12 @@ class Marker extends Model
 
 	protected $casts = [
 		'park_id' => 'int',
-		'plot_id' => 'int',
 		'coordinates' => 'json',
 		'type' => 'string',
 	];
 
 	protected $fillable = [
 		'park_id',
-		'plot_id',
 		'type',
 		'coordinates',
 		'description'
@@ -49,11 +45,6 @@ class Marker extends Model
 	public function park()
 	{
 		return $this->belongsTo(Park::class);
-	}
-
-	public function plot()
-	{
-		return $this->belongsTo(Plot::class);
 	}
 
 	public function green()

@@ -14,12 +14,14 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
  * @property int $id
  * @property string|null $inventory_number
  * @property int $species_id
+ * @property int|null $plot_id
  * @property Carbon|null $planting_date
  * @property string|null $quality_state
  * @property string|null $quality_state_note
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * 
+ * @property Plot|null $plot
  * @property Species $species
  * @property Bush|null $bush
  * @property Flower|null $flower
@@ -35,12 +37,14 @@ class Green extends Model
 
 	protected $casts = [
 		'species_id' => 'int',
+		'plot_id' => 'int',
 		'planting_date' => 'datetime'
 	];
 
 	protected $fillable = [
 		'inventory_number',
 		'species_id',
+		'plot_id',
 		'planting_date',
 		'quality_state',
 		'quality_state_note'
@@ -53,6 +57,11 @@ class Green extends Model
 		return Attribute::get(fn () =>
 			$this->planting_date ? $this->planting_date->diffInYears(now()) : null
 		);
+	}
+
+	public function plot()
+	{
+		return $this->belongsTo(Plot::class);
 	}
 
 	public function species()

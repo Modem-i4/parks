@@ -14,7 +14,6 @@ class ValidateMarkerService
     {
         $validator = Validator::make($data, [
             'park_id' => ['sometimes', 'exists:parks,id'],
-            'plot_id' => ['sometimes', 'nullable', 'exists:plots,id'],
             'type' => ['sometimes', Rule::in(TagType::values())],
             'coordinates' => ['sometimes', 'array'],
             'coordinates.0' => ['sometimes', 'numeric'],
@@ -24,6 +23,7 @@ class ValidateMarkerService
             'tags.*.id' => ['required', 'integer', 'exists:tags,id'],
 
             'green.inventory_number' => ['sometimes', 'nullable', 'string'],
+            'green.plot_id' => ['sometimes', 'nullable', 'exists:plots,id'],
             'green.species_id' => ['sometimes', 'nullable', 'exists:species,id'],
             'green.planting_date' => ['sometimes', 'nullable', 'date'],
             'green.quality_state' => ['sometimes', 'nullable', 'string'],

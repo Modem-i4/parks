@@ -60,6 +60,10 @@ class MarkerGreenFilterService {
                 $q->whereIn('quality_state', $filters['general']['quality_state']);
             }
 
+            if (!empty($filters['general']['plots'])) {
+                $q->whereIn('plot_id', $filters['general']['plots']);
+            }
+
             if (!empty($filters['general']['age_range'])) {
                 $q->whereBetween('planting_date', [
                     now()->subYears($filters['general']['age_range'][1]),

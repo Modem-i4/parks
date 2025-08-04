@@ -10,8 +10,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('green', function (Blueprint $table) {
-            $table->id()->constrained('markers'); // примітка: треба вручну задати PK/FK, бо Laravel не підтримує ref як тут
+            $table->id()->constrained('markers');
             $table->string('inventory_number')->nullable();
+            $table->foreignId('plot_id')->nullable()->constrained('plots')->nullOnDelete();
             $table->foreignId('species_id')->nullable()->constrained('species')->cascadeOnDelete();
             $table->date('planting_date')->nullable();
             $table->enum('quality_state', QualityState::values());

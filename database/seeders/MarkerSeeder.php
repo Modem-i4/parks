@@ -53,7 +53,6 @@ class MarkerSeeder extends Seeder
                 $type = $types[array_rand($types)];
                 $marker = Marker::create([
                     'park_id' => $park->id,
-                    'plot_id' => $park->plots->random()->id ?? null,
                     'coordinates' => $point,
                     'description' => 'descr',
                     'type' => $type
@@ -67,6 +66,7 @@ class MarkerSeeder extends Seeder
                     $green = Green::create([
                         'id' => $marker->id,
                         'inventory_number' => 'INV-' . $i,
+                        'plot_id' => $park->plots->random()->id ?? null,
                         'species_id' => $species?->id,
                         'planting_date' => now()->subYears(rand(1, 20)),
                         'quality_state' => $qualityStates[array_rand($qualityStates)],
