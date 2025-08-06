@@ -27,6 +27,7 @@ Route::get('/home', function () {
 });
 
 Route::get('/parks/{id?}', [ParkController::class, 'index'])->name('parks');
+Route::get('/m/{inv?}', [ParkController::class, 'parksMarkerIndex'])->name('parks.marker');
 
 Route::get('/news', function () {
     return Inertia::render('News');

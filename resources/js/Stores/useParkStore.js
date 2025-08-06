@@ -40,6 +40,7 @@ export const useParkStore = defineStore('park', () => {
 
   function setSelectedMarker(marker) {
     if(selectedMarkerLocked.value) return
+    if(isSingleParkView.value && marker?.type === 'park') return
     selectedMarker.value = marker
   }
 

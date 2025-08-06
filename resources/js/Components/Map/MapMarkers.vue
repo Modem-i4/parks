@@ -131,14 +131,17 @@ function filterVisibleMarkers(currentZoom) {
   })
 }
 function sortMarkersByTypeAndDistance(center) {
+  const selectedId = parkStore.selectedMarker?.id
   return [...parkStore.markers]
     .map(marker => {
       const coords = getCoordsFromMarker(marker)
       const dist = distanceSquared(coords, center)
       const isInfra = marker.type === 'infrastructure' ? 0 : 1
-      return { marker, coords, dist, isInfra }
+      const isSelected = marker.id === selectedId ? 0 : 1
+      return { marker, coords, dist, isInfra, isSelected }
     })
     .sort((a, b) => {
+      if (a.isSelected !== b.isSelected) return a.isSelected - b.isSelected
       if (a.isInfra !== b.isInfra) return a.isInfra - b.isInfra
       return a.dist - b.dist
     })

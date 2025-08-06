@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 
 import { useParkStore } from '@/Stores/useParkStore.js';
 
@@ -10,6 +10,7 @@ import ParkDetails from '@/Components/Map/ParkDetails.vue';
 import MapFilters from '@/Components/Filters/MapFilters.vue';
 import MarkerDetails from '@/Components/Markers/MarkerDetails.vue';
 import { zoom } from '@/Helpers/Maps/MapHelper';
+import { setViewToParkMarker } from '@/Helpers/Maps/SetParkView';
 
 defineOptions({
   layout: ResolveLayout,
@@ -17,14 +18,22 @@ defineOptions({
 
 const props = defineProps({ 
   isSingleParkView: Boolean,
-  selectedMarker: Object
+  selectedPark: Object,
+  selectedMarker: Object,
 })
 
 const parkStore = useParkStore()
 parkStore.$reset()
 
-parkStore.selectedPark = props.selectedMarker;
+parkStore.selectedPark = props.selectedPark;
+
 parkStore.isSingleParkView = props.isSingleParkView;
+
+onMounted(() => {
+  if(props.selectedMarker) {
+    setViewToParkMarker(parkStore, props.selectedMarker)
+  }
+})
 
 watch( 
   () => [parkStore.map], 

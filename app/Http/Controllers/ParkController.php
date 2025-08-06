@@ -14,7 +14,23 @@ class ParkController extends Controller
         $park = $id ? Park::find($id) : null;
         return Inertia::render('Parks', [
             'isSingleParkView' => $isSingleParkView,
-            'selectedMarker' => $park
+            'selectedPark' => $park
+        ]);
+    }
+
+    public function parksMarkerIndex($inv) 
+    {
+        $marker = app(MarkerController::class)->getSingleMarkerByInv($inv);
+        if(!$marker) {
+            return Inertia::render('Parks', [
+                'isSingleParkView' => false,
+                'selectedPark' => null,
+            ]);
+        }
+        return Inertia::render('Parks', [
+            'isSingleParkView' => true,
+            'selectedMarker' => $marker,
+            'selectedPark' => $marker->park
         ]);
     }
 
