@@ -39,7 +39,7 @@ function updateVisibleMarkersCount(bounds) {
     const coords = getCoordsFromMarker(marker)
     return bounds.contains(new google.maps.LatLng(coords.lat, coords.lng))
   }).length
-  parkStore.messageBoxConditions.areMarkersLimited = areMarkersLimited(parkStore.map.getZoom(), lastVisibleMarkers)
+  parkStore.markerStates.areLimited = areMarkersLimited(parkStore.map.getZoom(), lastVisibleMarkers)
 }
 
 function areMarkersLimited(currentZoom, lastVisibleMarkers) {

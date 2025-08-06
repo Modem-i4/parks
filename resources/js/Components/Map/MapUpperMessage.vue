@@ -18,7 +18,7 @@ const message = ref("")
 const show = ref(false)
 
 watch(
-  () => parkStore.messageBoxConditions,
+  () => parkStore.markerStates,
   (conds) => {
     const newMsg = resolveMessage(conds)
     show.value = !(newMsg === '')
@@ -29,12 +29,12 @@ watch(
 
 function resolveMessage(conds) {
   switch (true) {
-    case conds.markersLoaded:
-      setTimeout(() => parkStore.messageBoxConditions.markersLoaded = false, 2000)
+    case conds.areLoaded:
+      setTimeout(() => parkStore.markerStates.areLoaded = false, 2000)
       return "Маркери завантажено!"
-    case conds.isLoadingMarkers:
+    case conds.isLoading:
       return "Завантажуємо маркери..."
-    case conds.areMarkersLimited:
+    case conds.areLimited:
       return "Наблизьте або конкретизуйте фільтри для перегляду всіх маркерів"
     default:
       return ""

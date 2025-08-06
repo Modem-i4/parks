@@ -14,10 +14,10 @@ export const useParkStore = defineStore('park', () => {
     lng: parseFloat(import.meta.env.VITE_DEFAULT_LNG),
     lat: parseFloat(import.meta.env.VITE_DEFAULT_LAT)
   }
-  const messageBoxConditions = ref({
-    isLoadingMarkers: false,
-    areMarkersLimited: false,
-    markersLoaded: false
+  const markerStates = ref({
+    isLoading: false,
+    areLimited: false,
+    areLoaded: false
   })
 
   const map = shallowRef(null)
@@ -89,7 +89,7 @@ export const useParkStore = defineStore('park', () => {
     mapElement,
     defaultCenter,
     singleParkContentMode,
-    messageBoxConditions,
+    markerStates,
     selectedMarkerLocked,
 
     // Actions
