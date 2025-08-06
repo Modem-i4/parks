@@ -1,5 +1,5 @@
 <template>
-  <Teleport :to="overlaySlotExists ? '#overlay-modal-slot' : 'body'">
+  <Teleport :to="overlaySlotExists ? overlaySelector : 'body'">
     <div class="fixed inset-0 bg-black/50 z-[100] flex justify-center items-center px-2">
       <div class="bg-white w-full max-w-4xl rounded-lg shadow-lg overflow-hidden flex flex-col h-[90vh]">
         <div class="p-4 border-b flex justify-between items-start">
@@ -141,8 +141,9 @@ const cancel = () => {
 const shortModel = (type) => type.split('\\').pop();
 
 const overlaySlotExists = ref(false)
+const overlaySelector = 'dialog[open] .overlay-modal-slot'
 onMounted(() => {
-  overlaySlotExists.value = !!document.getElementById('overlay-modal-slot')
+  overlaySlotExists.value = !!document.querySelector(overlaySelector)
 })
 
 onMounted(async () => {
