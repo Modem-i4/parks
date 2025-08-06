@@ -35,7 +35,7 @@ class MarkerSeeder extends Seeder
             )->values();
         }
 
-        foreach ($parks as $park) {
+        foreach ($parks as $park_i => $park) {
             $geojson = $parksGeo[$park->slug ?? ''] ?? null;
             if (!$geojson) continue;
 
@@ -61,11 +61,11 @@ class MarkerSeeder extends Seeder
                 if ($type !== 'infrastructure') {
                     $qualityStates = QualityState::values();
 
-                    $species = $speciesByType[$type]->random(null);
+                    $species = $speciesByType[$type]->random();
 
                     $green = Green::create([
                         'id' => $marker->id,
-                        'inventory_number' => 'INV-' . $i,
+                        'inventory_number' => 'INV-' . ($park_i * 2000) + ($i + 1),
                         'plot_id' => $park->plots->random()->id ?? null,
                         'species_id' => $species?->id,
                         'planting_date' => now()->subYears(rand(1, 20)),

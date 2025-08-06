@@ -28,9 +28,7 @@ class MarkerController extends Controller
         return response()->json($config);
     }
 
-    public function getSingleMarker($id)
-    {
-        $marker = Marker::with([
+    const markerFields = [
             'icon',
             'green.tree',
             'green.bush',
@@ -49,10 +47,19 @@ class MarkerController extends Controller
             'green.species:id,genus_id,name_ukr,name_lat',
             'green.species.genus:id,family_id,name_ukr,name_lat',
             'green.species.genus.family:id,name_ukr,name_lat',
-        ])->findOrFail($id);
+    ];
+
+    public function getSingleMarker($id)
+    {
+        $marker = Marker::with(self::markerFields)->findOrFail($id);
         return response()->json($marker);
     }
 
+    public function getSingleMarkerByInv($inv) {
+        $marker = Marker::with(['park', ...self::markerFields])->whereHas('green', fn($q) => $q->where('inventory_number', $inv))
+            ->first();
+        return $marker;
+    }
 
     public function filterParkMarkers(Request $request, $id)
     {

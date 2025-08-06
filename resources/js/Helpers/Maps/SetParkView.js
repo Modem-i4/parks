@@ -15,3 +15,19 @@ export function setParkView(parkStore, page, contentMode=null) {
     window.history.pushState(null, '', `/parks`)
   }
 }
+
+import { isTweening } from '@/Helpers/Maps/MapHelper'
+export async function setViewToParkMarker(parkStore, marker) {
+  parkStore.selectedMarker = null
+  parkStore.selectedPark = marker.park
+  if(parkStore.isSingleParkView) {
+    parkStore.isSingleParkView = false
+    await new Promise(resolve => setTimeout(resolve, 1000)) // time for optional particular zoom-out
+  }
+  parkStore.isSingleParkView = true
+  while (isTweening.value || parkStore.markerStates.isLoading) {
+    await new Promise(resolve => setTimeout(resolve, 100))
+  }
+  parkStore.selectedMarker = marker
+  window.history.pushState(null, '', `/parks/${parkStore.selectedPark?.id}`)
+}

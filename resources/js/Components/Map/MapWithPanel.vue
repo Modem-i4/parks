@@ -9,10 +9,13 @@ import { setParkView } from '@/Helpers/Maps/SetParkView'
 import { useUserLocationMarker } from '@/Helpers/Maps/ShowGeolocationHelper'
 import MapUpperMessage from '@/Components/Map/MapUpperMessage.vue';
 import { useAddMarkerHelper } from '@/Helpers/Admin/AddMarkerHelper'
+import FindMarker from '@/Components/Custom/FindMarker.vue'
+import Modal from '@/Components/Default/Modal.vue'
 
 const parkStore = useParkStore()
 const { showUserPosition } = useUserLocationMarker(toRef(parkStore, 'map'))
 const { addMarker, addMarkerFinished } = useAddMarkerHelper(parkStore)
+const showModal = ref({ findMarker: false })
 
 const addingMarker = ref(false)
 watch(addingMarker, (newVal) => {
@@ -98,6 +101,12 @@ watch(() => parkStore.selectedMarker, (newVal) => {
             ❌ Скасувати
           </BtnWhite>
         </template>
+        <BtnWhite class="bg-white border px-3 py-1 rounded shadow" 
+          v-if="!parkStore.selectedMarkerLocked"
+          @click="showModal.findMarker = true"
+        >
+          🔍 Знайти маркер
+        </BtnWhite>
         <BtnWhite class=" bg-white border px-3 py-1 rounded shadow" @click="showUserPosition">
           📍 Моя позиція
         </BtnWhite>
@@ -109,6 +118,14 @@ watch(() => parkStore.selectedMarker, (newVal) => {
       </Teleport>
     </div>
   </div>
+
+  <Modal :show="showModal.findMarker" 
+    maxWidth="2xl" 
+    :contentClasses="`bg-white/70 ${isMobile ? 'fixed bottom-20 start-[5%] w-[90%]' : ''}`"
+    @close="showModal.findMarker = false"
+  >
+    <FindMarker @close="showModal.findMarker = false"/>
+  </Modal>
 </template>
 
 <!-- Map position centering effect -->

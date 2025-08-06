@@ -120,10 +120,11 @@ function updateZoomNotice(currentZoom) {
 }
 function filterVisibleMarkers(currentZoom) {
   const keySet = new Set(parkStore.markers.map(keyOf))
+  const selectedId = parkStore.selectedMarker?.id
   mapMarkers.value = mapMarkers.value.filter(({ mapMarker, marker }) => {
     const keep =
       keySet.has(keyOf(marker)) &&
-      !isMarkerHidden(marker, currentZoom)
+      (!isMarkerHidden(marker, currentZoom) || marker.id === selectedId)
 
     if (!keep) mapMarker.setMap(null)
     return keep
@@ -155,8 +156,11 @@ async function renderSortedMarkers(sortedMarkers, bounds, currentZoom, cancelTok
     const exists = mapMarkers.value.some(m => keyOf(m.marker) === key)
     const inBounds = bounds?.contains(new google.maps.LatLng(lat, lng))
     const hiddenByLimit = isMarkerHidden(marker, currentZoom)
+    const selected = marker.id === parkStore.selectedMarker?.id
     const shouldRender =
-      !parkStore.isSingleParkView || (!exists && inBounds && !hiddenByLimit)
+      !parkStore.isSingleParkView || (!exists && 
+        (selected || (inBounds && !hiddenByLimit))
+      )
 
     if (shouldRender) {
       const mapMarker = await createMarker(marker, lat, lng, cancelToken)
@@ -168,6 +172,8 @@ async function renderSortedMarkers(sortedMarkers, bounds, currentZoom, cancelTok
 
       mapMarker.setMap(parkStore.map)
       mapMarkers.value.push({ mapMarker, marker })
+
+      if(selected) updateMarkerBackgrounds(marker.id)
     }
 
     requestAnimationFrame(renderNext)
