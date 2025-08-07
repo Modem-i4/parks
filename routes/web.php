@@ -71,6 +71,7 @@ Route::prefix('api')->group(function () {
     // Parks
     Route::get('/parks/{id}/media', [ParkController::class, 'media'])->name('parks.media');
     Route::get('/parks', [ParkController::class, 'getParksList'])->name('parks.list');
+    Route::patch('/parks/{id}', [ParkController::class, 'update'])->name('parks.update');
     Route::post('/parks/{id}/markers', [MarkerController::class, 'filterParkMarkers'])->name('parks.markers');
 
     // Markers 
