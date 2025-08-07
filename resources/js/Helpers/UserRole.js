@@ -1,31 +1,35 @@
 export const UserRole = {
-  MAIN_ADMIN: 'main_admin',
+  SUPER_ADMIN: 'super_admin',
   ADMIN: 'admin',
-  FULL_MANAGER: 'full_manager',
-  CONTENT_MANAGER: 'content_manager',
+  NEWS_MANAGER: 'news_manager',
+  WORK_MANAGER: 'work_manager',
+  EDITOR: 'editor',
   WORKER: 'worker',
-  USER: 'user',
-  UNAUTHORIZED: 'unauthorized',
+  VIEWER: 'viewer',
+  GUEST: 'guest',
+  DISMISSED: 'dismissed',
 
   levels: {
-    main_admin: 6,
-    admin: 5,
-    full_manager: 4,
-    content_manager: 3,
-    worker: 2,
-    user: 1,
-    unauthorized: 0,
+    super_admin: 8,
+    admin: 7,
+    news_manager: 6,
+    work_manager: 5,
+    editor: 4,
+    worker: 3,
+    viewer: 2,
+    guest: 1,
+    dismissed: 0,
   },
 
   level(role) {
-    return this.levels[role] ?? this.levels['unauthorized'];
+    return this.levels[role] ?? this.levels['guest'];
   },
 
   fromString(value) {
     if (Object.values(this).includes(value)) {
       return value;
     }
-    return this.UNAUTHORIZED;
+    return this.GUEST;
   },
 
   isOnly(currentRole, roleToCheck) {

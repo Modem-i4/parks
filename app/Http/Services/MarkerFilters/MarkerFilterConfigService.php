@@ -18,7 +18,7 @@ class MarkerFilterConfigService {
         $config = $this->filterConfigByMode($config, $mode);
         $userRole = Auth::check()
             ? Auth::user()->role
-            : UserRole::UNAUTHORIZED;
+            : UserRole::GUEST;
         $config = $this->filterConfigByRole($config, $userRole);
         return $config;
     }
