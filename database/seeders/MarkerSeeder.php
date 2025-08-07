@@ -47,6 +47,13 @@ class MarkerSeeder extends Seeder
                 array_fill(0, 10, 'flower'),
                 array_fill(0, 1, 'infrastructure')
             );
+            $greenStates = array_merge(
+                array_fill(0, 10, GreenState::GOOD),
+                array_fill(0, 10, GreenState::NORMAL),
+                array_fill(0, 10, GreenState::BAD),
+                array_fill(0, 3, GreenState::PLANNED),
+                array_fill(0, 1, GreenState::REMOVED),
+            );
 
             for ($i = 0; $i < 2000; $i++) {
                 $point = $this->generateRandomPointInPolygon($polygon);
@@ -59,8 +66,6 @@ class MarkerSeeder extends Seeder
                 ]);
 
                 if ($type !== 'infrastructure') {
-                    $greenStates = GreenState::values();
-
                     $species = $speciesByType[$type]->random();
 
                     $green = Green::create([

@@ -38,8 +38,8 @@ export function getColorByGreenState(state) {
     case 'good': return 'green'
     case 'normal': return '#fcd45b'
     case 'bad': return 'red'
-    case 'empty': return 'blue'
-    case 'removed': return 'black'
+    case 'planned': return '#66a9ff'
+    case 'removed': return '#9d9fa3'
     default: return 'gray'
   }
 }

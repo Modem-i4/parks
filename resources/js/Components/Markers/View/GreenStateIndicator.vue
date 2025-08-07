@@ -10,9 +10,11 @@ const state = computed(() => props.green?.green_state ?? null)
 
 const stateLabel = computed(() => {
   return {
+    planned: 'Заплановано',
     good: 'Хороший',
     normal: 'Нормальний',
     bad: 'Поганий',
+    removed: 'Видалено',
   }[state.value] ?? state.value
 })
 
@@ -23,9 +25,11 @@ const stateLabel = computed(() => {
     <div
       class="w-4 h-4 rounded-full"
       :class="{
+        'bg-blue-500': state === 'planned',
         'bg-green-500': state === 'good',
         'bg-yellow-500': state === 'normal',
         'bg-red-500': state === 'bad',
+        'bg-gray-500': state === 'removed',
       }"
     />
     <Tooltip>

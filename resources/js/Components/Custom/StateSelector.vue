@@ -1,7 +1,7 @@
 <template>
-  <div class="flex w-full overflow-hidden rounded-lg border">
+  <div class="flex w-full overflow-hidden rounded-lg border" v-for="categories in options">
     <button
-      v-for="option in options"
+      v-for="option in categories"
       :key="option.value"
       :class="[
         'flex-1 py-2 text-sm font-semibold transition-colors',
@@ -42,24 +42,40 @@ function toggleOption(val) {
   }
 }
 
-const options = [
-  {
-    value: 'bad',
-    label: 'Поганий',
-    baseClass: 'bg-red-100 text-red-700',
-    activeClass: 'bg-red-500 text-white',
-  },
-  {
-    value: 'normal',
-    label: 'Задовільний',
-    baseClass: 'bg-yellow-100 text-yellow-800',
-    activeClass: 'bg-yellow-400 text-black',
-  },
-  {
-    value: 'good',
-    label: 'Добрий',
-    baseClass: 'bg-green-100 text-green-700',
-    activeClass: 'bg-green-500 text-white',
-  }
-]
+const options = {
+  qualityStates: [
+    {
+      value: 'bad',
+      label: 'Поганий',
+      baseClass: 'bg-red-100 text-red-700',
+      activeClass: 'bg-red-500 text-white',
+    },
+    {
+      value: 'normal',
+      label: 'Задовільний',
+      baseClass: 'bg-yellow-100 text-yellow-800',
+      activeClass: 'bg-yellow-400 text-black',
+    },
+    {
+      value: 'good',
+      label: 'Добрий',
+      baseClass: 'bg-green-100 text-green-700',
+      activeClass: 'bg-green-500 text-white',
+    },
+  ],
+  specialStates: [
+    {
+      value: 'planned',
+      label: 'Заплановано',
+      baseClass: 'bg-blue-100 text-blue-700',
+      activeClass: 'bg-blue-500 text-white',
+    },
+    {
+      value: 'removed',
+      label: 'Видалено',
+      baseClass: 'bg-gray-300 text-gray-700',
+      activeClass: 'bg-gray-500 text-white',
+    },
+  ]
+}
 </script>
