@@ -21,8 +21,24 @@ export const UserRole = {
     dismissed: 0,
   },
 
+  labels: {
+    super_admin: 'Суперадмін',
+    admin: 'Адміністратор',
+    news_manager: 'Менеджер новин',
+    work_manager: 'Менеджер робіт',
+    editor: 'Редактор',
+    worker: 'Працівник',
+    viewer: 'Переглядач',
+    guest: 'Гість',
+    dismissed: 'Відхилений',
+  },
+
   level(role) {
     return this.levels[role] ?? this.levels['guest'];
+  },
+
+  label(role) {
+    return this.labels[role] ?? role;
   },
 
   fromString(value) {

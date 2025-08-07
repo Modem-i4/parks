@@ -14,6 +14,7 @@ use App\Http\Controllers\TagController;
 use App\Http\Controllers\HedgeRowController;
 use App\Http\Controllers\HedgeShapeController;
 use App\Http\Controllers\PlotController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\WorkController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -55,9 +56,7 @@ Route::middleware('auth')->group(function () {
         })->name('admin.news');
 
         Route::middleware('auth', 'role:admin')->group(function () {
-            Route::get('users', function () {
-                return Inertia::render('Admin/Users');
-            })->name('admin.users');
+            Route::get('users', [UserController::class, 'index'])->name('admin.users');
             Route::get('dictionaries', function () {
                 return Inertia::render('Admin/Dictionaries');
             })->name('admin.dictionaries');
@@ -153,6 +152,8 @@ Route::prefix('api')->group(function () {
     Route::patch('/works/{id}/revert', [WorkController::class, 'revert']);
     Route::delete('/works/{id}', [WorkController::class, 'destroy']);
 
+    //// Users
+    Route::patch('users/{id}/role', [UserController::class, 'updateRole'])->name('users.role');
 
     Route::prefix('media')->group(function () {
         Route::get('/', [MediaController::class, 'index']);
