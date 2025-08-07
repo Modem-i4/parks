@@ -50,17 +50,23 @@ watch(() => parkStore.selectedMarker, (newVal) => {
         :show="parkStore.showPanel"
         @close="() => { parkStore.selectedMarker = null; parkStore.showPanel = false }"
       >
+        
         <template #header>
-          <div class="flex-shrink-0 w-8 h-8 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center">
-            <img
-              v-if="parkStore.selectedPark?.icon?.file_path"
-              :src="parkStore.selectedPark.icon?.file_path"
-              alt="Icon"
-              class="w-8 h-8 object-contain"
-            />
-            <div v-else class="text-gray-400 text-xl">🌳</div>
-          </div>
-          <div>{{ parkStore.selectedPark?.name || parkStore.selectedMarker?.name || 'Список' }}</div>
+            <div class="flex-shrink-0 w-8 h-8 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center">
+              <img
+                v-if="parkStore.selectedPark?.icon?.file_path"
+                :src="parkStore.selectedPark.icon?.file_path"
+                alt="Icon"
+                class="w-8 h-8 object-contain"
+              />
+              <div v-else class="text-gray-400 text-xl">🌳</div>
+            </div>
+            <template v-if="!parkStore.isSingleParkView && parkStore.selectedMarker">
+              <button class="text-blue-500" 
+                @click="parkStore.selectedMarker = null"
+              >←  Всі парки</button>
+            </template>
+            <div v-else>{{ parkStore.selectedPark?.name || parkStore.selectedMarker?.name || 'Список' }}</div>
         </template>
 
         <div class="max-h-[60vh] overflow-y-auto" id="mobile-panel-target">
@@ -70,6 +76,13 @@ watch(() => parkStore.selectedMarker, (newVal) => {
 
       <!-- Toggle buttons -->
       <div class="fixed bottom-4 right-4 z-50">
+        <BtnWhite
+          v-if="!parkStore.isSingleParkView && !isMobile && parkStore.selectedMarker"
+          class="ml-auto"
+          @click="setParkView(parkStore, 'single')"
+        >
+          ДО ПАРКУ
+        </BtnWhite>
         <BtnWhite
           v-if="!parkStore.showPanel"
           class="ml-auto md:hidden"

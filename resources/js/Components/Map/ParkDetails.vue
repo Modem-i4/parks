@@ -55,30 +55,32 @@ function pickerSaved(newImages) {
 </script>
 
 <template>
-  <div class="p-4">
-    <button @click="back" class="text-blue-500 mb-2">← Назад</button>
-
+  <div class="p-4 pt-1">
     <PanelHeader
       :title="parkStore.selectedMarker.name" :subtitle="parkStore.selectedMarker.address" :icon="parkStore.selectedMarker.icon?.file_path"
       :editable="true"
       @onIconClick="startIconChange"
-    />
+    >
+      <template #right>
+        <SecondaryButton class="ml-auto hidden md:block" @click="parkStore.selectedMarker = null">< Назад</SecondaryButton>
+      </template>
+    </PanelHeader>
 
     <ImageSlider :modelId="parkStore.selectedMarker?.id || null" model="parks" class="my-2" ref="imageSliderRef"
       :editable="true"
       @onImageClick="startGalleryChange"
       @close="closeImagePicker"/>
 
-    <div v-if="parkStore.selectedMarker?.description" class="text-gray-600 bg-white rounded px-4 py-6">
+      <div v-if="parkStore.selectedMarker?.description" class="text-gray-600 bg-white rounded px-4 py-6">
       <h3 class="text-lg font-semibold pb-2">Про парк</h3>
-      <p>{{ parkStore.selectedMarker.description }}</p>
-    </div>
-    <div class="mt-6 space-y-3"
-      v-if="!parkStore.isSingleParkView">
-      <ArrowButton variant="secondaryBlack" @click="openWorks">Роботи парку</ArrowButton>
-      <ArrowButton variant="primary" @click="openInfrastructure">Інфраструктура парку</ArrowButton>
-      <ArrowButton variant="secondary" @click="openGreen">Насадження парку</ArrowButton>
-    </div>
+        <p>{{ parkStore.selectedMarker.description }}</p>
+      </div>
+      <div class="mt-6 space-y-3"
+        v-if="!parkStore.isSingleParkView">
+        <ArrowButton variant="secondaryBlack" @click="openWorks">Роботи парку</ArrowButton>
+        <ArrowButton variant="primary" @click="openInfrastructure">Інфраструктура парку</ArrowButton>
+        <ArrowButton variant="secondary" @click="openGreen">Насадження парку</ArrowButton>
+      </div>
 
   </div>
   <MediaPickerModal

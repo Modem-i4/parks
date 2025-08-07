@@ -150,9 +150,9 @@ class MarkerGreenFilterService {
                 $q->whereHas('green', function ($gq) use ($filters) {
                     $gq->where(function ($taxQuery) use ($filters) {
                         foreach ($filters['taxonomy'] as $tax) {
-                            if (isset($tax['family'])) {
+                            if (isset($tax['families'])) {
                                 $taxQuery->orWhereHas("species.genus.family", function ($f) use ($tax) {
-                                    $f->where('id', $tax['family']);
+                                    $f->where('id', $tax['families']);
                                 });
                             }
 

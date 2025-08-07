@@ -116,8 +116,8 @@ function pickerSaved(newImages) {
 </script>
 
 <template>
-  <div class="p-4 overflow-x-hidden" v-if="marker">
-    <button @click="back" class="text-blue-500 mb-2" v-if="!parkStore.selectedMarkerLocked">← Назад</button>
+  <div class="p-4 pt-1 md:pt-4 overflow-x-hidden" v-if="marker">
+    <button @click="back" class="text-blue-500 mb-2 md:hidden" v-if="!parkStore.selectedMarkerLocked">← Назад</button>
     <PanelHeader
       :title="title"
       :subtitle="description" 

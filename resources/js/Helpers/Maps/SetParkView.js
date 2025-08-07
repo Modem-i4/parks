@@ -4,6 +4,7 @@ export function setParkView(parkStore, page, contentMode=null) {
     parkStore.selectedPark = parkStore.selectedMarker
     parkStore.selectedMarker = null
     parkStore.singleParkContentMode = contentMode ?? 'infrastructure'
+    parkStore.markers = []
     parkStore.isSingleParkView = true
     window.history.pushState(null, '', `/parks/${parkStore.selectedPark?.id}`)
 
@@ -11,6 +12,7 @@ export function setParkView(parkStore, page, contentMode=null) {
     parkStore.selectedMarker = null
     parkStore.selectedPark = null
     parkStore.showPanel = false
+    parkStore.markers = []
     parkStore.isSingleParkView = false
     window.history.pushState(null, '', `/parks`)
   }

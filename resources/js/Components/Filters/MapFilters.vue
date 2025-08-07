@@ -95,16 +95,19 @@ onMounted(() => {
         :renderKey
       />
     </div>
-    <div class="sticky bottom-0 p-4 bg-white md:bg-[#f3f4f6] flex space-x-1">
-      <PrimaryButton @click="filterMarkers" class="flex flex-1">
-        Застосувати фільтри
-      </PrimaryButton>
-      <SecondaryButton size="sm"> <!-- TODO: export -->
-        ⏬
-      </SecondaryButton>
-      <SecondaryButton size="sm" @click="showModal.groupAssign = true">
-        👷
-      </SecondaryButton>
+    <div class="sticky bottom-0 p-4 pt-1 bg-white md:bg-[#f3f4f6]">
+      <div class="italic text-center">записів: {{ parkStore.markers.length }}</div>
+      <div class="flex space-x-1">
+        <PrimaryButton @click="filterMarkers" class="flex flex-1">
+          Застосувати фільтри
+        </PrimaryButton>
+        <SecondaryButton size="sm"> <!-- TODO: export -->
+          ⏬
+        </SecondaryButton>
+        <SecondaryButton size="sm" @click="showModal.groupAssign = true">
+          👷
+        </SecondaryButton>
+      </div>
     </div>
     <Modal :show="showModal.groupAssign" maxWidth="xl" @close="showModal.groupAssign = false">
       <GroupAssign

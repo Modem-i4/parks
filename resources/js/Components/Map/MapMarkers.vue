@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch } from 'vue'
+import { onUnmounted, ref, watch } from 'vue'
 import loader from '@/Helpers/Maps/GoogleMapsLoader'
 import { CreatePinIcon } from '@/Helpers/Maps/CreatePinIcon.js'
 import { getCoordsFromMarker } from '@/Helpers/Maps/MapHelper.js'
@@ -28,6 +28,8 @@ function debounce(fn, delay = 200) {
 function keyOf(m) {
   return `${m.id}_${m.type}`
 }
+
+onUnmounted(resetCancelToken)
 
 let lastVisibleMarkers = 0
 function updateVisibleMarkersCount(bounds) {
@@ -210,9 +212,9 @@ watch(
 
 watch(
   () => parkStore.isSingleParkView,
-  () => {
+  (val) => {
     resetCancelToken()
-    if(!parkStore.isSingleParkView)
+    if(!val)
       clearAllMapMarkers()
   },
   { immediate: true }
