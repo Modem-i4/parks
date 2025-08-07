@@ -129,8 +129,8 @@ const save = async () => {
       order: m.order,
     }))
   });
-
-  emit('saved');
+  
+  emit('saved', selected.value);
   cancel();
 };
 

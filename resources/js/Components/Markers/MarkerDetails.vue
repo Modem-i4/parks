@@ -104,6 +104,15 @@ function closeImagePicker() {
   pickerType.value = null
   showPicker.value = false
 }
+function pickerSaved(newImages) {
+  if(pickerType.value === 'image') {
+    viewRef.value.forceImageUpdate(newImages)
+  }
+  if(pickerType.value === 'icon') {
+    parkStore.selectedMarker.icon = newImages[0]
+  }
+  closeImagePicker()
+}
 </script>
 
 <template>
@@ -159,7 +168,7 @@ function closeImagePicker() {
     modelType="App\Models\Marker"
     :modelId="marker.id"
     @close="closeImagePicker"
-    @saved="() => { viewRef.forceImageUpdate(); closeImagePicker() }"
+    @saved="pickerSaved"
   />
   <Modal :show="showModal.groupAssign" maxWidth="xl" @close="showModal.groupAssign = false">
     <GroupAssign

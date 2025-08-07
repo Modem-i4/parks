@@ -138,6 +138,6 @@ const sourceNameUkr = {
 
 const sourceName = computed(() => {
   if (!props.editable || images.value.length === 0) return null
-  return sourceNameUkr[source.value] || 'невідоме'
+  return sourceNameUkr[source.value] || null
 })
 </script>
