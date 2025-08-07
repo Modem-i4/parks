@@ -1,6 +1,6 @@
 <?php
 
-use App\Enums\QualityState;
+use App\Enums\GreenState;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,8 +15,8 @@ return new class extends Migration
             $table->foreignId('plot_id')->nullable()->constrained('plots')->nullOnDelete();
             $table->foreignId('species_id')->nullable()->constrained('species')->cascadeOnDelete();
             $table->date('planting_date')->nullable();
-            $table->enum('quality_state', QualityState::values());
-            $table->text('quality_state_note')->nullable();
+            $table->enum('green_state', GreenState::values());
+            $table->text('green_state_note')->nullable();
             $table->timestamps();
         });
     }

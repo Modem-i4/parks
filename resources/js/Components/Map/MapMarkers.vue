@@ -4,7 +4,7 @@ import loader from '@/Helpers/Maps/GoogleMapsLoader'
 import { CreatePinIcon } from '@/Helpers/Maps/CreatePinIcon.js'
 import { getCoordsFromMarker } from '@/Helpers/Maps/MapHelper.js'
 import { useParkStore } from '@/Stores/useParkStore.js'
-import { CreateSimpleIcon, getColorByQualityState } from '@/Helpers/Maps/CreateSimpleIcon'
+import { CreateSimpleIcon, getColorByGreenState } from '@/Helpers/Maps/CreateSimpleIcon'
 import { zoom, isTweening } from '@/Helpers/Maps/MapHelper.js'
 
 const parkStore = useParkStore()
@@ -64,7 +64,7 @@ async function createMarker(marker, lat, lng, cancelToken) {
   const content = marker.green
     ? await CreateSimpleIcon({
         iconPath: `/storage/img/icons/${marker.type || 'tree'}-map_icon.svg`,
-        fill: getColorByQualityState(marker.green?.quality_state)
+        fill: getColorByGreenState(marker.green?.green_state)
       })
     : await CreatePinIcon({ glyph: marker.icon?.file_path })
   

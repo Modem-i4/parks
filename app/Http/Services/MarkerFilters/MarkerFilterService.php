@@ -18,7 +18,7 @@ class MarkerFilterService
         }
 
         $query = Marker::query()
-            ->with(['icon', 'green:id,quality_state,species_id,inventory_number', 'infrastructure:id,name,infrastructure_type_id', 'green.species:id,name_ukr'])
+            ->with(['icon', 'green:id,green_state,species_id,inventory_number', 'infrastructure:id,name,infrastructure_type_id', 'green.species:id,name_ukr'])
             ->select('id', 'coordinates', 'description', 'type')
             ->where('park_id', $parkId);
 

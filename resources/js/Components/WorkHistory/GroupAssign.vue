@@ -32,7 +32,7 @@
                         class="bg-gray-100 border p-0 rounded-full px-5 my-1"
                     >
                         <template #right>
-                            <QualityStateIndicator :green="marker.green" />
+                            <GreenStateIndicator :green="marker.green" />
                             <button class="ml-2 text-gray-400 hover:text-red-600 text-lg font-bold leading-none"
                                 title="Видалити"
                                 @click="removePickedMarker(marker)"
@@ -112,7 +112,7 @@ import Modal from '@/Components/Default/Modal.vue'
 import Switch from '@/Components/Custom/Switch.vue'
 import PanelHeader from '../Custom/PanelHeader.vue'
 import { getMarkerTitle, typeUkr } from '@/Helpers/Maps/GetMarkerTitle';
-import QualityStateIndicator from '../Markers/View/QualityStateIndicator.vue'
+import GreenStateIndicator from '../Markers/View/GreenStateIndicator.vue'
 
 const emit = defineEmits(['close', 'update'])
 

@@ -95,8 +95,8 @@ function initializeMarkerType(marker, type) {
   if (['tree', 'bush', 'hedge', 'flower'].includes(type)) {
     marker.green ||= {}
     marker.green.inventory_number ||= null
-    marker.green.quality_state ||= null
-    marker.green.quality_state_note ||= null
+    marker.green.green_state ||= null
+    marker.green.green_state_note ||= null
     marker.green.species_id ||= null
     if (type === 'tree') marker.green.tree ||= {}
     if (type === 'bush') marker.green.bush ||= {}
@@ -205,12 +205,12 @@ const selectHedgeRow = (row) => {
 
       <div class="space-y-1">
         <label class="text-sm font-medium text-gray-700">Стан</label>
-        <StateSelector v-model="marker.green.quality_state" />
+        <StateSelector v-model="marker.green.green_state" />
       </div>
 
       <div class="space-y-1">
         <label class="text-sm font-medium text-gray-700">Коментар до стану</label>
-        <textarea v-model="marker.green.quality_state_note" class="w-full border border-gray-300 rounded px-2 py-1" rows="3" />
+        <textarea v-model="marker.green.green_state_note" class="w-full border border-gray-300 rounded px-2 py-1" rows="3" />
       </div>
 
       <SelectWithSearchAndAdd

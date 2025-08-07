@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Enums\QualityState;
+use App\Enums\GreenState;
 use App\Models\Marker;
 use App\Models\Green;
 use App\Models\Tree;
@@ -59,7 +59,7 @@ class MarkerSeeder extends Seeder
                 ]);
 
                 if ($type !== 'infrastructure') {
-                    $qualityStates = QualityState::values();
+                    $greenStates = GreenState::values();
 
                     $species = $speciesByType[$type]->random();
 
@@ -69,8 +69,8 @@ class MarkerSeeder extends Seeder
                         'plot_id' => $park->plots->random()->id ?? null,
                         'species_id' => $species?->id,
                         'planting_date' => now()->subYears(rand(1, 20)),
-                        'quality_state' => $qualityStates[array_rand($qualityStates)],
-                        'quality_state_note' => 'No issues',
+                        'green_state' => $greenStates[array_rand($greenStates)],
+                        'green_state_note' => 'No issues',
                     ]);
 
                     match ($type) {

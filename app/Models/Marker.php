@@ -77,8 +77,8 @@ class Marker extends Model
 	public function getSubclassDataAttributes()
 	{
 		return [
-			'quality_state' => $this->type === 'green' && $this->green
-				? $this->green->quality_state
+			'green_state' => $this->type === 'green' && $this->green
+				? $this->green->green_state
 				: null,
 
 			'name' => $this->type === 'infrastructure' && $this->infrastructure

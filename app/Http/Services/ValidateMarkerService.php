@@ -26,8 +26,8 @@ class ValidateMarkerService
             'green.plot_id' => ['sometimes', 'nullable', 'exists:plots,id'],
             'green.species_id' => ['sometimes', 'nullable', 'exists:species,id'],
             'green.planting_date' => ['sometimes', 'nullable', 'date'],
-            'green.quality_state' => ['sometimes', 'nullable', 'string'],
-            'green.quality_state_note' => ['sometimes', 'nullable', 'string'],
+            'green.green_state' => ['sometimes', 'nullable', 'string'],
+            'green.green_state_note' => ['sometimes', 'nullable', 'string'],
             'green.species.family_type' => ['sometimes', Rule::in(array_column(GreenType::cases(), 'value'))],
 
             'green.tree.height_m' => ['sometimes', 'nullable', 'numeric'],

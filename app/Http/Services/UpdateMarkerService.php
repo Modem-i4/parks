@@ -35,7 +35,7 @@ class UpdateMarkerService
             if (TagType::isGreenType($marker->type)) {
                 $green = $marker->green ?? $marker->green()->firstOrNew();
                 $green->fill(array_intersect_key($data['green'], array_flip([
-                    'inventory_number','plot_id', 'species_id', 'planting_date', 'quality_state', 'quality_state_note'
+                    'inventory_number','plot_id', 'species_id', 'planting_date', 'green_state', 'green_state_note'
                 ])));
 
                 if (!$green->exists || $green->isDirty()) {

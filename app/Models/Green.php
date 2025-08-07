@@ -16,8 +16,8 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
  * @property int $species_id
  * @property int|null $plot_id
  * @property Carbon|null $planting_date
- * @property string|null $quality_state
- * @property string|null $quality_state_note
+ * @property string|null $green_state
+ * @property string|null $green_state_note
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * 
@@ -46,8 +46,8 @@ class Green extends Model
 		'species_id',
 		'plot_id',
 		'planting_date',
-		'quality_state',
-		'quality_state_note'
+		'green_state',
+		'green_state_note'
 	];
 
 	protected $appends = ['age'];

@@ -56,8 +56,8 @@ class MarkerGreenFilterService {
     private function applyGeneral($query, $filters): void
     {
         $query->whereHas('green', function ($q) use ($filters) {
-            if (!empty($filters['general']['quality_state'])) {
-                $q->whereIn('quality_state', $filters['general']['quality_state']);
+            if (!empty($filters['general']['green_state'])) {
+                $q->whereIn('green_state', $filters['general']['green_state']);
             }
 
             if (!empty($filters['general']['plots'])) {

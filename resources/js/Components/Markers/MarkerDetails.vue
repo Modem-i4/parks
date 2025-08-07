@@ -8,7 +8,7 @@ import { UserRole } from '@/Helpers/UserRole.js';
 import MarkerDetailsView from './View/MarkerDetailsView.vue'
 import MarkerDetailsEdit from './Edit/MarkerDetailsEdit.vue';
 import PanelHeader from '../Custom/PanelHeader.vue';
-import QualityStateIndicator from './View/QualityStateIndicator.vue';
+import GreenStateIndicator from './View/GreenStateIndicator.vue';
 import MediaPickerModal from '../Media/MediaPickerModal.vue';
 import { getMarkerTitle } from '@/Helpers/Maps/GetMarkerTitle';
 
@@ -126,7 +126,7 @@ function pickerSaved(newImages) {
       :editable="canEdit && !editing"
       >
       <template #right>
-        <QualityStateIndicator :green="marker.green" />
+        <GreenStateIndicator :green="marker.green" />
       </template>
     </PanelHeader>
 

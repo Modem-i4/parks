@@ -6,7 +6,7 @@ const props = defineProps({
   green: Object
 })
 
-const state = computed(() => props.green?.quality_state ?? null)
+const state = computed(() => props.green?.green_state ?? null)
 
 const stateLabel = computed(() => {
   return {

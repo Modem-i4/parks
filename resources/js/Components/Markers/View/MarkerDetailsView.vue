@@ -5,7 +5,7 @@ import { computed, ref } from 'vue'
 import GreenDetails from './GreenDetails.vue'
 import Tooltip from '@/Components/Custom/Tooltip.vue'
 import WorkHistory from '@/Components/WorkHistory/WorkHistory.vue'
-import QualityStateIndicator from './QualityStateIndicator.vue'
+import GreenStateIndicator from './GreenStateIndicator.vue'
 
 const loading = ref(true)
 const copyCompleted = ref(false)
@@ -75,12 +75,12 @@ defineExpose({ forceImageUpdate })
     </div>
 
     <div class="bg-white rounded px-4 py-6 text-gray-600" 
-      v-if="props.marker?.green?.quality_state_note"
+      v-if="props.marker?.green?.green_state_note"
     >
       <div class="flex items-center">
-        <h3 class="text-lg font-semibold pb-2 me-1">Коментар до стану</h3>"<QualityStateIndicator :green="props.marker.green"/>"
+        <h3 class="text-lg font-semibold pb-2 me-1">Коментар до стану</h3>"<GreenStateIndicator :green="props.marker.green"/>"
       </div>
-      <p>{{ props.marker.green.quality_state_note }}</p>
+      <p>{{ props.marker.green.green_state_note }}</p>
     </div>  
     <GreenDetails :green="props.marker?.green" :type="props.marker?.type" v-if="props.marker?.green" />
 

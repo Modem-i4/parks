@@ -1,11 +1,13 @@
 <?php
 namespace App\Enums;
 
-enum QualityState: string
+enum GreenState: string
 {
+    case PLANNED = 'planned';
     case GOOD = 'good';
     case NORMAL = 'normal';
     case BAD = 'bad';
+    case REMOVED = 'removed';
 
     public function level(): int
     {

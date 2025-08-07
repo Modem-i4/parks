@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Services\MarkerFilters;
 
-use App\Enums\QualityState;
+use App\Enums\GreenState;
 use App\Enums\UserRole;
 use App\Models\Recommendation;
 use App\Models\Species;
@@ -103,9 +103,9 @@ class MarkerFilterConfigService {
                         'children' => [
                             [
                                 'name' => 'Стан',
-                                'slug' => 'quality_state',
+                                'slug' => 'green_state',
                                 'type' => 'stateSelect',
-                                'options' => QualityState::values(),
+                                'options' => GreenState::values(),
                             ],
                             [
                                 'name' => 'Виділ',
