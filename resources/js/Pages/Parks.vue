@@ -3,7 +3,6 @@ import { onMounted, ref, watch } from 'vue';
 
 import { useParkStore } from '@/Stores/useParkStore.js';
 
-import ResolveLayout from '@/Helpers/ResolveLayout.js';
 import MapWithPanel from '@/Components/Map/MapWithPanel.vue'
 import ParkList from '@/Components/Map/ParkList.vue';
 import ParkDetails from '@/Components/Map/ParkDetails.vue';
@@ -11,10 +10,6 @@ import MapFilters from '@/Components/Filters/MapFilters.vue';
 import MarkerDetails from '@/Components/Markers/MarkerDetails.vue';
 import { zoom } from '@/Helpers/Maps/MapHelper';
 import { setViewToParkMarker } from '@/Helpers/Maps/SetParkView';
-
-defineOptions({
-  layout: ResolveLayout,
-});
 
 const props = defineProps({ 
   isSingleParkView: Boolean,

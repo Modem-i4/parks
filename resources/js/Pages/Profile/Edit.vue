@@ -1,5 +1,5 @@
 <script setup>
-import AdminLayout from '@/Layouts/AdminLayout.vue';
+import AdminLayout from '@/Layouts/Layout.vue';
 import DeleteUserForm from './Partials/DeleteUserForm.vue';
 import UpdatePasswordForm from './Partials/UpdatePasswordForm.vue';
 import UpdateProfileInformationForm from './Partials/UpdateProfileInformationForm.vue';
@@ -19,13 +19,12 @@ defineProps({
     <Head title="Profile" />
 
     <AdminLayout>
-        <template #header>
-            <h2
-                class="text-xl font-semibold leading-tight text-gray-800"
-            >
-                Profile
-            </h2>
-        </template>
+        <header class="bg-white shadow">
+            <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+                <h2 class="text-xl font-semibold leading-tight text-gray-800"
+                >Profile</h2>
+            </div>
+        </header>
 
         <div class="py-12">
             <div class="mx-auto max-w-7xl space-y-6 sm:px-6 lg:px-8">

@@ -1,6 +1,5 @@
 <script setup>
 import { ref } from 'vue'
-import AdminLayout from '@/Layouts/AdminLayout.vue'
 import DictTaxonomy from '@/Components/Dictionaries/DictTaxonomy.vue'
 import DictInfrastructureType from '@/Components/Dictionaries/DictInfrastructureType.vue'
 import { isMobile } from '@/Helpers/isMobileHelper'
@@ -10,10 +9,6 @@ import DictRecommendations from '@/Components/Dictionaries/DictRecommendations.v
 import DictHedgeShape from '@/Components/Dictionaries/DictHedgeShape.vue'
 import DictHedgeRow from '@/Components/Dictionaries/DictHedgeRow.vue'
 import DictPlots from '@/Components/Dictionaries/DictPlots.vue'
-
-defineOptions({
-  layout: AdminLayout,
-})
 
 const dictionaryItems = [
   {
