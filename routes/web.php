@@ -13,6 +13,7 @@ use App\Http\Controllers\RecommendationController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\HedgeRowController;
 use App\Http\Controllers\HedgeShapeController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PlotController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WorkController;
@@ -30,9 +31,8 @@ Route::get('/home', function () {
 Route::get('/parks/{id?}', [ParkController::class, 'index'])->name('parks');
 Route::get('/m/{inv?}', [ParkController::class, 'parksMarkerIndex'])->name('parks.marker');
 
-Route::get('/news', function () {
-    return Inertia::render('News');
-})->name('news');
+Route::get('/news', [NewsController::class, 'index'])->name('news');
+Route::get('/news/{id}', [NewsController::class, 'single'])->name('news.single');
 
 // END main nav
 
@@ -50,11 +50,6 @@ Route::middleware('auth')->group(function () {
         })->name('admin.parks');
 
         // Role specific pages
-        
-        Route::get('/news', function () {
-            return Inertia::render('Admin/News');
-        })->name('admin.news');
-
         Route::middleware('auth', 'role:admin')->group(function () {
             Route::get('users', [UserController::class, 'index'])->name('admin.users');
             Route::get('dictionaries', function () {
@@ -137,7 +132,7 @@ Route::prefix('api')->group(function () {
     Route::patch('/plots/{id}', [PlotController::class, 'update']);
     Route::delete('/plots/{id}', [PlotController::class, 'destroy']);
 
-    //// Media
+    //// Media Lib
     Route::prefix('media-library')->group(function () {
         Route::get('/', [MediaLibraryController::class, 'index']);
         Route::post('/', [MediaLibraryController::class, 'store']);
@@ -155,6 +150,7 @@ Route::prefix('api')->group(function () {
     //// Users
     Route::patch('users/{id}/role', [UserController::class, 'updateRole'])->name('users.role');
 
+    //// Media
     Route::prefix('media')->group(function () {
         Route::get('/', [MediaController::class, 'index']);
         Route::post('/sync', [MediaController::class, 'sync']);

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Enums\UserRole;
+use App\Models\News;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -35,5 +36,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::factory(10)->create();
+
+        News::factory(10)->create();
+
     }
 }

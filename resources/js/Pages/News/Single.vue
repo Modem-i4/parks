@@ -1,6 +1,7 @@
 <script setup>
+
 </script>
 
 <template>
-    <div>News page!</div>
+    <div>Signle News page!</div>
 </template>
