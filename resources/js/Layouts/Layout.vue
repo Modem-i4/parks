@@ -10,10 +10,14 @@ import NavLink from '@/Components/Default/NavLink.vue'
 import ResponsiveNavLink from '@/Components/Default/ResponsiveNavLink.vue'
 
 import { UserRole } from '@/Helpers/UserRole'
+import { useAuthStore } from '@/Stores/useAuthStore'
 
 const showingNavigationDropdown = ref(false)
 const page = usePage()
 const user = computed(() => page.props.auth?.user)
+
+const authStore = useAuthStore();
+authStore.setUser(user.value);
 
 const guestPages = [
   { label: 'Головна', routeName: 'home' },
