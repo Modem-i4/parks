@@ -9,3 +9,12 @@
 .news-content blockquote { border-left:3px solid #e5e7eb; padding-left:.75rem; color:#6b7280; margin:.75rem 0; }
 .news-content hr { border:0; border-top:1px solid #e5e7eb; margin:1rem 0; }
 .news-content img { max-width:100%; height:auto; border-radius:.5rem; }
+
+@media (min-width: 720px) {
+    .news-content img[data-align="left"]  { float: left; margin: .25rem .75rem .25rem 0; }
+    .news-content img[data-align="right"] { float: right; margin: .25rem 0 .25rem .75rem; }
+    .news-content img[data-align="center"]{ display: block; margin: .5rem auto; }
+}
+@media (max-width: 720px) {
+    .news-content img { display: block; width: 100% !important; }
+}

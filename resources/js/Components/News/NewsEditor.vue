@@ -3,9 +3,10 @@ import { ref, watch, onBeforeUnmount, onMounted, computed } from 'vue'
 
 import { EditorContent, useEditor } from '@tiptap/vue-3'
 import StarterKit from '@tiptap/starter-kit'
-import ImageExt from '@tiptap/extension-image'
 import TextAlign from '@tiptap/extension-text-align'
 import Placeholder from '@tiptap/extension-placeholder'
+
+import ResizableImage from '@/Helpers/Admin/ResizableImage'
 
 // ====== ICONS ======
 import icUndo from '@/assets/editor/undo.svg'
@@ -22,10 +23,12 @@ import icAlignRight from '@/assets/editor/align-right.svg'
 import icAlignJustify from '@/assets/editor/align-justify.svg'
 import icImage from '@/assets/editor/image.svg'
 
+import PostMediaPickerModal from '@/Components/Media/PostMediaPickerModal.vue'
+
 const props = defineProps({
   modelValue: { type: String, default: '' },
   placeholder: { type: String, default: 'Напишіть новину…' },
-  readonly: { type: Boolean, default: false }
+  readonly: { type: Boolean, default: false },
 })
 const emit = defineEmits(['update:modelValue'])
 
@@ -40,7 +43,7 @@ const extensions = [
       // openOnClick: true,
     }
   }),
-  ImageExt.configure({ inline: false, allowBase64: true }),
+  ResizableImage.configure({ inline: false, allowBase64: true }),
   TextAlign.configure({ types: ['heading', 'paragraph'] }),
   Placeholder.configure({ placeholder: props.placeholder }),
 ]
@@ -88,7 +91,6 @@ function setLink() {
 function unsetLink() { editor.value?.chain().focus().unsetLink().run() }
 
 function insertQuote()   { editor.value?.chain().focus().toggleBlockquote().run() }
-function insertHR()      { editor.value?.chain().focus().setHorizontalRule().run() }
 
 // Align helpers
 function setAlign(where) { editor.value?.chain().focus().setTextAlign(where).run() }
@@ -127,6 +129,16 @@ function onDocClick(e) {
 }
 onMounted(() => document.addEventListener('click', onDocClick))
 onBeforeUnmount(() => document.removeEventListener('click', onDocClick))
+
+// ===== PostMediaPickerModal wiring =====
+const showPostPicker = ref(false)
+function openPostPicker() { showPostPicker.value = true }
+function closePostPicker() { showPostPicker.value = false }
+function onPostPickerSaved(payload) {
+  const url = payload?.file_path
+  if (url) editor.value?.chain().focus().setImage({ src: url }).run()
+  closePostPicker()
+}
 </script>
 
 <template>
@@ -209,12 +221,8 @@ onBeforeUnmount(() => document.removeEventListener('click', onDocClick))
 
       <span class="sep"></span>
 
-      <button class="btn" @click="insertHR" title="Divider">—</button>
-
-      <span class="sep"></span>
-
       <!-- Image -->
-      <button class="btn" title="Додати зображення" @click="() => {}"> <!-- TODO: Implement -->
+      <button class="btn" title="Додати зображення" @click="openPostPicker">
         <img :src="icImage" alt="Image" />
       </button>
     </div>
@@ -223,12 +231,24 @@ onBeforeUnmount(() => document.removeEventListener('click', onDocClick))
     <div class="editor-wrap">
       <EditorContent :editor="editor" />
     </div>
+
+    <!-- PostMediaPickerModal -->
+    <PostMediaPickerModal
+      v-if="showPostPicker"
+      type="image"
+      :onClose="closePostPicker"
+      @saved="onPostPickerSaved"
+    />
   </div>
 </template>
 <style scoped>
-.editor-root-root { display:grid; gap:.5rem; }
+:deep(.ProseMirror) {
+  outline: none;
+}
+.editor-root { display:grid; gap:.5rem; }
 .toolbar {
-  display:flex; align-items:center; gap:.25rem;
+  display:flex; align-items:center; justify-content: center; gap:.25rem;
+  flex-wrap: wrap;
   background: linear-gradient(90deg, #f8fafc, #fff0);
   padding:.35rem; border-radius:.75rem; border:1px solid #e5e7eb;
 }
