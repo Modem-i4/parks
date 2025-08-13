@@ -39,11 +39,6 @@ class News extends Model
 
 	public function cover()
 	{
-		return $this->morphOne(Media::class, 'model')->ofType(MediaType::IMAGE->value)->with('mediaFile')->orderBy('order');
-	}
-
-	public function media()
-	{
-		return $this->morphMany(Media::class, 'model')->ofType(MediaType::IMAGE->value)->with('mediaFile')->orderBy('order');
+		return $this->morphOne(Media::class, 'model')->ofType(MediaType::IMAGE->value)->with('mediaFile');
 	}
 }

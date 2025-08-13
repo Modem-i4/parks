@@ -155,6 +155,10 @@ Route::prefix('api')->group(function () {
         Route::get('/', [MediaController::class, 'index']);
         Route::post('/sync', [MediaController::class, 'sync']);
     });
+
+    //// News
+    Route::post('/news', [NewsController::class, 'store']);
+    Route::patch('/news/{id}', [NewsController::class, 'update']);
 });
 
 Route::middleware('auth')->group(function () {

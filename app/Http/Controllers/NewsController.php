@@ -32,4 +32,23 @@ class NewsController extends Controller
                 ->get(['id', 'title', 'created_at']),
         ]);
     }
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'title' => 'required|string|min:3|max:255'
+        ]);
+
+        return News::create($validated);
+    }
+    public function update(Request $request, $id)
+    {
+        $news = News::findOrFail($id);
+        $news->update($request->validate([
+            'title' => 'sometimes|required|string|min:3|max:255',
+            'body' => 'sometimes|string',
+            'published' => 'sometimes|boolean'
+        ]));
+
+        return $news;
+    }
 }
