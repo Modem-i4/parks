@@ -1,0 +1,8 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Лівий (половина прямокутника) -->
+  <rect x="-4" y="0" width="8" height="24" rx="2" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke"/>
+  <!-- Центральний (повний) -->
+  <rect x="8" y="0" width="8" height="24" rx="2" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke"/>
+  <!-- Правий (половина прямокутника) -->
+  <rect x="20" y="0" width="8" height="24" rx="2" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke"/>
+</svg>

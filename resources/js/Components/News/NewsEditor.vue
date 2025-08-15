@@ -8,6 +8,8 @@ import Placeholder from '@tiptap/extension-placeholder'
 
 import ResizableImage from '@/Helpers/Admin/ResizableImage'
 
+import { Table, TableRow, TableCell, TableHeader  } from '@tiptap/extension-table'
+
 // ====== ICONS ======
 import icUndo from '@/assets/editor/undo.svg'
 import icRedo from '@/assets/editor/redo.svg'
@@ -17,6 +19,7 @@ import icStrike from '@/assets/editor/strike.svg'
 import icUnderline from '@/assets/editor/underline.svg'
 import icLink from '@/assets/editor/link.svg'
 import icQuote from '@/assets/editor/blockquote.svg'
+import icCols from '@/assets/editor/columns.svg'
 import icAlignLeft from '@/assets/editor/align-left.svg'
 import icAlignCenter from '@/assets/editor/align-center.svg'
 import icAlignRight from '@/assets/editor/align-right.svg'
@@ -40,12 +43,20 @@ const extensions = [
     link: {
       autolink: true,
       linkOnPaste: true,
-      // openOnClick: true,
     }
   }),
   ResizableImage.configure({ inline: false, allowBase64: true }),
   TextAlign.configure({ types: ['heading', 'paragraph'] }),
   Placeholder.configure({ placeholder: props.placeholder }),
+  Table.configure({
+    resizable: false,
+    lastColumnResizable: false,
+    allowTableNodeSelection: true,
+    HTMLAttributes: { class: 'tt-columns' },
+  }),
+  TableRow,
+  TableCell,
+  TableHeader
 ]
 
 const editor = useEditor({
@@ -112,16 +123,17 @@ const currentHeadingLabel = computed(() => {
   return 'H1'
 })
 
-// ===== Dropdowns + click outside (for Head/Align) =====
+// ===== Dropdowns + click outside (for Head/Align/Cols) =====
 const openHead = ref(false)
 const openAlign = ref(false)
-const dropdownEls = []
+const openCols  = ref(false)
 
+const dropdownEls = []
 function registerDrop(el) {
   if (el && !dropdownEls.includes(el)) dropdownEls.push(el)
 }
 function closeAll() {
-  openHead.value = openAlign.value = false
+  openHead.value = openAlign.value = openCols.value = false
 }
 function onDocClick(e) {
   const inside = dropdownEls.some(el => el && el.contains(e.target))
@@ -129,6 +141,50 @@ function onDocClick(e) {
 }
 onMounted(() => document.addEventListener('click', onDocClick))
 onBeforeUnmount(() => document.removeEventListener('click', onDocClick))
+
+// ===== Table =====
+function isInTable() {
+  return !!editor.value?.isActive('table')
+}
+
+function getCurrentTableCols() {
+  const ed = editor.value; if (!ed || !isInTable()) return 0
+  const { state } = ed
+  const $from = state.selection.$from
+  for (let d = $from.depth; d > 0; d--) {
+    const node = $from.node(d)
+    if (node.type.name === 'table') {
+      const firstRow = node.firstChild
+      return firstRow ? firstRow.childCount : 0
+    }
+  }
+  return 0
+}
+
+function chooseColumns(n) {
+  const ch = editor.value?.chain().focus(); if (!ch) return
+
+  if (n <= 1) {
+    if (isInTable()) ch.deleteTable().run()
+    else ch.setParagraph().run()
+    openCols.value = false
+    return
+  }
+
+  if (!isInTable()) {
+    ch.insertTable({ rows: 1, cols: n, withHeaderRow: false })
+      .updateAttributes('table', { 'data-cols': String(n) }).run()
+    openCols.value = false
+    return
+  }
+
+  let curr = getCurrentTableCols()
+  while (curr < n) { ch.addColumnAfter(); curr++ }
+  while (curr > n) { ch.deleteColumn();   curr-- }
+  ch.updateAttributes('table', { 'data-cols': String(n) }).run()
+  ch.run()
+  openCols.value = false
+}
 
 // ===== PostMediaPickerModal wiring =====
 const showPostPicker = ref(false)
@@ -158,7 +214,7 @@ function onPostPickerSaved(payload) {
       <!-- Headings -->
       <div class="dd" :ref="registerDrop">
         <button class="btn" :class="{ active: editor?.isActive('heading') }"
-          @click.stop="(openHead = !openHead, openAlign=false)">
+          @click.stop="(openHead = !openHead, openAlign=false, openCols=false)">
           <span class="lbl">{{ currentHeadingLabel }}</span>
           <span class="car">▾</span>
         </button>
@@ -173,7 +229,7 @@ function onPostPickerSaved(payload) {
 
       <!-- Align -->
       <div class="dd" :ref="registerDrop">
-        <button class="btn" @click.stop="(openAlign = !openAlign, openHead=false)">
+        <button class="btn" @click.stop="(openAlign = !openAlign, openHead=false, openCols=false)">
           <img :src="currentAlignIcon" alt="" />
           <span class="car">▾</span>
         </button>
@@ -192,6 +248,32 @@ function onPostPickerSaved(payload) {
           </button>
         </div>
       </div>
+
+      <!-- Table / Columns -->
+      <div class="dd" :ref="registerDrop">
+        <button
+          class="btn"
+          :class="{ active: editor?.isActive('table') }"
+          @click.stop="(openCols = !openCols, openHead=false, openAlign=false)"
+          title="Колонки"
+        >
+          <img :src="icCols" alt="" />
+          <span class="car">▾</span>
+        </button>
+        <div v-if="openCols" class="menu">
+          <button class="mi" :class="{ sel: !editor?.isActive('table') }" @click="chooseColumns(1)">
+            Без колонок
+          </button>
+          <button class="mi" :class="{ sel: editor?.isActive('table') && getCurrentTableCols() === 2 }" @click="chooseColumns(2)">
+            2 колонки
+          </button>
+          <button class="mi" :class="{ sel: editor?.isActive('table') && getCurrentTableCols() === 3 }" @click="chooseColumns(3)">
+            3 колонки
+          </button>
+        </div>
+      </div>
+
+      <span class="sep"></span>
 
       <!-- Link -->
       <button class="btn" :class="{active: editor?.isActive('link')}" @click="setLink" title="Link">
@@ -214,7 +296,7 @@ function onPostPickerSaved(payload) {
         <img :src="icUnderline" alt="" />
       </button>
 
-      <!-- Quote / Divider -->
+      <!-- Quote -->
       <button class="btn" @click="insertQuote" title="Quote">
         <img :src="icQuote" alt="" />
       </button>
@@ -241,6 +323,7 @@ function onPostPickerSaved(payload) {
     />
   </div>
 </template>
+
 <style scoped>
 :deep(.ProseMirror) {
   outline: none;
@@ -282,4 +365,9 @@ function onPostPickerSaved(payload) {
 .mi:hover { background:#f3f4f6; }
 .mi.sel { background:#ede9fe; color:#6d28d9; font-weight:600; }
 .mi-ic { width:16px; height:16px; display:block; }
+
+:deep(.tt-columns td) {
+  border: 1px dashed #e5e7eb;
+  background: #fff;
+}
 </style>

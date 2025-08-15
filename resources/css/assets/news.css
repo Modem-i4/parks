@@ -18,3 +18,18 @@
 @media (max-width: 720px) {
     .news-content img { display: block; width: 100% !important; }
 }
+
+.news-content table.tt-columns {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: .75rem;
+}
+.news-content table.tt-columns td {
+  vertical-align: middle;
+  border-radius: .5rem;
+  padding: .5rem;
+}
+.news-content table.tt-columns img {
+    margin: auto;
+}
