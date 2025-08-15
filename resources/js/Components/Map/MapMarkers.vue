@@ -64,11 +64,11 @@ function distanceSquared(a, b) {
 async function createMarker(marker, lat, lng, cancelToken) {
   const { AdvancedMarkerElement } = await loader.importLibrary('marker')
   const content = marker.green
-    ? await CreateSimpleIcon({
-        iconPath: `/storage/img/icons/${marker.type || 'tree'}-map_icon.svg`,
-        fill: getColorByGreenState(marker.green?.green_state)
-      })
-    : await CreatePinIcon({ glyph: marker.icon?.file_path })
+      ? await CreateSimpleIcon({
+          iconPath: `/storage/img/icons/${marker.type || 'tree'}-map_icon.svg`,
+          fill: getColorByGreenState(marker.green?.green_state)
+        })
+      : await CreatePinIcon({ glyph: marker.icon?.file_path })
   
   if (cancelToken.cancelled) return
   return new AdvancedMarkerElement({
@@ -196,16 +196,23 @@ function setupViewportFilter() {
     updateMarkersInViewport(currentCancelToken)
   }
 
+  google.maps.event.clearListeners(parkStore.map, 'idle')
   google.maps.event.clearListeners(parkStore.map, 'bounds_changed')
+  parkStore.map.addListener('idle', update)
   parkStore.map.addListener('bounds_changed', debounce(update, 150))
 }
+
+watch(
+  () => parkStore.map,
+  setupViewportFilter,
+  { immediate: true }
+)
 
 watch(
   () => [parkStore.map, parkStore.markers],
   () => {
     resetCancelToken()
     updateMarkersInViewport(currentCancelToken)
-    setupViewportFilter()
   },
   { immediate: true }
 )

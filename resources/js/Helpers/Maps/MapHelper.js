@@ -67,13 +67,17 @@ export function distanceInMeters(a, b) {
   const lngDist = (a.lng - b.lng) * 111_000 * Math.cos((a.lat + b.lat) * Math.PI / 360)
   return Math.hypot(latDist, lngDist)
 }
+const coordsCache = new WeakMap()
 
 export function getCoordsFromMarker(marker) {
-  if(!marker) return defaultCoords
-  if (!marker.cachedCoords) {
-    marker.cachedCoords = getNewCoordsFromMarker(marker)
-  }
-  return marker.cachedCoords
+  if (!marker) return defaultCoords
+  return coordsCache.get(marker) ?? cacheMarkerCoords(marker)
+}
+
+export function cacheMarkerCoords(marker) {
+  const cacheVal = getNewCoordsFromMarker(marker)
+  coordsCache.set(marker, cacheVal)
+  return cacheVal
 }
 
 export function getNewCoordsFromMarker(marker) {

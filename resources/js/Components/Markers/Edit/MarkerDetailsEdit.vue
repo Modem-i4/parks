@@ -14,6 +14,7 @@ import DictTags from '@/Components/Dictionaries/DictTags.vue'
 import DictHedgeRow from '@/Components/Dictionaries/DictHedgeRow.vue'
 import DictHedgeShape from '@/Components/Dictionaries/DictHedgeShape.vue'
 import DictPlots from '@/Components/Dictionaries/DictPlots.vue'
+import { cacheMarkerCoords } from '@/Helpers/Maps/MapHelper'
 
 const props = defineProps({ marker: Object })
 
@@ -82,7 +83,7 @@ function save() {
         if (key in marker.value)
           parkStore.selectedMarker[key] = marker.value[key]
       }
-      parkStore.selectedMarker.cachedCoords = null
+      cacheMarkerCoords(parkStore.selectedMarker)
       parkStore.selectedMarker.edited = true
     })
   }
