@@ -16,6 +16,7 @@ class NewsFactory extends Factory
             'title' => $this->faker->sentence(6, true),
             'body' => $this->generateFakeHtmlBody(),
             'author_id' => User::factory(),
+            'published_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
         ];
     }
     protected function generateFakeHtmlBody(): string

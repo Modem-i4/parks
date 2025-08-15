@@ -12,7 +12,7 @@ return new class extends Migration {
             $table->string('title');
             $table->longText('body'); 
             $table->foreignId('author_id')->constrained('users')->onDelete('cascade');
-            $table->boolean('published')->default(false);
+            $table->dateTime('published_at')->nullable();
             $table->timestamps();
         });
     }

@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @property string $title
  * @property string $body
  * @property int $author_id
+ * @property Carbon|null $published_at
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * 
@@ -30,8 +31,13 @@ class News extends Model
         'title',
         'body',
         'author_id',
+        'published_at',
     ];
-	
+
+    protected $casts = [
+        'published_at' => 'datetime',
+    ];
+
     public function author(): BelongsTo
     {
         return $this->belongsTo(User::class, 'author_id');

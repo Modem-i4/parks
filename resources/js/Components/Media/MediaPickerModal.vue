@@ -55,6 +55,7 @@ const props = defineProps({
   type: { type: String, required: true }, // 'icon' or 'image'
   modelType: { type: String, required: true },
   modelId: { type: Number, required: true },
+  multipleSelect: { type: Boolean, default: undefined },
   onClose: Function
 });
 
@@ -63,7 +64,7 @@ const emit = defineEmits(['saved']);
 const library = ref([]);
 const selected = ref([]);
 
-const isMultiple = computed(() => props.type === 'image');
+const isMultiple = computed(() => props.type === 'image' && props.multipleSelect !== false )
 
 const fetchLibrary = async () => {
   const res = await axios.get('/api/media-library', {

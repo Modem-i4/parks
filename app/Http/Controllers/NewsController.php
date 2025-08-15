@@ -1,10 +1,4 @@
 <?php
-
-namespace App\Http\Controllers;
-
-use App\Models\News;
-use Illuminate\Http\Request;
-use Inertia\Inertia;
 namespace App\Http\Controllers;
 
 use App\Models\News;
@@ -18,7 +12,7 @@ class NewsController extends Controller
         return Inertia::render('News/Index', [
             'news' => News::with('cover')
                 ->latest()
-                ->get(['id', 'title', 'body', 'created_at']),
+                ->get(['id', 'title', 'body', 'published_at']),
         ]);
     }
     public function single($id)
@@ -29,7 +23,7 @@ class NewsController extends Controller
                 ->latest()
                 ->where('id', '!=', $id)
                 ->take(5)
-                ->get(['id', 'title', 'created_at']),
+                ->get(['id', 'title', 'published_at']),
         ]);
     }
     public function store(Request $request)
@@ -46,9 +40,9 @@ class NewsController extends Controller
         $news->update($request->validate([
             'title' => 'sometimes|required|string|min:3|max:255',
             'body' => 'sometimes|string',
-            'published' => 'sometimes|boolean'
+            'published_at' => 'sometimes|nullable|date'
         ]));
 
-        return $news;
+        return $news->load('cover');
     }
 }

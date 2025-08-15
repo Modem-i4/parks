@@ -200,113 +200,115 @@ function onPostPickerSaved(payload) {
 <template>
   <div class="editor-root">
     <!-- Toolbar -->
-    <div class="toolbar">
-      <!-- Undo / Redo -->
-      <button class="btn" @click="undo" :disabled="!editor?.can().undo()" title="Undo">
-        <img :src="icUndo" alt="" />
-      </button>
-      <button class="btn" @click="redo" :disabled="!editor?.can().redo()" title="Redo">
-        <img :src="icRedo" alt="" />
-      </button>
-
-      <span class="sep"></span>
-
-      <!-- Headings -->
-      <div class="dd" :ref="registerDrop">
-        <button class="btn" :class="{ active: editor?.isActive('heading') }"
-          @click.stop="(openHead = !openHead, openAlign=false, openCols=false)">
-          <span class="lbl">{{ currentHeadingLabel }}</span>
-          <span class="car">▾</span>
+    <div class="sticky top-0 z-20 backdrop-blur">
+      <div class="toolbar flex items-center gap-1 p-2">
+        <!-- Undo / Redo -->
+        <button class="btn" @click="undo" :disabled="!editor?.can().undo()" title="Undo">
+          <img :src="icUndo" alt="" />
         </button>
-        <div v-if="openHead" class="menu">
-          <button class="mi" :class="{sel: editor?.isActive('heading', {level:1})}" @click="setHeading(1)">H1</button>
-          <button class="mi" :class="{sel: editor?.isActive('heading', {level:2})}" @click="setHeading(2)">H2</button>
-          <button class="mi" :class="{sel: editor?.isActive('heading', {level:3})}" @click="setHeading(3)">H3</button>
-          <button class="mi" :class="{sel: editor?.isActive('heading', {level:4})}" @click="setHeading(4)">H4</button>
-          <button class="mi" :class="{sel: editor?.isActive('paragraph')}" @click="setParagraph">Параграф</button>
-        </div>
-      </div>
-
-      <!-- Align -->
-      <div class="dd" :ref="registerDrop">
-        <button class="btn" @click.stop="(openAlign = !openAlign, openHead=false, openCols=false)">
-          <img :src="currentAlignIcon" alt="" />
-          <span class="car">▾</span>
+        <button class="btn" @click="redo" :disabled="!editor?.can().redo()" title="Redo">
+          <img :src="icRedo" alt="" />
         </button>
-        <div v-if="openAlign" class="menu">
-          <button class="mi" :class="{ sel: editor?.isActive({ textAlign:'left' }) }"   @click="setAlign('left')">
-            <img :src="icAlignLeft" alt="" class="mi-ic" /> Left
-          </button>
-          <button class="mi" :class="{ sel: editor?.isActive({ textAlign:'center' }) }" @click="setAlign('center')">
-            <img :src="icAlignCenter" alt="" class="mi-ic" /> Center
-          </button>
-          <button class="mi" :class="{ sel: editor?.isActive({ textAlign:'right' }) }"  @click="setAlign('right')">
-            <img :src="icAlignRight" alt="" class="mi-ic" /> Right
-          </button>
-          <button class="mi" :class="{ sel: editor?.isActive({ textAlign:'justify' }) }" @click="setAlign('justify')">
-            <img :src="icAlignJustify" alt="" class="mi-ic" /> Justify
-          </button>
-        </div>
-      </div>
 
-      <!-- Table / Columns -->
-      <div class="dd" :ref="registerDrop">
-        <button
-          class="btn"
-          :class="{ active: editor?.isActive('table') }"
-          @click.stop="(openCols = !openCols, openHead=false, openAlign=false)"
-          title="Колонки"
-        >
-          <img :src="icCols" alt="" />
-          <span class="car">▾</span>
+        <span class="sep"></span>
+
+        <!-- Headings -->
+        <div class="dd" :ref="registerDrop">
+          <button class="btn" :class="{ active: editor?.isActive('heading') }"
+            @click.stop="(openHead = !openHead, openAlign=false, openCols=false)">
+            <span class="lbl">{{ currentHeadingLabel }}</span>
+            <span class="car">▾</span>
+          </button>
+          <div v-if="openHead" class="menu">
+            <button class="mi" :class="{sel: editor?.isActive('heading', {level:1})}" @click="setHeading(1)">H1</button>
+            <button class="mi" :class="{sel: editor?.isActive('heading', {level:2})}" @click="setHeading(2)">H2</button>
+            <button class="mi" :class="{sel: editor?.isActive('heading', {level:3})}" @click="setHeading(3)">H3</button>
+            <button class="mi" :class="{sel: editor?.isActive('heading', {level:4})}" @click="setHeading(4)">H4</button>
+            <button class="mi" :class="{sel: editor?.isActive('paragraph')}" @click="setParagraph">Параграф</button>
+          </div>
+        </div>
+
+        <!-- Align -->
+        <div class="dd" :ref="registerDrop">
+          <button class="btn" @click.stop="(openAlign = !openAlign, openHead=false, openCols=false)">
+            <img :src="currentAlignIcon" alt="" />
+            <span class="car">▾</span>
+          </button>
+          <div v-if="openAlign" class="menu">
+            <button class="mi" :class="{ sel: editor?.isActive({ textAlign:'left' }) }"   @click="setAlign('left')">
+              <img :src="icAlignLeft" alt="" class="mi-ic" /> Left
+            </button>
+            <button class="mi" :class="{ sel: editor?.isActive({ textAlign:'center' }) }" @click="setAlign('center')">
+              <img :src="icAlignCenter" alt="" class="mi-ic" /> Center
+            </button>
+            <button class="mi" :class="{ sel: editor?.isActive({ textAlign:'right' }) }"  @click="setAlign('right')">
+              <img :src="icAlignRight" alt="" class="mi-ic" /> Right
+            </button>
+            <button class="mi" :class="{ sel: editor?.isActive({ textAlign:'justify' }) }" @click="setAlign('justify')">
+              <img :src="icAlignJustify" alt="" class="mi-ic" /> Justify
+            </button>
+          </div>
+        </div>
+
+        <!-- Table / Columns -->
+        <div class="dd" :ref="registerDrop">
+          <button
+            class="btn"
+            :class="{ active: editor?.isActive('table') }"
+            @click.stop="(openCols = !openCols, openHead=false, openAlign=false)"
+            title="Колонки"
+          >
+            <img :src="icCols" alt="" />
+            <span class="car">▾</span>
+          </button>
+          <div v-if="openCols" class="menu">
+            <button class="mi" :class="{ sel: !editor?.isActive('table') }" @click="chooseColumns(1)">
+              Без колонок
+            </button>
+            <button class="mi" :class="{ sel: editor?.isActive('table') && getCurrentTableCols() === 2 }" @click="chooseColumns(2)">
+              2 колонки
+            </button>
+            <button class="mi" :class="{ sel: editor?.isActive('table') && getCurrentTableCols() === 3 }" @click="chooseColumns(3)">
+              3 колонки
+            </button>
+          </div>
+        </div>
+
+        <span class="sep"></span>
+
+        <!-- Link -->
+        <button class="btn" :class="{active: editor?.isActive('link')}" @click="setLink" title="Link">
+          <img :src="icLink" alt="" />
         </button>
-        <div v-if="openCols" class="menu">
-          <button class="mi" :class="{ sel: !editor?.isActive('table') }" @click="chooseColumns(1)">
-            Без колонок
-          </button>
-          <button class="mi" :class="{ sel: editor?.isActive('table') && getCurrentTableCols() === 2 }" @click="chooseColumns(2)">
-            2 колонки
-          </button>
-          <button class="mi" :class="{ sel: editor?.isActive('table') && getCurrentTableCols() === 3 }" @click="chooseColumns(3)">
-            3 колонки
-          </button>
-        </div>
+
+        <span class="sep"></span>
+
+        <!-- Marks -->
+        <button class="btn" :class="{active: editor?.isActive('bold')}" @click="toggleMark('bold')" title="Bold">
+          <img :src="icBold" alt="" />
+        </button>
+        <button class="btn" :class="{active: editor?.isActive('italic')}" @click="toggleMark('italic')" title="Italic">
+          <img :src="icItalic" alt="" />
+        </button>
+        <button class="btn" :class="{active: editor?.isActive('strike')}" @click="toggleMark('strike')" title="Strike">
+          <img :src="icStrike" alt="" />
+        </button>
+        <button class="btn" :class="{active: editor?.isActive('underline')}" @click="toggleMark('underline')" title="Underline">
+          <img :src="icUnderline" alt="" />
+        </button>
+
+        <!-- Quote -->
+        <button class="btn" @click="insertQuote" title="Quote">
+          <img :src="icQuote" alt="" />
+        </button>
+
+        <span class="sep"></span>
+
+        <!-- Image -->
+        <button class="btn" title="Додати зображення" @click="openPostPicker">
+          <img :src="icImage" alt="Image" />
+        </button>
       </div>
-
-      <span class="sep"></span>
-
-      <!-- Link -->
-      <button class="btn" :class="{active: editor?.isActive('link')}" @click="setLink" title="Link">
-        <img :src="icLink" alt="" />
-      </button>
-
-      <span class="sep"></span>
-
-      <!-- Marks -->
-      <button class="btn" :class="{active: editor?.isActive('bold')}" @click="toggleMark('bold')" title="Bold">
-        <img :src="icBold" alt="" />
-      </button>
-      <button class="btn" :class="{active: editor?.isActive('italic')}" @click="toggleMark('italic')" title="Italic">
-        <img :src="icItalic" alt="" />
-      </button>
-      <button class="btn" :class="{active: editor?.isActive('strike')}" @click="toggleMark('strike')" title="Strike">
-        <img :src="icStrike" alt="" />
-      </button>
-      <button class="btn" :class="{active: editor?.isActive('underline')}" @click="toggleMark('underline')" title="Underline">
-        <img :src="icUnderline" alt="" />
-      </button>
-
-      <!-- Quote -->
-      <button class="btn" @click="insertQuote" title="Quote">
-        <img :src="icQuote" alt="" />
-      </button>
-
-      <span class="sep"></span>
-
-      <!-- Image -->
-      <button class="btn" title="Додати зображення" @click="openPostPicker">
-        <img :src="icImage" alt="Image" />
-      </button>
     </div>
 
     <!-- Editor -->

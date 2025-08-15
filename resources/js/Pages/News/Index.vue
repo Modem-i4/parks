@@ -49,7 +49,7 @@ const fallbackImage = '/storage/img/images/park1-1.jpg'
           </h2>
 
           <p class="text-sm text-gray-500">
-            {{ new Date(item.created_at).toLocaleDateString() }}
+            {{ new Date(item.published_at).toLocaleDateString() }}
           </p>
 
           <p class="text-sm text-gray-700 leading-snug line-clamp-3">
