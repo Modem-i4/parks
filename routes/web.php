@@ -157,6 +157,7 @@ Route::prefix('api')->group(function () {
     });
 
     //// News
+    Route::get('/news', [NewsController::class, 'search']);
     Route::post('/news', [NewsController::class, 'store']);
     Route::patch('/news/{id}', [NewsController::class, 'update']);
 });

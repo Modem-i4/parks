@@ -4,16 +4,52 @@ namespace App\Http\Controllers;
 use App\Models\News;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class NewsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $perPage = 6;
+        $p = $this->baseQuery($request)
+            ->paginate($perPage)
+            ->withQueryString();
         return Inertia::render('News/Index', [
-            'news' => News::with('cover')
-                ->latest()
-                ->get(['id', 'title', 'body', 'published_at']),
+            'news'      => $p->items(),
+            'nextPage' => $this->nextPage($p),
+            'query'     => (string) $request->query('q',''),
         ]);
+    }
+
+    public function search(Request $request)
+    {
+        $perPage = (int) $request->query('per_page', 6);
+        $p = $this->baseQuery($request)->paginate($perPage);
+        return response()->json([
+            'data'      => $p->items(),
+            'nextPage' => $this->nextPage($p),
+        ]);
+    }
+
+    protected function baseQuery(Request $request): Builder
+    {
+        $q = trim((string) $request->query('q', ''));
+
+        return News::with('cover')
+            ->select(['id','title','body','published_at'])
+            ->when($q !== '', function (Builder $b) use ($q) {
+                $b->where(function (Builder $w) use ($q) {
+                    $w->where('title', 'like', "%{$q}%")
+                      ->orWhere('body',  'like', "%{$q}%");
+                });
+            })
+            ->orderByDesc('published_at')->orderByDesc('id');
+    }
+
+    private function nextPage(LengthAwarePaginator $p): ?int
+    {
+        return $p->hasMorePages() ? $p->currentPage() + 1 : null;
     }
     public function single($id)
     {
