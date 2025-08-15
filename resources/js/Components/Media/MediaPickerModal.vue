@@ -34,8 +34,8 @@
         </div>
 
         <div class="p-4 border-t flex justify-between items-center">
-          <button @click="cancel" class="text-sm text-gray-500 hover:text-black">Скасувати</button>
-          <button @click="save" class="text-sm bg-blue-600 hover:bg-blue-700 text-white px-4 py-1 rounded">Зберегти</button>
+          <SecondaryButton @click="cancel" class="text-sm text-gray-500 hover:text-black">Скасувати</SecondaryButton>
+          <PrimaryButton @click="save" class="text-sm bg-blue-600 hover:bg-blue-700 text-white px-4 py-1 rounded">Зберегти</PrimaryButton>
         </div>
       </div>
     </div>
@@ -48,6 +48,8 @@ import axios from 'axios';
 import MediaLibraryGrid from './MediaLibraryGrid.vue';
 import MediaSelectedList from './MediaSelectedList.vue';
 import MediaUploader from './MediaUploader.vue';
+import PrimaryButton from '@/Components/Default/PrimaryButton.vue';
+import SecondaryButton from '@/Components/Default/SecondaryButton.vue';
 
 const props = defineProps({
   type: { type: String, required: true }, // 'icon' or 'image'

@@ -30,7 +30,8 @@ onMounted(getParks)
     >
       <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer">
         <PanelHeader
-          :title="park.name" :subtitle="park.address" :icon="park.icon?.file_path"
+          :title="park.name" :subtitle="park.address" :icon="park.icon?.file_path" :shouldFilter="true"
+          iconBg="gray-100"
         />
         <div class="px-4 pb-4">
           <p class="text-gray-700 text-sm line-clamp-3" v-if="park.description">{{ park.description }}</p>
@@ -38,5 +39,6 @@ onMounted(getParks)
         </div>
       </div>
     </li>
+  <img src="/storage/img/icons/logo-parks-matter.png" alt="parksMatter" class="max-w-[15rem] mx-auto mt-6"/>
   </ul>
 </template>

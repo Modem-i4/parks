@@ -2,7 +2,7 @@
   <transition name="fade">
     <div
       v-show="show"
-      class="text-sm text-center text-white bg-black bg-opacity-60 
+      class="text-center text-white bg-black bg-opacity-60 
         py-1 px-4 rounded shadow-md absolute top-2 left-1/2 transform -translate-x-1/2 z-[1000] w-[75%] md:w-auto">
       {{ message }}
     </div>

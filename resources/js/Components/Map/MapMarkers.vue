@@ -6,6 +6,7 @@ import { getCoordsFromMarker } from '@/Helpers/Maps/MapHelper.js'
 import { useParkStore } from '@/Stores/useParkStore.js'
 import { CreateSimpleIcon, getColorByGreenState } from '@/Helpers/Maps/CreateSimpleIcon'
 import { zoom, isTweening } from '@/Helpers/Maps/MapHelper.js'
+import { CreateCustomPinIcon } from '@/Helpers/Maps/CreateCustomPinIcon'
 
 const parkStore = useParkStore()
 const mapMarkers = ref([])
@@ -63,7 +64,9 @@ function distanceSquared(a, b) {
 
 async function createMarker(marker, lat, lng, cancelToken) {
   const { AdvancedMarkerElement } = await loader.importLibrary('marker')
-  const content = marker.green
+  const content = marker.type === 'park'
+    ? await CreateCustomPinIcon({ glyph: marker.icon?.file_path, label: marker.name })
+    : marker.green
       ? await CreateSimpleIcon({
           iconPath: `/storage/img/icons/${marker.type || 'tree'}-map_icon.svg`,
           fill: getColorByGreenState(marker.green?.green_state)
@@ -239,10 +242,16 @@ async function updateMarkerBackgrounds(newId, oldId) {
       isSelected
         ? mapMarker.content.classList.add(...highlightClasses)
         : mapMarker.content.classList.remove(...highlightClasses)
+    } else if(marker.type === 'park') {
+      mapMarker.content = await CreateCustomPinIcon({
+        glyph: marker.icon?.file_path,
+        label: marker.name,
+        background: isSelected ? '#007c00' : '#007c57'
+      })
     } else {
       mapMarker.content = await CreatePinIcon({
         glyph: marker.icon?.file_path,
-        background: isSelected ? '#FF0000' : '#4285F4'
+        background: isSelected ? '#007c00' : '#4285F4'
       })
     }
   }

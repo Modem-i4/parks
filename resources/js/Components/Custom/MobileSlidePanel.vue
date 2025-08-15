@@ -41,10 +41,9 @@ function onTouchEnd() {
     }"
   >
     <div
-      class="p-2 border-b flex justify-between items-center active:cursor-grabbing"
-      style="touch-action: none"
-      @touchstart="onTouchStart"
-      @touchmove="onTouchMove"
+      class="p-2 border-b flex justify-between items-center active:cursor-grabbing touch-none"
+      @touchstart.passive="onTouchStart"
+      @touchmove.passive="onTouchMove"
       @touchend="onTouchEnd"
     >
       <div class="flex items-center px-3 space-x-2 text-lg font-semibold">
