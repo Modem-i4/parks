@@ -256,7 +256,6 @@ const selectHedgeRow = (row) => {
 
       <div v-if="marker.type === 'tree'" class="pt-2">
         <NumberSelect v-model="marker.green.tree.height_m" :min="0" :max="50" label="Висота (м)" />
-        <NumberSelect v-model="marker.green.tree.trunk_diameter_cm" :min="0" :max="150" label="Діаметр стовбура (см)" />
         <NumberSelect v-model="marker.green.tree.trunk_circumference_cm" :min="0" :max="300" label="Охоплення стовбура (см)" />
         <NumberSelect v-model="marker.green.tree.tilt_degree" :min="0" :max="90" label="Нахил (°)" />
         <NumberSelect v-model="marker.green.tree.crown_condition_percent" :min="0" :max="100" label="Стан крони (%)" />

@@ -82,7 +82,6 @@ class MarkerSeeder extends Seeder
                         'tree' => Tree::create([
                             'id' => $green->id,
                             'height_m' => rand(5, 20),
-                            'trunk_diameter_cm' => rand(10, 60),
                             'trunk_circumference_cm' => rand(30, 180),
                             'tilt_degree' => rand(0, 10),
                             'crown_condition_percent' => rand(60, 100),

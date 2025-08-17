@@ -126,8 +126,7 @@ class MarkerGreenFilterService {
 
                 $column = match ($key) {
                     'height_m' => 'height_m',
-                    'trunk_diameter_cm' => 'trunk_diameter_cm',
-                    'trunk_circumference_cm' => 'trunk_circumference_cm',
+                    'trunk_diameter_cm' => 'trunk_circumference_cm',
                     'tilt_degree' => 'tilt_degree',
                     'crown_condition_percent' => 'crown_condition_percent',
                     'quantity' => 'quantity',
@@ -136,7 +135,9 @@ class MarkerGreenFilterService {
                     'type_shape' => 'hedge_shape',
                     default => null,
                 };
-
+                if($column == 'trunk_circumference_cm') {
+                    $value = [$value[0] * M_PI, $value[1] * M_PI];
+                }
                 if ($column) {
                     if (is_array($value)) {
                         $q->whereBetween($column, $value);

@@ -25,7 +25,6 @@ final class FieldNameCodec
         'quality_state_note' => 'qual_note',
 
         'tree_height_m' => 'tree_h_m',
-        'tree_trunk_diameter_cm' => 'tree_td_cm',
         'tree_trunk_circumference_cm' => 'tree_tc_cm',
         'tree_tilt_degree' => 'tree_t_deg',
         'tree_crown_condition_percent' => 'tree_ccpct',

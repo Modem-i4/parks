@@ -129,7 +129,6 @@ class ShapefileExporter implements ExporterInterface
                 $tree = $m->green->tree ?? null;
                 if ($tree) {
                     $props['tree_height_m'] = $tree->height_m;
-                    $props['tree_trunk_diameter_cm'] = $tree->trunk_diameter_cm;
                     $props['tree_trunk_circumference_cm'] = $tree->trunk_circumference_cm;
                     $props['tree_tilt_degree'] = $tree->tilt_degree;
                     $props['tree_crown_condition_percent'] = $tree->crown_condition_percent;

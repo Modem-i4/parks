@@ -159,13 +159,6 @@ class MarkerFilterConfigService {
                                 'max' => 200,
                             ],
                             [
-                                'name' => 'Окружність стовбура (см)',
-                                'slug' => 'trunk_circumference_cm',
-                                'type' => 'slider',
-                                'min' => 0,
-                                'max' => 800,
-                            ],
-                            [
                                 'name' => 'Нахил (°)',
                                 'slug' => 'tilt_degree',
                                 'type' => 'slider',

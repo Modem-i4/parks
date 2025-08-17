@@ -31,7 +31,6 @@ class ValidateMarkerService
             'green.species.family_type' => ['sometimes', Rule::in(array_column(GreenType::cases(), 'value'))],
 
             'green.tree.height_m' => ['sometimes', 'nullable', 'numeric'],
-            'green.tree.trunk_diameter_cm' => ['sometimes', 'nullable', 'numeric'],
             'green.tree.trunk_circumference_cm' => ['sometimes', 'nullable', 'numeric'],
             'green.tree.tilt_degree' => ['sometimes', 'nullable', 'numeric'],
             'green.tree.crown_condition_percent' => ['sometimes', 'nullable', 'numeric'],

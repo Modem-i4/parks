@@ -65,7 +65,7 @@ class UpdateMarkerService
         match ($type) {
             GreenType::TREE->value => $green->tree()->updateOrCreate([], array_intersect_key(
                 $greenData['tree'] ?? [],
-                array_flip(['height_m', 'trunk_diameter_cm', 'trunk_circumference_cm', 'tilt_degree', 'crown_condition_percent'])
+                array_flip(['height_m', 'trunk_circumference_cm', 'tilt_degree', 'crown_condition_percent'])
             )),
             GreenType::BUSH->value => $green->bush()->updateOrCreate([], array_intersect_key(
                 $greenData['bush'] ?? [],
