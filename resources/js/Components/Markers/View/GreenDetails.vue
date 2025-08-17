@@ -1,4 +1,5 @@
 <script setup>
+import { useAuthStore } from '@/Stores/useAuthStore';
 import { computed } from 'vue';
 
 const props = defineProps({
@@ -6,13 +7,14 @@ const props = defineProps({
   type: String,
 })
 const showDetails = computed(() => (props.green[props.type] && ['tree', 'bush', 'hedge'].includes(props.type)) || props.green.age)
+const authStore = useAuthStore()
 </script>
 
 <template>
   <div v-if="showDetails" class="text-gray-600 bg-white rounded px-4 py-6">
     <h3 class="text-lg font-semibold pb-2">Деталі насадження</h3>
 
-    <p v-if="green.plot?.name"><strong>Виділ:</strong> {{ green.plot.name }}</p>
+    <p v-if="green.plot?.name && authStore.can.view"><strong>Виділ:</strong> {{ green.plot.name }}</p>
     <p v-if="green.age"><strong>Вік:</strong> {{ Math.floor(green.age%12) }} р. {{ Math.floor(green.age/12) }} м.</p>
 
     <div v-if="type === 'hedge'" class="space-y-1">
@@ -28,9 +30,11 @@ const showDetails = computed(() => (props.green[props.type] && ['tree', 'bush', 
     <div v-else-if="type === 'tree'" class="space-y-1">
       <p><strong>Висота:</strong> {{ green.tree.height_m }} м</p>
       <p><strong>Діаметр стовбура:</strong> {{ green.tree.trunk_diameter_cm }} см</p>
-      <p><strong>Окружність стовбура:</strong> {{ green.tree.trunk_circumference_cm }} см</p>
+      <p v-if="authStore.can.view"><strong>Окружність стовбура:</strong> {{ green.tree.trunk_circumference_cm }} см</p>
       <p><strong>Нахил:</strong> {{ green.tree.tilt_degree }}°</p>
-      <p><strong>Стан крони:</strong> {{ green.tree.crown_condition_percent }}%</p>
+      <p v-if="authStore.can.view"><strong>Стан крони:</strong> {{ green.tree.crown_condition_percent }}%</p>
     </div>
+
+    <p v-if="green.updated_at"><strong>Дата оновлення:</strong> {{ green.updated_at.split('T')[0] }}</p>
   </div>
 </template>

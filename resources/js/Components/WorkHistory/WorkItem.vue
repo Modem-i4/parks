@@ -6,6 +6,7 @@ import SelectWithSearchAndAdd from '@/Components/Custom/SelectWithSearchAndAdd.v
 import Modal from '@/Components/Default/Modal.vue'
 import DictRecommendations from '@/Components/Dictionaries/DictRecommendations.vue'
 import DeleteForm from '../Custom/DeleteForm.vue'
+import { useAuthStore } from '@/Stores/useAuthStore'
 
 const props = defineProps({
   work: Object,
@@ -13,6 +14,7 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['update', 'complete', 'delete'])
+const authStore = useAuthStore()
 
 const editing = ref(false)
 const confirmingDelete = ref(false)
@@ -99,15 +101,16 @@ async function deleteWork() {
       <div class="flex gap-x-1 items-center">
         <template v-if="!readonly">
           <template v-if="!editing">
-            <SecondaryButton size="sm" variant="danger" class="bg-gray-200" @click.stop="confirmingDelete = !confirmingDelete">
-              🗑️
-            </SecondaryButton>
+            <template v-if="authStore.can.assignWork">
+              <SecondaryButton size="sm" variant="danger" class="bg-gray-200" @click.stop="confirmingDelete = !confirmingDelete">
+                🗑️
+              </SecondaryButton>
 
-            <SecondaryButton size="sm" variant="danger" class="bg-gray-200" @click.stop="startEditing">
-              ✏️
-            </SecondaryButton>
-
-            <SecondaryButton v-if="!props.work.execution_date" size="sm" class="bg-white" @click.stop="complete">
+              <SecondaryButton size="sm" variant="danger" class="bg-gray-200" @click.stop="startEditing">
+                ✏️
+              </SecondaryButton>
+            </template>
+            <SecondaryButton v-if="!props.work.execution_date && authStore.can.completeWork" size="sm" class="bg-white" @click.stop="complete">
               ✔️
             </SecondaryButton>
           </template>
@@ -122,7 +125,7 @@ async function deleteWork() {
             </SecondaryButton>
           </template>
         </template>
-        <template v-if="readonly">
+        <template v-if="readonly && authStore.can.completeWork">
           <SecondaryButton size="sm" class="bg-white" @click.stop="revert">
             ⬅️
           </SecondaryButton>

@@ -5,10 +5,13 @@ import NewsEditor from '@/Components/News/NewsEditor.vue'
 import PrimaryButton from '@/Components/Default/PrimaryButton.vue'
 import SecondaryButton from '@/Components/Default/SecondaryButton.vue'
 import MediaPickerModal from '@/Components/Media/MediaPickerModal.vue'
+import { useAuthStore } from '@/Stores/useAuthStore'
 
 const props = defineProps({
   news: { type: Object, required: true },
 })
+
+const authStore = useAuthStore()
 
 const newsItem  = ref({ ...props.news })
 
@@ -115,7 +118,7 @@ function imagePicked(imgs) {
         class="inline-block bg-black/40 text-white text-xs font-semibold px-3 py-1 rounded backdrop-blur-sm shadow-lg ms-4"
         >ЧЕРНЕТКА</div>
     </div>
-    <div v-if="!isEditing" class="flex justify-around flex-wrap gap-y-2">
+    <div v-if="!isEditing && authStore.can.editNews" class="flex justify-around flex-wrap gap-y-2">
       <SecondaryButton @click="showModal.cover = true">
         🖼️ Змінити обкладинку
       </SecondaryButton>

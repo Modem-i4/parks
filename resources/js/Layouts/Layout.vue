@@ -1,7 +1,6 @@
 <script setup>
-import { ref, computed } from 'vue'
-import { usePage } from '@inertiajs/vue3'
-import { Link } from '@inertiajs/vue3'
+import { ref, computed, watchEffect } from 'vue'
+import { usePage, Link } from '@inertiajs/vue3'
 
 import ApplicationLogo from '@/Components/Default/ApplicationLogo.vue'
 import Dropdown from '@/Components/Default/Dropdown.vue'
@@ -9,15 +8,16 @@ import DropdownLink from '@/Components/Default/DropdownLink.vue'
 import NavLink from '@/Components/Default/NavLink.vue'
 import ResponsiveNavLink from '@/Components/Default/ResponsiveNavLink.vue'
 
-import { UserRole } from '@/Helpers/UserRole'
 import { useAuthStore } from '@/Stores/useAuthStore'
 
 const showingNavigationDropdown = ref(false)
-const page = usePage()
-const user = computed(() => page.props.auth?.user)
+const inertia = usePage()
+const user = computed(() => inertia.props.auth?.user)
 
-const authStore = useAuthStore();
-authStore.setUser(user.value);
+const authStore = useAuthStore()
+watchEffect(() => {
+  authStore.setUser(user.value)
+})
 
 const guestPages = [
   { label: 'Головна', routeName: 'home' },
@@ -29,16 +29,23 @@ const adminPages = [
   { label: 'Інструкції', routeName: 'dashboard' },
   { label: 'Парки', routeName: 'parks' },
   { label: 'Новини', routeName: 'news' },
-  { label: 'Словники', routeName: 'admin.dictionaries', role: 'ADMIN' },
-  { label: 'Користувачі', routeName: 'admin.users', role: 'ADMIN' },
+  { label: 'Словники', routeName: 'admin.dictionaries', role: 'editor' },
+  { label: 'Користувачі', routeName: 'admin.users', role: 'admin' },
 ]
 
-function canView(page) {
-  if (!page.role) return true
-  return UserRole.atLeast(user.value?.role, page.role)
+const navPages = computed(() => (user.value ? adminPages : guestPages))
+
+function canViewItem(item) {
+  return !item.role || authStore.atLeast(item.role)
 }
 
-const pages = computed(() => user.value ? adminPages : guestPages)
+const desktopPages = computed(() =>
+  navPages.value.filter(p => !p.mobileOnly && canViewItem(p))
+)
+
+const mobilePages = computed(() =>
+  navPages.value.filter(p => !p.desktopOnly && canViewItem(p))
+)
 </script>
 
 <template>
@@ -56,13 +63,12 @@ const pages = computed(() => user.value ? adminPages : guestPages)
           <!-- Desktop Navigation -->
           <div class="hidden sm:flex sm:items-center space-x-8 ms-10">
             <NavLink
-              v-for="page in pages"
-              v-if="!page.mobileOnly && canView(page)"
-              :key="page.routeName"
-              :href="route(page.routeName)"
-              :active="route().current(page.routeName)"
+              v-for="item in desktopPages"
+              :key="item.routeName"
+              :href="route(item.routeName)"
+              :active="route().current(item.routeName)"
             >
-              {{ page.label }}
+              {{ item.label }}
             </NavLink>
           </div>
 
@@ -96,20 +102,8 @@ const pages = computed(() => user.value ? adminPages : guestPages)
               class="inline-flex items-center p-2 text-gray-400 hover:text-gray-500 hover:bg-gray-100 rounded-md focus:outline-none"
             >
               <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                <path
-                  v-if="!showingNavigationDropdown"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-                <path
-                  v-else
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M6 18L18 6M6 6l12 12"
-                />
+                <path v-if="!showingNavigationDropdown" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                <path v-else stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
               </svg>
             </button>
           </div>
@@ -120,13 +114,12 @@ const pages = computed(() => user.value ? adminPages : guestPages)
       <div :class="{ block: showingNavigationDropdown, hidden: !showingNavigationDropdown }" class="sm:hidden">
         <div class="space-y-1 pb-3 pt-2">
           <ResponsiveNavLink
-            v-for="page in pages"
-            v-if="!page.desktopOnly && canView(page)"
-            :key="page.routeName"
-            :href="route(page.routeName)"
-            :active="route().current(page.routeName)"
+            v-for="item in mobilePages"
+            :key="item.routeName"
+            :href="route(item.routeName)"
+            :active="route().current(item.routeName)"
           >
-            {{ page.label }}
+            {{ item.label }}
           </ResponsiveNavLink>
         </div>
 

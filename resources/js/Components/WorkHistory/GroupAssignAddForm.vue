@@ -6,15 +6,22 @@
       @change="toggle"
       class="accent-blue-600 w-5 h-5"
     />
-    <span class="text-sm text-gray-700">Додати до 👷: групового призначення робіт</span>
+    <span class="text-sm text-gray-700">
+      Додати до  
+      <template v-if="authStore.can.assignWork">👷 групового призначення робіт</template>
+      <template v-if="authStore.can.assignWork && authStore.can.export"> чи </template>
+      <template v-if="authStore.can.export">⏬ експорту</template>
+    </span>
   </label>
 </template>
 
 <script setup>
 import { computed } from 'vue'
 import { useParkStore } from '@/Stores/useParkStore'
+import { useAuthStore } from '@/Stores/useAuthStore'
 
 const parkStore = useParkStore()
+const authStore = useAuthStore()
 
 const isSelected = computed(() =>
   parkStore.pickedMarkers.some(m => m.id === parkStore.selectedMarker.id)

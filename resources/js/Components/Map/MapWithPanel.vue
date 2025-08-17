@@ -11,12 +11,14 @@ import MapUpperMessage from '@/Components/Map/MapUpperMessage.vue';
 import { useAddMarkerHelper } from '@/Helpers/Admin/AddMarkerHelper'
 import FindMarker from '@/Components/Custom/FindMarker.vue'
 import Modal from '@/Components/Default/Modal.vue'
+import { useAuthStore } from '@/Stores/useAuthStore'
 
 const parkStore = useParkStore()
 const { showUserPosition } = useUserLocationMarker(toRef(parkStore, 'map'))
 const { addMarker, addMarkerFinished } = useAddMarkerHelper(parkStore)
 const showModal = ref({ findMarker: false })
 
+const authStore = useAuthStore()
 const addingMarker = ref(false)
 watch(addingMarker, (newVal) => {
   parkStore.selectedMarkerLocked = newVal
@@ -102,7 +104,7 @@ watch(() => parkStore.selectedMarker, (newVal) => {
       <div class="absolute bottom-4 left-4">
         <template v-if="parkStore.isSingleParkView">
           <BtnWhite class="bg-white border px-3 py-1 rounded shadow" 
-            v-if="!parkStore.selectedMarkerLocked"
+            v-if="!parkStore.selectedMarkerLocked && authStore.can.addMarkers"
             @click="() => { addMarker(); addingMarker = true }"
           >
             ➕ Додати маркер

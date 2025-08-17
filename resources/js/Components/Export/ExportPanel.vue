@@ -42,7 +42,7 @@
         <div v-if="exportScope === 'filtered' || parkStore.pickedMarkers.length > 0"
              class="flex items-center justify-center gap-3 mt-2">
           <p class="text-sm font-medium text-blue-700">
-            Обрано {{ filteredCount }} маркер{{ filteredCount === 1 ? '' : filteredCount < 5 ? 'а' : 'ів' }}.
+            Обрано {{ filteredCount }} маркер{{ filteredCount === 1 ? '' : filteredCount > 0 && filteredCount < 5 ? 'а' : 'ів' }}.
           </p>
           <SecondaryButton
             class="py-0.5 text-blue-600"

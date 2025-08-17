@@ -8,15 +8,17 @@ import WorkHistory from '@/Components/WorkHistory/WorkHistory.vue'
 import GreenStateIndicator from './GreenStateIndicator.vue'
 import DeleteForm from '@/Components/Custom/DeleteForm.vue'
 import SecondaryButton from '@/Components/Default/SecondaryButton.vue'
+import { useAuthStore } from '@/Stores/useAuthStore'
 
 const loading = ref(true)
 const copyCompleted = ref(false)
 const imageSliderRef = ref(null)
 
 const props = defineProps({
-    marker: Object,
-    canUpload: { type: Boolean, default: false }
+    marker: Object
 })
+
+const authStore = useAuthStore()
 
 const copyToClipboard = async (text) => {
   try {
@@ -45,12 +47,12 @@ defineExpose({ forceImageUpdate })
 <template>
     <ImageSlider :modelId="props.marker.id" :isDraft="props.marker.isDraft" model="markers" ref="imageSliderRef"
       class="my-2"
-      :editable="props.canUpload"
-      @onImageClick="emit('onImageClick')"
+      :editable="authStore.can.upload"
+      @onImageClick="() => { if(authStore.can.upload) emit('onImageClick') }"
     />
 
     <div
-      v-if="props.marker.green?.inventory_number"
+      v-if="props.marker.green?.inventory_number && authStore.can.view"
       class="bg-white rounded px-4 py-3 flex items-center justify-between text-gray-700 my-2"
     >
       <span class="font-medium">Інвентарний номер: {{ props.marker.green.inventory_number }}</span>
@@ -66,7 +68,7 @@ defineExpose({ forceImageUpdate })
         </Tooltip>
       </div>
     </div>
-    <WorkHistory v-if="props.marker.green?.works" 
+    <WorkHistory v-if="props.marker.green?.works && authStore.can.view" 
       v-model="props.marker.green.works" :loading="loading" :greenId="props.marker.green.id"/>
 
     <div v-if="props.marker.description" class="bg-white rounded px-4 py-6 text-gray-600">
@@ -94,7 +96,7 @@ defineExpose({ forceImageUpdate })
 
     <TagList v-model="props.marker.tags" :loading="loading" />
 
-    <div class="bg-white rounded p-4 mt-2 text-gray-600">
+    <div class="bg-white rounded p-4 mt-2 text-gray-600" v-if="authStore.can.deleteMarkers">
       <DeleteForm
         v-if="confirmingDelete"
         :label="props.marker.green?.inventory_number || props.marker.infrastructure?.name || 'маркер'"

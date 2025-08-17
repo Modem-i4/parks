@@ -3,8 +3,6 @@ import { useParkStore } from '@/Stores/useParkStore.js'
 import { computed, onMounted, ref, watch } from 'vue'
 import axios from 'axios'
 import BtnWhite from '@/Components/Custom/BtnWhite.vue'
-import { usePage } from '@inertiajs/vue3';
-import { UserRole } from '@/Helpers/UserRole.js';
 import MarkerDetailsView from './View/MarkerDetailsView.vue'
 import MarkerDetailsEdit from './Edit/MarkerDetailsEdit.vue';
 import PanelHeader from '../Custom/PanelHeader.vue';
@@ -14,9 +12,7 @@ import { getMarkerTitle } from '@/Helpers/Maps/GetMarkerTitle';
 
 import Modal from '@/Components/Default/Modal.vue'
 import GroupAssign from '@/Components/WorkHistory/GroupAssign.vue'
-
-const page = usePage()
-const role = page.props.auth.user?.role
+import { useAuthStore } from '@/Stores/useAuthStore'
 
 const parkStore = useParkStore()
 const marker = ref(null)
@@ -27,9 +23,7 @@ watch(() => isAddingNew.value, (newVal) => {
   editing.value = newVal
 }, { immediate: true })
 
-const canEdit = UserRole.atLeast(role, 'admin')
-const canUpload = UserRole.atLeast(role, 'editor')
-
+const authStore = useAuthStore()
 const editRef = ref(null)
 const viewRef = ref(null)
 
@@ -128,8 +122,8 @@ function deleteMarker() {
       :title="title"
       :subtitle="description" 
       :icon="marker.icon?.file_path"
-      @onIconClick="() => { if(canUpload && !editing) startIconChange() }"
-      :editable="canEdit && !editing"
+      @onIconClick="() => { if(authStore.can.upload && !editing) startIconChange() }"
+      :editable="authStore.can.edit && !editing"
       >
       <template #right>
         <GreenStateIndicator :green="marker.green" />
@@ -138,8 +132,7 @@ function deleteMarker() {
 
     <template v-if="!editing">
       <MarkerDetailsView :marker="marker" ref="viewRef" 
-        :canUpload="canUpload"
-        @onImageClick="() => { if(canUpload) startGalleryChange() }" 
+        @onImageClick="() => { if(authStore.can.edit) startGalleryChange() }" 
         @deleteMarker="deleteMarker"
       />
         <div class="absolute right-[4.5rem] z-[3]">
@@ -147,8 +140,9 @@ function deleteMarker() {
           <BtnWhite
             @click="showModal.groupAssign = true"
             class="p-[0.7rem] ms-auto"
+            v-if="authStore.can.assignWork"
           >👷</BtnWhite>
-          <BtnWhite v-if="canEdit"
+          <BtnWhite v-if="authStore.can.edit"
             @click="editing = true"
           >✏️</BtnWhite>
         </div>

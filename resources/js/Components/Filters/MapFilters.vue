@@ -12,11 +12,13 @@ import { setParkView } from '@/Helpers/Maps/SetParkView'
 import Modal from '@/Components/Default/Modal.vue'
 import GroupAssign from '@/Components/WorkHistory/GroupAssign.vue'
 import ExportImportPanel from '@/Components/Export/ExportImportPanel.vue'
+import { useAuthStore } from '@/Stores/useAuthStore'
 
 const parkStore = useParkStore()
 const filtersConfig = ref([])
 const filters = ref({})
 const renderKey = ref(0)
+const authStore = useAuthStore()
 
 const filterPresets = {
   all: { green: {}, infrastructure: {} },
@@ -103,10 +105,10 @@ onMounted(() => {
         <PrimaryButton @click="filterMarkers" class="flex flex-1">
           Застосувати фільтри
         </PrimaryButton>
-        <SecondaryButton size="sm" @click="showModal.export = true">
+        <SecondaryButton size="sm" @click="showModal.export = true" v-if="authStore.can.view">
           ⏬
         </SecondaryButton>
-        <SecondaryButton size="sm" @click="showModal.groupAssign = true">
+        <SecondaryButton size="sm" @click="showModal.groupAssign = true" v-if="authStore.can.assignWork">
           👷
         </SecondaryButton>
       </div>

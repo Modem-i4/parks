@@ -111,6 +111,7 @@ class MarkerFilterConfigService {
                                 'name' => 'Виділ',
                                 'slug' => 'plot',
                                 'type' => 'plots',
+                                'role' => 'viewer',
                             ],
                             [
                                 'name' => 'Вік – від і до',
@@ -177,6 +178,7 @@ class MarkerFilterConfigService {
                                 'type' => 'slider',
                                 'min' => 0,
                                 'max' => 100,
+                                'role' => 'viewer',
                             ],
                         ],
                     ],

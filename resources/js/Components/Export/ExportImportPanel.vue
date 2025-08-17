@@ -1,8 +1,11 @@
 <template>
   <div class="p-4 space-y-5">
-    <h2 class="text-lg font-semibold text-gray-800">⏬ Експорт / Імпорт</h2>
+    <h2 class="text-lg font-semibold text-gray-800">
+      ⏬ Експорт
+      <template v-if="authStore.can.import"> / Імпорт</template>
+    </h2>
 
-    <div class="flex justify-center">
+    <div class="flex justify-center" v-if="authStore.can.import">
       <Switch
         v-model="panelMode"
         :options="[
@@ -20,7 +23,7 @@
     />
 
     <ImportPanel
-      v-else
+      v-else-if="authStore.can.import"
       :loading="loading"
       @done="handleDone"
       @cancel="emit('close')"
@@ -33,10 +36,12 @@ import { ref } from 'vue'
 import Switch from '@/Components/Custom/Switch.vue'
 import ExportPanel from './ExportPanel.vue'
 import ImportPanel from './ImportPanel.vue'
+import { useAuthStore } from '@/Stores/useAuthStore'
 
 const emit = defineEmits(['close', 'update'])
 const panelMode = ref('export')
 const loading = ref(false)
+const authStore = useAuthStore()
 
 function handleDone() {
   emit('update')

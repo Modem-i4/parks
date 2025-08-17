@@ -44,7 +44,7 @@
             <div class="flex justify-center" v-if="assignMode === 'filtered' || parkStore.pickedMarkers.length > 0">
                 <p class="text-sm font-medium">
                 <span class="text-blue-700">
-                    Обрано {{ filteredCount }} маркер{{ filteredCount === 1 ? '' : filteredCount < 5 ? 'а' : 'ів' }}.
+                    Обрано {{ filteredCount }} маркер{{ filteredCount === 1 ? '' : filteredCount > 0 && filteredCount < 5 ? 'а' : 'ів' }}.
                 </span>
                 <span :class="overLimit ? 'text-red-700 font-semibold' : 'text-gray-500'"
                 >Ліміт: 200 маркерів.</span>

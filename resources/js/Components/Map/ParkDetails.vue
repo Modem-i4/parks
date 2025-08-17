@@ -8,18 +8,15 @@ import PanelHeader from '@/Components/Custom/PanelHeader.vue'
 import { setParkView } from '@/Helpers/Maps/SetParkView'
 import MediaPickerModal from '@/Components/Media/MediaPickerModal.vue'
 import { ref, watch } from 'vue'
-import { usePage } from '@inertiajs/vue3';
-import { UserRole } from '@/Helpers/UserRole.js';
 import BtnWhite from '../Custom/BtnWhite.vue'
 import axios from 'axios'
 import SecondaryButton from '@/Components/Default/SecondaryButton.vue'
+import { useAuthStore } from '@/Stores/useAuthStore'
 
 const parkStore = useParkStore()
 
 // Editing
-const page = usePage()
-const role = page.props.auth.user?.role
-const canEdit = UserRole.atLeast(role, 'admin')
+const authStore = useAuthStore()
 const editing = ref(false)
 const form = ref({ name: '', description: '', address: '' })
 watch(editing, (val) => {
@@ -83,8 +80,8 @@ function pickerSaved(newImages) {
   <div class="p-4 pt-1">
     <PanelHeader
       :title="parkStore.selectedMarker.name" :subtitle="parkStore.selectedMarker.address" :icon="parkStore.selectedMarker.icon?.file_path"
-      :editable="true"
-      @onIconClick="startIconChange"
+      :editable="authStore.can.upload"
+      @onIconClick="() => { if(authStore.can.upload) startIconChange() }"
     >
       <template #right>
         <SecondaryButton class="ml-auto hidden md:block" @click="parkStore.selectedMarker = null">< Назад</SecondaryButton>
@@ -92,8 +89,8 @@ function pickerSaved(newImages) {
     </PanelHeader>
 
     <ImageSlider :modelId="parkStore.selectedMarker?.id || null" model="parks" class="my-2" ref="imageSliderRef"
-      :editable="true"
-      @onImageClick="startGalleryChange"
+      :editable="authStore.can.upload"
+      @onImageClick="() => { if(authStore.can.upload) startGalleryChange() }"
       @close="closeImagePicker"/>
 
     <template v-if="!editing">
@@ -101,7 +98,7 @@ function pickerSaved(newImages) {
         <h3 class="text-lg font-semibold pb-2">
           Про парк 
           <span class="cursor-pointer"
-            v-if="canEdit" 
+            v-if="authStore.can.edit" 
             @click="editing = true"
           >✏️</span>
         </h3>
@@ -109,7 +106,7 @@ function pickerSaved(newImages) {
       </div>
       <div class="mt-6 space-y-3"
         v-if="!parkStore.isSingleParkView">
-        <ArrowButton variant="secondaryBlack" @click="openWorks">Роботи парку</ArrowButton>
+        <ArrowButton variant="secondaryBlack" @click="openWorks" v-if="authStore.can.completeWork">Роботи парку</ArrowButton>
         <ArrowButton variant="primary" @click="openInfrastructure">Інфраструктура парку</ArrowButton>
         <ArrowButton variant="secondary" @click="openGreen">Насадження парку</ArrowButton>
       </div>

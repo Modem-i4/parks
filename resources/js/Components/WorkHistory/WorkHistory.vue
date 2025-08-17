@@ -5,6 +5,7 @@ import WorkItem from './WorkItem.vue'
 import WorkAddForm from './WorkAddForm.vue'
 import ArrowIcon from '../Custom/Icons/ArrowIcon.vue'
 import GroupAssignAddForm from './GroupAssignAddForm.vue'
+import { useAuthStore } from '@/Stores/useAuthStore'
 
 const props = defineProps({
   modelValue: Array,
@@ -13,6 +14,7 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['update:modelValue'])
+const authStore = useAuthStore()
 
 const works = ref([...props.modelValue])
 const showCompletedWorks = ref(false)
@@ -58,12 +60,12 @@ function updateWork(work) {
 </script>
 
 <template>
-  <div class="space-y-2 bg-white rounded px-4 py-4 mb-2 text-gray-700">
+  <div class="space-y-2 bg-white rounded px-4 py-4 mb-2 text-gray-700"  v-if="authStore.can.export || authStore.can.assignWork">
     <GroupAssignAddForm />
   </div>
 
-  <div class="space-y-2 bg-white rounded px-4 py-4 mb-2 text-gray-700">
-    <WorkAddForm @create="createWork" />
+  <div class="space-y-2 bg-white rounded px-4 py-4 mb-2 text-gray-700" v-if="authStore.can.assignWork || activeWorks.length">
+    <WorkAddForm @create="createWork" v-if="authStore.can.assignWork"/>
 
     <div v-if="activeWorks.length" class="space-y-2 mt-4">
       <WorkItem

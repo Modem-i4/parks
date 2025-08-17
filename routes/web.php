@@ -45,12 +45,10 @@ Route::middleware('auth')->group(function () {
         })->name('dashboard');
 
         // Admin versions of default pages
-        Route::get('/parks', function () {
-            return Inertia::render('Parks');
-        })->name('admin.parks');
+        Route::get('/parks', [ParkController::class, 'index'])->name('admin.parks');
 
         // Role specific pages
-        Route::middleware('auth', 'role:admin')->group(function () {
+        Route::middleware('auth', 'role:editor')->group(function () {
             Route::get('users', [UserController::class, 'index'])->name('admin.users');
             Route::get('dictionaries', function () {
                 return Inertia::render('Admin/Dictionaries');
@@ -58,113 +56,129 @@ Route::middleware('auth')->group(function () {
         });
     });
 });
-
-// TODO: Don't forget to assign correct roles access
 Route::prefix('api')->group(function () {
-
+    // ========= general =========
     // Parks
     Route::get('/parks/{id}/media', [ParkController::class, 'media'])->name('parks.media');
     Route::get('/parks', [ParkController::class, 'getParksList'])->name('parks.list');
-    Route::patch('/parks/{id}', [ParkController::class, 'update'])->name('parks.update');
     Route::post('/parks/{id}/markers', [MarkerController::class, 'filterParkMarkers'])->name('parks.markers');
-
-    // Markers 
+    // Markers
     Route::get('/markers/filters-config', [MarkerController::class, 'getFilters'])->name('filters');
     Route::get('/markers/inv/{inv}', [MarkerController::class, 'getSingleMarkerByInv'])->name('marker.byInv');
     Route::get('/markers/{id}', [MarkerController::class, 'getSingleMarker'])->name('marker');
     Route::get('/markers/{id}/media', [MarkerController::class, 'media'])->name('marker.media');
-    Route::post('/markers', [MarkerController::class, 'store'])->name('marker.create');
-    Route::patch('/markers/{id}', [MarkerController::class, 'update'])->name('marker.update');
-    Route::delete('/markers/{id}', [MarkerController::class, 'destroy']);
-    Route::post('/markers/export', [MarkerController::class, 'export'])->name('marker.export');
-    Route::post('/markers/import', [MarkerController::class, 'import'])->name('marker.import');
-    Route::post('/markers/import/preview', [MarkerController::class, 'preview'])->name('marker.import.preview');
-
-    //// Taxonomy
-    // Families
+    // Media
+    Route::get('/media', [MediaController::class, 'index']);
+    // News
+    Route::get('/news', [NewsController::class, 'search']);
+    // Taxonomy (readonly)
     Route::get('/families/{type}', [FamilyController::class, 'index']);
     Route::get('/families-full-structure/{type}', [FamilyController::class, 'getWithStructure']);
-    Route::post('/families', [FamilyController::class, 'store']);
-    Route::patch('/families/{id}', [FamilyController::class, 'update']);
-    Route::delete('/families/{id}', [FamilyController::class, 'destroy']);
-
-    // Genus
     Route::get('/genus/{type}', [GenusController::class, 'index']);
-    Route::post('/genus', [GenusController::class, 'store']);
-    Route::patch('/genus/{id}', [GenusController::class, 'update']);
-    Route::delete('/genus/{id}', [GenusController::class, 'destroy']);
-
-    // Species
     Route::get('/species/{type}', [SpeciesController::class, 'index']);
-    Route::post('/species', [SpeciesController::class, 'store']);
-    Route::patch('/species/{id}', [SpeciesController::class, 'update']);
-    Route::delete('/species/{id}', [SpeciesController::class, 'destroy']);
-
-    // InfrastructureType
     Route::get('/infrastructureType', [InfrastructureTypeController::class, 'get']);
-    Route::post('/infrastructureType', [InfrastructureTypeController::class, 'store']);
-    Route::patch('/infrastructureType/{id}', [InfrastructureTypeController::class, 'update']);
-    Route::delete('/infrastructureType/{id}', [InfrastructureTypeController::class, 'destroy']);
-
-    // Tags
     Route::get('/tags/{type?}', [TagController::class, 'index']);
-    Route::post('/tags', [TagController::class, 'store']);
-    Route::patch('/tags/{id}', [TagController::class, 'update']);
-    Route::delete('/tags/{id}', [TagController::class, 'destroy']);
-
-    // Recommendations
-    Route::get('/recommendations', [RecommendationController::class, 'index']);
-    Route::post('/recommendations', [RecommendationController::class, 'store']);
-    Route::patch('/recommendations/{id}', [RecommendationController::class, 'update']);
-    Route::delete('/recommendations/{id}', [RecommendationController::class, 'destroy']);
-
-    // Hedge Rows
-    Route::get('/hedgeRows', [HedgeRowController::class, 'index']);
-    Route::post('/hedgeRows', [HedgeRowController::class, 'store']);
-    Route::patch('/hedgeRows/{id}', [HedgeRowController::class, 'update']);
-    Route::delete('/hedgeRows/{id}', [HedgeRowController::class, 'destroy']);
-
-    // Hedge Shapes
-    Route::get('/hedgeShapes', [HedgeShapeController::class, 'index']);
-    Route::post('/hedgeShapes', [HedgeShapeController::class, 'store']);
-    Route::patch('/hedgeShapes/{id}', [HedgeShapeController::class, 'update']);
-    Route::delete('/hedgeShapes/{id}', [HedgeShapeController::class, 'destroy']);
-
-    // Plots
-    Route::get('/plots', [PlotController::class, 'index']);
-    Route::post('/plots', [PlotController::class, 'store']);
-    Route::patch('/plots/{id}', [PlotController::class, 'update']);
-    Route::delete('/plots/{id}', [PlotController::class, 'destroy']);
-
-    //// Media Lib
-    Route::prefix('media-library')->group(function () {
-        Route::get('/', [MediaLibraryController::class, 'index']);
-        Route::post('/', [MediaLibraryController::class, 'store']);
-        Route::delete('/{mediaLibrary}', [MediaLibraryController::class, 'destroy']);
+    // ========= view =========
+    Route::middleware('can:view')->group(function () {
+        // Media Lib
+        Route::get('/media-library', [MediaLibraryController::class, 'index']);
+        // Taxonomy (readonly)
+        Route::get('/recommendations', [RecommendationController::class, 'index']);
+        Route::get('/hedgeRows', [HedgeRowController::class, 'index']);
+        Route::get('/hedgeShapes', [HedgeShapeController::class, 'index']);
+        Route::get('/plots', [PlotController::class, 'index']);
     });
-
-    //// Works
-    Route::post('/works', [WorkController::class, 'store']);
-    Route::post('/works/bulk', [WorkController::class, 'bulkStore']);
-    Route::patch('/works/{id}', [WorkController::class, 'update']);
-    Route::patch('/works/{id}/complete', [WorkController::class, 'complete']);
-    Route::patch('/works/{id}/revert', [WorkController::class, 'revert']);
-    Route::delete('/works/{id}', [WorkController::class, 'destroy']);
-
-    //// Users
-    Route::patch('users/{id}/role', [UserController::class, 'updateRole'])->name('users.role');
-
-    //// Media
-    Route::prefix('media')->group(function () {
-        Route::get('/', [MediaController::class, 'index']);
-        Route::post('/sync', [MediaController::class, 'sync']);
+    // ========= export =========
+    Route::middleware('can:export')->group(function () {
+        Route::post('/markers/export', [MarkerController::class, 'export'])->name('marker.export');
     });
+    // ========= edit =========
+    Route::middleware('can:edit')->group(function () {
+        Route::patch('/parks/{id}', [ParkController::class, 'update'])->name('parks.update');
+        Route::patch('/markers/{id}', [MarkerController::class, 'update'])->name('marker.update');
 
-    //// News
-    Route::get('/news', [NewsController::class, 'search']);
-    Route::post('/news', [NewsController::class, 'store']);
-    Route::patch('/news/{id}', [NewsController::class, 'update']);
+        Route::delete('/media-library/{mediaLibrary}', [MediaLibraryController::class, 'destroy']);
+        Route::patch('/plots/{id}', [PlotController::class, 'update']);
+        Route::delete('/plots/{id}', [PlotController::class, 'destroy']);
+    });
+    // ========= addMarkers =========
+    Route::middleware('can:addMarkers')->group(function () {
+        Route::post('/markers', [MarkerController::class, 'store'])->name('marker.create');
+    });
+    // ========= deleteMarkers =========
+    Route::middleware('can:deleteMarkers')->group(function () {
+        Route::delete('/markers/{id}', [MarkerController::class, 'destroy']);
+    });
+    // ========= upload =========
+    Route::middleware('can:upload')->group(function () {
+        Route::post('/media-library', [MediaLibraryController::class, 'store']);
+        Route::post('/media/sync', [MediaController::class, 'sync']);
+    });
+    // ========= import =========
+    Route::middleware('can:import')->group(function () {
+        Route::post('/markers/import', [MarkerController::class, 'import'])->name('marker.import');
+        Route::post('/markers/import/preview', [MarkerController::class, 'preview'])->name('marker.import.preview');
+    });
+    // ========= editDictionaries =========
+    Route::middleware('can:editDictionaries')->group(function () {
+        // Families
+        Route::post('/families', [FamilyController::class, 'store']);
+        Route::patch('/families/{id}', [FamilyController::class, 'update']);
+        Route::delete('/families/{id}', [FamilyController::class, 'destroy']);
+        // Genus
+        Route::post('/genus', [GenusController::class, 'store']);
+        Route::patch('/genus/{id}', [GenusController::class, 'update']);
+        Route::delete('/genus/{id}', [GenusController::class, 'destroy']);
+        // Species
+        Route::post('/species', [SpeciesController::class, 'store']);
+        Route::patch('/species/{id}', [SpeciesController::class, 'update']);
+        Route::delete('/species/{id}', [SpeciesController::class, 'destroy']);
+        // InfrastructureType
+        Route::post('/infrastructureType', [InfrastructureTypeController::class, 'store']);
+        Route::patch('/infrastructureType/{id}', [InfrastructureTypeController::class, 'update']);
+        Route::delete('/infrastructureType/{id}', [InfrastructureTypeController::class, 'destroy']);
+        // Tags
+        Route::post('/tags', [TagController::class, 'store']);
+        Route::patch('/tags/{id}', [TagController::class, 'update']);
+        Route::delete('/tags/{id}', [TagController::class, 'destroy']);
+        // Recommendations
+        Route::post('/recommendations', [RecommendationController::class, 'store']);
+        Route::patch('/recommendations/{id}', [RecommendationController::class, 'update']);
+        Route::delete('/recommendations/{id}', [RecommendationController::class, 'destroy']);
+        // Hedge Rows
+        Route::post('/hedgeRows', [HedgeRowController::class, 'store']);
+        Route::patch('/hedgeRows/{id}', [HedgeRowController::class, 'update']);
+        Route::delete('/hedgeRows/{id}', [HedgeRowController::class, 'destroy']);
+        // Hedge Shapes
+        Route::post('/hedgeShapes', [HedgeShapeController::class, 'store']);
+        Route::patch('/hedgeShapes/{id}', [HedgeShapeController::class, 'update']);
+        Route::delete('/hedgeShapes/{id}', [HedgeShapeController::class, 'destroy']);
+        // Plots
+        Route::post('/plots', [PlotController::class, 'store']);
+    });
+    // ========= assignWork =========
+    Route::middleware('can:assignWork')->group(function () {
+        Route::post('/works', [WorkController::class, 'store']);
+        Route::post('/works/bulk', [WorkController::class, 'bulkStore']);
+        Route::patch('/works/{id}', [WorkController::class, 'update']);
+        Route::delete('/works/{id}', [WorkController::class, 'destroy']);
+    });
+    // ========= completeWork =========
+    Route::middleware('can:completeWork')->group(function () {
+        Route::patch('/works/{id}/complete', [WorkController::class, 'complete']);
+        Route::patch('/works/{id}/revert', [WorkController::class, 'revert']);
+    });
+    // ========= editNews =========
+    Route::middleware('can:editNews')->group(function () {
+        Route::post('/news', [NewsController::class, 'store']);
+        Route::patch('/news/{id}', [NewsController::class, 'update']);
+    });
+    // ========= adminUsers =========
+    Route::middleware('can:adminUsers')->group(function () {
+        Route::patch('users/{id}/role', [UserController::class, 'updateRole'])->name('users.role');
+    });
 });
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
