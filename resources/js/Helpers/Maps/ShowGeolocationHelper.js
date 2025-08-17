@@ -128,7 +128,7 @@ export function useUserLocationMarker(mapRef) {
 
       navigator.geolocation.getCurrentPosition(
         ({ coords }) => resolve({ lat: coords.latitude, lng: coords.longitude }),
-        reject,
+        () => resolve(null), // if rejected
         { enableHighAccuracy: true }
       )
     })
