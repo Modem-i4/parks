@@ -75,6 +75,7 @@ Route::prefix('api')->group(function () {
     Route::get('/markers/{id}/media', [MarkerController::class, 'media'])->name('marker.media');
     Route::post('/markers', [MarkerController::class, 'store'])->name('marker.create');
     Route::patch('/markers/{id}', [MarkerController::class, 'update'])->name('marker.update');
+    Route::delete('/markers/{id}', [MarkerController::class, 'destroy']);
     Route::post('/markers/export', [MarkerController::class, 'export'])->name('marker.export');
     Route::post('/markers/import', [MarkerController::class, 'import'])->name('marker.import');
     Route::post('/markers/import/preview', [MarkerController::class, 'preview'])->name('marker.import.preview');

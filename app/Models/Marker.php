@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use App\Enums\MediaType;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 /**
  * Class Marker
@@ -14,10 +16,11 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
  * @property int $id
  * @property int $park_id
  * @property string|null $type
- * @property array $coordinated
+ * @property array $coordinates
  * @property string|null $description
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ * @property Carbon|null $deleted_at
  * 
  * @property Park $park
  * @property Infrastructure|null $infrastructure
@@ -25,14 +28,16 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
  *
  * @package App\Models
  */
+
 class Marker extends Model
 {
+    use SoftDeletes;
 	protected $table = 'markers';
 
 	protected $casts = [
 		'park_id' => 'int',
 		'coordinates' => 'json',
-		'type' => 'string',
+		'type' => 'string'
 	];
 
 	protected $fillable = [

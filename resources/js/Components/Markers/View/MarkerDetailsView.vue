@@ -6,6 +6,8 @@ import GreenDetails from './GreenDetails.vue'
 import Tooltip from '@/Components/Custom/Tooltip.vue'
 import WorkHistory from '@/Components/WorkHistory/WorkHistory.vue'
 import GreenStateIndicator from './GreenStateIndicator.vue'
+import DeleteForm from '@/Components/Custom/DeleteForm.vue'
+import SecondaryButton from '@/Components/Default/SecondaryButton.vue'
 
 const loading = ref(true)
 const copyCompleted = ref(false)
@@ -32,10 +34,11 @@ const fullNameLat = computed(
     props.marker.green?.species?.genus?.family?.name_lat
   ].filter(Boolean).join(' / ')
 )
+const confirmingDelete = ref(false)
 const forceImageUpdate = () => {
   imageSliderRef.value?.update(props.marker?.id)
 }
-const emit = defineEmits(['onImageClick'])
+const emit = defineEmits(['onImageClick', 'deleteMarker'])
 defineExpose({ forceImageUpdate })
 </script>
 
@@ -90,4 +93,14 @@ defineExpose({ forceImageUpdate })
     </div>
 
     <TagList v-model="props.marker.tags" :loading="loading" />
+
+    <div class="bg-white rounded p-4 mt-2 text-gray-600">
+      <DeleteForm
+        v-if="confirmingDelete"
+        :label="props.marker.green?.inventory_number || props.marker.infrastructure?.name || 'маркер'"
+        @confirmDelete="() => emit('deleteMarker')"
+        @cancelDelete="confirmingDelete = false"
+      />
+      <SecondaryButton @click="confirmingDelete = !confirmingDelete" class="w-full">Видалити маркер</SecondaryButton>
+    </div>
 </template>

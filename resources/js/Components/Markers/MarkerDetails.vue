@@ -113,6 +113,12 @@ function pickerSaved(newImages) {
   }
   closeImagePicker()
 }
+
+// Delete marker
+function deleteMarker() {
+  axios.delete(`/api/markers/${marker.value.id}`)
+    .then(() => {parkStore.selectedMarker.deleted = true})
+}
 </script>
 
 <template>
@@ -134,6 +140,7 @@ function pickerSaved(newImages) {
       <MarkerDetailsView :marker="marker" ref="viewRef" 
         :canUpload="canUpload"
         @onImageClick="() => { if(canUpload) startGalleryChange() }" 
+        @deleteMarker="deleteMarker"
       />
         <div class="absolute right-[4.5rem] z-[3]">
           <div class="fixed bottom-2">

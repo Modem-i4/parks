@@ -103,10 +103,8 @@ async function updateMarkersInViewport(cancelToken = currentCancelToken) {
     filterVisibleMarkers(currentZoom)
   }
 
-  console.log("SORT 1")
   const sortedMarkers = sortMarkersByTypeAndDistance(center)
-  console.log("SORT 2")
-
+  
   renderSortedMarkers(sortedMarkers, bounds, currentZoom, cancelToken)
 }
 
@@ -286,6 +284,24 @@ watch(
     parkStore.selectedMarker = null
     await new Promise(resolve => setTimeout(resolve, 0))
     parkStore.selectedMarker = marker
+  }
+)
+watch(
+  () => parkStore.selectedMarker?.deleted,
+  (deleted) => {
+    if (!deleted) return
+    const marker = parkStore.selectedMarker
+    if (!marker) return
+    const parkStoreIndex = parkStore.markers.findIndex(m => m.id === marker.id)
+    if (parkStoreIndex !== -1) parkStore.markers.splice(parkStoreIndex, 1)
+
+    const mapMarkersIndex = mapMarkers.value.findIndex(m => m.marker.id === marker.id)
+    if (mapMarkersIndex !== -1) {
+      mapMarkers.value[mapMarkersIndex].mapMarker.setMap(null)
+      mapMarkers.value.splice(mapMarkersIndex, 1)
+    }
+
+    parkStore.selectedMarker = null
   }
 )
 </script>

@@ -26,14 +26,15 @@ abstract class BaseImporter
     {
         $inv = $this->normalizeInventoryNumber($greenData['inventory_number'] ?? null);
         if ($inv !== null) {
-            return Marker::whereHas('green', function ($q) use ($inv) {
+            return Marker::withTrashed()
+                ->whereHas('green', function ($q) use ($inv) {
                     $q->where('inventory_number', $inv);
                 })
                 ->first();
         }
         $id = $markerAttrs['id'] ?? null;
         if ($id) {
-            return Marker::find($id);
+            return Marker::withTrashed()->find($id);
         }
         return null;
     }
@@ -92,6 +93,9 @@ abstract class BaseImporter
 
         $marker = $this->markerByKey($markerAttrs, $greenData);
         if ($marker) {
+            if (method_exists($marker, 'trashed') && $marker->trashed()) {
+                $marker->restore();
+            }
             $marker->fill(Arr::except($markerAttrs, ['id']))->save();
             $created = false;
         } else {

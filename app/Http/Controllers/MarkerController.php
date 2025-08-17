@@ -139,6 +139,13 @@ class MarkerController extends Controller
         }
     }
 
+    public function destroy($id)
+    {
+        $marker = Marker::findOrFail($id);
+        $marker->delete();
+        return response()->noContent();
+    }
+
     public function export(Request $request, ExportService $service)
     {
         $ids = $request->input('markers', []);
