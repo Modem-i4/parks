@@ -1,8 +1,12 @@
 <script setup>
-import SearchBar from '@/Components/Custom/SearchBar.vue'
-import { router } from '@inertiajs/vue3'
 import { ref } from 'vue'
 import axios from 'axios'
+import { router } from '@inertiajs/vue3'
+import SearchBar from '@/Components/Custom/SearchBar.vue'
+import PrimaryButton from '@/Components/Default/PrimaryButton.vue'
+
+import { useAuthStore } from '@/Stores/useAuthStore'
+import NewsCard from '@/Components/News/NewsCard.vue'
 
 const props = defineProps({
   news: Array,
@@ -10,26 +14,15 @@ const props = defineProps({
   query: String
 })
 
+const authStore = useAuthStore()
 const list = ref([...(props.news ?? [])])
+const searchQuery = ref(props.query || '')
+const nextPage = ref(props.nextPage)
+const fallbackImage = '/storage/img/images/park1-1.jpg'
 
 function openNews(id) {
   router.visit(`/news/${id}`)
 }
-
-function stripHtml(html) {
-  const div = document.createElement('div')
-  div.innerHTML = html
-  return div.textContent || div.innerText || ''
-}
-
-function shortText(text, limit = 200) {
-  return text.length > limit ? text.slice(0, limit) + '…' : text
-}
-
-const fallbackImage = '/storage/img/images/park1-1.jpg'
-
-const searchQuery = ref(props.query || '')
-const nextPage = ref(props.nextPage)
 
 function updateUrlQuery(q) {
   const url = new URL(window.location.href)
@@ -38,7 +31,7 @@ function updateUrlQuery(q) {
   history.replaceState(null, '', url)
 }
 
-async function search() {
+function search() {
   axios.get('/api/news', { params: { q: searchQuery.value || undefined } })
     .then((res) => {
       list.value = res.data.data ?? []
@@ -55,6 +48,13 @@ function loadMore() {
       nextPage.value = res.data.nextPage || null
     })
 }
+
+function addPost() {
+  axios.post('/api/news')
+    .then((res) => {
+      router.visit(`news/${res.data.id}`, { data: { edit: 1 } })
+    })
+}
 </script>
 
 <template>
@@ -62,6 +62,9 @@ function loadMore() {
     <div class="space-y-2 mb-8">
       <h1 class="text-3xl font-bold text-center text-gray-800">📰 Новини</h1>
       <SearchBar v-model="searchQuery" @search="search" placeholder="Що вас цікавить?" />
+      <div class="flex justify-center" v-if="useAuthStore().can.editNews">
+        <PrimaryButton class="bg-green-800" @click="addPost">Додати новину</PrimaryButton>
+      </div>
     </div>
 
     <div v-if="list.length === 0" class="text-center text-gray-500">
@@ -69,32 +72,13 @@ function loadMore() {
     </div>
 
     <div v-else class="grid gap-6 sm:grid-cols-2">
-      <div
+      <NewsCard
         v-for="item in list"
         :key="item.id"
-        class="bg-white rounded-xl shadow-sm overflow-hidden transition hover:shadow-md hover:scale-[1.01] cursor-pointer"
-        @click="openNews(item.id)"
-      >
-        <img
-          :src="item.cover?.file_path || fallbackImage"
-          class="w-full h-48 object-cover"
-          alt="preview"
-        />
-
-        <div class="p-4 space-y-2">
-          <h2 class="text-lg font-semibold text-gray-800 leading-tight">
-            {{ item.title }}
-          </h2>
-
-          <p class="text-sm text-gray-500">
-            {{ item.published_at ? new Date(item.published_at).toLocaleDateString() : 'Чернетка' }}
-          </p>
-
-          <p class="text-sm text-gray-700 leading-snug line-clamp-3">
-            {{ shortText(stripHtml(item.body || ''), 200) }}
-          </p>
-        </div>
-      </div>
+        :post="item"
+        :fallback-image="fallbackImage"
+        @open="openNews"
+      />
     </div>
 
     <div v-if="nextPage" class="mt-6 text-center">

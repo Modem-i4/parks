@@ -6,6 +6,7 @@ import PrimaryButton from '@/Components/Default/PrimaryButton.vue'
 import SecondaryButton from '@/Components/Default/SecondaryButton.vue'
 import MediaPickerModal from '@/Components/Media/MediaPickerModal.vue'
 import { useAuthStore } from '@/Stores/useAuthStore'
+import { router } from '@inertiajs/vue3'
 
 const props = defineProps({
   news: { type: Object, required: true },
@@ -15,7 +16,10 @@ const authStore = useAuthStore()
 
 const newsItem  = ref({ ...props.news })
 
-const isEditing = ref(false)
+const isEditingDefault = new URLSearchParams(location.search).get('edit') === '1' && authStore.can.editNews
+
+const isEditing = ref(isEditingDefault)
+const confirmingDelete = ref(false)
 const processing = ref(false)
 
 const showModal = ref({ cover: false })
@@ -39,6 +43,12 @@ function setPublished(published) {
   saveEdit()
 }
 
+function deletePost() {
+  axios.delete(`/api/news/${newsItem.value.id}`)
+    .then(() => {
+      router.visit('/news')
+    })
+}
 
 function cancelEdit() {
   isEditing.value = false
@@ -118,7 +128,7 @@ function imagePicked(imgs) {
         class="inline-block bg-black/40 text-white text-xs font-semibold px-3 py-1 rounded backdrop-blur-sm shadow-lg ms-4"
         >ЧЕРНЕТКА</div>
     </div>
-    <div v-if="!isEditing && authStore.can.editNews" class="flex justify-around flex-wrap gap-y-2">
+    <div v-if="!isEditing && authStore.can.editNews && !confirmingDelete" class="flex justify-around flex-wrap gap-y-2">
       <SecondaryButton @click="showModal.cover = true">
         🖼️ Змінити обкладинку
       </SecondaryButton>
@@ -129,12 +139,26 @@ function imagePicked(imgs) {
         <PrimaryButton @click="setPublished(true)">
           📰 Опублікувати
         </PrimaryButton>
+        <SecondaryButton @click="confirmingDelete = !confirmingDelete">
+          🗑️ Видалити
+        </SecondaryButton>
       </template>
       <template v-if="newsItem.published_at">
         <SecondaryButton @click="setPublished(false)">
           ❌ Приховати
         </SecondaryButton>
       </template>
+    </div>
+    <div v-if="confirmingDelete && authStore.can.editNews" class="bg-red-50 rounded p-4 mx-5 md:mx-20">
+        <div class="text-lg text-center font-semibold my-2">Дійсно видалити новину?</div>
+        <div class="flex justify-around flex-wrap gap-y-2">
+          <SecondaryButton @click="confirmingDelete = false" class="bg-white">
+            ❌ Скасувати
+          </SecondaryButton>
+          <SecondaryButton @click="deletePost">
+            🗑️ Видалити
+          </SecondaryButton>
+        </div>
     </div>
 
     <p class="text-sm text-gray-500" v-if="newsItem?.published_at">

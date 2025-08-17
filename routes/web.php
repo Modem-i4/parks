@@ -172,6 +172,7 @@ Route::prefix('api')->group(function () {
     Route::middleware('can:editNews')->group(function () {
         Route::post('/news', [NewsController::class, 'store']);
         Route::patch('/news/{id}', [NewsController::class, 'update']);
+        Route::delete('/news/{id}', [NewsController::class, 'destroy']);
     });
     // ========= adminUsers =========
     Route::middleware('can:adminUsers')->group(function () {

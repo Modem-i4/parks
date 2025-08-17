@@ -35,6 +35,7 @@ class NewsController extends Controller
     protected function baseQuery(Request $request): Builder
     {
         $q = trim((string) $request->query('q', ''));
+        $user = $request->user();
 
         return News::with('cover')
             ->select(['id','title','body','published_at'])
@@ -44,6 +45,10 @@ class NewsController extends Controller
                       ->orWhere('body',  'like', "%{$q}%");
                 });
             })
+            ->when(!$user?->atLeast('news_manager'), function (Builder $b) {
+                $b->whereNotNull('published_at');
+            })
+            ->orderByRaw('published_at IS NOT NULL')
             ->orderByDesc('published_at')->orderByDesc('id');
     }
 
@@ -64,11 +69,7 @@ class NewsController extends Controller
     }
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'title' => 'required|string|min:3|max:255'
-        ]);
-
-        return News::create($validated);
+        return News::create();
     }
     public function update(Request $request, $id)
     {
@@ -80,5 +81,11 @@ class NewsController extends Controller
         ]));
 
         return $news->load('cover');
+    }
+    public function destroy($id) 
+    {
+        $post = News::findOrFail($id);
+        $post->delete();
+        return response()->noContent();
     }
 }
