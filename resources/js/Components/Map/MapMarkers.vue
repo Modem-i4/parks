@@ -103,7 +103,9 @@ async function updateMarkersInViewport(cancelToken = currentCancelToken) {
     filterVisibleMarkers(currentZoom)
   }
 
+  console.log("SORT 1")
   const sortedMarkers = sortMarkersByTypeAndDistance(center)
+  console.log("SORT 2")
 
   renderSortedMarkers(sortedMarkers, bounds, currentZoom, cancelToken)
 }

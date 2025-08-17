@@ -9,6 +9,8 @@ use App\Http\Services\MarkerFilters\MarkerFilterConfigService;
 use App\Http\Services\MarkerFilters\MarkerFilterService;
 use App\Http\Services\UpdateMarkerService;
 use App\Http\Services\ValidateMarkerService;
+use App\Http\Services\Export\ExportService;
+use App\Http\Services\Import\ImportService;
 use Illuminate\Validation\ValidationException;
 
 class MarkerController extends Controller
@@ -135,6 +137,42 @@ class MarkerController extends Controller
             throw($e); 
             return response()->json(['error' => 'Failed to create marker'], 500);
         }
+    }
+
+    public function export(Request $request, ExportService $service)
+    {
+        $ids = $request->input('markers', []);
+        $format = $request->input('format', 'geojson');
+        return $service->export($ids, $format);
+    }
+
+    public function import(Request $request, ImportService $service)
+    {
+        $request->validate([
+            'file' => 'required|file',
+            'mode' => 'required|string'
+        ]);
+
+        $results = $service->import($request->file('file'), $request->input('mode', 'update'));
+
+        return response()->json([
+            'message' => 'Імпорт виконано',
+            'results' => $results,
+        ]);
+    }
+
+    public function preview(Request $request, ImportService $service)
+    {
+        $request->validate([
+            'file' => 'required|file',
+        ]);
+
+        $results = $service->preview($request->file('file'));
+
+        return response()->json([
+            'message' => 'Підрахуннок',
+            'results' => $results,
+        ]);
     }
 
 }

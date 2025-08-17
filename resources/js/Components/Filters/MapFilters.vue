@@ -11,6 +11,7 @@ import { setParkView } from '@/Helpers/Maps/SetParkView'
 
 import Modal from '@/Components/Default/Modal.vue'
 import GroupAssign from '@/Components/WorkHistory/GroupAssign.vue'
+import ExportImportPanel from '@/Components/Export/ExportImportPanel.vue'
 
 const parkStore = useParkStore()
 const filtersConfig = ref([])
@@ -23,7 +24,8 @@ const filterPresets = {
 }
 
 const showModal = ref({
-  groupAssign: false
+  groupAssign: false,
+  export: false
 })
 
 const getFilters = async () => {
@@ -101,7 +103,7 @@ onMounted(() => {
         <PrimaryButton @click="filterMarkers" class="flex flex-1">
           Застосувати фільтри
         </PrimaryButton>
-        <SecondaryButton size="sm"> <!-- TODO: export -->
+        <SecondaryButton size="sm" @click="showModal.export = true">
           ⏬
         </SecondaryButton>
         <SecondaryButton size="sm" @click="showModal.groupAssign = true">
@@ -113,6 +115,12 @@ onMounted(() => {
       <GroupAssign
         @close="showModal.groupAssign = false"
         assignMode="filtered"
+      />
+    </Modal>
+    <Modal :show="showModal.export" maxWidth="xl" @close="showModal.export = false">
+      <ExportImportPanel
+        @close="showModal.export = false"
+        @update="filterMarkers"
       />
     </Modal>
   </div>
