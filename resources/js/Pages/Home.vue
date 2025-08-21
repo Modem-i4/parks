@@ -1,7 +1,7 @@
 <template>
   <HeroSlider :slides="heroSlides" />
   <AboutProject />
-  <MapStats />
+  <MapStats :stats />
   <LastNews :news v-if="news" />
 </template>
 
@@ -37,6 +37,7 @@ const heroSlides = ref([
 ])
 
 const props = defineProps({
-  news: Array
+  news: Array,
+  stats: Object
 })
 </script>

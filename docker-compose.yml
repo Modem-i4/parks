@@ -24,6 +24,7 @@ services:
       - sail
     depends_on:
       - mariadb
+      - redis
 
   mariadb:
     image: 'mariadb:11'
@@ -49,7 +50,12 @@ services:
         - '--innodb_initialized'
       retries: 3
       timeout: 5s
-
+  redis:
+    image: redis:alpine
+    ports:
+      - '${FORWARD_REDIS_PORT:-6379}:6379'
+    networks:
+      - sail
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     restart: always
