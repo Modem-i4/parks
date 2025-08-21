@@ -116,11 +116,6 @@ onBeforeUnmount(() => {
   line-height:0;
   cursor: grab;
 }
-.riw img{
-  max-width:100%;
-  height:auto;
-  margin:.5rem 0;
-}
 .riw-handle{
   position:absolute;
   right:-8px;

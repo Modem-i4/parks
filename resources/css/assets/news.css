@@ -8,7 +8,7 @@
 .news-content li { margin:.25rem 0; }
 .news-content blockquote { border-left:3px solid #e5e7eb; padding-left:.75rem; color:#6b7280; margin:.75rem 0; }
 .news-content hr { border:0; border-top:1px solid #e5e7eb; margin:1rem 0; }
-.news-content img { max-width:100%; height:auto; border-radius:.5rem; }
+.news-content img { max-width:100%; height:auto; margin:.5rem; border-radius:.5rem; }
 
 @media (min-width: 720px) {
     .news-content img[data-align="left"]  { float: left; margin: .25rem .75rem .25rem 0; }
@@ -16,9 +16,12 @@
     .news-content img[data-align="center"]{ display: block; margin: .5rem auto; }
 }
 @media (max-width: 720px) {
-    .news-content img { display: block; width: 100% !important; }
+    .news-content img { display: block; width: 100% !important; margin: 0; }
 }
-
+.news-content img[align="center"] {
+  margin-left: auto;
+  margin-right: auto;
+}
 .news-content table.tt-columns {
   width: 100%;
   table-layout: fixed;

@@ -13,6 +13,7 @@ use App\Http\Controllers\RecommendationController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\HedgeRowController;
 use App\Http\Controllers\HedgeShapeController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PlotController;
 use App\Http\Controllers\UserController;
@@ -21,12 +22,9 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 // Main nav
-Route::get('/', function () {
-    return Inertia::render('Home');
-})->name('home');
-Route::get('/home', function () {
-    return Inertia::render('Home');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::redirect('/home', '/');
 
 Route::get('/parks/{id?}', [ParkController::class, 'index'])->name('parks');
 Route::get('/m/{inv?}', [ParkController::class, 'parksMarkerIndex'])->name('parks.marker');

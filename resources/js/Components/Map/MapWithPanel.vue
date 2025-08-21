@@ -36,14 +36,14 @@ watch(() => parkStore.selectedMarker, (newVal) => {
 </script>
 
 <template>
-  <div class="flex h-[calc(100vh-65px)]">
+  <div class="flex h-[calc(100vh-86px)]">
     <!-- Desktop sidebar -->
-    <div class="hidden md:block w-1/3 border-r overflow-y-auto overflow-x-clip relative" id="sidebar-target">
+    <div class="hidden md:block w-1/3 min-w-[300px] border-r overflow-y-auto overflow-x-clip relative bg-gray-100" id="sidebar-target"> <!-- Має обмежуватись висотою екрана, а не flex-батьком -->
       <!-- Panel Teleport -->
     </div>
 
     <!-- Main map -->
-    <div class="w-full md:w-2/3 relative touch-none focus:ring-0 focus:outline-none">
+    <div class="w-full md:w-2/3 relative touch-none focus:ring-0 focus:outline-none h-full flex-1">
       <MapUpperMessage />
       <MapView />
 
@@ -90,7 +90,7 @@ watch(() => parkStore.selectedMarker, (newVal) => {
           class="ml-auto md:hidden"
           @click="parkStore.showPanel = true"
         >
-          {{ parkStore.isSingleParkView ? 'ФІЛЬТРИ' : 'МЕНЮ' }}
+          МЕНЮ
         </BtnWhite>
         <BtnWhite
           v-if="parkStore.isSingleParkView && (!isMobile || !parkStore.showPanel)"

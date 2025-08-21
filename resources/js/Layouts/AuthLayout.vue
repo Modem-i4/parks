@@ -1,16 +1,24 @@
 <script setup>
-import ApplicationLogo from '@/Components/Default/ApplicationLogo.vue';
 import { Link } from '@inertiajs/vue3';
 </script>
 
 <template>
     <div
-        class="flex min-h-[90vh] flex-col items-center bg-gray-100 pt-6 sm:justify-center sm:pt-0"
+        class="flex min-h-[80vh] flex-col items-center bg-gray-100 sm:justify-center pt-6 md:pt-0"
     >
         <div>
             <Link href="/">
-                <ApplicationLogo class="h-20 w-20 fill-current text-gray-500" />
+                <img 
+                    src="/img/icons/logo-parks-matter.png" 
+                    class="w-48"
+                />
             </Link>
+            <a href="https://pl-ua.eu/ua/" target="_blank">
+                <img 
+                    src="/img/icons/logo-interreg.png" 
+                    class="w-48 mt-2"
+                />
+            </a>
         </div>
 
         <div

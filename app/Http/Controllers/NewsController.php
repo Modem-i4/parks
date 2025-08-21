@@ -15,9 +15,10 @@ class NewsController extends Controller
         $p = $this->baseQuery($request)
             ->paginate($perPage)
             ->withQueryString();
-        return Inertia::render('News/Index', [
+        return Inertia::render('News/News', [
             'news'      => $p->items(),
             'nextPage' => $this->nextPage($p),
+            'perPage' => $perPage,
             'query'     => (string) $request->query('q',''),
         ]);
     }
@@ -56,15 +57,21 @@ class NewsController extends Controller
     {
         return $p->hasMorePages() ? $p->currentPage() + 1 : null;
     }
-    public function single($id)
+    public function single(Request $request, $id)
     {
+        $user = $request->user();
+        $post = News::with('cover', 'author')->findOrFail($id);
+        if($post->published_at === null && !$user?->atLeast('news_manager')) {
+            return redirect()->route('news');
+        }
         return Inertia::render('News/Single', [
-            'news' => News::with('cover', 'author')->findOrFail($id),
+            'news' => $post,
             'lastNews' => News::with('cover')
                 ->latest()
                 ->where('id', '!=', $id)
-                ->take(5)
-                ->get(['id', 'title', 'published_at']),
+                ->whereNotNull('published_at')
+                ->take(3)
+                ->get(['id', 'title', 'body', 'published_at']),
         ]);
     }
     public function store(Request $request)
@@ -76,7 +83,7 @@ class NewsController extends Controller
         $news = News::findOrFail($id);
         $news->update($request->validate([
             'title' => 'sometimes|required|string|min:3|max:255',
-            'body' => 'sometimes|string',
+            'body' => 'sometimes|nullable|string',
             'published_at' => 'sometimes|nullable|date'
         ]));
 
