@@ -25,8 +25,15 @@ parkStore.selectedPark = props.selectedPark;
 parkStore.isSingleParkView = props.isSingleParkView;
 
 onMounted(() => {
-  if(props.selectedMarker) {
-    setViewToParkMarker(parkStore, props.selectedMarker)
+  if(props.isSingleParkView) {
+    if(props.selectedMarker) {
+      setViewToParkMarker(parkStore, props.selectedMarker)
+    }
+  } else {
+    if(props.selectedPark) {
+      parkStore.showPanel = true
+      parkStore.selectedMarker = props.selectedPark
+    }
   }
   initParkRouteWatcher(parkStore)
 })
