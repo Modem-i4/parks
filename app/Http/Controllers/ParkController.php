@@ -3,32 +3,60 @@
 namespace App\Http\Controllers;
 
 use App\Models\Park;
+use App\Http\Services\MarkerService;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class ParkController extends Controller
 {
-    public function index($id = null)
+    // Park pages
+    public function index()
     {
-        $isSingleParkView = $id !== null;
-        $park = $id ? Park::find($id) : null;
-        return Inertia::render('Parks', [
-            'isSingleParkView' => $isSingleParkView,
-            'selectedPark' => $park,
-            'showFooter' => false
-        ]);
+        return $this->renderPage(false, null);
     }
 
-    public function parksMarkerIndex($inv) 
+    public function show($parkId)
     {
-        $marker = app(MarkerController::class)->getSingleMarkerByInv($inv);
-        if(!$marker) {
+        return $this->renderPage(false, $parkId);
+    }
+
+    public function showSinglePark($parkId)
+    {
+        return $this->renderPage(true, $parkId);
+    }
+
+    private function renderPage(bool $isSingleParkView, $parkId = null)
+    {
+        $park = $parkId ? Park::findOrFail($parkId) : null;
+
+        return Inertia::render('Parks', [
+            'isSingleParkView' => $isSingleParkView && $park,
+            'selectedPark' => $park,
+            'showFooter' => false,
+        ]);
+    }
+    // Marker park pages
+    public function showSingleMarker($parkId, $markerId, MarkerService $service) {
+        $park = $parkId ? Park::findOrFail($parkId) : null;
+        $marker = $markerId ? $service->findById($markerId) : null;
+        $service->ensureBelongsToPark($marker, $park);
+        return $this->renderMarkerPage($marker, $park);
+    }
+
+    public function parksMarkerIndex($inv, MarkerService $service) 
+    {
+        $marker = $service->findByInventory($inv);
+        return $this->renderMarkerPage($marker, $marker->park);
+    }
+
+    private function renderMarkerPage($marker, $park) {
+        if(!$marker || !$park) {
             return redirect()->route('parks');
         }
         return Inertia::render('Parks', [
             'isSingleParkView' => true,
             'selectedMarker' => $marker,
-            'selectedPark' => $marker->park,
+            'selectedPark' => $park,
             'showFooter' => false
         ]);
     }

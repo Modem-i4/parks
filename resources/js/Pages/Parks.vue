@@ -9,7 +9,7 @@ import ParkDetails from '@/Components/Map/ParkDetails.vue';
 import MapFilters from '@/Components/Filters/MapFilters.vue';
 import MarkerDetails from '@/Components/Markers/MarkerDetails.vue';
 import { zoom } from '@/Helpers/Maps/MapHelper';
-import { setViewToParkMarker } from '@/Helpers/Maps/SetParkView';
+import { initParkRouteWatcher, setViewToParkMarker } from '@/Helpers/Maps/SetParkView';
 
 const props = defineProps({ 
   isSingleParkView: Boolean,
@@ -28,6 +28,7 @@ onMounted(() => {
   if(props.selectedMarker) {
     setViewToParkMarker(parkStore, props.selectedMarker)
   }
+  initParkRouteWatcher(parkStore)
 })
 
 watch( 

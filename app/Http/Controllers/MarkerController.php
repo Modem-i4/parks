@@ -11,18 +11,16 @@ use App\Http\Services\UpdateMarkerService;
 use App\Http\Services\ValidateMarkerService;
 use App\Http\Services\Export\ExportService;
 use App\Http\Services\Import\ImportService;
+use App\Http\Services\MarkerService;
 use Illuminate\Validation\ValidationException;
 
 class MarkerController extends Controller
 {
-    protected $filterService;
-    protected $filterConfigService;
-
-    public function __construct(MarkerFilterConfigService $filterConfigService, MarkerFilterService $filterService)
-    {
-        $this->filterConfigService = $filterConfigService;
-        $this->filterService = $filterService;
-    }
+    public function __construct(
+        protected MarkerFilterConfigService $filterConfigService, 
+        protected MarkerFilterService $filterService,
+        protected MarkerService $markerService
+    ) {}
 
     public function getFilters(Request $request) {
         $mode = $request->query('mode', 'infrastructure');
@@ -30,36 +28,14 @@ class MarkerController extends Controller
         return response()->json($config);
     }
 
-    const markerFields = [
-            'icon',
-            'green.tree',
-            'green.bush',
-            'green.hedge',
-            'green.flower',
-            'infrastructure',
-            'tags:id,name,public,custom,type',
-
-            'green.hedge.hedge_row',
-            'green.hedge.hedge_shape',
-
-            'green.plot',
-            'green.works.recommendation',
-            
-            'infrastructure.infrastructureType:id,name,description',
-            'green.species:id,genus_id,name_ukr,name_lat',
-            'green.species.genus:id,family_id,name_ukr,name_lat',
-            'green.species.genus.family:id,name_ukr,name_lat',
-    ];
-
     public function getSingleMarker($id)
     {
-        $marker = Marker::with(self::markerFields)->findOrFail($id);
+        $marker = $this->markerService->findById($id);
         return response()->json($marker);
     }
 
     public function getSingleMarkerByInv($inv) {
-        $marker = Marker::with(['park', ...self::markerFields])->whereHas('green', fn($q) => $q->where('inventory_number', $inv))
-            ->first();
+        $marker = $this->markerService->findByInventory($inv);
         return $marker;
     }
 

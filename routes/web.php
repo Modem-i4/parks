@@ -26,8 +26,12 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::redirect('/home', '/');
 
-Route::get('/parks/{id?}', [ParkController::class, 'index'])->name('parks');
-Route::get('/m/{inv?}', [ParkController::class, 'parksMarkerIndex'])->name('parks.marker');
+Route::get('/parks', [ParkController::class, 'index'])->name('parks');
+Route::get('/parks/{id}', [ParkController::class, 'show'])->name('parks.details');
+Route::get('/parks/{id}/m', [ParkController::class, 'showSinglePark'])->name('parks.single');
+Route::get('/parks/{parkId}/m/{markerId}', [ParkController::class, 'showSingleMarker'])->name('parks.marker');
+
+Route::get('/m/{inv?}', [ParkController::class, 'parksMarkerIndex'])->name('parks.marker.inv');
 
 Route::get('/news', [NewsController::class, 'index'])->name('news');
 Route::get('/news/{id}', [NewsController::class, 'single'])->name('news.single');

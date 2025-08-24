@@ -6,7 +6,6 @@ export function setParkView(parkStore, page, contentMode=null) {
     parkStore.singleParkContentMode = contentMode ?? 'infrastructure'
     parkStore.markers = []
     parkStore.isSingleParkView = true
-    window.history.pushState(null, '', `/parks/${parkStore.selectedPark?.id}`)
 
   } else if (page === 'parks') {
     parkStore.selectedMarker = null
@@ -14,11 +13,11 @@ export function setParkView(parkStore, page, contentMode=null) {
     parkStore.showPanel = false
     parkStore.markers = []
     parkStore.isSingleParkView = false
-    window.history.pushState(null, '', `/parks`)
   }
 }
 
 import { isTweening } from '@/Helpers/Maps/MapHelper'
+import { watch } from 'vue'
 export async function setViewToParkMarker(parkStore, marker) {
   parkStore.selectedMarker = null
   parkStore.selectedPark = marker.park
@@ -31,5 +30,38 @@ export async function setViewToParkMarker(parkStore, marker) {
     await new Promise(resolve => setTimeout(resolve, 100))
   }
   parkStore.selectedMarker = marker
-  window.history.pushState(null, '', `/parks/${parkStore.selectedPark?.id}`)
+}
+
+export function initParkRouteWatcher(parkStore) {
+  watch(
+    () => [
+      parkStore.isSingleParkView,
+      parkStore.selectedPark?.id, 
+      parkStore.selectedMarker?.id,
+    ],
+    () => {
+      updateParkRoute(parkStore) 
+    },
+    { immediate: true } 
+  )
+}
+
+function updateParkRoute(parkStore) {
+  if(!parkStore) return;
+  const route = getRoute(parkStore)
+  window.history.pushState(null, '', route)
+}
+
+function getRoute(parkStore) {
+  if (parkStore.isSingleParkView) {
+    return `${getParkRoute(parkStore)}${getMarkerRoute(parkStore)}`
+  }
+  return getParkRoute(parkStore)
+}
+
+function getParkRoute(parkStore) {
+  return `/parks/${parkStore.selectedPark?.id || parkStore.selectedMarker?.id || ''}`
+}
+function getMarkerRoute(parkStore) {
+  return `/m/${parkStore.selectedMarker?.id ?? ''}`
 }
