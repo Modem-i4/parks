@@ -51,6 +51,7 @@ watch(() => parkStore.selectedMarker, (newVal) => {
       <MobileSlidePanel
         :show="parkStore.showPanel"
         @close="() => { parkStore.selectedMarker = null; parkStore.showPanel = false }"
+        class="md:hidden fixed bottom-0 left-0 right-0"
       >
         
         <template #header>

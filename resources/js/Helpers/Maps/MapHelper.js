@@ -14,7 +14,7 @@ export const defaultMapOptions = {
   cameraControl: false,
 }
 
-const defaultCoords = {
+export const defaultCoords = {
   lng: parseFloat(import.meta.env.VITE_DEFAULT_LNG),
   lat: parseFloat(import.meta.env.VITE_DEFAULT_LAT)
 }

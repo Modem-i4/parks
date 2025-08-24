@@ -34,7 +34,7 @@ function onTouchEnd() {
 
 <template>
   <div
-    class="md:hidden fixed bottom-0 left-0 right-0 bg-gray-100 shadow-lg rounded-t-xl z-50"
+    class="bg-gray-100 shadow-lg rounded-t-xl z-50"
     :class="!isDragging ? 'transition-transform duration-300 ease-in-out' : ''"
     :style="{
       transform: show ? `translateY(${isDragging ? panelOffsetY + 'px' : '0'})` : 'translateY(100%)'

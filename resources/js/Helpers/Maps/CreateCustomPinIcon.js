@@ -7,13 +7,13 @@ function getCacheKey(opts) {
         glyph, color, height,
         boxTopPct, boxLeftPct, boxWidthPct, boxHeightPct,
         imageScale,
-        label, labelColor, labelFontSize, labelFontWeight, labelMaxWidthPct, labelMarginTop
+        label, labelColor, labelFontSize, labelFontWeight, labelMaxWidth, labelMarginTop
     } = opts
     return [
         glyph, color, height,
         boxTopPct, boxLeftPct, boxWidthPct, boxHeightPct,
         imageScale,
-        label, labelColor, labelFontSize, labelFontWeight, labelMaxWidthPct, labelMarginTop
+        label, labelColor, labelFontSize, labelFontWeight, labelMaxWidth, labelMarginTop
     ].join('|')
 }
 
@@ -30,7 +30,7 @@ export async function CreateCustomPinIcon({
     labelColor = '#fff',
     labelFontSize = 16,
     labelFontWeight = 600,
-    labelMaxWidthPct = 100,
+    labelMaxWidth = 600,
     labelMarginTop = 4,
 } = {}) {
     const aspectW = 113
@@ -41,7 +41,7 @@ export async function CreateCustomPinIcon({
         glyph, color, height,
         boxTopPct, boxLeftPct, boxWidthPct, boxHeightPct,
         imageScale,
-        label, labelColor, labelFontSize, labelFontWeight, labelMaxWidthPct, labelMarginTop
+        label, labelColor, labelFontSize, labelFontWeight, labelMaxWidth, labelMarginTop
     })
     if (pinCache.has(cacheKey)) {
         return pinCache.get(cacheKey).cloneNode(true)
@@ -116,18 +116,24 @@ export async function CreateCustomPinIcon({
             fontSize: `${labelFontSize}px`,
             fontWeight: String(labelFontWeight),
             lineHeight: '1.2',
-            whiteSpace: 'nowrap',
             textAlign: 'center',
-            pointerEvents: 'none',
+            pointerEvents: 'auto',
+            cursor: 'pointer',
             userSelect: 'none',
+            display: 'inline-block',
+            maxWidth: `${labelMaxWidth}px`,
+            whiteSpace: 'normal',
+            overflowWrap: 'break-word',
+            wordBreak: 'normal',
+            zIndex: '1',
         })
         labelEl.style.textShadow = [
-                '0 1px 2px rgba(0,0,0,.9)',
-                '0 0 2px rgba(0,0,0,.9)',
-                '1px 0 2px rgba(0,0,0,.9)',
-                '-1px 0 2px rgba(0,0,0,.9)',
-                '0 -1px 2px rgba(0,0,0,.9)'
-            ].join(', ')
+            '0 1px 2px rgba(0,0,0,.9)',
+            '0 0 2px rgba(0,0,0,.9)',
+            '1px 0 2px rgba(0,0,0,.9)',
+            '-1px 0 2px rgba(0,0,0,.9)',
+            '0 -1px 2px rgba(0,0,0,.9)'
+        ].join(', ')
         wrapper.appendChild(labelEl)
     }
 

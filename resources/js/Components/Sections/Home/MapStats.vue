@@ -1,6 +1,6 @@
 <template>
-  <section class="flex flex-col md:flex-row max-w-7xl mx-auto px-4 py-10 gap-10">
-    <div class="flex-1 flex justify-around">
+  <section class="flex flex-col md:flex-row max-w-7xl mx-auto px-4 py-10 gap-10 items-center">
+    <div class="flex-1 flex justify-around max-h-[400px]">
       <div class="flex flex-col gap-6 justify-between">
         <div class="flex items-start">
           <img src="/img/icons/stats/pin.svg" alt="" class="w-10 h-10shrink-0" />
@@ -58,7 +58,7 @@
       </div>
     </div>
     <div class="flex-1 bg-gray-100 rounded-lg flex items-center justify-center">
-      MAP
+      <slot />
     </div>
   </section>
 </template>

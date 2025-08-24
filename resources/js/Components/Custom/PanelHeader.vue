@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center p-4 space-x-4">
+  <div class="flex items-center space-x-4" :class="variants[variant].blockClasses">
     <div
       class="flex-shrink-0 rounded-full overflow-hidden relative cursor-pointer flex" :class="[variants[variant].iconWrapperClasses, `bg-${iconBg}`]"
       @click="$emit('onIconClick')"
@@ -14,7 +14,7 @@
 
     <div>
       <h3 class="text-gray-900" :class="variants[variant].titleTextClasses">{{ title }}</h3>
-      <p v-if="subtitle" class="text-sm text-gray-500">{{ subtitle }}</p>
+      <p v-if="subtitle" class="text-sm text-gray-500 line-clamp-4">{{ subtitle }}</p>
     </div>
 
     <div class="flex-1 flex justify-end">
@@ -51,10 +51,14 @@ const variants = {
   md: {
     titleTextClasses: 'text-lg font-semibold',
     iconWrapperClasses: 'w-16 h-16',
-    iconClasses:'w-12 h-12'
+    iconClasses:'w-12 h-12',
+    blockClasses: 'p-4'
   }, 
   sm: {
-
+    titleTextClasses: 'text-lg font-semibold',
+    iconWrapperClasses: 'w-16 h-16',
+    iconClasses:'w-12 h-12',
+    blockClasses: 'p-0'
   }
 }
 

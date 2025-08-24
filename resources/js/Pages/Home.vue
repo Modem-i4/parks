@@ -1,7 +1,9 @@
 <template>
   <HeroSlider :slides="heroSlides" />
   <AboutProject />
-  <MapStats :stats />
+  <MapStats :stats>
+    <ParksMapThumbnail :parks />
+  </MapStats>
   <LastNews :news v-if="news" />
 </template>
 
@@ -11,6 +13,7 @@ import HeroSlider from '@/Components/Sections/Home/HeroSlider.vue'
 import AboutProject from '@/Components/Sections/Home/AboutProject.vue';
 import MapStats from '@/Components/Sections/Home/MapStats.vue';
 import LastNews from '@/Components/Sections/Home/LastNews.vue';
+import ParksMapThumbnail from '@/Components/Sections/Home/ParksMapThumbnail.vue';
 
 const heroSlides = ref([
   {
@@ -38,6 +41,7 @@ const heroSlides = ref([
 
 const props = defineProps({
   news: Array,
-  stats: Object
+  stats: Object,
+  parks: Array
 })
 </script>
