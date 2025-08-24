@@ -1,4 +1,5 @@
 <template>
+  <Head title="Головна" />
   <HeroSlider :slides="heroSlides" />
   <AboutProject />
   <MapStats :stats>
@@ -14,6 +15,7 @@ import AboutProject from '@/Components/Sections/Home/AboutProject.vue';
 import MapStats from '@/Components/Sections/Home/MapStats.vue';
 import LastNews from '@/Components/Sections/Home/LastNews.vue';
 import ParksMapThumbnail from '@/Components/Sections/Home/ParksMapThumbnail.vue';
+import { Head } from '@inertiajs/vue3'
 
 const heroSlides = ref([
   {

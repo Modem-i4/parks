@@ -10,13 +10,13 @@ import MapFilters from '@/Components/Filters/MapFilters.vue';
 import MarkerDetails from '@/Components/Markers/MarkerDetails.vue';
 import { zoom } from '@/Helpers/Maps/MapHelper';
 import { initParkRouteWatcher, setViewToParkMarker } from '@/Helpers/Maps/SetParkView';
+import { Head } from '@inertiajs/vue3';
 
 const props = defineProps({ 
   isSingleParkView: Boolean,
   selectedPark: Object,
   selectedMarker: Object,
 })
-
 const parkStore = useParkStore()
 parkStore.$reset()
 
@@ -51,6 +51,7 @@ watch(
 </script>
 
 <template>
+  <Head title="Парки" />
   <MapWithPanel>
     <template #panelContent>
       <template v-if="!parkStore.isSingleParkView">

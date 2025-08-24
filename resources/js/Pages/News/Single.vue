@@ -6,7 +6,7 @@ import PrimaryButton from '@/Components/Default/PrimaryButton.vue'
 import SecondaryButton from '@/Components/Default/SecondaryButton.vue'
 import MediaPickerModal from '@/Components/Media/MediaPickerModal.vue'
 import { useAuthStore } from '@/Stores/useAuthStore'
-import { Link, router } from '@inertiajs/vue3'
+import { Head, Link, router } from '@inertiajs/vue3'
 import PageCoverHead from '@/Components/Custom/PageCoverHead.vue'
 import NewsCard from '@/Components/News/NewsCard.vue'
 
@@ -85,6 +85,7 @@ function imagePicked(imgs) {
 </script>
 
 <template>
+  <Head :title="newsItem.title" />
   <PageCoverHead :coverImg="newsItem?.cover?.file_path">
     <template #default>
       <template v-if="isEditing">

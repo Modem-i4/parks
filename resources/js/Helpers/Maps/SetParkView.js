@@ -18,6 +18,7 @@ export function setParkView(parkStore, page, contentMode=null) {
 
 import { isTweening } from '@/Helpers/Maps/MapHelper'
 import { watch } from 'vue'
+import { getMarkerTitle } from './GetMarkerTitle'
 export async function setViewToParkMarker(parkStore, marker) {
   parkStore.selectedMarker = null
   parkStore.selectedPark = marker.park
@@ -50,6 +51,9 @@ function updateParkRoute(parkStore) {
   if(!parkStore) return;
   const route = getRoute(parkStore)
   window.history.pushState(null, '', route)
+  const appName = import.meta.env.VITE_APP_NAME
+  const title = `${getPageTitle(parkStore)} – ${appName}`
+  document.title = title
 }
 
 function getRoute(parkStore) {
@@ -64,4 +68,15 @@ function getParkRoute(parkStore) {
 }
 function getMarkerRoute(parkStore) {
   return `/m/${parkStore.selectedMarker?.id ?? ''}`
+}
+
+function getPageTitle(parkStore) {
+  const m = parkStore.selectedMarker
+  const p = parkStore.selectedPark
+  if(!m) {
+    if(!p) return "Парки"
+    return p.name
+  }
+  if(m.type === 'park') return m.name
+  return getMarkerTitle(m)
 }

@@ -9,6 +9,7 @@ import DictRecommendations from '@/Components/Dictionaries/DictRecommendations.v
 import DictHedgeShape from '@/Components/Dictionaries/DictHedgeShape.vue'
 import DictHedgeRow from '@/Components/Dictionaries/DictHedgeRow.vue'
 import DictPlots from '@/Components/Dictionaries/DictPlots.vue'
+import { Head } from '@inertiajs/vue3'
 
 const dictionaryItems = [
   {
@@ -69,6 +70,7 @@ function openSidebar() {
 
 
 <template>
+  <Head title="Словники" />
   <div class="flex h-[calc(100vh-65px)] relative overflow-hidden">
     <!-- Sidebar -->
     <div

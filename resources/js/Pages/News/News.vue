@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import axios from 'axios'
-import { router } from '@inertiajs/vue3'
+import { Head, router } from '@inertiajs/vue3'
 import SearchBar from '@/Components/Custom/SearchBar.vue'
 import PrimaryButton from '@/Components/Default/PrimaryButton.vue'
 
@@ -55,6 +55,7 @@ function addPost() {
 </script>
 
 <template>
+  <Head title="Новини" />
   <PageCoverHead coverImg="/img/parks/news-cover.webp">
     <div class="w-full md:w-1/2">
       <h1 class="text-3xl font-bold text-white">НОВИНИ</h1>
