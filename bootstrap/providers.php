@@ -1,6 +1,11 @@
 <?php
 
-return [
+$providers = [
     App\Providers\AppServiceProvider::class,
-    App\Providers\TelescopeServiceProvider::class,
 ];
+
+if (env('APP_ENV') === 'local' && class_exists(App\Providers\TelescopeServiceProvider::class)) {
+    $providers[] = App\Providers\TelescopeServiceProvider::class;
+}
+
+return $providers;
