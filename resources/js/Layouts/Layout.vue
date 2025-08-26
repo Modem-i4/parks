@@ -56,7 +56,7 @@ useMobileNavClose({ isOpenRef: showingNavigationDropdown, rootElRef: navEl })
 
 <template>
   <div class="min-h-dvh flex flex-col bg-gray-100">
-    <nav class="border-b border-gray-100 sticky top-0 z-50 bg-white shadow" ref="navEl">
+    <nav class="border-b border-gray-100 sticky top-0 z-[51] bg-white shadow" ref="navEl">
       <div class="flex mx-auto max-w-[1500px] h-[85px] px-4 sm:px-6 lg:px-8">
         <div class="flex-1 flex items-center justify-between md:grid md:grid-cols-[1fr_auto_1fr] md:gap-4">
           <!-- Logo -->
