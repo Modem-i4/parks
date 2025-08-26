@@ -3,7 +3,7 @@
         <h1 class="text-center text-2xl md:text-4xl font-bold">ОСТАННІ НОВИНИ</h1>
         
         <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
-            <NewsCard
+            <NewsItem
                 v-for="item in news"
                 :key="item.id"
                 :post="item"
@@ -23,7 +23,7 @@
 
 
 <script setup>
-import NewsCard from '@/Components/News/NewsCard.vue';
+import NewsItem from '@/Components/News/NewsItem.vue';
 import { Link } from '@inertiajs/vue3'
 
 const props = defineProps({

@@ -1,37 +1,15 @@
 <script setup>
-import { computed } from 'vue'
-import { router } from '@inertiajs/vue3'
-
 const props = defineProps({
-  post: { type: Object, required: true },
-  fallbackImage: { type: String, default: '/img/parks/default/park1-1.jpg' }
+  post: Object,
+  coverSrc: String,
+  preview: String,
+  dateStr: String
 })
-
-function openNews(id) {
-  router.visit(`/news/${id}`)
-}
-
-function stripHtml(html) {
-  const div = document.createElement('div')
-  div.innerHTML = html
-  return div.textContent || div.innerText || ''
-}
-
-function shortText(text, limit = 280) {
-  return text.length > limit ? text.slice(0, limit) + '…' : text
-}
-
-const coverSrc = computed(() => props.post.cover?.file_path || props.fallbackImage)
-const dateStr  = computed(() =>
-  props.post.published_at ? new Date(props.post.published_at).toLocaleDateString('uk-UA') : ''
-)
-const preview  = computed(() => shortText(stripHtml(props.post.body || ''), 260))
 </script>
 
 <template>
   <article
     class="overflow-hidden cursor-pointer space-y-2 hover:bg-gray-100 hover:shadow-md p-2 transition-all hover:scale-[1.01]"
-    @click="openNews(post.id)"
   >
     <img :src="coverSrc" alt="" class="w-full h-56 md:h-64 object-cover" />
     <p class="text-sm text-gray-500">

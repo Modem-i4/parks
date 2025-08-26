@@ -7,7 +7,7 @@ const props = defineProps({
 <template>
   <div
     class="relative w-full rounded overflow-hidden transition-[height] duration-200"
-    :class="props.coverImg ? 'h-64 md:h-80 shadow' : 'h-auto'"
+    :class="props.coverImg ? 'h-64 md:h-80 shadow' : 'h-auto pt-12'"
     :style="props.coverImg
       ? {
           backgroundImage: `url(${props.coverImg})`,

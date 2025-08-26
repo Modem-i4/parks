@@ -8,7 +8,7 @@ import MediaPickerModal from '@/Components/Media/MediaPickerModal.vue'
 import { useAuthStore } from '@/Stores/useAuthStore'
 import { Head, Link, router } from '@inertiajs/vue3'
 import PageCoverHead from '@/Components/Custom/PageCoverHead.vue'
-import NewsCard from '@/Components/News/NewsCard.vue'
+import NewsItem from '@/Components/News/NewsItem.vue'
 
 const props = defineProps({
   news: { type: Object, required: true },
@@ -201,7 +201,7 @@ function imagePicked(imgs) {
       <hr class="h-[2px] bg-black mt-4"/>
       <h2 class="text-2xl md:text-4xl font-bold">НОВИНИ</h2>
       <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
-        <NewsCard
+        <NewsItem
             v-for="item in lastNews"
             :key="item.id"
             :post="item"

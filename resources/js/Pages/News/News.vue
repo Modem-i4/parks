@@ -6,8 +6,9 @@ import SearchBar from '@/Components/Custom/SearchBar.vue'
 import PrimaryButton from '@/Components/Default/PrimaryButton.vue'
 
 import { useAuthStore } from '@/Stores/useAuthStore'
-import NewsCard from '@/Components/News/NewsCard.vue'
+import NewsInline from '@/Components/News/NewsInline.vue'
 import PageCoverHead from '@/Components/Custom/PageCoverHead.vue'
+import NewsItem from '@/Components/News/NewsItem.vue'
 
 const props = defineProps({
   news: Array,
@@ -71,13 +72,14 @@ function addPost() {
     <div v-if="list.length === 0" class="text-center text-gray-500">
       Нічого не знайдено.
     </div>
-    <div v-else class="grid gap-16 sm:grid-cols-2 lg:grid-cols-3">
-      <NewsCard
+    <div v-else>
+      <NewsItem
         v-for="(item, index) in list"
         :key="item.id"
         :post="item"
         :fallback-image="fallbackImage"
         :class="{'opacity-0 animate-fadeIn': index > props.perPage}"
+        variant="inline"
       />
     </div>
 
