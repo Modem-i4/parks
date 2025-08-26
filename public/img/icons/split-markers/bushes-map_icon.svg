@@ -1,0 +1,4 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="url(#halfSplit)">
+  <defs><linearGradient id="halfSplit" gradientUnits="userSpaceOnUse" x1="0.0" y1="0.0" x2="24.0" y2="0.0"><stop offset="0.0%" stop-color="#008000" /><stop offset="50.0%" stop-color="#008000" /><stop offset="50.0%" stop-color="#fcd45b" /><stop offset="100.0%" stop-color="#fcd45b" /></linearGradient></defs><polygon points="12,4 20,20 4,20" fill="url(#halfSplit)" stroke="black" stroke-width="1" />
+</svg>

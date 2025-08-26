@@ -18,6 +18,8 @@ const showCheckbox = computed(() => props.node.slug !== 'general')
 
 const currentPath = computed(() => [...props.path, props.node.slug])
 
+const isGreen = computed(() => ['trees', 'bushes', 'hedges', 'flowers'].includes(props.node.slug))
+
 watch(isOpen, (val) => {
   if(val) isChecked.value = true
 })
@@ -84,6 +86,10 @@ function afterLeave(el) {
     <div class="flex items-center justify-between bg-gray-100 px-2 py-1 rounded cursor-pointer hover:bg-gray-200" @click="toggle">
       <div class="flex items-center space-x-2">
         <ArrowIcon :class="{'transform rotate-90': isOpen}"/>
+        <img v-if="isGreen" 
+          :src="`/img/icons/split-markers/${node.slug}-map_icon.svg`" alt="" 
+          class="w-7 h-7"
+        />
         <span class="font-semibold">{{ node.name }}</span>
       </div>
       <input
@@ -92,7 +98,7 @@ function afterLeave(el) {
         v-model="isChecked"
         @click.stop
         class="accent-green-600"
-      >
+      />
     </div>
     
     <transition
