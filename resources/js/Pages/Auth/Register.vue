@@ -24,14 +24,14 @@ const submit = () => {
 
 <template>
     <AuthLayout>
-        <Head title="Register" />
+        <Head title="Реєстрація" />
 
         <GoogleLoginButton />
         <Divider />
 
         <form @submit.prevent="submit">
             <div>
-                <InputLabel for="name" value="Name" />
+                <InputLabel for="name" value="Ім'я" />
 
                 <TextInput
                     id="name"
@@ -62,7 +62,7 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
-                <InputLabel for="password" value="Password" />
+                <InputLabel for="password" value="Пароль" />
 
                 <TextInput
                     id="password"
@@ -79,7 +79,7 @@ const submit = () => {
             <div class="mt-4">
                 <InputLabel
                     for="password_confirmation"
-                    value="Confirm Password"
+                    value="Повторіть пароль"
                 />
 
                 <TextInput
@@ -102,7 +102,7 @@ const submit = () => {
                     :href="route('login')"
                     class="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                 >
-                    Already registered?
+                    Вхід
                 </Link>
 
                 <PrimaryButton
@@ -110,7 +110,7 @@ const submit = () => {
                     :class="{ 'opacity-25': form.processing }"
                     :disabled="form.processing"
                 >
-                    Register
+                    Зареєструватися
                 </PrimaryButton>
             </div>
         </form>

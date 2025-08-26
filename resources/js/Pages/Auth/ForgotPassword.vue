@@ -4,7 +4,7 @@ import InputError from '@/Components/Default/InputError.vue';
 import InputLabel from '@/Components/Default/InputLabel.vue';
 import PrimaryButton from '@/Components/Default/PrimaryButton.vue';
 import TextInput from '@/Components/Default/TextInput.vue';
-import { Head, useForm } from '@inertiajs/vue3';
+import { Head, Link, useForm } from '@inertiajs/vue3';
 
 defineProps({
     status: {
@@ -26,9 +26,8 @@ const submit = () => {
         <Head title="Forgot Password" />
 
         <div class="mb-4 text-sm text-gray-600">
-            Forgot your password? No problem. Just let us know your email
-            address and we will email you a password reset link that will allow
-            you to choose a new one.
+            Забули пароль? Не проблема. Просто повідомте нам свою адресу електронної пошти, 
+            щоб отримати посилання для скидання пароля, яке дозволить вам вибрати новий.
         </div>
 
         <div
@@ -56,11 +55,17 @@ const submit = () => {
             </div>
 
             <div class="mt-4 flex items-center justify-end">
+                <Link
+                    :href="route('login')"
+                    class="me-4 rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                >
+                    Увійти
+                </Link>
                 <PrimaryButton
                     :class="{ 'opacity-25': form.processing }"
                     :disabled="form.processing"
                 >
-                    Email Password Reset Link
+                    Скинути пароль через лист
                 </PrimaryButton>
             </div>
         </form>
