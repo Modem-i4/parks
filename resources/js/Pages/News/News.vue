@@ -19,7 +19,7 @@ const props = defineProps({
 const list = ref([...(props.news ?? [])])
 const searchQuery = ref(props.query || '')
 const nextPage = ref(props.nextPage)
-const fallbackImage = '/storage/img/images/park1-1.jpg'
+const fallbackImage = '/img/parks/default/park1-1.jpg'
 
 function updateUrlQuery(q) {
   const url = new URL(window.location.href)

@@ -4,7 +4,7 @@ import { router } from '@inertiajs/vue3'
 
 const props = defineProps({
   post: { type: Object, required: true },
-  fallbackImage: { type: String, default: '/storage/img/images/park1-1.jpg' }
+  fallbackImage: { type: String, default: '/img/parks/default/park1-1.jpg' }
 })
 
 function openNews(id) {

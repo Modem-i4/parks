@@ -14,7 +14,7 @@ const props = defineProps({
 })
 
 const emit = defineEmits(['create', 'update', 'delete', 'select'])
-const imgPath = computed(() => props.park?.icon?.file_path ?? '/storage/img/icons/tree-park.svg')
+const imgPath = computed(() => props.park?.icon?.file_path ?? '/img/icons/markers/tree-park.svg')
 
 const expanded = ref(props.expanded)
 </script>

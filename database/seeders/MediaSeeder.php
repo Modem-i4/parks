@@ -14,7 +14,7 @@ class MediaSeeder extends Seeder
             [
                 'model_type' => 'App\Models\Park',
                 'model_id' => '1',
-                'file_path' => 'img/icons/hotkevych_park.png',
+                'file_path' => '/img/icons/hotkevych_park.png',
                 'description' => 'default description',
                 'order' => '0',
                 'type' => 'icon'
@@ -22,7 +22,7 @@ class MediaSeeder extends Seeder
             [
                 'model_type' => 'App\Models\Park',
                 'model_id' => '2',
-                'file_path' => 'img/icons/liberators_park.png',
+                'file_path' => '/img/icons/liberators_park.png',
                 'description' => 'default description',
                 'order' => '0',
                 'type' => 'icon'
@@ -30,7 +30,7 @@ class MediaSeeder extends Seeder
             [
                 'model_type' => 'App\Models\Park',
                 'model_id' => '3',
-                'file_path' => 'img/icons/shevchenko_park.png',
+                'file_path' => '/img/icons/shevchenko_park.png',
                 'description' => 'default description',
                 'order' => '0',
                 'type' => 'icon'
@@ -38,7 +38,7 @@ class MediaSeeder extends Seeder
             [
                 'model_type' => 'App\Models\Park',
                 'model_id' => '1',
-                'file_path' => 'img/images/park1-1.jpg',
+                'file_path' => '/img/parks/default/park1-1.jpg',
                 'description' => 'default description',
                 'order' => '0',
                 'type' => 'image'
@@ -46,7 +46,7 @@ class MediaSeeder extends Seeder
             [
                 'model_type' => 'App\Models\Park',
                 'model_id' => '1',
-                'file_path' => 'img/images/park1-2.jpg',
+                'file_path' => '/img/parks/default/park1-2.jpg',
                 'description' => 'default description',
                 'order' => '1',
                 'type' => 'image'
@@ -54,7 +54,7 @@ class MediaSeeder extends Seeder
             [
                 'model_type' => 'App\Models\Park',
                 'model_id' => '1',
-                'file_path' => 'img/images/park1-3.jpg',
+                'file_path' => '/img/parks/default/park1-3.jpg',
                 'description' => 'default description',
                 'order' => '2',
                 'type' => 'image'
@@ -64,7 +64,7 @@ class MediaSeeder extends Seeder
             [
                 'model_type' => 'App\Models\Park',
                 'model_id' => '2',
-                'file_path' => 'img/images/park1-1.jpg',
+                'file_path' => '/img/parks/default/park1-1.jpg',
                 'description' => 'default description',
                 'order' => '0',
                 'type' => 'image'
@@ -72,7 +72,7 @@ class MediaSeeder extends Seeder
             [
                 'model_type' => 'App\Models\Park',
                 'model_id' => '2',
-                'file_path' => 'img/images/park1-2.jpg',
+                'file_path' => '/img/parks/default/park1-2.jpg',
                 'description' => 'default description',
                 'order' => '1',
                 'type' => 'image'
@@ -80,7 +80,7 @@ class MediaSeeder extends Seeder
             [
                 'model_type' => 'App\Models\Park',
                 'model_id' => '2',
-                'file_path' => 'img/images/park1-3.jpg',
+                'file_path' => '/img/parks/default/park1-3.jpg',
                 'description' => 'default description',
                 'order' => '2',
                 'type' => 'image'
@@ -90,7 +90,7 @@ class MediaSeeder extends Seeder
             [
                 'model_type' => 'App\Models\Park',
                 'model_id' => '3',
-                'file_path' => 'img/images/park1-1.jpg',
+                'file_path' => '/img/parks/default/park1-1.jpg',
                 'description' => 'default description',
                 'order' => '0',
                 'type' => 'image'
@@ -98,7 +98,7 @@ class MediaSeeder extends Seeder
             [
                 'model_type' => 'App\Models\Park',
                 'model_id' => '3',
-                'file_path' => 'img/images/park1-2.jpg',
+                'file_path' => '/img/parks/default/park1-2.jpg',
                 'description' => 'default description',
                 'order' => '1',
                 'type' => 'image'
@@ -106,7 +106,7 @@ class MediaSeeder extends Seeder
             [
                 'model_type' => 'App\Models\Park',
                 'model_id' => '3',
-                'file_path' => 'img/images/park1-3.jpg',
+                'file_path' => '/img/parks/default/park1-3.jpg',
                 'description' => 'default description',
                 'order' => '2',
                 'type' => 'image'
@@ -117,7 +117,7 @@ class MediaSeeder extends Seeder
             [
                 'model_type' => 'App\Models\InfrastructureType',
                 'model_id' => '1',
-                'file_path' => 'img/icons/tree-park.svg',
+                'file_path' => '/img/icons/tree-park.svg',
                 'description' => 'default description',
                 'order' => '0',
                 'type' => 'icon'
@@ -125,7 +125,7 @@ class MediaSeeder extends Seeder
             [
                 'model_type' => 'App\Models\InfrastructureType',
                 'model_id' => '2',
-                'file_path' => 'img/icons/tree-park.svg',
+                'file_path' => '/img/icons/tree-park.svg',
                 'description' => 'default description',
                 'order' => '0',
                 'type' => 'icon'
@@ -133,7 +133,7 @@ class MediaSeeder extends Seeder
             [
                 'model_type' => 'App\Models\InfrastructureType',
                 'model_id' => '3',
-                'file_path' => 'img/icons/tree-park.svg',
+                'file_path' => '/img/icons/tree-park.svg',
                 'description' => 'default description',
                 'order' => '0',
                 'type' => 'icon'
@@ -141,7 +141,7 @@ class MediaSeeder extends Seeder
             [
                 'model_type' => 'App\Models\InfrastructureType',
                 'model_id' => '4',
-                'file_path' => 'img/icons/tree-park.svg',
+                'file_path' => '/img/icons/tree-park.svg',
                 'description' => 'default description',
                 'order' => '0',
                 'type' => 'icon'
@@ -149,7 +149,7 @@ class MediaSeeder extends Seeder
             [
                 'model_type' => 'App\Models\InfrastructureType',
                 'model_id' => '5',
-                'file_path' => 'img/icons/tree-park.svg',
+                'file_path' => '/img/icons/tree-park.svg',
                 'description' => 'default description',
                 'order' => '0',
                 'type' => 'icon'
@@ -157,7 +157,7 @@ class MediaSeeder extends Seeder
             [
                 'model_type' => 'App\Models\InfrastructureType',
                 'model_id' => '6',
-                'file_path' => 'img/icons/tree-park.svg',
+                'file_path' => '/img/icons/tree-park.svg',
                 'description' => 'default description',
                 'order' => '0',
                 'type' => 'icon'

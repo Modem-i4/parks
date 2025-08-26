@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" fill="white" stroke="black" stroke-width="3">
+  <g transform="translate(100,100)">
+    <polygon points="0,-90 10,-30 0,-40 -10,-30" />
+    <polygon points="90,0 30,-10 40,0 30,10" />
+    <polygon points="0,90 -10,30 0,40 10,30" />
+    <polygon points="-90,0 -30,10 -40,0 -30,-10" />
+
+    <polygon points="0,-60 6,-25 0,-30 -6,-25" transform="rotate(45)" />
+    <polygon points="0,-60 6,-25 0,-30 -6,-25" transform="rotate(135)" />
+    <polygon points="0,-60 6,-25 0,-30 -6,-25" transform="rotate(225)" />
+    <polygon points="0,-60 6,-25 0,-30 -6,-25" transform="rotate(315)" />
+
+    <!-- Центр -->
+    <circle cx="0" cy="0" r="10" fill="white" />
+  </g>
+</svg>

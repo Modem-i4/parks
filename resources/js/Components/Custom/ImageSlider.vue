@@ -52,7 +52,7 @@
     </template>
     <div v-else class="text-center text-gray-500 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
       Зображення відсутні
-      <img src="/storage/img/icons/camera-create-icon.svg" alt="No images" class="w-12 h-12 mx-auto mt-2" v-if="editable" />
+      <img src="/img/icons/camera-create-icon.svg" alt="No images" class="w-12 h-12 mx-auto mt-2" v-if="editable" />
     </div>
     <!-- Overlay -->
     <div

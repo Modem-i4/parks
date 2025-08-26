@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Class MediaLibrary
@@ -33,10 +34,10 @@ class MediaLibrary extends Model
 
     public function getFilePathAttribute($value): string
     {
-        if (str_starts_with($value, '/storage/')) {
-            return $value;
+        $path = ltrim($value, '/');
+        if (Storage::disk('public')->exists($path)) {
+            return '/storage/' . $path;
         }
-
-        return '/storage/' . ltrim($value, '/');
+        return '/' . ($path ?? '');
     }
 }

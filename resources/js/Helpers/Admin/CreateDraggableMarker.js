@@ -11,7 +11,7 @@ export async function createDraggableMarker(options) {
 async function createDraggableMarkerBase({
   map,
   position,
-  iconUrl = '/storage/img/icons/new-marker.svg',
+  iconUrl = '/img/icons/markers/new-marker.svg',
   zIndex = 999999,
   onDrag
 }) {
@@ -89,7 +89,7 @@ async function createDraggableMarkerBase({
 export async function createDraggableMarkerWithLine({
   map,
   position,
-  iconUrl = '/storage/img/icons/new-marker.svg',
+  iconUrl = '/img/icons/markers/new-marker.svg',
   zIndex = 9999,
   onDrag,
   drawLineFrom

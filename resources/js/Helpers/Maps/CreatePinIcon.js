@@ -7,7 +7,7 @@ function getCacheKey({ glyph, background, borderColor, scale, width, height }) {
 }
 
 export async function CreatePinIcon({
-  glyph = '/storage/img/icons/examp-icon.svg',
+  glyph = '/img/icons/markers/examp-icon.svg',
   background = '#4285F4',
   borderColor = '#ffffff',
   scale = 1.5,

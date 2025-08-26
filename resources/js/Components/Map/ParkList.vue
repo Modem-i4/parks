@@ -39,6 +39,6 @@ onMounted(getParks)
         </div>
       </div>
     </li>
-  <img src="/storage/img/icons/logo-parks-matter.png" alt="parksMatter" class="max-w-[15rem] mx-auto mt-6"/>
+  <img src="/img/icons/logo-parks-matter.png" alt="parksMatter" class="max-w-[15rem] mx-auto mt-6"/>
   </ul>
 </template>

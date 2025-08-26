@@ -61,7 +61,7 @@ defineExpose({ forceImageUpdate })
           @click="copyToClipboard(props.marker.green.inventory_number)"
           @mouseenter="copyCompleted = false"
         >
-          <img src="/storage/img/icons/copy-icon.svg" alt="Скопіювати" class="w-5 h-5" />
+          <img src="/img/icons/copy-icon.svg" alt="Скопіювати" class="w-5 h-5" />
         </button>
         <Tooltip>
           {{ copyCompleted ? 'Скопійовано!' : 'Скопіювати' }}
