@@ -23,21 +23,21 @@ const heroSlides = ref([
     subtitle: 'Осінні алеї та події щотижня',
     image: '/img/parks/shevchenko_park.webp',
     icon: '/img/icons/shevchenko_park.png',
-    href: route('parks', { id: 1 })
+    href: '/parks/1'
   },
   {
     title: 'воїнів-інтернаціоналістів',
     subtitle: 'Велодоріжки та маршрути',
     image: '/img/parks/liberators_park.webp',
     icon: '/img/icons/liberators_park.png',
-    href: route('parks', { id: 2 })
+    href: '/parks/2'
   },
   {
     title: 'на вул. Молодіжна',
     subtitle: 'Майданчики для дітей',
     image: '/img/parks/hotkevych_park.webp',
     icon: '/img/icons/hotkevych_park.png',
-    href: route('parks', { id: 3 })
+    href: '/parks/3'
   }
 ])
 

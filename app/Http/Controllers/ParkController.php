@@ -27,7 +27,7 @@ class ParkController extends Controller
 
     private function renderPage(bool $isSingleParkView, $parkId = null)
     {
-        $park = $parkId ? Park::findOrFail($parkId) : null;
+        $park = $parkId ? Park::with('icon')->findOrFail($parkId) : null;
 
         return Inertia::render('Parks', [
             'isSingleParkView' => $isSingleParkView && $park,
