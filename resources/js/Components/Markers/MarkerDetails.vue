@@ -73,7 +73,7 @@ const description = computed(() => {
     return 'Введіть властивості нижче'
   if(loading.value) 
     return 'Завантаження...'
-  if(marker.value.green)
+  if(marker.value.green && marker.value.green?.species?.genus?.name_ukr)
     return `${marker.value.green?.species?.genus?.name_ukr} / ${marker.value.green?.species?.genus?.family?.name_ukr}`
   if(marker.value.infrastructure) 
     return 'Інфраструктура'

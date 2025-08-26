@@ -40,7 +40,7 @@
     </Transition>
 
     <Modal :show="showModal.recommendation" maxWidth="2xl" @close="showModal.recommendation = false">
-      <DictRecommendations @select="selectRecommendation" />
+      <DictRecommendations @selectRecommendation="selectRecommendation" />
     </Modal>
   </div>
 </template>
@@ -66,6 +66,7 @@ const form = ref({
 })
 
 function selectRecommendation(rec) {
+  console.log("END")
   form.value.recommendation_id = rec.id
   form.value.recommendation = rec
   showModal.value.recommendation = false
