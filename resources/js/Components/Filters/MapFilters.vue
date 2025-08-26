@@ -21,7 +21,8 @@ const renderKey = ref(0)
 const authStore = useAuthStore()
 
 const filterPresets = {
-  all: { green: {}, infrastructure: {} },
+  green: { green: {}, infrastructure: {} },
+  infrastructure: { infrastructure: {} },
   nothing: {}
 }
 
@@ -40,7 +41,8 @@ const getFilters = async () => {
 }
 
 function setPreset(preset = 'all') {
-  filters.value = structuredClone(filterPresets[preset])
+  const filter = preset === 'all' ? parkStore.singleParkContentMode : preset
+  filters.value = structuredClone(filterPresets[filter])
   renderKey.value++
 }
 

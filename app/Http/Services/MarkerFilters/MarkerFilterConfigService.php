@@ -44,7 +44,6 @@ class MarkerFilterConfigService {
                 'name' => 'Інфраструктура',
                 'slug' => 'infrastructure',
                 'type' => 'group',
-                'checked' => true,
                 'children' => [
                     [
                         'name' => 'Типи інфраструктури',
@@ -64,7 +63,6 @@ class MarkerFilterConfigService {
                 'name' => 'Зелені насадження',
                 'slug' => 'green',
                 'type' => 'group',
-                'checked' => true,
                 'children' => [
                     [
                         'name' => 'Роботи',
@@ -292,11 +290,14 @@ class MarkerFilterConfigService {
 
         $config[$mode]['open'] = true;
         if ($mode === 'infrastructure') {
+            $config['infrastructure']['checked'] = true;
             return [
                 'infrastructure' => $config['infrastructure'],
                 'green' => $config['green'],
             ];
         } else {
+            $config['green']['checked'] = true;
+            $config['infrastructure']['checked'] = true;
             return [
                 'green' => $config['green'],
                 'infrastructure' => $config['infrastructure'],
