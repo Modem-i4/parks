@@ -71,7 +71,10 @@ class ParkController extends Controller
 
     public function getParksList()
     {
-        return Park::with('icon')->select('id', 'name', 'address', 'area', 'description', 'geo_json')->get();
+        return Park::with('icon')
+            ->select('id', 'name', 'address', 'area', 'description', 'geo_json')
+            ->orderByDesc('area')
+            ->get();
     }
 
     public function update(Request $request, $id)
@@ -80,6 +83,7 @@ class ParkController extends Controller
         $park->update($request->validate([
             'name' => 'string',
             'address' => 'string',
+            'area' => 'string',
             'description' => 'string',
         ]));
 

@@ -18,11 +18,11 @@ const parkStore = useParkStore()
 // Editing
 const authStore = useAuthStore()
 const editing = ref(false)
-const form = ref({ name: '', description: '', address: '' })
+const form = ref({ name: '', description: '', area: '' })
 watch(editing, (val) => {
   if (val && parkStore.selectedMarker) {
     const m = parkStore.selectedMarker
-    form.value = { name: m.name, description: m.description, address: m.address }
+    form.value = { name: m.name, description: m.description, area: m.area }
   }
 })
 
@@ -79,7 +79,7 @@ function pickerSaved(newImages) {
 <template>
   <div class="p-4 pt-1">
     <PanelHeader
-      :title="parkStore.selectedMarker.name" :subtitle="parkStore.selectedMarker.address" :icon="parkStore.selectedMarker.icon?.file_path"
+      :title="parkStore.selectedMarker.name" :subtitle="`${parkStore.selectedMarker.area} гектарів`" :icon="parkStore.selectedMarker.icon?.file_path"
       :editable="authStore.can.upload"
       @onIconClick="() => { if(authStore.can.upload) startIconChange() }"
     >
@@ -119,8 +119,8 @@ function pickerSaved(newImages) {
         <input v-model="form.name" class="w-full border border-gray-300 rounded px-2 py-1" />
       </div>
       <div class="space-y-1">
-        <label class="text-sm font-medium text-gray-700">Адреса</label>
-        <input v-model="form.address" class="w-full border border-gray-300 rounded px-2 py-1" />
+        <label class="text-sm font-medium text-gray-700">Площа</label>
+        <input v-model="form.area" class="w-full border border-gray-300 rounded px-2 py-1" />
       </div>
       <div class="space-y-1">
         <label class="text-sm font-medium text-gray-700">Опис</label>

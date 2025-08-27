@@ -30,7 +30,7 @@ onMounted(getParks)
     >
       <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer">
         <PanelHeader
-          :title="park.name" :subtitle="park.address" :icon="park.icon?.file_path" :shouldFilter="true"
+          :title="park.name" :subtitle="`${park.area} гектарів`" :icon="park.icon?.file_path" :shouldFilter="true"
           iconBg="gray-100"
         />
         <div class="px-4 pb-4">
