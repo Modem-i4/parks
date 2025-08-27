@@ -39,6 +39,8 @@ onMounted(getParks)
         </div>
       </div>
     </li>
-  <img src="/img/icons/logo-parks-matter.png" alt="parksMatter" class="max-w-[15rem] mx-auto mt-6"/>
+    <a href="https://pl-ua.eu/en/" target="_blank" class="mx-4">
+      <img src="/img/icons/logo-project-hor.jpg" alt="parksMatter" class="w-[calc(100%-1.5rem)] max-w-[23rem] mx-auto mt-3 py-5 bg-white rounded"/>
+    </a>
   </ul>
 </template>

@@ -9,16 +9,10 @@ import { Link } from '@inertiajs/vue3';
         <div>
             <Link href="/">
                 <img 
-                    src="/img/icons/logo-parks-matter.png" 
-                    class="w-48"
+                    src="/img/icons/logo-project-ver.jpg" 
+                    class="w-64 rounded"
                 />
             </Link>
-            <a href="https://pl-ua.eu/ua/" target="_blank">
-                <img 
-                    src="/img/icons/logo-interreg.png" 
-                    class="w-48 mt-2"
-                />
-            </a>
         </div>
 
         <div

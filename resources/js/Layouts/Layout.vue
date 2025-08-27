@@ -63,16 +63,10 @@ useMobileNavClose({ isOpenRef: showingNavigationDropdown, rootElRef: navEl })
           <div class="flex items-center gap-4 md:max-w-none overflow-hidden min-w-0">
             <Link :href="route('home')" class="shrink">
               <img 
-                src="/img/icons/logo-parks-matter.png" 
-                class="block max-h-[65px] md:max-h-[clamp(28px,10vw,65px)] w-auto object-contain max-w-full" 
+                src="/img/icons/logo-project-hor.jpg" 
+                class="block max-h-[65px] w-auto object-contain max-w-full rounded" 
               />
             </Link>
-            <a href="https://pl-ua.eu/ua/" target="_blank" class="shrink">
-              <img 
-                src="/img/icons/logo-interreg.png" 
-                class="block max-h-[55px] md:max-h-[clamp(24px,8vw,50px)] w-auto object-contain max-w-full" 
-              />
-            </a>
           </div>
 
           <!-- Desktop Navigation -->

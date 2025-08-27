@@ -1,12 +1,11 @@
 <template>
-  <section class="max-w-7xl mx-auto px-4 py-10 md:py-14 flex flex-col md:flex-row gap-x-20 gap-y-5">
+  <section class="max-w-7xl mx-auto px-4 py-10 md:py-14 flex flex-col md:flex-row gap-x-10 gap-y-5">
     <div class="flex flex-row md:flex-col justify-between">
       <h2 class="text-2xl md:text-4xl font-extrabold uppercase tracking-wide text-[#007C57] 
                 my-auto pt-2 md:mt-0 basis-2/3 md:basis-1/4">ПРО ПРОЄКТ</h2>
       <div class="basis-1/3 md:basis-3/4">
-        <img src="/img/icons/logo-parks-matter.png" alt="ParksMatter" class="md:max-w-64" />
-        <a href="https://pl-ua.eu/ua/" target="_blank">
-          <img src="/img/icons/logo-interreg.png" alt="Interreg NEXT" class="md:max-w-64 mt-1 rounded" />
+        <a href="https://pl-ua.eu/en/" target="_blank">
+          <img src="/img/icons/logo-project-ver.jpg" alt="ParksMatter" class="md:max-w-[24rem]" />
         </a>
       </div>
     </div>

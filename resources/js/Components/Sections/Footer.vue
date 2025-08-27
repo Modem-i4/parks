@@ -41,11 +41,10 @@ const year = new Date().getFullYear()
         </p>
         <div class="lg:col-span-5">
           <div class="flex flex-col sm:flex-row lg:items-end justify-center lg:justify-end gap-8 md:gap-10">
-            <a href="#" class="flex-1 min-w-0 max-w-full h-auto max-h-22 md:max-h-24 lg:max-h-28 mx-auto ">
-              <img src="/img/icons/logo-parks-matter-outlined.png" alt="ParksMatter" />
-            </a>
-            <a href="https://pl-ua.eu/ua/" target="_blank" class="flex-1 min-w-0 max-w-full h-auto max-h-22 md:max-h-24 lg:max-h-28 mx-auto ">
-              <img src="/img/icons/logo-interreg.png" alt="Interreg NEXT Польща – Україна" class="rounded" />
+            <a href="https://pl-ua.eu/en/" target="_blank"
+              class="flex-1 min-w-0 max-w-full h-auto max-h-22 md:max-h-24 lg:max-h-28 mx-auto"
+            >
+              <img src="/img/icons/logo-project-hor.jpg" alt="ParksMatter" class="rounded" />
             </a>
           </div>
           <div class="mt-6 md:mt-8 flex items-center gap-2 justify-center lg:justify-end text-sm md:text-base text-white/80">
