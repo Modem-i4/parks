@@ -80,11 +80,14 @@ watch(
     let coords = null
     let duration = 1000
 
+    if (parkStore.showPanel && !parkStore.selectedMarker) {
+      zoomLevel = devicePageZoom.panelOpen
+    }
     if (parkStore.showPanel && parkStore.selectedMarker) {
       if (parkStore.isSingleParkView) {
         zoomLevel = parkStore.map.getZoom()
         duration = 200
-      } else zoomLevel = devicePageZoom.panelOpen
+      } else zoomLevel = devicePageZoom.parkSelected
       
       coords = getAdjustedCoordsFromMarker(parkStore.selectedMarker, zoomLevel)
     } else if (!parkStore.isSingleParkView) {

@@ -23,7 +23,8 @@ export const zoom = {
   mobile: {
     parks : {
       default: 13,
-      panelOpen: 15,
+      panelOpen: 12.5,
+      parkSelected: 15,
       min: 12,
       max: 19
     },
@@ -37,7 +38,8 @@ export const zoom = {
   desktop: {
     parks : {
       default: 14,
-      panelOpen: 15,
+      panelOpen: 13.5,
+      parkSelected: 15,
       min: 13,
       max: 20
     },
@@ -55,7 +57,7 @@ export const zoom = {
 
 export const defaultBounds = {
     north: 48.96906027460897,
-    south: 48.89167859502078 - (isMobile.value ? 0.06 : 0),
+    south: 48.89167859502078 - (isMobile.value ? 0.1 : 0),
     east: 24.835674018094288,
     west: 24.654101425875925,
   }
