@@ -83,7 +83,7 @@ onMounted(() => {
     </PanelHeader>
     <div class="flex items-center justify-between border-b px-5 py-3 border-gray-200">
       <div class="text-lg font-medium text-gray-700">
-        Фільтр
+        Фільтри та легенда
       </div>
       <div class="flex items-center gap-2">
         <PrimaryButton @click="setPreset('all')">Все</PrimaryButton>

@@ -10,10 +10,10 @@ const state = computed(() => props.green?.green_state ?? null)
 
 const stateLabel = computed(() => {
   return {
-    planned: 'Заплановано',
-    good: 'Хороший',
-    normal: 'Нормальний',
-    bad: 'Поганий',
+    planned: 'Лунка',
+    good: 'Добрий',
+    normal: 'Задовільний',
+    bad: 'Незадовільний',
     removed: 'Видалено',
   }[state.value] ?? state.value
 })

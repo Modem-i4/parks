@@ -46,7 +46,7 @@ const options = {
   qualityStates: [
     {
       value: 'bad',
-      label: 'Поганий',
+      label: 'Незадовільний',
       baseClass: 'bg-red-100 text-red-700',
       activeClass: 'bg-red-500 text-white',
     },
@@ -58,7 +58,7 @@ const options = {
     },
     {
       value: 'good',
-      label: 'Добрий',
+      label: 'Хороший',
       baseClass: 'bg-green-100 text-green-700',
       activeClass: 'bg-green-500 text-white',
     },
@@ -66,7 +66,7 @@ const options = {
   specialStates: [
     {
       value: 'planned',
-      label: 'Заплановано',
+      label: 'Лунка',
       baseClass: 'bg-blue-100 text-blue-700',
       activeClass: 'bg-blue-500 text-white',
     },
