@@ -36,7 +36,7 @@ watch(() => parkStore.selectedMarker, (newVal) => {
 </script>
 
 <template>
-  <div class="flex h-[calc(100vh-86px)]">
+  <div class="flex h-[calc(100dvh-86px)]">
     <!-- Desktop sidebar -->
     <div class="hidden md:block w-1/3 min-w-[300px] border-r overflow-y-auto overflow-x-clip relative bg-gray-100" id="sidebar-target"> <!-- Має обмежуватись висотою екрана, а не flex-батьком -->
       <!-- Panel Teleport -->
@@ -72,7 +72,7 @@ watch(() => parkStore.selectedMarker, (newVal) => {
             <div v-else>{{ parkStore.selectedPark?.name || parkStore.selectedMarker?.name || 'Список' }}</div>
         </template>
 
-        <div class="max-h-[60vh] overflow-y-auto" id="mobile-panel-target">
+        <div class="max-h-[55dvh] overflow-y-auto" id="mobile-panel-target">
           <!-- Panel Teleport -->
         </div>
       </MobileSlidePanel>
