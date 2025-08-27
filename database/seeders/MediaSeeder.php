@@ -117,7 +117,7 @@ class MediaSeeder extends Seeder
             [
                 'model_type' => 'App\Models\InfrastructureType',
                 'model_id' => '1',
-                'file_path' => '/img/icons/tree-park.svg',
+                'file_path' => '/img/icons/infrastructure-types/wc.svg',
                 'description' => 'default description',
                 'order' => '0',
                 'type' => 'icon'
@@ -125,7 +125,7 @@ class MediaSeeder extends Seeder
             [
                 'model_type' => 'App\Models\InfrastructureType',
                 'model_id' => '2',
-                'file_path' => '/img/icons/tree-park.svg',
+                'file_path' => '/img/icons/infrastructure-types/parenting.svg',
                 'description' => 'default description',
                 'order' => '0',
                 'type' => 'icon'
@@ -133,7 +133,7 @@ class MediaSeeder extends Seeder
             [
                 'model_type' => 'App\Models\InfrastructureType',
                 'model_id' => '3',
-                'file_path' => '/img/icons/tree-park.svg',
+                'file_path' => '/img/icons/infrastructure-types/slide.svg',
                 'description' => 'default description',
                 'order' => '0',
                 'type' => 'icon'
@@ -141,7 +141,7 @@ class MediaSeeder extends Seeder
             [
                 'model_type' => 'App\Models\InfrastructureType',
                 'model_id' => '4',
-                'file_path' => '/img/icons/tree-park.svg',
+                'file_path' => '/img/icons/infrastructure-types/stadium.svg',
                 'description' => 'default description',
                 'order' => '0',
                 'type' => 'icon'
@@ -149,7 +149,7 @@ class MediaSeeder extends Seeder
             [
                 'model_type' => 'App\Models\InfrastructureType',
                 'model_id' => '5',
-                'file_path' => '/img/icons/tree-park.svg',
+                'file_path' => '/img/icons/infrastructure-types/fountain.svg',
                 'description' => 'default description',
                 'order' => '0',
                 'type' => 'icon'
@@ -157,7 +157,7 @@ class MediaSeeder extends Seeder
             [
                 'model_type' => 'App\Models\InfrastructureType',
                 'model_id' => '6',
-                'file_path' => '/img/icons/tree-park.svg',
+                'file_path' => '/img/icons/infrastructure-types/statue.svg',
                 'description' => 'default description',
                 'order' => '0',
                 'type' => 'icon'

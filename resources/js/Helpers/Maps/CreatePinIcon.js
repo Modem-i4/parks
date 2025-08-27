@@ -11,6 +11,7 @@ export async function CreatePinIcon({
   background = '#4285F4',
   borderColor = '#ffffff',
   scale = 1.5,
+  glyphScale = 1.15,
   width = 24,
   height = 24,
 } = {}) {
@@ -22,18 +23,32 @@ export async function CreatePinIcon({
 
   const { PinElement } = await loader.importLibrary('marker')
 
+  const wrapper = document.createElement('div')
+  wrapper.style.width = `${width}px`
+  wrapper.style.height = `${height}px`
+  wrapper.style.borderRadius = '50%'
+  wrapper.style.background = '#ffffff' 
+  wrapper.style.border = `1px solid ${borderColor}`
+  wrapper.style.display = 'flex'
+  wrapper.style.alignItems = 'center'
+  wrapper.style.justifyContent = 'center'
+  wrapper.style.overflow = 'hidden'
+  wrapper.style.transform = `scale(${glyphScale})`
+  wrapper.style.transformOrigin = 'center'
+
   const img = document.createElement('img')
   img.src = glyph
-  img.width = width
-  img.height = height
+  img.style.width = '95%' 
+  img.style.height = '95%'
   img.style.objectFit = 'contain'
-  img.style.display = 'block'
+
+  wrapper.appendChild(img)
 
   const pin = new PinElement({
-    glyph: img,
+    glyph: wrapper,
     background,
     borderColor,
-    scale
+    scale,
   })
 
   pinCache.set(cacheKey, pin)

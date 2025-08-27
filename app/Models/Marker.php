@@ -92,6 +92,21 @@ class Marker extends Model
 		];
 	}
 
+	public function relationsToArray()
+    {
+		$relations = parent::relationsToArray();
 
+		if (!array_key_exists('icon', $relations) || is_null($relations['icon'])) {
+			$typeIcon = $this->infrastructure?->infrastructureType?->icon;
+			if ($typeIcon) {
+				$relations['icon'] = [
+					'id'        => $typeIcon->id,
+					'file_path' => $typeIcon->file_path,
+				];
+			}
+		}
+
+		return $relations;
+    }
 	
 }
