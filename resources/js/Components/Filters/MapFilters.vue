@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, watch } from 'vue'
+import { ref, onMounted, watch, computed } from 'vue'
 import axios from 'axios'
 import FilterNode from './FilterNode.vue'
 import { useParkStore } from '@/Stores/useParkStore'
@@ -13,6 +13,7 @@ import Modal from '@/Components/Default/Modal.vue'
 import GroupAssign from '@/Components/WorkHistory/GroupAssign.vue'
 import ExportImportPanel from '@/Components/Export/ExportImportPanel.vue'
 import { useAuthStore } from '@/Stores/useAuthStore'
+import { tweenCameraTo } from '@/Helpers/Maps/MapHelper'
 
 const parkStore = useParkStore()
 const filtersConfig = ref([])
@@ -30,6 +31,11 @@ const showModal = ref({
   groupAssign: false,
   export: false
 })
+
+const areFiltersDefault = computed(
+  () => Object.values(filterPresets)
+  .some( preset => JSON.stringify(preset) === JSON.stringify(filters.value) )
+)
 
 const getFilters = async () => {
   try {
@@ -58,6 +64,24 @@ const filterMarkers = async () => {
   } finally {
     parkStore.markerStates.isLoading = false
     parkStore.markerStates.areLoaded = true
+
+    if (parkStore.markers.length > 0 && parkStore.markers.length < 200 && !areFiltersDefault.value) {
+      const c = parkStore.map.getCenter()
+      const cLat = c.lat()
+      const cLng = c.lng()
+      const closestMarker = parkStore.markers
+        .map(m => {
+          const pos = {lng: m.coordinates[0], lat: m.coordinates[1] }
+          const dLat = pos.lat - cLat
+          const dLng = (pos.lng - cLng) * Math.cos(cLat * Math.PI / 180)
+          return { ...pos, dist: Math.pow(dLat,2) + Math.pow(dLng,2) }
+        })
+        .sort((a, b) => a.dist - b.dist)[0]
+
+        parkStore.showPanel = false
+        tweenCameraTo(parkStore.map, { lat: closestMarker.lat, lng: closestMarker.lng })
+    }
+
   }
 }
 
