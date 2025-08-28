@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use App\Models\Concerns\LogsChanges;
 
 /**
  * Class Media
@@ -25,6 +26,7 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
  */
 class Media extends Model
 {
+    use LogsChanges;
     protected $table = 'media';
 
     protected $fillable = [

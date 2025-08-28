@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Concerns\LogsChanges;
 
 /**
  * Class Tree
@@ -23,6 +24,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Tree extends Model
 {
+    use LogsChanges;
     protected $table = 'trees';
     public $incrementing = false;
 

@@ -5,6 +5,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Concerns\LogsChanges;
 
 /**
  * Class Work
@@ -29,6 +30,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Work extends Model
 {
+    use LogsChanges;
 	protected $table = 'works';
 
 	protected $casts = [

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use App\Enums\MediaType;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
+use App\Models\Concerns\LogsChanges;
 
 /**
  * Class Park
@@ -27,6 +28,7 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
  */
 class Park extends Model
 {
+    use LogsChanges;
     protected $table = 'parks';
 
     protected $casts = [

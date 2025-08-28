@@ -6,6 +6,7 @@ use App\Enums\MediaType;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Concerns\LogsChanges;
 
 /**
  * Class Genus
@@ -24,6 +25,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Genus extends Model
 {
+    use LogsChanges;
 	protected $table = 'genus';
 
 	protected $casts = [

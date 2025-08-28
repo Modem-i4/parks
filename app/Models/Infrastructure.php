@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Concerns\LogsChanges;
 
 /**
  * Class Infrastructure
@@ -19,6 +20,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Infrastructure extends Model
 {
+    use LogsChanges;
 	protected $table = 'infrastructure';
 	public $incrementing = false;
 

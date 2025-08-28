@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Enums\UserRole;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Concerns\LogsChanges;
 
 /**
  * Class User
@@ -28,6 +29,7 @@ class User extends Authenticatable
 {
     use Notifiable;
     use HasFactory;
+    use LogsChanges;
 	protected $table = 'users';
 
 	protected $casts = [

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Enums\MediaType;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Concerns\LogsChanges;
 
 
 /**
@@ -31,6 +32,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Marker extends Model
 {
+    use LogsChanges;
     use SoftDeletes;
 	protected $table = 'markers';
 

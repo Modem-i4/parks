@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Concerns\LogsChanges;
 
 /**
  * Class Hedge
@@ -19,6 +20,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Hedge extends Model
 {
+    use LogsChanges;
     protected $table = 'hedges';
 
     protected $casts = [

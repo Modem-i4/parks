@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Concerns\LogsChanges;
 
 /**
  * Class MediaLibrary
@@ -20,6 +21,7 @@ use Illuminate\Support\Facades\Storage;
  */
 class MediaLibrary extends Model
 {
+    use LogsChanges;
     protected $table = 'media_library';
 
     protected $fillable = [

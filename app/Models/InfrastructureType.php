@@ -5,10 +5,11 @@ namespace App\Models;
 use App\Enums\MediaType;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\MorphOne;
+use App\Models\Concerns\LogsChanges;
 
 class InfrastructureType extends Model
 {
+    use LogsChanges;
     use HasFactory;
 
     protected $table = 'infrastructure_type';

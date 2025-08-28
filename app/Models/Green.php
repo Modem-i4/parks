@@ -7,6 +7,7 @@ use Doctrine\Inflector\Rules\Word;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use App\Models\Concerns\LogsChanges;
 
 /**
  * Class Green
@@ -33,6 +34,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
  */
 class Green extends Model
 {
+    use LogsChanges;
 	protected $table = 'green';
 
 	protected $casts = [

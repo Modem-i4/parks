@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use App\Enums\GreenType;
 use App\Enums\MediaType;
+use App\Models\Concerns\LogsChanges;
 
 /**
  * Class Species
@@ -25,6 +26,7 @@ use App\Enums\MediaType;
  */
 class Species extends Model
 {
+    use LogsChanges;
 	protected $table = 'species';
 
 	protected $casts = [

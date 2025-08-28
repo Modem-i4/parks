@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Concerns\LogsChanges;
 
 /**
  * Class HedgeRow
@@ -17,6 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class HedgeRow extends Model
 {
+    use LogsChanges;
 	protected $table = 'hedge_rows';
 	public $timestamps = false;
 

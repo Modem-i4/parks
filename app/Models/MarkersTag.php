@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Concerns\LogsChanges;
 
 /**
  * Class MarkersTag
@@ -17,6 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class MarkersTag extends Model
 {
+    use LogsChanges;
 	protected $table = 'markers_tags';
 	public $incrementing = false;
 	public $timestamps = false;

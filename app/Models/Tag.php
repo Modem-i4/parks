@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use App\Enums\TagType;
+use App\Models\Concerns\LogsChanges;
 
 /**
  * Class Tag
@@ -24,6 +25,7 @@ use App\Enums\TagType;
  */
 class Tag extends Model
 {
+    use LogsChanges;
 	protected $table = 'tags';
 
 	protected $casts = [
