@@ -15,6 +15,7 @@ enum UserAbilities: string {
     case import = 'import';
     case editNews = 'editNews';
     case adminUsers = 'adminUsers';
+    case useAudit = 'useAudit';
 
     public function minRole(): UserRole {
         return match ($this) {
@@ -30,6 +31,7 @@ enum UserAbilities: string {
             self::import          => UserRole::WORK_MANAGER,
             self::editNews        => UserRole::NEWS_MANAGER,
             self::adminUsers      => UserRole::ADMIN,
+            self::useAudit        => UserRole::ADMIN,
         };
     }
 }

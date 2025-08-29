@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuditController;
 use App\Http\Controllers\Species\FamilyController;
 use App\Http\Controllers\Species\GenusController;
 use App\Http\Controllers\Species\SpeciesController;
@@ -51,10 +52,13 @@ Route::middleware('auth')->group(function () {
 
         // Role specific pages
         Route::middleware('auth', 'role:editor')->group(function () {
-            Route::get('users', [UserController::class, 'index'])->name('admin.users');
             Route::get('dictionaries', function () {
                 return Inertia::render('Admin/Dictionaries');
             })->name('admin.dictionaries');
+        });
+        Route::middleware('auth', 'role:admin')->group(function () {
+            Route::get('users', [UserController::class, 'index'])->name('admin.users');
+            Route::get('/audit', [AuditController::class, 'index'])->name('admin.audit');
         });
     });
 });
@@ -179,6 +183,11 @@ Route::prefix('api')->group(function () {
     // ========= adminUsers =========
     Route::middleware('can:adminUsers')->group(function () {
         Route::patch('users/{id}/role', [UserController::class, 'updateRole'])->name('users.role');
+    });
+    // ========= useAudit =========
+    Route::middleware('can:useAudit')->group(function () {
+        Route::get('/audit', [AuditController::class, 'list']);
+        Route::get('/audit/options', [AuditController::class, 'options']);
     });
 });
 

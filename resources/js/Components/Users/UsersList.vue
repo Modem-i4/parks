@@ -4,6 +4,8 @@ import axios from 'axios'
 import UserNode from './UserNode.vue'
 import { UserRole } from '@/Helpers/UserRole'
 import LoadingLineIndicator from '../Custom/LoadingLineIndicator.vue'
+import PrimaryButton from '@/Components/Default/PrimaryButton.vue'
+import { router } from '@inertiajs/vue3'
 
 const props = defineProps({
   users: Array
@@ -53,8 +55,11 @@ const groupedUsers = computed(() => {
 
 <template>
   <div class="space-y-4 pb-3 relative">
-    <h2 class="text-xl font-semibold leading-tight text-gray-800"
-    >Користувачі</h2>
+    <div class="flex w-full justify-between">
+      <h2 class="text-xl font-semibold leading-tight text-gray-800"
+      >Користувачі</h2>
+      <PrimaryButton @click="router.visit('/admin/audit')">Аудит дій</PrimaryButton>
+    </div>
     <div class="sticky top-0 z-10 bg-white">
       <LoadingLineIndicator :isLoading />
       <input

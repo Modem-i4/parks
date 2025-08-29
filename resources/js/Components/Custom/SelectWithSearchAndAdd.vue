@@ -1,12 +1,12 @@
 <template>
   <div class="space-y-1">
-    <label class="text-sm font-medium text-gray-700">{{ label }}</label>
+    <label class="text-sm font-medium text-gray-700" v-if="showLabel">{{ label }}</label>
     <div class="relative">
       <input
         v-model="search"
         type="text"
         class="w-full border border-gray-300 rounded px-2 py-1"
-        placeholder="Пошук..."
+        :placeholder="props.placeholder ?? 'Пошук...'"
         @click="openDropdown"
         @blur="handleBlur"
       />
@@ -21,6 +21,13 @@
           @mousedown.prevent="$emit('show-modal', props.mode)"
         >
           + Додати {{ labelNewShort }}
+        </li>
+
+        <li v-if="pickAllOption"
+          class="px-3 py-1 hover:bg-gray-100 cursor-pointer"
+          @mousedown.prevent="select('')"
+        >
+          Всі  
         </li>
 
         <li
@@ -49,6 +56,8 @@ const props = defineProps({
   showLabel: { type: Boolean, default: true },
   canAddNew: { type: Boolean, default: true },
   preloadedOptions: Array,
+  placeholder: String,
+  pickAllOption: Boolean
 })
 const emit = defineEmits(['update:modelValue', 'show-modal'])
 
