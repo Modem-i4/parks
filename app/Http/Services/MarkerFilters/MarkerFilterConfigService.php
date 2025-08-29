@@ -281,7 +281,10 @@ class MarkerFilterConfigService {
     {
         if($mode === 'works') {
             $config['green']['open'] = true;
-            $config['green'][$mode]['open'] = true;
+            $config['green']['checked'] = true;
+            $config['green']['children'][0]['checked'] = true;
+            $config['green']['children'][0]['open'] = true;
+            $config['green']['children'][0]['children'][0]['options'][1]['checked'] = true;
             return [
                 'green' => $config['green'],
                 'infrastructure' => $config['infrastructure'],

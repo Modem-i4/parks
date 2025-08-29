@@ -24,6 +24,7 @@ const authStore = useAuthStore()
 const filterPresets = {
   green: { green: {}, infrastructure: {} },
   infrastructure: { infrastructure: {} },
+  works: { green: { works: { completion: ["uncompleted"] } } },
   nothing: {}
 }
 

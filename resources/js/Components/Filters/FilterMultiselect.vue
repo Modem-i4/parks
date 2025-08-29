@@ -1,5 +1,5 @@
 <script setup>
-import { GetOrCreateFilterTargetNode } from '@/Helpers/Maps/GetFilterTargetNode'
+import { GetFilterTargetNode, GetOrCreateFilterTargetNode } from '@/Helpers/Maps/GetFilterTargetNode'
 
 const props = defineProps({
   node: Object,
@@ -33,12 +33,12 @@ const handleCheckboxChange = (id, event) => {
   <div class="space-y-1 px-2">
     <div class="font-medium">{{ node.name }}</div>
     <div class="flex flex-wrap gap-2">
-
       <template v-if="node.type === 'multiselect'">
         <label v-for="opt in node.options" :key="opt.id" class="inline-flex items-center space-x-1">
           <input
             type="checkbox"
             :value="opt.name"
+            :checked="opt.checked && (GetFilterTargetNode(filters, [...path,props.node.slug])?.includes(opt.id))"
             @change="handleCheckboxChange(opt.id, $event)"
           >
           <span>{{ opt.name }}</span>
