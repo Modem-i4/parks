@@ -5,6 +5,7 @@
   <MapStats :stats>
     <ParksMapThumbnail :parks />
   </MapStats>
+  <GenusStats :genus="stats.genus" />
   <LastNews :news v-if="news" />
 </template>
 
@@ -16,6 +17,7 @@ import MapStats from '@/Components/Sections/Home/MapStats.vue';
 import LastNews from '@/Components/Sections/Home/LastNews.vue';
 import ParksMapThumbnail from '@/Components/Sections/Home/ParksMapThumbnail.vue';
 import { Head } from '@inertiajs/vue3'
+import GenusStats from '@/Components/Sections/Home/GenusStats.vue';
 
 const heroSlides = ref([
   {

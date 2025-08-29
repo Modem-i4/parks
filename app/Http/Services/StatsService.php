@@ -29,11 +29,13 @@ class StatsService
         $works_done     = (int) DB::table('works')->whereNotNull('execution_date')->count();
 
         $green = $this->greenQualityGrouped();
+        $genus = $this->topGenusByGreen();
 
         return [
             'parks'           => $parks,
             'infrastructure'  => $infrastructure,
             'works_done'      => $works_done,
+            'genus'           => $genus,
             'green_good'      => $green['good'],
             'green_normal'    => $green['normal'],
             'green_bad'       => $green['bad'],
@@ -59,4 +61,48 @@ class StatsService
 
         return $result;
     }
+
+    private function topGenusByGreen()
+    {
+        $baseQuery = DB::table('green')
+            ->join('trees', 'trees.id', '=', 'green.id')
+            ->join('species', 'species.id', '=', 'green.species_id')
+            ->join('genus', 'genus.id', '=', 'species.genus_id')
+            ->whereNotNull('green.species_id')
+            ->whereNotNull('species.genus_id');
+
+
+        $rows = (clone $baseQuery)
+            ->select('genus.id as genus_id', 'genus.name_ukr as genus', DB::raw('COUNT(*) as count'))
+            ->groupBy('genus.id', 'genus.name_ukr')
+            ->orderByDesc('count')
+            ->limit(6)
+            ->get();
+
+        $total = (clone $baseQuery)->count();
+
+        $topSum = $rows->sum('count');
+
+        $result = [];
+
+        foreach ($rows as $r) {
+            $result[] = [
+                'id'    => (int) $r->genus_id,
+                'name'  => (string) $r->genus,
+                'count' => (int) $r->count,
+            ];
+        }
+
+        $others = $total - $topSum;
+        if ($others > 0) {
+            $result[] = [
+                'id'    => 0,
+                'name'  => 'Інші',
+                'count' => $others,
+            ];
+        }
+
+        return $result;
+    }
+
 }
