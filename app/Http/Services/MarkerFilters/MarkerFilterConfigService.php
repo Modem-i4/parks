@@ -12,7 +12,7 @@ use App\Models\Tag;
 use Illuminate\Support\Facades\Auth;
 
 class MarkerFilterConfigService {
-    public function get($mode = 'infrastructure'): array
+    public function get($mode = 'green'): array
     {        
         $config = $this->getDefaultFilters();
         $config = $this->filterConfigByMode($config, $mode);

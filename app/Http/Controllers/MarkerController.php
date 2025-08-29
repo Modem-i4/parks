@@ -23,7 +23,7 @@ class MarkerController extends Controller
     ) {}
 
     public function getFilters(Request $request) {
-        $mode = $request->query('mode', 'infrastructure');
+        $mode = $request->query('mode', 'green');
         $config =  $this->filterConfigService->get($mode);
         return response()->json($config);
     }

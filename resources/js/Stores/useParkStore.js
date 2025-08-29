@@ -9,7 +9,7 @@ export const useParkStore = defineStore('park', () => {
   const pickedMarkers = ref([])
   const showPanel = ref(false)
   const selectedMarkerLocked = ref(false)
-  const singleParkContentMode = ref('infrastructure')
+  const singleParkContentMode = ref('green')
   const defaultCenter = { 
     lng: parseFloat(import.meta.env.VITE_DEFAULT_LNG),
     lat: parseFloat(import.meta.env.VITE_DEFAULT_LAT)

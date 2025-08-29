@@ -3,7 +3,7 @@ export function setParkView(parkStore, page, contentMode=null) {
     parkStore.showPanel = false
     parkStore.selectedPark = parkStore.selectedMarker
     parkStore.selectedMarker = null
-    parkStore.singleParkContentMode = contentMode ?? 'infrastructure'
+    parkStore.singleParkContentMode = contentMode ?? 'green'
     parkStore.markers = []
     parkStore.isSingleParkView = true
 
