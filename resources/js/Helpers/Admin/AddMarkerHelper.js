@@ -34,6 +34,7 @@ export function useAddMarkerHelper(parkStore) {
   }
 
   function addMarkerFinished() {
+    parkStore.selectedMarker = null
     if (googleMapMarker) {
       googleMapMarker.setMap(null)
       googleMapMarker = null

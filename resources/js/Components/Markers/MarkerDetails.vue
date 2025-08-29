@@ -57,6 +57,7 @@ async function update(newVal) {
 
 watch(editing, (newVal) => {
   parkStore.selectedMarkerLocked = newVal
+  if(isAddingNew.value) parkStore.selectedMarker = null
 })
 
 const title = computed(
