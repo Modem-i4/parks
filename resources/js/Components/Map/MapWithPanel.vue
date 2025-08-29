@@ -12,6 +12,7 @@ import { useAddMarkerHelper } from '@/Helpers/Admin/AddMarkerHelper'
 import FindMarker from '@/Components/Custom/FindMarker.vue'
 import Modal from '@/Components/Default/Modal.vue'
 import { useAuthStore } from '@/Stores/useAuthStore'
+import ParentFitModal from '../Custom/ParentFitModal.vue'
 
 const parkStore = useParkStore()
 const { showUserPosition } = useUserLocationMarker(toRef(parkStore, 'map'))
@@ -128,6 +129,13 @@ watch(() => parkStore.selectedMarker, (newVal) => {
         </BtnWhite>
       </div>
 
+      <ParentFitModal :show="showModal.findMarker" 
+        contentClasses="bg-white/70 py-1.5"
+        @close="showModal.findMarker = false"
+      >
+        <FindMarker @close="showModal.findMarker = false"/>
+      </ParentFitModal>
+
       <!-- Map panel -->
       <Teleport defer :to="isMobile ? '#mobile-panel-target' : '#sidebar-target'">
           <slot name="panelContent" />
@@ -135,13 +143,6 @@ watch(() => parkStore.selectedMarker, (newVal) => {
     </div>
   </div>
 
-  <Modal :show="showModal.findMarker" 
-    maxWidth="2xl" 
-    :contentClasses="`bg-white/70 ${isMobile ? 'fixed bottom-20 start-[5%] w-[90%]' : ''}`"
-    @close="showModal.findMarker = false"
-  >
-    <FindMarker @close="showModal.findMarker = false"/>
-  </Modal>
 </template>
 
 <!-- Map position centering effect -->
