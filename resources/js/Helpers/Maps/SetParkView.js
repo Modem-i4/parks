@@ -48,7 +48,7 @@ export function initParkRouteWatcher(parkStore) {
 }
 
 function updateParkRoute(parkStore) {
-  if(!parkStore) return;
+  if(!parkStore || parkStore.selectedMarker?.isDraft) return;
   const route = getRoute(parkStore)
   window.history.pushState(null, '', route)
   const appName = import.meta.env.VITE_APP_NAME
