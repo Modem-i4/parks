@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Park;
 use App\Http\Services\MarkerService;
+use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -76,18 +77,26 @@ class ParkController extends Controller
             ->orderByDesc('area')
             ->get();
     }
-
     public function update(Request $request, $id)
     {
-        $park = Park::findOrFail($id);
-        $park->update($request->validate([
-            'name' => 'string',
-            'address' => 'string',
-            'area' => 'string',
-            'description' => 'string',
-        ]));
-
-        return $park;
+        try {
+            $park = Park::findOrFail($id);
+            $park->update($request->validate([
+                'name' => ['sometimes','required','string'],
+                'address' => ['sometimes','required','string'],
+                'area' => ['sometimes','required','integer'],
+                'description' => ['sometimes','required','string'],
+            ]));
+            return $park;
+        } catch (ValidationException $e) {
+            return response()->json([
+                'message' => 'Validation failed',
+                'errors' => $e->errors(),
+            ], 422);
+        } catch (\Throwable $e) {
+            report($e);
+            return response()->json(['error' => 'Failed to update park'], 500);
+        }
     }
 
     public function media($id)

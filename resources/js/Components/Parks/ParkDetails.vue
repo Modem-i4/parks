@@ -10,6 +10,7 @@ import BtnWhite from '../Custom/BtnWhite.vue'
 import axios from 'axios'
 import SecondaryButton from '@/Components/Default/SecondaryButton.vue'
 import { useAuthStore } from '@/Stores/useAuthStore'
+import FormError from '@/Components/Custom/FormError.vue'
 
 const parkStore = useParkStore()
 
@@ -24,11 +25,34 @@ watch(editing, (val) => {
   }
 })
 
+const errors = ref({})
+function getByPath(obj, path) {
+  return path.split('.').reduce((acc, k) => acc?.[k], obj)
+}
+function snapshot(obj) {
+  return JSON.parse(JSON.stringify(obj))
+}
+watch(
+  () => snapshot(form.value),
+  (newVal, oldVal) => {
+    const errKeys = Object.keys(errors.value || {})
+    for (const key of errKeys) {
+      if (getByPath(oldVal, key) !== getByPath(newVal, key)) {
+        delete errors.value[key]
+      }
+    }
+  }
+)
+
 function save() {
+  errors.value = {}
   axios.patch(`/api/parks/${parkStore.selectedMarker.id}`, form.value)
   .then((res) => {
     Object.assign(parkStore.selectedMarker, res.data)
     editing.value = false
+  })
+  .catch((e) => {
+    errors.value = e.response?.data?.errors || {}
   })
 }
 
@@ -115,14 +139,17 @@ function pickerSaved(newImages) {
       <div class="space-y-1">
         <label class="text-sm font-medium text-gray-700">Назва парку</label>
         <input v-model="form.name" class="w-full border border-gray-300 rounded px-2 py-1" />
+        <FormError :errors="errors['name']" />
       </div>
       <div class="space-y-1">
         <label class="text-sm font-medium text-gray-700">Площа</label>
         <input v-model="form.area" class="w-full border border-gray-300 rounded px-2 py-1" />
+        <FormError :errors="errors['area']" />
       </div>
       <div class="space-y-1">
         <label class="text-sm font-medium text-gray-700">Опис</label>
         <textarea v-model="form.description" class="w-full border border-gray-300 rounded px-2 py-1" rows="6" />
+        <FormError :errors="errors['description']" />
       </div>
       <div class="absolute right-[4.5rem] z-[3]">
         <div class="fixed bottom-2">
