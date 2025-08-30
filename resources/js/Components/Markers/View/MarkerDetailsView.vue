@@ -11,12 +11,12 @@ import SecondaryButton from '@/Components/Default/SecondaryButton.vue'
 import { useAuthStore } from '@/Stores/useAuthStore'
 import { isMobile } from '@/Helpers/isMobileHelper'
 
-const loading = ref(true)
 const copyCompleted = ref(false)
 const imageSliderRef = ref(null)
 
 const props = defineProps({
-    marker: Object
+    marker: Object,
+    loading: Boolean
 })
 
 const authStore = useAuthStore()
@@ -71,7 +71,7 @@ defineExpose({ forceImageUpdate })
       </div>
     </div>
     <WorkHistory v-if="props.marker.green?.works && authStore.can.view" 
-      v-model="props.marker.green.works" :loading="loading" :greenId="props.marker.green.id"/>
+      v-model="props.marker.green.works" :loading="props.loading" :greenId="props.marker.green.id"/>
 
     <div class="bg-white rounded px-4 text-gray-600 pt-6" 
       :class="props.marker.description ? 'pb-6' : 'pb-2'"
@@ -98,7 +98,10 @@ defineExpose({ forceImageUpdate })
       <b>{{ fullNameLat }}</b>
     </div>
 
-    <TagList v-model="props.marker.tags" :loading="loading" />
+    <TagList v-model="props.marker.tags" :loading="props.loading" />
+    <div class="bg-white rounded px-4 text-gray-600 h-6 w-full" 
+      v-if="!props.marker.tags?.lenght" 
+    /> <!-- Spacer -->
 
     <div class="bg-white rounded p-4 mt-2 text-gray-600" v-if="authStore.can.deleteMarkers">
       <DeleteForm

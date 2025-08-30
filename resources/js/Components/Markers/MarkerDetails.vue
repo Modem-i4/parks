@@ -139,7 +139,7 @@ function deleteMarker() {
     </PanelHeader>
 
     <template v-if="!editing">
-      <MarkerDetailsView :marker="marker" ref="viewRef" 
+      <MarkerDetailsView :marker="marker" ref="viewRef" :loading="loading"
         @onImageClick="() => { if(authStore.can.edit) startGalleryChange() }" 
         @deleteMarker="deleteMarker"
       />
