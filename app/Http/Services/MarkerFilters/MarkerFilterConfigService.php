@@ -154,7 +154,7 @@ class MarkerFilterConfigService {
                                 'slug' => 'trunk_diameter_cm',
                                 'type' => 'slider',
                                 'min' => 0,
-                                'max' => 200,
+                                'max' => 100,
                             ],
                             [
                                 'name' => 'Нахил (°)',
@@ -194,7 +194,7 @@ class MarkerFilterConfigService {
                                 'slug' => 'quantity',
                                 'type' => 'slider',
                                 'min' => 1,
-                                'max' => 20,
+                                'max' => 50,
                             ],
                         ],
                     ],
@@ -219,7 +219,7 @@ class MarkerFilterConfigService {
                                 'slug' => 'length',
                                 'type' => 'slider',
                                 'min' => 0,
-                                'max' => 500,
+                                'max' => 100,
                             ],
                             [
                                 'name' => 'Тип ряду',
