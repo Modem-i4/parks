@@ -10,14 +10,15 @@ import { useUserLocationMarker } from '@/Helpers/Maps/ShowGeolocationHelper'
 import MapUpperMessage from '@/Components/Map/MapUpperMessage.vue';
 import { useAddMarkerHelper } from '@/Helpers/Admin/AddMarkerHelper'
 import FindMarker from '@/Components/Custom/FindMarker.vue'
-import Modal from '@/Components/Default/Modal.vue'
 import { useAuthStore } from '@/Stores/useAuthStore'
+import MapLegendInfo from './MapLegendInfo.vue'
 import ParentFitModal from '../Custom/ParentFitModal.vue'
+import SecondaryButton from '@/Components/Default/SecondaryButton.vue'
 
 const parkStore = useParkStore()
 const { showUserPosition } = useUserLocationMarker(toRef(parkStore, 'map'))
 const { addMarker, addMarkerFinished } = useAddMarkerHelper(parkStore)
-const showModal = ref({ findMarker: false })
+const showModal = ref({ findMarker: false, legend: false })
 
 const authStore = useAuthStore()
 const addingMarker = ref(false)
@@ -104,6 +105,11 @@ watch(() => parkStore.selectedMarker, (newVal) => {
       </div>
       
       <div class="absolute bottom-4 left-4">
+        <BtnWhite class="bg-white border px-3 py-1 rounded shadow" 
+          @click="showModal.legend = true"
+        >
+          🌳 Легенда
+        </BtnWhite>
         <template v-if="parkStore.isSingleParkView">
           <BtnWhite class="bg-white border px-3 py-1 rounded shadow" 
             v-if="!parkStore.selectedMarkerLocked && authStore.can.addMarkers"
@@ -128,7 +134,18 @@ watch(() => parkStore.selectedMarker, (newVal) => {
           📍 Моя позиція
         </BtnWhite>
       </div>
-
+      <ParentFitModal 
+        :show="showModal.legend" @close="showModal.legend = false"
+        contentClasses="max-w-[40rem]"
+      >
+        <template #header>
+          <h2 class="text-lg font-semibold text-center text-gray-700 mt-2">🗺️ Умовні позначення мапи</h2>
+        </template>
+        <MapLegendInfo  />
+        <template #footer>
+          <SecondaryButton @click="showModal.legend = false">Закрити</SecondaryButton>
+        </template>
+      </ParentFitModal>
       <ParentFitModal :show="showModal.findMarker" 
         contentClasses="bg-white/70 py-1.5"
         @close="showModal.findMarker = false"
