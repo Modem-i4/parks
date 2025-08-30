@@ -10,8 +10,8 @@ import DeleteForm from '@/Components/Custom/DeleteForm.vue'
 import SecondaryButton from '@/Components/Default/SecondaryButton.vue'
 import { useAuthStore } from '@/Stores/useAuthStore'
 import { isMobile } from '@/Helpers/isMobileHelper'
+import { copyToClipboard, copyCompleted } from '@/Helpers/CopyToClipboard'
 
-const copyCompleted = ref(false)
 const imageSliderRef = ref(null)
 
 const props = defineProps({
@@ -21,14 +21,10 @@ const props = defineProps({
 
 const authStore = useAuthStore()
 
-const copyToClipboard = async (text) => {
-  try {
-    await navigator.clipboard.writeText(text)
-    copyCompleted.value = true
-  } catch (err) {
-    console.error('Не вдалося скопіювати:', err)
-  }
-}
+const shortCoordinates = computed(() => `
+${props.marker.coordinates[1].toFixed(5)}, 
+${props.marker.coordinates[0].toFixed(5)}
+`)
 
 const fullNameLat = computed(
   () => [
@@ -102,6 +98,25 @@ defineExpose({ forceImageUpdate })
     <div class="bg-white rounded px-4 text-gray-600 h-6 w-full" 
       v-if="!props.marker.tags?.lenght" 
     /> <!-- Spacer -->
+
+<div
+          class="bg-white rounded flex items-center justify-between text-gray-600 my-2 p-4"
+        >
+          <div>
+            <strong class="font-bold">Координати:</strong> {{ shortCoordinates }} 
+          </div>
+          <div class="relative group">
+            <button
+              @click="copyToClipboard(shortCoordinates)"
+              @mouseenter="copyCompleted = false"
+            >
+              <img src="/img/icons/copy-icon.svg" alt="Скопіювати" class="w-5 h-5" />
+            </button>
+            <Tooltip>
+              {{ copyCompleted ? 'Скопійовано!' : 'Скопіювати' }}
+            </Tooltip>
+        </div>
+        </div>
 
     <div class="bg-white rounded p-4 mt-2 text-gray-600" v-if="authStore.can.deleteMarkers">
       <DeleteForm
