@@ -15,6 +15,7 @@ use App\Models\Concerns\LogsChanges;
  * @property int $id
  * @property string $name
  * @property string $address
+ * @property string $operator
  * @property float $area
  * @property string|null $description
  * @property array|null $coordinates
@@ -42,6 +43,7 @@ class Park extends Model
         'address',
         'area',
         'geo_json',
+        'operator'
     ];
 
     protected $appends = ['coordinates', 'type'];

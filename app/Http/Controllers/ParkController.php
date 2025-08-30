@@ -62,18 +62,19 @@ class ParkController extends Controller
         ]);
     }
 
+    public const FIELDS = ['id', 'name', 'address', 'area', 'operator', 'description', 'geo_json'];
+
     public function getPark($id)
     {
         return Park::with('icon')
-            ->select('id', 'name', 'address', 'area', 'description', 'geo_json')
-            ->where('id', $id)
-            ->first();
+            ->select(self::FIELDS)
+            ->find($id);
     }
 
     public function getParksList()
     {
         return Park::with('icon')
-            ->select('id', 'name', 'address', 'area', 'description', 'geo_json')
+            ->select(self::FIELDS)
             ->orderByDesc('area')
             ->get();
     }
@@ -86,6 +87,7 @@ class ParkController extends Controller
                 'address' => ['sometimes','required','string'],
                 'area' => ['sometimes','required','integer'],
                 'description' => ['sometimes','required','string'],
+                'operator' => ['sometimes','required','string'],
             ]));
             return $park;
         } catch (ValidationException $e) {

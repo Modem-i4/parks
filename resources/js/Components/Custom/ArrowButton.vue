@@ -24,7 +24,7 @@ const variantClasses = computed(() => {
   return {
     primary: 'bg-blue-500 text-white hover:bg-blue-700',
     secondary: 'bg-[#007c57] text-white border border-blue-600 hover:bg-[#006f4d]',
-    secondaryBlack: 'bg-white text-black-600 border border-black-600 hover:bg-gray-100'
+    secondaryBlack: 'bg-gray-50 text-black-600 border border-black-600 hover:bg-gray-100'
   }[props.variant]
 })
 
