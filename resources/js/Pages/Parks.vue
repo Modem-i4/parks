@@ -4,8 +4,8 @@ import { onMounted, ref, watch } from 'vue';
 import { useParkStore } from '@/Stores/useParkStore.js';
 
 import MapWithPanel from '@/Components/Map/MapWithPanel.vue'
-import ParkList from '@/Components/Map/ParkList.vue';
-import ParkDetails from '@/Components/Map/ParkDetails.vue';
+import ParkList from '@/Components/Parks/ParkList.vue';
+import ParkDetails from '@/Components/Parks/ParkDetails.vue';
 import MapFilters from '@/Components/Filters/MapFilters.vue';
 import MarkerDetails from '@/Components/Markers/MarkerDetails.vue';
 import { zoom } from '@/Helpers/Maps/MapHelper';

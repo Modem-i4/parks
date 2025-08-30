@@ -1,5 +1,3 @@
-ParkDetails
-
 <script setup>
 import ImageSlider from '@/Components/Custom/ImageSlider.vue'
 import ArrowButton from '@/Components/Custom/ArrowButton.vue'
