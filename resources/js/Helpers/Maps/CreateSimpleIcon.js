@@ -1,17 +1,17 @@
-const simpleIconCache  = new Map()
+const icons = import.meta.glob('/resources/js/assets/markers/*-map_icon.svg', { eager: true, as: 'raw' })
 
-export async function CreateSimpleIcon({ iconPath, fill = null, width = 24, height = 24 } = {}) {
-  if (!iconPath) throw new Error('CreateSimpleIcon: iconPath is required')
+const simpleIconCache = new Map()
 
-  const cacheKey = iconPath + (fill || '') + width + height
+export function CreateSimpleIcon({ type = 'tree', fill = null, width = 24, height = 24 } = {}) {
+  const key = `/resources/js/assets/markers/${type}-map_icon.svg`
+  const svgText = icons[key]
+  if (!svgText) throw new Error(`Icon not found for type: ${type}`)
+
+  const cacheKey = key + (fill || '') + width + height
   if (simpleIconCache.has(cacheKey)) {
     return simpleIconCache.get(cacheKey).cloneNode(true)
   }
 
-  const response = await fetch(iconPath)
-  if (!response.ok) throw new Error(`Cannot load SVG from ${iconPath}`)
-
-  const svgText = await response.text()
   const parser = new DOMParser()
   const doc = parser.parseFromString(svgText, 'image/svg+xml')
   const svg = doc.documentElement

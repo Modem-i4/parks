@@ -68,7 +68,7 @@ async function createMarker(marker, lat, lng, cancelToken) {
     ? await CreateCustomPinIcon({ glyph: marker.icon?.file_path, label: marker.name })
     : marker.green
       ? await CreateSimpleIcon({
-          iconPath: `/img/icons/markers/${marker.type || 'tree'}-map_icon.svg`,
+          type: marker.type || 'all',
           fill: getColorByGreenState(marker.green?.green_state)
         })
       : await CreatePinIcon({ glyph: marker.icon?.file_path })
