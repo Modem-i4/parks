@@ -130,6 +130,7 @@ class MarkerGreenFilterService {
                     'tilt_degree' => 'tilt_degree',
                     'crown_condition_percent' => 'crown_condition_percent',
                     'quantity' => 'quantity',
+                    'area' => 'area',
                     'length' => 'length_m',
                     'type_row' => 'hedge_row',
                     'type_shape' => 'hedge_shape',

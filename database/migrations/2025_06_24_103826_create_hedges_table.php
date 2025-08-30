@@ -11,6 +11,7 @@ return new class extends Migration
         Schema::create('hedges', function (Blueprint $table) {
             $table->foreignId('id')->constrained('green')->cascadeOnDelete();
             $table->float('length_m')->nullable();
+            $table->integer('area')->nullable();
             $table->timestamps();
 
             $table->foreignId('hedge_row_id')->nullable()->constrained('hedge_rows')->nullOnDelete();

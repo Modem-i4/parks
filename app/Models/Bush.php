@@ -11,6 +11,7 @@ use App\Models\Concerns\LogsChanges;
  * 
  * @property int $id
  * @property int|null $quantity
+ * @property int|null $area
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * 
@@ -26,12 +27,14 @@ class Bush extends Model
 
 	protected $casts = [
 		'id' => 'int',
-		'quantity' => 'int'
+		'quantity' => 'int',
+		'area' => 'int'
 	];
 
 	protected $fillable = [
 		'id',
-		'quantity'
+		'quantity',
+		'area' => 'int'
 	];
 
 	public function green()

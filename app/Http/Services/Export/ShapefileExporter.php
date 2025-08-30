@@ -132,16 +132,19 @@ class ShapefileExporter implements ExporterInterface
                     $props['tree_trunk_circumference_cm'] = $tree->trunk_circumference_cm;
                     $props['tree_tilt_degree'] = $tree->tilt_degree;
                     $props['tree_crown_condition_percent'] = $tree->crown_condition_percent;
+                    $props['tree_area'] = $tree->area;
                 }
                 $bush = $m->green->bush ?? null;
                 if ($bush) {
                     $props['bush_quantity'] = $bush->quantity;
+                    $props['bush_area'] = $bush->area;
                 }
                 $hedge = $m->green->hedge ?? null;
                 if ($hedge) {
                     $props['hedge_length_m'] = $hedge->length_m;
                     $props['hedge_hedge_type_row'] = $hedge->hedge_type_row;
                     $props['hedge_hedge_type_shape'] = $hedge->hedge_type_shape;
+                    $props['hedge_area'] = $hedge->area;
                 }
                 $flower = $m->green->flower ?? null;
                 if ($flower) {

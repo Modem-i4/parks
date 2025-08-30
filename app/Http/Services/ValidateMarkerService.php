@@ -34,12 +34,15 @@ class ValidateMarkerService
             'green.tree.trunk_circumference_cm' => ['sometimes', 'nullable', 'numeric'],
             'green.tree.tilt_degree' => ['sometimes', 'nullable', 'numeric'],
             'green.tree.crown_condition_percent' => ['sometimes', 'nullable', 'numeric'],
+            'green.tree.area' => ['sometimes', 'nullable', 'numeric'],
 
             'green.bush.quantity' => ['sometimes', 'nullable', 'integer'],
+            'green.bush.area' => ['sometimes', 'nullable', 'integer'],
 
             'green.hedge.length_m' => ['sometimes', 'nullable', 'numeric'],
             'green.hedge.hedge_row_id' => ['sometimes', 'nullable', 'exists:hedge_rows,id'],
             'green.hedge.hedge_shape_id' => ['sometimes', 'nullable', 'exists:hedge_shapes,id'],
+            'green.hedge.area' => ['sometimes', 'nullable', 'integer'],
 
             'infrastructure.name' => ['sometimes', 'nullable', 'string'],
             'infrastructure.infrastructure_type_id' => ['sometimes', 'nullable', 'exists:infrastructure_type,id'],

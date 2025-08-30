@@ -259,14 +259,17 @@ const selectHedgeRow = (row) => {
         <NumberSelect v-model="marker.green.tree.trunk_circumference_cm" :min="0" :max="250" label="Охоплення стовбура (см)" />
         <NumberSelect v-model="marker.green.tree.tilt_degree" :min="0" :max="60" label="Нахил (°)" />
         <NumberSelect v-model="marker.green.tree.crown_condition_percent" :min="0" :max="100" label="Стан крони (%)" />
+        <NumberSelect v-model="marker.green.tree.area" :min="0" :max="100" label="Площа" />
       </div>
 
       <div v-if="marker.type === 'bush'" class="pt-2">
         <NumberSelect v-model="marker.green.bush.quantity" :min="0" :max="150" label="Кількість кущів" />
+        <NumberSelect v-model="marker.green.bush.area" :min="0" :max="100" label="Площа (ділянка)" />
       </div>
 
       <div v-if="marker.type === 'hedge'" class="pt-2 space-y-2">
         <NumberSelect v-model="marker.green.hedge.length_m" :min="0" :max="150" label="Довжина (м)" />
+        <NumberSelect v-model="marker.green.hedge.area" :min="0" :max="100" label="Площа (ділянка)" />
 
         <div class="space-y-1">
           <SelectWithSearchAndAdd

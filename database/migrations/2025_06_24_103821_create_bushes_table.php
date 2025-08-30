@@ -11,6 +11,7 @@ return new class extends Migration
         Schema::create('bushes', function (Blueprint $table) {
             $table->foreignId('id')->constrained('green')->cascadeOnDelete();
             $table->integer('quantity')->nullable();
+            $table->integer('area')->nullable();
             $table->timestamps();
         });
     }

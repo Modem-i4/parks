@@ -85,16 +85,19 @@ class MarkerSeeder extends Seeder
                             'trunk_circumference_cm' => rand(30, 180),
                             'tilt_degree' => rand(0, 10),
                             'crown_condition_percent' => rand(60, 100),
+                            'area' => rand(10, 100),
                         ]),
                         'bush' => Bush::create([
                             'id' => $green->id,
                             'quantity' => rand(1, 10),
+                            'area' => rand(10, 100),
                         ]),
                         'hedge' => Hedge::create([
                             'id' => $green->id,
                             'length_m' => rand(5, 50),
                             'hedge_row_id' => HedgeRow::inRandomOrder()->value('id'),
                             'hedge_shape_id' => HedgeShape::inRandomOrder()->value('id'),
+                            'area' => rand(10, 100),
                         ]),
                         'flower' => Flower::create([
                             'id' => $green->id,

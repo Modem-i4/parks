@@ -21,10 +21,12 @@ const authStore = useAuthStore()
       <p><strong>Довжина:</strong> {{ green.hedge.length_m }} м</p>
       <p v-if="green.hedge.hedge_row"><strong>Тип ряду:</strong> {{ green.hedge.hedge_row.name }}</p>
       <p v-if="green.hedge.hedge_shape"><strong>Форма:</strong> {{ green.hedge.hedge_shape.name }}</p>
+      <p v-if="authStore.can.view && green.hedge.area"><strong>Площа (ділянка):</strong> {{ green.hedge.area }} м²</p>
     </div>
 
     <div v-else-if="type === 'bush'" class="space-y-1">
       <p v-if="green.bush.quantity"><strong>Кількість:</strong> {{ green.bush.quantity }}</p>
+      <p v-if="authStore.can.view && green.bush.area"><strong>Площа (ділянка):</strong> {{ green.bush.area }} м²</p>
     </div>
 
     <div v-else-if="type === 'tree'" class="space-y-1">
@@ -33,6 +35,7 @@ const authStore = useAuthStore()
       <p v-if="authStore.can.view && green.tree.trunk_circumference_cm"><strong>Окружність стовбура:</strong> {{ green.tree.trunk_circumference_cm }} см</p>
       <p v-if="green.tree.tilt_degree"><strong>Нахил:</strong> {{ green.tree.tilt_degree }}°</p>
       <p v-if="authStore.can.view && green.tree.crown_condition_percent"><strong>Стан крони:</strong> {{ green.tree.crown_condition_percent }}%</p>
+      <p v-if="authStore.can.view && green.tree.area"><strong>Площа:</strong> {{ green.tree.area }} м²</p>
     </div>
 
     <p v-if="green.updated_at"><strong>Дата оновлення:</strong> {{ green.updated_at.split('T')[0] }}</p>

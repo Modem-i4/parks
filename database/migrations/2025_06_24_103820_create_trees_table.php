@@ -14,6 +14,7 @@ return new class extends Migration
             $table->float('trunk_circumference_cm')->nullable();
             $table->float('tilt_degree')->nullable();
             $table->float('crown_condition_percent')->nullable();
+            $table->integer('area')->nullable();
             $table->timestamps();
         });
     }

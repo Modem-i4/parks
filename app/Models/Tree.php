@@ -15,6 +15,7 @@ use App\Models\Concerns\LogsChanges;
  * @property float|null $trunk_circumference_cm
  * @property float|null $tilt_degree
  * @property float|null $crown_condition_percent
+ * @property int|null $area
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * 
@@ -33,7 +34,8 @@ class Tree extends Model
         'height_m' => 'float',
         'trunk_circumference_cm' => 'float',
         'tilt_degree' => 'float',
-        'crown_condition_percent' => 'float'
+        'crown_condition_percent' => 'float',
+		'area' => 'int'
     ];
 
     protected $fillable = [
@@ -41,7 +43,8 @@ class Tree extends Model
         'height_m',
         'trunk_circumference_cm',
         'tilt_degree',
-        'crown_condition_percent'
+        'crown_condition_percent',
+		'area'
     ];
 
     protected $appends = ['trunk_diameter_cm'];

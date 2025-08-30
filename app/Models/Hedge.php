@@ -11,6 +11,7 @@ use App\Models\Concerns\LogsChanges;
  * 
  * @property int $id
  * @property float|null $length_m
+ * @property int|null $area
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * 
@@ -25,7 +26,8 @@ class Hedge extends Model
 
     protected $casts = [
         'id' => 'int',
-        'length_m' => 'float'
+        'length_m' => 'float',
+		'area' => 'int'
     ];
 
     protected $fillable = [
@@ -33,6 +35,7 @@ class Hedge extends Model
         'length_m',
         'hedge_row_id',
         'hedge_shape_id',
+		'area'
     ];
 
     public function hedge_row()

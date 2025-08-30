@@ -28,12 +28,15 @@ final class FieldNameCodec
         'tree_trunk_circumference_cm' => 'tree_tc_cm',
         'tree_tilt_degree' => 'tree_t_deg',
         'tree_crown_condition_percent' => 'tree_ccpct',
+        'tree_area' => 'tree_area',
 
         'bush_quantity' => 'bush_qty',
+        'bush_area' => 'bush_area',
 
         'hedge_length_m' => 'hedge_len',
         'hedge_hedge_type_row' => 'hedge_row',
         'hedge_hedge_type_shape' => 'hedge_shp',
+        'hedge_area' => 'hedge_area',
 
         'name' => 'infra_name',
         'infrastructure_type' => 'infra_type',
