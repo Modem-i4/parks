@@ -92,19 +92,21 @@ async function save() {
       marker.value.park_id = parkStore.selectedPark.id
       await axios.post('/api/markers', marker.value).then((response) => {
         marker.value.id = response.data.id
+        marker.value.icon = response.data.icon
         marker.value.isDraft = false
         parkStore.markers.push(marker.value)
         parkStore.selectedMarker = marker.value
         parkStore.selectedMarker.edited = true
       })
     } else {
-      await axios.patch(`/api/markers/${marker.value.id}`, marker.value).then(() => {
+      await axios.patch(`/api/markers/${marker.value.id}`, marker.value).then((response) => {
         const keysToCopy = ['coordinates', 'description', 'type', 'plot_id', 'green', 'infrastructure']
         for (const key of keysToCopy) {
           if (key in marker.value)
             parkStore.selectedMarker[key] = marker.value[key]
         }
         cacheMarkerCoords(parkStore.selectedMarker)
+        parkStore.selectedMarker.icon = response.data.icon
         parkStore.selectedMarker.edited = true
       })
     }
