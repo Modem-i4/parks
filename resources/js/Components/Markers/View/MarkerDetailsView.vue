@@ -9,6 +9,7 @@ import GreenStateIndicator from './GreenStateIndicator.vue'
 import DeleteForm from '@/Components/Custom/DeleteForm.vue'
 import SecondaryButton from '@/Components/Default/SecondaryButton.vue'
 import { useAuthStore } from '@/Stores/useAuthStore'
+import { isMobile } from '@/Helpers/isMobileHelper'
 
 const loading = ref(true)
 const copyCompleted = ref(false)
@@ -48,6 +49,7 @@ defineExpose({ forceImageUpdate })
     <ImageSlider :modelId="props.marker.id" :isDraft="props.marker.isDraft" model="markers" ref="imageSliderRef"
       class="my-2"
       :editable="authStore.can.upload"
+      :showByDefault="!isMobile || authStore.can.upload"
       @onImageClick="() => { if(authStore.can.upload) emit('onImageClick') }"
     />
 
@@ -80,7 +82,7 @@ defineExpose({ forceImageUpdate })
     </div>
 
     <div class="bg-white rounded px-4 py-6 text-gray-600" 
-      v-if="props.marker?.green?.green_state_note"
+      v-if="props.marker?.green?.green_state_note && authStore.can.view"
     >
       <div class="flex items-center">
         <h3 class="text-lg font-semibold pb-2 me-1">Коментар до стану</h3>"<GreenStateIndicator :green="props.marker.green"/>"

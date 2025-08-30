@@ -165,14 +165,17 @@ function deleteMarker() {
     </template>
   </div>
   <MediaPickerModal
-    v-if="showPicker"
+    v-if="showPicker && authStore.can.upload"
     :type="pickerType"
     modelType="App\Models\Marker"
     :modelId="marker.id"
     @close="closeImagePicker"
     @saved="pickerSaved"
   />
-  <Modal :show="showModal.groupAssign" maxWidth="xl" @close="showModal.groupAssign = false">
+  <Modal 
+    :show="showModal.groupAssign" maxWidth="xl" @close="showModal.groupAssign = false"
+    v-if="authStore.can.assignWork"
+  >
     <GroupAssign
       @close="showModal.groupAssign = false"
       assignMode="picked"

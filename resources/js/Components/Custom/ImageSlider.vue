@@ -1,5 +1,6 @@
 <template>
-  <div class="relative w-full max-w-xl mx-auto min-h-[250px] bg-gray-200 rounded-xl h-64"
+  <div class="relative w-full max-w-xl mx-auto min-h-[250px] bg-gray-200 rounded-xl h-64" 
+    v-if="props.showByDefault || loading || images.length"
     @click="emit('onImageClick')"
   >
     <template v-if="images.length">
@@ -90,7 +91,8 @@ const props = defineProps({
   editable: {
     type: Boolean,
     default: false
-  }
+  },
+  showByDefault: Boolean,
 })
 
 const images = ref([])
@@ -98,6 +100,7 @@ const currentIndex = ref(0)
 const swiper = ref(null)
 
 const source = ref(null)
+const loading = ref(true)
 
 const emit = defineEmits(['onImageClick'])
 
@@ -110,12 +113,14 @@ watch(
 )
 async function update(newId) {
   if (!newId || props.isDraft) return
+  loading.value = true
   images.value = []
   try {
     const { data } = await axios.get(`/api/${props.model}/${newId}/media`)
     images.value = data.media || []
     currentIndex.value = 0
     source.value = data.source || null
+    loading.value = false
   } catch (e) {
     console.error('Помилка при завантаженні зображень:', e)
   }
