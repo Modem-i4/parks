@@ -1,7 +1,12 @@
 <template>
   <div class="flex items-center space-x-4" :class="variants[variant].blockClasses">
     <div
-      class="flex-shrink-0 rounded-full overflow-hidden relative cursor-pointer flex" :class="[variants[variant].iconWrapperClasses, `bg-${iconBg}`]"
+      class="flex-shrink-0 rounded-full overflow-hidden relative flex" 
+      :class="[
+        variants[variant].iconWrapperClasses, 
+        `bg-${iconBg}`,
+        editable ? 'cursor-pointer' : 'cursor-default'
+      ]"
       @click="$emit('onIconClick')"
     >
       <img v-if="icon" :src="icon" alt="Icon" class="object-contain mx-auto my-auto" :class="variants[variant].iconClasses" />
