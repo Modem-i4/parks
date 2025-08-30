@@ -14,6 +14,7 @@ import { useAuthStore } from '@/Stores/useAuthStore'
 import MapLegendInfo from './MapLegendInfo.vue'
 import ParentFitModal from '../Custom/ParentFitModal.vue'
 import SecondaryButton from '@/Components/Default/SecondaryButton.vue'
+import MapLegendPane from './MapLegendPane.vue'
 
 const parkStore = useParkStore()
 const { showUserPosition } = useUserLocationMarker(toRef(parkStore, 'map'))
@@ -48,6 +49,12 @@ watch(() => parkStore.selectedMarker, (newVal) => {
     <div class="w-full md:w-2/3 relative touch-none focus:ring-0 focus:outline-none h-full flex-1">
       <MapUpperMessage />
       <MapView />
+      <MapLegendPane 
+          class="absolute left-1/2 -translate-x-1/2 bg-white/30 backdrop-blur-md px-5"
+          :class="isMobile 
+          ? 'bottom-6 rounded-3xl py-2'
+          : 'bottom-0 rounded-t-3xl pt-3 pb-2'"
+        />
 
       <!-- Mobile Slide-up Panel -->
       <MobileSlidePanel
@@ -80,7 +87,7 @@ watch(() => parkStore.selectedMarker, (newVal) => {
       </MobileSlidePanel>
 
       <!-- Toggle buttons -->
-      <div class="fixed bottom-4 right-4 z-50">
+      <div class="fixed bottom-[4.2rem] md:bottom-4 right-4 z-50">
         <BtnWhite
           v-if="!parkStore.isSingleParkView && !isMobile && parkStore.selectedMarker"
           class="ml-auto"
@@ -104,7 +111,7 @@ watch(() => parkStore.selectedMarker, (newVal) => {
         </BtnWhite>
       </div>
       
-      <div class="absolute bottom-4 left-4">
+      <div class="absolute bottom-[4.2rem] md:bottom-4 left-4">
         <BtnWhite class="bg-white border px-3 py-1 rounded shadow" 
           @click="showModal.legend = true"
         >
@@ -117,7 +124,7 @@ watch(() => parkStore.selectedMarker, (newVal) => {
           >
             ➕ Додати маркер
           </BtnWhite>
-          <BtnWhite class="bg-white border px-3 py-1 rounded shadow ms-2" 
+          <BtnWhite class="bg-white border px-3 py-1 rounded shadow" 
             v-if="addingMarker"
             @click="() => { addingMarker = false; }"
           >
