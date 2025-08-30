@@ -24,15 +24,15 @@ const authStore = useAuthStore()
     </div>
 
     <div v-else-if="type === 'bush'" class="space-y-1">
-      <p><strong>Кількість:</strong> {{ green.bush.quantity }}</p>
+      <p v-if="green.bush.quantity"><strong>Кількість:</strong> {{ green.bush.quantity }}</p>
     </div>
 
     <div v-else-if="type === 'tree'" class="space-y-1">
-      <p><strong>Висота:</strong> {{ green.tree.height_m }} м</p>
-      <p><strong>Діаметр стовбура:</strong> {{ green.tree.trunk_diameter_cm }} см</p>
-      <p v-if="authStore.can.view"><strong>Окружність стовбура:</strong> {{ green.tree.trunk_circumference_cm }} см</p>
-      <p><strong>Нахил:</strong> {{ green.tree.tilt_degree }}°</p>
-      <p v-if="authStore.can.view"><strong>Стан крони:</strong> {{ green.tree.crown_condition_percent }}%</p>
+      <p v-if="green.tree.height_m"><strong>Висота:</strong> {{ green.tree.height_m }} м</p>
+      <p v-if="green.tree.trunk_diameter_cm"><strong>Діаметр стовбура:</strong> {{ green.tree.trunk_diameter_cm }} см</p>
+      <p v-if="authStore.can.view && green.tree.trunk_circumference_cm"><strong>Окружність стовбура:</strong> {{ green.tree.trunk_circumference_cm }} см</p>
+      <p v-if="green.tree.tilt_degree"><strong>Нахил:</strong> {{ green.tree.tilt_degree }}°</p>
+      <p v-if="authStore.can.view && green.tree.crown_condition_percent"><strong>Стан крони:</strong> {{ green.tree.crown_condition_percent }}%</p>
     </div>
 
     <p v-if="green.updated_at"><strong>Дата оновлення:</strong> {{ green.updated_at.split('T')[0] }}</p>

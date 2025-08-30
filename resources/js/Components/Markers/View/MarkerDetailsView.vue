@@ -73,9 +73,11 @@ defineExpose({ forceImageUpdate })
     <WorkHistory v-if="props.marker.green?.works && authStore.can.view" 
       v-model="props.marker.green.works" :loading="loading" :greenId="props.marker.green.id"/>
 
-    <div v-if="props.marker.description" class="bg-white rounded px-4 py-6 text-gray-600">
+    <div class="bg-white rounded px-4 text-gray-600 pt-6" 
+      :class="props.marker.description ? 'pb-6' : 'pb-2'"
+    >
       <h3 class="text-lg font-semibold pb-2">Опис</h3>
-      <p>{{ props.marker.description }}</p>
+      <p v-if="props.marker.description">{{ props.marker.description }}</p>
     </div>
     <div v-if="props.marker.infrastructure?.infrastructure_type" class="bg-white rounded px-4 text-gray-600">
       <p v-if="props.marker.infrastructure?.infrastructure_type?.name"><b>Тип:</b> {{ props.marker.infrastructure?.infrastructure_type?.name }}</p>
