@@ -17,7 +17,8 @@ export const useParkStore = defineStore('park', () => {
   const markerStates = ref({
     isLoading: false,
     areLimited: false,
-    areLoaded: false
+    areLoaded: false,
+    saveFailed: false
   })
 
   const map = shallowRef(null)

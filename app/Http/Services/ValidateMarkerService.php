@@ -13,11 +13,11 @@ class ValidateMarkerService
     public function validate(array $data): array
     {
         $validator = Validator::make($data, [
-            'park_id' => ['sometimes', 'exists:parks,id'],
+            'park_id' => ['sometimes', 'required', 'exists:parks,id'],
             'type' => ['sometimes', Rule::in(TagType::values())],
-            'coordinates' => ['sometimes', 'array'],
-            'coordinates.0' => ['sometimes', 'numeric'],
-            'coordinates.1' => ['sometimes', 'numeric'],
+            'coordinates' => ['sometimes', 'required', 'array'],
+            'coordinates.0' => ['sometimes', 'required', 'numeric'],
+            'coordinates.1' => ['sometimes', 'required', 'numeric'],
             'description' => ['sometimes', 'nullable', 'string'],
             'tags' => ['sometimes', 'array'],
             'tags.*.id' => ['required', 'integer', 'exists:tags,id'],
@@ -26,7 +26,7 @@ class ValidateMarkerService
             'green.plot_id' => ['sometimes', 'nullable', 'exists:plots,id'],
             'green.species_id' => ['sometimes', 'nullable', 'exists:species,id'],
             'green.planting_date' => ['sometimes', 'nullable', 'date'],
-            'green.green_state' => ['sometimes', 'nullable', 'string'],
+            'green.green_state' => ['sometimes', 'string'],
             'green.green_state_note' => ['sometimes', 'nullable', 'string'],
             'green.species.family_type' => ['sometimes', Rule::in(array_column(GreenType::cases(), 'value'))],
 
@@ -44,8 +44,8 @@ class ValidateMarkerService
             'green.hedge.hedge_shape_id' => ['sometimes', 'nullable', 'exists:hedge_shapes,id'],
             'green.hedge.area' => ['sometimes', 'nullable', 'integer'],
 
-            'infrastructure.name' => ['sometimes', 'nullable', 'string'],
-            'infrastructure.infrastructure_type_id' => ['sometimes', 'nullable', 'exists:infrastructure_type,id'],
+            'infrastructure.name' => ['sometimes', 'required', 'string'],
+            'infrastructure.infrastructure_type_id' => ['sometimes', 'required', 'exists:infrastructure_type,id'],
         ]);
 
         if ($validator->fails()) {

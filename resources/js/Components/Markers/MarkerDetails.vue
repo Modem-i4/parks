@@ -57,6 +57,7 @@ async function update(newVal) {
 
 watch(editing, (newVal) => {
   parkStore.selectedMarkerLocked = newVal
+  if(!newVal) parkStore.markerStates.saveFailed = false
   if(isAddingNew.value) parkStore.selectedMarker = null
 })
 
@@ -109,6 +110,12 @@ function pickerSaved(newImages) {
   closeImagePicker()
 }
 
+// Save marker
+async function saveMarker() { 
+  const res = await editRef.value.save()
+  if(res) editing.value = false
+ }
+ 
 // Delete marker
 function deleteMarker() {
   axios.delete(`/api/markers/${marker.value.id}`)
@@ -158,7 +165,7 @@ function deleteMarker() {
             class="p-[0.7rem] ms-auto"
           >❌</BtnWhite>
           <BtnWhite
-            @click="() => { editRef.save(); editing = false }"
+            @click="saveMarker"
           >✔️</BtnWhite>
         </div>
       </div>

@@ -15,6 +15,7 @@ import DictHedgeRow from '@/Components/Dictionaries/DictHedgeRow.vue'
 import DictHedgeShape from '@/Components/Dictionaries/DictHedgeShape.vue'
 import DictPlots from '@/Components/Dictionaries/DictPlots.vue'
 import { cacheMarkerCoords } from '@/Helpers/Maps/MapHelper'
+import FormError from '@/Components/Custom/FormError.vue'
 
 const props = defineProps({ marker: Object })
 
@@ -64,28 +65,55 @@ onBeforeUnmount(() => {
 
 defineExpose({ save })
 
-function save() {
-  cleanupMarkerType(marker.value, marker.value.type)
-
-  if(isAddingNew.value) {
-    marker.value.park_id = parkStore.selectedPark.id
-    return axios.post('/api/markers', marker.value).then((response) => {
-      marker.value.id = response.data.id
-      marker.value.isDraft = false
-      parkStore.markers.push(marker.value)
-      parkStore.selectedMarker = marker.value
-      parkStore.selectedMarker.edited = true
-    })
-  } else {
-    axios.patch(`/api/markers/${marker.value.id}`, marker.value).then(() => {
-      const keysToCopy = ['coordinates', 'description', 'type', 'plot_id', 'green', 'infrastructure']
-      for (const key of keysToCopy) {
-        if (key in marker.value)
-          parkStore.selectedMarker[key] = marker.value[key]
+const errors = ref({})
+function getByPath(obj, path) {
+  return path.split('.').reduce((acc, k) => acc?.[k], obj)
+}
+function snapshot(obj) {
+  return JSON.parse(JSON.stringify(obj))
+}
+watch(
+  () => snapshot(marker.value),
+  (newVal, oldVal) => {
+    const errKeys = Object.keys(errors.value || {})
+    for (const key of errKeys) {
+      if (getByPath(oldVal, key) !== getByPath(newVal, key)) {
+        delete errors.value[key]
       }
-      cacheMarkerCoords(parkStore.selectedMarker)
-      parkStore.selectedMarker.edited = true
-    })
+    }
+  }
+)
+
+async function save() {
+  cleanupMarkerType(marker.value, marker.value.type)
+  errors.value = {}
+  try {
+    if(isAddingNew.value) {
+      marker.value.park_id = parkStore.selectedPark.id
+      await axios.post('/api/markers', marker.value).then((response) => {
+        marker.value.id = response.data.id
+        marker.value.isDraft = false
+        parkStore.markers.push(marker.value)
+        parkStore.selectedMarker = marker.value
+        parkStore.selectedMarker.edited = true
+      })
+    } else {
+      await axios.patch(`/api/markers/${marker.value.id}`, marker.value).then(() => {
+        const keysToCopy = ['coordinates', 'description', 'type', 'plot_id', 'green', 'infrastructure']
+        for (const key of keysToCopy) {
+          if (key in marker.value)
+            parkStore.selectedMarker[key] = marker.value[key]
+        }
+        cacheMarkerCoords(parkStore.selectedMarker)
+        parkStore.selectedMarker.edited = true
+      })
+    }
+    return true
+  } catch(e) {
+    parkStore.markerStates.saveFailed = true
+    errors.value = e.response.data.errors || {}
+    setTimeout(() => { parkStore.markerStates.saveFailed = true }, 5000)
+    return false
   }
 }
 
@@ -188,11 +216,13 @@ const selectHedgeRow = (row) => {
           <option value="hedge">Живопліт</option>
           <option value="flower">Квіти</option>
         </select>
+        <FormError :errors="errors['type']" />
       </div>
 
       <div class="space-y-1">
         <label class="text-sm font-medium text-gray-700">Опис</label>
         <textarea v-model="marker.description" class="w-full border border-gray-300 rounded px-2 py-1" rows="3" />
+        <FormError :errors="errors['description']" />
       </div>
     </div>
 
@@ -202,16 +232,19 @@ const selectHedgeRow = (row) => {
       <div class="space-y-1">
         <label class="text-sm font-medium text-gray-700">Інвентарний номер</label>
         <input v-model="marker.green.inventory_number" class="w-full border border-gray-300 rounded px-2 py-1" />
+        <FormError :errors="errors['green.inventory_number']" />
       </div>
 
       <div class="space-y-1">
         <label class="text-sm font-medium text-gray-700">Стан</label>
         <StateSelector v-model="marker.green.green_state" />
+        <FormError :errors="errors['green.green_state']" />
       </div>
 
       <div class="space-y-1">
         <label class="text-sm font-medium text-gray-700">Коментар до стану</label>
         <textarea v-model="marker.green.green_state_note" class="w-full border border-gray-300 rounded px-2 py-1" rows="3" />
+        <FormError :errors="errors['green.green_state_note']" />
       </div>
 
       <SelectWithSearchAndAdd
@@ -222,6 +255,7 @@ const selectHedgeRow = (row) => {
         :type="marker.type"
         @show-modal="() => showModal.species = true"
       />
+      <FormError :errors="errors['green.species_id']" />
 
       <Modal :show="showModal.species" maxWidth="2xl" @close="showModal.species = false">
         <DictTaxonomy
@@ -238,6 +272,7 @@ const selectHedgeRow = (row) => {
         :parkId="marker.park_id"
         @show-modal="() => showModal.plot = true"
       />
+      <FormError :errors="errors['green.plot_id']" />
 
       <Modal :show="showModal.plot" maxWidth="2xl" @close="showModal.plot = false">
         <DictPlots
@@ -249,6 +284,7 @@ const selectHedgeRow = (row) => {
       <div class="space-y-1">
         <label class="text-sm font-medium text-gray-700">Приблизна дата посадки</label>
         <input type="month" v-model="plantingMonth" class="w-full border border-gray-300 rounded px-2 py-1" />
+        <FormError :errors="errors['green.planting_date']" />
       </div>
     </div>
     <div v-if="isGreen && marker.type !== 'flower'" class="bg-white rounded px-4 py-4 space-y-4">
@@ -256,20 +292,29 @@ const selectHedgeRow = (row) => {
 
       <div v-if="marker.type === 'tree'" class="pt-2">
         <NumberSelect v-model="marker.green.tree.height_m" :min="0" :max="50" label="Висота (м)" />
+        <FormError :errors="errors['green.tree.height_m']" />
         <NumberSelect v-model="marker.green.tree.trunk_circumference_cm" :min="0" :max="250" label="Охоплення стовбура (см)" />
+        <FormError :errors="errors['green.tree.trunk_circumference_cm']" />
         <NumberSelect v-model="marker.green.tree.tilt_degree" :min="0" :max="60" label="Нахил (°)" />
+        <FormError :errors="errors['green.tree.tilt_degree']" />
         <NumberSelect v-model="marker.green.tree.crown_condition_percent" :min="0" :max="100" label="Стан крони (%)" />
+        <FormError :errors="errors['green.tree.crown_condition_percent']" />
         <NumberSelect v-model="marker.green.tree.area" :min="0" :max="100" label="Площа" />
+        <FormError :errors="errors['green.tree.area']" />
       </div>
 
       <div v-if="marker.type === 'bush'" class="pt-2">
         <NumberSelect v-model="marker.green.bush.quantity" :min="0" :max="150" label="Кількість кущів" />
+        <FormError :errors="errors['green.bush.quantity']" />
         <NumberSelect v-model="marker.green.bush.area" :min="0" :max="100" label="Площа (ділянка)" />
+        <FormError :errors="errors['green.bush.area']" />
       </div>
 
       <div v-if="marker.type === 'hedge'" class="pt-2 space-y-2">
         <NumberSelect v-model="marker.green.hedge.length_m" :min="0" :max="150" label="Довжина (м)" />
+        <FormError :errors="errors['green.hedge.length_m']" />
         <NumberSelect v-model="marker.green.hedge.area" :min="0" :max="100" label="Площа (ділянка)" />
+        <FormError :errors="errors['green.hedge.area']" />
 
         <div class="space-y-1">
           <SelectWithSearchAndAdd
@@ -280,6 +325,7 @@ const selectHedgeRow = (row) => {
             :type="marker.type"
             @show-modal="() => showModal.hedgeRow = true"
           />
+          <FormError :errors="errors['green.hedge.hedge_row_id']" />
 
           <Modal :show="showModal.hedgeRow" maxWidth="2xl" @close="showModal.hedgeRow = false">
             <DictHedgeRow
@@ -297,6 +343,7 @@ const selectHedgeRow = (row) => {
             :type="marker.type"
             @show-modal="() => showModal.hedgeShape = true"
           />
+          <FormError :errors="errors['green.hedge.hedge_shape_id']" />
 
           <Modal :show="showModal.hedgeShape" maxWidth="2xl" @close="showModal.hedgeShape = false">
             <DictHedgeShape
@@ -313,6 +360,7 @@ const selectHedgeRow = (row) => {
       <div class="space-y-1">
         <label class="text-sm font-medium text-gray-700">Назва</label>
         <input v-model="marker.infrastructure.name" class="w-full border border-gray-300 rounded px-2 py-1" />
+        <FormError :errors="errors['infrastructure.name']" />
       </div>
 
       <SelectWithSearchAndAdd
@@ -323,6 +371,7 @@ const selectHedgeRow = (row) => {
         :type="marker.type"
         @show-modal="() => showModal.infrastructureType = true"
       />
+      <FormError :errors="errors['infrastructure.infrastructure_type_id']" />
 
       <Modal :show="showModal.infrastructureType" maxWidth="2xl" @close="showModal.infrastructureType = false">
         <DictInfrastructureType
@@ -341,6 +390,7 @@ const selectHedgeRow = (row) => {
         :type="marker.type"
         @show-modal="() => showModal.tags = true"
       />
+      <FormError :errors="errors.tags" />
 
       <Modal :show="showModal.tags" maxWidth="2xl" @close="showModal.tags = false">
         <DictTags

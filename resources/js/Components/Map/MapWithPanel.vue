@@ -25,6 +25,7 @@ const authStore = useAuthStore()
 const addingMarker = ref(false)
 watch(addingMarker, (newVal) => {
   parkStore.selectedMarkerLocked = newVal
+  parkStore.markerStates.saveFailed = false
   if (!newVal) addMarkerFinished()
 })
 watch(() => parkStore.selectedMarker, (newVal) => {

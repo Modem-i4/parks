@@ -36,6 +36,8 @@ function resolveMessage(conds) {
       return "Завантажуємо маркери..."
     case conds.areLimited:
       return "Наблизьте або конкретизуйте фільтри для перегляду всіх маркерів"
+    case conds.saveFailed:
+      return "Збереження маркера не вдалося. Перегляньте помилки"
     default:
       return ""
   }
