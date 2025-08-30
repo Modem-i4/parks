@@ -19,7 +19,9 @@ class MarkerController extends Controller
     public function __construct(
         protected MarkerFilterConfigService $filterConfigService, 
         protected MarkerFilterService $filterService,
-        protected MarkerService $markerService
+        protected MarkerService $markerService,
+        protected ValidateMarkerService $validateMarkerService,
+        protected UpdateMarkerService $updateMarkerService
     ) {}
 
     public function getFilters(Request $request) {
@@ -82,8 +84,8 @@ class MarkerController extends Controller
     {
         $marker = Marker::findOrFail($id);
         try {
-            $data = app(ValidateMarkerService::class)->validate($request->all());
-            app(UpdateMarkerService::class)->handle($marker, $data);
+            $data = $this->validateMarkerService->validate($request->all());
+            $this->updateMarkerService->handle($marker, $data);
             return response()->json(['success' => true]);
         } catch (ValidationException $e) {
             return response()->json([
@@ -99,9 +101,9 @@ class MarkerController extends Controller
     public function store(Request $request)
     {
         try {
-            $data = app(ValidateMarkerService::class)->validate($request->all());
+            $data = $this->validateMarkerService->validate($request->all());
             $marker = new Marker();
-            app(UpdateMarkerService::class)->handle($marker, $data);
+            $this->updateMarkerService->handle($marker, $data);
             return response()->json(['success' => true, 'id' => $marker->id]);
         } catch (ValidationException $e) {
             return response()->json([
