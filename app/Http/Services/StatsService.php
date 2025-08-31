@@ -2,6 +2,7 @@
 
 namespace App\Http\Services;
 
+use App\Enums\GreenType;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 
@@ -24,22 +25,26 @@ class StatsService
 
     private function build(): array
     {
-        $parks          = (int) DB::table('parks')->count();
-        $infrastructure = (int) DB::table('infrastructure')->count();
-        $works_done     = (int) DB::table('works')->whereNotNull('execution_date')->count();
+        // $parks = (int) DB::table('parks')->count();
+        // $infrastructure = (int) DB::table('infrastructure')->count();
+        // $works_done     = (int) DB::table('works')->whereNotNull('execution_date')->count();
 
-        $green = $this->greenQualityGrouped();
+        $greenQuality = $this->greenQualityGrouped();
+        $greenTypes = $this->greenTypesGrouped();
         $genus = $this->topGenusByGreen();
-
         return [
-            'parks'           => $parks,
-            'infrastructure'  => $infrastructure,
-            'works_done'      => $works_done,
-            'genus'           => $genus,
-            'green_good'      => $green['good'],
-            'green_normal'    => $green['normal'],
-            'green_bad'       => $green['bad'],
-            'green_total'     => $green['good'] + $green['normal'] + $green['bad'],
+            // 'parks'           => $parks ?? 0,
+            // 'infrastructure'  => $infrastructure ?? 0,
+            // 'works_done'      => $works_done ?? 0,
+            'genus'           => $genus ?? [],
+            'green_good'      => $greenQuality['good'] ?? 0,
+            'green_normal'    => $greenQuality['normal'] ?? 0,
+            'green_bad'       => $greenQuality['bad'] ?? 0,
+            'green_total'     => $greenQuality['good'] + $greenQuality['normal'] + $greenQuality['bad'] ?? 0,
+            'trees'           => $greenTypes['tree'] ?? 0,
+            'bushes'          => $greenTypes['bush'] ?? 0,
+            'hedges'          => $greenTypes['hedge'] ?? 0,
+            'flowers'         => $greenTypes['flower'] ?? 0,
         ];
     }
 
@@ -60,6 +65,16 @@ class StatsService
         }
 
         return $result;
+    }
+
+    private function greenTypesGrouped(): array
+    {
+        return DB::table('markers')
+            ->whereIn('type', GreenType::values())
+            ->select('type', DB::raw('COUNT(*) as cnt'))
+            ->groupBy('type')
+            ->pluck('cnt', 'type')
+            ->toArray();
     }
 
     private function topGenusByGreen()
