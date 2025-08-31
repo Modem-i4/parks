@@ -30,8 +30,8 @@
       >
         <div
           :ref="el => setPinHost(m.id, el)"
-          class="origin-bottom"
-          :style="{ transform: `scale(2.2)` }"
+          class="origin-bottom will-change-transform transition-transform duration-500 ease-out"
+          :style="{ transform: `scale(${pinScale})` }"
         />
       </button>
     </div>
@@ -41,7 +41,7 @@
 <script setup>
 import { isMobile } from '@/Helpers/isMobileHelper'
 import { CreateCustomPinIcon } from '@/Helpers/Maps/CreateCustomPinIcon'
-import { ref, onMounted, onBeforeUnmount, watch, nextTick } from 'vue'
+import { ref, onMounted, onBeforeUnmount, watch, nextTick, computed } from 'vue'
 
 const props = defineProps({
   src: { type: String, required: true },
@@ -52,7 +52,10 @@ const props = defineProps({
   pinHeight: { type: Number, default: 56 },
   pinColor: { type: String, default: '#007c57' },
   mobileMarginTopPx: { type: Number, default: -100 },
-  selectedMarker: { type: Object, default: null }
+  selectedMarker: { type: Object, default: null },
+  pinScaleDesktop: { type: Number, default: 2.2 },
+  pinScaleMobile: { type: Number, default: 3.0 },
+  pinScaleMobileSelected: { type: Number, default: 1.4 }
 })
 
 const emit = defineEmits(['update:selectedMarker'])
@@ -70,6 +73,13 @@ const ty = ref(0)
 
 const pinHosts = new Map()
 let ro
+
+const pinScale = computed(() => {
+  if (isMobile.value) {
+    return props.selectedMarker ? props.pinScaleMobileSelected : props.pinScaleMobile
+  }
+  return props.pinScaleDesktop
+})
 
 function onImgLoad(e) {
   imgNaturalW.value = e.target.naturalWidth

@@ -1,9 +1,7 @@
 <script setup>
-import BtnWhite from '@/Components/Custom/BtnWhite.vue'
 import MobileSlidePanel from '@/Components/Custom/MobileSlidePanel.vue'
 import PanelHeader from '@/Components/Custom/PanelHeader.vue'
 import ZoomableImageWithPins from '@/Components/Custom/ZoomableImageWithPins.vue'
-import { isMobile } from '@/Helpers/isMobileHelper'
 import { coordsToPxFromBounds } from '@/Helpers/Maps/CoordsToPxConverter'
 import { ref, computed, onMounted, onBeforeUnmount, nextTick } from 'vue'
 import { router } from '@inertiajs/vue3'
@@ -53,11 +51,13 @@ onBeforeUnmount(() => {
       src="/img/parks/parks-map.jpg"
       alt="Карта парків"
       :pinSize="26"
-      :targetScale="2.2"
-      :maxScale="4"
+      :targetScale="2.1"
       :markers="markers"
-      :pinHeight="isMobile && !selectedPark ? 120 : 56"
+      :pinHeight="90"
       :mobileMarginTopPx="panelHeight"
+      :pinScaleDesktop="2.2"
+      :pinScaleMobile="2.8"
+      :pinScaleMobileSelected="1.4"
     />
     <MobileSlidePanel
       :show="!!selectedPark" 
@@ -79,7 +79,7 @@ onBeforeUnmount(() => {
               transition-shadow duration-300 hover:shadow-[0_0_10px] hover:shadow-[#007c57]" 
                 @click="router.visit(`/parks/${selectedPark ? selectedPark.id : ''}`)"
             >
-                {{ selectedPark ? 'Перейти' : 'Всі парки' }}
+              {{ selectedPark ? 'Перейти' : 'Всі парки' }}
             </button>
         </div>
       </template>
