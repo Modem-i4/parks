@@ -21,21 +21,21 @@ import GenusStats from '@/Components/Sections/Home/GenusStats.vue';
 
 const heroSlides = ref([
   {
-    title: 'імені Тараса Шевченка',
+    title: 'ім. Тараса Шевченка',
     subtitle: 'Осінні алеї та події щотижня',
     image: '/img/parks/shevchenko_park.webp',
     icon: '/img/icons/shevchenko_park.png',
     href: '/parks/1'
   },
   {
-    title: 'воїнів-інтернаціоналістів',
+    title: 'воїнів-афганців',
     subtitle: 'Велодоріжки та маршрути',
     image: '/img/parks/liberators_park.webp',
     icon: '/img/icons/liberators_park.png',
     href: '/parks/2'
   },
   {
-    title: 'на вул. Молодіжна',
+    title: 'по вул. Молодіжна',
     subtitle: 'Майданчики для дітей',
     image: '/img/parks/hotkevych_park.webp',
     icon: '/img/icons/hotkevych_park.png',
