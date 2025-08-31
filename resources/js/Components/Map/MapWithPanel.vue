@@ -51,11 +51,12 @@ watch(() => parkStore.selectedMarker, (newVal) => {
       <MapUpperMessage />
       <MapView />
       <MapLegendPane 
-          class="absolute left-1/2 -translate-x-1/2 bg-white/30 backdrop-blur-md px-5"
-          :class="isMobile 
-          ? 'bottom-6 rounded-3xl py-2'
-          : 'bottom-0 rounded-t-3xl pt-3 pb-2'"
-        />
+        v-if="parkStore.isSingleParkView"
+        class="absolute left-1/2 -translate-x-1/2 bg-white/30 backdrop-blur-md px-5"
+        :class="isMobile 
+        ? 'bottom-6 rounded-3xl py-2'
+        : 'bottom-0 rounded-t-3xl pt-3 pb-2'"
+      />
 
       <!-- Mobile Slide-up Panel -->
       <MobileSlidePanel
@@ -114,6 +115,7 @@ watch(() => parkStore.selectedMarker, (newVal) => {
       
       <div class="absolute bottom-[4.2rem] md:bottom-4 left-4">
         <BtnWhite class="bg-white border px-3 py-1 rounded shadow" 
+          v-if="parkStore.isSingleParkView"
           @click="showModal.legend = true"
         >
           🌳 Легенда
