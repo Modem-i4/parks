@@ -60,7 +60,7 @@ const props = defineProps({
   slides: { type: Array, default: () => [] },
   autoplay: { type: Boolean, default: true },
   delay: { type: Number, default: 5000 },
-  speed: { type: Number, default: 700 }
+  speed: { type: Number, default: 1200 }
 })
 
 const slidesToUse = computed(() => props.slides.length ? props.slides : [])
