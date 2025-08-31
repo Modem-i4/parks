@@ -7,13 +7,13 @@ function getCacheKey(opts) {
         glyph, color, height,
         boxTopPct, boxLeftPct, boxWidthPct, boxHeightPct,
         imageScale,
-        label, labelColor, labelFontSize, labelFontWeight, labelMaxWidth, labelMarginTop
+        label, labelColor, labelFontSize, labelFontWeight, labelWidth, labelMarginTop
     } = opts
     return [
         glyph, color, height,
         boxTopPct, boxLeftPct, boxWidthPct, boxHeightPct,
         imageScale,
-        label, labelColor, labelFontSize, labelFontWeight, labelMaxWidth, labelMarginTop
+        label, labelColor, labelFontSize, labelFontWeight, labelWidth, labelMarginTop
     ].join('|')
 }
 
@@ -30,7 +30,7 @@ export async function CreateCustomPinIcon({
     labelColor = '#fff',
     labelFontSize = 16,
     labelFontWeight = 600,
-    labelMaxWidth = 600,
+    labelWidth = 150,
     labelMarginTop = 4,
 } = {}) {
     const aspectW = 113
@@ -41,7 +41,7 @@ export async function CreateCustomPinIcon({
         glyph, color, height,
         boxTopPct, boxLeftPct, boxWidthPct, boxHeightPct,
         imageScale,
-        label, labelColor, labelFontSize, labelFontWeight, labelMaxWidth, labelMarginTop
+        label, labelColor, labelFontSize, labelFontWeight, labelWidth, labelMarginTop
     })
     if (pinCache.has(cacheKey)) {
         return pinCache.get(cacheKey).cloneNode(true)
@@ -121,7 +121,7 @@ export async function CreateCustomPinIcon({
             cursor: 'pointer',
             userSelect: 'none',
             display: 'inline-block',
-            maxWidth: `${labelMaxWidth}px`,
+            width: `${labelWidth}px`,
             whiteSpace: 'normal',
             overflowWrap: 'break-word',
             wordBreak: 'normal',
