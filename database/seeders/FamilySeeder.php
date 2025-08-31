@@ -46,7 +46,65 @@ class FamilySeeder extends Seeder
                             ]
                         ]
                     ]
-                ]
+                ],
+                [
+                    'name_ukr' => 'Березові',
+                    'name_lat' => 'Betulaceae',
+                    'genera' => [
+                        [
+                            'name_ukr' => 'Береза',
+                            'name_lat' => 'Betula',
+                            'species' => [
+                                ['name_ukr' => 'Береза повисла', 'name_lat' => 'Betula pendula'],
+                                ['name_ukr' => 'Береза пухнаста', 'name_lat' => 'Betula pubescens'],
+                            ]
+                        ],
+                        [
+                            'name_ukr' => 'Вільха',
+                            'name_lat' => 'Alnus',
+                            'species' => [
+                                ['name_ukr' => 'Вільха чорна', 'name_lat' => 'Alnus glutinosa'],
+                                ['name_ukr' => 'Вільха сіра', 'name_lat' => 'Alnus incana'],
+                            ]
+                        ],
+                    ]
+                ],
+                [
+                    'name_ukr' => 'Вербові',
+                    'name_lat' => 'Salicaceae',
+                    'genera' => [
+                        [
+                            'name_ukr' => 'Верба',
+                            'name_lat' => 'Salix',
+                            'species' => [
+                                ['name_ukr' => 'Верба біла', 'name_lat' => 'Salix alba'],
+                                ['name_ukr' => 'Верба ламка', 'name_lat' => 'Salix fragilis'],
+                            ]
+                        ],
+                        [
+                            'name_ukr' => 'Тополя',
+                            'name_lat' => 'Populus',
+                            'species' => [
+                                ['name_ukr' => 'Тополя чорна', 'name_lat' => 'Populus nigra'],
+                                ['name_ukr' => 'Тополя біла', 'name_lat' => 'Populus alba'],
+                            ]
+                        ],
+                    ]
+                ],
+                [
+                    'name_ukr' => 'Соснові',
+                    'name_lat' => 'Pinaceae',
+                    'genera' => [
+                        [
+                            'name_ukr' => 'Сосна',
+                            'name_lat' => 'Pinus',
+                            'species' => [
+                                ['name_ukr' => 'Сосна звичайна', 'name_lat' => 'Pinus sylvestris'],
+                                ['name_ukr' => 'Сосна чорна', 'name_lat' => 'Pinus nigra'],
+                            ]
+                        ],
+                    ]
+                ],
             ],
             'bush' => [
                 [
