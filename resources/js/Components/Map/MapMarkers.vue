@@ -1,5 +1,5 @@
 <script setup>
-import { onUnmounted, ref, watch } from 'vue'
+import { onBeforeUnmount, onUnmounted, ref, watch } from 'vue'
 import loader from '@/Helpers/Maps/GoogleMapsLoader'
 import { CreatePinIcon } from '@/Helpers/Maps/CreatePinIcon.js'
 import { getCoordsFromMarker } from '@/Helpers/Maps/MapHelper.js'
@@ -207,7 +207,10 @@ function setupViewportFilter() {
 
 watch(
   () => parkStore.map,
-  setupViewportFilter,
+  (map) => {
+    setupViewportFilter()
+    setupMapClick(map)
+  },
   { immediate: true }
 )
 
@@ -304,6 +307,17 @@ watch(
     parkStore.selectedMarker = null
   }
 )
+
+let clearOnMapClickListener
+function setupMapClick(map) {
+  if(!map) return
+  clearOnMapClickListener = map.addListener('click', () => {
+    parkStore.selectedMarker = null
+  })
+}
+onBeforeUnmount(() => {
+  clearOnMapClickListener?.remove()
+})
 </script>
 
 <template></template>
