@@ -31,6 +31,7 @@ export const zoom = {
     singlePark: {
       default: 19.5,
       panelOpen: 20.5,
+      nonGreen: 18.5,
       min: 16,
       max: 23,
     },
@@ -38,7 +39,7 @@ export const zoom = {
   desktop: {
     parks : {
       default: 14,
-      panelOpen: 13.5,
+      panelOpen: 14,
       parkSelected: 15,
       min: 13,
       max: 20
@@ -46,6 +47,7 @@ export const zoom = {
     singlePark: {
       default: 20,
       panelOpen: 21,
+      nonGreen: 18.5,
       min: 16,
       max: 23,
     },

@@ -35,7 +35,13 @@ const isParkViewInTransit = ref(false)
 async function handleTransitToSingleParkView(isSingleParkView) {
   if (!parkStore.map) return
   isParkViewInTransit.value = true
-  const targetZoom = getDevicePageZoom(isSingleParkView).default
+  let zoomType = 'default'
+  let duration = 2500
+  if(parkStore.isSingleParkView && parkStore.singleParkContentMode !== 'green' && !parkStore.selectedMarker) {
+    zoomType = 'nonGreen'
+    duration = 1300
+  }
+  const targetZoom = getDevicePageZoom(isSingleParkView)[zoomType]
   const coords = getAdjustedCoordsFromMarker(parkStore.selectedPark, targetZoom)
   
   if(isSingleParkView) {
@@ -44,7 +50,7 @@ async function handleTransitToSingleParkView(isSingleParkView) {
       maxZoom: 23,
       restriction: {latLngBounds: defaultBounds}
     })
-    await tweenCameraTo(parkStore.map, coords, targetZoom, 2500)
+    await tweenCameraTo(parkStore.map, coords, targetZoom, duration)
   }
 
   // for both transits
