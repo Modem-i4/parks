@@ -51,6 +51,7 @@ function setPreset(preset = 'all') {
   const filter = preset === 'all' ? parkStore.singleParkContentMode : preset
   filters.value = structuredClone(filterPresets[filter])
   renderKey.value++
+  filterMarkers()
 }
 
 const filterMarkers = async () => {
@@ -91,9 +92,13 @@ watch(() => parkStore.singleParkContentMode,
  { immediate:true }
 )
 
+watch(() => filters,
+  () => { if (!('green' in filters.value)) filterMarkers() },
+  { deep:true }
+)
+
 onMounted(() => {
   setPreset()
-  filterMarkers()
 })
 </script>
 
