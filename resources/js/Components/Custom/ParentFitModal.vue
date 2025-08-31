@@ -35,7 +35,7 @@ function close() {
         leave-to-class="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
       >
         <div
-          class="relative max-w-lg w-full mx-4 bg-white rounded-2xl shadow-lg flex flex-col max-h-[calc(100vh-8rem)]"
+          class="relative max-w-xl w-full mx-4 bg-white rounded-2xl shadow-lg flex flex-col max-h-[calc(100vh-8rem)]"
           :class="props.contentClasses"
         >
           <div v-if="slots.header" class="flex-shrink-0 p-3 relative">
