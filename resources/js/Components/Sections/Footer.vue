@@ -17,10 +17,13 @@ const year = new Date().getFullYear()
           <span class="font-semibold leading-none text-2xl md:text-3xl">Мапа парків</span>
         </Link>
 
-        <div class="col-span-2 md:col-span-1 order-3 md:order-none text-center">
-          <div class="text-base md:text-lg font-medium">
+        <div class="col-span-2 md:col-span-1 order-3 md:order-none text-center space-y-2">
+          <a class="text-base md:text-lg font-medium" href="https://recreation.if.ua/" target="_blank">
             © {{ year }} КП «Центр розвитку міста та рекреації»
-          </div>
+          </a>
+          <a class="text-base md:text-lg font-medium block" href="mailto:kpcentr2016@gmail.com">
+            kpcentr2016@gmail.com
+          </a>
         </div>
 
         <Link href="/news" class="justify-self-end inline-flex items-center gap-3 md:gap-4 order-2 md:order-none">
@@ -42,7 +45,7 @@ const year = new Date().getFullYear()
         <div class="lg:col-span-5">
           <div class="flex flex-col sm:flex-row lg:items-end justify-center lg:justify-end gap-8 md:gap-10">
             <a href="https://pl-ua.eu/en/" target="_blank"
-              class="flex-1 min-w-0 max-w-full h-auto max-h-22 md:max-h-24 lg:max-h-28 mx-auto"
+              class="flex-1 min-w-0 max-w-full h-auto max-h-22 md:max-h-full mx-auto"
             >
               <img src="/img/icons/logo-project-hor.jpg" alt="ParksMatter" class="rounded" />
             </a>
