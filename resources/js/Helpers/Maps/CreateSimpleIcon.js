@@ -1,4 +1,4 @@
-const icons = import.meta.glob('/resources/js/assets/markers/*-map_icon.svg', { eager: true, as: 'raw' })
+const icons = import.meta.glob('/resources/js/assets/markers/*-map_icon.svg', { eager: true, query: 'raw', import: 'default' })
 
 const simpleIconCache = new Map()
 

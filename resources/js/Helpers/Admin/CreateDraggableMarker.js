@@ -1,3 +1,4 @@
+import loader from '@/Helpers/Maps/GoogleMapsLoader'
 let lastMarker
 
 export async function createDraggableMarker(options) {
@@ -15,7 +16,7 @@ async function createDraggableMarkerBase({
   zIndex = 999999,
   onDrag
 }) {
-  const { AdvancedMarkerElement } = await import('@/Helpers/Maps/GoogleMapsLoader').then(m => m.default.importLibrary('marker'))
+  const { AdvancedMarkerElement } = await loader.importLibrary('marker')
 
   const el = document.createElement('div')
   Object.assign(el.style, {
