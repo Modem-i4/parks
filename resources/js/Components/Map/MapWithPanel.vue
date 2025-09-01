@@ -17,7 +17,7 @@ import SecondaryButton from '@/Components/Default/SecondaryButton.vue'
 import MapLegendPane from './MapLegendPane.vue'
 
 const parkStore = useParkStore()
-const { showUserPosition } = useUserLocationMarker(toRef(parkStore, 'map'))
+const { showUserPosition } = useUserLocationMarker(toRef(parkStore, 'map'), toRef(parkStore, 'mapCustomMessage'))
 const { addMarker, addMarkerFinished } = useAddMarkerHelper(parkStore)
 const showModal = ref({ findMarker: false, legend: false })
 

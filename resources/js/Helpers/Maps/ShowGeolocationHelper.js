@@ -1,8 +1,10 @@
+import { isTweening, tweenCameraTo } from "./MapHelper"
+
 let marker = null
 let watcherId = null
 let el = null
 
-export function useUserLocationMarker(mapRef) {
+export function useUserLocationMarker(mapRef, customMsgRef) {
   const createSharedElement = () => {
     el = document.createElement('div')
     Object.assign(el.style, {
@@ -63,6 +65,14 @@ export function useUserLocationMarker(mapRef) {
     setTimeout(() => pulse.remove(), 1500)
   }
 
+  const handleGeoError = (err) => {
+    if (!err) return
+    if (err.code === 1) customMsgRef.value = 'Доступ до геолокації заборонений'
+    else if (err.code === 2) customMsgRef.value = 'Неможливо визначити позицію'
+    else if (err.code === 3) customMsgRef.value = 'Не вдалось вчасно визначити геопозицію'
+    else customMsgRef.value = 'Помилка геолокації'
+  }
+
   const updatePosition = ({ coords }) => {
     const map = mapRef.value
     if (!map) return
@@ -102,18 +112,22 @@ export function useUserLocationMarker(mapRef) {
       if (!hasHeading) el.style.rotate = '0deg'
       triggerPulse()
     }
+    const bounds = map.getRestriction().latLngBounds
+    if(!bounds) return
+    if(bounds.contains(pos)) tweenCameraTo(map, pos)
+    else customMsgRef.value = 'Ваша позиція не в межах мапи'
   }
 
   const showUserPosition = () => {
     const map = mapRef.value
-    if (!navigator.geolocation || !map || !google?.maps?.marker) return
+    if (!navigator.geolocation || !map || !google?.maps?.marker || isTweening.value) return
 
-    navigator.geolocation.getCurrentPosition(updatePosition, null, {
+    navigator.geolocation.getCurrentPosition(updatePosition, handleGeoError, {
       enableHighAccuracy: true,
     })
 
     if (!watcherId) {
-      watcherId = navigator.geolocation.watchPosition(updatePosition, null, {
+      watcherId = navigator.geolocation.watchPosition(updatePosition, handleGeoError, {
         enableHighAccuracy: true,
       })
     }
@@ -122,13 +136,14 @@ export function useUserLocationMarker(mapRef) {
   const getUserPosition = () => {
     return new Promise((resolve, reject) => {
       if (!navigator.geolocation) {
+        customMsgRef.value = 'Геолокація не підтримується'
         reject(new Error('Geolocation не підтримується'))
         return
       }
 
       navigator.geolocation.getCurrentPosition(
         ({ coords }) => resolve({ lat: coords.latitude, lng: coords.longitude }),
-        () => resolve(null), // if rejected
+        (err) => { handleGeoError(err); resolve(null) }, 
         { enableHighAccuracy: true }
       )
     })

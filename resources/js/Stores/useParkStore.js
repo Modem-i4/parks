@@ -20,6 +20,7 @@ export const useParkStore = defineStore('park', () => {
     areLoaded: false,
     saveFailed: false
   })
+  const mapCustomMessage = ref('')
 
   const map = shallowRef(null)
   const mapElement = ref(null)
@@ -92,6 +93,7 @@ export const useParkStore = defineStore('park', () => {
     defaultCenter,
     singleParkContentMode,
     markerStates,
+    mapCustomMessage,
     selectedMarkerLocked,
 
     // Actions

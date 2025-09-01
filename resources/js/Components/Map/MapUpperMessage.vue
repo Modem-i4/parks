@@ -20,11 +20,17 @@ const show = ref(false)
 watch(
   () => parkStore.markerStates,
   (conds) => {
-    const newMsg = resolveMessage(conds)
-    show.value = !(newMsg === '')
-    if(show.value) message.value = newMsg
+    parkStore.mapCustomMessage = resolveMessage(conds)
   },
   { deep: true }
+)
+watch(
+  () => parkStore.mapCustomMessage,
+  (msg) => {
+    show.value = !(msg === '')
+    if(show.value) message.value = msg
+    setTimeout(() => parkStore.mapCustomMessage = '', 5000)
+  }
 )
 
 function resolveMessage(conds) {
