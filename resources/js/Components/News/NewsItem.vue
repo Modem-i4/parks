@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import { router } from '@inertiajs/vue3'
 import NewsInline from './NewsInline.vue'
 import NewsCard from './NewsCard.vue'
+import { isMobile } from '@/Helpers/isMobileHelper'
 
 const props = defineProps({
   post: { type: Object, required: true },
@@ -36,7 +37,7 @@ const preview  = computed(() => shortText(stripHtml(props.post.body || ''), prev
 </script>
 
 <template>
-    <Component :is="variant === 'inline' ? NewsInline : NewsCard"
+    <Component :is="(variant === 'inline' && !isMobile) ? NewsInline : NewsCard"
       :post
       :coverSrc
       :preview
