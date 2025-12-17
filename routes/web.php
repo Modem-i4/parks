@@ -17,6 +17,7 @@ use App\Http\Controllers\HedgeShapeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PlotController;
+use App\Http\Controllers\SubplotController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WorkController;
 use Illuminate\Support\Facades\Route;
@@ -93,6 +94,7 @@ Route::prefix('api')->group(function () {
         Route::get('/hedgeRows', [HedgeRowController::class, 'index']);
         Route::get('/hedgeShapes', [HedgeShapeController::class, 'index']);
         Route::get('/plots', [PlotController::class, 'index']);
+        Route::get('/subplots', [SubplotController::class, 'index']);
     });
     // ========= export =========
     Route::middleware('can:export')->group(function () {
@@ -106,6 +108,8 @@ Route::prefix('api')->group(function () {
         Route::delete('/media-library/{mediaLibrary}', [MediaLibraryController::class, 'destroy']);
         Route::patch('/plots/{id}', [PlotController::class, 'update']);
         Route::delete('/plots/{id}', [PlotController::class, 'destroy']);
+        Route::patch('/subplots/{id}', [SubplotController::class, 'update']);
+        Route::delete('/subplots/{id}', [SubplotController::class, 'destroy']);
     });
     // ========= addMarkers =========
     Route::middleware('can:addMarkers')->group(function () {
@@ -161,6 +165,8 @@ Route::prefix('api')->group(function () {
         Route::delete('/hedgeShapes/{id}', [HedgeShapeController::class, 'destroy']);
         // Plots
         Route::post('/plots', [PlotController::class, 'store']);
+        // Subplots
+        Route::post('/subplots', [SubplotController::class, 'store']);
     });
     // ========= assignWork =========
     Route::middleware('can:assignWork')->group(function () {

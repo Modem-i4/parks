@@ -19,7 +19,7 @@ class MarkerService
         'green.hedge.hedge_row',
         'green.hedge.hedge_shape',
 
-        'green.plot',
+        'green.subplot.plot',
         'green.works.recommendation',
 
         'infrastructure.infrastructureType:id,name,description',

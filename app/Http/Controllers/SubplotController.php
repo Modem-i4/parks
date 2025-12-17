@@ -2,42 +2,42 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Plot;
+use App\Models\Subplot;
 use Illuminate\Http\Request;
 
-class PlotController extends Controller
+class SubplotController extends Controller
 {
     public function index(Request $request) {
-        $parkId = $request->parkId;
-        if($parkId) {
-            return Plot::where('park_id', $parkId)->with('subplots:id,plot_id,name')->get();
+        $plotId = $request->plotId;
+        if($plotId) {
+            return Subplot::where('plot_id', $plotId)->get();
         }
-        return Plot::all();
+        return Subplot::all();
     }
 
     public function store(Request $request)
     {
         $validated = $request->validate([
             'name' => 'required',
-            'park_id' => ['required', 'integer', 'exists:parks,id'],
+            'plot_id' => ['required', 'integer', 'exists:plots,id'],
         ]);
 
-        return Plot::create($validated);
+        return Subplot::create($validated);
     }
 
     public function update(Request $request, $id)
     {
-        $plot = Plot::findOrFail($id);
-        $plot->update($request->validate([
+        $subplot = Subplot::findOrFail($id);
+        $subplot->update($request->validate([
             'name' => 'required',
         ]));
 
-        return $plot;
+        return $subplot;
     }
 
     public function destroy($id)
     {
-        $plot = Plot::findOrFail($id);
+        $plot = Subplot::findOrFail($id);
         $plot->delete();
 
         return response()->noContent();

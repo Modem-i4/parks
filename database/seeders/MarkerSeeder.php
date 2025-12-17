@@ -12,8 +12,6 @@ use App\Models\Flower;
 use App\Models\Infrastructure;
 use App\Models\Park;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use App\Enums\TagType;
 use App\Models\HedgeRow;
 use App\Models\HedgeShape;
 use App\Models\InfrastructureType;
@@ -24,7 +22,7 @@ class MarkerSeeder extends Seeder
     public function run()
     {
         $parksGeo = include database_path('data/ParksGeoJSON.php');
-        $parks = Park::with('plots')->get();
+        $parks = Park::with('plots.subplots')->get();
 
         $speciesByType = [];
         $allSpecies = Species::with('genus.family')->get();
@@ -68,10 +66,13 @@ class MarkerSeeder extends Seeder
                 if ($type !== 'infrastructure') {
                     $species = $speciesByType[$type]->random();
 
+                    $plot = $park->plots->random();
+                    $subplotId = $plot?->subplots?->random()?->id;
+
                     $green = Green::create([
                         'id' => $marker->id,
-                        'inventory_number' => 'INV-' . ($park_i * 2000) + ($i + 1),
-                        'plot_id' => $park->plots->random()->id ?? null,
+                        'inventory_number' => 'INV-' . (($park_i * 2000) + ($i + 1)),
+                        'subplot_id' => $subplotId,
                         'species_id' => $species?->id,
                         'planting_date' => now()->subYears(rand(1, 20)),
                         'green_state' => $greenStates[array_rand($greenStates)],

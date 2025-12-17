@@ -21,6 +21,7 @@ enum ModelType: string
     case News               = 'News';
     case Park               = 'Park';
     case Plot               = 'Plot';
+    case Subplot            = 'Subplot';
     case Recommendation     = 'Recommendation';
     case Species            = 'Species';
     case Tag                = 'Tag';
@@ -47,7 +48,8 @@ enum ModelType: string
             self::MediaLibrary       => 'Медіатека',
             self::News               => 'Новина',
             self::Park               => 'Парк',
-            self::Plot               => 'Ділянка',
+            self::Plot               => 'Виділ',
+            self::Subplot            => 'Ділянка',
             self::Recommendation     => 'Рекомендація',
             self::Species            => 'Вид',
             self::Tag                => 'Тег',

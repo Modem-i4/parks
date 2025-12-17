@@ -11,10 +11,10 @@ class PlotSeeder extends Seeder
     public function run(): void
     {
         foreach (range(1, 3) as $parkId) {
-            foreach (range(1, 6) as $i) {
+            foreach (range(1, 3) as $i) {
                 Plot::create([
                     'park_id' => $parkId,
-                    'name' => "Виділ {$i}"
+                    'name' => "Ділянка {$i}"
                 ]);
             }
         }

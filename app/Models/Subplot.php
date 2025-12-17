@@ -8,43 +8,43 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Concerns\LogsChanges;
 
 /**
- * Class Plot
+ * Class Subplot
  * 
  * @property int $id
- * @property int $park_id
+ * @property int $plot_id
  * @property string $name
  * @property array $coordinates
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * 
- * @property Park $park
- * @property Collection|Subplot[] $subplots
+ * @property Plot $plot
+ * @property Collection|Marker[] $markers
  *
  * @package App\Models
  */
-class Plot extends Model
+class Subplot extends Model
 {
     use LogsChanges;
-	protected $table = 'plots';
+	protected $table = 'subplots';
 
 	protected $casts = [
-		'park_id' => 'int',
+		'plot_id' => 'int',
 		'coordinates' => 'json'
 	];
 
 	protected $fillable = [
-		'park_id',
+		'plot_id',
 		'name',
 		'coordinates'
 	];
 
-	public function park()
+	public function plot()
 	{
-		return $this->belongsTo(Park::class);
+		return $this->belongsTo(Plot::class);
 	}
 
-	public function subplots()
+	public function markers()
 	{
-		return $this->hasMany(Subplot::class);
+		return $this->hasMany(Marker::class);
 	}
 }

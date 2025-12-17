@@ -16,6 +16,7 @@ use App\Models\Concerns\LogsChanges;
  * @property string|null $inventory_number
  * @property int $species_id
  * @property int|null $plot_id
+ * @property int|null $subplot_id
  * @property Carbon|null $planting_date
  * @property string|null $green_state
  * @property string|null $green_state_note
@@ -23,6 +24,7 @@ use App\Models\Concerns\LogsChanges;
  * @property Carbon|null $updated_at
  * 
  * @property Plot|null $plot
+ * @property Sublot|null $subplot
  * @property Species $species
  * @property Bush|null $bush
  * @property Flower|null $flower
@@ -39,20 +41,20 @@ class Green extends Model
 
 	protected $casts = [
 		'species_id' => 'int',
-		'plot_id' => 'int',
+		'subplot_id' => 'int',
 		'planting_date' => 'datetime'
 	];
 
 	protected $fillable = [
 		'inventory_number',
 		'species_id',
-		'plot_id',
+		'subplot_id',
 		'planting_date',
 		'green_state',
 		'green_state_note'
 	];
 
-	protected $appends = ['age'];
+	protected $appends = ['age', 'plot', 'plot_id'];
 
 	protected function age(): Attribute
 	{
@@ -61,9 +63,19 @@ class Green extends Model
 		);
 	}
 
-	public function plot()
+	public function getPlotAttribute()
 	{
-		return $this->belongsTo(Plot::class);
+		return $this->subplot?->plot;
+	}
+
+	public function getPlotIdAttribute()
+	{
+    	return $this->subplot?->plot_id;
+	}
+
+	public function subplot()
+	{
+		return $this->belongsTo(Subplot::class);
 	}
 
 	public function species()

@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             HedgeRowSeeder::class,
             HedgeShapeSeeder::class,
             PlotSeeder::class,
+            SubplotSeeder::class,
             MarkerSeeder::class,
             MarkersTagSeeder::class,
         ]);
