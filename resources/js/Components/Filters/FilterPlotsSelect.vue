@@ -1,12 +1,9 @@
 <script setup>
 import { ref, watch } from 'vue'
 import axios from 'axios'
-import SelectWithSearchAndAdd from '@/Components/Custom/SelectWithSearchAndAdd.vue'
 import { GetOrCreateFilterTargetNode } from '@/Helpers/Maps/GetFilterTargetNode'
 import { useParkStore } from '@/Stores/useParkStore'
-
-import Modal from '@/Components/Default/Modal.vue'
-import DictPlots from '@/Components/Dictionaries/DictPlots.vue'
+import PlotsOption from '@/Components/Plots/PlotsOption.vue'
 
 const props = defineProps({
   filters: Object,
@@ -14,23 +11,66 @@ const props = defineProps({
   node: Object
 })
 
+const parkStore = useParkStore()
+
 const target = ref(null)
+const entries = ref([])
+
 const plotOptions = ref([])
 const plotOptionsById = ref({})
+const subplotsByPlotId = ref({})
+const subplotsById = ref({})
 const optionsLoaded = ref(false)
 
-const showModal = ref({plots: false})
+function ensureTarget() {
+  if (target.value) return
+  target.value = GetOrCreateFilterTargetNode(props.filters, props.path)
+  hydrateEntries()
+}
 
-const parkStore = useParkStore()
+function hydrateEntries() {
+  if (!target.value?.plots) return
+
+  if (Array.isArray(target.value.plots)) {
+    const converted = {}
+    target.value.plots.forEach(id => {
+      if (id) converted[id] = { subplots: [] }
+    })
+    target.value.plots = converted
+  }
+
+  entries.value = Object.entries(target.value.plots).map(([plotId, data]) => ({
+    plotId: +plotId,
+    subplots: [...(data?.subplots ?? [])]
+  }))
+}
 
 async function loadPlots() {
   if (!parkStore.selectedPark) return
-  axios.get(`/api/plots?parkId=${parkStore.selectedPark.id}`)
+  return axios.get(`/api/plots?parkId=${parkStore.selectedPark.id}`)
     .then(res => {
-      plotOptions.value = res.data
-      res.data.forEach((r) => {
-        plotOptionsById.value[r.id] = r.name
+      const plots = res.data ?? []
+
+      const byId = {}
+      const subByPlot = {}
+      const subById = {}
+
+      plotOptions.value = plots.map(p => {
+        byId[p.id] = p.name
+
+        const subs = (p.subplots ?? []).map(s => {
+          subById[s.id] = s.name
+          return { id: s.id, name: s.name }
+        })
+
+        subByPlot[p.id] = subs
+
+        return { id: p.id, name: p.name }
       })
+
+      plotOptionsById.value = byId
+      subplotsByPlotId.value = subByPlot
+      subplotsById.value = subById
     })
     .catch(err => {
       console.error('Error loading plots:', err)
@@ -38,9 +78,8 @@ async function loadPlots() {
 }
 
 async function addPlotsOption() {
-  target.value = GetOrCreateFilterTargetNode(props.filters, props.path)
-  target.value.plots ??= []
-  target.value.plots.push(null)
+  ensureTarget()
+  entries.value.push({ plotId: null, subplots: [] })
 
   if (!optionsLoaded.value && parkStore.selectedPark) {
     await loadPlots()
@@ -49,69 +88,52 @@ async function addPlotsOption() {
 }
 
 function removePlotsOption(index) {
-  target.value.plots.splice(index, 1)
-  if (target.value.plots.length === 0) {
-    delete target.value.plots
-  }
+  entries.value.splice(index, 1)
 }
 
-// Modal
-const activePlotIndex = ref(null)
-function openPlotModal(index) {
-  activePlotIndex.value = index
-  showModal.value.plots = true
-}
-function selectPlot(plot) {
-  if (activePlotIndex.value !== null) {
-    target.value.plots[activePlotIndex.value] = plot.id
-    plotOptionsById.value[plot.id] = plot.name
-    showModal.value.plots = false
-    activePlotIndex.value = null
-  }
-}
+watch(entries, () => {
+  if (!target.value) return
 
-watch(() => parkStore.selectedPark, async (newVal) => {
-  if (newVal) {
-    plotOptions.value = await loadPlots()
-    optionsLoaded.value = true
-  }
-})
+  const plots = {}
+  entries.value.forEach(e => {
+    if (!e.plotId) return
+    plots[e.plotId] = { subplots: e.subplots.filter(Boolean) }
+  })
+
+  if (Object.keys(plots).length) target.value.plots = plots
+  else delete target.value.plots
+}, { deep: true })
+
+watch(() => parkStore.selectedPark, async (p) => {
+  if (!p) return
+  await loadPlots()
+  optionsLoaded.value = true
+}, { immediate: true })
 </script>
 
 <template>
   <div class="space-y-2 px-2">
     <div class="font-medium">{{ node.name }}</div>
 
-    <div
-      class="flex items-center gap-2"
-      v-for="(plotId, index) in target?.plots"
-      :key="index"
-    >
-      <SelectWithSearchAndAdd
-        class="flex-1"
-        mode="plots"
-        v-model="target.plots[index]"
-        :startingItem="{id: plotId, name: plotOptionsById[plotId]}"
+    <div class="space-y-2" v-if="entries.length">
+      <PlotsOption
+        v-for="(entry, index) in entries"
+        :key="index"
+        v-model="entries[index]"
+        :plotOptions="plotOptions"
+        :plotOptionsById="plotOptionsById"
+        :subplotsByPlotId="subplotsByPlotId"
+        :subplotsById="subplotsById"
         :parkId="parkStore.selectedPark?.id"
-        :preloadedOptions="plotOptions"
-        :showLabel="false"
-        @show-modal="() => openPlotModal(index)"
+        @remove="removePlotsOption(index)"
       />
-
-      <button
-        @click="removePlotsOption(index)"
-        class="text-red-600 hover:text-red-800 text-xl"
-        title="Видалити"
-      >×</button>
     </div>
-
 
     <button
       class="text-md text-blue-600 hover:underline"
       @click="addPlotsOption"
-    >+ Додати фільтр за виділом</button>
-    <Modal :show="showModal.plots" maxWidth="2xl" @close="showModal.plots = false">
-      <DictPlots @select="selectPlot" :parkId="parkStore.selectedPark.id" />
-    </Modal>
+    >
+      + Додати фільтр за виділом
+    </button>
   </div>
 </template>

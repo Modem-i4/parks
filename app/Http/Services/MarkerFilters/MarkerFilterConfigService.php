@@ -171,14 +171,6 @@ class MarkerFilterConfigService {
                                 'max' => 100,
                                 'role' => 'viewer',
                             ],
-                            [
-                                'name' => 'Площа',
-                                'slug' => 'area',
-                                'type' => 'slider',
-                                'min' => 0,
-                                'max' => 100,
-                                'role' => 'viewer',
-                            ],
                         ],
                     ],
                     [
@@ -204,14 +196,6 @@ class MarkerFilterConfigService {
                                 'min' => 1,
                                 'max' => 50,
                             ],
-                            [
-                                'name' => 'Площа',
-                                'slug' => 'area',
-                                'type' => 'slider',
-                                'min' => 0,
-                                'max' => 100,
-                                'role' => 'viewer',
-                            ],
                         ],
                     ],
                     [
@@ -236,14 +220,6 @@ class MarkerFilterConfigService {
                                 'type' => 'slider',
                                 'min' => 0,
                                 'max' => 100,
-                            ],
-                            [
-                                'name' => 'Площа',
-                                'slug' => 'area',
-                                'type' => 'slider',
-                                'min' => 0,
-                                'max' => 100,
-                                'role' => 'viewer',
                             ],
                             [
                                 'name' => 'Тип ряду',

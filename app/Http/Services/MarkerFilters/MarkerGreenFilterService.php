@@ -61,7 +61,18 @@ class MarkerGreenFilterService {
             }
 
             if (!empty($filters['general']['plots'])) {
-                $q->whereIn('plot_id', $filters['general']['plots']);
+                $q->where(function ($pq) use ($filters) {
+                    foreach ($filters['general']['plots'] as $plotId => $data) {
+                        $pq->orWhere(function ($sq) use ($plotId, $data) {
+                            $subplots = $data['subplots'];
+                            $sq->when(
+                                $subplots,
+                                fn ($w) => $w->whereIn('subplot_id', $subplots),
+                                fn ($w) => $w->whereHas('subplot', fn ($ssq) => $ssq->where('plot_id', $plotId))
+                            );
+                        });
+                    }
+                });
             }
 
             if (!empty($filters['general']['age_range'])) {
