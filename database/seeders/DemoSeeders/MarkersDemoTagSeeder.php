@@ -1,13 +1,13 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\DemoSeeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use App\Models\Marker;
 use App\Models\Tag;
 
-class MarkersTagSeeder extends Seeder
+class MarkersDemoTagSeeder extends Seeder
 {
     public function run()
     {

@@ -1,11 +1,11 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\CoreSeeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class RecommendationsTableSeeder extends Seeder
+class RecommendationsSeeder extends Seeder
 {
     public function run()
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\DemoSeeders;
 
 use App\Enums\GreenState;
 use App\Models\Marker;
@@ -17,7 +17,7 @@ use App\Models\HedgeShape;
 use App\Models\InfrastructureType;
 use App\Models\Species;
 
-class MarkerSeeder extends Seeder
+class MarkerDemoSeeder extends Seeder
 {
     public function run()
     {

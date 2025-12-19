@@ -1,9 +1,8 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\CoreSeeders;
 
 use Illuminate\Support\Facades\DB;  
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class HedgeShapeSeeder extends Seeder

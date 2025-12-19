@@ -2,43 +2,16 @@
 
 namespace Database\Seeders;
 
-use App\Enums\UserRole;
-use App\Models\News;
-use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        $this->call([
-            RecommendationsTableSeeder::class,
-            TagsSeeder::class,
-            FamilySeeder::class,
-            ParkSeeder::class,
-            MediaSeeder::class,
-            InfrastructureTypeSeeder::class,
-            HedgeRowSeeder::class,
-            HedgeShapeSeeder::class,
-            PlotSeeder::class,
-            SubplotSeeder::class,
-            MarkerSeeder::class,
-            MarkersTagSeeder::class,
-        ]);
-
-        User::factory()->create([
-            'name' => 'Admin',
-            'email' => 'admin@parks.if.ua',
-            'role' => UserRole::SUPER_ADMIN
-        ]);
-
-        User::factory(10)->create();
-
-        News::factory(10)->create();
-
+        if (app()->environment('local', 'testing')) {
+            $this->call(DemoSeeder::class);
+        } else {
+            $this->call(BasicSeeder::class);
+        }
     }
 }
