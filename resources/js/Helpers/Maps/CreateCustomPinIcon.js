@@ -30,7 +30,7 @@ export async function CreateCustomPinIcon({
     labelColor = '#fff',
     labelFontSize = 16,
     labelFontWeight = 600,
-    labelWidth = 150,
+    labelWidth = 170,
     labelMarginTop = 4,
 } = {}) {
     const aspectW = 113
