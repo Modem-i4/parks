@@ -16,6 +16,7 @@ final class FieldNameCodec
 
         'park_id' => 'park_id',
         'plot_id' => 'plot_id',
+        'subplot_id' => 'subplot_id',
         'description' => 'descr',
 
         'inventory_number' => 'inv_number',

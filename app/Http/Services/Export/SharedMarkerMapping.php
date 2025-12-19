@@ -36,7 +36,18 @@ trait SharedMarkerMapping
             $this->mergePrefixed($props, $green['bush']   ?? null, 'bush');
             $this->mergePrefixed($props, $green['hedge']  ?? null, 'hedge');
             $this->mergePrefixed($props, $green['flower'] ?? null, 'flower');
-            $this->mergePrefixed($props, $green['plot']   ?? null, 'plot');
+
+            if (!empty($green['subplot'])) {
+                $sb = $green['subplot'];
+                $props['subplot_id']   = $props['subplot_id']   ?? ($sb['id'] ?? null);
+                $props['subplot_name'] = $props['subplot_name'] ?? ($sb['name'] ?? null);
+
+                if (!empty($sb['plot'])) {
+                    $pl = $sb['plot'];
+                    $props['plot_id']   = $props['plot_id']   ?? ($pl['id'] ?? null);
+                    $props['plot_name'] = $props['plot_name'] ?? ($pl['name'] ?? null);
+                }
+            }
 
             if (!empty($green['species'])) {
                 $sp = $green['species'];

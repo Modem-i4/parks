@@ -6,6 +6,8 @@ use App\Models\Marker;
 use App\Models\Green;
 use App\Models\Infrastructure;
 use App\Models\Tag;
+use App\Models\Plot;
+use App\Models\Subplot;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
@@ -104,6 +106,23 @@ abstract class BaseImporter
         }
 
         if ($greenData) {
+            if (!empty($rel['plot'])) {
+                $cols  = $this->columnsForRelation('plot');
+                $attrs = $this->intersectByColumns($rel['plot'], $cols);
+                if (!empty($attrs['id'])) {
+                    $attrs['park_id'] = $marker->park_id;
+                    Plot::updateOrCreate(['id' => $attrs['id']], Arr::except($attrs, ['id']));
+                }
+            }
+
+            if (!empty($rel['subplot'])) {
+                $cols  = $this->columnsForRelation('subplot');
+                $attrs = $this->intersectByColumns($rel['subplot'], $cols);
+                if (!empty($attrs['id']) && !empty($attrs['plot_id'])) {
+                    Subplot::updateOrCreate(['id' => $attrs['id']], Arr::except($attrs, ['id']));
+                }
+            }
+
             $greenCols  = $this->columnsFor(new Green);
             $greenAttrs = $this->intersectByColumns($greenData, $greenCols);
             $greenAttrs = $this->prepareGreenAttrs($greenAttrs, $marker);
@@ -172,13 +191,27 @@ abstract class BaseImporter
         $tags = $tagsProvided && is_array($props['tags']) ? array_values($props['tags']) : [];
         if ($tagsProvided) unset($props['tags']);
 
+        $plot = [
+            'id'   => $props['plot_id'] ?? null,
+            'name' => $props['plot_name'] ?? null,
+        ];
+        unset($props['plot_id'], $props['plot_name']);
+
+        $subplot = [
+            'id'      => $props['subplot_id'] ?? null,
+            'plot_id' => $plot['id'] ?? null,
+            'name'    => $props['subplot_name'] ?? null,
+        ];
+        unset($props['subplot_name']);
+
         $prefixed = [
             'tree'  => $this->unprefix($props, 'tree_'),
             'bush'  => $this->unprefix($props, 'bush_'),
             'hedge' => $this->unprefix($props, 'hedge_'),
             'flower'=> $this->unprefix($props, 'flower_'),
-            'plot'  => $this->unprefix($props, 'plot_'),
             'infrastructureType' => $this->unprefix($props, 'infrastructureType_'),
+            'plot' => $plot,
+            'subplot' => $subplot,
         ];
         if ($tagsProvided) $prefixed['tags'] = $tags;
 
@@ -244,8 +277,9 @@ abstract class BaseImporter
             'bush'  => 'bushes',
             'hedge' => 'hedges',
             'flower'=> 'flowers',
-            'plot'  => 'plots',
-            'infrastructureType' => 'infrastructure_types',
+            'plot' => 'plots',
+            'subplot' => 'subplots',
+            'infrastructureType' => 'infrastructure_type',
         ];
         $table = $map[$name] ?? null;
         return self::$__relation_columns_cache[$name] = $table && Schema::hasTable($table)

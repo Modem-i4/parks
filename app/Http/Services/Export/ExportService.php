@@ -3,6 +3,7 @@
 namespace App\Http\Services\Export;
 
 use App\Http\Controllers\MarkerController;
+use App\Http\Services\MarkerService;
 use App\Models\Marker;
 use Illuminate\Support\Arr;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,7 +23,7 @@ class ExportService
             return response()->json(['message' => 'No markers provided'], 422);
         }
 
-        $markers = Marker::with(MarkerController::markerFields)
+        $markers = Marker::with(MarkerService::RELATIONS)
             ->whereIn('id', $ids)
             ->get();
 
