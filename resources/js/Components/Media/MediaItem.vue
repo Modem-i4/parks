@@ -9,6 +9,7 @@
     <img
       :src="mediaFile.file_path"
       class="w-full h-24 sm:h-32 object-cover transition"
+      loading="lazy" decoding="async"
       alt="media preview"
     />
 
