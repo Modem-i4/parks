@@ -54,16 +54,16 @@
 defineProps({ stats: Object })
 
 const stateStats = [
-  { key: 'green_total', min: 197, label: 'всього насаджень', icon: '/img/icons/stats/trees.svg', alt: 'trees' },
-  { key: 'green_good',  min: 118, label: 'відмінний стан',    color: 'bg-green-600' },
-  { key: 'green_normal',min: 62, label: 'задовільний стан',  color: 'bg-yellow-400' },
-  { key: 'green_bad',   min: 17,  label: 'незадовільний стан',color: 'bg-red-600' },
+  { key: 'green_total', min: 0, label: 'всього насаджень', icon: '/img/icons/stats/trees.svg', alt: 'trees' },
+  { key: 'green_good',  min: 0, label: 'відмінний стан',    color: 'bg-green-600' },
+  { key: 'green_normal',min: 0, label: 'задовільний стан',  color: 'bg-yellow-400' },
+  { key: 'green_bad',   min: 0,  label: 'незадовільний стан',color: 'bg-red-600' },
 ]
 
 const typeStats = [
-  { key: 'trees',   min: 91, label: 'дерев',      icon: '/img/icons/split-markers/trees-map_icon.svg',   alt: 'trees' },
-  { key: 'bushes',  min: 70, label: 'кущів',      icon: '/img/icons/split-markers/bushes-map_icon.svg',  alt: 'bushes' },
-  { key: 'hedges',  min: 12,  label: 'живоплотів', icon: '/img/icons/split-markers/hedges-map_icon.svg',  alt: 'hedges' },
-  { key: 'flowers', min: 24,  label: 'квітників',  icon: '/img/icons/split-markers/flowers-map_icon.svg', alt: 'flowers' },
+  { key: 'trees',   min: 0, label: 'дерев',      icon: '/img/icons/split-markers/trees-map_icon.svg',   alt: 'trees' },
+  { key: 'bushes',  min: 0, label: 'кущів',      icon: '/img/icons/split-markers/bushes-map_icon.svg',  alt: 'bushes' },
+  { key: 'hedges',  min: 0,  label: 'живоплотів', icon: '/img/icons/split-markers/hedges-map_icon.svg',  alt: 'hedges' },
+  { key: 'flowers', min: 0,  label: 'квітників',  icon: '/img/icons/split-markers/flowers-map_icon.svg', alt: 'flowers' },
 ]
 </script>

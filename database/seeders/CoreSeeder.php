@@ -11,6 +11,7 @@ use Database\Seeders\CoreSeeders\{
     InfrastructureTypeSeeder,
     HedgeRowSeeder,
     HedgeShapeSeeder,
+    PlotSeeder,
     TagsSeeder,
 };
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -30,7 +31,8 @@ class CoreSeeder extends Seeder
             HedgeShapeSeeder::class,
             TagsSeeder::class,
             ParkSeeder::class,
-            MediaSeeder::class
+            MediaSeeder::class,
+            PlotSeeder::class
         ]);
 
         User::factory()->create([

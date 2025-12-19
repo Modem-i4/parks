@@ -10,10 +10,7 @@ class FamilySeeder extends Seeder
 {
     public function run(): void
     {
-        $data = [
-            'tree' => [
-            ]
-        ];
+        $data = include database_path('data/Taxonomy.php');
 
         $this->seedTaxonomy($data);
     }

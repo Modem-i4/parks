@@ -22,21 +22,21 @@ import GenusStats from '@/Components/Sections/Home/GenusStats.vue';
 const heroSlides = ref([
   {
     title: 'ім. Тараса Шевченка',
-    subtitle: 'Осінні алеї та події щотижня',
+    subtitle: 'Міське озеро, алеї та атракціони',
     image: '/img/parks/shevchenko_park.webp',
     icon: '/img/icons/shevchenko_park.png',
     href: '/parks/1'
   },
   {
-    title: 'воїнів-афганців',
-    subtitle: 'Велодоріжки та маршрути',
+    title: 'воїнів-інтернаціоналістів',
+    subtitle: 'Меморіал, алея пам’яті та спорт',
     image: '/img/parks/liberators_park.webp',
     icon: '/img/icons/liberators_park.png',
     href: '/parks/2'
   },
   {
     title: 'по вул. Молодіжна',
-    subtitle: 'Майданчики для дітей',
+    subtitle: 'Тихі доріжки і вигул собак',
     image: '/img/parks/hotkevych_park.webp',
     icon: '/img/icons/hotkevych_park.png',
     href: '/parks/3'
