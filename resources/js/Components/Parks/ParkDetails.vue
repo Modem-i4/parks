@@ -120,6 +120,7 @@ function pickerSaved(newImages) {
 
     <ImageSlider :modelId="parkStore.selectedMarker?.id || null" model="parks" class="my-2" ref="imageSliderRef"
       :editable="authStore.can.upload"
+      :showByDefault="!isMobile || authStore.can.upload"
       @onImageClick="() => { if(authStore.can.upload) startGalleryChange() }"
       @close="closeImagePicker"/>
 
