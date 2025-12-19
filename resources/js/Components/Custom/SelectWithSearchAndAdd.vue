@@ -6,7 +6,9 @@
         v-model="search"
         type="text"
         class="w-full border border-gray-300 rounded px-2 py-1"
+        :class="props.disabled ? 'bg-gray-100 text-gray-500 cursor-not-allowed' : ''"
         :placeholder="props.placeholder ?? 'Пошук...'"
+        :disabled="props.disabled"
         @click="openDropdown"
         @blur="handleBlur"
       />
@@ -27,7 +29,7 @@
           class="px-3 py-1 hover:bg-gray-100 cursor-pointer"
           @mousedown.prevent="select('')"
         >
-          Всі  
+          Всі
         </li>
 
         <li
@@ -49,15 +51,16 @@ import axios from 'axios'
 
 const props = defineProps({
   modelValue: [Number, Array, null],
-  mode: { type: String, required: true }, // 'species' | 'infrastructureType' | 'tags' | 'hedgeRows' | 'hedgeShapes' | 'recommendations' | 'plot'
+  mode: { type: String, required: true }, // 'species' | 'infrastructureType' | 'tags' | 'hedgeRows' | 'hedgeShapes' | 'recommendations' | 'plots' | 'subplots'
   startingItem: [Object, null],
   type: String, // 'trees', 'bushes', 'hedges', 'flowers'
-  parkId: Number,
+  parentId: Number,
   showLabel: { type: Boolean, default: true },
   canAddNew: { type: Boolean, default: true },
   preloadedOptions: Array,
   placeholder: String,
-  pickAllOption: Boolean
+  pickAllOption: Boolean,
+  disabled: { type: Boolean, default: false }
 })
 const emit = defineEmits(['update:modelValue', 'show-modal'])
 
@@ -73,13 +76,14 @@ const labelField = computed(() => {
     case 'genus':
     case 'families':
       return 'name_ukr'
-    case 'infrastructureType': 
+    case 'infrastructureType':
     case 'hedgeRows':
     case 'hedgeShapes':
-    case 'tags': 
+    case 'tags':
     case 'recommendations':
     case 'plots':
-    default: 
+    case 'subplots':
+    default:
       return 'name'
   }
 })
@@ -94,6 +98,7 @@ const label = computed(() => {
     case 'hedgeShapes': return 'Форма'
     case 'recommendations': return 'Рекомендація'
     case 'plots': return 'Виділ'
+    case 'subplots': return 'Ділянка'
   }
 })
 const labelNewShort = computed(() => {
@@ -107,6 +112,7 @@ const labelNewShort = computed(() => {
     case 'hedgeShapes': return 'нову форму'
     case 'recommendations': return 'нову рекомендацію'
     case 'plots': return 'новий виділ'
+    case 'subplots': return 'нову ділянку'
   }
 })
 
@@ -131,7 +137,7 @@ const filteredList = computed(() => {
 
 const endpoint = computed(() => {
   switch (props.mode) {
-    case 'species': 
+    case 'species':
     case 'genus':
     case 'families':
     case 'tags':
@@ -142,13 +148,15 @@ const endpoint = computed(() => {
     case 'infrastructureType':
     case 'recommendations':
       return `/api/${props.mode}`
-    case 'plots': 
-      return `/api/${props.mode}?parkId=${props.parkId}`
+    case 'plots':
+      return `/api/plots?parkId=${props.parentId}`
+    case 'subplots':
+      return `/api/subplots?plotId=${props.parentId}`
   }
 })
 
 watch(() => props.preloadedOptions, loadData, { immediate: true })
-watch(() => props.type, loadData)
+watch(() => [props.type, props.parentId], loadData)
 
 async function loadData() {
   if (props.preloadedOptions?.length) {
@@ -185,6 +193,7 @@ function select(item) {
 }
 
 function openDropdown() {
+  if (props.disabled) return
   if (preventNextOpen.value) {
     preventNextOpen.value = false
     return

@@ -129,6 +129,8 @@ function initializeMarkerType(marker, type) {
     marker.green.green_state ||= null
     marker.green.green_state_note ||= null
     marker.green.species_id ||= null
+    marker.green.subplot_id ||= null
+    marker.green.subplot ||= {}
     if (type === 'tree') marker.green.tree ||= {}
     if (type === 'bush') marker.green.bush ||= {}
     if (type === 'hedge') marker.green.hedge ||= {}
@@ -172,10 +174,12 @@ const selectSpecies = (species) => {
   marker.value.green.species_id = species.id
   showModal.value.species = false
 }
-const selectPlot = (plot) => {
-  // species.edited = true
-  marker.value.green.plot = plot
-  marker.value.green.plot_id = plot.id
+const selectSubplot = (data) => {
+  const green = marker.value.green
+  green.subplot = data.subplot
+  green.subplot_id = data.subplot.id
+  green.plot = data.plot
+  green.plot_id = data.plot.id
   showModal.value.plot = false
 }
 const selectInfrastructureType = (infraType) => {
@@ -266,20 +270,36 @@ const selectHedgeRow = (row) => {
         />
       </Modal>
 
-      <SelectWithSearchAndAdd
-        mode="plots"
-        class="space-y-1"
-        v-model="marker.green.plot_id"
-        :startingItem="marker.green.plot"
-        :parkId="marker.park_id"
-        @show-modal="() => showModal.plot = true"
-      />
-      <FormError :errors="errors['green.plot_id']" />
+      <div class="space-y-1">
+        <SelectWithSearchAndAdd
+          mode="plots"
+          class="space-y-1"
+          v-model="marker.green.plot_id"
+          :startingItem="marker.green.plot"
+          :parentId="parkStore.selectedPark?.id"
+          @update:modelValue="() => {marker.green.subplot_id = null; marker.green.subplot = null}"
+          @show-modal="() => showModal.plot = true"
+        />
+      </div>
+
+      <div class="space-y-1">
+        <SelectWithSearchAndAdd
+          mode="subplots"
+          class="space-y-1"
+          v-model="marker.green.subplot_id"
+          :startingItem="marker.green.subplot"
+          :disabled="!marker.green?.plot_id"
+          :parentId="marker.green?.plot_id"
+          @show-modal="() => showModal.plot = true"
+        />
+        <FormError :errors="errors['green.subplot_id']" />
+      </div>
 
       <Modal :show="showModal.plot" maxWidth="2xl" @close="showModal.plot = false">
         <DictPlots
-          :parkId="marker.park_id"
-          @select="selectPlot"
+          :parkId="parkStore.selectedPark?.id"
+          :plotId="marker.green?.plot_id"
+          @select="selectSubplot"
         />
       </Modal>
 
@@ -301,22 +321,16 @@ const selectHedgeRow = (row) => {
         <FormError :errors="errors['green.tree.tilt_degree']" />
         <NumberSelect v-model="marker.green.tree.crown_condition_percent" :min="0" :max="100" label="Стан крони (%)" />
         <FormError :errors="errors['green.tree.crown_condition_percent']" />
-        <NumberSelect v-model="marker.green.tree.area" :min="0" :max="100" label="Площа" />
-        <FormError :errors="errors['green.tree.area']" />
       </div>
 
       <div v-if="marker.type === 'bush'" class="pt-2">
         <NumberSelect v-model="marker.green.bush.quantity" :min="0" :max="150" label="Кількість кущів" />
         <FormError :errors="errors['green.bush.quantity']" />
-        <NumberSelect v-model="marker.green.bush.area" :min="0" :max="100" label="Площа (ділянка)" />
-        <FormError :errors="errors['green.bush.area']" />
       </div>
 
       <div v-if="marker.type === 'hedge'" class="pt-2 space-y-2">
         <NumberSelect v-model="marker.green.hedge.length_m" :min="0" :max="150" label="Довжина (м)" />
         <FormError :errors="errors['green.hedge.length_m']" />
-        <NumberSelect v-model="marker.green.hedge.area" :min="0" :max="100" label="Площа (ділянка)" />
-        <FormError :errors="errors['green.hedge.area']" />
 
         <div class="space-y-1">
           <SelectWithSearchAndAdd
