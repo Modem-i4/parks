@@ -1,7 +1,7 @@
 <template>
   <section class="relative w-full overflow-hidden">
     <div
-      class="relative h-[60vh] md:h-[80vh] select-none"
+      class="relative h-[60vh] md:h-[80vh] min-h-[28em] select-none"
       @pointerdown="onDragStart"
       @pointermove="onDragMove"
       @pointerup="onDragEnd"
