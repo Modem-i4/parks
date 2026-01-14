@@ -13,17 +13,17 @@ class PlotSeeder extends Seeder
     {
         $data = include database_path('data/Plots.php');
 
-        foreach ($data as $parkSlug => $subplotsToPlots) {
+        foreach ($data as $parkSlug => $plotsToSubplots) {
             $park = Park::where('slug', $parkSlug)->firstOrFail();
 
-            foreach ($subplotsToPlots as $subplotName => $plotNames) {
-                foreach ($plotNames as $plotName) {
-                    $plot = Plot::create([
-                        'park_id' => $park->id,
-                        'name' => (string) $plotName,
-                    ]);
+            foreach ($plotsToSubplots as $plotName => $subplotNames) {
+                $plot = Plot::firstOrCreate([
+                    'park_id' => $park->id,
+                    'name' => (string) $plotName,
+                ]);
 
-                    Subplot::create([
+                foreach ($subplotNames as $subplotName) {
+                    Subplot::firstOrCreate([
                         'plot_id' => $plot->id,
                         'name' => (string) $subplotName,
                     ]);
