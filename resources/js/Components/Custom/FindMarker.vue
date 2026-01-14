@@ -1,6 +1,8 @@
 <template>
   <div class="p-4 space-y-4">
-    <h2 class="text-lg font-semibold text-center text-gray-700">🔎 Знайти маркер</h2>
+    <h2 class="text-lg font-semibold text-center text-gray-700">
+      🔍 {{ isMobile ? 'Пошук насадження' : 'Пошук насадження за номером'}}
+    </h2>
 
     <input
       v-model="search"

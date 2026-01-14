@@ -138,7 +138,7 @@ watch(() => parkStore.selectedMarker, (newVal) => {
           v-if="!parkStore.selectedMarkerLocked"
           @click="showModal.findMarker = true"
         >
-          🔍 Знайти маркер
+          🔍 {{ isMobile ? 'Пошук насадження' : 'Пошук насадження за номером'}}
         </BtnWhite>
         <BtnWhite class=" bg-white border px-3 py-1 rounded shadow" @click="showUserPosition">
           📍 Моя позиція
