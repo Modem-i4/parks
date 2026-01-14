@@ -243,7 +243,7 @@ async function updateMarkerBackgrounds(newId, oldId) {
   for (const { mapMarker, marker } of mapMarkersToUpdate) {
     const isSelected = marker.id === newId
     if (marker.green) {
-      const highlightClasses = ['scale-[3]', 'transition-transform']
+      const highlightClasses = ['scale-[2.3]', 'transition-transform']
       isSelected
         ? mapMarker.content.classList.add(...highlightClasses)
         : mapMarker.content.classList.remove(...highlightClasses)
