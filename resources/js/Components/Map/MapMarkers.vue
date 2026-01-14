@@ -7,6 +7,7 @@ import { useParkStore } from '@/Stores/useParkStore.js'
 import { CreateSimpleIcon, getColorByGreenState } from '@/Helpers/Maps/CreateSimpleIcon'
 import { zoom, isTweening } from '@/Helpers/Maps/MapHelper.js'
 import { CreateCustomPinIcon } from '@/Helpers/Maps/CreateCustomPinIcon'
+import { isMobile } from '@/Helpers/isMobileHelper'
 
 const parkStore = useParkStore()
 const mapMarkers = ref([])
@@ -46,8 +47,9 @@ function updateVisibleMarkersCount(bounds) {
 }
 
 function areMarkersLimited(currentZoom, lastVisibleMarkers) {
+  if(!isMobile) return false
   const thresholdZoom = currentZoom <= zoom.singlePark.threshold
-  const thresholdCount = lastVisibleMarkers > 125
+  const thresholdCount = lastVisibleMarkers > 200
   return thresholdZoom && thresholdCount
 }
 

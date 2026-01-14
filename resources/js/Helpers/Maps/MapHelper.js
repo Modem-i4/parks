@@ -53,7 +53,7 @@ export const zoom = {
     },
   },
   singlePark: {
-    threshold: 20.5 // disable green at
+    threshold: 11 // disable green at
   }
 }
 
