@@ -114,7 +114,7 @@ function pickerSaved(newImages) {
       @onIconClick="() => { if(authStore.can.upload) startIconChange() }"
     >
       <template #right>
-        <SecondaryButton class="ml-auto hidden md:block" @click="parkStore.selectedMarker = null">< Назад</SecondaryButton>
+        <SecondaryButton class="ml-auto hidden md:block" @click="parkStore.selectedMarker = null">← Назад</SecondaryButton>
       </template>
     </PanelHeader>
 

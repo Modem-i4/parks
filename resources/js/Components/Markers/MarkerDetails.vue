@@ -9,10 +9,12 @@ import PanelHeader from '../Custom/PanelHeader.vue';
 import GreenStateIndicator from './View/GreenStateIndicator.vue';
 import MediaPickerModal from '../Media/MediaPickerModal.vue';
 import { getMarkerTitle } from '@/Helpers/Maps/GetMarkerTitle';
+import { isMobile } from '@/Helpers/isMobileHelper'
 
 import Modal from '@/Components/Default/Modal.vue'
 import GroupAssign from '@/Components/WorkHistory/GroupAssign.vue'
 import { useAuthStore } from '@/Stores/useAuthStore'
+import SecondaryButton from '@/Components/Default/SecondaryButton.vue'
 
 const parkStore = useParkStore()
 const marker = ref(null)
@@ -30,10 +32,6 @@ const viewRef = ref(null)
 const showModal = ref({
   groupAssign: false
 })
-
-function back() {
-  parkStore.selectedMarker = null
-}
 
 watch(
   () => parkStore.selectedMarker,
@@ -125,7 +123,11 @@ function deleteMarker() {
 
 <template>
   <div class="p-4 pt-1 md:pt-4 overflow-x-hidden" v-if="marker">
-    <button @click="back" class="text-blue-500 mb-2 md:hidden" v-if="!parkStore.selectedMarkerLocked">← Назад</button>
+    <SecondaryButton 
+      v-if="!parkStore.selectedMarkerLocked"
+      @click="parkStore.selectedMarker = null"
+      class="mt-2 w-full flex justify-center"
+      >← Фільтри</SecondaryButton>
     <PanelHeader
       :title="title"
       :subtitle="description" 
@@ -134,8 +136,8 @@ function deleteMarker() {
       :editable="authStore.can.edit && !editing"
       >
       <template #right>
-        <GreenStateIndicator :green="marker.green" />
-      </template>
+          <GreenStateIndicator :green="marker.green" />
+        </template>
     </PanelHeader>
 
     <template v-if="!editing">

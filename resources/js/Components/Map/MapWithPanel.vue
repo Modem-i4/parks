@@ -109,7 +109,7 @@ watch(() => parkStore.selectedMarker, (newVal) => {
           class="ml-auto"
           @click="setParkView(parkStore, 'parks')"
         >
-          < ДО ПАРКІВ
+          ← ДО ПАРКІВ
         </BtnWhite>
       </div>
       

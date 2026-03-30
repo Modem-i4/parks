@@ -108,7 +108,7 @@ onMounted(() => {
       :title="parkStore.selectedPark.name" :subtitle="`${parkStore.selectedPark.area} гектарів`" :icon="parkStore.selectedPark.icon?.file_path"
     >
       <template #right>
-        <SecondaryButton class="ml-auto" @click="setParkView(parkStore, 'parks')">< Назад</SecondaryButton>
+        <SecondaryButton class="ml-auto" @click="setParkView(parkStore, 'parks')">← парки</SecondaryButton>
       </template>
     </PanelHeader>
     <div class="flex items-center justify-between border-b px-5 py-3 border-gray-200">
