@@ -3,8 +3,69 @@ import { isTweening, tweenCameraTo } from "./MapHelper"
 let marker = null
 let watcherId = null
 let el = null
+let lastKnownPosition = null
+let lastKnownHeading = null
+let lastKnownAt = 0
 
 export function useUserLocationMarker(mapRef, customMsgRef) {
+  const setCustomMessage = (message) => {
+    if (customMsgRef) customMsgRef.value = message
+  }
+
+  const rememberPosition = (position, heading = null) => {
+    lastKnownPosition = position
+    lastKnownHeading = heading
+    lastKnownAt = Date.now()
+  }
+
+  const moveMarkerToPosition = (pos, heading = null) => {
+    const map = mapRef.value
+    if (!map) return false
+
+    const hasHeading = heading != null && !isNaN(heading)
+
+    if (!marker) {
+      createSharedElement()
+      if (hasHeading) {
+        setAsArrow(heading)
+      } else {
+        setAsCircle()
+      }
+      triggerPulse()
+
+      marker = new google.maps.marker.AdvancedMarkerElement({
+        map,
+        position: pos,
+        content: el,
+        zIndex: -1,
+      })
+    } else {
+      marker.position = pos
+
+      const isCurrentlyArrow = !!el.querySelector('svg')
+
+      if (hasHeading && !isCurrentlyArrow) {
+        setAsArrow(heading)
+      } else if (!hasHeading && isCurrentlyArrow) {
+        setAsCircle()
+      } else if (hasHeading && isCurrentlyArrow) {
+        el.style.rotate = `${heading}deg`
+      }
+
+      if (!hasHeading) el.style.rotate = '0deg'
+      triggerPulse()
+    }
+
+    const bounds = map.getRestriction()?.latLngBounds
+    if (bounds && !bounds.contains(pos)) {
+      setCustomMessage('Ваша позиція не в межах мапи')
+      return false
+    }
+
+    tweenCameraTo(map, pos)
+    return true
+  }
+
   const createSharedElement = () => {
     el = document.createElement('div')
     Object.assign(el.style, {
@@ -67,55 +128,16 @@ export function useUserLocationMarker(mapRef, customMsgRef) {
 
   const handleGeoError = (err) => {
     if (!err) return
-    if (err.code === 1) customMsgRef.value = 'Доступ до геолокації заборонений'
-    else if (err.code === 2) customMsgRef.value = 'Неможливо визначити позицію'
-    else if (err.code === 3) customMsgRef.value = 'Не вдалось вчасно визначити геопозицію'
-    else customMsgRef.value = 'Помилка геолокації'
+    if (err.code === 1) setCustomMessage('Доступ до геолокації заборонений')
+    else if (err.code === 2) setCustomMessage('Неможливо визначити позицію')
+    else if (err.code === 3) setCustomMessage('Не вдалось вчасно визначити геопозицію')
+    else setCustomMessage('Помилка геолокації')
   }
 
   const updatePosition = ({ coords }) => {
-    const map = mapRef.value
-    if (!map) return
-
     const pos = { lat: coords.latitude, lng: coords.longitude }
-    const heading = coords.heading
-    const hasHeading = heading != null && !isNaN(heading)
-
-    if (!marker) {
-      createSharedElement()
-      if (hasHeading) {
-        setAsArrow(heading)
-      } else {
-        setAsCircle()
-      }
-      triggerPulse()
-
-      marker = new google.maps.marker.AdvancedMarkerElement({
-        map,
-        position: pos,
-        content: el,
-        zIndex: -1,
-      })
-    } else {
-      marker.position = pos
-
-      const isCurrentlyArrow = !!el.querySelector('svg')
-
-      if (hasHeading && !isCurrentlyArrow) {
-        setAsArrow(heading)
-      } else if (!hasHeading && isCurrentlyArrow) {
-        setAsCircle()
-      } else if (hasHeading && isCurrentlyArrow) {
-        el.style.rotate = `${heading}deg`
-      }
-
-      if (!hasHeading) el.style.rotate = '0deg'
-      triggerPulse()
-    }
-    const bounds = map.getRestriction().latLngBounds
-    if(!bounds) return
-    if(bounds.contains(pos)) tweenCameraTo(map, pos)
-    else customMsgRef.value = 'Ваша позиція не в межах мапи'
+    rememberPosition(pos, coords.heading)
+    moveMarkerToPosition(pos, coords.heading)
   }
 
   const showUserPosition = () => {
@@ -124,29 +146,50 @@ export function useUserLocationMarker(mapRef, customMsgRef) {
 
     navigator.geolocation.getCurrentPosition(updatePosition, handleGeoError, {
       enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 10000,
     })
-
-    if (!watcherId) {
-      watcherId = navigator.geolocation.watchPosition(updatePosition, handleGeoError, {
-        enableHighAccuracy: true,
-      })
-    }
   }
 
-  const getUserPosition = () => {
-    return new Promise((resolve, reject) => {
+  const getUserPosition = (options = {}) => {
+    const {
+      enableHighAccuracy = true,
+      timeout = 5000,
+      maximumAge = 0,
+    } = options
+
+    return new Promise((resolve) => {
       if (!navigator.geolocation) {
-        customMsgRef.value = 'Геолокація не підтримується'
-        reject(new Error('Geolocation не підтримується'))
+        setCustomMessage('Геолокація не підтримується')
+        resolve(null)
         return
       }
 
       navigator.geolocation.getCurrentPosition(
-        ({ coords }) => resolve({ lat: coords.latitude, lng: coords.longitude }),
+        ({ coords }) => {
+          const position = { lat: coords.latitude, lng: coords.longitude }
+          rememberPosition(position, coords.heading)
+          resolve(position)
+        },
         (err) => { handleGeoError(err); resolve(null) }, 
-        { enableHighAccuracy: true }
+        { enableHighAccuracy, timeout, maximumAge }
       )
     })
+  }
+
+  const showKnownPosition = (position, heading = null) => {
+    if (!position || typeof position.lat !== 'number' || typeof position.lng !== 'number') return false
+    rememberPosition(position, heading)
+    return moveMarkerToPosition(position, heading)
+  }
+
+  const getLastKnownPosition = (maxAge = 15000) => {
+    if (!lastKnownPosition) return null
+    if (Date.now() - lastKnownAt > maxAge) return null
+    return {
+      position: lastKnownPosition,
+      heading: lastKnownHeading
+    }
   }
 
   const stop = () => {
@@ -163,7 +206,9 @@ export function useUserLocationMarker(mapRef, customMsgRef) {
 
   return {
     showUserPosition,
+    showKnownPosition,
     getUserPosition,
+    getLastKnownPosition,
     triggerPulse,
     stop,
   }

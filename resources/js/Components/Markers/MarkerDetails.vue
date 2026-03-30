@@ -38,7 +38,7 @@ function back() {
 watch(
   () => parkStore.selectedMarker,
   update,
-  { immediate: true, deep: true }
+  { immediate: true }
 )
 
 async function update(newVal) {

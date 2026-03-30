@@ -1,28 +1,25 @@
 import { useUserLocationMarker } from '@/Helpers/Maps/ShowGeolocationHelper'
 import { toRef } from 'vue'
-import { distanceInMeters } from '../Maps/MapHelper'
 
 let newMarker
-let googleMapMarker = null
 
 export function useAddMarkerHelper(parkStore) {
-  const { getUserPosition, showUserPosition, triggerPulse } = useUserLocationMarker(toRef(parkStore, 'map'))
+  const { getUserPosition, showKnownPosition, getLastKnownPosition } = useUserLocationMarker(
+    toRef(parkStore, 'map'),
+    toRef(parkStore, 'mapCustomMessage')
+  )
 
-  async function addMarker() {
+  function addMarker() {
     const map = parkStore.map
-    showUserPosition()
-    let position = await getUserPosition()
-    const screenCenter = map.getCenter().toJSON()
-    if (!map) return 
-    if(!position || distanceInMeters(position, screenCenter) > 500)
-      position = screenCenter
+    if (!map) return
 
-    triggerPulse()
+    const screenCenter = map.getCenter()?.toJSON()
+    if (!screenCenter) return
 
     newMarker = {
       id: Date.now(),
       name: 'Новий маркер',
-      coordinates: [position.lng, position.lat],
+      coordinates: [screenCenter.lng, screenCenter.lat],
       type: 'custom',
       green: null,
       infrastructure: null,
@@ -31,14 +28,43 @@ export function useAddMarkerHelper(parkStore) {
     }
 
     parkStore.selectedMarker = newMarker
+    const cachedGeo = getLastKnownPosition()
+    if (cachedGeo) {
+      applyDraftPositionIfStillActive(newMarker.id, cachedGeo.position, cachedGeo.heading)
+    }
+    void moveDraftMarkerToUserPosition(newMarker)
+  }
+
+  async function moveDraftMarkerToUserPosition(markerDraft) {
+    const position = await getUserPosition({
+      enableHighAccuracy: true,
+      timeout: 2000,
+      maximumAge: 15000,
+    })
+
+    if (!position) return
+
+    applyDraftPositionIfStillActive(markerDraft.id, position)
+  }
+
+  function applyDraftPositionIfStillActive(markerId, position, heading = null) {
+    const map = parkStore.map
+    const activeMarker = parkStore.selectedMarker
+    if (!map || !activeMarker?.isDraft || activeMarker.id !== markerId) return
+
+    const bounds = map.getRestriction()?.latLngBounds
+    if (bounds && !bounds.contains(position)) return
+
+    parkStore.selectedMarker = {
+      ...activeMarker,
+      coordinates: [position.lng, position.lat],
+    }
+
+    showKnownPosition(position, heading)
   }
 
   function addMarkerFinished() {
     parkStore.selectedMarker = null
-    if (googleMapMarker) {
-      googleMapMarker.setMap(null)
-      googleMapMarker = null
-    }
   }
   return { addMarker, addMarkerFinished }
 }

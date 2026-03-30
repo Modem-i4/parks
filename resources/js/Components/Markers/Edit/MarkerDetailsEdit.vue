@@ -25,6 +25,7 @@ const isAddingNew = ref(!!props.marker.isDraft)
 const googleMapMarker = ref(null)
 const originalPosition = ref(null)
 const destroyDraggableMarker = ref(null)
+const hasUserMovedDraftMarker = ref(false)
 
 const showModal = ref({
   species: false,
@@ -48,6 +49,7 @@ onMounted(async () => {
     position: { ...originalPosition.value },
     drawLineFrom: originalPosition.value,
     onDrag: (latLng) => {
+      hasUserMovedDraftMarker.value = true
       marker.value.coordinates = [latLng.lng(), latLng.lat()]
     }
   })
@@ -59,6 +61,24 @@ watch(() => marker.value.type, (newType) => {
   initializeMarkerType(marker.value, newType)
 }, { immediate: true })
 
+watch(
+  () => props.marker,
+  (newMarker) => {
+    if (!newMarker || !isAddingNew.value) return
+    if (hasUserMovedDraftMarker.value) return
+
+    marker.value = JSON.parse(JSON.stringify(newMarker))
+
+    if (googleMapMarker.value && Array.isArray(newMarker.coordinates)) {
+      googleMapMarker.value.position = {
+        lng: newMarker.coordinates[0],
+        lat: newMarker.coordinates[1],
+      }
+    }
+  },
+  { deep: true }
+)
+
 onBeforeUnmount(() => {
   destroyDraggableMarker.value?.()
 })
@@ -69,15 +89,14 @@ const errors = ref({})
 function getByPath(obj, path) {
   return path.split('.').reduce((acc, k) => acc?.[k], obj)
 }
-function snapshot(obj) {
-  return JSON.parse(JSON.stringify(obj))
-}
 watch(
-  () => snapshot(marker.value),
-  (newVal, oldVal) => {
-    const errKeys = Object.keys(errors.value || {})
-    for (const key of errKeys) {
-      if (getByPath(oldVal, key) !== getByPath(newVal, key)) {
+  () => Object.keys(errors.value || {}).map(key => [key, getByPath(marker.value, key)]),
+  (newEntries, oldEntries = []) => {
+    for (let index = 0; index < newEntries.length; index += 1) {
+      const [key, value] = newEntries[index]
+      const previousValue = oldEntries[index]?.[1]
+
+      if (value !== previousValue) {
         delete errors.value[key]
       }
     }
