@@ -85,7 +85,7 @@ class ParkController extends Controller
             $park->update($request->validate([
                 'name' => ['sometimes','required','string'],
                 'address' => ['sometimes','required','string'],
-                'area' => ['sometimes','required','float'],
+                'area' => ['sometimes','required','numeric'],
                 'description' => ['sometimes','required','string'],
                 'operator' => ['sometimes','required','string'],
             ]));

@@ -42,6 +42,7 @@ class Park extends Model
         'slug',
         'address',
         'area',
+        'description',
         'geo_json',
         'operator'
     ];
