@@ -13,6 +13,7 @@ import { useAuthStore } from '@/Stores/useAuthStore'
 import FormError from '@/Components/Custom/FormError.vue'
 import Tooltip from '../Custom/Tooltip.vue'
 import { copyToClipboard, copyCompleted } from '@/Helpers/CopyToClipboard'
+import { isMobile } from '@/Helpers/isMobileHelper'
 
 const parkStore = useParkStore()
 
