@@ -18,6 +18,7 @@ class TagsSeeder extends Seeder
             ['name' => 'Лампи та дроти', 'public' => true, 'type' => 'tree'],
             ['name' => 'Пошкодження кори', 'public' => true, 'type' => 'tree'],
             ['name' => 'Розвилки', 'public' => true, 'type' => 'tree'],
+            ['name' => 'Зламана вершина', 'public' => true, 'type' => 'tree'],
         ];
 
         $this->seedTags($standardTags);

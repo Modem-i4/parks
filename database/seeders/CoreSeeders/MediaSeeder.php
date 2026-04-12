@@ -13,7 +13,7 @@ class MediaSeeder extends Seeder
             [
                 'model_type' => 'App\Models\Park',
                 'model_id' => '1',
-                'file_path' => '/img/icons/hotkevych_park.png',
+                'file_path' => '/img/icons/shevchenko_park.png',
                 'description' => 'default description',
                 'order' => '0',
                 'type' => 'icon'
@@ -29,7 +29,7 @@ class MediaSeeder extends Seeder
             [
                 'model_type' => 'App\Models\Park',
                 'model_id' => '3',
-                'file_path' => '/img/icons/shevchenko_park.png',
+                'file_path' => '/img/icons/hotkevych_park.png',
                 'description' => 'default description',
                 'order' => '0',
                 'type' => 'icon'
@@ -84,6 +84,32 @@ class MediaSeeder extends Seeder
                 'order' => '0',
                 'type' => 'icon'
             ],
+
+            
+            [
+                'model_type' => 'App\Models\Park',
+                'model_id' => '1',
+                'file_path' => '/img/parks/shevchenko_park.webp',
+                'description' => 'default description',
+                'order' => '1',
+                'type' => 'image'
+            ],
+            [
+                'model_type' => 'App\Models\Park',
+                'model_id' => '2',
+                'file_path' => '/img/parks/liberators_park.webp',
+                'description' => 'default description',
+                'order' => '0',
+                'type' => 'image'
+            ],
+            [
+                'model_type' => 'App\Models\Park',
+                'model_id' => '3',
+                'file_path' => '/img/parks/hotkevych_park.webp',
+                'description' => 'default description',
+                'order' => '0',
+                'type' => 'image'
+            ]
         ];
 
         $this->seedMedia($standardMedia);

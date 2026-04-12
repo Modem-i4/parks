@@ -20,7 +20,7 @@ return [
           'img' => 'import1/mol/mol-1.jpg'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -38,7 +38,7 @@ return [
           'img' => 'import1/mol/mol-2.jpg'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -56,7 +56,7 @@ return [
           'img' => 'import1/mol/mol-3.jpg'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -74,7 +74,7 @@ return [
           'img' => 'import1/mol/mol-4.jpg'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -107,7 +107,7 @@ return [
           'img' => 'import1/mol/mol-129.jpg'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -125,7 +125,7 @@ return [
           'img' => 'import1/mol/mol-132.jpg'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -143,7 +143,7 @@ return [
           'img' => 'import1/mol/mol-133.jpg'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -161,7 +161,7 @@ return [
           'img' => 'import1/mol/mol-134.jpg'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -419,7 +419,7 @@ return [
           'img' => 'import1/mol/mol-431.jpg'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -437,7 +437,7 @@ return [
           'img' => 'import1/mol/mol-432.jpg'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -455,7 +455,7 @@ return [
           'img' => 'import1/mol/mol-436.jpg'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -488,7 +488,7 @@ return [
           'img' => 'import1/mol/mol-818.jpg'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -716,7 +716,7 @@ return [
           'img' => 'import1/mol/mol-1430.jpg'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -734,7 +734,7 @@ return [
           'img' => 'import1/mol/mol-1547.jpg'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -752,7 +752,7 @@ return [
           'img' => 'import1/mol/mol-1548.jpg'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -785,7 +785,7 @@ return [
           'img' => 'import1/mol/mol-1607.jpg'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -803,7 +803,7 @@ return [
           'img' => 'import1/mol/mol-1609.jpg'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -821,7 +821,7 @@ return [
           'img' => 'import1/mol/mol-1655.jpg'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -974,7 +974,7 @@ return [
           'img' => 'import1/mol/mol-1669.jpg'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -1307,7 +1307,7 @@ return [
           'hedge_shape' => 'неформовані'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -1338,7 +1338,7 @@ return [
           'hedge_shape' => 'неформовані'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ]
     ],
@@ -1384,7 +1384,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Морозобоїни'
@@ -1434,7 +1434,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -1457,7 +1457,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -1520,7 +1520,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -1544,7 +1544,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла',
@@ -1572,7 +1572,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -1658,7 +1658,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -1681,7 +1681,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -1725,7 +1725,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -1822,7 +1822,8 @@ return [
           'subplot' => '4',
           'species' => 'Ulmus laevis Pall.',
           'planting_date' => '2005-01-01',
-          'img' => 'import1/mol/mol-27.jpg'
+          'img' => 'import1/mol/mol-27.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => 8.0,
@@ -1831,7 +1832,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -1874,7 +1875,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -1898,7 +1899,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -1915,7 +1916,8 @@ return [
           'subplot' => '4',
           'species' => 'Fraxinus excelsior L.',
           'planting_date' => '2000-01-01',
-          'img' => 'import1/mol/mol-31.jpg'
+          'img' => 'import1/mol/mol-31.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => 13.0,
@@ -1924,7 +1926,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -1938,7 +1940,8 @@ return [
           'subplot' => '4',
           'species' => 'Fraxinus excelsior L.',
           'planting_date' => '2000-01-01',
-          'img' => 'import1/mol/mol-32.jpg'
+          'img' => 'import1/mol/mol-32.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => 13.0,
@@ -1947,7 +1950,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -1970,7 +1973,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -1984,7 +1987,8 @@ return [
           'subplot' => '4',
           'species' => 'Fraxinus excelsior L.',
           'planting_date' => '2005-01-01',
-          'img' => 'import1/mol/mol-34.jpg'
+          'img' => 'import1/mol/mol-34.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => 10.0,
@@ -1993,7 +1997,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -2017,7 +2021,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Дупла'
@@ -2044,7 +2048,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Дупла'
@@ -2070,7 +2074,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -2133,7 +2137,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -2176,7 +2180,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -2199,7 +2203,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -2222,7 +2226,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -2245,7 +2249,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -2269,7 +2273,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Морозобоїни'
@@ -2286,7 +2290,8 @@ return [
           'subplot' => '4',
           'species' => 'Acer platanoides L.',
           'planting_date' => '1990-01-01',
-          'img' => 'import1/mol/mol-47.jpg'
+          'img' => 'import1/mol/mol-47.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 14.0,
@@ -2295,7 +2300,7 @@ return [
           'crown_condition_percent' => 20
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -2338,7 +2343,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -2382,7 +2387,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -2520,7 +2525,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -2588,7 +2593,7 @@ return [
           'crown_condition_percent' => 100
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Трухлявість',
@@ -2617,7 +2622,7 @@ return [
           'crown_condition_percent' => 75
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Трухлявість',
@@ -2711,7 +2716,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -3045,7 +3050,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -3152,7 +3157,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -3199,7 +3204,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -3333,7 +3338,8 @@ return [
           'subplot' => '2',
           'species' => 'Populus nigra L.',
           'planting_date' => '1925-01-01',
-          'img' => 'import1/mol/mol-95.jpg'
+          'img' => 'import1/mol/mol-95.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 33.0,
@@ -3342,7 +3348,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -3356,7 +3362,8 @@ return [
           'subplot' => '2',
           'species' => 'Populus nigra L.',
           'planting_date' => '1940-01-01',
-          'img' => 'import1/mol/mol-96.jpg'
+          'img' => 'import1/mol/mol-96.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 31.0,
@@ -3365,7 +3372,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -3388,7 +3395,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -3422,7 +3429,8 @@ return [
           'subplot' => '2',
           'species' => 'Quercus robur L.',
           'planting_date' => '1980-01-01',
-          'img' => 'import1/mol/mol-99.jpg'
+          'img' => 'import1/mol/mol-99.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 20.0,
@@ -3431,7 +3439,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -3454,7 +3462,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -3480,7 +3488,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -3506,7 +3514,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -3532,7 +3540,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -3558,7 +3566,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -3584,7 +3592,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -3610,7 +3618,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -3636,7 +3644,7 @@ return [
           'crown_condition_percent' => 20
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -3659,7 +3667,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -3683,7 +3691,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Морозобоїни'
@@ -3749,7 +3757,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -3772,7 +3780,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -3795,7 +3803,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -3909,7 +3917,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -3932,7 +3940,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -3955,7 +3963,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -4018,7 +4026,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -4045,7 +4053,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Трухлявість',
@@ -4072,7 +4080,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -4095,7 +4103,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -4121,7 +4129,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -4144,7 +4152,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -4167,7 +4175,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -4230,7 +4238,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -4358,7 +4366,7 @@ return [
           'crown_condition_percent' => 20
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Трухлявість',
@@ -4411,7 +4419,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -4665,7 +4673,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -4757,7 +4765,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -4771,7 +4779,8 @@ return [
           'subplot' => '3',
           'species' => 'Quercus robur L.',
           'planting_date' => '2000-01-01',
-          'img' => 'import1/mol/mol-163.jpg'
+          'img' => 'import1/mol/mol-163.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 14.0,
@@ -4780,7 +4789,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -4803,7 +4812,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -4826,7 +4835,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -5083,7 +5092,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Дупла',
@@ -5156,7 +5165,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла'
@@ -5767,7 +5776,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Розвилки'
@@ -6288,7 +6297,7 @@ return [
           'crown_condition_percent' => 20
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -6555,7 +6564,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -6602,7 +6611,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -6625,7 +6634,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -7800,7 +7809,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -7843,7 +7852,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -7946,7 +7955,7 @@ return [
           'crown_condition_percent' => 20
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -8133,7 +8142,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'обстеження'
+          'Обстеження'
         ]
       ],
       [
@@ -8156,7 +8165,7 @@ return [
           'crown_condition_percent' => 50
         ],
         'recommendations' => [
-          'обстеження'
+          'Обстеження'
         ]
       ],
       [
@@ -8180,7 +8189,7 @@ return [
           'crown_condition_percent' => 50
         ],
         'recommendations' => [
-          'обстеження'
+          'Обстеження'
         ],
         'tags' => [
           'Цвяхи'
@@ -8206,7 +8215,7 @@ return [
           'crown_condition_percent' => 50
         ],
         'recommendations' => [
-          'обстеження'
+          'Обстеження'
         ]
       ],
       [
@@ -8229,7 +8238,7 @@ return [
           'crown_condition_percent' => 60
         ],
         'recommendations' => [
-          'обстеження'
+          'Обстеження'
         ]
       ],
       [
@@ -8427,7 +8436,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'обстеження'
+          'Обстеження'
         ],
         'tags' => [
           'Пошкодження кори'
@@ -8454,7 +8463,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'обстеження'
+          'Обстеження'
         ],
         'tags' => [
           'Пошкодження кори'
@@ -8471,7 +8480,8 @@ return [
           'subplot' => '1',
           'species' => 'Pinus sylvestris L.',
           'planting_date' => '2005-01-01',
-          'img' => 'import1/mol/mol-356.jpg'
+          'img' => 'import1/mol/mol-356.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => 10.0,
@@ -8480,7 +8490,7 @@ return [
           'crown_condition_percent' => 95
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -8523,7 +8533,7 @@ return [
           'crown_condition_percent' => 50
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -8546,7 +8556,7 @@ return [
           'crown_condition_percent' => 70
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -8569,7 +8579,7 @@ return [
           'crown_condition_percent' => 30
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -8583,7 +8593,8 @@ return [
           'subplot' => '1',
           'species' => 'Quercus robur L.',
           'planting_date' => '2010-01-01',
-          'img' => 'import1/mol/mol-361.jpg'
+          'img' => 'import1/mol/mol-361.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => 10.0,
@@ -8592,7 +8603,7 @@ return [
           'crown_condition_percent' => 100
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -8666,7 +8677,8 @@ return [
           'subplot' => '1',
           'species' => 'Populus nigra L.',
           'planting_date' => '1955-01-01',
-          'img' => 'import1/mol/mol-365.jpg'
+          'img' => 'import1/mol/mol-365.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 30.0,
@@ -8675,7 +8687,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -8722,7 +8734,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -8745,7 +8757,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -8768,7 +8780,7 @@ return [
           'crown_condition_percent' => 15
         ],
         'recommendations' => [
-          'обстеження'
+          'Обстеження'
         ]
       ],
       [
@@ -8792,7 +8804,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Морозобоїни'
@@ -8859,7 +8871,7 @@ return [
           'crown_condition_percent' => 25
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла',
@@ -8926,7 +8938,7 @@ return [
           'crown_condition_percent' => 30
         ],
         'recommendations' => [
-          'обстеження'
+          'Обстеження'
         ]
       ],
       [
@@ -8989,7 +9001,7 @@ return [
           'crown_condition_percent' => 40
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -9012,7 +9024,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -9035,7 +9047,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -9049,7 +9061,8 @@ return [
           'subplot' => '1',
           'species' => 'Quercus robur L.',
           'planting_date' => '2020-01-01',
-          'img' => 'import1/mol/mol-382.jpg'
+          'img' => 'import1/mol/mol-382.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => 2.0,
@@ -9058,7 +9071,7 @@ return [
           'crown_condition_percent' => 100
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -9081,7 +9094,7 @@ return [
           'crown_condition_percent' => 60
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -9148,7 +9161,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -9192,7 +9205,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'обстеження'
+          'Обстеження'
         ],
         'tags' => [
           'Трухлявість'
@@ -9218,7 +9231,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -9309,7 +9322,7 @@ return [
           'crown_condition_percent' => 60
         ],
         'recommendations' => [
-          'обстеження'
+          'Обстеження'
         ]
       ],
       [
@@ -9392,7 +9405,7 @@ return [
           'crown_condition_percent' => 30
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -9456,7 +9469,7 @@ return [
           'crown_condition_percent' => 30
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -9667,7 +9680,7 @@ return [
           'crown_condition_percent' => 20
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -9770,7 +9783,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -9968,7 +9981,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -9991,7 +10004,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -10115,7 +10128,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла'
@@ -10381,7 +10394,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -10405,7 +10418,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Морозобоїни',
@@ -10473,7 +10486,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Морозобоїни',
@@ -10500,7 +10513,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -10526,7 +10539,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -10552,7 +10565,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -10578,7 +10591,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -10605,7 +10618,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Морозобоїни',
@@ -10692,7 +10705,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -10738,7 +10751,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -10761,7 +10774,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -10829,7 +10842,7 @@ return [
           'crown_condition_percent' => 20
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ],
         'tags' => [
           'Дупла',
@@ -10848,7 +10861,8 @@ return [
           'subplot' => '4',
           'species' => 'Populus nigra L.',
           'planting_date' => '1875-01-01',
-          'img' => 'import1/mol/mol-468.jpg'
+          'img' => 'import1/mol/mol-468.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 31.0,
@@ -10857,7 +10871,7 @@ return [
           'crown_condition_percent' => 30
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -10940,7 +10954,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -10983,7 +10997,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -11047,7 +11061,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла',
@@ -11312,7 +11326,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'обстеження'
+          'Обстеження'
         ],
         'tags' => [
           'Трухлявість',
@@ -11817,7 +11831,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Морозобоїни',
@@ -11844,7 +11858,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -11871,7 +11885,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла',
@@ -11899,7 +11913,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла',
@@ -11926,7 +11940,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -11952,7 +11966,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -11978,7 +11992,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -12005,7 +12019,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла',
@@ -12032,7 +12046,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -12058,7 +12072,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -12084,7 +12098,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -12110,7 +12124,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -12240,7 +12254,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -12303,7 +12317,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -12386,7 +12400,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -12430,7 +12444,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Морозобоїни'
@@ -12456,7 +12470,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -12479,7 +12493,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -12502,7 +12516,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -12525,7 +12539,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -12549,7 +12563,7 @@ return [
           'crown_condition_percent' => 45
         ],
         'recommendations' => [
-          'обстеження'
+          'Обстеження'
         ],
         'tags' => [
           'Морозобоїни'
@@ -12575,7 +12589,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -12598,7 +12612,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -12621,7 +12635,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -12644,7 +12658,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -12667,7 +12681,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -12690,7 +12704,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -12713,7 +12727,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -12736,7 +12750,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -13117,7 +13131,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Морозобоїни'
@@ -13144,7 +13158,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Морозобоїни'
@@ -13360,7 +13374,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла',
@@ -13458,7 +13472,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Цвяхи'
@@ -13616,7 +13630,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -13642,7 +13656,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -13665,7 +13679,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -13688,7 +13702,7 @@ return [
           'crown_condition_percent' => 15
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -13711,7 +13725,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -13734,7 +13748,7 @@ return [
           'crown_condition_percent' => 15
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -13757,7 +13771,7 @@ return [
           'crown_condition_percent' => 15
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -14107,7 +14121,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -14153,7 +14167,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -14176,7 +14190,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -14523,7 +14537,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -14546,7 +14560,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -14589,7 +14603,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -14632,7 +14646,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -14844,7 +14858,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -14867,7 +14881,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -14890,7 +14904,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -14913,7 +14927,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -14936,7 +14950,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -15019,7 +15033,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -15062,7 +15076,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -15085,7 +15099,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -15108,7 +15122,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -15151,7 +15165,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -15174,7 +15188,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -15197,7 +15211,7 @@ return [
           'crown_condition_percent' => 15
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -15585,7 +15599,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Морозобоїни'
@@ -15771,7 +15785,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -15794,7 +15808,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -15962,7 +15976,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -16025,7 +16039,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -16088,7 +16102,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -16111,7 +16125,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -16134,7 +16148,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -16157,7 +16171,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -16180,7 +16194,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -16263,7 +16277,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -17626,7 +17640,7 @@ return [
           'crown_condition_percent' => 30
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -18221,7 +18235,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -18264,7 +18278,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -19003,7 +19017,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -19106,7 +19120,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -19129,7 +19143,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -19252,7 +19266,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -19696,7 +19710,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -19787,7 +19801,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Цвяхи',
@@ -19815,7 +19829,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Цвяхи',
@@ -19843,7 +19857,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Цвяхи',
@@ -19891,7 +19905,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти',
@@ -19938,7 +19952,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -19964,7 +19978,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -20477,7 +20491,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Дупла',
@@ -20974,7 +20988,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ],
         'tags' => [
           'Морозобоїни'
@@ -21178,7 +21192,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -21483,7 +21497,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ],
         'tags' => [
           'Морозобоїни',
@@ -21598,7 +21612,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -21612,7 +21626,8 @@ return [
           'subplot' => '6',
           'species' => 'Populus nigra L.',
           'planting_date' => '1925-01-01',
-          'img' => 'import1/mol/mol-979.jpg'
+          'img' => 'import1/mol/mol-979.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 38.0,
@@ -21621,7 +21636,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -21635,7 +21650,8 @@ return [
           'subplot' => '6',
           'species' => 'Populus nigra L.',
           'planting_date' => '1935-01-01',
-          'img' => 'import1/mol/mol-980.jpg'
+          'img' => 'import1/mol/mol-980.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 37.0,
@@ -21644,7 +21660,7 @@ return [
           'crown_condition_percent' => 15
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -21658,7 +21674,8 @@ return [
           'subplot' => '6',
           'species' => 'Populus nigra L.',
           'planting_date' => '1925-01-01',
-          'img' => 'import1/mol/mol-981.jpg'
+          'img' => 'import1/mol/mol-981.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 37.0,
@@ -21667,7 +21684,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -21681,7 +21698,8 @@ return [
           'subplot' => '6',
           'species' => 'Populus nigra L.',
           'planting_date' => '1925-01-01',
-          'img' => 'import1/mol/mol-982.jpg'
+          'img' => 'import1/mol/mol-982.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 37.0,
@@ -21690,7 +21708,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -21704,7 +21722,8 @@ return [
           'subplot' => '6',
           'species' => 'Populus nigra L.',
           'planting_date' => '2015-01-01',
-          'img' => 'import1/mol/mol-983.jpg'
+          'img' => 'import1/mol/mol-983.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 36.0,
@@ -21713,7 +21732,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -21727,7 +21746,8 @@ return [
           'subplot' => '6',
           'species' => 'Populus nigra L.',
           'planting_date' => '1925-01-01',
-          'img' => 'import1/mol/mol-984.jpg'
+          'img' => 'import1/mol/mol-984.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 38.0,
@@ -21736,7 +21756,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -21750,7 +21770,7 @@ return [
           'subplot' => '6',
           'species' => 'Abies alba Mill.',
           'planting_date' => '2015-01-01',
-          'green_state_note' => 'підживлення',
+          'green_state_note' => 'Підживлення',
           'green_state' => 'bad',
           'img' => 'import1/mol/mol-985.jpg'
         ],
@@ -21772,7 +21792,7 @@ return [
           'subplot' => '6',
           'species' => 'Picea abies (L.) H.Karst.',
           'planting_date' => '2015-01-01',
-          'green_state_note' => 'підживлення',
+          'green_state_note' => 'Підживлення',
           'green_state' => 'bad',
           'img' => 'import1/mol/mol-986.jpg'
         ],
@@ -21794,7 +21814,7 @@ return [
           'subplot' => '6',
           'species' => 'Pinus sylvestris L.',
           'planting_date' => '2015-01-01',
-          'green_state_note' => 'підживлення',
+          'green_state_note' => 'Підживлення',
           'green_state' => 'bad',
           'img' => 'import1/mol/mol-987.jpg'
         ],
@@ -21876,7 +21896,7 @@ return [
           'subplot' => '6',
           'species' => 'Aesculus hippocastanum L.',
           'planting_date' => '1985-01-01',
-          'green_state_note' => 'поперечний рак',
+          'green_state_note' => 'Поперечний рак',
           'green_state' => 'bad',
           'img' => 'import1/mol/mol-991.jpg'
         ],
@@ -22042,7 +22062,8 @@ return [
           'subplot' => '6',
           'species' => 'Populus nigra L.',
           'planting_date' => '1925-01-01',
-          'img' => 'import1/mol/mol-999.jpg'
+          'img' => 'import1/mol/mol-999.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 38.0,
@@ -22051,7 +22072,7 @@ return [
           'crown_condition_percent' => 20
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -22065,7 +22086,8 @@ return [
           'subplot' => '6',
           'species' => 'Populus nigra L.',
           'planting_date' => '1925-01-01',
-          'img' => 'import1/mol/mol-1000.jpg'
+          'img' => 'import1/mol/mol-1000.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 39.0,
@@ -22074,7 +22096,7 @@ return [
           'crown_condition_percent' => 20
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -22088,7 +22110,8 @@ return [
           'subplot' => '6',
           'species' => 'Populus nigra L.',
           'planting_date' => '1925-01-01',
-          'img' => 'import1/mol/mol-1001.jpg'
+          'img' => 'import1/mol/mol-1001.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 37.0,
@@ -22097,7 +22120,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -22111,7 +22134,8 @@ return [
           'subplot' => '6',
           'species' => 'Populus nigra L.',
           'planting_date' => '1925-01-01',
-          'img' => 'import1/mol/mol-1002.jpg'
+          'img' => 'import1/mol/mol-1002.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 37.0,
@@ -22120,7 +22144,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -22134,7 +22158,8 @@ return [
           'subplot' => '6',
           'species' => 'Populus nigra L.',
           'planting_date' => '1925-01-01',
-          'img' => 'import1/mol/mol-1003.jpg'
+          'img' => 'import1/mol/mol-1003.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 37.0,
@@ -22143,7 +22168,7 @@ return [
           'crown_condition_percent' => 20
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -22309,7 +22334,8 @@ return [
           'subplot' => '6',
           'species' => 'Tilia cordata Mill.',
           'planting_date' => '1975-01-01',
-          'img' => 'import1/mol/mol-1011.jpg'
+          'img' => 'import1/mol/mol-1011.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 26.2,
@@ -22318,7 +22344,7 @@ return [
           'crown_condition_percent' => 20
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -22969,7 +22995,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -23037,7 +23063,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -23051,7 +23077,8 @@ return [
           'subplot' => '6',
           'species' => 'Ulmus laevis Pall.',
           'planting_date' => '2000-01-01',
-          'img' => 'import1/mol/mol-1046.jpg'
+          'img' => 'import1/mol/mol-1046.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 17.0,
@@ -23060,7 +23087,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -23338,7 +23365,8 @@ return [
           'subplot' => '6',
           'species' => 'Fraxinus excelsior L.',
           'planting_date' => '2005-01-01',
-          'img' => 'import1/mol/mol-1059.jpg'
+          'img' => 'import1/mol/mol-1059.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 16.0,
@@ -23347,7 +23375,7 @@ return [
           'crown_condition_percent' => 25
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -23759,7 +23787,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -23981,7 +24009,8 @@ return [
           'subplot' => '6',
           'species' => 'Populus nigra L.',
           'planting_date' => '1935-01-01',
-          'img' => 'import1/mol/mol-1090.jpg'
+          'img' => 'import1/mol/mol-1090.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 36.0,
@@ -23990,7 +24019,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -24004,7 +24033,8 @@ return [
           'subplot' => '6',
           'species' => 'Populus nigra L.',
           'planting_date' => '1935-01-01',
-          'img' => 'import1/mol/mol-1091.jpg'
+          'img' => 'import1/mol/mol-1091.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 37.0,
@@ -24013,7 +24043,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -24027,7 +24057,8 @@ return [
           'subplot' => '6',
           'species' => 'Populus nigra L.',
           'planting_date' => '1925-01-01',
-          'img' => 'import1/mol/mol-1092.jpg'
+          'img' => 'import1/mol/mol-1092.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 36.0,
@@ -24036,7 +24067,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -24050,7 +24081,8 @@ return [
           'subplot' => '6',
           'species' => 'Tilia cordata Mill.',
           'planting_date' => '1965-01-01',
-          'img' => 'import1/mol/mol-1093.jpg'
+          'img' => 'import1/mol/mol-1093.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 27.0,
@@ -24059,7 +24091,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -24093,7 +24125,8 @@ return [
           'subplot' => '6',
           'species' => 'Populus nigra L.',
           'planting_date' => '1925-01-01',
-          'img' => 'import1/mol/mol-1095.jpg'
+          'img' => 'import1/mol/mol-1095.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 35.0,
@@ -24102,7 +24135,7 @@ return [
           'crown_condition_percent' => 20
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -24116,7 +24149,8 @@ return [
           'subplot' => '6',
           'species' => 'Populus nigra L.',
           'planting_date' => '1925-01-01',
-          'img' => 'import1/mol/mol-1096.jpg'
+          'img' => 'import1/mol/mol-1096.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 36.0,
@@ -24125,7 +24159,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -24149,7 +24183,7 @@ return [
           'crown_condition_percent' => 20
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ],
         'tags' => [
           'Цвяхи'
@@ -24221,7 +24255,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти',
@@ -24259,7 +24293,8 @@ return [
           'subplot' => '6',
           'species' => 'Populus nigra L.',
           'planting_date' => '1925-01-01',
-          'img' => 'import1/mol/mol-1102.jpg'
+          'img' => 'import1/mol/mol-1102.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 35.0,
@@ -24268,7 +24303,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -24282,7 +24317,8 @@ return [
           'subplot' => '6',
           'species' => 'Populus nigra L.',
           'planting_date' => '1925-01-01',
-          'img' => 'import1/mol/mol-1103.jpg'
+          'img' => 'import1/mol/mol-1103.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 34.0,
@@ -24291,7 +24327,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -24305,7 +24341,8 @@ return [
           'subplot' => '6',
           'species' => 'Populus nigra L.',
           'planting_date' => '1925-01-01',
-          'img' => 'import1/mol/mol-1104.jpg'
+          'img' => 'import1/mol/mol-1104.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 36.0,
@@ -24314,7 +24351,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -24328,7 +24365,8 @@ return [
           'subplot' => '6',
           'species' => 'Populus nigra L.',
           'planting_date' => '1925-01-01',
-          'img' => 'import1/mol/mol-1105.jpg'
+          'img' => 'import1/mol/mol-1105.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 35.0,
@@ -24337,7 +24375,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -24351,7 +24389,8 @@ return [
           'subplot' => '6',
           'species' => 'Populus nigra L.',
           'planting_date' => '1925-01-01',
-          'img' => 'import1/mol/mol-1106.jpg'
+          'img' => 'import1/mol/mol-1106.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 35.0,
@@ -24360,7 +24399,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -24384,7 +24423,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -24645,7 +24684,8 @@ return [
           'subplot' => '6',
           'species' => 'Populus nigra L.',
           'planting_date' => '1935-01-01',
-          'img' => 'import1/mol/mol-1120.jpg'
+          'img' => 'import1/mol/mol-1120.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 38.0,
@@ -24654,7 +24694,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -24768,7 +24808,8 @@ return [
           'subplot' => '6',
           'species' => 'Aesculus hippocastanum L.',
           'planting_date' => '1985-01-01',
-          'img' => 'import1/mol/mol-1126.jpg'
+          'img' => 'import1/mol/mol-1126.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 20.0,
@@ -24777,7 +24818,7 @@ return [
           'crown_condition_percent' => 30
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -25141,7 +25182,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Трухлявість',
@@ -25233,7 +25274,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -25292,7 +25333,8 @@ return [
           'subplot' => '6',
           'species' => 'Ulmus laevis Pall.',
           'planting_date' => '1995-01-01',
-          'img' => 'import1/mol/mol-1149.jpg'
+          'img' => 'import1/mol/mol-1149.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => 12.0,
@@ -25301,7 +25343,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -25368,7 +25410,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -25394,7 +25436,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -25420,7 +25462,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -25446,7 +25488,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -25472,7 +25514,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -25499,7 +25541,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Морозобоїни'
@@ -25540,7 +25582,8 @@ return [
           'subplot' => '6',
           'species' => 'Aesculus hippocastanum L.',
           'planting_date' => '1955-01-01',
-          'img' => 'import1/mol/mol-1159.jpg'
+          'img' => 'import1/mol/mol-1159.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 21.0,
@@ -25549,7 +25592,7 @@ return [
           'crown_condition_percent' => 20
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -25613,7 +25656,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла'
@@ -25640,7 +25683,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Морозобоїни'
@@ -25715,7 +25758,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ],
         'tags' => [
           'Пошкодження кори'
@@ -25732,7 +25775,8 @@ return [
           'subplot' => '6',
           'species' => 'Populus nigra L.',
           'planting_date' => '1925-01-01',
-          'img' => 'import1/mol/mol-1167.jpg'
+          'img' => 'import1/mol/mol-1167.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 37.0,
@@ -25741,7 +25785,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -25765,7 +25809,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ],
         'tags' => [
           'Пошкодження кори'
@@ -25782,7 +25826,8 @@ return [
           'subplot' => '6',
           'species' => 'Populus nigra L.',
           'planting_date' => '1925-01-01',
-          'img' => 'import1/mol/mol-1169.jpg'
+          'img' => 'import1/mol/mol-1169.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 37.0,
@@ -25791,7 +25836,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -25805,7 +25850,8 @@ return [
           'subplot' => '6',
           'species' => 'Populus nigra L.',
           'planting_date' => '1935-01-01',
-          'img' => 'import1/mol/mol-1170.jpg'
+          'img' => 'import1/mol/mol-1170.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 36.0,
@@ -25814,7 +25860,7 @@ return [
           'crown_condition_percent' => 20
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -25828,7 +25874,8 @@ return [
           'subplot' => '6',
           'species' => 'Populus nigra L.',
           'planting_date' => '1935-01-01',
-          'img' => 'import1/mol/mol-1171.jpg'
+          'img' => 'import1/mol/mol-1171.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 37.0,
@@ -25837,7 +25884,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -25851,7 +25898,8 @@ return [
           'subplot' => '6',
           'species' => 'Populus nigra L.',
           'planting_date' => '1935-01-01',
-          'img' => 'import1/mol/mol-1172.jpg'
+          'img' => 'import1/mol/mol-1172.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 37.0,
@@ -25860,7 +25908,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -25874,7 +25922,8 @@ return [
           'subplot' => '6',
           'species' => 'Populus nigra L.',
           'planting_date' => '1935-01-01',
-          'img' => 'import1/mol/mol-1173.jpg'
+          'img' => 'import1/mol/mol-1173.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 37.0,
@@ -25883,7 +25932,7 @@ return [
           'crown_condition_percent' => 20
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -25897,7 +25946,8 @@ return [
           'subplot' => '6',
           'species' => 'Populus nigra L.',
           'planting_date' => '1925-01-01',
-          'img' => 'import1/mol/mol-1174.jpg'
+          'img' => 'import1/mol/mol-1174.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 36.0,
@@ -25906,7 +25956,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -25920,7 +25970,8 @@ return [
           'subplot' => '6',
           'species' => 'Populus nigra L.',
           'planting_date' => '1925-01-01',
-          'img' => 'import1/mol/mol-1175.jpg'
+          'img' => 'import1/mol/mol-1175.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 38.0,
@@ -25929,7 +25980,7 @@ return [
           'crown_condition_percent' => 30
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -25952,7 +26003,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -25976,7 +26027,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Пошкодження кори'
@@ -27135,7 +27186,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ],
         'tags' => [
           'Морозобоїни',
@@ -27457,7 +27508,8 @@ return [
           'subplot' => '1',
           'species' => 'Carpinus betulus L.',
           'planting_date' => '1995-01-01',
-          'img' => 'import1/mol/mol-1254.jpg'
+          'img' => 'import1/mol/mol-1254.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 15.0,
@@ -27466,7 +27518,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -27670,7 +27722,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Трухлявість',
@@ -27903,7 +27955,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -27926,7 +27978,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -27949,7 +28001,7 @@ return [
           'crown_condition_percent' => 20
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -28072,7 +28124,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -28175,7 +28227,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -28267,7 +28319,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -28314,7 +28366,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -28437,7 +28489,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -28451,7 +28503,8 @@ return [
           'subplot' => '1',
           'species' => 'Populus nigra L.',
           'planting_date' => '1925-01-01',
-          'img' => 'import1/mol/mol-1299.jpg'
+          'img' => 'import1/mol/mol-1299.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 36.0,
@@ -28460,7 +28513,7 @@ return [
           'crown_condition_percent' => 15
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -28483,7 +28536,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -28570,7 +28623,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -28596,7 +28649,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -28642,7 +28695,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -28668,7 +28721,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -28694,7 +28747,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -28744,7 +28797,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -28767,7 +28820,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -28833,7 +28886,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -28850,7 +28903,8 @@ return [
           'subplot' => '1',
           'species' => 'Populus nigra L.',
           'planting_date' => '1935-01-01',
-          'img' => 'import1/mol/mol-1316.jpg'
+          'img' => 'import1/mol/mol-1316.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 39.0,
@@ -28859,7 +28913,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -28930,7 +28984,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -28944,7 +28998,8 @@ return [
           'subplot' => '1',
           'species' => 'Populus nigra L.',
           'planting_date' => '1935-01-01',
-          'img' => 'import1/mol/mol-1320.jpg'
+          'img' => 'import1/mol/mol-1320.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 36.0,
@@ -28953,7 +29008,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -28967,7 +29022,8 @@ return [
           'subplot' => '1',
           'species' => 'Populus nigra L.',
           'planting_date' => '1935-01-01',
-          'img' => 'import1/mol/mol-1321.jpg'
+          'img' => 'import1/mol/mol-1321.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 36.0,
@@ -28976,7 +29032,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -29019,7 +29075,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -29033,7 +29089,8 @@ return [
           'subplot' => '1',
           'species' => 'Populus nigra L.',
           'planting_date' => '1945-01-01',
-          'img' => 'import1/mol/mol-1324.jpg'
+          'img' => 'import1/mol/mol-1324.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 36.0,
@@ -29042,7 +29099,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -29056,7 +29113,8 @@ return [
           'subplot' => '1',
           'species' => 'Populus nigra L.',
           'planting_date' => '1945-01-01',
-          'img' => 'import1/mol/mol-1325.jpg'
+          'img' => 'import1/mol/mol-1325.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 36.0,
@@ -29065,7 +29123,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -29079,7 +29137,8 @@ return [
           'subplot' => '1',
           'species' => 'Populus nigra L.',
           'planting_date' => '1945-01-01',
-          'img' => 'import1/mol/mol-1326.jpg'
+          'img' => 'import1/mol/mol-1326.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 36.0,
@@ -29088,7 +29147,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -29102,7 +29161,8 @@ return [
           'subplot' => '1',
           'species' => 'Fraxinus excelsior L.',
           'planting_date' => '1970-01-01',
-          'img' => 'import1/mol/mol-1327.jpg'
+          'img' => 'import1/mol/mol-1327.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 16.0,
@@ -29111,7 +29171,7 @@ return [
           'crown_condition_percent' => 20
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -29281,7 +29341,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -29391,7 +29451,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -29417,7 +29477,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -29463,7 +29523,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -29555,7 +29615,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'обстеження'
+          'Обстеження'
         ],
         'tags' => [
           'Трухлявість'
@@ -29582,7 +29642,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'обстеження'
+          'Обстеження'
         ],
         'tags' => [
           'Трухлявість',
@@ -29631,7 +29691,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Цвяхи'
@@ -29678,7 +29738,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Морозобоїни'
@@ -29705,7 +29765,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла',
@@ -29733,7 +29793,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -29756,7 +29816,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -29779,7 +29839,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -29802,7 +29862,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -29845,7 +29905,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -29868,7 +29928,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -29891,7 +29951,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -29958,7 +30018,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -29981,7 +30041,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -30004,7 +30064,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -30072,7 +30132,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -30118,7 +30178,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -30185,7 +30245,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -30208,7 +30268,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -30251,7 +30311,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -30275,7 +30335,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла',
@@ -30303,7 +30363,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -30326,7 +30386,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -30380,7 +30440,8 @@ return [
           'subplot' => '1',
           'species' => 'Fraxinus excelsior L.',
           'planting_date' => '1975-01-01',
-          'img' => 'import1/mol/mol-1383.jpg'
+          'img' => 'import1/mol/mol-1383.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 18.0,
@@ -30612,7 +30673,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -30635,7 +30696,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -30742,7 +30803,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -30765,7 +30826,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -30828,7 +30889,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -30892,7 +30953,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла'
@@ -31103,7 +31164,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ],
         'tags' => [
           'Цвяхи'
@@ -31180,7 +31241,8 @@ return [
           'subplot' => '1',
           'species' => 'Populus nigra L.',
           'planting_date' => '1945-01-01',
-          'img' => 'import1/mol/mol-1421.jpg'
+          'img' => 'import1/mol/mol-1421.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 35.0,
@@ -31189,7 +31251,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -31203,7 +31265,8 @@ return [
           'subplot' => '1',
           'species' => 'Populus nigra L.',
           'planting_date' => '1955-01-01',
-          'img' => 'import1/mol/mol-1422.jpg'
+          'img' => 'import1/mol/mol-1422.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 35.0,
@@ -31212,7 +31275,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -31226,7 +31289,8 @@ return [
           'subplot' => '1',
           'species' => 'Populus nigra L.',
           'planting_date' => '1955-01-01',
-          'img' => 'import1/mol/mol-1423.jpg'
+          'img' => 'import1/mol/mol-1423.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 35.0,
@@ -31235,7 +31299,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -31249,7 +31313,8 @@ return [
           'subplot' => '1',
           'species' => 'Populus nigra L.',
           'planting_date' => '1955-01-01',
-          'img' => 'import1/mol/mol-1424.jpg'
+          'img' => 'import1/mol/mol-1424.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 35.0,
@@ -31258,7 +31323,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -31392,7 +31457,8 @@ return [
           'subplot' => '1',
           'species' => 'Populus nigra L.',
           'planting_date' => '1975-01-01',
-          'img' => 'import1/mol/mol-1432.jpg'
+          'img' => 'import1/mol/mol-1432.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 28.0,
@@ -31489,7 +31555,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ],
         'tags' => [
           'Пошкодження кори'
@@ -31506,7 +31572,8 @@ return [
           'subplot' => '1',
           'species' => 'Populus nigra L.',
           'planting_date' => '1945-01-01',
-          'img' => 'import1/mol/mol-1437.jpg'
+          'img' => 'import1/mol/mol-1437.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 35.0,
@@ -31515,7 +31582,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -31529,7 +31596,8 @@ return [
           'subplot' => '1',
           'species' => 'Populus nigra L.',
           'planting_date' => '1945-01-01',
-          'img' => 'import1/mol/mol-1438.jpg'
+          'img' => 'import1/mol/mol-1438.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 35.0,
@@ -31538,7 +31606,7 @@ return [
           'crown_condition_percent' => 20
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -31739,7 +31807,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -31762,7 +31830,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -31853,7 +31921,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Дупла'
@@ -31920,7 +31988,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -32045,7 +32113,8 @@ return [
           'subplot' => '7',
           'species' => 'Populus nigra L.',
           'planting_date' => '1945-01-01',
-          'img' => 'import1/mol/mol-1461.jpg'
+          'img' => 'import1/mol/mol-1461.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 35.0,
@@ -32054,7 +32123,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -32068,7 +32137,8 @@ return [
           'subplot' => '7',
           'species' => 'Populus nigra L.',
           'planting_date' => '1945-01-01',
-          'img' => 'import1/mol/mol-1462.jpg'
+          'img' => 'import1/mol/mol-1462.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 36.0,
@@ -32077,7 +32147,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -32191,7 +32261,8 @@ return [
           'subplot' => '7',
           'species' => 'Populus nigra L.',
           'planting_date' => '1945-01-01',
-          'img' => 'import1/mol/mol-1468.jpg'
+          'img' => 'import1/mol/mol-1468.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 35.0,
@@ -32200,7 +32271,7 @@ return [
           'crown_condition_percent' => 20
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -32214,7 +32285,8 @@ return [
           'subplot' => '7',
           'species' => 'Populus nigra L.',
           'planting_date' => '1945-01-01',
-          'img' => 'import1/mol/mol-1469.jpg'
+          'img' => 'import1/mol/mol-1469.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 34.0,
@@ -32223,7 +32295,7 @@ return [
           'crown_condition_percent' => 20
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -32302,7 +32374,8 @@ return [
           'subplot' => '7',
           'species' => 'Populus nigra L.',
           'planting_date' => '1935-01-01',
-          'img' => 'import1/mol/mol-1473.jpg'
+          'img' => 'import1/mol/mol-1473.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 38.6,
@@ -32311,7 +32384,7 @@ return [
           'crown_condition_percent' => 20
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -32325,7 +32398,8 @@ return [
           'subplot' => '7',
           'species' => 'Populus nigra L.',
           'planting_date' => '1935-01-01',
-          'img' => 'import1/mol/mol-1474.jpg'
+          'img' => 'import1/mol/mol-1474.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 40.0,
@@ -32334,7 +32408,7 @@ return [
           'crown_condition_percent' => 20
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -32653,7 +32727,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -32676,7 +32750,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -32723,7 +32797,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -32766,7 +32840,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -32809,7 +32883,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -32832,7 +32906,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -32855,7 +32929,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -32958,7 +33032,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -32981,7 +33055,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -33004,7 +33078,7 @@ return [
           'crown_condition_percent' => 40
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -33027,7 +33101,7 @@ return [
           'crown_condition_percent' => 20
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -33070,7 +33144,7 @@ return [
           'crown_condition_percent' => 30
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -33093,7 +33167,7 @@ return [
           'crown_condition_percent' => 30
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -33116,7 +33190,7 @@ return [
           'crown_condition_percent' => 30
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -33159,7 +33233,7 @@ return [
           'crown_condition_percent' => 30
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -33182,7 +33256,7 @@ return [
           'crown_condition_percent' => 30
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -33554,7 +33628,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Цвяхи'
@@ -33581,7 +33655,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Цвяхи'
@@ -33607,7 +33681,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -33854,7 +33928,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -33877,7 +33951,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -33911,7 +33985,8 @@ return [
           'subplot' => '5',
           'species' => 'Fraxinus excelsior L.',
           'planting_date' => '2015-01-01',
-          'img' => 'import1/mol/mol-1550.jpg'
+          'img' => 'import1/mol/mol-1550.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 4.0,
@@ -33920,7 +33995,7 @@ return [
           'crown_condition_percent' => 40
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -33954,7 +34029,8 @@ return [
           'subplot' => '5',
           'species' => 'Fraxinus excelsior L.',
           'planting_date' => '1995-01-01',
-          'img' => 'import1/mol/mol-1552.jpg'
+          'img' => 'import1/mol/mol-1552.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 16.0,
@@ -33963,7 +34039,7 @@ return [
           'crown_condition_percent' => 20
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -33977,7 +34053,8 @@ return [
           'subplot' => '5',
           'species' => 'Fraxinus excelsior L.',
           'planting_date' => '1995-01-01',
-          'img' => 'import1/mol/mol-1553.jpg'
+          'img' => 'import1/mol/mol-1553.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 16.0,
@@ -33986,7 +34063,7 @@ return [
           'crown_condition_percent' => 20
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -34000,7 +34077,8 @@ return [
           'subplot' => '5',
           'species' => 'Fraxinus excelsior L.',
           'planting_date' => '1995-01-01',
-          'img' => 'import1/mol/mol-1554.jpg'
+          'img' => 'import1/mol/mol-1554.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 18.0,
@@ -34009,7 +34087,7 @@ return [
           'crown_condition_percent' => 20
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -34056,7 +34134,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -34070,7 +34148,8 @@ return [
           'subplot' => '5',
           'species' => 'Fraxinus excelsior L.',
           'planting_date' => '1995-01-01',
-          'img' => 'import1/mol/mol-1557.jpg'
+          'img' => 'import1/mol/mol-1557.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 16.0,
@@ -34079,7 +34158,7 @@ return [
           'crown_condition_percent' => 20
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -34103,7 +34182,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Морозобоїни',
@@ -34403,7 +34482,6 @@ return [
           'subplot' => '2',
           'species' => 'Fraxinus excelsior L.',
           'planting_date' => '1975-01-01',
-          'green_state_note' => 'зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/mol/mol-1572.jpg'
         ],
@@ -34412,6 +34490,9 @@ return [
           'trunk_circumference_cm' => 145,
           'tilt_degree' => 0,
           'crown_condition_percent' => 0
+        ],
+        'tags' => [
+          'Зламана вершина'
         ]
       ],
       [
@@ -34425,7 +34506,6 @@ return [
           'subplot' => '2',
           'species' => 'Aesculus hippocastanum L.',
           'planting_date' => '1995-01-01',
-          'green_state_note' => 'зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/mol/mol-1573.jpg'
         ],
@@ -34437,7 +34517,8 @@ return [
         ],
         'tags' => [
           'Трухлявість',
-          'Морозобоїни'
+          'Морозобоїни',
+          'Зламана вершина'
         ]
       ],
       [
@@ -34530,7 +34611,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -34568,7 +34649,8 @@ return [
           'subplot' => '2',
           'species' => 'Fraxinus excelsior L.',
           'planting_date' => '1965-01-01',
-          'img' => 'import1/mol/mol-1579.jpg'
+          'img' => 'import1/mol/mol-1579.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 22.0,
@@ -34624,7 +34706,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -34647,7 +34729,7 @@ return [
           'crown_condition_percent' => 15
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -34690,7 +34772,7 @@ return [
           'crown_condition_percent' => 50
         ],
         'recommendations' => [
-          'обстеження'
+          'Обстеження'
         ]
       ],
       [
@@ -34986,7 +35068,7 @@ return [
           'crown_condition_percent' => 50
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ],
         'tags' => [
           'Пошкодження кори'
@@ -35003,7 +35085,8 @@ return [
           'subplot' => '2',
           'species' => 'Prunus avium L.',
           'planting_date' => '1995-01-01',
-          'img' => 'import1/mol/mol-1599.jpg'
+          'img' => 'import1/mol/mol-1599.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => 20.0,
@@ -35012,7 +35095,7 @@ return [
           'crown_condition_percent' => 100
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -35036,7 +35119,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -35350,7 +35433,8 @@ return [
           'subplot' => '2',
           'species' => 'Prunus domestica L.',
           'planting_date' => '1995-01-01',
-          'img' => 'import1/mol/mol-1618.jpg'
+          'img' => 'import1/mol/mol-1618.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => 17.0,
@@ -35359,7 +35443,7 @@ return [
           'crown_condition_percent' => 100
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -35475,7 +35559,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'обстеження'
+          'Обстеження'
         ],
         'tags' => [
           'Морозобоїни',
@@ -35542,7 +35626,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -35585,7 +35669,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -35712,7 +35796,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -35736,7 +35820,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -35763,7 +35847,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Трухлявість',
@@ -35790,7 +35874,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -35813,7 +35897,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -35836,7 +35920,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -35859,7 +35943,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -35883,7 +35967,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -35910,7 +35994,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -35936,7 +36020,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -35959,7 +36043,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -35982,7 +36066,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -36005,7 +36089,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -36029,7 +36113,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Цвяхи',
@@ -36127,7 +36211,6 @@ return [
           'subplot' => '2',
           'species' => 'Prunus avium L.',
           'planting_date' => '2015-01-01',
-          'green_state_note' => 'зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/mol/mol-1652.jpg'
         ],
@@ -36136,6 +36219,9 @@ return [
           'trunk_circumference_cm' => 60,
           'tilt_degree' => 0,
           'crown_condition_percent' => 0
+        ],
+        'tags' => [
+          'Зламана вершина'
         ]
       ],
       [
@@ -36158,7 +36244,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -36182,7 +36268,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -36208,7 +36294,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -36234,7 +36320,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -36257,7 +36343,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -36283,7 +36369,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -36355,7 +36441,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -36401,7 +36487,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -36425,7 +36511,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Гриби'
@@ -36452,7 +36538,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -36478,7 +36564,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -36502,7 +36588,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Гриби',
@@ -36530,7 +36616,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -36553,7 +36639,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -36576,7 +36662,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -36683,7 +36769,8 @@ return [
           'subplot' => '2',
           'species' => 'Populus nigra L.',
           'planting_date' => '1955-01-01',
-          'img' => 'import1/mol/mol-1686.jpg'
+          'img' => 'import1/mol/mol-1686.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 36.0,
@@ -36692,7 +36779,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -36753,7 +36840,8 @@ return [
           'subplot' => '2',
           'species' => 'Populus nigra L.',
           'planting_date' => '1955-01-01',
-          'img' => 'import1/mol/mol-1689.jpg'
+          'img' => 'import1/mol/mol-1689.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 36.0,
@@ -36762,7 +36850,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -36776,7 +36864,8 @@ return [
           'subplot' => '2',
           'species' => 'Populus nigra L.',
           'planting_date' => '1955-01-01',
-          'img' => 'import1/mol/mol-1690.jpg'
+          'img' => 'import1/mol/mol-1690.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 36.0,
@@ -36785,7 +36874,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -36819,7 +36908,8 @@ return [
           'subplot' => '2',
           'species' => 'Populus nigra L.',
           'planting_date' => '1955-01-01',
-          'img' => 'import1/mol/mol-1692.jpg'
+          'img' => 'import1/mol/mol-1692.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 35.0,
@@ -36828,7 +36918,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -36862,7 +36952,8 @@ return [
           'subplot' => '2',
           'species' => 'Populus nigra L.',
           'planting_date' => '1945-01-01',
-          'img' => 'import1/mol/mol-1694.jpg'
+          'img' => 'import1/mol/mol-1694.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 36.0,
@@ -36871,7 +36962,7 @@ return [
           'crown_condition_percent' => 20
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -36885,7 +36976,8 @@ return [
           'subplot' => '2',
           'species' => 'Populus nigra L.',
           'planting_date' => '1945-01-01',
-          'img' => 'import1/mol/mol-1695.jpg'
+          'img' => 'import1/mol/mol-1695.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 35.0,
@@ -36894,7 +36986,7 @@ return [
           'crown_condition_percent' => 20
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -36908,7 +37000,8 @@ return [
           'subplot' => '2',
           'species' => 'Populus nigra L.',
           'planting_date' => '1945-01-01',
-          'img' => 'import1/mol/mol-1696.jpg'
+          'img' => 'import1/mol/mol-1696.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 35.0,
@@ -36917,7 +37010,7 @@ return [
           'crown_condition_percent' => 20
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -36951,7 +37044,8 @@ return [
           'subplot' => '2',
           'species' => 'Populus nigra L.',
           'planting_date' => '1945-01-01',
-          'img' => 'import1/mol/mol-1698.jpg'
+          'img' => 'import1/mol/mol-1698.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 36.0,
@@ -36960,7 +37054,7 @@ return [
           'crown_condition_percent' => 15
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -36994,7 +37088,8 @@ return [
           'subplot' => '2',
           'species' => 'Populus nigra L.',
           'planting_date' => '1945-01-01',
-          'img' => 'import1/mol/mol-1700.jpg'
+          'img' => 'import1/mol/mol-1700.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 36.0,
@@ -37003,7 +37098,7 @@ return [
           'crown_condition_percent' => 15
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -37017,7 +37112,8 @@ return [
           'subplot' => '2',
           'species' => 'Populus nigra L.',
           'planting_date' => '1945-01-01',
-          'img' => 'import1/mol/mol-1701.jpg'
+          'img' => 'import1/mol/mol-1701.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 35.0,
@@ -37026,7 +37122,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -37070,7 +37166,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'обстеження'
+          'Обстеження'
         ],
         'tags' => [
           'Трухлявість',
@@ -37238,7 +37334,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -37252,7 +37348,6 @@ return [
           'subplot' => '2',
           'species' => 'Pinus sylvestris L.',
           'planting_date' => '2015-01-01',
-          'green_state_note' => 'зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/mol/mol-1713.jpg'
         ],
@@ -37261,6 +37356,9 @@ return [
           'trunk_circumference_cm' => 45,
           'tilt_degree' => 0,
           'crown_condition_percent' => 0
+        ],
+        'tags' => [
+          'Зламана вершина'
         ]
       ],
       [
@@ -37294,7 +37392,8 @@ return [
           'subplot' => '2',
           'species' => 'Populus nigra L.',
           'planting_date' => '1955-01-01',
-          'img' => 'import1/mol/mol-1715.jpg'
+          'img' => 'import1/mol/mol-1715.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 36.0,
@@ -37303,7 +37402,7 @@ return [
           'crown_condition_percent' => 15
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -37327,7 +37426,7 @@ return [
           'crown_condition_percent' => 35
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ],
         'tags' => [
           'Морозобоїни',
@@ -37345,7 +37444,8 @@ return [
           'subplot' => '2',
           'species' => 'Populus nigra L.',
           'planting_date' => '1945-01-01',
-          'img' => 'import1/mol/mol-1717.jpg'
+          'img' => 'import1/mol/mol-1717.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 36.0,
@@ -37354,7 +37454,7 @@ return [
           'crown_condition_percent' => 20
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -37608,7 +37708,8 @@ return [
           'subplot' => '2',
           'species' => 'Populus nigra L.',
           'planting_date' => '1945-01-01',
-          'img' => 'import1/mol/mol-1731.jpg'
+          'img' => 'import1/mol/mol-1731.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 36.0,
@@ -37617,7 +37718,7 @@ return [
           'crown_condition_percent' => 15
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -37651,7 +37752,8 @@ return [
           'subplot' => '2',
           'species' => 'Populus nigra L.',
           'planting_date' => '1945-01-01',
-          'img' => 'import1/mol/mol-1733.jpg'
+          'img' => 'import1/mol/mol-1733.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 36.0,
@@ -37660,7 +37762,7 @@ return [
           'crown_condition_percent' => 15
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -37757,7 +37859,8 @@ return [
           'subplot' => '2',
           'species' => 'Populus nigra L.',
           'planting_date' => '1935-01-01',
-          'img' => 'import1/mol/mol-1738.jpg'
+          'img' => 'import1/mol/mol-1738.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 36.0,
@@ -37766,7 +37869,7 @@ return [
           'crown_condition_percent' => 20
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -37780,7 +37883,8 @@ return [
           'subplot' => '2',
           'species' => 'Populus nigra L.',
           'planting_date' => '1935-01-01',
-          'img' => 'import1/mol/mol-1739.jpg'
+          'img' => 'import1/mol/mol-1739.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 35.0,
@@ -37789,7 +37893,7 @@ return [
           'crown_condition_percent' => 20
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -37803,7 +37907,8 @@ return [
           'subplot' => '2',
           'species' => 'Populus nigra L.',
           'planting_date' => '1935-01-01',
-          'img' => 'import1/mol/mol-1740.jpg'
+          'img' => 'import1/mol/mol-1740.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 35.0,
@@ -37812,7 +37917,7 @@ return [
           'crown_condition_percent' => 20
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -37826,7 +37931,8 @@ return [
           'subplot' => '2',
           'species' => 'Populus nigra L.',
           'planting_date' => '1935-01-01',
-          'img' => 'import1/mol/mol-1741.jpg'
+          'img' => 'import1/mol/mol-1741.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 35.0,
@@ -37835,7 +37941,7 @@ return [
           'crown_condition_percent' => 20
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -37849,7 +37955,8 @@ return [
           'subplot' => '2',
           'species' => 'Populus nigra L.',
           'planting_date' => '1945-01-01',
-          'img' => 'import1/mol/mol-1742.jpg'
+          'img' => 'import1/mol/mol-1742.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 34.0,
@@ -37858,7 +37965,7 @@ return [
           'crown_condition_percent' => 20
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -37872,7 +37979,8 @@ return [
           'subplot' => '3',
           'species' => 'Populus nigra L.',
           'planting_date' => '1935-01-01',
-          'img' => 'import1/mol/mol-1743.jpg'
+          'img' => 'import1/mol/mol-1743.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 35.0,
@@ -37881,7 +37989,7 @@ return [
           'crown_condition_percent' => 20
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -37895,7 +38003,8 @@ return [
           'subplot' => '3',
           'species' => 'Populus nigra L.',
           'planting_date' => '1935-01-01',
-          'img' => 'import1/mol/mol-1744.jpg'
+          'img' => 'import1/mol/mol-1744.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 37.0,
@@ -37904,7 +38013,7 @@ return [
           'crown_condition_percent' => 20
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -37951,7 +38060,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -37974,7 +38083,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -37997,7 +38106,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -38021,7 +38130,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -38067,7 +38176,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -38090,7 +38199,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -38114,7 +38223,7 @@ return [
           'crown_condition_percent' => 15
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -38249,7 +38358,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -38353,7 +38462,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -38380,7 +38489,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Морозобоїни',
@@ -38408,7 +38517,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Цвяхи',
@@ -38717,7 +38826,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -38760,7 +38869,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -38783,7 +38892,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -38806,7 +38915,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -38929,7 +39038,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -38952,7 +39061,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -38975,7 +39084,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -38998,7 +39107,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -39331,7 +39440,7 @@ return [
           'crown_condition_percent' => 15
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -39354,7 +39463,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -39377,7 +39486,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -39400,7 +39509,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -39423,7 +39532,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -39486,7 +39595,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -39633,7 +39742,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -39656,7 +39765,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -39699,7 +39808,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -40820,7 +40929,7 @@ return [
           'subplot' => '3',
           'species' => 'Salix babylonica L.',
           'planting_date' => '2000-01-01',
-          'green_state_note' => 'вулик',
+          'green_state_note' => 'Вулик',
           'green_state' => 'bad',
           'img' => 'import1/mol/mol-1896.jpg'
         ],
@@ -41448,7 +41557,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Трухлявість',
@@ -41475,7 +41584,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -41499,7 +41608,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -41525,7 +41634,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -41568,7 +41677,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -41591,7 +41700,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -41614,7 +41723,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -42161,7 +42270,8 @@ return [
           'subplot' => '3',
           'species' => 'Populus nigra L.',
           'planting_date' => '1955-01-01',
-          'img' => 'import1/mol/mol-1959.jpg'
+          'img' => 'import1/mol/mol-1959.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => 34.0,
@@ -42170,7 +42280,7 @@ return [
           'crown_condition_percent' => 40
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -42184,7 +42294,8 @@ return [
           'subplot' => '3',
           'species' => 'Populus nigra L.',
           'planting_date' => '1965-01-01',
-          'img' => 'import1/mol/mol-1960.jpg'
+          'img' => 'import1/mol/mol-1960.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => 34.0,
@@ -42193,7 +42304,7 @@ return [
           'crown_condition_percent' => 30
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -42207,7 +42318,6 @@ return [
           'subplot' => '3',
           'species' => 'Populus nigra L.',
           'planting_date' => '1975-01-01',
-          'green_state_note' => 'зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/mol/mol-1961.jpg'
         ],
@@ -42218,7 +42328,10 @@ return [
           'crown_condition_percent' => 100
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
+        ],
+        'tags' => [
+          'Зламана вершина'
         ]
       ],
       [
@@ -42241,7 +42354,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -42504,7 +42617,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -42753,7 +42866,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -42858,7 +42971,8 @@ return [
           'subplot' => '3',
           'species' => 'Fraxinus excelsior L.',
           'planting_date' => '2000-01-01',
-          'img' => 'import1/mol/mol-1993.jpg'
+          'img' => 'import1/mol/mol-1993.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 13.0,
@@ -42867,7 +42981,7 @@ return [
           'crown_condition_percent' => 40
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -42881,7 +42995,8 @@ return [
           'subplot' => '3',
           'species' => 'Fraxinus excelsior L.',
           'planting_date' => '1995-01-01',
-          'img' => 'import1/mol/mol-1994.jpg'
+          'img' => 'import1/mol/mol-1994.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 13.0,
@@ -42890,7 +43005,7 @@ return [
           'crown_condition_percent' => 15
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -43799,7 +43914,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -43826,7 +43941,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Морозобоїни',
@@ -46401,7 +46516,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Морозобоїни',
@@ -46470,7 +46585,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти',
@@ -46488,7 +46603,6 @@ return [
           'subplot' => '3',
           'species' => 'Acer platanoides L.',
           'planting_date' => '1980-01-01',
-          'green_state_note' => 'Зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/int/int-9.jpg'
         ],
@@ -46499,10 +46613,11 @@ return [
           'crown_condition_percent' => 15
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
-          'Пошкодження кори'
+          'Пошкодження кори',
+          'Зламана вершина'
         ]
       ],
       [
@@ -46624,7 +46739,7 @@ return [
           'crown_condition_percent' => 15
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -46668,7 +46783,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -46738,7 +46853,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -46785,7 +46900,7 @@ return [
           'crown_condition_percent' => 15
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -46855,7 +46970,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -46882,7 +46997,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти',
@@ -46930,7 +47045,7 @@ return [
           'crown_condition_percent' => 15
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти',
@@ -46958,7 +47073,7 @@ return [
           'crown_condition_percent' => 20
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -47008,7 +47123,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти',
@@ -47137,7 +47252,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -47234,7 +47349,7 @@ return [
           'crown_condition_percent' => 15
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -47305,7 +47420,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -47403,7 +47518,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -47426,7 +47541,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -47450,7 +47565,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -47477,7 +47592,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Морозобоїни'
@@ -47503,7 +47618,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -47527,7 +47642,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -47593,7 +47708,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -47617,7 +47732,7 @@ return [
           'crown_condition_percent' => 15
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -47663,7 +47778,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -47746,7 +47861,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -47770,7 +47885,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -47900,7 +48015,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -47943,7 +48058,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -47986,7 +48101,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -48009,7 +48124,7 @@ return [
           'crown_condition_percent' => 40
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -48023,7 +48138,8 @@ return [
           'subplot' => '3',
           'species' => 'Fraxinus excelsior L.',
           'planting_date' => '1935-01-01',
-          'img' => 'import1/int/int-87.jpg'
+          'img' => 'import1/int/int-87.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 37.0,
@@ -48046,7 +48162,8 @@ return [
           'subplot' => '3',
           'species' => 'Fraxinus excelsior L.',
           'planting_date' => '1925-01-01',
-          'img' => 'import1/int/int-88.jpg'
+          'img' => 'import1/int/int-88.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 37.0,
@@ -48078,7 +48195,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -48092,7 +48209,8 @@ return [
           'subplot' => '6',
           'species' => 'Fraxinus excelsior L.',
           'planting_date' => '1925-01-01',
-          'img' => 'import1/int/int-90.jpg'
+          'img' => 'import1/int/int-90.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 36.0,
@@ -48124,7 +48242,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -48158,7 +48276,6 @@ return [
           'subplot' => '6',
           'species' => 'Acer platanoides L.',
           'planting_date' => '1985-01-01',
-          'green_state_note' => 'Зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/int/int-93.jpg'
         ],
@@ -48169,7 +48286,8 @@ return [
           'crown_condition_percent' => 0
         ],
         'tags' => [
-          'Розвилки'
+          'Розвилки',
+          'Зламана вершина'
         ]
       ],
       [
@@ -48402,7 +48520,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -48450,7 +48568,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -48518,7 +48636,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -48585,7 +48703,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -48747,7 +48865,8 @@ return [
           'subplot' => '5',
           'species' => 'Betula pendula Roth.',
           'planting_date' => '2020-01-01',
-          'img' => 'import1/int/int-119.jpg'
+          'img' => 'import1/int/int-119.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => 5.0,
@@ -49006,7 +49125,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -49074,7 +49193,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -49097,7 +49216,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -49120,7 +49239,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -49287,7 +49406,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -49330,7 +49449,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -49425,7 +49544,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -49448,7 +49567,7 @@ return [
           'crown_condition_percent' => 30
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -49472,7 +49591,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла'
@@ -49718,7 +49837,6 @@ return [
           'subplot' => '7',
           'species' => 'Acer platanoides L.',
           'planting_date' => '2005-01-01',
-          'green_state_note' => 'Зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/int/int-164.jpg'
         ],
@@ -49734,7 +49852,8 @@ return [
         'tags' => [
           'Трухлявість',
           'Дупла',
-          'Пошкодження кори'
+          'Пошкодження кори',
+          'Зламана вершина'
         ]
       ],
       [
@@ -49879,7 +49998,6 @@ return [
           'subplot' => '7',
           'species' => 'Tilia cordata Mill.',
           'planting_date' => '1975-01-01',
-          'green_state_note' => 'Зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/int/int-171.jpg'
         ],
@@ -49890,7 +50008,8 @@ return [
           'crown_condition_percent' => 0
         ],
         'tags' => [
-          'Лампи та дроти'
+          'Лампи та дроти',
+          'Зламана вершина'
         ]
       ],
       [
@@ -49904,7 +50023,8 @@ return [
           'subplot' => '7',
           'species' => 'Acer platanoides L.',
           'planting_date' => '2000-01-01',
-          'img' => 'import1/int/int-172.jpg'
+          'img' => 'import1/int/int-172.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => 6.5,
@@ -50073,7 +50193,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -50100,7 +50220,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -50126,7 +50246,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -50259,7 +50379,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -50327,7 +50447,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -50593,7 +50713,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла',
@@ -50611,7 +50731,8 @@ return [
           'subplot' => '7',
           'species' => 'Fraxinus excelsior L.',
           'planting_date' => '1925-01-01',
-          'img' => 'import1/int/int-203.jpg'
+          'img' => 'import1/int/int-203.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 32.0,
@@ -50643,7 +50764,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -50677,7 +50798,8 @@ return [
           'subplot' => '7',
           'species' => 'Fraxinus excelsior L.',
           'planting_date' => '1925-01-01',
-          'img' => 'import1/int/int-206.jpg'
+          'img' => 'import1/int/int-206.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 34.0,
@@ -50730,7 +50852,7 @@ return [
           'crown_condition_percent' => 20
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Цвяхи'
@@ -50756,7 +50878,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -50780,7 +50902,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -50914,7 +51036,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -51237,7 +51359,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -51261,7 +51383,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Морозобоїни',
@@ -51536,7 +51658,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -51559,7 +51681,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -51573,7 +51695,8 @@ return [
           'subplot' => '9',
           'species' => 'Tilia cordata Mill.',
           'planting_date' => '1975-01-01',
-          'img' => 'import1/int/int-269.jpg'
+          'img' => 'import1/int/int-269.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 24.0,
@@ -51645,7 +51768,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -51708,7 +51831,7 @@ return [
           'crown_condition_percent' => 40
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -51751,7 +51874,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -51826,7 +51949,7 @@ return [
           'crown_condition_percent' => 15
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Морозобоїни',
@@ -51873,7 +51996,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -51896,7 +52019,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -51920,7 +52043,7 @@ return [
           'crown_condition_percent' => 25
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -51986,7 +52109,6 @@ return [
           'subplot' => '9',
           'species' => 'Juglans nigra L.',
           'planting_date' => '1995-01-01',
-          'green_state_note' => 'Зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/int/int-302.jpg'
         ],
@@ -51998,7 +52120,8 @@ return [
         ],
         'tags' => [
           'Лампи та дроти',
-          'Розвилки'
+          'Розвилки',
+          'Зламана вершина'
         ]
       ],
       [
@@ -52073,7 +52196,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -52116,7 +52239,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -52162,7 +52285,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -52206,7 +52329,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Пошкодження кори'
@@ -52253,7 +52376,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -52280,7 +52403,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Трухлявість',
@@ -52347,7 +52470,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -52543,7 +52666,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -52566,7 +52689,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -52589,7 +52712,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -52612,7 +52735,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -52635,7 +52758,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -52658,7 +52781,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -52833,7 +52956,7 @@ return [
           'crown_condition_percent' => 0
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -52857,7 +52980,7 @@ return [
           'crown_condition_percent' => 15
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -52944,7 +53067,7 @@ return [
           'crown_condition_percent' => 15
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Пошкодження кори'
@@ -53366,7 +53489,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -53458,7 +53581,7 @@ return [
           'crown_condition_percent' => 40
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -53472,7 +53595,8 @@ return [
           'subplot' => '1',
           'species' => 'Fraxinus excelsior L.',
           'planting_date' => '1945-01-01',
-          'img' => 'import1/int/int-387.jpg'
+          'img' => 'import1/int/int-387.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 31.0,
@@ -53495,7 +53619,8 @@ return [
           'subplot' => '1',
           'species' => 'Fraxinus excelsior L.',
           'planting_date' => '1945-01-01',
-          'img' => 'import1/int/int-388.jpg'
+          'img' => 'import1/int/int-388.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => 30.0,
@@ -54174,7 +54299,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла'
@@ -54230,7 +54355,7 @@ return [
           'crown_condition_percent' => 15
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Трухлявість',
@@ -54285,7 +54410,7 @@ return [
           'crown_condition_percent' => 20
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла',
@@ -54387,7 +54512,7 @@ return [
           'crown_condition_percent' => 20
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла'
@@ -54956,7 +55081,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -54982,7 +55107,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -55005,7 +55130,7 @@ return [
           'crown_condition_percent' => 20
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -55019,7 +55144,8 @@ return [
           'subplot' => '4',
           'species' => 'Picea pungens Engelm.',
           'planting_date' => '2000-01-01',
-          'img' => 'import1/int/int-467.jpg'
+          'img' => 'import1/int/int-467.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => 7.0,
@@ -55098,7 +55224,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -55246,7 +55372,7 @@ return [
           'crown_condition_percent' => 15
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -55272,7 +55398,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -55295,7 +55421,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -55379,7 +55505,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -55446,7 +55572,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -55472,7 +55598,7 @@ return [
           'crown_condition_percent' => 15
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -55495,7 +55621,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -55627,7 +55753,6 @@ return [
           'subplot' => '5',
           'species' => 'Tilia cordata Mill.',
           'planting_date' => '1955-01-01',
-          'green_state_note' => 'Зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/int/int-508.jpg'
         ],
@@ -55639,6 +55764,9 @@ return [
         ],
         'recommendations' => [
           'Видалення'
+        ],
+        'tags' => [
+          'Зламана вершина'
         ]
       ],
       [
@@ -55661,7 +55789,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -55710,7 +55838,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -55756,7 +55884,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -55920,7 +56048,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -55946,7 +56074,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -56256,7 +56384,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -56403,7 +56531,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -56426,7 +56554,7 @@ return [
           'crown_condition_percent' => 30
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -56449,7 +56577,7 @@ return [
           'crown_condition_percent' => 15
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -56914,7 +57042,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -56941,7 +57069,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Морозобоїни',
@@ -57132,7 +57260,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -57468,7 +57596,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -57578,7 +57706,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -57601,7 +57729,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -57845,7 +57973,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -57888,7 +58016,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -57911,7 +58039,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -57934,7 +58062,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -58022,7 +58150,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -58469,7 +58597,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -58565,7 +58693,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Гриби',
@@ -58620,7 +58748,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти',
@@ -58648,7 +58776,7 @@ return [
           'crown_condition_percent' => 25
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -58715,7 +58843,7 @@ return [
           'crown_condition_percent' => 15
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Трухлявість',
@@ -59151,7 +59279,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -59290,7 +59418,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -59304,7 +59432,6 @@ return [
           'subplot' => '2',
           'species' => 'Malus domestica Borkh.',
           'planting_date' => '1985-01-01',
-          'green_state_note' => 'Зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/int/int-717.jpg'
         ],
@@ -59319,7 +59446,8 @@ return [
         ],
         'tags' => [
           'Трухлявість',
-          'Дупла'
+          'Дупла',
+          'Зламана вершина'
         ]
       ],
       [
@@ -59446,7 +59574,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -59576,7 +59704,7 @@ return [
           'crown_condition_percent' => 5
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -59599,7 +59727,7 @@ return [
           'crown_condition_percent' => 10
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -61749,7 +61877,7 @@ return [
           'img' => 'import1/she/she-702.jpg'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -62652,7 +62780,7 @@ return [
           'img' => 'import1/she/she-984.jpg'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -62670,7 +62798,7 @@ return [
           'img' => 'import1/she/she-985.jpg'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -64383,7 +64511,7 @@ return [
           'img' => 'import1/she/she-2203.jpg'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -64401,7 +64529,7 @@ return [
           'img' => 'import1/she/she-2204.jpg'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -64419,7 +64547,7 @@ return [
           'img' => 'import1/she/she-2205.jpg'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -64437,7 +64565,7 @@ return [
           'img' => 'import1/she/she-2206.jpg'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -64455,7 +64583,7 @@ return [
           'img' => 'import1/she/she-2207.jpg'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -64473,7 +64601,7 @@ return [
           'img' => 'import1/she/she-2208.jpg'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -64491,7 +64619,7 @@ return [
           'img' => 'import1/she/she-2209.jpg'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -64509,7 +64637,7 @@ return [
           'img' => 'import1/she/she-2210.jpg'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -64527,7 +64655,7 @@ return [
           'img' => 'import1/she/she-2211.jpg'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -64545,7 +64673,7 @@ return [
           'img' => 'import1/she/she-2212.jpg'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -64563,7 +64691,7 @@ return [
           'img' => 'import1/she/she-2213.jpg'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -67956,7 +68084,7 @@ return [
           'img' => 'import1/she/she-4174.jpg'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -68439,7 +68567,7 @@ return [
           'img' => 'import1/she/she-4437.jpg'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -68457,7 +68585,7 @@ return [
           'img' => 'import1/she/she-4438.jpg'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -68550,7 +68678,7 @@ return [
           'img' => 'import1/she/she-4470.jpg'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -68688,7 +68816,7 @@ return [
           'img' => 'import1/she/she-4485.jpg'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -68706,7 +68834,7 @@ return [
           'img' => 'import1/she/she-4486.jpg'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -72039,7 +72167,7 @@ return [
           'img' => 'import1/she/she-5618.jpg'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -74994,7 +75122,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -75044,7 +75172,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -75070,7 +75198,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -75570,7 +75698,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Пошкодження кори',
@@ -75654,7 +75782,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -75868,7 +75996,8 @@ return [
           'plot' => 'V',
           'subplot' => '6',
           'species' => 'Pinus sylvestris L.',
-          'img' => 'import1/she/she-75.jpg'
+          'img' => 'import1/she/she-75.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '6',
@@ -75877,7 +76006,7 @@ return [
           'crown_condition_percent' => '60'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -75909,7 +76038,8 @@ return [
           'plot' => 'V',
           'subplot' => '6',
           'species' => 'Pinus sylvestris L.',
-          'img' => 'import1/she/she-77.jpg'
+          'img' => 'import1/she/she-77.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '6',
@@ -75918,7 +76048,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -76473,7 +76603,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Пошкодження кори',
@@ -76926,7 +77056,7 @@ return [
           'crown_condition_percent' => '25'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Пошкодження кори',
@@ -77134,7 +77264,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Пошкодження кори',
@@ -77203,7 +77333,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -77516,7 +77646,8 @@ return [
           'plot' => 'V',
           'subplot' => '5',
           'species' => 'Larix decidua Mill.',
-          'img' => 'import1/she/she-157.jpg'
+          'img' => 'import1/she/she-157.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '19',
@@ -77525,7 +77656,7 @@ return [
           'crown_condition_percent' => '50'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -78094,7 +78225,7 @@ return [
           'crown_condition_percent' => '90'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Розвилки'
@@ -78254,7 +78385,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -78302,7 +78433,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -80218,7 +80349,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Розвилки'
@@ -80379,7 +80510,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -82117,7 +82248,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -82926,7 +83057,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -83889,7 +84020,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'встановлення огорожі'
+          'Встановлення огорожі'
         ],
         'tags' => [
           'Дупла'
@@ -86520,7 +86651,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'обстеження'
+          'Обстеження'
         ],
         'tags' => [
           'Трухлявість',
@@ -86548,7 +86679,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла',
@@ -86647,7 +86778,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'обстеження'
+          'Обстеження'
         ],
         'tags' => [
           'Пошкодження кори'
@@ -87222,7 +87353,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -87369,7 +87500,8 @@ return [
           'plot' => 'I',
           'subplot' => '1',
           'species' => 'Betula pendula Roth.',
-          'img' => 'import1/she/she-713.jpg'
+          'img' => 'import1/she/she-713.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '14',
@@ -87378,7 +87510,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -87753,7 +87885,6 @@ return [
           'plot' => 'I',
           'subplot' => '1',
           'species' => 'Carpinus betulus L.',
-          'green_state_note' => 'зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/she/she-730.jpg'
         ],
@@ -87764,12 +87895,13 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Гриби',
           'Трухлявість',
-          'Пошкодження кори'
+          'Пошкодження кори',
+          'Зламана вершина'
         ]
       ],
       [
@@ -88329,7 +88461,6 @@ return [
           'plot' => 'I',
           'subplot' => '1',
           'species' => 'Robinia pseudoacacia L.',
-          'green_state_note' => 'зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/she/she-756.jpg'
         ],
@@ -88340,10 +88471,11 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
-          'Трухлявість'
+          'Трухлявість',
+          'Зламана вершина'
         ]
       ],
       [
@@ -89203,7 +89335,7 @@ return [
           'crown_condition_percent' => '25'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла',
@@ -89231,7 +89363,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла',
@@ -89431,7 +89563,8 @@ return [
           'plot' => 'I',
           'subplot' => '1',
           'species' => 'Betula pendula Roth.',
-          'img' => 'import1/she/she-804.jpg'
+          'img' => 'import1/she/she-804.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '11',
@@ -89440,7 +89573,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -89594,7 +89727,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Пошкодження кори',
@@ -89644,7 +89777,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -89670,7 +89803,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Гриби',
@@ -89713,7 +89846,6 @@ return [
           'plot' => 'I',
           'subplot' => '1',
           'species' => 'Carpinus betulus L.',
-          'green_state_note' => 'зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/she/she-816.jpg'
         ],
@@ -89724,11 +89856,12 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Морозобоїни',
-          'Пошкодження кори'
+          'Пошкодження кори',
+          'Зламана вершина'
         ]
       ],
       [
@@ -90227,7 +90360,8 @@ return [
           'plot' => 'I',
           'subplot' => '1',
           'species' => 'Prunus avium L.',
-          'img' => 'import1/she/she-860.jpg'
+          'img' => 'import1/she/she-860.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '5',
@@ -90236,7 +90370,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -90325,7 +90459,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -90581,7 +90715,7 @@ return [
           'crown_condition_percent' => '80'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Морозобоїни'
@@ -90887,7 +91021,8 @@ return [
           'plot' => 'I',
           'subplot' => '1',
           'species' => '-',
-          'img' => 'import1/she/she-904.jpg'
+          'img' => 'import1/she/she-904.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '3',
@@ -90896,7 +91031,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -90928,7 +91063,8 @@ return [
           'plot' => 'I',
           'subplot' => '1',
           'species' => '-',
-          'img' => 'import1/she/she-906.jpg'
+          'img' => 'import1/she/she-906.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '4',
@@ -90937,7 +91073,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -90950,7 +91086,8 @@ return [
           'plot' => 'I',
           'subplot' => '1',
           'species' => '-',
-          'img' => 'import1/she/she-907.jpg'
+          'img' => 'import1/she/she-907.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '5',
@@ -90959,7 +91096,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -91029,7 +91166,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Пошкодження кори',
@@ -91056,7 +91193,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Пошкодження кори',
@@ -91083,7 +91220,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Пошкодження кори'
@@ -91331,7 +91468,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Пошкодження кори'
@@ -91357,7 +91494,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Пошкодження кори'
@@ -91383,7 +91520,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Пошкодження кори'
@@ -91409,7 +91546,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Пошкодження кори'
@@ -91435,7 +91572,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Пошкодження кори'
@@ -91470,7 +91607,8 @@ return [
           'plot' => 'I',
           'subplot' => '1',
           'species' => '-',
-          'img' => 'import1/she/she-943.jpg'
+          'img' => 'import1/she/she-943.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '6',
@@ -91479,7 +91617,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -91502,7 +91640,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Пошкодження кори'
@@ -92716,7 +92854,8 @@ return [
           'plot' => 'II',
           'subplot' => '1',
           'species' => 'Picea abies (L.) H.Karst.',
-          'img' => 'import1/she/she-1036.jpg'
+          'img' => 'import1/she/she-1036.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '10',
@@ -92725,7 +92864,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -93859,7 +93998,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ],
         'tags' => [
           'Морозобоїни',
@@ -94441,7 +94580,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'обстеження'
+          'Обстеження'
         ],
         'tags' => [
           'Дупла',
@@ -94815,7 +94954,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -94879,7 +95018,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -94925,7 +95064,7 @@ return [
           'crown_condition_percent' => '70'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Трухлявість',
@@ -94975,7 +95114,7 @@ return [
           'crown_condition_percent' => '40'
         ],
         'recommendations' => [
-          'обстеження'
+          'Обстеження'
         ]
       ],
       [
@@ -96144,7 +96283,8 @@ return [
           'plot' => 'II',
           'subplot' => '2',
           'species' => 'Betula pendula Roth.',
-          'img' => 'import1/she/she-1215.jpg'
+          'img' => 'import1/she/she-1215.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '15',
@@ -96153,7 +96293,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -96474,7 +96614,8 @@ return [
           'plot' => 'II',
           'subplot' => '2',
           'species' => 'Betula pendula Roth.',
-          'img' => 'import1/she/she-1240.jpg'
+          'img' => 'import1/she/she-1240.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '16',
@@ -96483,7 +96624,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -96765,7 +96906,6 @@ return [
           'plot' => 'II',
           'subplot' => '2',
           'species' => 'Betula pendula Roth.',
-          'green_state_note' => 'зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/she/she-1262.jpg'
         ],
@@ -96776,7 +96916,10 @@ return [
           'crown_condition_percent' => '60'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
+        ],
+        'tags' => [
+          'Зламана вершина'
         ]
       ],
       [
@@ -96817,7 +96960,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -96830,7 +96973,8 @@ return [
           'plot' => 'II',
           'subplot' => '2',
           'species' => 'Betula pendula Roth.',
-          'img' => 'import1/she/she-1265.jpg'
+          'img' => 'import1/she/she-1265.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '18',
@@ -96839,7 +96983,7 @@ return [
           'crown_condition_percent' => '70'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -96861,7 +97005,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -96884,7 +97028,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла',
@@ -96910,7 +97054,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -97028,7 +97172,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -97072,7 +97216,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -97114,7 +97258,7 @@ return [
           'crown_condition_percent' => '80'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Трухлявість'
@@ -97140,7 +97284,7 @@ return [
           'crown_condition_percent' => '70'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Розвилки'
@@ -97156,7 +97300,8 @@ return [
           'plot' => 'II',
           'subplot' => '22',
           'species' => 'Thuja occidentalis L.',
-          'img' => 'import1/she/she-1292.jpg'
+          'img' => 'import1/she/she-1292.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '15',
@@ -97165,7 +97310,7 @@ return [
           'crown_condition_percent' => '90'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -97181,7 +97326,8 @@ return [
           'plot' => 'II',
           'subplot' => '22',
           'species' => 'Thuja occidentalis L.',
-          'img' => 'import1/she/she-1293.jpg'
+          'img' => 'import1/she/she-1293.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '16',
@@ -97190,7 +97336,7 @@ return [
           'crown_condition_percent' => '80'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -97213,7 +97359,7 @@ return [
           'crown_condition_percent' => '80'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Морозобоїни'
@@ -97239,7 +97385,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Гриби',
@@ -97265,7 +97411,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -97288,7 +97434,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -97314,7 +97460,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла',
@@ -97341,7 +97487,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Морозобоїни',
@@ -97386,7 +97532,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'обстеження'
+          'Обстеження'
         ]
       ],
       [
@@ -97408,7 +97554,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -97525,7 +97671,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -97911,7 +98057,6 @@ return [
           'plot' => 'II',
           'subplot' => '9',
           'species' => 'Platycladus orientalis (L.) Franco',
-          'green_state_note' => 'зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/she/she-1329.jpg'
         ],
@@ -97920,6 +98065,9 @@ return [
           'trunk_circumference_cm' => '24',
           'tilt_degree' => '0',
           'crown_condition_percent' => '0'
+        ],
+        'tags' => [
+          'Зламана вершина'
         ]
       ],
       [
@@ -98102,7 +98250,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -98195,7 +98343,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -98259,7 +98407,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'обстеження'
+          'Обстеження'
         ],
         'tags' => [
           'Трухлявість',
@@ -98287,7 +98435,7 @@ return [
           'crown_condition_percent' => '50'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -98533,7 +98681,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла',
@@ -98550,7 +98698,8 @@ return [
           'plot' => 'II',
           'subplot' => '11',
           'species' => 'Ulmus laevis Pall.',
-          'img' => 'import1/she/she-1368.jpg'
+          'img' => 'import1/she/she-1368.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '30',
@@ -98559,7 +98708,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -98605,7 +98754,7 @@ return [
           'crown_condition_percent' => '90'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Розвилки'
@@ -98621,7 +98770,8 @@ return [
           'plot' => 'II',
           'subplot' => '11',
           'species' => 'Ulmus laevis Pall.',
-          'img' => 'import1/she/she-1371.jpg'
+          'img' => 'import1/she/she-1371.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '19',
@@ -98630,7 +98780,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -98652,7 +98802,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -98948,7 +99098,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -98961,7 +99111,8 @@ return [
           'plot' => 'II',
           'subplot' => '11',
           'species' => 'Ulmus laevis Pall.',
-          'img' => 'import1/she/she-1392.jpg'
+          'img' => 'import1/she/she-1392.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '26',
@@ -98970,7 +99121,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -98983,7 +99134,8 @@ return [
           'plot' => 'II',
           'subplot' => '11',
           'species' => 'Ulmus laevis Pall.',
-          'img' => 'import1/she/she-1393.jpg'
+          'img' => 'import1/she/she-1393.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '26',
@@ -98992,7 +99144,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -99108,7 +99260,8 @@ return [
           'plot' => 'II',
           'subplot' => '11',
           'species' => 'Ulmus laevis Pall.',
-          'img' => 'import1/she/she-1400.jpg'
+          'img' => 'import1/she/she-1400.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '26',
@@ -99117,7 +99270,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -99153,7 +99306,8 @@ return [
           'plot' => 'II',
           'subplot' => '11',
           'species' => '-',
-          'img' => 'import1/she/she-1402.jpg'
+          'img' => 'import1/she/she-1402.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '27',
@@ -99162,7 +99316,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -99321,7 +99475,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -99391,7 +99545,8 @@ return [
           'plot' => 'II',
           'subplot' => '11',
           'species' => 'Tilia cordata Mill.',
-          'img' => 'import1/she/she-1414.jpg'
+          'img' => 'import1/she/she-1414.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '7',
@@ -99400,7 +99555,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -99422,7 +99577,7 @@ return [
           'crown_condition_percent' => '35'
         ],
         'recommendations' => [
-          'обстеження'
+          'Обстеження'
         ]
       ],
       [
@@ -99582,7 +99737,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -100348,7 +100503,6 @@ return [
           'subplot' => '14',
           'species' => 'Picea abies (L.) H.Karst.',
           'planting_date' => '2021-01-01',
-          'green_state_note' => 'зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/she/she-1464.jpg'
         ],
@@ -100357,6 +100511,9 @@ return [
           'trunk_circumference_cm' => null,
           'tilt_degree' => '0',
           'crown_condition_percent' => '0'
+        ],
+        'tags' => [
+          'Зламана вершина'
         ]
       ],
       [
@@ -100416,7 +100573,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -100438,7 +100595,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -100460,7 +100617,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -100482,7 +100639,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -100940,7 +101097,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'обстеження'
+          'Обстеження'
         ],
         'tags' => [
           'Трухлявість'
@@ -101290,7 +101447,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -101316,7 +101473,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Пошкодження кори',
@@ -101343,7 +101500,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Трухлявість',
@@ -101370,7 +101527,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла',
@@ -101397,7 +101554,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -101422,7 +101579,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -101467,7 +101624,7 @@ return [
           'crown_condition_percent' => '25'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -101490,7 +101647,7 @@ return [
           'crown_condition_percent' => '25'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -101515,7 +101672,7 @@ return [
           'crown_condition_percent' => '40'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -101537,7 +101694,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -101560,7 +101717,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -101586,7 +101743,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -101611,7 +101768,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -101634,7 +101791,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Пошкодження кори',
@@ -101725,7 +101882,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -101747,7 +101904,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -102030,7 +102187,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -102065,7 +102222,8 @@ return [
           'plot' => 'II',
           'subplot' => '16',
           'species' => 'Ulmus glabra Huds.',
-          'img' => 'import1/she/she-1545.jpg'
+          'img' => 'import1/she/she-1545.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '17',
@@ -102074,7 +102232,7 @@ return [
           'crown_condition_percent' => '90'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -102297,7 +102455,8 @@ return [
           'plot' => 'II',
           'subplot' => '16',
           'species' => 'Ulmus glabra Huds.',
-          'img' => 'import1/she/she-1556.jpg'
+          'img' => 'import1/she/she-1556.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '16',
@@ -102306,7 +102465,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -102329,7 +102488,7 @@ return [
           'crown_condition_percent' => '90'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Розвилки'
@@ -102355,7 +102514,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Пошкодження кори'
@@ -102380,7 +102539,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -102412,7 +102571,8 @@ return [
           'plot' => 'II',
           'subplot' => '16',
           'species' => 'Ulmus glabra Huds.',
-          'img' => 'import1/she/she-1561.jpg'
+          'img' => 'import1/she/she-1561.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '16',
@@ -102421,7 +102581,7 @@ return [
           'crown_condition_percent' => '50'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -102443,7 +102603,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -102465,7 +102625,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -102487,7 +102647,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -102739,7 +102899,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -102849,7 +103009,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -102874,7 +103034,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -102897,7 +103057,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Пошкодження кори'
@@ -102913,7 +103073,8 @@ return [
           'plot' => 'II',
           'subplot' => '16',
           'species' => 'Betula pendula Roth.',
-          'img' => 'import1/she/she-1584.jpg'
+          'img' => 'import1/she/she-1584.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '7',
@@ -102922,7 +103083,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -102944,7 +103105,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -102986,7 +103147,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -103011,7 +103172,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -103033,7 +103194,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -103056,7 +103217,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -103120,7 +103281,7 @@ return [
           'crown_condition_percent' => '40'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -103146,7 +103307,7 @@ return [
           'crown_condition_percent' => '50'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла',
@@ -103173,7 +103334,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Пошкодження кори',
@@ -103200,7 +103361,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -103226,7 +103387,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -103274,7 +103435,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -103316,7 +103477,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -103503,7 +103664,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -103528,7 +103689,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -103550,7 +103711,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -103630,7 +103791,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -103646,7 +103807,8 @@ return [
           'plot' => 'II',
           'subplot' => '16',
           'species' => 'Fraxinus excelsior L.',
-          'img' => 'import1/she/she-1617.jpg'
+          'img' => 'import1/she/she-1617.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '26',
@@ -103655,7 +103817,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -103677,7 +103839,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -103699,7 +103861,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -103760,7 +103922,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -103786,7 +103948,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -103872,7 +104034,7 @@ return [
           'crown_condition_percent' => '60'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -103894,7 +104056,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -103917,7 +104079,7 @@ return [
           'crown_condition_percent' => '40'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -104023,7 +104185,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -104048,7 +104210,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -104071,7 +104233,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -104096,7 +104258,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -104119,7 +104281,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -104145,7 +104307,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -104170,7 +104332,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -104192,7 +104354,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -104214,7 +104376,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -104236,7 +104398,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -104249,7 +104411,8 @@ return [
           'plot' => 'II',
           'subplot' => '3',
           'species' => 'Larix decidua Mill.',
-          'img' => 'import1/she/she-1647.jpg'
+          'img' => 'import1/she/she-1647.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '24',
@@ -104258,7 +104421,7 @@ return [
           'crown_condition_percent' => '60'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -104319,7 +104482,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -104345,7 +104508,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Пошкодження кори'
@@ -104390,7 +104553,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Трухлявість',
@@ -104408,7 +104571,6 @@ return [
           'plot' => 'II',
           'subplot' => '3',
           'species' => 'Quercus robur L.',
-          'green_state_note' => 'зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/she/she-1654.jpg'
         ],
@@ -104419,13 +104581,14 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Трухлявість',
           'Дупла',
           'Морозобоїни',
-          'Пошкодження кори'
+          'Пошкодження кори',
+          'Зламана вершина'
         ]
       ],
       [
@@ -104448,7 +104611,7 @@ return [
           'crown_condition_percent' => '70'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Розвилки'
@@ -104474,7 +104637,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -104523,7 +104686,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -104567,7 +104730,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -104608,7 +104771,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -104772,7 +104935,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -104863,7 +105026,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -104908,7 +105071,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -104943,7 +105106,6 @@ return [
           'plot' => 'II',
           'subplot' => '3',
           'species' => 'Liriodendron tulipifera L.',
-          'green_state_note' => 'зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/she/she-1683.jpg'
         ],
@@ -104954,10 +105116,11 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
-          'Розвилки'
+          'Розвилки',
+          'Зламана вершина'
         ]
       ],
       [
@@ -104979,7 +105142,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -105021,7 +105184,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -105046,7 +105209,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -105087,7 +105250,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -105109,7 +105272,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -105132,7 +105295,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Пошкодження кори',
@@ -105158,7 +105321,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -105181,7 +105344,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -105716,7 +105879,8 @@ return [
           'plot' => 'II',
           'subplot' => '3',
           'species' => 'Carpinus betulus L.',
-          'img' => 'import1/she/she-1725.jpg'
+          'img' => 'import1/she/she-1725.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '19',
@@ -105725,7 +105889,7 @@ return [
           'crown_condition_percent' => '80'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -105771,7 +105935,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Трухлявість',
@@ -106281,7 +106445,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Трухлявість',
@@ -106728,7 +106892,6 @@ return [
           'plot' => 'II',
           'subplot' => '8',
           'species' => 'Thuja occidentalis L.',
-          'green_state_note' => 'зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/she/she-1773.jpg'
         ],
@@ -106737,6 +106900,9 @@ return [
           'trunk_circumference_cm' => '101',
           'tilt_degree' => '5',
           'crown_condition_percent' => '0'
+        ],
+        'tags' => [
+          'Зламана вершина'
         ]
       ],
       [
@@ -106894,7 +107060,8 @@ return [
           'plot' => 'II',
           'subplot' => '8',
           'species' => '-',
-          'img' => 'import1/she/she-1781.jpg'
+          'img' => 'import1/she/she-1781.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '27',
@@ -106903,7 +107070,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -107432,7 +107599,8 @@ return [
           'plot' => 'II',
           'subplot' => '12',
           'species' => 'Acer pseudoplatanus L.',
-          'img' => 'import1/she/she-1808.jpg'
+          'img' => 'import1/she/she-1808.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '17',
@@ -107441,7 +107609,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -107463,7 +107631,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -107476,7 +107644,8 @@ return [
           'plot' => 'II',
           'subplot' => '12',
           'species' => 'Acer pseudoplatanus L.',
-          'img' => 'import1/she/she-1810.jpg'
+          'img' => 'import1/she/she-1810.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '16',
@@ -107485,7 +107654,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -107498,7 +107667,8 @@ return [
           'plot' => 'II',
           'subplot' => '12',
           'species' => 'Acer pseudoplatanus L.',
-          'img' => 'import1/she/she-1811.jpg'
+          'img' => 'import1/she/she-1811.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => '21',
@@ -107507,7 +107677,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -107549,7 +107719,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -107594,7 +107764,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Пошкодження кори'
@@ -107610,7 +107780,6 @@ return [
           'plot' => 'II',
           'subplot' => '12',
           'species' => 'Acer platanoides L.',
-          'green_state_note' => 'зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/she/she-1816.jpg'
         ],
@@ -107619,6 +107788,9 @@ return [
           'trunk_circumference_cm' => '76',
           'tilt_degree' => '0',
           'crown_condition_percent' => '0'
+        ],
+        'tags' => [
+          'Зламана вершина'
         ]
       ],
       [
@@ -107650,7 +107822,8 @@ return [
           'plot' => 'II',
           'subplot' => '12',
           'species' => 'Acer platanoides L.',
-          'img' => 'import1/she/she-1818.jpg'
+          'img' => 'import1/she/she-1818.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => '23',
@@ -107659,7 +107832,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -107785,7 +107958,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -107871,7 +108044,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -107917,7 +108090,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'обстеження'
+          'Обстеження'
         ],
         'tags' => [
           'Трухлявість',
@@ -107944,7 +108117,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -108126,7 +108299,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -108161,7 +108334,8 @@ return [
           'plot' => 'II',
           'subplot' => '12',
           'species' => 'Carpinus betulus L.',
-          'img' => 'import1/she/she-1844.jpg'
+          'img' => 'import1/she/she-1844.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => '24',
@@ -108170,7 +108344,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -108332,7 +108506,8 @@ return [
           'plot' => 'II',
           'subplot' => '12',
           'species' => 'Carpinus betulus L.',
-          'img' => 'import1/she/she-1852.jpg'
+          'img' => 'import1/she/she-1852.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => '17',
@@ -108341,7 +108516,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -108425,7 +108600,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -108450,7 +108625,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -108491,7 +108666,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'обстеження'
+          'Обстеження'
         ]
       ],
       [
@@ -108504,7 +108679,8 @@ return [
           'plot' => 'II',
           'subplot' => '12',
           'species' => 'Tilia cordata Mill.',
-          'img' => 'import1/she/she-1860.jpg'
+          'img' => 'import1/she/she-1860.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '18',
@@ -108513,7 +108689,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -108545,7 +108721,8 @@ return [
           'plot' => 'II',
           'subplot' => '12',
           'species' => 'Tilia cordata Mill.',
-          'img' => 'import1/she/she-1862.jpg'
+          'img' => 'import1/she/she-1862.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => '26',
@@ -108554,7 +108731,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -108643,7 +108820,6 @@ return [
           'plot' => 'II',
           'subplot' => '12',
           'species' => 'Tilia cordata Mill.',
-          'green_state_note' => 'зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/she/she-1867.jpg'
         ],
@@ -108652,6 +108828,9 @@ return [
           'trunk_circumference_cm' => '68',
           'tilt_degree' => '0',
           'crown_condition_percent' => '0'
+        ],
+        'tags' => [
+          'Зламана вершина'
         ]
       ],
       [
@@ -108702,7 +108881,8 @@ return [
           'plot' => 'II',
           'subplot' => '12',
           'species' => '-',
-          'img' => 'import1/she/she-1870.jpg'
+          'img' => 'import1/she/she-1870.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '29',
@@ -108711,7 +108891,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -108724,7 +108904,8 @@ return [
           'plot' => 'II',
           'subplot' => '12',
           'species' => '-',
-          'img' => 'import1/she/she-1871.jpg'
+          'img' => 'import1/she/she-1871.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '30',
@@ -108733,7 +108914,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -108746,7 +108927,8 @@ return [
           'plot' => 'II',
           'subplot' => '12',
           'species' => '-',
-          'img' => 'import1/she/she-1872.jpg'
+          'img' => 'import1/she/she-1872.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '29',
@@ -108755,7 +108937,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -108778,7 +108960,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Пошкодження кори'
@@ -108794,7 +108976,8 @@ return [
           'plot' => 'II',
           'subplot' => '12',
           'species' => '-',
-          'img' => 'import1/she/she-1874.jpg'
+          'img' => 'import1/she/she-1874.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '29',
@@ -108803,7 +108986,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -108816,7 +108999,8 @@ return [
           'plot' => 'II',
           'subplot' => '12',
           'species' => '-',
-          'img' => 'import1/she/she-1875.jpg'
+          'img' => 'import1/she/she-1875.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '29',
@@ -108825,7 +109009,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -108848,7 +109032,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Пошкодження кори'
@@ -108864,7 +109048,8 @@ return [
           'plot' => 'II',
           'subplot' => '12',
           'species' => '-',
-          'img' => 'import1/she/she-1877.jpg'
+          'img' => 'import1/she/she-1877.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '18',
@@ -108873,7 +109058,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -108886,7 +109071,8 @@ return [
           'plot' => 'II',
           'subplot' => '12',
           'species' => '-',
-          'img' => 'import1/she/she-1878.jpg'
+          'img' => 'import1/she/she-1878.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '21',
@@ -108895,7 +109081,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -109102,7 +109288,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'обстеження'
+          'Обстеження'
         ],
         'tags' => [
           'Трухлявість',
@@ -109163,7 +109349,8 @@ return [
           'plot' => 'II',
           'subplot' => '12',
           'species' => 'Carpinus betulus L.',
-          'img' => 'import1/she/she-1891.jpg'
+          'img' => 'import1/she/she-1891.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => '26',
@@ -109172,7 +109359,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -109258,7 +109445,8 @@ return [
           'plot' => 'II',
           'subplot' => '12',
           'species' => 'Carpinus betulus L.',
-          'img' => 'import1/she/she-1895.jpg'
+          'img' => 'import1/she/she-1895.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => '15',
@@ -109267,7 +109455,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -109770,7 +109958,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ],
         'tags' => [
           'Дупла',
@@ -109855,7 +110043,8 @@ return [
           'plot' => 'II',
           'subplot' => '12',
           'species' => 'Carpinus betulus L.',
-          'img' => 'import1/she/she-1924.jpg'
+          'img' => 'import1/she/she-1924.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => '25',
@@ -109864,7 +110053,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -109887,7 +110076,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -110016,7 +110205,8 @@ return [
           'plot' => 'II',
           'subplot' => '12',
           'species' => 'Carpinus betulus L.',
-          'img' => 'import1/she/she-1931.jpg'
+          'img' => 'import1/she/she-1931.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '21',
@@ -110025,7 +110215,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -110273,7 +110463,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -110317,7 +110507,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'обстеження'
+          'Обстеження'
         ]
       ],
       [
@@ -110397,7 +110587,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -110493,7 +110683,8 @@ return [
           'plot' => 'II',
           'subplot' => '12',
           'species' => 'Quercus robur L.',
-          'img' => 'import1/she/she-1957.jpg'
+          'img' => 'import1/she/she-1957.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => '30',
@@ -110502,7 +110693,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -110605,7 +110796,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -110701,7 +110892,8 @@ return [
           'plot' => 'II',
           'subplot' => '12',
           'species' => 'Tilia cordata Mill.',
-          'img' => 'import1/she/she-1967.jpg'
+          'img' => 'import1/she/she-1967.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => '25',
@@ -110710,7 +110902,7 @@ return [
           'crown_condition_percent' => '50'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -110723,7 +110915,8 @@ return [
           'plot' => 'II',
           'subplot' => '12',
           'species' => 'Tilia cordata Mill.',
-          'img' => 'import1/she/she-1968.jpg'
+          'img' => 'import1/she/she-1968.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => '26',
@@ -110732,7 +110925,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -110869,7 +111062,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -110963,7 +111156,7 @@ return [
           'crown_condition_percent' => '50'
         ],
         'recommendations' => [
-          'обстеження'
+          'Обстеження'
         ]
       ],
       [
@@ -110995,7 +111188,8 @@ return [
           'plot' => 'II',
           'subplot' => '12',
           'species' => 'Quercus robur L.',
-          'img' => 'import1/she/she-1981.jpg'
+          'img' => 'import1/she/she-1981.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => '32',
@@ -111004,7 +111198,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -111036,7 +111230,8 @@ return [
           'plot' => 'II',
           'subplot' => '12',
           'species' => 'Quercus robur L.',
-          'img' => 'import1/she/she-1983.jpg'
+          'img' => 'import1/she/she-1983.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => '33',
@@ -111045,7 +111240,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -111068,7 +111263,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ],
         'tags' => [
           'Морозобоїни',
@@ -111142,7 +111337,8 @@ return [
           'plot' => 'II',
           'subplot' => '12',
           'species' => 'Quercus robur L.',
-          'img' => 'import1/she/she-1988.jpg'
+          'img' => 'import1/she/she-1988.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => '29',
@@ -111151,7 +111347,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -111600,7 +111796,8 @@ return [
           'plot' => 'II',
           'subplot' => '12',
           'species' => 'Tilia cordata Mill.',
-          'img' => 'import1/she/she-2013.jpg'
+          'img' => 'import1/she/she-2013.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => '30',
@@ -111609,7 +111806,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -111721,7 +111918,8 @@ return [
           'plot' => 'II',
           'subplot' => '12',
           'species' => 'Tilia cordata Mill.',
-          'img' => 'import1/she/she-2019.jpg'
+          'img' => 'import1/she/she-2019.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => '29',
@@ -111730,7 +111928,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -111963,7 +112161,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ],
         'tags' => [
           'Дупла',
@@ -112569,7 +112767,7 @@ return [
           'crown_condition_percent' => '40'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -112592,7 +112790,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -112930,7 +113128,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -113471,7 +113669,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -113487,7 +113685,8 @@ return [
           'plot' => 'II',
           'subplot' => '13',
           'species' => 'Tilia cordata Mill.',
-          'img' => 'import1/she/she-2107.jpg'
+          'img' => 'import1/she/she-2107.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '17',
@@ -113496,7 +113695,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -113519,7 +113718,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -113866,7 +114065,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ],
         'tags' => [
           'Трухлявість',
@@ -114014,7 +114213,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Пошкодження кори'
@@ -114030,7 +114229,8 @@ return [
           'plot' => 'II',
           'subplot' => '13',
           'species' => '-',
-          'img' => 'import1/she/she-2132.jpg'
+          'img' => 'import1/she/she-2132.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '28',
@@ -114039,7 +114239,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -114052,7 +114252,8 @@ return [
           'plot' => 'II',
           'subplot' => '13',
           'species' => '-',
-          'img' => 'import1/she/she-2133.jpg'
+          'img' => 'import1/she/she-2133.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '27',
@@ -114061,7 +114262,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -114074,7 +114275,8 @@ return [
           'plot' => 'II',
           'subplot' => '13',
           'species' => '-',
-          'img' => 'import1/she/she-2134.jpg'
+          'img' => 'import1/she/she-2134.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '27',
@@ -114083,7 +114285,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -114096,7 +114298,8 @@ return [
           'plot' => 'II',
           'subplot' => '13',
           'species' => '-',
-          'img' => 'import1/she/she-2135.jpg'
+          'img' => 'import1/she/she-2135.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '28',
@@ -114105,7 +114308,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -114505,7 +114708,7 @@ return [
           'crown_condition_percent' => '90'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Морозобоїни'
@@ -114540,7 +114743,8 @@ return [
           'plot' => 'II',
           'subplot' => '13',
           'species' => 'Ulmus laevis Pall.',
-          'img' => 'import1/she/she-2157.jpg'
+          'img' => 'import1/she/she-2157.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '27',
@@ -114549,7 +114753,7 @@ return [
           'crown_condition_percent' => '90'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -114562,7 +114766,8 @@ return [
           'plot' => 'II',
           'subplot' => '13',
           'species' => 'Ulmus laevis Pall.',
-          'img' => 'import1/she/she-2158.jpg'
+          'img' => 'import1/she/she-2158.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '27',
@@ -114571,7 +114776,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -114746,7 +114951,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -114865,7 +115070,8 @@ return [
           'plot' => 'II',
           'subplot' => '13',
           'species' => 'Pinus nigra J.F.Arnold',
-          'img' => 'import1/she/she-2173.jpg'
+          'img' => 'import1/she/she-2173.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '28',
@@ -114874,7 +115080,7 @@ return [
           'crown_condition_percent' => '90'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -114935,7 +115141,7 @@ return [
           'crown_condition_percent' => '80'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Трухлявість',
@@ -115219,7 +115425,6 @@ return [
           'plot' => 'II',
           'subplot' => '16',
           'species' => 'Quercus robur L.',
-          'green_state_note' => 'зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/she/she-2190.jpg'
         ],
@@ -115228,6 +115433,9 @@ return [
           'trunk_circumference_cm' => '138',
           'tilt_degree' => '0',
           'crown_condition_percent' => '0'
+        ],
+        'tags' => [
+          'Зламана вершина'
         ]
       ],
       [
@@ -115867,7 +116075,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ],
         'tags' => [
           'Морозобоїни',
@@ -115884,7 +116092,8 @@ return [
           'plot' => 'II',
           'subplot' => '16',
           'species' => 'Fraxinus excelsior L.',
-          'img' => 'import1/she/she-2234.jpg'
+          'img' => 'import1/she/she-2234.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => '34',
@@ -115893,7 +116102,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -115906,7 +116115,8 @@ return [
           'plot' => 'II',
           'subplot' => '16',
           'species' => 'Fraxinus excelsior L.',
-          'img' => 'import1/she/she-2235.jpg'
+          'img' => 'import1/she/she-2235.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => '35',
@@ -115915,7 +116125,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -116052,7 +116262,7 @@ return [
           'crown_condition_percent' => '25'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ],
         'tags' => [
           'Морозобоїни',
@@ -116262,7 +116472,8 @@ return [
           'plot' => 'II',
           'subplot' => '16',
           'species' => 'Fraxinus excelsior L.',
-          'img' => 'import1/she/she-2253.jpg'
+          'img' => 'import1/she/she-2253.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => '35',
@@ -116271,7 +116482,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -116358,7 +116569,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'обстеження'
+          'Обстеження'
         ],
         'tags' => [
           'Цвяхи',
@@ -116631,7 +116842,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -116905,7 +117116,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -117642,7 +117853,8 @@ return [
           'plot' => 'II',
           'subplot' => '16',
           'species' => 'Picea pungens Engelm.',
-          'img' => 'import1/she/she-2318.jpg'
+          'img' => 'import1/she/she-2318.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '24',
@@ -117651,7 +117863,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -117778,7 +117990,8 @@ return [
           'plot' => 'II',
           'subplot' => '16',
           'species' => 'Quercus robur L.',
-          'img' => 'import1/she/she-2325.jpg'
+          'img' => 'import1/she/she-2325.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => '32',
@@ -117787,7 +118000,7 @@ return [
           'crown_condition_percent' => '60'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -117951,7 +118164,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'обстеження'
+          'Обстеження'
         ],
         'tags' => [
           'Трухлявість',
@@ -118388,7 +118601,8 @@ return [
           'plot' => 'II',
           'subplot' => '16',
           'species' => 'Fraxinus excelsior L.',
-          'img' => 'import1/she/she-2355.jpg'
+          'img' => 'import1/she/she-2355.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '31',
@@ -118397,7 +118611,7 @@ return [
           'crown_condition_percent' => '90'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -118486,7 +118700,8 @@ return [
           'plot' => 'II',
           'subplot' => '16',
           'species' => 'Picea pungens Engelm.',
-          'img' => 'import1/she/she-2360.jpg'
+          'img' => 'import1/she/she-2360.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '8',
@@ -118495,7 +118710,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -118517,7 +118732,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'обстеження'
+          'Обстеження'
         ]
       ],
       [
@@ -118724,7 +118939,8 @@ return [
           'plot' => 'II',
           'subplot' => '16',
           'species' => 'Robinia pseudoacacia L.',
-          'img' => 'import1/she/she-2373.jpg'
+          'img' => 'import1/she/she-2373.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => '24',
@@ -118733,7 +118949,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -118765,7 +118981,8 @@ return [
           'plot' => 'II',
           'subplot' => '16',
           'species' => 'Robinia pseudoacacia L.',
-          'img' => 'import1/she/she-2375.jpg'
+          'img' => 'import1/she/she-2375.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => '29',
@@ -118774,7 +118991,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -118787,7 +119004,8 @@ return [
           'plot' => 'II',
           'subplot' => '16',
           'species' => 'Robinia pseudoacacia L.',
-          'img' => 'import1/she/she-2376.jpg'
+          'img' => 'import1/she/she-2376.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => '28',
@@ -118796,7 +119014,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -118809,7 +119027,8 @@ return [
           'plot' => 'II',
           'subplot' => '16',
           'species' => 'Robinia pseudoacacia L.',
-          'img' => 'import1/she/she-2377.jpg'
+          'img' => 'import1/she/she-2377.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => '29',
@@ -118818,7 +119037,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -118831,7 +119050,8 @@ return [
           'plot' => 'II',
           'subplot' => '16',
           'species' => 'Robinia pseudoacacia L.',
-          'img' => 'import1/she/she-2378.jpg'
+          'img' => 'import1/she/she-2378.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => '29',
@@ -118840,7 +119060,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -118929,7 +119149,8 @@ return [
           'plot' => 'II',
           'subplot' => '16',
           'species' => 'Quercus robur L.',
-          'img' => 'import1/she/she-2383.jpg'
+          'img' => 'import1/she/she-2383.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => '35',
@@ -118938,7 +119159,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -118951,7 +119172,8 @@ return [
           'plot' => 'II',
           'subplot' => '16',
           'species' => 'Quercus robur L.',
-          'img' => 'import1/she/she-2384.jpg'
+          'img' => 'import1/she/she-2384.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => '34',
@@ -118960,7 +119182,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -119125,7 +119347,8 @@ return [
           'plot' => 'II',
           'subplot' => '16',
           'species' => 'Tilia cordata Mill.',
-          'img' => 'import1/she/she-2393.jpg'
+          'img' => 'import1/she/she-2393.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => '28',
@@ -119134,7 +119357,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -119170,7 +119393,6 @@ return [
           'plot' => 'II',
           'subplot' => '16',
           'species' => 'Picea abies (L.) H.Karst.',
-          'green_state_note' => 'зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/she/she-2395.jpg'
         ],
@@ -119179,6 +119401,9 @@ return [
           'trunk_circumference_cm' => '43',
           'tilt_degree' => '0',
           'crown_condition_percent' => '0'
+        ],
+        'tags' => [
+          'Зламана вершина'
         ]
       ],
       [
@@ -119191,7 +119416,6 @@ return [
           'plot' => 'II',
           'subplot' => '16',
           'species' => 'Picea abies (L.) H.Karst.',
-          'green_state_note' => 'зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/she/she-2396.jpg'
         ],
@@ -119200,6 +119424,9 @@ return [
           'trunk_circumference_cm' => '23',
           'tilt_degree' => '0',
           'crown_condition_percent' => '0'
+        ],
+        'tags' => [
+          'Зламана вершина'
         ]
       ],
       [
@@ -119245,7 +119472,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -119309,7 +119536,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -119575,7 +119802,7 @@ return [
           'crown_condition_percent' => '25'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ],
         'tags' => [
           'Трухлявість'
@@ -119728,7 +119955,8 @@ return [
           'plot' => 'II',
           'subplot' => '16',
           'species' => 'Robinia pseudoacacia L.',
-          'img' => 'import1/she/she-2422.jpg'
+          'img' => 'import1/she/she-2422.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => '32',
@@ -119737,7 +119965,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -119925,7 +120153,8 @@ return [
           'plot' => 'II',
           'subplot' => '16',
           'species' => 'Quercus rubra L.',
-          'img' => 'import1/she/she-2432.jpg'
+          'img' => 'import1/she/she-2432.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => '27',
@@ -119934,7 +120163,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -120080,7 +120309,8 @@ return [
           'plot' => 'II',
           'subplot' => '16',
           'species' => 'Tilia cordata Mill.',
-          'img' => 'import1/she/she-2440.jpg'
+          'img' => 'import1/she/she-2440.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '30',
@@ -120089,7 +120319,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -120346,7 +120576,8 @@ return [
           'plot' => 'II',
           'subplot' => '20',
           'species' => 'Betula pendula Roth.',
-          'img' => 'import1/she/she-2453.jpg'
+          'img' => 'import1/she/she-2453.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => '19',
@@ -120355,7 +120586,7 @@ return [
           'crown_condition_percent' => '40'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -120425,7 +120656,8 @@ return [
           'plot' => 'II',
           'subplot' => '20',
           'species' => 'Quercus petraea (Matt.) Liebl.',
-          'img' => 'import1/she/she-2457.jpg'
+          'img' => 'import1/she/she-2457.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => '17',
@@ -120434,7 +120666,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -120791,7 +121023,8 @@ return [
           'plot' => 'II',
           'subplot' => '17',
           'species' => '-',
-          'img' => 'import1/she/she-2475.jpg'
+          'img' => 'import1/she/she-2475.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '23',
@@ -120800,7 +121033,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -121190,7 +121423,8 @@ return [
           'plot' => 'II',
           'subplot' => '17',
           'species' => 'Betula pendula Roth.',
-          'img' => 'import1/she/she-2495.jpg'
+          'img' => 'import1/she/she-2495.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '5',
@@ -121199,7 +121433,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -121475,7 +121709,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -121814,7 +122048,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'обстеження'
+          'Обстеження'
         ],
         'tags' => [
           'Лампи та дроти',
@@ -122413,7 +122647,6 @@ return [
           'plot' => 'II',
           'subplot' => '20',
           'species' => 'Larix decidua Mill.',
-          'green_state_note' => 'зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/she/she-2553.jpg'
         ],
@@ -122422,6 +122655,9 @@ return [
           'trunk_circumference_cm' => '73',
           'tilt_degree' => '0',
           'crown_condition_percent' => '0'
+        ],
+        'tags' => [
+          'Зламана вершина'
         ]
       ],
       [
@@ -123011,7 +123247,8 @@ return [
           'plot' => 'II',
           'subplot' => '20',
           'species' => 'Acer platanoides L.',
-          'img' => 'import1/she/she-2581.jpg'
+          'img' => 'import1/she/she-2581.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '30',
@@ -123020,7 +123257,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -123493,7 +123730,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -123515,7 +123752,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -123674,7 +123911,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -123720,7 +123957,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Пошкодження кори',
@@ -123978,7 +124215,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -124003,7 +124240,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -124114,7 +124351,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -124358,7 +124595,7 @@ return [
           'crown_condition_percent' => '90'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Трухлявість'
@@ -124384,7 +124621,7 @@ return [
           'crown_condition_percent' => '40'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Трухлявість'
@@ -124410,7 +124647,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Трухлявість'
@@ -124436,7 +124673,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -124554,7 +124791,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Розвилки'
@@ -124622,7 +124859,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -124648,7 +124885,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ],
         'tags' => [
           'Пошкодження кори',
@@ -124684,7 +124921,8 @@ return [
           'plot' => 'II',
           'subplot' => '8',
           'species' => 'Robinia pseudoacacia L.',
-          'img' => 'import1/she/she-2672.jpg'
+          'img' => 'import1/she/she-2672.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => '23',
@@ -124693,7 +124931,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -124716,7 +124954,7 @@ return [
           'crown_condition_percent' => '25'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ],
         'tags' => [
           'Трухлявість',
@@ -124743,7 +124981,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ],
         'tags' => [
           'Дупла',
@@ -124958,7 +125196,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -124993,7 +125231,8 @@ return [
           'plot' => 'II',
           'subplot' => '8',
           'species' => 'Fraxinus excelsior L.',
-          'img' => 'import1/she/she-2686.jpg'
+          'img' => 'import1/she/she-2686.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '22',
@@ -125002,7 +125241,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -125596,7 +125835,8 @@ return [
           'plot' => 'V',
           'subplot' => '4',
           'species' => 'Betula pendula Roth.',
-          'img' => 'import1/she/she-2725.jpg'
+          'img' => 'import1/she/she-2725.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '17',
@@ -125605,7 +125845,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -125618,7 +125858,8 @@ return [
           'plot' => 'V',
           'subplot' => '4',
           'species' => 'Betula pendula Roth.',
-          'img' => 'import1/she/she-2726.jpg'
+          'img' => 'import1/she/she-2726.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '25',
@@ -125627,7 +125868,7 @@ return [
           'crown_condition_percent' => '80'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -125697,7 +125938,8 @@ return [
           'plot' => 'V',
           'subplot' => '4',
           'species' => 'Betula pendula Roth.',
-          'img' => 'import1/she/she-2730.jpg'
+          'img' => 'import1/she/she-2730.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '15',
@@ -125706,7 +125948,7 @@ return [
           'crown_condition_percent' => '70'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -125719,7 +125961,8 @@ return [
           'plot' => 'V',
           'subplot' => '4',
           'species' => 'Betula pendula Roth.',
-          'img' => 'import1/she/she-2731.jpg'
+          'img' => 'import1/she/she-2731.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '14',
@@ -125728,7 +125971,7 @@ return [
           'crown_condition_percent' => '60'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -126068,7 +126311,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Трухлявість',
@@ -126108,7 +126351,8 @@ return [
           'plot' => 'V',
           'subplot' => '4',
           'species' => 'Betula pendula Roth.',
-          'img' => 'import1/she/she-2757.jpg'
+          'img' => 'import1/she/she-2757.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '17',
@@ -126117,7 +126361,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -126153,7 +126397,8 @@ return [
           'plot' => 'V',
           'subplot' => '4',
           'species' => 'Betula pendula Roth.',
-          'img' => 'import1/she/she-2759.jpg'
+          'img' => 'import1/she/she-2759.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => '14',
@@ -126162,7 +126407,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -126392,7 +126637,7 @@ return [
           'crown_condition_percent' => '90'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Трухлявість',
@@ -126965,7 +127210,7 @@ return [
           'crown_condition_percent' => '25'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -126991,7 +127236,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -127017,7 +127262,7 @@ return [
           'crown_condition_percent' => '80'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Пошкодження кори',
@@ -127066,7 +127311,7 @@ return [
           'crown_condition_percent' => '60'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -127079,7 +127324,8 @@ return [
           'plot' => 'V',
           'subplot' => '7',
           'species' => 'Picea pungens Engelm.',
-          'img' => 'import1/she/she-2812.jpg'
+          'img' => 'import1/she/she-2812.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '5',
@@ -127088,7 +127334,7 @@ return [
           'crown_condition_percent' => '80'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -127459,7 +127705,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти',
@@ -127572,7 +127818,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -127659,7 +127905,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -127684,7 +127930,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -127707,7 +127953,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -127733,7 +127979,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -127759,7 +128005,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -127785,7 +128031,7 @@ return [
           'crown_condition_percent' => '35'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -127811,7 +128057,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -127837,7 +128083,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -127862,7 +128108,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -127909,7 +128155,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла',
@@ -127935,7 +128181,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -127957,7 +128203,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -128049,7 +128295,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Цвяхи'
@@ -128093,7 +128339,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -128116,7 +128362,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -128142,7 +128388,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -128168,7 +128414,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла',
@@ -128196,7 +128442,7 @@ return [
           'crown_condition_percent' => '35'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Морозобоїни'
@@ -128221,7 +128467,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -128244,7 +128490,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -128270,7 +128516,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -128296,7 +128542,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Морозобоїни',
@@ -128324,7 +128570,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -128663,7 +128909,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -128731,7 +128977,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -128989,7 +129235,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -129040,7 +129286,8 @@ return [
           'plot' => 'V',
           'subplot' => '7',
           'species' => 'Fraxinus excelsior L.',
-          'img' => 'import1/she/she-2908.jpg'
+          'img' => 'import1/she/she-2908.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => '27',
@@ -129049,7 +129296,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ]
       ],
       [
@@ -129166,7 +129413,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -129205,7 +129452,6 @@ return [
           'plot' => 'V',
           'subplot' => '7',
           'species' => 'Pinus sylvestris L.',
-          'green_state_note' => 'зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/she/she-2915.jpg'
         ],
@@ -129216,7 +129462,10 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
+        ],
+        'tags' => [
+          'Зламана вершина'
         ]
       ],
       [
@@ -129238,7 +129487,7 @@ return [
           'crown_condition_percent' => '25'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -129260,7 +129509,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -129282,7 +129531,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -129295,7 +129544,8 @@ return [
           'plot' => 'V',
           'subplot' => '7',
           'species' => 'Pinus sylvestris L.',
-          'img' => 'import1/she/she-2919.jpg'
+          'img' => 'import1/she/she-2919.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '16',
@@ -129304,7 +129554,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -129345,7 +129595,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -129368,7 +129618,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Пошкодження кори'
@@ -129393,7 +129643,7 @@ return [
           'crown_condition_percent' => '45'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -129416,7 +129666,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Цвяхи',
@@ -129557,7 +129807,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -129645,7 +129895,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -129671,7 +129921,7 @@ return [
           'crown_condition_percent' => '25'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -129696,7 +129946,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -129738,7 +129988,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла'
@@ -129918,7 +130168,7 @@ return [
           'crown_condition_percent' => '25'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -129944,7 +130194,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -129970,7 +130220,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -129995,7 +130245,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -130064,7 +130314,7 @@ return [
           'crown_condition_percent' => '80'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -130086,7 +130336,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -130108,7 +130358,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -130131,7 +130381,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -130157,7 +130407,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -130183,7 +130433,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -130227,7 +130477,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -130240,7 +130490,8 @@ return [
           'plot' => 'IV',
           'subplot' => '8',
           'species' => 'Picea pungens Engelm.',
-          'img' => 'import1/she/she-2984.jpg'
+          'img' => 'import1/she/she-2984.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '13',
@@ -130249,7 +130500,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -130262,7 +130513,8 @@ return [
           'plot' => 'IV',
           'subplot' => '8',
           'species' => 'Picea pungens Engelm.',
-          'img' => 'import1/she/she-2985.jpg'
+          'img' => 'import1/she/she-2985.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '12',
@@ -130271,7 +130523,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -130293,7 +130545,7 @@ return [
           'crown_condition_percent' => '25'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -130316,7 +130568,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -130342,7 +130594,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Трухлявість',
@@ -130370,7 +130622,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -130396,7 +130648,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -130445,7 +130697,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -130494,7 +130746,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -130520,7 +130772,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -130546,7 +130798,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -130572,7 +130824,7 @@ return [
           'crown_condition_percent' => '60'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -130598,7 +130850,7 @@ return [
           'crown_condition_percent' => '35'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -130624,7 +130876,7 @@ return [
           'crown_condition_percent' => '40'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -130650,7 +130902,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -130699,7 +130951,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -130724,7 +130976,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -130747,7 +130999,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -130772,7 +131024,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -130794,7 +131046,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -130835,7 +131087,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -130886,7 +131138,8 @@ return [
           'plot' => 'IV',
           'subplot' => '8',
           'species' => 'Populus deltoides W.Bartram ex Marshall',
-          'img' => 'import1/she/she-3011.jpg'
+          'img' => 'import1/she/she-3011.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '24',
@@ -130895,7 +131148,7 @@ return [
           'crown_condition_percent' => '60'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -130940,7 +131193,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -130963,7 +131216,7 @@ return [
           'crown_condition_percent' => '25'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -130989,7 +131242,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -131057,7 +131310,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -131083,7 +131336,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Гриби',
@@ -131113,7 +131366,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -131138,7 +131391,7 @@ return [
           'crown_condition_percent' => '35'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -131161,7 +131414,7 @@ return [
           'crown_condition_percent' => '90'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Дупла',
@@ -131188,7 +131441,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Морозобоїни',
@@ -131216,7 +131469,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -131265,7 +131518,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -131375,7 +131628,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -131490,7 +131743,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -131516,7 +131769,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Гриби',
@@ -131563,7 +131816,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -131612,7 +131865,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Гриби',
@@ -131639,7 +131892,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -131684,7 +131937,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -131709,7 +131962,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -131755,7 +132008,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -131781,7 +132034,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -131806,7 +132059,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -131852,7 +132105,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -131919,7 +132172,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -131942,7 +132195,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -131967,7 +132220,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -131990,7 +132243,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -132109,7 +132362,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -132125,7 +132378,8 @@ return [
           'plot' => 'IV',
           'subplot' => '8',
           'species' => 'Acer platanoides L.',
-          'img' => 'import1/she/she-3063.jpg'
+          'img' => 'import1/she/she-3063.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '6',
@@ -132134,7 +132388,7 @@ return [
           'crown_condition_percent' => '50'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -132156,7 +132410,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -132197,7 +132451,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -132239,7 +132493,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Трухлявість',
@@ -132268,7 +132522,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла',
@@ -132365,7 +132619,7 @@ return [
           'crown_condition_percent' => '60'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -132404,7 +132658,8 @@ return [
           'plot' => 'IV',
           'subplot' => '8',
           'species' => 'Aesculus hippocastanum L.',
-          'img' => 'import1/she/she-3075.jpg'
+          'img' => 'import1/she/she-3075.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '6',
@@ -132413,7 +132668,7 @@ return [
           'crown_condition_percent' => '70'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -132436,7 +132691,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Розвилки'
@@ -132481,7 +132736,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Пошкодження кори'
@@ -132497,7 +132752,6 @@ return [
           'plot' => 'IV',
           'subplot' => '8',
           'species' => 'Acer platanoides L.',
-          'green_state_note' => 'зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/she/she-3079.jpg'
         ],
@@ -132508,7 +132762,8 @@ return [
           'crown_condition_percent' => '0'
         ],
         'tags' => [
-          'Розвилки'
+          'Розвилки',
+          'Зламана вершина'
         ]
       ],
       [
@@ -132530,7 +132785,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -132576,7 +132831,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -132625,7 +132880,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла'
@@ -132650,7 +132905,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -132673,7 +132928,7 @@ return [
           'crown_condition_percent' => '70'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Трухлявість',
@@ -132781,7 +133036,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -132861,7 +133116,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -132887,7 +133142,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -132937,7 +133192,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -132962,7 +133217,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -132985,7 +133240,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -133029,7 +133284,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -133051,7 +133306,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -133111,7 +133366,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -133148,7 +133403,6 @@ return [
           'plot' => 'IV',
           'subplot' => '8',
           'species' => 'Robinia pseudoacacia L.',
-          'green_state_note' => 'зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/she/she-3109.jpg'
         ],
@@ -133157,6 +133411,9 @@ return [
           'trunk_circumference_cm' => '86',
           'tilt_degree' => '5',
           'crown_condition_percent' => '0'
+        ],
+        'tags' => [
+          'Зламана вершина'
         ]
       ],
       [
@@ -133197,7 +133454,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -133210,7 +133467,8 @@ return [
           'plot' => 'IV',
           'subplot' => '8',
           'species' => 'Robinia pseudoacacia L.',
-          'img' => 'import1/she/she-3112.jpg'
+          'img' => 'import1/she/she-3112.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '23',
@@ -133219,7 +133477,7 @@ return [
           'crown_condition_percent' => '60'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -133242,7 +133500,7 @@ return [
           'crown_condition_percent' => '40'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Морозобоїни',
@@ -133291,7 +133549,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -133333,7 +133591,7 @@ return [
           'crown_condition_percent' => '25'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Трухлявість',
@@ -133379,7 +133637,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -133424,7 +133682,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -133446,7 +133704,7 @@ return [
           'crown_condition_percent' => '40'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -133469,7 +133727,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -133494,7 +133752,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -133507,7 +133765,8 @@ return [
           'plot' => 'IV',
           'subplot' => '8',
           'species' => 'Robinia pseudoacacia L.',
-          'img' => 'import1/she/she-3132.jpg'
+          'img' => 'import1/she/she-3132.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '12',
@@ -133516,7 +133775,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -133580,7 +133839,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -133603,7 +133862,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -133697,7 +133956,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -133828,7 +134087,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -133890,7 +134149,6 @@ return [
           'plot' => 'IV',
           'subplot' => '8',
           'species' => 'Tilia cordata Mill.',
-          'green_state_note' => 'зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/she/she-3152.jpg'
         ],
@@ -133902,7 +134160,8 @@ return [
         ],
         'tags' => [
           'Лампи та дроти',
-          'Розвилки'
+          'Розвилки',
+          'Зламана вершина'
         ]
       ],
       [
@@ -134034,7 +134293,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -134059,7 +134318,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -134082,7 +134341,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -134130,7 +134389,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -134153,7 +134412,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -134179,7 +134438,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -134205,7 +134464,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -134292,7 +134551,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -134318,7 +134577,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -134580,7 +134839,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -134602,7 +134861,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -134647,7 +134906,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -134669,7 +134928,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -134691,7 +134950,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -134733,7 +134992,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -134759,7 +135018,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -134808,7 +135067,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -134857,7 +135116,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -134880,7 +135139,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла',
@@ -134907,7 +135166,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -134933,7 +135192,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла',
@@ -135072,7 +135331,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти',
@@ -135099,7 +135358,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Морозобоїни',
@@ -135174,7 +135433,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -135197,7 +135456,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -135241,7 +135500,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -135351,7 +135610,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -135374,7 +135633,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -135493,7 +135752,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -135675,7 +135934,7 @@ return [
           'crown_condition_percent' => '60'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Розвилки'
@@ -135701,7 +135960,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -135749,7 +136008,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -135875,7 +136134,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -135935,7 +136194,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -135977,7 +136236,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -136073,7 +136332,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -136146,7 +136405,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -136171,7 +136430,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -136236,7 +136495,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Пошкодження кори',
@@ -136365,7 +136624,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -136431,7 +136690,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -136457,7 +136716,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла',
@@ -136601,7 +136860,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -136623,7 +136882,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -136669,7 +136928,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -136694,7 +136953,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -136743,7 +137002,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -136769,7 +137028,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -136833,7 +137092,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Морозобоїни',
@@ -136850,7 +137109,6 @@ return [
           'plot' => 'IV',
           'subplot' => '7',
           'species' => 'Salix babylonica L.',
-          'green_state_note' => 'зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/she/she-3301.jpg'
         ],
@@ -136861,12 +137119,13 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Гриби',
           'Трухлявість',
-          'Дупла'
+          'Дупла',
+          'Зламана вершина'
         ]
       ],
       [
@@ -136889,7 +137148,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла',
@@ -136939,7 +137198,7 @@ return [
           'crown_condition_percent' => '25'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -136965,7 +137224,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла',
@@ -137040,7 +137299,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -137066,7 +137325,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -137092,7 +137351,7 @@ return [
           'crown_condition_percent' => '70'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Розвилки'
@@ -137137,7 +137396,7 @@ return [
           'crown_condition_percent' => '25'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -137254,7 +137513,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -137408,7 +137667,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -137443,7 +137702,6 @@ return [
           'plot' => 'IV',
           'subplot' => '7',
           'species' => 'Tilia cordata Mill.',
-          'green_state_note' => 'зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/she/she-3327.jpg'
         ],
@@ -137452,6 +137710,9 @@ return [
           'trunk_circumference_cm' => '216',
           'tilt_degree' => '0',
           'crown_condition_percent' => '0'
+        ],
+        'tags' => [
+          'Зламана вершина'
         ]
       ],
       [
@@ -137492,7 +137753,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -137538,7 +137799,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -137564,7 +137825,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -137632,7 +137893,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Пошкодження кори'
@@ -137658,7 +137919,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Трухлявість'
@@ -137674,7 +137935,6 @@ return [
           'plot' => 'IV',
           'subplot' => '7',
           'species' => 'Picea abies (L.) H.Karst.',
-          'green_state_note' => 'зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/she/she-3338.jpg'
         ],
@@ -137683,6 +137943,9 @@ return [
           'trunk_circumference_cm' => '62',
           'tilt_degree' => '0',
           'crown_condition_percent' => '0'
+        ],
+        'tags' => [
+          'Зламана вершина'
         ]
       ],
       [
@@ -137704,7 +137967,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -137726,7 +137989,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -137808,7 +138071,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -137831,7 +138094,7 @@ return [
           'crown_condition_percent' => '40'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла'
@@ -137857,7 +138120,7 @@ return [
           'crown_condition_percent' => '40'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -137882,7 +138145,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -137904,7 +138167,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -137917,7 +138180,8 @@ return [
           'plot' => 'IV',
           'subplot' => '7',
           'species' => 'Picea abies (L.) H.Karst.',
-          'img' => 'import1/she/she-3350.jpg'
+          'img' => 'import1/she/she-3350.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '14',
@@ -137926,7 +138190,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -137948,7 +138212,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -137971,7 +138235,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -137997,7 +138261,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -138069,7 +138333,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла',
@@ -138097,7 +138361,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Трухлявість',
@@ -138125,7 +138389,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -138150,7 +138414,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -138172,7 +138436,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -138218,7 +138482,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -138241,7 +138505,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Трухлявість',
@@ -138261,7 +138525,8 @@ return [
           'plot' => 'IV',
           'subplot' => '7',
           'species' => 'Picea abies (L.) H.Karst.',
-          'img' => 'import1/she/she-3364.jpg'
+          'img' => 'import1/she/she-3364.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '15',
@@ -138270,7 +138535,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -138292,7 +138557,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -138315,7 +138580,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -138341,7 +138606,7 @@ return [
           'crown_condition_percent' => '55'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла',
@@ -138390,7 +138655,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -138449,7 +138714,8 @@ return [
           'plot' => 'IV',
           'subplot' => '7',
           'species' => 'Malus domestica Borkh.',
-          'img' => 'import1/she/she-3376.jpg'
+          'img' => 'import1/she/she-3376.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '10',
@@ -138458,7 +138724,7 @@ return [
           'crown_condition_percent' => '90'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -138652,7 +138918,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -138700,7 +138966,7 @@ return [
           'crown_condition_percent' => '25'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -138765,7 +139031,7 @@ return [
           'crown_condition_percent' => '40'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла',
@@ -138791,7 +139057,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -138851,7 +139117,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -138873,7 +139139,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -139070,7 +139336,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -139083,7 +139349,8 @@ return [
           'plot' => 'IV',
           'subplot' => '7',
           'species' => 'Picea abies (L.) H.Karst.',
-          'img' => 'import1/she/she-3417.jpg'
+          'img' => 'import1/she/she-3417.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '14',
@@ -139092,7 +139359,7 @@ return [
           'crown_condition_percent' => '70'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -139200,7 +139467,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -139213,7 +139480,8 @@ return [
           'plot' => 'IV',
           'subplot' => '7',
           'species' => 'Larix decidua Mill.',
-          'img' => 'import1/she/she-3425.jpg'
+          'img' => 'import1/she/she-3425.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '12',
@@ -139222,7 +139490,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -139244,7 +139512,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -139446,7 +139714,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -139469,7 +139737,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -139559,7 +139827,7 @@ return [
           'crown_condition_percent' => '35'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -139624,7 +139892,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -139674,7 +139942,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -139742,7 +140010,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ],
         'tags' => [
           'Дупла'
@@ -139832,7 +140100,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -139854,7 +140122,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -140294,7 +140562,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -140516,7 +140784,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -140542,7 +140810,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -140640,7 +140908,7 @@ return [
           'crown_condition_percent' => '25'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -140665,7 +140933,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -140794,7 +141062,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Пошкодження кори'
@@ -140881,7 +141149,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Пошкодження кори'
@@ -141109,7 +141377,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -141664,7 +141932,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -141847,7 +142115,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -141869,7 +142137,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -141891,7 +142159,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -141983,7 +142251,7 @@ return [
           'crown_condition_percent' => '60'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Трухлявість',
@@ -142189,7 +142457,7 @@ return [
           'crown_condition_percent' => '90'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Пошкодження кори'
@@ -142215,7 +142483,7 @@ return [
           'crown_condition_percent' => '70'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Розвилки'
@@ -142241,7 +142509,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Пошкодження кори',
@@ -142267,7 +142535,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -142299,7 +142567,6 @@ return [
           'plot' => 'IV',
           'subplot' => '3',
           'species' => 'Picea pungens Engelm.',
-          'green_state_note' => 'зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/she/she-3600.jpg'
         ],
@@ -142310,7 +142577,10 @@ return [
           'crown_condition_percent' => '70'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
+        ],
+        'tags' => [
+          'Зламана вершина'
         ]
       ],
       [
@@ -142355,7 +142625,7 @@ return [
           'crown_condition_percent' => '35'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -142400,7 +142670,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -142422,7 +142692,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -142511,7 +142781,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Морозобоїни'
@@ -142537,7 +142807,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Морозобоїни',
@@ -142811,7 +143081,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -142834,7 +143104,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Морозобоїни'
@@ -142859,7 +143129,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -142901,7 +143171,7 @@ return [
           'crown_condition_percent' => '70'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Трухлявість',
@@ -143011,7 +143281,7 @@ return [
           'crown_condition_percent' => '50'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -143033,7 +143303,7 @@ return [
           'crown_condition_percent' => '40'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -143055,7 +143325,7 @@ return [
           'crown_condition_percent' => '55'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -143146,7 +143416,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -143168,7 +143438,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -143191,7 +143461,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -143297,7 +143567,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -143323,7 +143593,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Морозобоїни',
@@ -143350,7 +143620,7 @@ return [
           'crown_condition_percent' => '25'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -143375,7 +143645,7 @@ return [
           'crown_condition_percent' => '40'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -143398,7 +143668,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла',
@@ -143424,7 +143694,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -143489,7 +143759,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Трухлявість',
@@ -143516,7 +143786,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -143538,7 +143808,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -143667,7 +143937,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -143903,7 +144173,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -143925,7 +144195,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -143967,7 +144237,7 @@ return [
           'crown_condition_percent' => '40'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Пошкодження кори',
@@ -143994,7 +144264,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Пошкодження кори'
@@ -144061,7 +144331,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -144130,7 +144400,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -144153,7 +144423,7 @@ return [
           'crown_condition_percent' => '90'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Розвилки'
@@ -144197,7 +144467,7 @@ return [
           'crown_condition_percent' => '35'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -144219,7 +144489,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -144241,7 +144511,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -144283,7 +144553,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -144308,7 +144578,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -144374,7 +144644,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -144416,7 +144686,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -144461,7 +144731,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -144487,7 +144757,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -144513,7 +144783,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла',
@@ -144539,7 +144809,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -144561,7 +144831,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -144583,7 +144853,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -144605,7 +144875,7 @@ return [
           'crown_condition_percent' => '40'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -144627,7 +144897,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -144650,7 +144920,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -144676,7 +144946,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -144725,7 +144995,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -144747,7 +145017,7 @@ return [
           'crown_condition_percent' => '25'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -144770,7 +145040,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -144795,7 +145065,7 @@ return [
           'crown_condition_percent' => '25'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -144818,7 +145088,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -144867,7 +145137,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -144893,7 +145163,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти',
@@ -144920,7 +145190,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -144946,7 +145216,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -144972,7 +145242,7 @@ return [
           'crown_condition_percent' => '35'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -144998,7 +145268,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -145330,7 +145600,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Гриби'
@@ -145392,7 +145662,8 @@ return [
           'plot' => 'IV',
           'subplot' => '3',
           'species' => 'Betula pendula Roth.',
-          'img' => 'import1/she/she-3757.jpg'
+          'img' => 'import1/she/she-3757.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '12',
@@ -145401,7 +145672,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -145442,7 +145713,7 @@ return [
           'crown_condition_percent' => '35'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -145512,7 +145783,8 @@ return [
           'plot' => 'IV',
           'subplot' => '3',
           'species' => 'Betula pendula Roth.',
-          'img' => 'import1/she/she-3763.jpg'
+          'img' => 'import1/she/she-3763.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '16',
@@ -145521,7 +145793,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -145534,7 +145806,6 @@ return [
           'plot' => 'IV',
           'subplot' => '3',
           'species' => 'Betula pendula Roth.',
-          'green_state_note' => 'зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/she/she-3764.jpg'
         ],
@@ -145545,10 +145816,11 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
-          'Гриби'
+          'Гриби',
+          'Зламана вершина'
         ]
       ],
       [
@@ -145613,7 +145885,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Трухлявість',
@@ -145934,7 +146206,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -145956,7 +146228,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -146025,7 +146297,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла'
@@ -146051,7 +146323,7 @@ return [
           'crown_condition_percent' => '35'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла'
@@ -146095,7 +146367,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -146140,7 +146412,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -146266,7 +146538,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -146288,7 +146560,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -146311,7 +146583,7 @@ return [
           'crown_condition_percent' => '40'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Пошкодження кори'
@@ -146605,7 +146877,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -146628,7 +146900,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -146654,7 +146926,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -146680,7 +146952,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -146724,7 +146996,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -146746,7 +147018,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -146968,7 +147240,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -147176,7 +147448,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Морозобоїни',
@@ -147347,7 +147619,6 @@ return [
           'plot' => 'IV',
           'subplot' => '3',
           'species' => 'Thuja occidentalis L.',
-          'green_state_note' => 'зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/she/she-3847.jpg'
         ],
@@ -147356,6 +147627,9 @@ return [
           'trunk_circumference_cm' => '27',
           'tilt_degree' => '5',
           'crown_condition_percent' => '40'
+        ],
+        'tags' => [
+          'Зламана вершина'
         ]
       ],
       [
@@ -147612,7 +147886,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла'
@@ -147724,7 +147998,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Трухлявість',
@@ -147855,7 +148129,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Трухлявість',
@@ -147947,7 +148221,7 @@ return [
           'crown_condition_percent' => '60'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Розвилки'
@@ -148298,7 +148572,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла',
@@ -148325,7 +148599,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -148348,7 +148622,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -148374,7 +148648,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -148599,7 +148873,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -148625,7 +148899,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Трухлявість',
@@ -148652,7 +148926,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -148968,7 +149242,7 @@ return [
           'crown_condition_percent' => '80'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Трухлявість',
@@ -149103,7 +149377,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Пошкодження кори'
@@ -149219,7 +149493,7 @@ return [
           'crown_condition_percent' => '95'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Трухлявість',
@@ -149269,7 +149543,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Гриби'
@@ -149314,7 +149588,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -149340,7 +149614,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -149366,7 +149640,7 @@ return [
           'crown_condition_percent' => '35'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -149392,7 +149666,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла',
@@ -149420,7 +149694,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -149469,7 +149743,7 @@ return [
           'crown_condition_percent' => '65'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Трухлявість',
@@ -149498,7 +149772,7 @@ return [
           'crown_condition_percent' => '70'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Трухлявість',
@@ -149619,7 +149893,7 @@ return [
           'crown_condition_percent' => '25'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -149753,7 +150027,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -149826,7 +150100,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -149852,7 +150126,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -149897,7 +150171,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла'
@@ -149923,7 +150197,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -149949,7 +150223,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -150067,7 +150341,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -151094,7 +151368,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -151140,7 +151414,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -151570,7 +151844,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Трухлявість',
@@ -151636,7 +151910,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Трухлявість'
@@ -151710,7 +151984,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Трухлявість',
@@ -151903,7 +152177,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -151995,7 +152269,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -152044,7 +152318,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -152116,7 +152390,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Пошкодження кори',
@@ -152300,7 +152574,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -152313,7 +152587,6 @@ return [
           'plot' => 'IV',
           'subplot' => '2',
           'species' => 'Pinus sylvestris L.',
-          'green_state_note' => 'зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/she/she-4112.jpg'
         ],
@@ -152324,10 +152597,11 @@ return [
           'crown_condition_percent' => '40'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
-          'Розвилки'
+          'Розвилки',
+          'Зламана вершина'
         ]
       ],
       [
@@ -152349,7 +152623,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -152372,7 +152646,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -152417,7 +152691,7 @@ return [
           'crown_condition_percent' => '25'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -152489,7 +152763,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -152512,7 +152786,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла',
@@ -152539,7 +152813,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Трухлявість',
@@ -152568,7 +152842,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Гриби',
@@ -152594,7 +152868,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -152617,7 +152891,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -152735,7 +153009,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -152761,7 +153035,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -152786,7 +153060,7 @@ return [
           'crown_condition_percent' => '35'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -152833,7 +153107,7 @@ return [
           'crown_condition_percent' => '35'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -152939,7 +153213,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -153206,7 +153480,6 @@ return [
           'plot' => 'IV',
           'subplot' => '2',
           'species' => 'Pinus sylvestris L.',
-          'green_state_note' => 'зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/she/she-4151.jpg'
         ],
@@ -153215,6 +153488,9 @@ return [
           'trunk_circumference_cm' => '46',
           'tilt_degree' => '0',
           'crown_condition_percent' => '30'
+        ],
+        'tags' => [
+          'Зламана вершина'
         ]
       ],
       [
@@ -153322,7 +153598,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Гриби',
@@ -153349,7 +153625,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Гриби',
@@ -153378,7 +153654,7 @@ return [
           'crown_condition_percent' => '80'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Гриби',
@@ -153562,7 +153838,8 @@ return [
           'plot' => 'IV',
           'subplot' => '2',
           'species' => 'Robinia pseudoacacia L.',
-          'img' => 'import1/she/she-4167.jpg'
+          'img' => 'import1/she/she-4167.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '14',
@@ -153571,7 +153848,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -153749,7 +154026,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -154173,7 +154450,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Трухлявість',
@@ -154420,7 +154697,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти',
@@ -154446,7 +154723,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -154471,7 +154748,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -154497,7 +154774,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Цвяхи',
@@ -154523,7 +154800,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -154675,7 +154952,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -154850,7 +155127,8 @@ return [
           'plot' => 'III',
           'subplot' => '5',
           'species' => 'Aesculus hippocastanum L.',
-          'img' => 'import1/she/she-4233.jpg'
+          'img' => 'import1/she/she-4233.jpg',
+          'green_state' => 'normal'
         ],
         'tree' => [
           'height_m' => '24',
@@ -154859,7 +155137,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'санітарна обрізка'
+          'Санітарна обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -154966,7 +155244,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -154992,7 +155270,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'обстеження'
+          'Обстеження'
         ],
         'tags' => [
           'Розвилки'
@@ -155220,7 +155498,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -155615,7 +155893,8 @@ return [
           'plot' => 'III',
           'subplot' => '5',
           'species' => 'Betula pendula Roth.',
-          'img' => 'import1/she/she-4270.jpg'
+          'img' => 'import1/she/she-4270.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '25',
@@ -155624,7 +155903,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -155759,7 +156038,8 @@ return [
           'plot' => 'III',
           'subplot' => '5',
           'species' => 'Picea abies (L.) H.Karst.',
-          'img' => 'import1/she/she-4277.jpg'
+          'img' => 'import1/she/she-4277.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '5',
@@ -155768,7 +156048,7 @@ return [
           'crown_condition_percent' => '95'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -155833,7 +156113,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'обстеження'
+          'Обстеження'
         ],
         'tags' => [
           'Морозобоїни'
@@ -155978,7 +156258,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Морозобоїни',
@@ -156005,7 +156285,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -156031,7 +156311,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -156126,7 +156406,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -156152,7 +156432,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -156178,7 +156458,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Трухлявість',
@@ -156196,7 +156476,8 @@ return [
           'plot' => 'III',
           'subplot' => '5',
           'species' => 'Picea abies (L.) H.Karst.',
-          'img' => 'import1/she/she-4296.jpg'
+          'img' => 'import1/she/she-4296.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '9',
@@ -156205,7 +156486,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -156228,7 +156509,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -156374,7 +156655,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Дупла',
@@ -156566,7 +156847,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Трухлявість',
@@ -156772,7 +157053,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -156891,7 +157172,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -157078,7 +157359,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -157132,7 +157413,8 @@ return [
           'plot' => 'III',
           'subplot' => '3',
           'species' => 'Tilia cordata Mill.',
-          'img' => 'import1/she/she-4338.jpg'
+          'img' => 'import1/she/she-4338.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '26',
@@ -157141,7 +157423,7 @@ return [
           'crown_condition_percent' => '50'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -157336,7 +157618,7 @@ return [
           'crown_condition_percent' => '40'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -157362,7 +157644,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -157797,7 +158079,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -157822,7 +158104,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -157844,7 +158126,7 @@ return [
           'crown_condition_percent' => '25'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -158047,7 +158329,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -158072,7 +158354,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -158094,7 +158376,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -158116,7 +158398,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -158139,7 +158421,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Цвяхи',
@@ -158249,7 +158531,7 @@ return [
           'crown_condition_percent' => '60'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -158290,7 +158572,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -158312,7 +158594,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -158358,7 +158640,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -158384,7 +158666,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -158482,7 +158764,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Морозобоїни',
@@ -158626,7 +158908,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти',
@@ -158653,7 +158935,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла',
@@ -158680,7 +158962,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Морозобоїни',
@@ -158707,7 +158989,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -159958,7 +160240,8 @@ return [
           'plot' => 'III',
           'subplot' => '7',
           'species' => 'Betula pendula Roth.',
-          'img' => 'import1/she/she-4533.jpg'
+          'img' => 'import1/she/she-4533.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '23',
@@ -159967,7 +160250,7 @@ return [
           'crown_condition_percent' => '80'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Лампи та дроти'
@@ -159992,7 +160275,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -161350,7 +161633,8 @@ return [
           'plot' => 'III',
           'subplot' => '8',
           'species' => 'Picea abies (L.) H.Karst.',
-          'img' => 'import1/she/she-4604.jpg'
+          'img' => 'import1/she/she-4604.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '21',
@@ -161359,7 +161643,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -161830,7 +162114,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти',
@@ -163022,7 +163306,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -163048,7 +163332,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Морозобоїни'
@@ -163223,7 +163507,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -163245,7 +163529,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -163268,7 +163552,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -165537,7 +165821,7 @@ return [
           'plot' => 'III',
           'subplot' => '16',
           'species' => 'Quercus robur L.',
-          'green_state_note' => 'борошниста роса',
+          'green_state_note' => 'Борошниста роса',
           'green_state' => 'bad',
           'img' => 'import1/she/she-4833.jpg'
         ],
@@ -165860,7 +166144,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -165883,7 +166167,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Розвилки'
@@ -165927,7 +166211,7 @@ return [
           'crown_condition_percent' => '25'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -165968,7 +166252,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -166397,7 +166681,7 @@ return [
           'crown_condition_percent' => '50'
         ],
         'recommendations' => [
-          'обстеження'
+          'Обстеження'
         ],
         'tags' => [
           'Трухлявість',
@@ -166425,7 +166709,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Трухлявість',
@@ -166452,7 +166736,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -166468,7 +166752,8 @@ return [
           'plot' => 'III',
           'subplot' => '16',
           'species' => 'Fraxinus pennsylvanica L.',
-          'img' => 'import1/she/she-4878.jpg'
+          'img' => 'import1/she/she-4878.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '20',
@@ -166477,7 +166762,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -166767,7 +167052,8 @@ return [
           'plot' => 'III',
           'subplot' => '16',
           'species' => '-',
-          'img' => 'import1/she/she-4892.jpg'
+          'img' => 'import1/she/she-4892.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '9',
@@ -166776,7 +167062,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -166879,7 +167165,7 @@ return [
           'crown_condition_percent' => '40'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -166986,7 +167272,7 @@ return [
           'plot' => 'III',
           'subplot' => '16',
           'species' => 'Prunus padus L.',
-          'green_state_note' => 'омела біла',
+          'green_state_note' => 'Омела біла',
           'green_state' => 'bad',
           'img' => 'import1/she/she-4902.jpg'
         ],
@@ -167039,7 +167325,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'обстеження'
+          'Обстеження'
         ],
         'tags' => [
           'Розвилки'
@@ -167187,7 +167473,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Трухлявість',
@@ -167254,7 +167540,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Пошкодження кори',
@@ -167280,7 +167566,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -167596,7 +167882,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -167745,7 +168031,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -167855,7 +168141,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -167937,7 +168223,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -167959,7 +168245,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -167982,7 +168268,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -168008,7 +168294,7 @@ return [
           'crown_condition_percent' => '40'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -168034,7 +168320,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -168073,7 +168359,8 @@ return [
           'plot' => 'III',
           'subplot' => '16',
           'species' => '-',
-          'img' => 'import1/she/she-4952.jpg'
+          'img' => 'import1/she/she-4952.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '9',
@@ -168082,7 +168369,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -168194,7 +168481,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -168243,7 +168530,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Трухлявість',
@@ -168341,7 +168628,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Трухлявість',
@@ -168358,7 +168645,6 @@ return [
           'plot' => 'III',
           'subplot' => '16',
           'species' => '-',
-          'green_state_note' => 'зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/she/she-4964.jpg'
         ],
@@ -168369,7 +168655,10 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
+        ],
+        'tags' => [
+          'Зламана вершина'
         ]
       ],
       [
@@ -168655,7 +168944,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -168737,7 +169026,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -168759,7 +169048,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -168852,7 +169141,8 @@ return [
           'plot' => 'III',
           'subplot' => '16',
           'species' => 'Picea abies (L.) H.Karst.',
-          'img' => 'import1/she/she-4988.jpg'
+          'img' => 'import1/she/she-4988.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '11',
@@ -168861,7 +169151,7 @@ return [
           'crown_condition_percent' => '80'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -168964,7 +169254,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -169139,7 +169429,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -169165,7 +169455,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -169306,7 +169596,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -169401,7 +169691,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Трухлявість',
@@ -169429,7 +169719,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Трухлявість',
@@ -169457,7 +169747,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Трухлявість',
@@ -169483,7 +169773,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -169642,7 +169932,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -169668,7 +169958,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -169693,7 +169983,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -169715,7 +170005,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -169738,7 +170028,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Трухлявість',
@@ -169766,7 +170056,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -169789,7 +170079,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Лампи та дроти',
@@ -169816,7 +170106,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла'
@@ -169842,7 +170132,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Трухлявість',
@@ -169870,7 +170160,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -169896,7 +170186,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -169921,7 +170211,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -169944,7 +170234,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -169970,7 +170260,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла'
@@ -169996,7 +170286,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -170021,7 +170311,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -170044,7 +170334,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Пошкодження кори',
@@ -170070,7 +170360,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -170093,7 +170383,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -170118,7 +170408,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -170141,7 +170431,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Трухлявість',
@@ -170168,7 +170458,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -170191,7 +170481,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -170216,7 +170506,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -170239,7 +170529,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Трухлявість',
@@ -170265,7 +170555,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -170288,7 +170578,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -170314,7 +170604,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Пошкодження кори',
@@ -170340,7 +170630,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -170362,7 +170652,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -170384,7 +170674,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -170406,7 +170696,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -170429,7 +170719,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Трухлявість',
@@ -170456,7 +170746,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -170482,7 +170772,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Пошкодження кори',
@@ -170509,7 +170799,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла',
@@ -170536,7 +170826,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Пошкодження кори'
@@ -170562,7 +170852,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Трухлявість',
@@ -170608,7 +170898,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -170669,7 +170959,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Розвилки'
@@ -170685,7 +170975,8 @@ return [
           'plot' => 'III',
           'subplot' => '16',
           'species' => '-',
-          'img' => 'import1/she/she-5065.jpg'
+          'img' => 'import1/she/she-5065.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '20',
@@ -170694,7 +170985,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -170717,7 +171008,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Розвилки'
@@ -170843,7 +171134,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -170868,7 +171159,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -170891,7 +171182,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Трухлявість',
@@ -170919,7 +171210,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Трухлявість',
@@ -170947,7 +171238,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -170973,7 +171264,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла'
@@ -170989,7 +171280,8 @@ return [
           'plot' => 'III',
           'subplot' => '15',
           'species' => 'Salix fragilis L.',
-          'img' => 'import1/she/she-5080.jpg'
+          'img' => 'import1/she/she-5080.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '16',
@@ -170998,7 +171290,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -171011,7 +171303,6 @@ return [
           'plot' => 'III',
           'subplot' => '15',
           'species' => 'Salix fragilis L.',
-          'green_state_note' => 'зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/she/she-5081.jpg'
         ],
@@ -171020,6 +171311,9 @@ return [
           'trunk_circumference_cm' => '110',
           'tilt_degree' => '5',
           'crown_condition_percent' => '40'
+        ],
+        'tags' => [
+          'Зламана вершина'
         ]
       ],
       [
@@ -171511,7 +171805,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Трухлявість',
@@ -171837,7 +172131,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -171935,7 +172229,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -172093,7 +172387,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -172281,7 +172575,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -172493,7 +172787,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -172598,7 +172892,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -172621,7 +172915,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -172647,7 +172941,7 @@ return [
           'crown_condition_percent' => '60'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -172672,7 +172966,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -172694,7 +172988,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -172908,7 +173202,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -173038,7 +173332,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -173080,7 +173374,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Трухлявість',
@@ -173107,7 +173401,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -174426,7 +174720,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Трухлявість',
@@ -174585,7 +174879,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -174828,7 +175122,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -175442,7 +175736,7 @@ return [
           'crown_condition_percent' => '85'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Розвилки'
@@ -175660,7 +175954,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -175898,7 +176192,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -175959,7 +176253,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -175985,7 +176279,7 @@ return [
           'crown_condition_percent' => '40'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -176010,7 +176304,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -176051,7 +176345,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -176073,7 +176367,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -176095,7 +176389,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -176137,7 +176431,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Пошкодження кори'
@@ -176163,7 +176457,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -176188,7 +176482,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -176210,7 +176504,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -176232,7 +176526,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -176255,7 +176549,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -176281,7 +176575,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -176306,7 +176600,7 @@ return [
           'crown_condition_percent' => '15'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -176367,7 +176661,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла',
@@ -176593,7 +176887,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -176661,7 +176955,7 @@ return [
           'crown_condition_percent' => '70'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Морозобоїни'
@@ -176687,7 +176981,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Гриби',
@@ -176754,7 +177048,6 @@ return [
           'plot' => 'III',
           'subplot' => '13',
           'species' => 'Betula pendula Roth.',
-          'green_state_note' => 'зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/she/she-5377.jpg'
         ],
@@ -176765,7 +177058,10 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
+        ],
+        'tags' => [
+          'Зламана вершина'
         ]
       ],
       [
@@ -176857,7 +177153,6 @@ return [
           'plot' => 'III',
           'subplot' => '13',
           'species' => 'Betula pendula Roth.',
-          'green_state_note' => 'зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/she/she-5382.jpg'
         ],
@@ -176866,6 +177161,9 @@ return [
           'trunk_circumference_cm' => '120',
           'tilt_degree' => '5',
           'crown_condition_percent' => '0'
+        ],
+        'tags' => [
+          'Зламана вершина'
         ]
       ],
       [
@@ -176897,7 +177195,6 @@ return [
           'plot' => 'III',
           'subplot' => '13',
           'species' => 'Betula pendula Roth.',
-          'green_state_note' => 'зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/she/she-5384.jpg'
         ],
@@ -176906,6 +177203,9 @@ return [
           'trunk_circumference_cm' => '125',
           'tilt_degree' => '0',
           'crown_condition_percent' => '0'
+        ],
+        'tags' => [
+          'Зламана вершина'
         ]
       ],
       [
@@ -177085,7 +177385,7 @@ return [
           'crown_condition_percent' => '70'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Трухлявість',
@@ -177125,7 +177425,6 @@ return [
           'plot' => 'III',
           'subplot' => '18',
           'species' => 'Chamaecyparis lawsoniana (A. Murray) Parl.',
-          'green_state_note' => 'зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/she/she-5440.jpg'
         ],
@@ -177134,6 +177433,9 @@ return [
           'trunk_circumference_cm' => '26',
           'tilt_degree' => '0',
           'crown_condition_percent' => '40'
+        ],
+        'tags' => [
+          'Зламана вершина'
         ]
       ],
       [
@@ -177274,7 +177576,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Трухлявість',
@@ -177302,7 +177604,7 @@ return [
           'crown_condition_percent' => '50'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -177346,7 +177648,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -177369,7 +177671,7 @@ return [
           'crown_condition_percent' => '10'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Дупла',
@@ -177396,7 +177698,7 @@ return [
           'crown_condition_percent' => '5'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -177511,7 +177813,7 @@ return [
           'crown_condition_percent' => '60'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Пошкодження кори',
@@ -177606,7 +177908,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -177628,7 +177930,7 @@ return [
           'crown_condition_percent' => '20'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -177711,7 +178013,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ]
       ],
       [
@@ -177724,7 +178026,8 @@ return [
           'plot' => 'III',
           'subplot' => '18',
           'species' => 'Betula pendula Roth.',
-          'img' => 'import1/she/she-5468.jpg'
+          'img' => 'import1/she/she-5468.jpg',
+          'green_state' => 'bad'
         ],
         'tree' => [
           'height_m' => '17',
@@ -177733,7 +178036,7 @@ return [
           'crown_condition_percent' => '90'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ]
       ],
       [
@@ -177803,7 +178106,7 @@ return [
           'crown_condition_percent' => '30'
         ],
         'recommendations' => [
-          'формуюча обрізка'
+          'Формуюча обрізка'
         ],
         'tags' => [
           'Розвилки'
@@ -177940,7 +178243,7 @@ return [
           'crown_condition_percent' => '60'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Трухлявість',
@@ -178322,7 +178625,7 @@ return [
           'crown_condition_percent' => '100'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Розвилки'
@@ -178802,7 +179105,6 @@ return [
           'plot' => 'VI',
           'subplot' => '10',
           'species' => 'Tilia cordata Mill.',
-          'green_state_note' => 'зламана вершина',
           'green_state' => 'bad',
           'img' => 'import1/she/she-5640.jpg'
         ],
@@ -178813,13 +179115,14 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Гриби',
           'Морозобоїни',
           'Лампи та дроти',
-          'Пошкодження кори'
+          'Пошкодження кори',
+          'Зламана вершина'
         ]
       ],
       [
@@ -179410,7 +179713,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Розвилки'
@@ -179482,7 +179785,7 @@ return [
           'crown_condition_percent' => '0'
         ],
         'recommendations' => [
-          'видалення'
+          'Видалення'
         ],
         'tags' => [
           'Трухлявість',
