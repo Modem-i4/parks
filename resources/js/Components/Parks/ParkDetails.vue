@@ -109,7 +109,7 @@ function pickerSaved(newImages) {
 <template>
   <div class="p-4 pt-1">
     <PanelHeader
-      :title="parkStore.selectedMarker.name" :subtitle="`${parkStore.selectedMarker.area} гектарів`" :icon="parkStore.selectedMarker.icon?.file_path"
+      :title="parkStore.selectedMarker.name" :subtitle="`${parkStore.selectedMarker.area} га`" :icon="parkStore.selectedMarker.icon?.file_path"
       :editable="authStore.can.upload"
       @onIconClick="() => { if(authStore.can.upload) startIconChange() }"
     >
