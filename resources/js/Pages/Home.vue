@@ -28,7 +28,7 @@ const heroSlides = ref([
     href: '/parks/1'
   },
   {
-    title: 'воїнів-інтернаціоналістів',
+    title: 'воїнів-афганців',
     subtitle: 'Меморіал, алея пам’яті та спорт',
     image: '/img/parks/liberators_park.webp',
     icon: '/img/icons/liberators_park.png',
