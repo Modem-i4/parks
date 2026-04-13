@@ -6,27 +6,43 @@ use App\Models\Park;
 use App\Models\Plot;
 use App\Models\Subplot;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class PlotSeeder extends Seeder
 {
     public function run(): void
     {
-        $data = include database_path('data/Plots.php');
+        $plots = require database_path('data/Plots.php');
 
-        foreach ($data as $parkSlug => $plotsToSubplots) {
-            $park = Park::where('slug', $parkSlug)->firstOrFail();
+        foreach ($plots as $parkSlug => $parkPlots) {
+            $parkId = Park::where('slug', $parkSlug)->firstOrFail()->id;
 
-            foreach ($plotsToSubplots as $plotName => $subplotNames) {
-                $plot = Plot::firstOrCreate([
-                    'park_id' => $park->id,
-                    'name' => (string) $plotName,
-                ]);
+            foreach ($parkPlots as $plotName => $plotData) {
+                Plot::firstOrCreate(
+                    [
+                        'park_id' => $parkId,
+                        'name' => $plotName,
+                    ],
+                    [
+                        'coordinates' => $plotData['coordinates'],
+                    ]
+                );
 
-                foreach ($subplotNames as $subplotName) {
-                    Subplot::firstOrCreate([
-                        'plot_id' => $plot->id,
-                        'name' => (string) $subplotName,
-                    ]);
+                $plotId = DB::table('plots')
+                    ->where('park_id', $parkId)
+                    ->where('name', $plotName)
+                    ->value('id');
+
+                foreach ($plotData['subplots'] as $subplotName => $subplotCoords) {
+                    Subplot::firstOrCreate(
+                        [
+                            'plot_id' => $plotId,
+                            'name' => $subplotName,
+                        ],
+                        [
+                            'coordinates' => $subplotCoords,
+                        ]
+                    );
                 }
             }
         }
