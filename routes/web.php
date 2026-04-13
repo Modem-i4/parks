@@ -68,6 +68,7 @@ Route::prefix('api')->group(function () {
     // Parks
     Route::get('/parks/{id}/media', [ParkController::class, 'media'])->name('parks.media');
     Route::get('/parks', [ParkController::class, 'getParksList'])->name('parks.list');
+    Route::get('/parks/{id}', [ParkController::class, 'getPark']);
     Route::post('/parks/{id}/markers', [MarkerController::class, 'filterParkMarkers'])->name('parks.markers');
     // Markers
     Route::get('/markers/filters-config', [MarkerController::class, 'getFilters'])->name('filters');

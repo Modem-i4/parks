@@ -1,12 +1,8 @@
+import axios from 'axios'
+
 export function setParkView(parkStore, page, contentMode=null) {
   if (page === 'single' && !parkStore.isSingleParkView) {
-    parkStore.showPanel = false
-    parkStore.selectedPark = parkStore.selectedMarker
-    parkStore.selectedMarker = null
-    parkStore.singleParkContentMode = contentMode ?? 'green'
-    parkStore.markers = []
-    parkStore.isSingleParkView = true
-
+    return openSingleParkView(parkStore, contentMode)
   } else if (page === 'parks') {
     parkStore.selectedMarker = null
     parkStore.selectedPark = null
@@ -14,6 +10,21 @@ export function setParkView(parkStore, page, contentMode=null) {
     parkStore.markers = []
     parkStore.isSingleParkView = false
   }
+}
+
+async function openSingleParkView(parkStore, contentMode) {
+  const parkId = parkStore.selectedMarker?.id ?? parkStore.selectedPark?.id
+  if (!parkId) return
+
+  parkStore.showPanel = false
+
+  const response = await axios.get(`/api/parks/${parkId}`)
+
+  parkStore.selectedPark = response.data
+  parkStore.selectedMarker = null
+  parkStore.singleParkContentMode = contentMode ?? 'green'
+  parkStore.markers = []
+  parkStore.isSingleParkView = true
 }
 
 import { isTweening } from '@/Helpers/Maps/MapHelper'

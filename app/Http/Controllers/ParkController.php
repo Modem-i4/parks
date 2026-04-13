@@ -28,7 +28,7 @@ class ParkController extends Controller
 
     private function renderPage(bool $isSingleParkView, $parkId = null)
     {
-        $park = $parkId ? Park::with('icon')->findOrFail($parkId) : null;
+        $park = $parkId ? Park::with(['icon', 'plots.subplots'])->findOrFail($parkId) : null;
 
         return Inertia::render('Parks', [
             'isSingleParkView' => $isSingleParkView && $park,
@@ -54,6 +54,8 @@ class ParkController extends Controller
         if(!$marker || !$park) {
             return redirect()->route('parks');
         }
+        $park = Park::with(['icon', 'plots.subplots'])->findOrFail($park->id);
+
         return Inertia::render('Parks', [
             'isSingleParkView' => true,
             'selectedMarker' => $marker,
@@ -66,7 +68,7 @@ class ParkController extends Controller
 
     public function getPark($id)
     {
-        return Park::with('icon')
+        return Park::with(['icon', 'plots.subplots'])
             ->select(self::FIELDS)
             ->find($id);
     }
