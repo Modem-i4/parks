@@ -37,6 +37,14 @@ const confirmingDelete = ref(false)
 const forceImageUpdate = () => {
   imageSliderRef.value?.update(props.marker?.id)
 }
+function handleImageClick(index) {
+  if (authStore.can.upload) {
+    emit('onImageClick', index)
+    return
+  }
+
+  imageSliderRef.value?.openPreview(index)
+}
 const emit = defineEmits(['onImageClick', 'deleteMarker'])
 defineExpose({ forceImageUpdate })
 </script>
@@ -46,7 +54,7 @@ defineExpose({ forceImageUpdate })
       class="my-2"
       :editable="authStore.can.upload"
       :showByDefault="!isMobile || authStore.can.upload"
-      @onImageClick="() => { if(authStore.can.upload) emit('onImageClick') }"
+      @onImageClick="handleImageClick"
     />
 
     <div

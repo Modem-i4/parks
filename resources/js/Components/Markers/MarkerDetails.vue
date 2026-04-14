@@ -142,7 +142,7 @@ function deleteMarker() {
 
     <template v-if="!editing">
       <MarkerDetailsView :marker="marker" ref="viewRef" :loading="loading"
-        @onImageClick="() => { if(authStore.can.edit) startGalleryChange() }" 
+        @onImageClick="() => { if(authStore.can.upload) startGalleryChange() }"
         @deleteMarker="deleteMarker"
       />
         <div class="absolute right-[4.5rem] z-[3]">

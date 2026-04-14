@@ -91,6 +91,15 @@ function startGalleryChange() {
   showPicker.value = true
 }
 
+function handleImageClick(index) {
+  if (authStore.can.upload) {
+    startGalleryChange()
+    return
+  }
+
+  imageSliderRef.value?.openPreview(index)
+}
+
 function closeImagePicker() {
   pickerType.value = null
   showPicker.value = false
@@ -122,7 +131,7 @@ function pickerSaved(newImages) {
     <ImageSlider :modelId="parkStore.selectedMarker?.id || null" model="parks" class="my-2" ref="imageSliderRef"
       :editable="authStore.can.upload"
       :showByDefault="!isMobile || authStore.can.upload"
-      @onImageClick="() => { if(authStore.can.upload) startGalleryChange() }"
+      @onImageClick="handleImageClick"
       @close="closeImagePicker"/>
 
     <template v-if="!editing">
