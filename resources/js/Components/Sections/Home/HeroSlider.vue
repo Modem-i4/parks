@@ -1,7 +1,7 @@
 <template>
   <section class="relative w-full overflow-hidden">
     <div
-      class="relative h-[60vh] md:h-[80vh] min-h-[28em] select-none"
+      class="relative h-[60vh] md:h-[75vh] min-h-[28em] select-none"
       @pointerdown="onDragStart"
       @pointermove="onDragMove"
       @pointerup="onDragEnd"
@@ -38,7 +38,7 @@
         <img :src="chevronLeft" alt="" class="rotate-[180deg]" />
       </button>
 
-      <div class="absolute bottom-8 md:bottom-16 left-0 right-0 flex items-center justify-center gap-5 z-10">
+      <div class="absolute bottom-8 md:bottom-14 left-0 right-0 flex items-center justify-center gap-5 z-10">
         <button
           v-for="(s,i) in slidesToUse"
           :key="`dot-${i}`"

@@ -1,6 +1,7 @@
 <template>
   <Head title="Головна" />
   <HeroSlider :slides="heroSlides" />
+  <StrategicPlan/>
   <AboutProject />
   <MapStats :stats>
     <ParksMapThumbnail :parks />
@@ -18,6 +19,7 @@ import LastNews from '@/Components/Sections/Home/LastNews.vue';
 import ParksMapThumbnail from '@/Components/Sections/Home/ParksMapThumbnail.vue';
 import { Head } from '@inertiajs/vue3'
 import GenusStats from '@/Components/Sections/Home/GenusStats.vue';
+import StrategicPlan from '@/Components/Sections/Home/StrategicPlan.vue';
 
 const heroSlides = ref([
   {
