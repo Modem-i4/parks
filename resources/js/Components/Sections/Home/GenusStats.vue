@@ -9,7 +9,7 @@ const props = defineProps({
   },
   size: { type: Number, default: 345 },
   thickness: { type: Number, default: 60 },
-  title: { type: String, default: 'Роди дерев у місті' },
+  title: { type: String, default: 'Роди дерев у парках' },
   centralIcon: { type: String, default: '/img/icons/tree-stats.svg' }
 })
 
