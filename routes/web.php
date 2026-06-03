@@ -8,6 +8,7 @@ use App\Http\Controllers\InfrastructureTypeController;
 use App\Http\Controllers\MarkerController;
 use App\Http\Controllers\ParkController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\QrController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\MediaLibraryController;
 use App\Http\Controllers\RecommendationController;
@@ -37,6 +38,8 @@ Route::get('/m/{inv?}', [ParkController::class, 'parksMarkerIndex'])->name('park
 
 Route::get('/news', [NewsController::class, 'index'])->name('news');
 Route::get('/news/{id}', [NewsController::class, 'single'])->name('news.single');
+
+Route::get('qr/{slug}', [QrController::class, 'index'])->name('qr');
 
 // END main nav
 
