@@ -103,6 +103,8 @@ async function updateMarkersInViewport(cancelToken = currentCancelToken) {
 
   if (parkStore.isSingleParkView) {
     filterVisibleMarkers(currentZoom)
+  } else {
+    removeMissingMarkers()
   }
 
   const sortedMarkers = sortMarkersByTypeAndDistance(center)
@@ -133,6 +135,14 @@ function filterVisibleMarkers(currentZoom) {
       keySet.has(keyOf(marker)) &&
       (!isMarkerHidden(marker, currentZoom) || marker.id === selectedId)
 
+    if (!keep) mapMarker.setMap(null)
+    return keep
+  })
+}
+function removeMissingMarkers() {
+  const keySet = new Set(parkStore.markers.map(keyOf))
+  mapMarkers.value = mapMarkers.value.filter(({ mapMarker, marker }) => {
+    const keep = keySet.has(keyOf(marker))
     if (!keep) mapMarker.setMap(null)
     return keep
   })
@@ -168,8 +178,10 @@ async function renderSortedMarkers(sortedMarkers, bounds, currentZoom, cancelTok
     const hiddenByLimit = isMarkerHidden(marker, currentZoom)
     const selected = marker.id === parkStore.selectedMarker?.id
     const shouldRender =
-      !parkStore.isSingleParkView || (!exists && 
-        (selected || (inBounds && !hiddenByLimit))
+      !exists && (
+        !parkStore.isSingleParkView ||
+        selected ||
+        (inBounds && !hiddenByLimit)
       )
 
     if (shouldRender) {
