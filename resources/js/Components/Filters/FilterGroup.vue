@@ -29,7 +29,7 @@ watch(() => props.filters,
     let target = GetFilterTargetNode(props.filters, currentPath.value)
     isChecked.value = !!target
   },
-  { deep: true }
+  { deep: true, immediate: true }
 )
 
 watch(isChecked, (val) => {

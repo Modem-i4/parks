@@ -48,21 +48,56 @@ const getFilters = async () => {
   }
 }
 
-function setPreset(preset = 'all') {
-  const filter = preset === 'all' ? parkStore.singleParkContentMode : preset
-  filters.value = structuredClone(filterPresets[filter])
+function setPreset(preset = 'all', saveSnapshot = true) {
+  setPresetFilters(preset)
+  if (saveSnapshot) saveFilters()
   renderKey.value++
-  filterMarkers()
+  filterMarkers(true, saveSnapshot)
 }
 
-const filterMarkers = async () => {
+function setPresetFilters(preset = 'all') {
+  const filter = preset === 'all' ? parkStore.singleParkContentMode : preset
+  filters.value = cloneFilters(filterPresets[filter])
+}
+
+function cloneFilters(value) {
+  return JSON.parse(JSON.stringify(value || {}))
+}
+
+function hasFilters() {
+  const savedFilters = cloneFilters(filters.value)
+  delete savedFilters.park
+  return Object.keys(savedFilters).length > 0
+}
+
+function filtersForRequest() {
+  const requestFilters = cloneFilters(filters.value)
+  if (parkStore.isSingleParkView) delete requestFilters.park
+  return requestFilters
+}
+
+function saveFilters() {
+  parkStore.setSavedMarkerFilters(cloneFilters(filters.value))
+}
+
+function restoreFilters() {
+  if (!parkStore.savedMarkerFilters) return false
+
+  filters.value = cloneFilters(parkStore.savedMarkerFilters)
+  renderKey.value++
+  return true
+}
+
+const filterMarkers = async (moveToClosest = true, saveSnapshot = true) => {
+  if (saveSnapshot) saveFilters()
+
   if (!parkStore.isSingleParkView) {
     try {
       const response = await axios.post('/api/markers/count-by-parks', {
-        filters: filters.value
+        filters: filtersForRequest()
       })
       parkStore.setMarkerCountsByPark(response.data)
-      parkStore.showPanel = false
+      if (saveSnapshot) parkStore.showPanel = false
     } catch (error) {
       console.error('Помилка підрахунку маркерів по парках:', error)
     }
@@ -72,7 +107,7 @@ const filterMarkers = async () => {
   parkStore.markerStates.isLoading = true
   try {
     const response = await axios.post(`/api/parks/${parkStore.selectedPark.id}/markers`, {
-      filters: filters.value
+      filters: filtersForRequest()
     })
     parkStore.markers = response.data
   } catch (error) {
@@ -82,7 +117,7 @@ const filterMarkers = async () => {
     parkStore.markerStates.areLoaded = true
     parkStore.showPanel = false
 
-    if (parkStore.markers.length > 0 && parkStore.markers.length < 200 && !areFiltersDefault.value) {
+    if (moveToClosest && parkStore.markers.length > 0 && parkStore.markers.length < 200 && !areFiltersDefault.value) {
       const c = parkStore.map.getCenter()
       const cLat = c.lat()
       const cLng = c.lng()
@@ -107,8 +142,8 @@ watch(() => parkStore.singleParkContentMode,
  { immediate:true }
 )
 
-watch(() => filters,
-  () => { if (!('green' in filters.value)) filterMarkers() },
+watch(filters,
+  () => { if (!('green' in filters.value)) filterMarkers(true, false) },
   { deep:true }
 )
 
@@ -119,11 +154,23 @@ watch(
     filters.value.park = {
       parks:  val ? [val.id] : []
     }
+    saveFilters()
   }
 )
 
 onMounted(() => {
-  setPreset()
+  const restored = restoreFilters()
+  if (restored && hasFilters()) {
+    filterMarkers(false, false)
+  } else {
+    const parkFilter = filters.value.park
+    setPresetFilters()
+    if (parkFilter && !parkStore.isSingleParkView) {
+      filters.value.park = parkFilter
+    }
+    renderKey.value++
+    filterMarkers(false, false)
+  }
 })
 </script>
 

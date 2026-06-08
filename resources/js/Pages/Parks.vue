@@ -58,6 +58,12 @@ watch(
     if (val) activeGeneralTab.value = 'parks'
   }
 )
+watch(
+  () => parkStore.isSingleParkView,
+  val => {
+    if(!val && parkStore.savedMarkerFilters)  activeGeneralTab.value = 'filters'
+  }
+)
 </script>
 
 <template>
