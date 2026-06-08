@@ -7,13 +7,15 @@ function getCacheKey(opts) {
         glyph, color, height,
         boxTopPct, boxLeftPct, boxWidthPct, boxHeightPct,
         imageScale,
-        label, labelColor, labelFontSize, labelFontWeight, labelWidth, labelMarginTop
+        label, labelColor, labelFontSize, labelFontWeight, labelWidth, labelMarginTop,
+        count, countColor
     } = opts
     return [
         glyph, color, height,
         boxTopPct, boxLeftPct, boxWidthPct, boxHeightPct,
         imageScale,
-        label, labelColor, labelFontSize, labelFontWeight, labelWidth, labelMarginTop
+        label, labelColor, labelFontSize, labelFontWeight, labelWidth, labelMarginTop,
+        count, countColor
     ].join('|')
 }
 
@@ -32,6 +34,8 @@ export async function CreateCustomPinIcon({
     labelFontWeight = 600,
     labelWidth = 170,
     labelMarginTop = 4,
+    count = null,
+    countColor = '#7ab7a5',
 } = {}) {
     const aspectW = 113
     const aspectH = 148
@@ -41,7 +45,8 @@ export async function CreateCustomPinIcon({
         glyph, color, height,
         boxTopPct, boxLeftPct, boxWidthPct, boxHeightPct,
         imageScale,
-        label, labelColor, labelFontSize, labelFontWeight, labelWidth, labelMarginTop
+        label, labelColor, labelFontSize, labelFontWeight, labelWidth, labelMarginTop,
+        count, countColor
     })
     if (pinCache.has(cacheKey)) {
         return pinCache.get(cacheKey).cloneNode(true)
@@ -103,29 +108,40 @@ export async function CreateCustomPinIcon({
 
     box.appendChild(img)
 
-    if (label && label.trim().length) {
-        const labelEl = document.createElement('div')
-        labelEl.textContent = label
-        Object.assign(labelEl.style, {
+    const hasLabel = label && label.trim().length
+    const hasCount = count !== null && count !== undefined
+
+    if (hasLabel || hasCount) {
+        const labelWrap = document.createElement('div')
+        Object.assign(labelWrap.style, {
             position: 'absolute',
             top: '100%',
             left: '50%',
             transform: 'translateX(-50%)',
             marginTop: `${labelMarginTop}px`,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '4px',
+            width: `${labelWidth}px`,
+            pointerEvents: 'auto',
+            cursor: 'pointer',
+            userSelect: 'none',
+            zIndex: '1',
+        })
+
+        const labelEl = document.createElement('div')
+        labelEl.textContent = label
+        Object.assign(labelEl.style, {
             color: labelColor,
             fontSize: `${labelFontSize}px`,
             fontWeight: String(labelFontWeight),
             lineHeight: '1.2',
             textAlign: 'center',
-            pointerEvents: 'auto',
-            cursor: 'pointer',
-            userSelect: 'none',
-            display: 'inline-block',
-            width: `${labelWidth}px`,
+            width: '100%',
             whiteSpace: 'normal',
             overflowWrap: 'break-word',
             wordBreak: 'normal',
-            zIndex: '1',
         })
         labelEl.style.textShadow = [
             '0 1px 2px rgba(0,0,0,.9)',
@@ -134,7 +150,26 @@ export async function CreateCustomPinIcon({
             '-1px 0 2px rgba(0,0,0,.9)',
             '0 -1px 2px rgba(0,0,0,.9)'
         ].join(', ')
-        wrapper.appendChild(labelEl)
+        if (hasLabel) labelWrap.appendChild(labelEl)
+
+        if (hasCount) {
+            const countEl = document.createElement('div')
+            countEl.textContent = `Записів: ${count}`
+            Object.assign(countEl.style, {
+                background: countColor,
+                color: '#fff',
+                borderRadius: '6px',
+                padding: '2px 8px',
+                fontSize: '13px',
+                fontWeight: '600',
+                lineHeight: '1.25',
+                whiteSpace: 'nowrap',
+                boxShadow: '0 1px 2px rgba(0,0,0,.25)',
+            })
+            labelWrap.appendChild(countEl)
+        }
+
+        wrapper.appendChild(labelWrap)
     }
 
     pinCache.set(cacheKey, wrapper)

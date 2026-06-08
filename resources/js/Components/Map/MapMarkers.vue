@@ -64,10 +64,25 @@ function distanceSquared(a, b) {
   return (a.lat - b.lat) ** 2 + (a.lng - b.lng) ** 2
 }
 
+function getParkMarkerCount(marker) {
+  if (parkStore.markerCountsByPark === null) return null
+  return Number(parkStore.markerCountsByPark?.[marker.id] ?? 0)
+}
+
+async function createParkMarkerContent(marker, isSelected = false) {
+  return await CreateCustomPinIcon({
+    glyph: marker.icon?.file_path,
+    label: marker.name,
+    color: isSelected ? '#007c00' : '#007c57',
+    count: getParkMarkerCount(marker),
+    countColor: isSelected ? '#006e4d' : '#00a271'
+  })
+}
+
 async function createMarker(marker, lat, lng, cancelToken) {
   const { AdvancedMarkerElement } = await loader.importLibrary('marker')
   const content = marker.type === 'park'
-    ? await CreateCustomPinIcon({ glyph: marker.icon?.file_path, label: marker.name })
+    ? await createParkMarkerContent(marker, marker.id === parkStore.selectedMarker?.id)
     : marker.green
       ? await CreateSimpleIcon({
           type: marker.type || 'all',
@@ -260,11 +275,7 @@ async function updateMarkerBackgrounds(newId, oldId) {
         ? mapMarker.content.classList.add(...highlightClasses)
         : mapMarker.content.classList.remove(...highlightClasses)
     } else if(marker.type === 'park') {
-      mapMarker.content = await CreateCustomPinIcon({
-        glyph: marker.icon?.file_path,
-        label: marker.name,
-        background: isSelected ? '#007c00' : '#007c57'
-      })
+      mapMarker.content = await createParkMarkerContent(marker, isSelected)
     } else {
       mapMarker.content = await CreatePinIcon({
         glyph: marker.icon?.file_path,
@@ -274,10 +285,23 @@ async function updateMarkerBackgrounds(newId, oldId) {
   }
 }
 
+async function updateParkMarkerCounts() {
+  for (const { mapMarker, marker } of mapMarkers.value) {
+    if (marker.type !== 'park') continue
+    mapMarker.content = await createParkMarkerContent(marker, marker.id === parkStore.selectedMarker?.id)
+  }
+}
+
 watch(
   () => parkStore.selectedMarker?.id,
   (newId, oldId) => updateMarkerBackgrounds(newId, oldId)
 )
+
+watch(
+  () => parkStore.markerCountsByPark,
+  () => updateParkMarkerCounts()
+)
+
 watch(
   () => parkStore.selectedMarker?.edited,
   async (edited) => {
@@ -335,4 +359,3 @@ onBeforeUnmount(() => {
 </script>
 
 <template></template>
-

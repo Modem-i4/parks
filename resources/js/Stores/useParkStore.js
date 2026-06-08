@@ -6,6 +6,7 @@ export const useParkStore = defineStore('park', () => {
   const selectedMarker = ref(null)
   const selectedPark = ref(null)
   const markers = ref([])
+  const markerCountsByPark = ref(null)
   const pickedMarkers = ref([])
   const showPanel = ref(false)
   const selectedMarkerLocked = ref(false)
@@ -30,6 +31,7 @@ export const useParkStore = defineStore('park', () => {
     selectedMarker.value = null
     selectedPark.value = null
     markers.value = []
+    markerCountsByPark.value = null
     showPanel.value = false
     map.value = null
     mapElement.value = null
@@ -52,6 +54,10 @@ export const useParkStore = defineStore('park', () => {
 
   function setMarkers(markerList) {
     markers.value = markerList
+  }
+
+  function setMarkerCountsByPark(counts) {
+    markerCountsByPark.value = counts
   }
 
   function setMap(mapInstance) {
@@ -86,6 +92,7 @@ export const useParkStore = defineStore('park', () => {
     selectedMarker,
     selectedPark,
     markers,
+    markerCountsByPark,
     pickedMarkers,
     showPanel,
     map,
@@ -101,6 +108,7 @@ export const useParkStore = defineStore('park', () => {
     setSelectedMarker,
     setSelectedPark,
     setMarkers,
+    setMarkerCountsByPark,
     setMap,
     setMapElement,
     setShowPanel,

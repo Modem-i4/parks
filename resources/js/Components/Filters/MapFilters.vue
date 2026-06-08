@@ -61,7 +61,8 @@ const filterMarkers = async () => {
       const response = await axios.post('/api/markers/count-by-parks', {
         filters: filters.value
       })
-      console.log('Кількість маркерів за парками:', response.data)
+      parkStore.setMarkerCountsByPark(response.data)
+      parkStore.showPanel = false
     } catch (error) {
       console.error('Помилка підрахунку маркерів по парках:', error)
     }
@@ -79,6 +80,7 @@ const filterMarkers = async () => {
   } finally {
     parkStore.markerStates.isLoading = false
     parkStore.markerStates.areLoaded = true
+    parkStore.showPanel = false
 
     if (parkStore.markers.length > 0 && parkStore.markers.length < 200 && !areFiltersDefault.value) {
       const c = parkStore.map.getCenter()
