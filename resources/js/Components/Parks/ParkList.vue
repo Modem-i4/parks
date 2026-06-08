@@ -6,6 +6,10 @@ import { ref, onMounted } from 'vue';
 const parkStore = useParkStore()
 const parksLoaded = ref(false)
 
+function getParkCount(park) {
+  return parkStore.markerCountsByPark?.[park.id] ?? 0
+}
+
 function getParks() {
   parksLoaded.value = false
   axios.get(`/api/parks`)
@@ -32,7 +36,14 @@ onMounted(getParks)
         <PanelHeader
           :title="park.name" :subtitle="`${park.area} га`" :icon="park.icon?.file_path" :shouldFilter="true"
           iconBg="gray-100"
-        />
+        >
+          <template #right>
+            <span
+              v-if="parkStore.markerCountsByPark && getParkCount(park) > 0"
+              class="rounded-md bg-[#00a271] px-2 py-1 text-xs font-semibold text-white"
+            >{{ getParkCount(park) }}</span>
+          </template>
+        </PanelHeader>
         <div class="px-4 pb-4">
           <p class="text-gray-700 text-sm line-clamp-3" v-if="park.description">{{ park.description }}</p>
           <p v-else class="text-gray-400 text-sm italic">Опис відсутній</p>
