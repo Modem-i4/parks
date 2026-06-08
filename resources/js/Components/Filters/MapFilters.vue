@@ -150,27 +150,12 @@ watch(filters,
   { deep:true }
 )
 
-watch(
-  () => parkStore.selectedMarker,
-  val => {
-    if(parkStore.isSingleParkView) return
-    filters.value.park = {
-      parks:  val ? [val.id] : []
-    }
-    saveFilters()
-  }
-)
-
 onMounted(() => {
   const restored = restoreFilters()
   if (restored && hasFilters()) {
     filterMarkers(false, false)
   } else {
-    const parkFilter = filters.value.park
     setPresetFilters()
-    if (parkFilter && !parkStore.isSingleParkView) {
-      filters.value.park = parkFilter
-    }
     renderKey.value++
     filterMarkers(false, false)
   }
