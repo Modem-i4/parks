@@ -22,6 +22,34 @@ class MarkerFilterService
             ->select('id', 'coordinates', 'description', 'type')
             ->where('park_id', $parkId);
 
+        $this->applyMarkerFilters($query, $filters);
+
+        return $query->get();
+    }
+
+    public function countByParks($filters)
+    {
+        if (!isset($filters['green']) && !isset($filters['infrastructure'])) {
+            return collect();
+        }
+
+        $query = Marker::query();
+
+        if (!empty($filters['park']['parks'])) {
+            $query->whereIn('park_id', $filters['park']['parks']);
+        }
+
+        $this->applyMarkerFilters($query, $filters);
+
+        return $query
+            ->select('park_id')
+            ->selectRaw('COUNT(*) as markers_count')
+            ->groupBy('park_id')
+            ->pluck('markers_count', 'park_id');
+    }
+
+    private function applyMarkerFilters($query, $filters): void
+    {
         $query->where(function ($q) use ($filters) {
             if (!empty($filters['green'])) {
                 $q->orWhere(function ($sub) use ($filters) {
@@ -40,6 +68,5 @@ class MarkerFilterService
                 $q->orWhere('type', 'infrastructure');
             }
         });
-        return $query->get();
     }
 }

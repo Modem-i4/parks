@@ -49,6 +49,13 @@ class MarkerController extends Controller
         return $markers;
     }
 
+    public function countByParks(Request $request)
+    {
+        $filters = $request->input('filters');
+        $counts = $this->filterService->countByParks($filters);
+        return response()->json($counts);
+    }
+
     public function media($id)
     {
         $marker = Marker::findOrFail($id);

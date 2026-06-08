@@ -75,6 +75,7 @@ Route::prefix('api')->group(function () {
     Route::post('/parks/{id}/markers', [MarkerController::class, 'filterParkMarkers'])->name('parks.markers');
     // Markers
     Route::get('/markers/filters-config', [MarkerController::class, 'getFilters'])->name('filters');
+    Route::post('/markers/count-by-parks', [MarkerController::class, 'countByParks'])->name('markers.count-by-parks');
     Route::get('/markers/inv/{inv}', [MarkerController::class, 'getSingleMarkerByInv'])->name('marker.byInv');
     Route::get('/markers/{id}', [MarkerController::class, 'getSingleMarker'])->name('marker');
     Route::get('/markers/{id}/media', [MarkerController::class, 'media'])->name('marker.media');

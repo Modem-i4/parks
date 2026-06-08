@@ -56,7 +56,17 @@ function setPreset(preset = 'all') {
 }
 
 const filterMarkers = async () => {
-  if (!parkStore.isSingleParkView) return // TODO: count and display markers
+  if (!parkStore.isSingleParkView) {
+    try {
+      const response = await axios.post('/api/markers/count-by-parks', {
+        filters: filters.value
+      })
+      console.log('Кількість маркерів за парками:', response.data)
+    } catch (error) {
+      console.error('Помилка підрахунку маркерів по парках:', error)
+    }
+    return
+  }
 
   parkStore.markerStates.isLoading = true
   try {
