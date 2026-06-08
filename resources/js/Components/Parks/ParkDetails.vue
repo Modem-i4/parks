@@ -128,11 +128,12 @@ function pickerSaved(newImages) {
       </template>
     </PanelHeader>
 
-    <ImageSlider :modelId="parkStore.selectedMarker?.id || null" model="parks" class="my-2" ref="imageSliderRef"
-      :editable="authStore.can.upload"
-      :showByDefault="!isMobile || authStore.can.upload"
-      @onImageClick="handleImageClick"
-      @close="closeImagePicker"/>
+    <div class="my-2">
+      <ImageSlider :modelId="parkStore.selectedMarker?.id || null" model="parks" ref="imageSliderRef"
+        :editable="authStore.can.upload"
+        :showByDefault="!isMobile || authStore.can.upload"
+        @onImageClick="handleImageClick"/>
+    </div>
 
     <template v-if="!editing">
       <div class="bg-white rounded px-4 py-2">
