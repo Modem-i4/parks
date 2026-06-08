@@ -3,6 +3,7 @@ namespace App\Http\Services\MarkerFilters;
 
 use App\Enums\GreenState;
 use App\Enums\UserRole;
+use App\Models\Park;
 use App\Models\Recommendation;
 use App\Models\Species;
 use App\Models\HedgeRow;
@@ -12,10 +13,11 @@ use App\Models\Tag;
 use Illuminate\Support\Facades\Auth;
 
 class MarkerFilterConfigService {
-    public function get($mode = 'green'): array
+    public function get($mode = 'green', string $scope = 'local'): array
     {        
         $config = $this->getDefaultFilters();
         $config = $this->filterConfigByMode($config, $mode);
+        $config = $this->filterConfigByScope($config, $scope);
         $userRole = Auth::check()
             ? Auth::user()->role
             : UserRole::GUEST;
@@ -37,9 +39,35 @@ class MarkerFilterConfigService {
                     'icon' => $type->icon?->file_path,
                 ];
             })->toArray();
+        $parks = Park::with('icon')->select('id', 'name')->orderBy('name')
+            ->get()->map(function ($park) {
+                return [
+                    'id' => $park->id,
+                    'name' => $park->name,
+                    'icon' => $park->icon?->file_path,
+                ];
+            })->toArray();
 
         $tags = Tag::select('id', 'name', 'type')->get()->groupBy('type')->map->toArray();
         return [ 
+            'park' => [
+                'name' => 'Парки',
+                'slug' => 'park',
+                'type' => 'group',
+                'scope' => 'global',
+                'open' => true,
+                'checkbox' => false,
+                'children' => [
+                    [
+                        'name' => '',
+                        'slug' => 'parks',
+                        'type' => 'infrastructureSelect',
+                        'size' => 'big',
+                        'checked' => true,
+                        'options' => $parks,
+                    ],
+                ],
+            ],
             'infrastructure' => [
                 'name' => 'Інфраструктура',
                 'slug' => 'infrastructure',
@@ -98,6 +126,7 @@ class MarkerFilterConfigService {
                         'name' => 'Загальні фільтри',
                         'slug' => 'general',
                         'type' => 'group',
+                        'checkbox' => false,
                         'children' => [
                             [
                                 'name' => 'Стан',
@@ -277,6 +306,22 @@ class MarkerFilterConfigService {
         return array_values($config);
     }
 
+    protected function filterConfigByScope(array $config, string $scope): array
+    {
+        foreach ($config as $key => &$node) {
+            if (isset($node['scope']) && $node['scope'] !== $scope) {
+                unset($config[$key]);
+                continue;
+            }
+
+            if (isset($node['children']) && is_array($node['children'])) {
+                $node['children'] = $this->filterConfigByScope($node['children'], $scope);
+            }
+        }
+
+        return array_values($config);
+    }
+
     protected function filterConfigByMode(array $config, string $mode): array
     {
         if($mode === 'works') {
@@ -286,6 +331,7 @@ class MarkerFilterConfigService {
             $config['green']['children'][0]['open'] = true;
             $config['green']['children'][0]['children'][0]['options'][1]['checked'] = true;
             return [
+                'park' => $config['park'],
                 'green' => $config['green'],
                 'infrastructure' => $config['infrastructure'],
             ];
@@ -295,6 +341,7 @@ class MarkerFilterConfigService {
         if ($mode === 'infrastructure') {
             $config['infrastructure']['checked'] = true;
             return [
+                'park' => $config['park'],
                 'infrastructure' => $config['infrastructure'],
                 'green' => $config['green'],
             ];
@@ -302,6 +349,7 @@ class MarkerFilterConfigService {
             $config['green']['checked'] = true;
             $config['infrastructure']['checked'] = true;
             return [
+                'park' => $config['park'],
                 'green' => $config['green'],
                 'infrastructure' => $config['infrastructure'],
             ];

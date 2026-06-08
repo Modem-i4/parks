@@ -26,7 +26,8 @@ class MarkerController extends Controller
 
     public function getFilters(Request $request) {
         $mode = $request->query('mode', 'green');
-        $config =  $this->filterConfigService->get($mode);
+        $scope = $request->query('scope', 'local');
+        $config =  $this->filterConfigService->get($mode, $scope);
         return response()->json($config);
     }
 

@@ -145,7 +145,7 @@ onMounted(() => {
       />
     </div>
     <div class="sticky bottom-0 p-4 pt-1 bg-white md:bg-[#f3f4f6]">
-      <div class="italic text-center">записів: {{ parkStore.markers.length }}</div>
+      <div class="italic text-center" v-if="parkStore.isSingleParkView">записів: {{ parkStore.markers.length }}</div>
       <div class="flex space-x-1">
         <PrimaryButton @click="filterMarkers" class="flex flex-1">
           Застосувати фільтри

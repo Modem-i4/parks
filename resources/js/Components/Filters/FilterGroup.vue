@@ -14,7 +14,7 @@ const props = defineProps({
 const isOpen = ref(props.node.open || false)
 const isChecked = ref(props.node.checked || false)
 
-const showCheckbox = computed(() => props.node.slug !== 'general')
+const showCheckbox = computed(() => props.node.checkbox !== false)
 
 const currentPath = computed(() => [...props.path, props.node.slug])
 
@@ -33,6 +33,8 @@ watch(() => props.filters,
 )
 
 watch(isChecked, (val) => {
+  if (!showCheckbox.value) return
+
   if(!val) {
     isOpen.value = false
   }
