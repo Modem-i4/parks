@@ -20,6 +20,7 @@ const filtersConfig = ref([])
 const filters = ref({})
 const renderKey = ref(0)
 const authStore = useAuthStore()
+const scope = computed(() => parkStore.isSingleParkView ? 'local' : 'global')
 
 const filterPresets = {
   green: { green: {}, infrastructure: {} },
@@ -40,7 +41,7 @@ const areFiltersDefault = computed(
 
 const getFilters = async () => {
   try {
-    const response = await axios.get(`/api/markers/filters-config?mode=${parkStore.singleParkContentMode}`)
+    const response = await axios.get(`/api/markers/filters-config?mode=${parkStore.singleParkContentMode}&scope=${scope.value}`)
     filtersConfig.value = response.data
   } catch (error) {
     console.error('Помилка завантаження конфігурації фільтрів:', error)
@@ -55,6 +56,8 @@ function setPreset(preset = 'all') {
 }
 
 const filterMarkers = async () => {
+  if (!parkStore.isSingleParkView) return // TODO: count and display markers
+
   parkStore.markerStates.isLoading = true
   try {
     const response = await axios.post(`/api/parks/${parkStore.selectedPark.id}/markers`, {
@@ -97,6 +100,16 @@ watch(() => filters,
   { deep:true }
 )
 
+watch(
+  () => parkStore.selectedMarker,
+  val => {
+    if(parkStore.isSingleParkView) return
+    filters.value.park = {
+      parks:  val ? [val.id] : []
+    }
+  }
+)
+
 onMounted(() => {
   setPreset()
 })
@@ -104,7 +117,7 @@ onMounted(() => {
 
 <template>
   <div>
-    <PanelHeader v-if="!isMobile" 
+    <PanelHeader v-if="!isMobile && parkStore.isSingleParkView" 
       :title="parkStore.selectedPark.name" :subtitle="`${parkStore.selectedPark.area} га`" :icon="parkStore.selectedPark.icon?.file_path"
     >
       <template #right>
@@ -113,7 +126,7 @@ onMounted(() => {
     </PanelHeader>
     <div class="flex items-center justify-between border-b px-5 py-3 border-gray-200">
       <div class="text-lg font-medium text-gray-700">
-        Фільтри та легенда
+        Фільтри<template v-if="parkStore.isSingleParkView"> та легенда</template>
       </div>
       <div class="flex items-center gap-2">
         <PrimaryButton @click="setPreset('all')">Все</PrimaryButton>

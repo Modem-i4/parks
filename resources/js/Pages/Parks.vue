@@ -8,6 +8,7 @@ import ParkList from '@/Components/Parks/ParkList.vue';
 import ParkDetails from '@/Components/Parks/ParkDetails.vue';
 import MapFilters from '@/Components/Filters/MapFilters.vue';
 import MarkerDetails from '@/Components/Markers/MarkerDetails.vue';
+import Tabs from '@/Components/Custom/Tabs.vue';
 import { zoom } from '@/Helpers/Maps/MapHelper';
 import { initParkRouteWatcher, setViewToParkMarker } from '@/Helpers/Maps/SetParkView';
 import { Head } from '@inertiajs/vue3';
@@ -48,6 +49,15 @@ watch(
       }
   }
 )
+
+const activeGeneralTab = ref('parks')
+watch(
+  () => parkStore.selectedMarker,
+  val => {
+    if(parkStore.isSingleParkView) return
+    if (val) activeGeneralTab.value = 'parks'
+  }
+)
 </script>
 
 <template>
@@ -55,8 +65,18 @@ watch(
   <MapWithPanel>
     <template #panelContent>
       <template v-if="!parkStore.isSingleParkView">
-        <ParkList v-show="!parkStore.selectedMarker"/>
-        <ParkDetails v-if="parkStore.selectedMarker"/>
+        <Tabs v-model="activeGeneralTab" :tabs="[
+            { key: 'parks', label: 'Парки' },
+            { key: 'filters', label: 'Фільтри' }
+        ]">
+          <template #parks>
+            <ParkList v-show="!parkStore.selectedMarker"/>
+            <ParkDetails v-if="parkStore.selectedMarker"/>
+          </template>
+          <template #filters>
+            <MapFilters />
+          </template>
+        </Tabs>
       </template>
       <template v-if="parkStore.isSingleParkView">
         <MapFilters v-show="!parkStore.selectedMarker" />

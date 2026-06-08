@@ -1,4 +1,5 @@
 <script setup>
+import { computed } from 'vue'
 import { GetFilterTargetNode, GetOrCreateFilterTargetNode } from '@/Helpers/Maps/GetFilterTargetNode'
 
 const props = defineProps({
@@ -6,6 +7,8 @@ const props = defineProps({
   filters: Object,
   path: Array
 })
+
+const isBig = computed(() => props.node.size === 'big')
 
 const handleCheckboxChange = (id, event) => {
   const val = event.target.checked
@@ -38,7 +41,7 @@ const handleCheckboxChange = (id, event) => {
           <input
             type="checkbox"
             :value="opt.name"
-            :checked="opt.checked && (GetFilterTargetNode(filters, [...path,props.node.slug])?.includes(opt.id))"
+            :checked="GetFilterTargetNode(filters, [...path,props.node.slug])?.includes(opt.id)"
             @change="handleCheckboxChange(opt.id, $event)"
           >
           <span>{{ opt.name }}</span>
@@ -56,14 +59,16 @@ const handleCheckboxChange = (id, event) => {
             <img
               v-if="opt.icon"
               :src="opt.icon"
-              class="w-6 h-6 object-contain"
+              class="object-contain"
+              :class="isBig ? 'w-8 h-8' : 'w-6 h-6'"
               alt="icon"
             >
-            <span class="text-md">{{ opt.name }}</span>
+            <span class="text-md" :class="{'font-semibold' : isBig}">{{ opt.name }}</span>
           </div>
           <input
             type="checkbox"
             :value="opt.name"
+            :checked="GetFilterTargetNode(filters, [...path,props.node.slug])?.includes(opt.id)"
             @change="handleCheckboxChange(opt.id, $event)"  
           />
         </label>
