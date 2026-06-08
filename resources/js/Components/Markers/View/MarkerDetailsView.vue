@@ -11,6 +11,7 @@ import SecondaryButton from '@/Components/Default/SecondaryButton.vue'
 import { useAuthStore } from '@/Stores/useAuthStore'
 import { isMobile } from '@/Helpers/isMobileHelper'
 import { copyToClipboard, copyCompleted } from '@/Helpers/CopyToClipboard'
+import { getCoordsFromMarker } from '@/Helpers/Maps/MapHelper'
 
 const imageSliderRef = ref(null)
 
@@ -21,10 +22,13 @@ const props = defineProps({
 
 const authStore = useAuthStore()
 
-const shortCoordinates = computed(() => `
-${props.marker.coordinates[1].toFixed(5)}, 
-${props.marker.coordinates[0].toFixed(5)}
-`)
+const shortCoordinates = computed(() => {
+  const coords = getCoordsFromMarker(props.marker)
+  return `
+${coords.lat.toFixed(5)}, 
+${coords.lng.toFixed(5)}
+`
+})
 
 const fullNameLat = computed(
   () => [

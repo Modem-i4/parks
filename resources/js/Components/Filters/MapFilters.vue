@@ -13,7 +13,7 @@ import Modal from '@/Components/Default/Modal.vue'
 import GroupAssign from '@/Components/WorkHistory/GroupAssign.vue'
 import ExportImportPanel from '@/Components/Export/ExportImportPanel.vue'
 import { useAuthStore } from '@/Stores/useAuthStore'
-import { tweenCameraTo } from '@/Helpers/Maps/MapHelper'
+import { getCoordsFromMarker, isFiniteCoords, tweenCameraTo } from '@/Helpers/Maps/MapHelper'
 
 const parkStore = useParkStore()
 const filtersConfig = ref([])
@@ -123,15 +123,18 @@ const filterMarkers = async (moveToClosest = true, saveSnapshot = true) => {
       const cLng = c.lng()
       const closestMarker = parkStore.markers
         .map(m => {
-          const pos = {lng: m.coordinates[0], lat: m.coordinates[1] }
+          const pos = getCoordsFromMarker(m)
           const dLat = pos.lat - cLat
           const dLng = (pos.lng - cLng) * Math.cos(cLat * Math.PI / 180)
           return { ...pos, dist: Math.pow(dLat,2) + Math.pow(dLng,2) }
         })
+        .filter(isFiniteCoords)
         .sort((a, b) => a.dist - b.dist)[0]
 
-        parkStore.showPanel = false
-        tweenCameraTo(parkStore.map, { lat: closestMarker.lat, lng: closestMarker.lng })
+      if (!closestMarker) return
+
+      parkStore.showPanel = false
+      tweenCameraTo(parkStore.map, { lat: closestMarker.lat, lng: closestMarker.lng })
     }
 
   }

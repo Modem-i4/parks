@@ -73,6 +73,83 @@ export function distanceInMeters(a, b) {
 }
 const coordsCache = new WeakMap()
 
+export function isFiniteCoords(coords) {
+  return Number.isFinite(coords?.lng) && Number.isFinite(coords?.lat)
+}
+
+function isCoordinatePair(coords) {
+  return Array.isArray(coords)
+    && coords.length === 2
+    && Number.isFinite(Number(coords[0]))
+    && Number.isFinite(Number(coords[1]))
+}
+
+function coordsFromPair(coords) {
+  return { lng: Number(coords[0]), lat: Number(coords[1]) }
+}
+
+function getCoordinatePath(coords) {
+  if (!Array.isArray(coords)) return null
+  if (coords.length && coords.every(isCoordinatePair)) return coords.map(coordsFromPair)
+
+  for (const item of coords) {
+    const path = getCoordinatePath(item)
+    if (path) return path
+  }
+
+  return null
+}
+
+function getPathCenter(path) {
+  if (!path?.length) return null
+  if (path.length === 1) return path[0]
+
+  const segmentLengths = []
+  let totalLength = 0
+
+  for (let i = 1; i < path.length; i += 1) {
+    const length = distanceInMeters(path[i - 1], path[i])
+    segmentLengths.push(length)
+    totalLength += length
+  }
+
+  if (!totalLength) {
+    const sums = path.reduce((acc, coords) => ({
+      lng: acc.lng + coords.lng,
+      lat: acc.lat + coords.lat,
+    }), { lng: 0, lat: 0 })
+
+    return {
+      lng: sums.lng / path.length,
+      lat: sums.lat / path.length,
+    }
+  }
+
+  let remaining = totalLength / 2
+
+  for (let i = 1; i < path.length; i += 1) {
+    const segmentLength = segmentLengths[i - 1]
+    if (remaining > segmentLength) {
+      remaining -= segmentLength
+      continue
+    }
+
+    const ratio = remaining / segmentLength
+    return {
+      lng: path[i - 1].lng + (path[i].lng - path[i - 1].lng) * ratio,
+      lat: path[i - 1].lat + (path[i].lat - path[i - 1].lat) * ratio,
+    }
+  }
+
+  return path[path.length - 1]
+}
+
+export function getLinePathFromMarker(marker) {
+  if (isCoordinatePair(marker?.coordinates)) return null
+  const path = getCoordinatePath(marker?.coordinates)
+  return path?.length >= 2 ? path : null
+}
+
 export function getCoordsFromMarker(marker) {
   if (!marker) return defaultCoords
   return coordsCache.get(marker) ?? cacheMarkerCoords(marker)
@@ -95,15 +172,17 @@ export function getNewCoordsFromMarker(marker) {
       console.warn(`Не вдалося отримати центр маркера "${marker.name}":`, e)
     }
   }
-  if (marker?.coordinates?.length === 2) {
-    return { lng: marker.coordinates[0], lat: marker.coordinates[1] }
-  }
+  const linePath = getLinePathFromMarker(marker)
+  if (linePath) return getPathCenter(linePath)
+
+  if (isCoordinatePair(marker?.coordinates)) return coordsFromPair(marker.coordinates)
+
   return { lng: defaultCoords.lng, lat: defaultCoords.lat }
 }
 
 export function getAdjustedCoords(coords, targetZoom) {
   const { lng, lat } = coords
-  if (!isMobile.value) return { lng, lat }
+  if (!isMobile.value || !Number.isFinite(targetZoom)) return { lng, lat }
 
   const offsetY = (window.innerHeight - 56) * 0.2
   const scale = Math.pow(2, targetZoom)
@@ -170,6 +249,8 @@ const tweenGroup = new Group()
 let currentTween = null
 
 export async function tweenCameraTo(map, targetLatLng, targetZoom, duration = 1000) {
+  if (!map || !isFiniteCoords(targetLatLng)) return
+
   isTweening.value = true
 
   if (currentTween) {
@@ -200,7 +281,7 @@ export async function tweenCameraTo(map, targetLatLng, targetZoom, duration = 10
         })
       })
       .onComplete(() => {
-        map.moveCamera({ center: to, zoom: to.zoom })
+        map.moveCamera({ center: { lat: to.lat, lng: to.lng }, zoom: to.zoom })
         isTweening.value = false
         currentTween = null
         resolve()

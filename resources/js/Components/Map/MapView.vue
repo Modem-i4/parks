@@ -11,7 +11,8 @@ import {
   getAdjustedCoordsFromMarker,
   tweenCameraTo,
   getDevicePageZoom,
-  defaultBounds
+  defaultBounds,
+  isFiniteCoords
 } from '@/Helpers/Maps/MapHelper.js'
 import { isMobile } from '@/Helpers/isMobileHelper'
 
@@ -104,7 +105,7 @@ watch(
       else coords = defaultCenter
     }
 
-    if (coords?.lat && coords?.lng) {
+    if (isFiniteCoords(coords)) {
       await tweenCameraTo(parkStore.map, coords, zoomLevel, duration)
     }
   },

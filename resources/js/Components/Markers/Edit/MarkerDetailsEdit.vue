@@ -14,7 +14,7 @@ import DictTags from '@/Components/Dictionaries/DictTags.vue'
 import DictHedgeRow from '@/Components/Dictionaries/DictHedgeRow.vue'
 import DictHedgeShape from '@/Components/Dictionaries/DictHedgeShape.vue'
 import DictPlots from '@/Components/Dictionaries/DictPlots.vue'
-import { cacheMarkerCoords } from '@/Helpers/Maps/MapHelper'
+import { cacheMarkerCoords, getCoordsFromMarker } from '@/Helpers/Maps/MapHelper'
 import FormError from '@/Components/Custom/FormError.vue'
 
 const props = defineProps({ marker: Object })
@@ -37,10 +37,7 @@ const showModal = ref({
 })
 
 onMounted(async () => {
-  originalPosition.value = {
-    lng: marker.value.coordinates[0],
-    lat: marker.value.coordinates[1]
-  }
+  originalPosition.value = getCoordsFromMarker(marker.value)
 
   const draggableMarkerFactory = isAddingNew.value ? createDraggableMarker : createDraggableMarkerWithLine
 
@@ -51,6 +48,7 @@ onMounted(async () => {
     onDrag: (latLng) => {
       hasUserMovedDraftMarker.value = true
       marker.value.coordinates = [latLng.lng(), latLng.lat()]
+      cacheMarkerCoords(marker.value)
     }
   })
   googleMapMarker.value = result.marker
@@ -70,10 +68,7 @@ watch(
     marker.value = JSON.parse(JSON.stringify(newMarker))
 
     if (googleMapMarker.value && Array.isArray(newMarker.coordinates)) {
-      googleMapMarker.value.position = {
-        lng: newMarker.coordinates[0],
-        lat: newMarker.coordinates[1],
-      }
+      googleMapMarker.value.position = getCoordsFromMarker(newMarker)
     }
   },
   { deep: true }
@@ -113,6 +108,7 @@ async function save() {
         marker.value.id = response.data.id
         marker.value.icon = response.data.icon
         marker.value.isDraft = false
+        cacheMarkerCoords(marker.value)
         parkStore.markers.push(marker.value)
         parkStore.selectedMarker = marker.value
         parkStore.selectedMarker.edited = true

@@ -2,7 +2,7 @@
 import { onBeforeUnmount, onUnmounted, ref, watch } from 'vue'
 import loader from '@/Helpers/Maps/GoogleMapsLoader'
 import { CreatePinIcon } from '@/Helpers/Maps/CreatePinIcon.js'
-import { getCoordsFromMarker } from '@/Helpers/Maps/MapHelper.js'
+import { getCoordsFromMarker, getLinePathFromMarker, isFiniteCoords } from '@/Helpers/Maps/MapHelper.js'
 import { useParkStore } from '@/Stores/useParkStore.js'
 import { CreateSimpleIcon, getColorByGreenState } from '@/Helpers/Maps/CreateSimpleIcon'
 import { zoom, isTweening } from '@/Helpers/Maps/MapHelper.js'
@@ -11,6 +11,7 @@ import { isMobile } from '@/Helpers/isMobileHelper'
 
 const parkStore = useParkStore()
 const mapMarkers = ref([])
+const mapLines = new Set()
 let currentCancelToken = { cancelled: false }
 const showZoomNotice = ref(false)
 
@@ -41,13 +42,14 @@ function updateVisibleMarkersCount(bounds) {
   }
   lastVisibleMarkers = parkStore.markers.filter(marker => {
     const coords = getCoordsFromMarker(marker)
+    if (!isFiniteCoords(coords)) return false
     return bounds.contains(new google.maps.LatLng(coords.lat, coords.lng))
   }).length
   parkStore.markerStates.areLimited = areMarkersLimited(parkStore.map.getZoom(), lastVisibleMarkers)
 }
 
 function areMarkersLimited(currentZoom, lastVisibleMarkers) {
-  if(!isMobile) return false
+  if(!isMobile.value) return false
   const thresholdZoom = currentZoom <= zoom.singlePark.threshold
   const thresholdCount = lastVisibleMarkers > 200
   return thresholdZoom && thresholdCount
@@ -80,6 +82,8 @@ async function createParkMarkerContent(marker, isSelected = false) {
 }
 
 async function createMarker(marker, lat, lng, cancelToken) {
+  if (!isFiniteCoords({ lat, lng })) return null
+
   const { AdvancedMarkerElement } = await loader.importLibrary('marker')
   const content = marker.type === 'park'
     ? await createParkMarkerContent(marker, marker.id === parkStore.selectedMarker?.id)
@@ -100,10 +104,31 @@ async function createMarker(marker, lat, lng, cancelToken) {
   })
 }
 
+function createMarkerLine(marker) {
+  const path = getLinePathFromMarker(marker)
+  if (!path?.length) return null
+
+  const line = new google.maps.Polyline({
+    path,
+    geodesic: true,
+    strokeColor: marker.green
+      ? getColorByGreenState(marker.green?.green_state)
+      : '#00a271',
+    strokeOpacity: 1,
+    strokeWeight: 6,
+    clickable: true,
+    zIndex: 1000,
+  })
+
+  mapLines.add(line)
+  return line
+}
+
 /////// Viewport markers
 async function updateMarkersInViewport(cancelToken = currentCancelToken) {
   if (!parkStore.map || cancelToken.cancelled) return
   if (parkStore.isSingleParkView && isTweening.value) return
+  if (!parkStore.isSingleParkView) clearAllMapLines()
 
   if (parkStore.markers.length === 0) {
     clearAllMapMarkers()
@@ -128,10 +153,23 @@ async function updateMarkersInViewport(cancelToken = currentCancelToken) {
 }
 
 async function clearAllMapMarkers() {
-  for (const { mapMarker } of mapMarkers.value) {
+  for (const { mapMarker, mapLine } of mapMarkers.value) {
     mapMarker.setMap(null)
+    clearMapLine(mapLine)
   }
   mapMarkers.value = []
+  clearAllMapLines()
+}
+function clearMapLine(mapLine) {
+  if (!mapLine) return
+  mapLine.setMap(null)
+  mapLines.delete(mapLine)
+}
+function clearAllMapLines() {
+  for (const mapLine of mapLines) {
+    mapLine.setMap(null)
+  }
+  mapLines.clear()
 }
 function updateZoomNotice(currentZoom) {
   if (parkStore.isSingleParkView) {
@@ -145,20 +183,26 @@ function updateZoomNotice(currentZoom) {
 function filterVisibleMarkers(currentZoom) {
   const keySet = new Set(parkStore.markers.map(keyOf))
   const selectedId = parkStore.selectedMarker?.id
-  mapMarkers.value = mapMarkers.value.filter(({ mapMarker, marker }) => {
+  mapMarkers.value = mapMarkers.value.filter(({ mapMarker, mapLine, marker }) => {
     const keep =
       keySet.has(keyOf(marker)) &&
       (!isMarkerHidden(marker, currentZoom) || marker.id === selectedId)
 
-    if (!keep) mapMarker.setMap(null)
+    if (!keep) {
+      mapMarker.setMap(null)
+      clearMapLine(mapLine)
+    }
     return keep
   })
 }
 function removeMissingMarkers() {
   const keySet = new Set(parkStore.markers.map(keyOf))
-  mapMarkers.value = mapMarkers.value.filter(({ mapMarker, marker }) => {
+  mapMarkers.value = mapMarkers.value.filter(({ mapMarker, mapLine, marker }) => {
     const keep = keySet.has(keyOf(marker))
-    if (!keep) mapMarker.setMap(null)
+    if (!keep) {
+      mapMarker.setMap(null)
+      clearMapLine(mapLine)
+    }
     return keep
   })
 }
@@ -172,6 +216,7 @@ function sortMarkersByTypeAndDistance(center) {
       const isSelected = marker.id === selectedId ? 0 : 1
       return { marker, coords, dist, isInfra, isSelected }
     })
+    .filter(({ coords }) => isFiniteCoords(coords))
     .sort((a, b) => {
       if (a.isSelected !== b.isSelected) return a.isSelected - b.isSelected
       if (a.isInfra !== b.isInfra) return a.isInfra - b.isInfra
@@ -189,6 +234,7 @@ async function renderSortedMarkers(sortedMarkers, bounds, currentZoom, cancelTok
     const key = keyOf(marker)
 
     const exists = mapMarkers.value.some(m => keyOf(m.marker) === key)
+    const hasLine = !!getLinePathFromMarker(marker)
     const inBounds = bounds?.contains(new google.maps.LatLng(lat, lng))
     const hiddenByLimit = isMarkerHidden(marker, currentZoom)
     const selected = marker.id === parkStore.selectedMarker?.id
@@ -196,19 +242,24 @@ async function renderSortedMarkers(sortedMarkers, bounds, currentZoom, cancelTok
       !exists && (
         !parkStore.isSingleParkView ||
         selected ||
-        (inBounds && !hiddenByLimit)
+        ((hasLine || inBounds) && !hiddenByLimit)
       )
 
     if (shouldRender) {
       const mapMarker = await createMarker(marker, lat, lng, cancelToken)
-      if(cancelToken.cancelled) return
+      if(cancelToken.cancelled || !mapMarker) return
+      const mapLine = createMarkerLine(marker)
 
-      mapMarker.addListener('click', () => {
+      const selectMarker = () => {
         parkStore.setSelectedMarker(marker) // with validation
-      })
+      }
+
+      mapMarker.addListener('click', selectMarker)
+      mapLine?.addListener('click', selectMarker)
 
       mapMarker.setMap(parkStore.map)
-      mapMarkers.value.push({ mapMarker, marker })
+      mapLine?.setMap(parkStore.map)
+      mapMarkers.value.push({ mapMarker, mapLine, marker })
 
       if(selected) updateMarkerBackgrounds(marker.id)
     }
@@ -308,18 +359,26 @@ watch(
     if(!edited) return
     const marker = parkStore.selectedMarker
     if (!marker) return
-    const newMapMarker = await createMarker(marker, marker.coordinates[1], marker.coordinates[0], currentCancelToken)
+    const coords = getCoordsFromMarker(marker)
+    const newMapMarker = await createMarker(marker, coords.lat, coords.lng, currentCancelToken)
+    if (currentCancelToken.cancelled || !newMapMarker) return
+    const newMapLine = createMarkerLine(marker)
     newMapMarker.addListener('click', () => {
+      parkStore.selectedMarker = marker
+    })
+    newMapLine?.addListener('click', () => {
       parkStore.selectedMarker = marker
     })
     if (currentCancelToken.cancelled) return
     newMapMarker.setMap(parkStore.map)
+    newMapLine?.setMap(parkStore.map)
     const index = mapMarkers.value.findIndex(m => m.marker.id === marker.id)
     if (index !== -1) {
       mapMarkers.value[index].mapMarker.setMap(null)
-      mapMarkers.value.splice(index, 1, { marker, mapMarker: newMapMarker })
+      clearMapLine(mapMarkers.value[index].mapLine)
+      mapMarkers.value.splice(index, 1, { marker, mapMarker: newMapMarker, mapLine: newMapLine })
     } else {
-      mapMarkers.value.push({ marker, mapMarker: newMapMarker })
+      mapMarkers.value.push({ marker, mapMarker: newMapMarker, mapLine: newMapLine })
     }
     parkStore.selectedMarker.edited = false
     parkStore.selectedMarker = null
@@ -339,6 +398,7 @@ watch(
     const mapMarkersIndex = mapMarkers.value.findIndex(m => m.marker.id === marker.id)
     if (mapMarkersIndex !== -1) {
       mapMarkers.value[mapMarkersIndex].mapMarker.setMap(null)
+      clearMapLine(mapMarkers.value[mapMarkersIndex].mapLine)
       mapMarkers.value.splice(mapMarkersIndex, 1)
     }
 
@@ -355,6 +415,7 @@ function setupMapClick(map) {
 }
 onBeforeUnmount(() => {
   clearOnMapClickListener?.remove()
+  clearAllMapMarkers()
 })
 </script>
 
