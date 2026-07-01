@@ -55,7 +55,7 @@ defineProps({ stats: Object })
 
 const stateStats = [
   { key: 'green_total', min: 0, label: 'всього насаджень', icon: '/img/icons/stats/trees.svg', alt: 'trees' },
-  { key: 'green_good',  min: 0, label: 'відмінний стан',    color: 'bg-green-600' },
+  { key: 'green_good',  min: 0, label: 'добрий стан',    color: 'bg-green-600' },
   { key: 'green_normal',min: 0, label: 'задовільний стан',  color: 'bg-yellow-400' },
   { key: 'green_bad',   min: 0,  label: 'незадовільний стан',color: 'bg-red-600' },
 ]

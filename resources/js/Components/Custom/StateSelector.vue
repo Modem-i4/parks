@@ -58,7 +58,7 @@ const options = {
     },
     {
       value: 'good',
-      label: 'Хороший',
+      label: 'Добрий',
       baseClass: 'bg-green-100 text-green-700',
       activeClass: 'bg-green-500 text-white',
     },
