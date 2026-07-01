@@ -33,7 +33,7 @@ const handleCheckboxChange = (id, event) => {
 </script>
 
 <template>
-  <div class="space-y-1 px-2">
+  <div class="space-y-1 px-2" v-if="node.options?.length">
     <div class="font-medium">{{ node.name }}</div>
     <div class="flex flex-wrap gap-2">
       <template v-if="node.type === 'multiselect'">
