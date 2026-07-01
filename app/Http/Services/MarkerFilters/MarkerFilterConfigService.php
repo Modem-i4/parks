@@ -148,7 +148,7 @@ class MarkerFilterConfigService {
                                 'max' => 150,
                             ],
                             [
-                                'name' => 'Спільні теги',
+                                'name' => 'Теги',
                                 'slug' => 'common_tags',
                                 'type' => 'multiselect',
                                 'options' => $tags['all'] ?? [],
