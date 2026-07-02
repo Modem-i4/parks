@@ -15,6 +15,7 @@
 import FilterGroup from './FilterGroup.vue'
 import FilterMultiselect from './FilterMultiselect.vue'
 import FilterSlider from './FilterSlider.vue'
+import FilterNumeric from './FilterNumeric.vue'
 import FilterButton from './FilterButton.vue'
 import FilterStateSelect from './FilterStateSelect.vue'
 import FilterTaxonomySelect from './FilterTaxonomySelect.vue'
@@ -36,6 +37,7 @@ const componentsMap = {
   taxonomy: FilterTaxonomySelect,
   dates: FilterDates,
   slider: FilterSlider,
+  numeric: FilterNumeric,
   button: FilterButton,
   plots: FilterPlotsSelect
 }
