@@ -1,11 +1,11 @@
 <template>
-  <div class="flex w-full overflow-hidden rounded-lg border" v-for="categories in options">
+  <div class="flex w-full" v-for="categories in options">
     <button
       v-for="option in categories"
       :key="option.value"
       :class="[
-        'flex-1 py-2 text-sm font-semibold transition-colors',
-        isSelected(option.value) ? option.activeClass : option.baseClass,
+        'flex-1 py-2 text-sm font-semibold transition-colors overflow-hidden rounded-lg border',
+        isSelected(option.value) ? `ring-2 ring-inset ${option.activeClass}` : option.baseClass,
         'focus:outline-none'
       ]"
       @click="toggleOption(option.value)"
@@ -48,19 +48,19 @@ const options = {
       value: 'bad',
       label: 'Незадовільний',
       baseClass: 'bg-red-100 text-red-700',
-      activeClass: 'bg-red-500 text-white',
+      activeClass: 'bg-red-500 text-white ring-[#b91c1c]',
     },
     {
       value: 'normal',
       label: 'Задовільний',
       baseClass: 'bg-yellow-100 text-yellow-800',
-      activeClass: 'bg-yellow-400 text-black',
+      activeClass: 'bg-yellow-400 text-black ring-[#ca8a04]',
     },
     {
       value: 'good',
       label: 'Добрий',
       baseClass: 'bg-green-100 text-green-700',
-      activeClass: 'bg-green-500 text-white',
+      activeClass: 'bg-green-500 text-white ring-[#15803d]',
     },
   ],
   specialStates: [
@@ -68,13 +68,13 @@ const options = {
       value: 'planned',
       label: 'Лунка',
       baseClass: 'bg-blue-100 text-blue-700',
-      activeClass: 'bg-blue-500 text-white',
+      activeClass: 'bg-blue-500 text-white ring-[#1d4ed8]',
     },
     {
       value: 'removed',
       label: 'Видалено',
       baseClass: 'bg-gray-300 text-gray-700',
-      activeClass: 'bg-gray-500 text-white',
+      activeClass: 'bg-gray-500 text-white ring-[#374151]',
     },
   ]
 }
