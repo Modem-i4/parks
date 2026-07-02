@@ -12,6 +12,7 @@ import { useAuthStore } from '@/Stores/useAuthStore'
 import { isMobile } from '@/Helpers/isMobileHelper'
 import { copyToClipboard, copyCompleted } from '@/Helpers/CopyToClipboard'
 import { getCoordsFromMarker } from '@/Helpers/Maps/MapHelper'
+import { printMarkerCard } from '@/Helpers/Print/PrintMarkerCard.js'
 
 const imageSliderRef = ref(null)
 
@@ -41,6 +42,11 @@ const confirmingDelete = ref(false)
 const forceImageUpdate = () => {
   imageSliderRef.value?.update(props.marker?.id)
 }
+
+function printMarker() {
+  printMarkerCard(props.marker)
+}
+
 function handleImageClick(index) {
   if (authStore.can.upload) {
     emit('onImageClick', index)
@@ -63,19 +69,35 @@ defineExpose({ forceImageUpdate })
 
     <div
       v-if="props.marker.green?.inventory_number && authStore.can.view"
-      class="bg-white rounded px-4 py-3 flex items-center justify-between text-gray-700 my-2"
+      class="bg-white rounded px-4 py-3 flex items-center justify-between gap-3 text-gray-700 my-2"
     >
-      <span class="font-medium">Інвентарний номер: {{ props.marker.green.inventory_number }}</span>
-      <div class="relative group">
-        <button
-          @click="copyToClipboard(props.marker.green.inventory_number)"
-          @mouseenter="copyCompleted = false"
-        >
-          <img src="/img/icons/copy-icon.svg" alt="Скопіювати" class="w-5 h-5" />
-        </button>
-        <Tooltip>
-          {{ copyCompleted ? 'Скопійовано!' : 'Скопіювати' }}
-        </Tooltip>
+      <span class="font-medium min-w-0">Інвентарний номер: {{ props.marker.green.inventory_number }}</span>
+      <div class="flex shrink-0 items-center">
+        <div class="relative group">
+          <button
+            type="button"
+            class="inline-flex h-8 w-8 items-center justify-center rounded-md transition-colors hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-500"
+            aria-label="Скопіювати інвентарний номер"
+            @click="copyToClipboard(props.marker.green.inventory_number)"
+            @mouseenter="copyCompleted = false"
+          >
+            <img src="/img/icons/copy-icon.svg" alt="" class="w-5 h-5" />
+          </button>
+          <Tooltip>
+            {{ copyCompleted ? 'Скопійовано!' : 'Скопіювати' }}
+          </Tooltip>
+        </div>
+        <div class="relative group">
+          <button
+            type="button"
+            class="inline-flex h-8 w-8 items-center justify-center rounded-md transition-colors hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-500"
+            aria-label="Надрукувати картку"
+            @click="printMarker"
+          >
+            <img src="/img/icons/print-icon.svg" alt="" class="w-5 h-5" />
+          </button>
+          <Tooltip align="right">Надрукувати картку</Tooltip>
+        </div>
       </div>
     </div>
     <WorkHistory v-if="props.marker.green?.works && authStore.can.view" 
@@ -119,12 +141,15 @@ defineExpose({ forceImageUpdate })
           </div>
           <div class="relative group">
             <button
+              type="button"
+              class="inline-flex h-8 w-8 items-center justify-center rounded-md transition-colors hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-500"
+              aria-label="Скопіювати координати"
               @click="copyToClipboard(shortCoordinates)"
               @mouseenter="copyCompleted = false"
             >
-              <img src="/img/icons/copy-icon.svg" alt="Скопіювати" class="w-5 h-5" />
+              <img src="/img/icons/copy-icon.svg" alt="" class="w-5 h-5" />
             </button>
-            <Tooltip>
+            <Tooltip align="right">
               {{ copyCompleted ? 'Скопійовано!' : 'Скопіювати' }}
             </Tooltip>
         </div>
