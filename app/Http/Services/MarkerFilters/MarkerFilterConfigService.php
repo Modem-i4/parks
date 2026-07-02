@@ -48,7 +48,9 @@ class MarkerFilterConfigService {
                 ];
             })->toArray();
 
-        $tags = Tag::select('id', 'name', 'type')->get()->groupBy('type')->map->toArray();
+        $tags = Tag::select('id', 'name', 'type')
+            ->orderBy('name')->get()->groupBy('type')
+            ->map(fn ($items) => $items->values()->toArray());
         return [ 
             'park' => [
                 'name' => 'Парки',

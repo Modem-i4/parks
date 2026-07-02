@@ -12,11 +12,14 @@ class TagController extends Controller
     public function index($type = null)
     {
         if (!$type) {
-            return Tag::orderByRaw("FIELD(type, ?) DESC", [TagType::ALL])->get();
+            return Tag::orderByRaw("FIELD(type, ?) DESC", [TagType::ALL])
+                ->orderBy('name')
+                ->get();
         }
 
         return Tag::whereIn('type', [$type, TagType::ALL])
             ->orderByRaw("FIELD(type, ?) DESC", [TagType::ALL])
+            ->orderBy('name')
             ->get();
     }
 

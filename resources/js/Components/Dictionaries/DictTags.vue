@@ -23,13 +23,19 @@ const {
 const props = defineProps({ type: String })
 const emit = defineEmits(['selectTag'])
 
+function sortTagsByName(tags) {
+  return [...tags].sort((a, b) => (a.name || '').localeCompare(b.name || '', 'uk', {
+    sensitivity: 'base'
+  }))
+}
+
 function isNodeExpanded(type) {
   return type === 'all' || type === props.type
 }
 
 const groupedTags = computed(() => {
   const map = {}
-  for (const tag of filteredTags.value) {
+  for (const tag of sortTagsByName(filteredTags.value)) {
     if (!map[tag.type]) map[tag.type] = []
     map[tag.type].push(tag)
   }
