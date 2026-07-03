@@ -19,7 +19,7 @@ const greenStateSummaryLabels = {
 const greenStateColors = {
   good: '#22c55e',
   normal: '#fcd45b',
-  bad: '#ef4444',
+  bad: '#f87171',
   planned: '#66a9ff',
   removed: '#111827',
 }
