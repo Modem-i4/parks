@@ -14,13 +14,13 @@
 
       <div class="px-2">
         <template v-if="reportingScope === 'picked'">
-          <div v-if="parkStore.pickedMarkers.length === 0" class="text-sm text-red-500 italic flex justify-center">
+          <div v-if="pickedObjectMarkers.length === 0" class="text-sm text-red-500 italic flex justify-center">
             (немає вибраних маркерів)
           </div>
           <div v-else class="max-h-[15rem] overflow-y-auto">
             <h3 class="font-semibold text-gray-800 text-center">Обрані маркери</h3>
             <PanelHeader
-              v-for="marker in parkStore.pickedMarkers"
+              v-for="marker in pickedObjectMarkers"
               :key="marker.id"
               :title="`${getMarkerTitle(marker)} (${marker.green?.inventory_number ?? '—'})`"
               :subtitle="typeUkr[marker.type]"
@@ -39,14 +39,14 @@
           </div>
         </template>
 
-        <div v-if="reportingScope === 'filtered' || parkStore.pickedMarkers.length > 0"
+        <div v-if="reportingScope === 'filtered' || pickedObjectMarkers.length > 0"
              class="flex items-center justify-center gap-3 mt-2">
           <p class="text-sm font-medium text-blue-700">
             Обрано {{ filteredCount }} маркер{{ filteredCount === 1 ? '' : filteredCount > 0 && filteredCount < 5 ? 'а' : 'ів' }}.
           </p>
           <SecondaryButton
             class="py-0.5 text-blue-600"
-            v-if="parkStore.pickedMarkers.length > 3"
+            v-if="pickedObjectMarkers.length > 3"
             @click="clearPickedMarkers"
           >
             Очистити вибір
@@ -104,13 +104,41 @@ const isPreparing = ref(false)
 const errorMessage = ref('')
 const pendingReport = ref(null)
 
-const targetMarkers = computed(() => {
-  return reportingScope.value === 'picked'
-    ? parkStore.pickedMarkers
-    : parkStore.markers
+const pickedObjectMarkers = computed(() => parkStore.pickedMarkers.filter(isObjectMarker))
+const filteredMarkerCount = computed(() => {
+  if (parkStore.isSingleParkView) return parkStore.markers.filter(isObjectMarker).length
+
+  return Object.values(parkStore.markerCountsByPark || {})
+    .reduce((total, count) => total + Number(count || 0), 0)
 })
-const filteredCount = computed(() => targetMarkers.value.length)
+const filteredCount = computed(() => reportingScope.value === 'picked'
+  ? pickedObjectMarkers.value.length
+  : filteredMarkerCount.value)
 const reportDisabled = computed(() => filteredCount.value === 0)
+
+function isObjectMarker(marker) {
+  return marker?.type && marker.type !== 'park'
+}
+
+function cloneFilters(value) {
+  return JSON.parse(JSON.stringify(value || {}))
+}
+
+function filteredPayload() {
+  if (parkStore.isSingleParkView) {
+    return { markers: parkStore.markers.filter(isObjectMarker).map(marker => marker.id) }
+  }
+
+  return {
+    filters: cloneFilters(parkStore.savedMarkerFilters || { green: {}, infrastructure: {} }),
+  }
+}
+
+function reportPayload() {
+  return reportingScope.value === 'picked'
+    ? { markers: pickedObjectMarkers.value.map(marker => marker.id) }
+    : filteredPayload()
+}
 
 function removePickedMarker(marker) {
   parkStore.pickedMarkers = parkStore.pickedMarkers.filter(m => m.id !== marker.id)
@@ -145,11 +173,8 @@ async function onCreateReport() {
   clearPendingReport()
 
   try {
-    const markerIds = targetMarkers.value.map(marker => marker.id)
     const [{ data }, { data: parks }] = await Promise.all([
-      axios.post('/api/markers/report-data', {
-        markers: markerIds,
-      }),
+      axios.post('/api/markers/report-data', reportPayload()),
       axios.get('/api/parks'),
     ])
 

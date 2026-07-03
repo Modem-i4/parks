@@ -60,12 +60,18 @@ class MarkerController extends Controller
     public function reportData(Request $request, MarkerReportDataService $service)
     {
         $data = $request->validate([
-            'markers' => ['required', 'array', 'min:1'],
+            'markers' => ['sometimes', 'array', 'min:1'],
             'markers.*' => ['integer', 'exists:markers,id'],
+            'filters' => ['sometimes', 'array'],
         ]);
+        $ids = $data['markers'] ?? $this->filterService->filteredIds($data['filters'] ?? []);
+
+        if (empty($ids)) {
+            return response()->json(['message' => 'No markers provided'], 422);
+        }
 
         return response()->json([
-            'markers' => $service->getMarkers($data['markers']),
+            'markers' => $service->getMarkers($ids),
         ]);
     }
 
@@ -150,7 +156,13 @@ class MarkerController extends Controller
 
     public function export(Request $request, ExportService $service)
     {
-        $ids = $request->input('markers', []);
+        $data = $request->validate([
+            'markers' => ['sometimes', 'array'],
+            'markers.*' => ['integer', 'exists:markers,id'],
+            'filters' => ['sometimes', 'array'],
+            'format' => ['sometimes', 'string'],
+        ]);
+        $ids = $data['markers'] ?? $this->filterService->filteredIds($data['filters'] ?? []);
         $format = $request->input('format', 'geojson');
         return $service->export($ids, $format);
     }

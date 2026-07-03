@@ -48,6 +48,23 @@ class MarkerFilterService
             ->pluck('markers_count', 'park_id');
     }
 
+    public function filteredIds($filters): array
+    {
+        if (!isset($filters['green']) && !isset($filters['infrastructure'])) {
+            return [];
+        }
+
+        $query = Marker::query();
+
+        if (!empty($filters['park']['parks'])) {
+            $query->whereIn('park_id', $filters['park']['parks']);
+        }
+
+        $this->applyMarkerFilters($query, $filters);
+
+        return $query->pluck('id')->all();
+    }
+
     private function applyMarkerFilters($query, $filters): void
     {
         $query->where(function ($q) use ($filters) {
