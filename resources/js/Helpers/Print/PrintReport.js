@@ -57,6 +57,12 @@ const markerTypeLabels = {
 
 const markerTypeOrder = ['tree', 'bush', 'hedge', 'flower', 'infrastructure']
 
+const reportTextSizeClasses = {
+  compact: 'text-compact',
+  normal: 'text-normal',
+  large: 'text-large',
+}
+
 const collator = new Intl.Collator('uk-UA', { sensitivity: 'base' })
 
 function escapeHtml(value) {
@@ -172,9 +178,25 @@ function mixColor(from, to, ratio) {
   return `rgb(${r}, ${g}, ${b})`
 }
 
-function measureCell(marker, field, ranges) {
+function reportSettings(options = {}) {
+  return {
+    textSize: ['compact', 'normal', 'large'].includes(options.textSize) ? options.textSize : 'normal',
+    includeMap: options.includeMap === true,
+    includeInfrastructure: options.includeInfrastructure === true,
+    colorGroups: options.colorGroups !== false,
+    colorTreeSizes: options.colorTreeSizes !== false,
+  }
+}
+
+function reportMarkers(markers, settings) {
+  return settings.includeInfrastructure
+    ? markers
+    : markers.filter(marker => marker.type !== 'infrastructure')
+}
+
+function measureCell(marker, field, ranges, settings) {
   const value = numericTreeValue(marker, field)
-  const color = heatColor(value, ranges[field])
+  const color = settings.colorTreeSizes ? heatColor(value, ranges[field]) : ''
   const style = color ? ` style="background:${escapeHtml(color)}"` : ''
   const emptyClass = value === null ? ' number-empty' : ''
 
@@ -549,7 +571,7 @@ function parkHeader(group) {
   `
 }
 
-function markersTable(markers, tags, ranges) {
+function markersTable(markers, tags, ranges, settings) {
   return `
     <section class="table-section">
       <table class="report-table">
@@ -580,12 +602,12 @@ function markersTable(markers, tags, ranges) {
               <tr>
                 <td class="num-col">${index + 1}</td>
                 <td class="inv-cell">${escapeHtml(markerInventory(marker))}</td>
-                <td class="side-cell plot-group-cell ${plotGroupClass}"><span>${escapeHtml(plotName(marker))}</span></td>
-                <td class="side-cell subplot-group-cell ${subplotGroupClass}"><span>${escapeHtml(subplotName(marker))}</span></td>
+                <td class="side-cell plot-group-cell ${settings.colorGroups ? plotGroupClass : ''}"><span>${escapeHtml(plotName(marker))}</span></td>
+                <td class="side-cell subplot-group-cell ${settings.colorGroups ? subplotGroupClass : ''}"><span>${escapeHtml(subplotName(marker))}</span></td>
                 ${markerStateCell(marker)}
                 <td>${escapeHtml(speciesName(marker))}</td>
-                ${measureCell(marker, 'trunk_diameter_cm', ranges)}
-                ${measureCell(marker, 'height_m', ranges)}
+                ${measureCell(marker, 'trunk_diameter_cm', ranges, settings)}
+                ${measureCell(marker, 'height_m', ranges, settings)}
                 ${tags.map(tag => {
                   const hasTag = markerTags.has(tag.id)
                   return `<td class="tag-cell ${hasTag ? 'tag-yes' : 'tag-no'}">${hasTag ? '✓' : '×'}</td>`
@@ -602,6 +624,7 @@ function markersTable(markers, tags, ranges) {
 }
 
 function parkSections(markers, options = {}) {
+  const settings = reportSettings(options)
   const tags = uniqueTags(markers)
   const ranges = measureRanges(markers)
   const groups = groupMarkersByPark(markers, options.fallbackPark)
@@ -609,7 +632,7 @@ function parkSections(markers, options = {}) {
   return groups.map(group => `
     <section class="park-section">
       ${parkHeader(group)}
-      ${markersTable(group.markers, tags, ranges)}
+      ${markersTable(group.markers, tags, ranges, settings)}
     </section>
   `).join('')
 }
@@ -657,6 +680,9 @@ function reportMapSection(markers, options = {}) {
 }
 
 function buildHtml(markers, options = {}) {
+  const settings = reportSettings(options)
+  const preparedMarkers = reportMarkers(markers, settings)
+  const textSizeClass = reportTextSizeClasses[settings.textSize] || reportTextSizeClasses.normal
   const title = options.title || 'Звіт по маркерах'
 
   return `
@@ -678,12 +704,64 @@ function buildHtml(markers, options = {}) {
           }
           * { box-sizing: border-box; }
           body {
+            --report-font-size: 10px;
+            --report-line-height: 1.15;
+            --cell-padding-y: 2px;
+            --cell-padding-x: 3px;
+            --side-head-height: 58px;
+            --tag-head-height: 94px;
+            --tag-head-max-height: 88px;
+            --side-font-size: 9px;
+            --tag-head-font-size: 8px;
+            --tag-cell-font-size: 10px;
+            --work-font-size: 8px;
+            --state-mark-size: 16px;
+            --state-mark-font-size: 11px;
+            --inv-font-size: 8.5px;
+            --summary-font-size: 9px;
+            --summary-min-height: 16px;
             margin: 0;
             background: #fff;
             color: #1f2937;
             font-family: Arial, sans-serif;
-            font-size: 10px;
-            line-height: 1.15;
+            font-size: var(--report-font-size);
+            line-height: var(--report-line-height);
+          }
+          body.text-compact {
+            --report-font-size: 7.6px;
+            --report-line-height: 1.02;
+            --cell-padding-y: 0.6px;
+            --cell-padding-x: 1.5px;
+            --side-head-height: 40px;
+            --tag-head-height: 66px;
+            --tag-head-max-height: 62px;
+            --side-font-size: 7px;
+            --tag-head-font-size: 6.4px;
+            --tag-cell-font-size: 8px;
+            --work-font-size: 6.4px;
+            --state-mark-size: 11px;
+            --state-mark-font-size: 8px;
+            --inv-font-size: 6.8px;
+            --summary-font-size: 7px;
+            --summary-min-height: 12px;
+          }
+          body.text-large {
+            --report-font-size: 12.5px;
+            --report-line-height: 1.28;
+            --cell-padding-y: 4px;
+            --cell-padding-x: 5px;
+            --side-head-height: 76px;
+            --tag-head-height: 124px;
+            --tag-head-max-height: 118px;
+            --side-font-size: 11px;
+            --tag-head-font-size: 10px;
+            --tag-cell-font-size: 12px;
+            --work-font-size: 10px;
+            --state-mark-size: 20px;
+            --state-mark-font-size: 13px;
+            --inv-font-size: 10px;
+            --summary-font-size: 10px;
+            --summary-min-height: 19px;
           }
           .page { width: 100%; margin: 0 auto; }
           header {
@@ -767,11 +845,11 @@ function buildHtml(markers, options = {}) {
             align-items: center;
             justify-content: center;
             gap: 3px;
-            min-height: 16px;
+            min-height: var(--summary-min-height);
             border-radius: 999px;
             padding: 2px 6px;
             border: 1px solid transparent;
-            font-size: 9px;
+            font-size: var(--summary-font-size);
             font-weight: 700;
             line-height: 1;
             white-space: nowrap;
@@ -856,7 +934,7 @@ function buildHtml(markers, options = {}) {
           th,
           td {
             border: 1px solid #d1d5db;
-            padding: 2px 3px;
+            padding: var(--cell-padding-y) var(--cell-padding-x);
             text-align: left;
             vertical-align: middle;
             word-break: break-word;
@@ -877,7 +955,7 @@ function buildHtml(markers, options = {}) {
           .inv-col { width: 38px; }
           .inv-cell {
             width: 38px;
-            font-size: 8.5px;
+            font-size: var(--inv-font-size);
             line-height: 1;
             white-space: nowrap;
             word-break: normal;
@@ -885,7 +963,7 @@ function buildHtml(markers, options = {}) {
           }
           .side-col {
             width: 18px;
-            height: 58px;
+            height: var(--side-head-height);
             padding: 1px 0;
             writing-mode: vertical-rl;
             transform: rotate(180deg);
@@ -893,7 +971,7 @@ function buildHtml(markers, options = {}) {
           .side-cell {
             padding: 1px 2px;
             text-align: center;
-            font-size: 9px;
+            font-size: var(--side-font-size);
             line-height: 1.05;
             word-break: break-word;
           }
@@ -904,7 +982,7 @@ function buildHtml(markers, options = {}) {
           .measure-col { width: 42px; }
           .state-col { width: 18px; }
           th.state-col {
-            height: 58px;
+            height: var(--side-head-height);
             padding: 1px 0;
             writing-mode: vertical-rl;
             transform: rotate(180deg);
@@ -927,9 +1005,9 @@ function buildHtml(markers, options = {}) {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 16px;
-            height: 16px;
-            font-size: 11px;
+            width: var(--state-mark-size);
+            height: var(--state-mark-size);
+            font-size: var(--state-mark-font-size);
             font-weight: 700;
             line-height: 1;
           }
@@ -955,25 +1033,25 @@ function buildHtml(markers, options = {}) {
           }
           .tag-head {
             width: 18px;
-            height: 94px;
+            height: var(--tag-head-height);
             padding: 1px 0;
             vertical-align: bottom;
           }
           .tag-head span {
             display: inline-block;
-            max-height: 88px;
+            max-height: var(--tag-head-max-height);
             writing-mode: vertical-rl;
             transform: rotate(180deg);
             overflow: hidden;
             text-overflow: ellipsis;
-            font-size: 8px;
+            font-size: var(--tag-head-font-size);
             line-height: 1;
           }
           .tag-cell {
             width: 18px;
             padding: 1px 0;
             text-align: center;
-            font-size: 10px;
+            font-size: var(--tag-cell-font-size);
             font-weight: 700;
             line-height: 1;
           }
@@ -986,7 +1064,7 @@ function buildHtml(markers, options = {}) {
             color: #b91c1c;
           }
           .work-text {
-            font-size: 8px;
+            font-size: var(--work-font-size);
             line-height: 1.15;
           }
           .report-map-section {
@@ -1051,12 +1129,12 @@ function buildHtml(markers, options = {}) {
           }
         </style>
       </head>
-      <body>
+      <body class="${escapeHtml(textSizeClass)}">
         <main class="page">
           <header>
             <div>
               <h1>${escapeHtml(title)}</h1>
-              <p class="subtitle">Маркерів у звіті: ${markers.length}</p>
+              <p class="subtitle">Маркерів у звіті: ${preparedMarkers.length}</p>
             </div>
             <div>
               <div class="logos">
@@ -1066,8 +1144,8 @@ function buildHtml(markers, options = {}) {
               <div class="meta">Сформовано: ${escapeHtml(new Date().toLocaleDateString('uk-UA'))}</div>
             </div>
           </header>
-          ${parkSections(markers, options)}
-          ${reportMapSection(markers, options)}
+          ${parkSections(preparedMarkers, options)}
+          ${settings.includeMap ? reportMapSection(preparedMarkers, options) : ''}
         </main>
         <script>
           Promise.all(Array.from(document.images).map((image) => {

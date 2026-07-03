@@ -59,6 +59,41 @@
       Буде сформовано друкований звіт по поточній вибірці маркерів.
     </div>
 
+    <div class="rounded border border-gray-200 bg-white px-3 py-2 space-y-3">
+      <div>
+        <div class="text-sm text-gray-600 text-center mb-1">Розмір тексту</div>
+        <div class="flex justify-center">
+          <Switch
+            v-model="reportOptions.textSize"
+            :options="[
+              { value: 'compact', label: 'Малий', color: 'blue' },
+              { value: 'normal', label: 'Стандарт', color: 'green' },
+              { value: 'large', label: 'Більший', color: 'blue' },
+            ]"
+          />
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-700">
+        <label class="inline-flex items-center gap-2">
+          <input type="checkbox" v-model="reportOptions.includeMap" class="rounded border-gray-300">
+          <span>Додати мапу</span>
+        </label>
+        <label class="inline-flex items-center gap-2">
+          <input type="checkbox" v-model="reportOptions.includeInfrastructure" class="rounded border-gray-300">
+          <span>Додати інфраструктуру</span>
+        </label>
+        <label class="inline-flex items-center gap-2">
+          <input type="checkbox" v-model="reportOptions.colorGroups" class="rounded border-gray-300">
+          <span>Фарбувати виділи і ділянки</span>
+        </label>
+        <label class="inline-flex items-center gap-2">
+          <input type="checkbox" v-model="reportOptions.colorTreeSizes" class="rounded border-gray-300">
+          <span>Кольорова шкала розмірів</span>
+        </label>
+      </div>
+    </div>
+
     <div
       v-if="pendingReport"
       class="flex items-center justify-between gap-3 rounded border border-green-200 bg-green-50 px-3 py-2 text-sm text-green-800"
@@ -103,6 +138,13 @@ const reportingScope = ref('filtered')
 const isPreparing = ref(false)
 const errorMessage = ref('')
 const pendingReport = ref(null)
+const reportOptions = ref({
+  textSize: 'normal',
+  includeMap: false,
+  includeInfrastructure: false,
+  colorGroups: true,
+  colorTreeSizes: true,
+})
 
 const pickedObjectMarkers = computed(() => parkStore.pickedMarkers.filter(isObjectMarker))
 const filteredMarkerCount = computed(() => {
@@ -182,6 +224,7 @@ async function onCreateReport() {
       title: 'Звіт по насадженнях',
       fallbackPark: parkStore.selectedPark,
       parks,
+      ...reportOptions.value,
     })
 
     if (report?.opened) {
