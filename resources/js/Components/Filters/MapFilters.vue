@@ -31,7 +31,7 @@ const filterPresets = {
 
 const showModal = ref({
   groupAssign: false,
-  export: false
+  reporting: false
 })
 
 const areFiltersDefault = computed(
@@ -197,8 +197,8 @@ onMounted(() => {
         <PrimaryButton @click="filterMarkers" class="flex flex-1">
           Застосувати фільтри
         </PrimaryButton>
-        <SecondaryButton size="sm" @click="showModal.export = true" v-if="authStore.can.view">
-          ⏬
+        <SecondaryButton size="sm" @click="showModal.reporting = true" v-if="authStore.can.reporting">
+          📊
         </SecondaryButton>
         <SecondaryButton size="sm" @click="showModal.groupAssign = true" v-if="authStore.can.assignWork">
           👷
@@ -211,9 +211,9 @@ onMounted(() => {
         assignMode="filtered"
       />
     </Modal>
-    <Modal :show="showModal.export" maxWidth="xl" @close="showModal.export = false">
+    <Modal :show="showModal.reporting" maxWidth="xl" @close="showModal.reporting = false">
       <ExportImportPanel
-        @close="showModal.export = false"
+        @close="showModal.reporting = false"
         @update="filterMarkers"
       />
     </Modal>

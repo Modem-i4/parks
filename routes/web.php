@@ -94,6 +94,7 @@ Route::prefix('api')->group(function () {
     Route::middleware('can:view')->group(function () {
         // Media Lib
         Route::get('/media-library', [MediaLibraryController::class, 'index']);
+        Route::post('/markers/report-data', [MarkerController::class, 'reportData'])->name('marker.report-data');
         // Taxonomy (readonly)
         Route::get('/recommendations', [RecommendationController::class, 'index']);
         Route::get('/hedgeRows', [HedgeRowController::class, 'index']);

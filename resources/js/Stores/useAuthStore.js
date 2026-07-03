@@ -29,6 +29,7 @@ export const useAuthStore = defineStore('auth', () => {
     editDictionaries: atLeast('editor'),
     export: atLeast('viewer'),
     import: atLeast('work_manager'),
+    reporting: atLeast('viewer'),
     editNews: atLeast('news_manager'),
   }))
 

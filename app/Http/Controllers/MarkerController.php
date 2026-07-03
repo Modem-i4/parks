@@ -12,6 +12,7 @@ use App\Http\Services\ValidateMarkerService;
 use App\Http\Services\Export\ExportService;
 use App\Http\Services\Import\ImportService;
 use App\Http\Services\MarkerService;
+use App\Http\Services\Report\MarkerReportDataService;
 use Illuminate\Validation\ValidationException;
 
 class MarkerController extends Controller
@@ -54,6 +55,18 @@ class MarkerController extends Controller
         $filters = $request->input('filters');
         $counts = $this->filterService->countByParks($filters);
         return response()->json($counts);
+    }
+
+    public function reportData(Request $request, MarkerReportDataService $service)
+    {
+        $data = $request->validate([
+            'markers' => ['required', 'array', 'min:1'],
+            'markers.*' => ['integer', 'exists:markers,id'],
+        ]);
+
+        return response()->json([
+            'markers' => $service->getMarkers($data['markers']),
+        ]);
     }
 
     public function media($id)
