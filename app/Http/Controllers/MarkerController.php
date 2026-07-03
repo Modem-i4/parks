@@ -12,6 +12,7 @@ use App\Http\Services\ValidateMarkerService;
 use App\Http\Services\Export\ExportService;
 use App\Http\Services\Import\ImportService;
 use App\Http\Services\MarkerService;
+use App\Http\Services\Report\MarkerFilterSummaryService;
 use App\Http\Services\Report\MarkerReportDataService;
 use Illuminate\Validation\ValidationException;
 
@@ -57,12 +58,20 @@ class MarkerController extends Controller
         return response()->json($counts);
     }
 
-    public function reportData(Request $request, MarkerReportDataService $service)
+    public function reportData(
+        Request $request,
+        MarkerReportDataService $service,
+        MarkerFilterSummaryService $summaryService,
+    )
     {
         $data = $request->validate([
             'markers' => ['sometimes', 'array', 'min:1'],
             'markers.*' => ['integer', 'exists:markers,id'],
             'filters' => ['sometimes', 'array'],
+            'include_filter_summary' => ['sometimes', 'boolean'],
+            'selection' => ['sometimes', 'string'],
+            'filter_mode' => ['sometimes', 'string'],
+            'filter_scope' => ['sometimes', 'string'],
         ]);
         $ids = $data['markers'] ?? $this->filterService->filteredIds($data['filters'] ?? []);
 
@@ -70,9 +79,20 @@ class MarkerController extends Controller
             return response()->json(['message' => 'No markers provided'], 422);
         }
 
-        return response()->json([
+        $response = [
             'markers' => $service->getMarkers($ids),
-        ]);
+        ];
+
+        if ($request->boolean('include_filter_summary')) {
+            $response['filter_summary'] = $summaryService->summarize(
+                $data['filters'] ?? [],
+                $data['selection'] ?? 'filtered',
+                $data['filter_mode'] ?? 'green',
+                $data['filter_scope'] ?? 'local',
+            );
+        }
+
+        return response()->json($response);
     }
 
     public function media($id)

@@ -91,6 +91,10 @@
           <input type="checkbox" v-model="reportOptions.colorTreeSizes" class="rounded border-gray-300">
           <span>Кольорова шкала розмірів</span>
         </label>
+        <label class="inline-flex items-center gap-2">
+          <input type="checkbox" v-model="reportOptions.includeFilterSummary" class="rounded border-gray-300">
+          <span>Описати фільтри вибірки</span>
+        </label>
       </div>
     </div>
 
@@ -144,6 +148,7 @@ const reportOptions = ref({
   includeInfrastructure: false,
   colorGroups: true,
   colorTreeSizes: true,
+  includeFilterSummary: true,
 })
 
 const pickedObjectMarkers = computed(() => parkStore.pickedMarkers.filter(isObjectMarker))
@@ -167,19 +172,41 @@ function cloneFilters(value) {
 }
 
 function filteredPayload() {
+  const filters = reportFiltersForRequest()
+
   if (parkStore.isSingleParkView) {
-    return { markers: parkStore.markers.filter(isObjectMarker).map(marker => marker.id) }
+    return {
+      markers: parkStore.markers.filter(isObjectMarker).map(marker => marker.id),
+      filters,
+    }
   }
 
   return {
-    filters: cloneFilters(parkStore.savedMarkerFilters || { green: {}, infrastructure: {} }),
+    filters,
   }
 }
 
+function reportFiltersForRequest() {
+  const filters = cloneFilters(parkStore.savedMarkerFilters || { green: {}, infrastructure: {} })
+  if (parkStore.isSingleParkView) delete filters.park
+  return filters
+}
+
 function reportPayload() {
-  return reportingScope.value === 'picked'
-    ? { markers: pickedObjectMarkers.value.map(marker => marker.id) }
+  const payload = reportingScope.value === 'picked'
+    ? {
+        markers: pickedObjectMarkers.value.map(marker => marker.id),
+        filters: reportFiltersForRequest(),
+      }
     : filteredPayload()
+
+  return {
+    ...payload,
+    include_filter_summary: reportOptions.value.includeFilterSummary,
+    selection: reportingScope.value,
+    filter_mode: parkStore.singleParkContentMode,
+    filter_scope: parkStore.isSingleParkView ? 'local' : 'global',
+  }
 }
 
 function removePickedMarker(marker) {
@@ -224,6 +251,7 @@ async function onCreateReport() {
       title: 'Звіт по насадженнях',
       fallbackPark: parkStore.selectedPark,
       parks,
+      filterSummary: data.filter_summary || [],
       ...reportOptions.value,
     })
 

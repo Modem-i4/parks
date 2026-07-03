@@ -63,6 +63,8 @@ const reportTextSizeClasses = {
   large: 'text-large',
 }
 
+const parkPageBreakMarkerCount = 150
+
 const collator = new Intl.Collator('uk-UA', { sensitivity: 'base' })
 
 function escapeHtml(value) {
@@ -183,6 +185,7 @@ function reportSettings(options = {}) {
     textSize: ['compact', 'normal', 'large'].includes(options.textSize) ? options.textSize : 'normal',
     includeMap: options.includeMap === true,
     includeInfrastructure: options.includeInfrastructure === true,
+    includeFilterSummary: options.includeFilterSummary === true,
     colorGroups: options.colorGroups !== false,
     colorTreeSizes: options.colorTreeSizes !== false,
   }
@@ -628,9 +631,10 @@ function parkSections(markers, options = {}) {
   const tags = uniqueTags(markers)
   const ranges = measureRanges(markers)
   const groups = groupMarkersByPark(markers, options.fallbackPark)
+  const separateParks = markers.length > parkPageBreakMarkerCount
 
-  return groups.map(group => `
-    <section class="park-section">
+  return groups.map((group, index) => `
+    <section class="park-section ${separateParks && index > 0 ? 'park-section-new-page' : ''}">
       ${parkHeader(group)}
       ${markersTable(group.markers, tags, ranges, settings)}
     </section>
@@ -674,6 +678,84 @@ function reportMapSection(markers, options = {}) {
             ` : ''}
           </figure>
         `).join('')}
+      </div>
+    </section>
+  `
+}
+
+function normalizeFilterSummaryItem(item) {
+  if (typeof item === 'string') {
+    const [labelPath, ...valueParts] = item.split(':')
+    const path = labelPath.split('/').map(part => part.trim()).filter(Boolean)
+    const label = path.pop() || 'Фільтр'
+
+    return {
+      path,
+      label,
+      value: valueParts.join(':').trim(),
+    }
+  }
+
+  return {
+    path: Array.isArray(item?.path) ? item.path.filter(Boolean) : [],
+    label: item?.label || item?.name || 'Фільтр',
+    value: item?.value || '',
+  }
+}
+
+function addFilterSummaryItem(tree, item) {
+  const normalized = normalizeFilterSummaryItem(item)
+  let node = tree
+
+  for (const part of normalized.path) {
+    let child = node.children.find(item => item.label === part)
+    if (!child) {
+      child = { label: part, children: [], items: [] }
+      node.children.push(child)
+    }
+
+    node = child
+  }
+
+  node.items.push(normalized)
+}
+
+function filterSummaryTree(summary) {
+  const tree = { label: null, children: [], items: [] }
+  summary.forEach(item => addFilterSummaryItem(tree, item))
+
+  return tree
+}
+
+function renderFilterSummaryNode(node, level = 0) {
+  const children = node.children.map(child => `
+    <span class="filter-summary-group filter-summary-level-${Math.min(level, 2)}">
+      <span class="filter-summary-group-title">${escapeHtml(child.label)}</span>
+      <span class="filter-summary-children">
+        ${renderFilterSummaryNode(child, level + 1)}
+      </span>
+    </span>
+  `).join('')
+
+  const items = node.items.map(item => `
+    <span class="filter-summary-leaf">
+      <span class="filter-summary-leaf-label">${escapeHtml(item.value ? `${item.label}:` : item.label)}</span>
+      ${item.value ? `<span class="filter-summary-leaf-value">${escapeHtml(item.value)}</span>` : ''}
+    </span>
+  `).join('')
+
+  return `${children}${items}`
+}
+
+function filterSummarySection(options = {}) {
+  const summary = Array.isArray(options.filterSummary) ? options.filterSummary.filter(Boolean) : []
+  if (!summary.length) return ''
+  const tree = filterSummaryTree(summary)
+
+  return `
+    <section class="filter-summary">
+      <div class="filter-summary-tree">
+        ${renderFilterSummaryNode(tree)}
       </div>
     </section>
   `
@@ -785,10 +867,81 @@ function buildHtml(markers, options = {}) {
           .logo { max-width: 112px; max-height: 38px; object-fit: contain; }
           .logo-interreg { max-width: 164px; }
           .meta { text-align: right; color: #4b5563; font-size: 9px; }
+          .filter-summary {
+            margin: 0 0 8px;
+            padding: 0 0 6px;
+            border-bottom: 2px solid #007c57;
+            break-inside: avoid;
+            page-break-inside: avoid;
+          }
+          .filter-summary-tree,
+          .filter-summary-children {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3px;
+          }
+          .filter-summary-group {
+            display: inline-flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 3px;
+            min-height: 20px;
+            border: 1px solid #d1d5db;
+            border-radius: 12px;
+            background: #f9fafb;
+            color: #1f2937;
+            padding: 3px 4px 3px 6px;
+            font-size: 8px;
+            line-height: 1.1;
+          }
+          .filter-summary-level-1 {
+            border-color: #cbd5e1;
+            background: #f8fafc;
+          }
+          .filter-summary-level-2 {
+            border-color: #e5e7eb;
+            background: #fff;
+          }
+          .filter-summary-group-title {
+            color: #374151;
+            font-weight: 700;
+            white-space: nowrap;
+          }
+          .filter-summary-level-1 > .filter-summary-group-title {
+            color: #475569;
+          }
+          .filter-summary-level-2 > .filter-summary-group-title {
+            color: #4b5563;
+          }
+          .filter-summary-leaf {
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            min-height: 15px;
+            border: 1px solid #e5e7eb;
+            border-radius: 999px;
+            background: #fff;
+            color: #1f2937;
+            padding: 2px 6px;
+            font-size: 8px;
+            line-height: 1.1;
+          }
+          .filter-summary-leaf-label {
+            color: #374151;
+            font-weight: 700;
+            white-space: nowrap;
+          }
+          .filter-summary-leaf-value {
+            color: #111827;
+          }
           .park-section {
             margin: 0 0 12px;
             break-inside: auto;
             page-break-inside: auto;
+          }
+          .park-section-new-page {
+            break-before: page;
+            page-break-before: always;
           }
           .park-heading {
             display: grid;
@@ -1144,6 +1297,7 @@ function buildHtml(markers, options = {}) {
               <div class="meta">Сформовано: ${escapeHtml(new Date().toLocaleDateString('uk-UA'))}</div>
             </div>
           </header>
+          ${settings.includeFilterSummary ? filterSummarySection(options) : ''}
           ${parkSections(preparedMarkers, options)}
           ${settings.includeMap ? reportMapSection(preparedMarkers, options) : ''}
         </main>
