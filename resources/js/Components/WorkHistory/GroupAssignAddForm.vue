@@ -8,8 +8,10 @@
     />
     <span class="text-sm text-gray-700">
       Додати до  
-      <template v-if="authStore.can.assignWork">👷 групового призначення робіт</template>
-      <template v-if="authStore.can.assignWork && authStore.can.export"> чи </template>
+      <template v-if="authStore.can.assignWork">👷 призначення робіт</template>
+      <template v-if="authStore.can.assignWork && authStore.can.reporting">, </template>
+      <template v-if="authStore.can.reporting"><br/>📝 звіту</template>
+      <template v-if="(authStore.can.assignWork || authStore.can.reporting) && authStore.can.export"> або </template>
       <template v-if="authStore.can.export">⏬ експорту</template>
     </span>
   </label>
