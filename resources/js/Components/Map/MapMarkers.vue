@@ -308,15 +308,15 @@ async function renderSortedMarkers(sortedMarkers, bounds, currentZoom, cancelTok
 function setupViewportFilter() {
   if (!parkStore.map) return
 
-  const update = () => {
-    resetCancelToken()
-    updateMarkersInViewport(currentCancelToken)
-  }
-
   google.maps.event.clearListeners(parkStore.map, 'idle')
   google.maps.event.clearListeners(parkStore.map, 'bounds_changed')
-  parkStore.map.addListener('idle', update)
-  parkStore.map.addListener('bounds_changed', debounce(update, 150))
+  parkStore.map.addListener('idle', refreshMarkersInViewport)
+  parkStore.map.addListener('bounds_changed', debounce(refreshMarkersInViewport, 150))
+}
+
+function refreshMarkersInViewport() {
+  resetCancelToken()
+  updateMarkersInViewport(currentCancelToken)
 }
 
 watch(
@@ -330,11 +330,17 @@ watch(
 
 watch(
   () => [parkStore.map, parkStore.markers],
-  () => {
-    resetCancelToken()
-    updateMarkersInViewport(currentCancelToken)
-  },
+  () => refreshMarkersInViewport(),
   { immediate: true }
+)
+
+watch(
+  () => isTweening.value,
+  (isMapTweening) => {
+    if (!isMapTweening && parkStore.isSingleParkView) {
+      refreshMarkersInViewport()
+    }
+  }
 )
 
 watch(
