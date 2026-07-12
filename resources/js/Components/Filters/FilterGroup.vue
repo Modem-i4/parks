@@ -54,6 +54,7 @@ const toggle = () => {
 // Animation
 function enter(el) {
   el.style.height = '0'
+  el.style.overflow = 'hidden'
   el.style.transition = 'height 300ms ease'
   const height = el.scrollHeight
   requestAnimationFrame(() => {
@@ -63,11 +64,13 @@ function enter(el) {
 
 function afterEnter(el) {
   el.style.height = 'auto'
+  el.style.overflow = ''
   el.style.transition = ''
 }
 
 function leave(el) {
   el.style.height = el.scrollHeight + 'px'
+  el.style.overflow = 'hidden'
   el.style.transition = 'height 300ms ease'
   requestAnimationFrame(() => {
     el.style.height = '0'
@@ -76,6 +79,7 @@ function leave(el) {
 
 function afterLeave(el) {
   el.style.height = ''
+  el.style.overflow = ''
   el.style.transition = ''
 }
 
@@ -111,7 +115,7 @@ function afterLeave(el) {
     >
         <div
             v-show="isOpen && (isChecked || !showCheckbox)"
-            class="pl-4 border-l-2 border-gray-300 ml-2 mt-1 space-y-2 overflow-hidden"
+            class="pl-4 border-l-2 border-gray-300 ml-2 mt-1 space-y-2"
             ref="content"
         >
           <FilterNode
