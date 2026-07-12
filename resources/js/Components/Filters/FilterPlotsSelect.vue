@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import axios from 'axios'
 import { GetOrCreateFilterTargetNode } from '@/Helpers/Maps/GetFilterTargetNode'
 import { useParkStore } from '@/Stores/useParkStore'
@@ -21,6 +21,8 @@ const plotOptionsById = ref({})
 const subplotsByPlotId = ref({})
 const subplotsById = ref({})
 const optionsLoaded = ref(false)
+
+const parkId = computed(() => props.node.park_id ?? parkStore.selectedPark?.id)
 
 function ensureTarget() {
   if (target.value) return
@@ -45,33 +47,38 @@ function hydrateEntries() {
   }))
 }
 
-async function loadPlots() {
-  if (!parkStore.selectedPark) return
-  return axios.get(`/api/plots?parkId=${parkStore.selectedPark.id}`)
-    .then(res => {
-      const plots = res.data ?? []
+function setPlotOptions(plots = []) {
+  const byId = {}
+  const subByPlot = {}
+  const subById = {}
 
-      const byId = {}
-      const subByPlot = {}
-      const subById = {}
+  plotOptions.value = plots.map(p => {
+    byId[p.id] = p.name
 
-      plotOptions.value = plots.map(p => {
-        byId[p.id] = p.name
-
-        const subs = (p.subplots ?? []).map(s => {
-          subById[s.id] = s.name
-          return { id: s.id, name: s.name }
-        })
-
-        subByPlot[p.id] = subs
-
-        return { id: p.id, name: p.name }
-      })
-
-      plotOptionsById.value = byId
-      subplotsByPlotId.value = subByPlot
-      subplotsById.value = subById
+    const subs = (p.subplots ?? []).map(s => {
+      subById[s.id] = s.name
+      return { id: s.id, name: s.name }
     })
+
+    subByPlot[p.id] = subs
+
+    return { id: p.id, name: p.name }
+  })
+
+  plotOptionsById.value = byId
+  subplotsByPlotId.value = subByPlot
+  subplotsById.value = subById
+}
+
+async function loadPlots() {
+  if (props.node.options) {
+    setPlotOptions(props.node.options)
+    return
+  }
+
+  if (!parkId.value) return
+  return axios.get(`/api/plots?parkId=${parkId.value}`)
+    .then(res => setPlotOptions(res.data ?? []))
     .catch(err => {
       console.error('Error loading plots:', err)
     })
@@ -81,7 +88,7 @@ async function addPlotsOption() {
   ensureTarget()
   entries.value.push({ plotId: null, subplots: [] })
 
-  if (!optionsLoaded.value && parkStore.selectedPark) {
+  if (!optionsLoaded.value && parkId.value) {
     await loadPlots()
     optionsLoaded.value = true
   }
@@ -104,8 +111,8 @@ watch(entries, () => {
   else delete target.value.plots
 }, { deep: true })
 
-watch(() => parkStore.selectedPark, async (p) => {
-  if (!p) return
+watch(parkId, async (id) => {
+  if (!id) return
   await loadPlots()
   optionsLoaded.value = true
 }, { immediate: true })
@@ -124,7 +131,7 @@ watch(() => parkStore.selectedPark, async (p) => {
         :plotOptionsById="plotOptionsById"
         :subplotsByPlotId="subplotsByPlotId"
         :subplotsById="subplotsById"
-        :parkId="parkStore.selectedPark?.id"
+        :parkId="parkId"
         @remove="removePlotsOption(index)"
       />
     </div>

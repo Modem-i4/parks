@@ -35,9 +35,7 @@ class MarkerFilterService
 
         $query = Marker::query();
 
-        if (!empty($filters['park']['parks'])) {
-            $query->whereIn('park_id', $filters['park']['parks']);
-        }
+        $this->applyParkFilters($query, $filters);
 
         $this->applyMarkerFilters($query, $filters);
 
@@ -56,9 +54,7 @@ class MarkerFilterService
 
         $query = Marker::query();
 
-        if (!empty($filters['park']['parks'])) {
-            $query->whereIn('park_id', $filters['park']['parks']);
-        }
+        $this->applyParkFilters($query, $filters);
 
         $this->applyMarkerFilters($query, $filters);
 
@@ -83,6 +79,51 @@ class MarkerFilterService
             }
             if (isset($filters['infrastructure']) && empty($filters['infrastructure'])) {
                 $q->orWhere('type', 'infrastructure');
+            }
+        });
+    }
+
+    private function applyParkFilters($query, array $filters): void
+    {
+        $parkFilters = $filters['park'] ?? [];
+        if (empty($parkFilters) || !is_array($parkFilters)) {
+            return;
+        }
+
+        $directParkIds = array_is_list($parkFilters) ? $parkFilters : [];
+        $legacyParkIds = array_values(array_filter(array_map(
+            'intval',
+            array_merge($directParkIds, $parkFilters['parks'] ?? [])
+        )));
+        $parkEntries = array_filter(
+            $parkFilters,
+            fn ($value, $key) => is_numeric($key) && is_array($value),
+            ARRAY_FILTER_USE_BOTH
+        );
+        $legacyParkIds = array_values(array_diff($legacyParkIds, array_map('intval', array_keys($parkEntries))));
+
+        if (empty($parkEntries)) {
+            if (!empty($legacyParkIds)) {
+                $query->whereIn('park_id', $legacyParkIds);
+            }
+            return;
+        }
+
+        $query->where(function ($parkQuery) use ($parkEntries, $legacyParkIds) {
+            if (!empty($legacyParkIds)) {
+                $parkQuery->orWhereIn('park_id', $legacyParkIds);
+            }
+
+            foreach ($parkEntries as $parkId => $data) {
+                $parkQuery->orWhere(function ($singleParkQuery) use ($parkId, $data) {
+                    $singleParkQuery->where('park_id', (int) $parkId);
+
+                    if (!empty($data['plots']) && is_array($data['plots'])) {
+                        $singleParkQuery->whereHas('green', function ($greenQuery) use ($data) {
+                            $this->greenFilter->applyPlots($greenQuery, $data['plots']);
+                        });
+                    }
+                });
             }
         });
     }

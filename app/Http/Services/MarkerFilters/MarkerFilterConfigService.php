@@ -14,18 +14,18 @@ use Illuminate\Support\Facades\Auth;
 
 class MarkerFilterConfigService {
     public function get($mode = 'green', string $scope = 'local'): array
-    {        
-        $config = $this->getDefaultFilters();
-        $config = $this->filterConfigByMode($config, $mode);
-        $config = $this->filterConfigByScope($config, $scope);
+    {
         $userRole = Auth::check()
             ? Auth::user()->role
             : UserRole::GUEST;
+        $config = $this->getDefaultFilters($userRole);
+        $config = $this->filterConfigByMode($config, $mode);
+        $config = $this->filterConfigByScope($config, $scope);
         $config = $this->filterConfigByRole($config, $userRole);
         return $config;
     }
 
-    protected function getDefaultFilters(): array
+    protected function getDefaultFilters(UserRole $userRole): array
     {
         // Get dynamic options
         $recommendations = Recommendation::select('id', 'name')->get()->toArray();
@@ -39,37 +39,19 @@ class MarkerFilterConfigService {
                     'icon' => $type->icon?->file_path,
                 ];
             })->toArray();
-        $parks = Park::with('icon')->select('id', 'name')->orderBy('name')
-            ->get()->map(function ($park) {
-                return [
-                    'id' => $park->id,
-                    'name' => $park->name,
-                    'icon' => $park->icon?->file_path,
-                ];
-            })->toArray();
+        $parks = $this->getParkOptions($userRole);
 
         $tags = Tag::select('id', 'name', 'type')
             ->orderBy('name')->get()->groupBy('type')
             ->map(fn ($items) => $items->values()->toArray());
         return [ 
-            'park' => [
+            'park' => $this->buildParkFilter([
                 'name' => 'Парки',
                 'slug' => 'park',
-                'type' => 'group',
                 'scope' => 'global',
                 'open' => true,
                 'checkbox' => false,
-                'children' => [
-                    [
-                        'name' => '',
-                        'slug' => 'parks',
-                        'type' => 'infrastructureSelect',
-                        'size' => 'big',
-                        'checked' => true,
-                        'options' => $parks,
-                    ],
-                ],
-            ],
+            ], $parks, $userRole),
             'infrastructure' => [
                 'name' => 'Інфраструктура',
                 'slug' => 'infrastructure',
@@ -141,6 +123,7 @@ class MarkerFilterConfigService {
                                 'slug' => 'plot',
                                 'type' => 'plots',
                                 'role' => 'viewer',
+                                'scope' => 'local',
                             ],
                             [
                                 'name' => 'Вік – від і до',
@@ -287,6 +270,81 @@ class MarkerFilterConfigService {
                 ],
             ],
         ];
+    }
+
+    protected function buildParkFilter(array $base, array $parks, UserRole $userRole): array
+    {
+        return ($this->canUseDetailedParkFilters($userRole)) ?
+            [
+                ...$base,
+                'type' => 'group',
+                'children' => $this->buildParkFilterNodes($parks),
+            ] : 
+            [
+                ...$base,
+                'type' => 'infrastructureSelect',
+                'size' => 'big',
+                'options' => $parks,
+            ];
+    }
+
+    protected function canUseDetailedParkFilters(UserRole $userRole): bool
+    {
+        return $userRole->level() >= UserRole::VIEWER->level();
+    }
+
+    protected function getParkOptions(UserRole $userRole): array
+    {
+        $withPlots = $this->canUseDetailedParkFilters($userRole);
+
+        return Park::with($this->getParkRelations($userRole))
+            ->select('id', 'name')
+            ->orderBy('name')
+            ->get()
+            ->map(fn ($park) => [
+                'id' => $park->id,
+                'name' => $park->name,
+                'icon' => $park->icon?->file_path,
+                'plots' => $withPlots
+                    ? $park->plots->map(fn ($plot) => [
+                        'id' => $plot->id,
+                        'name' => $plot->name,
+                        'subplots' => $plot->subplots->map(fn ($subplot) => [
+                            'id' => $subplot->id,
+                            'name' => $subplot->name,
+                        ])->values()->toArray(),
+                    ])->values()->toArray()
+                    : [],
+            ])->toArray();
+    }
+
+    protected function getParkRelations(UserRole $userRole): array
+    {
+        return $this->canUseDetailedParkFilters($userRole) ? [
+            'icon',
+            'plots' => fn ($query) => $query->select('id', 'park_id', 'name')->orderBy('name'),
+            'plots.subplots' => fn ($query) => $query->select('id', 'plot_id', 'name')->orderBy('name'),
+        ] : ['icon'];
+    }
+
+    protected function buildParkFilterNodes(array $parks): array
+    {
+        return array_map(fn ($park) => [
+            'name' => $park['name'],
+            'slug' => (string) $park['id'],
+            'type' => 'group',
+            'icon' => $park['icon'],
+            'children' => [
+                [
+                    'name' => 'Виділи',
+                    'slug' => 'plots',
+                    'type' => 'plots',
+                    'role' => 'viewer',
+                    'park_id' => $park['id'],
+                    'options' => $park['plots'],
+                ],
+            ],
+        ], $parks);
     }
 
     protected function filterConfigByRole(array $config, $userRole): array

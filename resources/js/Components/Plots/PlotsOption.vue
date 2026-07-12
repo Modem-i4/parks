@@ -76,7 +76,7 @@ function removeSubplot(index) {
         >
           <SelectWithSearchAndAdd
             class="flex-1"
-            mode="plots"
+            mode="subplots"
             :modelValue="subplotId"
             :startingItem="subplotId ? { id: subplotId, name: subplotsById[subplotId] } : null"
             :preloadedOptions="subplotsByPlotId[plotId] ?? []"

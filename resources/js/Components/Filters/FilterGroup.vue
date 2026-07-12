@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed, watch } from 'vue'
 import FilterNode from './FilterNode.vue'
-import { GetFilterTargetNode } from '@/Helpers/Maps/GetFilterTargetNode'
+import { GetFilterTargetNode, GetOrCreateFilterTargetNode } from '@/Helpers/Maps/GetFilterTargetNode'
 import ArrowIcon from '@/Components/Custom/Icons/ArrowIcon.vue'
 
 const props = defineProps({
@@ -38,10 +38,12 @@ watch(isChecked, (val) => {
   if(!val) {
     isOpen.value = false
   }
-  const target = GetFilterTargetNode(props.filters, props.path)
+  const target = val
+    ? GetOrCreateFilterTargetNode(props.filters, props.path)
+    : GetFilterTargetNode(props.filters, props.path)
   if(!target) return
   if (val) {
-    target[props.node.slug] = {}
+    target[props.node.slug] ??= {}
   } else {
     delete target[props.node.slug]
   }
@@ -95,6 +97,12 @@ function afterLeave(el) {
         <img v-if="isGreen" 
           :src="`/img/icons/split-markers/${node.slug}-map_icon.svg`" alt="" 
           class="w-7 h-7"
+        />
+        <img
+          v-else-if="node.icon"
+          :src="node.icon"
+          alt=""
+          class="w-8 h-8 object-contain"
         />
         <span class="font-semibold">{{ node.name }}</span>
       </div>

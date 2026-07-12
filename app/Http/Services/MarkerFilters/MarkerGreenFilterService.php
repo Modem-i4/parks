@@ -61,18 +61,7 @@ class MarkerGreenFilterService {
             }
 
             if (!empty($filters['general']['plots'])) {
-                $q->where(function ($pq) use ($filters) {
-                    foreach ($filters['general']['plots'] as $plotId => $data) {
-                        $pq->orWhere(function ($sq) use ($plotId, $data) {
-                            $subplots = $data['subplots'];
-                            $sq->when(
-                                $subplots,
-                                fn ($w) => $w->whereIn('subplot_id', $subplots),
-                                fn ($w) => $w->whereHas('subplot', fn ($ssq) => $ssq->where('plot_id', $plotId))
-                            );
-                        });
-                    }
-                });
+                $this->applyPlots($q, $filters['general']['plots']);
             }
 
             if (!empty($filters['general']['age_range'])) {
@@ -85,6 +74,25 @@ class MarkerGreenFilterService {
             if (!empty($filters['general']['recommendations'])) {
                 $q->whereHas('works.recommendations', function ($s) use ($filters) {
                     $s->whereIn('name', $filters['general']['recommendations']);
+                });
+            }
+        });
+    }
+
+    public function applyPlots($query, array $plots): void
+    {
+        $query->where(function ($pq) use ($plots) {
+            foreach ($plots as $plotId => $data) {
+                $pq->orWhere(function ($sq) use ($plotId, $data) {
+                    $subplots = is_array($data)
+                        ? array_values(array_filter($data['subplots'] ?? []))
+                        : [];
+
+                    $sq->when(
+                        $subplots,
+                        fn ($w) => $w->whereIn('subplot_id', $subplots),
+                        fn ($w) => $w->whereHas('subplot', fn ($ssq) => $ssq->where('plot_id', $plotId))
+                    );
                 });
             }
         });

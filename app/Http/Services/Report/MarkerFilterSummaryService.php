@@ -94,7 +94,7 @@ class MarkerFilterSummaryService
             }
 
             return $this->isMeaningfulEmptyGroup($node, $parents)
-                ? [$this->formatLine($parents, 'Тип', $name)]
+                ? [$this->formatLine($parents, $this->emptyGroupLabel($parents), $name)]
                 : [];
         }
 
@@ -129,6 +129,11 @@ class MarkerFilterSummaryService
 
         return in_array($slug, self::TYPE_GROUPS, true)
             || (!empty($parents) && ($node['checkbox'] ?? true) !== false);
+    }
+
+    private function emptyGroupLabel(array $parents): string
+    {
+        return ($parents[0] ?? null) === 'Парки' ? 'Парк' : 'Тип';
     }
 
     private function formatLeafValue(array $node, mixed $value): ?string
