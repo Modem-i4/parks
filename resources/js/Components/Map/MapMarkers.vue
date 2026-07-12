@@ -12,6 +12,7 @@ import { isMobile } from '@/Helpers/isMobileHelper'
 const parkStore = useParkStore()
 const mapMarkers = ref([])
 const mapLines = new Set()
+const hedgeLinesByMarkerKey = new Map()
 let currentCancelToken = { cancelled: false }
 const showZoomNotice = ref(false)
 
@@ -120,7 +121,6 @@ function createMarkerLine(marker) {
     zIndex: 1000,
   })
 
-  mapLines.add(line)
   return line
 }
 
@@ -153,23 +153,53 @@ async function updateMarkersInViewport(cancelToken = currentCancelToken) {
 }
 
 async function clearAllMapMarkers() {
-  for (const { mapMarker, mapLine } of mapMarkers.value) {
-    mapMarker.setMap(null)
-    clearMapLine(mapLine)
+  for (const renderedMarker of mapMarkers.value) {
+    clearRenderedMarker(renderedMarker)
   }
   mapMarkers.value = []
   clearAllMapLines()
+}
+function attachMapLine(mapMarker, mapLine, marker) {
+  if (!mapLine) return
+
+  mapLines.add(mapLine)
+
+  if (marker.type === 'hedge') {
+    const markerKey = keyOf(marker)
+    clearMapLine(hedgeLinesByMarkerKey.get(markerKey))
+    hedgeLinesByMarkerKey.set(markerKey, mapLine)
+    mapMarker.hedgeLine = mapLine
+    mapLine.hedgeMarkerKey = markerKey
+  }
+
+  mapLine.setMap(parkStore.map)
 }
 function clearMapLine(mapLine) {
   if (!mapLine) return
   mapLine.setMap(null)
   mapLines.delete(mapLine)
+  if (mapLine.hedgeMarkerKey) {
+    hedgeLinesByMarkerKey.delete(mapLine.hedgeMarkerKey)
+    delete mapLine.hedgeMarkerKey
+  }
 }
 function clearAllMapLines() {
   for (const mapLine of mapLines) {
     mapLine.setMap(null)
   }
   mapLines.clear()
+  hedgeLinesByMarkerKey.clear()
+}
+function clearRenderedMarker({ mapMarker, mapLine, marker }) {
+  mapMarker.setMap(null)
+
+  if (marker.type === 'hedge') {
+    clearMapLine(mapMarker.hedgeLine)
+    clearMapLine(hedgeLinesByMarkerKey.get(keyOf(marker)))
+    delete mapMarker.hedgeLine
+  }
+
+  clearMapLine(mapLine)
 }
 function updateZoomNotice(currentZoom) {
   if (parkStore.isSingleParkView) {
@@ -181,27 +211,30 @@ function updateZoomNotice(currentZoom) {
   }
 }
 function filterVisibleMarkers(currentZoom) {
-  const keySet = new Set(parkStore.markers.map(keyOf))
+  const markerByKey = new Map(parkStore.markers.map(marker => [keyOf(marker), marker]))
   const selectedId = parkStore.selectedMarker?.id
-  mapMarkers.value = mapMarkers.value.filter(({ mapMarker, mapLine, marker }) => {
+  mapMarkers.value = mapMarkers.value.filter((renderedMarker) => {
+    const { marker } = renderedMarker
+    const currentMarker = markerByKey.get(keyOf(marker))
     const keep =
-      keySet.has(keyOf(marker)) &&
+      currentMarker &&
+      (marker.type !== 'hedge' || currentMarker === marker) &&
       (!isMarkerHidden(marker, currentZoom) || marker.id === selectedId)
 
     if (!keep) {
-      mapMarker.setMap(null)
-      clearMapLine(mapLine)
+      clearRenderedMarker(renderedMarker)
     }
     return keep
   })
 }
 function removeMissingMarkers() {
-  const keySet = new Set(parkStore.markers.map(keyOf))
-  mapMarkers.value = mapMarkers.value.filter(({ mapMarker, mapLine, marker }) => {
-    const keep = keySet.has(keyOf(marker))
+  const markerByKey = new Map(parkStore.markers.map(marker => [keyOf(marker), marker]))
+  mapMarkers.value = mapMarkers.value.filter((renderedMarker) => {
+    const { marker } = renderedMarker
+    const currentMarker = markerByKey.get(keyOf(marker))
+    const keep = currentMarker && (marker.type !== 'hedge' || currentMarker === marker)
     if (!keep) {
-      mapMarker.setMap(null)
-      clearMapLine(mapLine)
+      clearRenderedMarker(renderedMarker)
     }
     return keep
   })
@@ -257,9 +290,10 @@ async function renderSortedMarkers(sortedMarkers, bounds, currentZoom, cancelTok
       mapMarker.addListener('click', selectMarker)
       mapLine?.addListener('click', selectMarker)
 
+      const renderedMarker = { mapMarker, mapLine, marker }
+      mapMarkers.value.push(renderedMarker)
       mapMarker.setMap(parkStore.map)
-      mapLine?.setMap(parkStore.map)
-      mapMarkers.value.push({ mapMarker, mapLine, marker })
+      attachMapLine(mapMarker, mapLine, marker)
 
       if(selected) updateMarkerBackgrounds(marker.id)
     }
@@ -370,16 +404,15 @@ watch(
       parkStore.selectedMarker = marker
     })
     if (currentCancelToken.cancelled) return
-    newMapMarker.setMap(parkStore.map)
-    newMapLine?.setMap(parkStore.map)
     const index = mapMarkers.value.findIndex(m => m.marker.id === marker.id)
     if (index !== -1) {
-      mapMarkers.value[index].mapMarker.setMap(null)
-      clearMapLine(mapMarkers.value[index].mapLine)
+      clearRenderedMarker(mapMarkers.value[index])
       mapMarkers.value.splice(index, 1, { marker, mapMarker: newMapMarker, mapLine: newMapLine })
     } else {
       mapMarkers.value.push({ marker, mapMarker: newMapMarker, mapLine: newMapLine })
     }
+    newMapMarker.setMap(parkStore.map)
+    attachMapLine(newMapMarker, newMapLine, marker)
     parkStore.selectedMarker.edited = false
     parkStore.selectedMarker = null
     await new Promise(resolve => setTimeout(resolve, 0))
@@ -397,8 +430,7 @@ watch(
 
     const mapMarkersIndex = mapMarkers.value.findIndex(m => m.marker.id === marker.id)
     if (mapMarkersIndex !== -1) {
-      mapMarkers.value[mapMarkersIndex].mapMarker.setMap(null)
-      clearMapLine(mapMarkers.value[mapMarkersIndex].mapLine)
+      clearRenderedMarker(mapMarkers.value[mapMarkersIndex])
       mapMarkers.value.splice(mapMarkersIndex, 1)
     }
 
