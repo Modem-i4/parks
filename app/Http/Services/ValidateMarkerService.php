@@ -15,9 +15,12 @@ class ValidateMarkerService
         $validator = Validator::make($data, [
             'park_id' => ['sometimes', 'required', 'exists:parks,id'],
             'type' => ['sometimes', Rule::in(TagType::values())],
-            'coordinates' => ['sometimes', 'required', 'array'],
-            'coordinates.0' => ['sometimes', 'required', 'numeric'],
-            'coordinates.1' => ['sometimes', 'required', 'numeric'],
+            'coordinates' => ['sometimes', 'required', 'array', 
+            function ($attribute, $value, $fail) {
+                if (!$this->validCoordinates($value)) {
+                    $fail('Поле '.$attribute.' повинно містити координати у форматі [lng, lat] або вкладений масив таких координат.');
+                }
+            }],
             'description' => ['sometimes', 'nullable', 'string'],
             'tags' => ['sometimes', 'array'],
             'tags.*.id' => ['required', 'integer', 'exists:tags,id'],
@@ -56,6 +59,14 @@ class ValidateMarkerService
         }
 
         return $validator->validated();
+    }
+
+    private function validCoordinates(mixed $coordinates): bool
+    {
+        return is_array($coordinates) && $coordinates !== [] && (
+            (count($coordinates) === 2 && is_numeric($coordinates[0] ?? null) && is_numeric($coordinates[1] ?? null))
+            || collect($coordinates)->every(fn ($item) => $this->validCoordinates($item))
+        );
     }
 
 }
