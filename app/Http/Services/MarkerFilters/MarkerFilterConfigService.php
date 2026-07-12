@@ -349,7 +349,6 @@ class MarkerFilterConfigService {
             ];
         } else {
             $config['green']['checked'] = true;
-            $config['infrastructure']['checked'] = true;
             return [
                 'park' => $config['park'],
                 'green' => $config['green'],

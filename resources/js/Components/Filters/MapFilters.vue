@@ -23,7 +23,7 @@ const authStore = useAuthStore()
 const scope = computed(() => parkStore.isSingleParkView ? 'local' : 'global')
 
 const filterPresets = {
-  green: { green: {}, infrastructure: {} },
+  green: { green: {} },
   infrastructure: { infrastructure: {} },
   works: { green: { works: { completion: ["uncompleted"] } } },
   nothing: {}
