@@ -101,6 +101,7 @@ async function createMarker(marker, lat, lng, cancelToken) {
     position: { lat, lng },
     title: marker.name,
     content,
+    gmpClickable: true,
     zIndex: Math.round(-lat * 1e6)
   })
 }
@@ -287,7 +288,7 @@ async function renderSortedMarkers(sortedMarkers, bounds, currentZoom, cancelTok
         parkStore.setSelectedMarker(marker) // with validation
       }
 
-      mapMarker.addListener('click', selectMarker)
+      mapMarker.addEventListener('gmp-click', selectMarker)
       mapLine?.addListener('click', selectMarker)
 
       const renderedMarker = { mapMarker, mapLine, marker }
@@ -403,7 +404,7 @@ watch(
     const newMapMarker = await createMarker(marker, coords.lat, coords.lng, currentCancelToken)
     if (currentCancelToken.cancelled || !newMapMarker) return
     const newMapLine = createMarkerLine(marker)
-    newMapMarker.addListener('click', () => {
+    newMapMarker.addEventListener('gmp-click', () => {
       parkStore.selectedMarker = marker
     })
     newMapLine?.addListener('click', () => {
