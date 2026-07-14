@@ -37,8 +37,11 @@
         "@tiptap/extension-underline": "^3.1.0",
         "@tiptap/starter-kit": "^3.2.0",
         "@tiptap/vue-3": "^3.2.0",
+        "@turf/helpers": "^7.3.5",
+        "@turf/intersect": "^7.3.5",
         "@tweenjs/tween.js": "^25.0.0",
         "pinia": "^3.0.3",
+        "polylabel": "^2.1.0",
         "swiper": "^11.2.8",
         "vuedraggable": "^4.1.0"
     }

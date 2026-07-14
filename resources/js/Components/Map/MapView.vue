@@ -3,7 +3,9 @@ import { ref, onMounted, watch } from 'vue'
 import loader from '@/Helpers/Maps/GoogleMapsLoader'
 import MapMarkers from './MapMarkers.vue'
 import MapPolygons from './MapPolygons.vue'
+import MapPolygonLabels from './MapPolygonLabels.vue'
 import { useParkStore } from '@/Stores/useParkStore.js'
+import { useAuthStore } from '@/Stores/useAuthStore'
 import {
   defaultMapOptions,
   getMapRestrictions,
@@ -17,6 +19,7 @@ import {
 import { isMobile } from '@/Helpers/isMobileHelper'
 
 const parkStore = useParkStore()
+const authStore = useAuthStore()
 const mapElement = ref(null)
 
 onMounted(async () => {
@@ -116,6 +119,9 @@ watch(
 <template>
   <div ref="mapElement" class="w-full h-full">
     <MapPolygons />
+    <MapPolygonLabels
+      :active="authStore.can.view && parkStore.isSingleParkView && !isParkViewInTransit"
+    />
     <MapMarkers />
   </div>
 </template>
