@@ -1,6 +1,7 @@
 <template>
   <div class="relative w-full max-w-xl mx-auto min-h-[250px] bg-gray-200 rounded-xl h-64"
     v-if="props.showByDefault || loading || images.length"
+    v-bind="$attrs"
   >
     <template v-if="images.length">
       <Swiper
@@ -129,6 +130,8 @@ import { Pagination, Navigation } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
+
+defineOptions({ inheritAttrs: false })
 
 const props = defineProps({
   model: {
