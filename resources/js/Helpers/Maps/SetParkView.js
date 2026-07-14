@@ -32,7 +32,10 @@ import { watch } from 'vue'
 import { getMarkerTitle } from './GetMarkerTitle'
 export async function setViewToParkMarker(parkStore, marker) {
   parkStore.selectedMarker = null
-  parkStore.selectedPark = marker.park
+  const markerParkId = marker.park_id ?? marker.park?.id
+  if (String(parkStore.selectedPark?.id) !== String(markerParkId)) {
+    parkStore.selectedPark = marker.park
+  }
   if(parkStore.isSingleParkView) {
     parkStore.isSingleParkView = false
     await new Promise(resolve => setTimeout(resolve, 1000)) // time for optional particular zoom-out
