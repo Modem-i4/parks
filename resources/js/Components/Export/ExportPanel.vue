@@ -128,6 +128,10 @@ function filteredPayload() {
     return { markers: parkStore.markers.filter(isObjectMarker).map(marker => marker.id) }
   }
 
+  if (parkStore.activeMarkerPreset === 'picked') {
+    return { markers: parkStore.pickedMarkerFilterIds }
+  }
+
   return {
     filters: cloneFilters(parkStore.savedMarkerFilters || { green: {}, infrastructure: {} }),
   }

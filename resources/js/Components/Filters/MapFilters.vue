@@ -19,7 +19,6 @@ const parkStore = useParkStore()
 const filtersConfig = ref([])
 const filters = ref({})
 const renderKey = ref(0)
-const activePreset = ref(null)
 const authStore = useAuthStore()
 const scope = computed(() => parkStore.isSingleParkView ? 'local' : 'global')
 
@@ -51,7 +50,10 @@ const getFilters = async () => {
 }
 
 function setPreset(preset = 'all', saveSnapshot = true) {
-  activePreset.value = preset
+  parkStore.activeMarkerPreset = preset
+  if (preset === 'picked') {
+    parkStore.pickedMarkerFilterIds = parkStore.pickedMarkers.map(marker => marker.id)
+  }
   setPresetFilters(preset)
   if (saveSnapshot) saveFilters()
   renderKey.value++
@@ -74,8 +76,8 @@ function hasFilters() {
 }
 
 function filtersForRequest() {
-  if (activePreset.value === 'picked') {
-    return { marker_ids: parkStore.pickedMarkers.map(marker => marker.id) }
+  if (parkStore.activeMarkerPreset === 'picked') {
+    return { marker_ids: parkStore.pickedMarkerFilterIds }
   }
 
   const requestFilters = cloneFilters(filters.value)
@@ -84,7 +86,7 @@ function filtersForRequest() {
 }
 
 function applyFilters() {
-  activePreset.value = null
+  parkStore.activeMarkerPreset = null
   filterMarkers()
 }
 
@@ -158,8 +160,22 @@ watch(() => parkStore.singleParkContentMode,
 )
 
 watch(filters,
-  () => { if (!('green' in filters.value)) filterMarkers(true, false) },
+  () => {
+    if (parkStore.activeMarkerPreset !== 'picked' && !('green' in filters.value)) {
+      filterMarkers(true, false)
+    }
+  },
   { deep:true }
+)
+
+watch(
+  [
+    () => parkStore.activeMarkerPreset,
+    () => parkStore.markerFilterRevision
+  ],
+  () => {
+    if (parkStore.activeMarkerPreset === 'picked') setPreset('picked')
+  }
 )
 
 onMounted(() => {
@@ -210,6 +226,9 @@ onMounted(() => {
         <PrimaryButton @click="applyFilters" class="flex flex-1">
           Застосувати фільтри
         </PrimaryButton>
+        <SecondaryButton size="sm" @click="parkStore.showFindMarker = true" v-if="authStore.can.view">
+          🔍
+        </SecondaryButton>
         <SecondaryButton size="sm" @click="showModal.reporting = true" v-if="authStore.can.reporting">
           📊
         </SecondaryButton>

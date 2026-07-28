@@ -26,39 +26,21 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
 import { useParkStore } from '@/Stores/useParkStore'
-import axios from 'axios'
 import PrimaryButton from '@/Components/Default/PrimaryButton.vue'
-import { setViewToParkMarker } from '@/Helpers/Maps/SetParkView'
+import { isMobile } from '@/Helpers/isMobileHelper'
+import { useFindMarker } from '@/Helpers/Maps/FindMarkerHelper'
 
-const search = ref('')
-const errorMessage = ref(null)
 const emit = defineEmits(['close'])
 
 const parkStore = useParkStore()
+const { search, errorMessage, findMarker, showMarker } = useFindMarker(parkStore)
 
 async function find() {
-  if(search.value === '') {
-    errorMessage.value = 'Введіть інвентарний номер'
-    return
-  }
-  axios.get(`/api/markers/inv/${search.value}`)
-    .then((res) => {
-        errorMessage.value = null
-        const foundMarker = res.data
-        if(!foundMarker) {
-          errorMessage.value = 'Маркер не знайдено'
-          return
-        }
-        if(foundMarker.park_id === parkStore.selectedPark?.id) {
-          parkStore.selectedMarker = foundMarker
-        }
-        else {
-          setViewToParkMarker(parkStore, foundMarker)
-        }
-        emit('close')
-    })
-    .catch(() => errorMessage.value = 'Помилка завантаження')
+  const marker = await findMarker()
+  if (!marker) return
+
+  showMarker(marker)
+  emit('close')
 }
 </script>

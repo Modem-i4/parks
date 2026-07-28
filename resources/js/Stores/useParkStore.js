@@ -8,8 +8,12 @@ export const useParkStore = defineStore('park', () => {
   const markers = ref([])
   const markerCountsByPark = ref(null)
   const savedMarkerFilters = ref(null)
+  const activeMarkerPreset = ref(null)
+  const markerFilterRevision = ref(0)
+  const pickedMarkerFilterIds = ref([])
   const pickedMarkers = ref([])
   const showPanel = ref(false)
+  const showFindMarker = ref(false)
   const selectedMarkerLocked = ref(false)
   const singleParkContentMode = ref('green')
   const defaultCenter = { 
@@ -34,7 +38,11 @@ export const useParkStore = defineStore('park', () => {
     markers.value = []
     markerCountsByPark.value = null
     savedMarkerFilters.value = null
+    activeMarkerPreset.value = null
+    markerFilterRevision.value = 0
+    pickedMarkerFilterIds.value = []
     showPanel.value = false
+    showFindMarker.value = false
     map.value = null
     mapElement.value = null
   }
@@ -100,8 +108,12 @@ export const useParkStore = defineStore('park', () => {
     markers,
     markerCountsByPark,
     savedMarkerFilters,
+    activeMarkerPreset,
+    markerFilterRevision,
+    pickedMarkerFilterIds,
     pickedMarkers,
     showPanel,
+    showFindMarker,
     map,
     mapElement,
     defaultCenter,

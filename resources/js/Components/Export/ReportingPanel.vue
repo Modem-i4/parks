@@ -181,12 +181,23 @@ function filteredPayload() {
     }
   }
 
+  if (parkStore.activeMarkerPreset === 'picked') {
+    return {
+      markers: parkStore.pickedMarkerFilterIds,
+      filters,
+    }
+  }
+
   return {
     filters,
   }
 }
 
 function reportFiltersForRequest() {
+  if (parkStore.activeMarkerPreset === 'picked') {
+    return { marker_ids: parkStore.pickedMarkerFilterIds }
+  }
+
   const filters = cloneFilters(parkStore.savedMarkerFilters || { green: {}, infrastructure: {} })
   if (parkStore.isSingleParkView) delete filters.park
   return filters

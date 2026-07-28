@@ -10,6 +10,7 @@ import { useUserLocationMarker } from '@/Helpers/Maps/ShowGeolocationHelper'
 import MapUpperMessage from '@/Components/Map/MapUpperMessage.vue';
 import { useAddMarkerHelper } from '@/Helpers/Admin/AddMarkerHelper'
 import FindMarker from '@/Components/Custom/FindMarker.vue'
+import FindMarkerExtended from '@/Components/Custom/FindMarkerExtended.vue'
 import { useAuthStore } from '@/Stores/useAuthStore'
 import MapLegendInfo from './MapLegendInfo.vue'
 import ParentFitModal from '../Custom/ParentFitModal.vue'
@@ -19,7 +20,7 @@ import MapLegendPane from './MapLegendPane.vue'
 const parkStore = useParkStore()
 const { showUserPosition } = useUserLocationMarker(toRef(parkStore, 'map'), toRef(parkStore, 'mapCustomMessage'))
 const { addMarker, addMarkerFinished } = useAddMarkerHelper(parkStore)
-const showModal = ref({ findMarker: false, legend: false })
+const showModal = ref({ legend: false })
 
 const authStore = useAuthStore()
 const addingMarker = ref(false)
@@ -136,7 +137,7 @@ watch(() => parkStore.selectedMarker, (newVal) => {
         </template>
         <BtnWhite class="bg-white border px-3 py-1 rounded shadow" 
           v-if="!parkStore.selectedMarkerLocked"
-          @click="showModal.findMarker = true"
+          @click="parkStore.showFindMarker = true"
         >
           🔍 {{ isMobile ? 'Пошук насадження' : 'Пошук насадження за номером'}}
         </BtnWhite>
@@ -156,11 +157,12 @@ watch(() => parkStore.selectedMarker, (newVal) => {
           <SecondaryButton @click="showModal.legend = false">Закрити</SecondaryButton>
         </template>
       </ParentFitModal>
-      <ParentFitModal :show="showModal.findMarker" 
-        contentClasses="bg-white/70 py-1.5"
-        @close="showModal.findMarker = false"
+      <ParentFitModal :show="parkStore.showFindMarker"
+        contentClasses="bg-white/90 py-1.5"
+        @close="parkStore.showFindMarker = false"
       >
-        <FindMarker @close="showModal.findMarker = false"/>
+        <FindMarkerExtended @close="parkStore.showFindMarker = false" v-if="authStore.can.view"/>
+        <FindMarker @close="parkStore.showFindMarker = false" v-else/>
       </ParentFitModal>
 
       <!-- Map panel -->
