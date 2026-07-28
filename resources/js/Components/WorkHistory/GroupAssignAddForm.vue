@@ -7,12 +7,7 @@
       class="accent-blue-600 w-5 h-5"
     />
     <span class="text-sm text-gray-700">
-      Додати до  
-      <template v-if="authStore.can.assignWork">👷 призначення робіт</template>
-      <template v-if="authStore.can.assignWork && authStore.can.reporting">, </template>
-      <template v-if="authStore.can.reporting"><br/>📝 звіту</template>
-      <template v-if="(authStore.can.assignWork || authStore.can.reporting) && authStore.can.export"> або </template>
-      <template v-if="authStore.can.export">⏬ експорту</template>
+      Додати до 🎯 обраних маркерів
     </span>
   </label>
 </template>
