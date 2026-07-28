@@ -13,7 +13,9 @@ class MarkerFilterService
 
     public function filter($parkId, $filters)
     {
-        if (!isset($filters['green']) && !isset($filters['infrastructure'])) {
+        if (!$this->hasMarkerIdsFilter($filters)
+            && !isset($filters['green'])
+            && !isset($filters['infrastructure'])) {
             return collect();
         }
 
@@ -22,6 +24,10 @@ class MarkerFilterService
             ->select('id', 'coordinates', 'description', 'type')
             ->where('park_id', $parkId);
 
+        if ($this->applyMarkerIdsFilter($query, $filters)) {
+            return $query->get();
+        }
+
         $this->applyMarkerFilters($query, $filters);
 
         return $query->get();
@@ -29,15 +35,18 @@ class MarkerFilterService
 
     public function countByParks($filters)
     {
-        if (!isset($filters['green']) && !isset($filters['infrastructure'])) {
+        if (!$this->hasMarkerIdsFilter($filters)
+            && !isset($filters['green'])
+            && !isset($filters['infrastructure'])) {
             return collect();
         }
 
         $query = Marker::query();
 
-        $this->applyParkFilters($query, $filters);
-
-        $this->applyMarkerFilters($query, $filters);
+        if (!$this->applyMarkerIdsFilter($query, $filters)) {
+            $this->applyParkFilters($query, $filters);
+            $this->applyMarkerFilters($query, $filters);
+        }
 
         return $query
             ->select('park_id')
@@ -48,17 +57,39 @@ class MarkerFilterService
 
     public function filteredIds($filters): array
     {
-        if (!isset($filters['green']) && !isset($filters['infrastructure'])) {
+        if (!$this->hasMarkerIdsFilter($filters)
+            && !isset($filters['green'])
+            && !isset($filters['infrastructure'])) {
             return [];
         }
 
         $query = Marker::query();
 
-        $this->applyParkFilters($query, $filters);
-
-        $this->applyMarkerFilters($query, $filters);
+        if (!$this->applyMarkerIdsFilter($query, $filters)) {
+            $this->applyParkFilters($query, $filters);
+            $this->applyMarkerFilters($query, $filters);
+        }
 
         return $query->pluck('id')->all();
+    }
+
+    private function hasMarkerIdsFilter($filters): bool
+    {
+        return is_array($filters) && array_key_exists('marker_ids', $filters);
+    }
+
+    private function applyMarkerIdsFilter($query, $filters): bool
+    {
+        if (!$this->hasMarkerIdsFilter($filters)) {
+            return false;
+        }
+
+        $query->whereIn('id', array_filter(
+            array_map('intval', (array) $filters['marker_ids']),
+            fn (int $id) => $id > 0
+        ));
+
+        return true;
     }
 
     private function applyMarkerFilters($query, $filters): void

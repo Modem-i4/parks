@@ -19,6 +19,7 @@ const parkStore = useParkStore()
 const filtersConfig = ref([])
 const filters = ref({})
 const renderKey = ref(0)
+const activePreset = ref(null)
 const authStore = useAuthStore()
 const scope = computed(() => parkStore.isSingleParkView ? 'local' : 'global')
 
@@ -26,7 +27,8 @@ const filterPresets = {
   green: { green: {} },
   infrastructure: { infrastructure: {} },
   works: { green: { works: { completion: ["uncompleted"] } } },
-  nothing: {}
+  nothing: {},
+  picked: {}
 }
 
 const showModal = ref({
@@ -49,6 +51,7 @@ const getFilters = async () => {
 }
 
 function setPreset(preset = 'all', saveSnapshot = true) {
+  activePreset.value = preset
   setPresetFilters(preset)
   if (saveSnapshot) saveFilters()
   renderKey.value++
@@ -71,9 +74,18 @@ function hasFilters() {
 }
 
 function filtersForRequest() {
+  if (activePreset.value === 'picked') {
+    return { marker_ids: parkStore.pickedMarkers.map(marker => marker.id) }
+  }
+
   const requestFilters = cloneFilters(filters.value)
   if (parkStore.isSingleParkView) delete requestFilters.park
   return requestFilters
+}
+
+function applyFilters() {
+  activePreset.value = null
+  filterMarkers()
 }
 
 function saveFilters() {
@@ -177,7 +189,8 @@ onMounted(() => {
       </div>
       <div class="flex items-center gap-2">
         <PrimaryButton @click="setPreset('all')">Все</PrimaryButton>
-        <SecondaryButton @click="setPreset('nothing')">Нічого</SecondaryButton>
+        <SecondaryButton @click="setPreset('picked')" v-if="authStore.can.view">Обрані</SecondaryButton>
+        <SecondaryButton @click="setPreset('nothing')" v-else>Нічого</SecondaryButton>
       </div>
     </div>
 
@@ -194,7 +207,7 @@ onMounted(() => {
     <div class="sticky bottom-0 p-4 pt-1 bg-white md:bg-[#f3f4f6]">
       <div class="italic text-center" v-if="parkStore.isSingleParkView">записів: {{ parkStore.markers.length }}</div>
       <div class="flex space-x-1">
-        <PrimaryButton @click="filterMarkers" class="flex flex-1">
+        <PrimaryButton @click="applyFilters" class="flex flex-1">
           Застосувати фільтри
         </PrimaryButton>
         <SecondaryButton size="sm" @click="showModal.reporting = true" v-if="authStore.can.reporting">
