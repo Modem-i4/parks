@@ -46,6 +46,13 @@
         class="bg-gray-100 border p-0 rounded-full px-5 my-1"
       >
         <template #right>
+          <button
+            class="ml-2 text-lg font-bold leading-none hover:text-blue-600"
+            title="Знайти на мапі"
+            @click="openPickedMarker(marker)"
+          >
+            🔍
+          </button>
           <GreenStateIndicator :green="marker.green" />
           <button
             class="ml-2 text-gray-400 hover:text-red-600 text-lg font-bold leading-none"
@@ -60,10 +67,18 @@
 
     <div class="flex justify-center">
       <PrimaryButton
-        :disabled="parkStore.pickedMarkers.length === 0"
+        v-if="parkStore.pickedMarkers.length"
+        :disabled="loading"
         @click="applyPickedMarkers"
       >
         Застосувати
+      </PrimaryButton>
+      <PrimaryButton
+        v-else
+        :disabled="loading"
+        @click="goToMarker"
+      >
+        Перейти
       </PrimaryButton>
     </div>
   </div>
@@ -86,8 +101,7 @@ async function goToMarker() {
   const marker = await findMarker()
   if (!marker) return
 
-  showMarker(marker)
-  emit('close')
+  openPickedMarker(marker)
 }
 
 async function addMarker() {
@@ -104,6 +118,11 @@ async function addMarker() {
 function applyPickedMarkers() {
   parkStore.activeMarkerPreset = 'picked'
   parkStore.markerFilterRevision++
+  emit('close')
+}
+
+function openPickedMarker(marker) {
+  showMarker(marker)
   emit('close')
 }
 
