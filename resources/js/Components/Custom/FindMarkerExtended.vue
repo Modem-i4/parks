@@ -101,7 +101,7 @@ async function goToMarker() {
   const marker = await findMarker()
   if (!marker) return
 
-  openPickedMarker(marker)
+  await openPickedMarker(marker)
 }
 
 async function addMarker() {
@@ -121,8 +121,8 @@ function applyPickedMarkers() {
   emit('close')
 }
 
-function openPickedMarker(marker) {
-  showMarker(marker)
+async function openPickedMarker(marker) {
+  await showMarker(marker)
   emit('close')
 }
 

@@ -32,9 +32,21 @@ import { watch } from 'vue'
 import { getMarkerTitle } from './GetMarkerTitle'
 export async function setViewToParkMarker(parkStore, marker) {
   parkStore.selectedMarker = null
-  const markerParkId = marker.park_id ?? marker.park?.id
-  if (String(parkStore.selectedPark?.id) !== String(markerParkId)) {
-    parkStore.selectedPark = marker.park
+  let targetMarker = marker
+  let markerParkId = targetMarker.park_id ?? targetMarker.park?.id
+
+  if (!markerParkId) {
+    const response = await axios.get(`/api/markers/${targetMarker.id}`)
+    targetMarker = response.data
+    markerParkId = targetMarker.park_id ?? targetMarker.park?.id
+  }
+
+  const needsFullPark = String(parkStore.selectedPark?.id) !== String(markerParkId)
+    || !Array.isArray(parkStore.selectedPark?.plots)
+
+  if (needsFullPark) {
+    const response = await axios.get(`/api/parks/${markerParkId}`)
+    parkStore.selectedPark = response.data
   }
   if(parkStore.isSingleParkView) {
     parkStore.isSingleParkView = false
@@ -44,7 +56,7 @@ export async function setViewToParkMarker(parkStore, marker) {
   while (isTweening.value || parkStore.markerStates.isLoading) {
     await new Promise(resolve => setTimeout(resolve, 100))
   }
-  parkStore.selectedMarker = marker
+  parkStore.selectedMarker = targetMarker
 }
 
 export function initParkRouteWatcher(parkStore) {

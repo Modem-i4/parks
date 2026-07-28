@@ -40,7 +40,7 @@ async function find() {
   const marker = await findMarker()
   if (!marker) return
 
-  showMarker(marker)
+  await showMarker(marker)
   emit('close')
 }
 </script>

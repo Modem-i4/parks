@@ -36,11 +36,11 @@ export function useFindMarker(parkStore) {
     }
   }
 
-  function showMarker(marker) {
-    if (marker.park_id === parkStore.selectedPark?.id) {
+  async function showMarker(marker) {
+    if (String(marker.park_id) === String(parkStore.selectedPark?.id)) {
       parkStore.selectedMarker = marker
     } else {
-      setViewToParkMarker(parkStore, marker)
+      await setViewToParkMarker(parkStore, marker)
     }
   }
 
