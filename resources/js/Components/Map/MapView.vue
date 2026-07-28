@@ -81,7 +81,7 @@ watch(
 
 // centres control
 watch(
-  () => [parkStore.map, parkStore.markers, parkStore.selectedMarker, parkStore.showPanel],
+  () => [parkStore.map, parkStore.markers, parkStore.selectedMarker, parkStore.showPanel, isParkViewInTransit.value],
   async () => {
     if (!parkStore.map || isParkViewInTransit.value) return
     const devicePageZoom = getDevicePageZoom(parkStore.isSingleParkView)
@@ -93,7 +93,7 @@ watch(
     if (parkStore.showPanel && !parkStore.selectedMarker) {
       zoomLevel = devicePageZoom.panelOpen
     }
-    if (parkStore.showPanel && parkStore.selectedMarker) {
+    if (parkStore.selectedMarker) {
       if (parkStore.isSingleParkView) {
         zoomLevel = parkStore.map.getZoom()
         duration = 200

@@ -129,9 +129,15 @@ const filterMarkers = async (moveToClosest = true, saveSnapshot = true) => {
   } finally {
     parkStore.markerStates.isLoading = false
     parkStore.markerStates.areLoaded = true
-    parkStore.showPanel = false
+    if (!parkStore.selectedMarker) parkStore.showPanel = false
 
-    if (moveToClosest && parkStore.markers.length > 0 && parkStore.markers.length < 200 && !areFiltersDefault.value) {
+    if (
+      moveToClosest
+      && !parkStore.selectedMarker
+      && parkStore.markers.length > 0
+      && parkStore.markers.length < 200
+      && !areFiltersDefault.value
+    ) {
       const c = parkStore.map.getCenter()
       const cLat = c.lat()
       const cLng = c.lng()
