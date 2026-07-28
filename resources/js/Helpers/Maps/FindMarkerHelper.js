@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import axios from 'axios'
 import { setViewToParkMarker } from '@/Helpers/Maps/SetParkView'
 
@@ -38,10 +38,40 @@ export function useFindMarker(parkStore) {
 
   async function showMarker(marker) {
     if (String(marker.park_id) === String(parkStore.selectedPark?.id)) {
+      if (!hasMarker(marker.id)) {
+        parkStore.activeMarkerPreset = 'all'
+        parkStore.markerFilterRevision++
+        await waitForMarkerToLoad(marker.id)
+      }
+
       parkStore.selectedMarker = marker
     } else {
       await setViewToParkMarker(parkStore, marker)
     }
+  }
+
+  function hasMarker(markerId) {
+    return parkStore.markers.some(
+      marker => String(marker.id) === String(markerId)
+    )
+  }
+
+  function waitForMarkerToLoad(markerId) {
+    return new Promise(resolve => {
+      const stop = watch(
+        [
+          () => hasMarker(markerId),
+          () => parkStore.markerStates.isLoading
+        ],
+        ([isLoaded, isLoading]) => {
+          if (!isLoaded && isLoading) return
+
+          stop()
+          resolve()
+        },
+        { flush: 'post' }
+      )
+    })
   }
 
   return {

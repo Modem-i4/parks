@@ -169,12 +169,9 @@ watch(filters,
 )
 
 watch(
-  [
-    () => parkStore.activeMarkerPreset,
-    () => parkStore.markerFilterRevision
-  ],
+  () => parkStore.markerFilterRevision,
   () => {
-    if (parkStore.activeMarkerPreset === 'picked') setPreset('picked')
+    if (parkStore.activeMarkerPreset) setPreset(parkStore.activeMarkerPreset)
   }
 )
 
