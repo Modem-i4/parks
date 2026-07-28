@@ -19,8 +19,7 @@ export function useFindMarker(parkStore) {
     errorMessage.value = ''
 
     try {
-      const response = await axios.get(`/api/markers/inv/${encodeURIComponent(inventoryNumber)}`)
-      const marker = response.data
+      const marker = await fetchMarker(inventoryNumber)
 
       if (!marker) {
         errorMessage.value = 'Маркер не знайдено'
@@ -34,6 +33,64 @@ export function useFindMarker(parkStore) {
     } finally {
       loading.value = false
     }
+  }
+
+  async function findMarkers(inventoryNumbers) {
+    const uniqueNumbers = [...new Set(inventoryNumbers)]
+
+    if (!uniqueNumbers.length) {
+      errorMessage.value = 'Введіть інвентарний номер'
+      return []
+    }
+
+    loading.value = true
+    errorMessage.value = ''
+
+    try {
+      const results = await Promise.allSettled(
+        uniqueNumbers.map(async inventoryNumber => ({
+          inventoryNumber,
+          marker: await fetchMarker(inventoryNumber)
+        }))
+      )
+      const markers = []
+      const missingNumbers = []
+      let hasLoadingError = false
+
+      results.forEach((result, index) => {
+        if (result.status === 'rejected') {
+          if (result.reason?.response?.status === 404) {
+            missingNumbers.push(uniqueNumbers[index])
+          } else {
+            hasLoadingError = true
+          }
+          return
+        }
+
+        if (result.value.marker) {
+          markers.push(result.value.marker)
+        } else {
+          missingNumbers.push(result.value.inventoryNumber)
+        }
+      })
+
+      if (hasLoadingError) {
+        errorMessage.value = 'Помилка завантаження деяких маркерів'
+      } else if (missingNumbers.length) {
+        errorMessage.value = `Не знайдено: ${missingNumbers.join(', ')}`
+      }
+
+      return markers
+    } finally {
+      loading.value = false
+    }
+  }
+
+  async function fetchMarker(inventoryNumber) {
+    const response = await axios.get(
+      `/api/markers/inv/${encodeURIComponent(inventoryNumber)}`
+    )
+    return response.data
   }
 
   async function showMarker(marker) {
@@ -79,6 +136,7 @@ export function useFindMarker(parkStore) {
     errorMessage,
     loading,
     findMarker,
+    findMarkers,
     showMarker
   }
 }

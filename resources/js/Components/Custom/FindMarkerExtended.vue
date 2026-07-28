@@ -95,7 +95,7 @@ import GreenStateIndicator from '@/Components/Markers/View/GreenStateIndicator.v
 
 const emit = defineEmits(['close'])
 const parkStore = useParkStore()
-const { search, errorMessage, loading, findMarker, showMarker } = useFindMarker(parkStore)
+const { search, errorMessage, loading, findMarker, findMarkers, showMarker } = useFindMarker(parkStore)
 
 async function goToMarker() {
   const marker = await findMarker()
@@ -105,13 +105,18 @@ async function goToMarker() {
 }
 
 async function addMarker() {
-  const marker = await findMarker()
-  if (!marker) return
+  const inventoryNumbers = search.value
+    .split(/[,;\s]+/)
+    .map(number => number.trim())
+    .filter(Boolean)
+  const markers = await findMarkers(inventoryNumbers)
 
-  if (!parkStore.pickedMarkers.some(picked => picked.id === marker.id)) {
-    parkStore.pickedMarkers.push(marker)
-  }
+  const pickedIds = new Set(
+    parkStore.pickedMarkers.map(marker => String(marker.id))
+  )
+  const newMarkers = markers.filter(marker => !pickedIds.has(String(marker.id)))
 
+  parkStore.pickedMarkers.push(...newMarkers)
   search.value = ''
 }
 
