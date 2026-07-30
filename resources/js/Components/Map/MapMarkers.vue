@@ -16,6 +16,7 @@ const hedgeLinesByMarkerKey = new Map()
 let currentCancelToken = { cancelled: false }
 const showZoomNotice = ref(false)
 const inventoryNumbersMinZoom = 19.5
+const inventoryNumbersMarkersLimit = 1250
 
 function resetCancelToken() {
   currentCancelToken.cancelled = true
@@ -110,7 +111,7 @@ function createGreenMarkerContent(marker, icon) {
 function shouldShowInventoryNumbers(currentZoom = parkStore.map?.getZoom()) {
   return parkStore.showInventoryNumbers
     && parkStore.isSingleParkView
-    && currentZoom >= inventoryNumbersMinZoom
+    && (parkStore.markers.length < inventoryNumbersMarkersLimit || currentZoom >= inventoryNumbersMinZoom)
 }
 
 function updateInventoryNumberVisibility(currentZoom = parkStore.map?.getZoom()) {
