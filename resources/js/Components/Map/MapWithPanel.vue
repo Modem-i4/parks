@@ -23,6 +23,8 @@ const { addMarker, addMarkerFinished } = useAddMarkerHelper(parkStore)
 const showModal = ref({ legend: false })
 
 const authStore = useAuthStore()
+parkStore.showInventoryNumbers = authStore.can.view
+
 const addingMarker = ref(false)
 watch(addingMarker, (newVal) => {
   parkStore.selectedMarkerLocked = newVal
@@ -114,6 +116,19 @@ watch(() => parkStore.selectedMarker, (newVal) => {
         </BtnWhite>
       </div>
       
+      <div class="absolute top-1 left-4">
+        <label
+          class="block bg-white/80 backdrop-blur border px-3 py-1 my-2 rounded-full shadow-lg hover:bg-white transition cursor-pointer select-none"
+          v-if="parkStore.isSingleParkView && authStore.can.view"
+        >
+          <input
+            v-model="parkStore.showInventoryNumbers"
+            type="checkbox"
+            class="mr-1 rounded border-gray-400 text-green-600 focus:ring-green-500"
+          />
+          Інв. номери
+        </label>
+      </div>
       <div class="absolute bottom-[4.2rem] md:bottom-4 left-4">
         <BtnWhite class="bg-white border px-3 py-1 rounded shadow" 
           v-if="parkStore.isSingleParkView"

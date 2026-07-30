@@ -15,6 +15,7 @@ const mapLines = new Set()
 const hedgeLinesByMarkerKey = new Map()
 let currentCancelToken = { cancelled: false }
 const showZoomNotice = ref(false)
+const inventoryNumbersMinZoom = 19.5
 
 function resetCancelToken() {
   currentCancelToken.cancelled = true
@@ -82,11 +83,51 @@ async function createParkMarkerContent(marker, isSelected = false) {
   })
 }
 
+function createGreenMarkerContent(marker, icon) {
+  const content = document.createElement('div')
+  content.className = 'relative'
+  content.dataset.greenMarker = ''
+
+  icon.dataset.greenMarkerIcon = ''
+  content.appendChild(icon)
+
+  if (marker.green?.inventory_number) {
+    const label = document.createElement('span')
+    label.className = [
+      'absolute top-full left-1/2 mt-0.5',
+      'whitespace-nowrap pointer-events-none',
+      'text-xs font-semibold leading-none text-gray-900',
+      'bg-white/60 rounded-sm px-0.5 shadow-sm'
+    ].join(' ')
+    label.dataset.inventoryNumber = ''
+    label.textContent = marker.green.inventory_number.replace(/^[^-]*-/, '')
+    content.appendChild(label)
+  }
+
+  return content
+}
+
+function shouldShowInventoryNumbers(currentZoom = parkStore.map?.getZoom()) {
+  return parkStore.showInventoryNumbers
+    && parkStore.isSingleParkView
+    && currentZoom >= inventoryNumbersMinZoom
+}
+
+function updateInventoryNumberVisibility(currentZoom = parkStore.map?.getZoom()) {
+  const isVisible = shouldShowInventoryNumbers(currentZoom)
+
+  for (const { mapMarker, marker } of mapMarkers.value) {
+    if (!marker.green) continue
+    const label = mapMarker.content?.querySelector?.('[data-inventory-number]')
+    if (label) label.classList.toggle('hidden', !isVisible)
+  }
+}
+
 async function createMarker(marker, lat, lng, cancelToken) {
   if (!isFiniteCoords({ lat, lng })) return null
 
   const { AdvancedMarkerElement } = await loader.importLibrary('marker')
-  const content = marker.type === 'park'
+  let content = marker.type === 'park'
     ? await createParkMarkerContent(marker, marker.id === parkStore.selectedMarker?.id)
     : marker.green
       ? await CreateSimpleIcon({
@@ -94,6 +135,12 @@ async function createMarker(marker, lat, lng, cancelToken) {
           fill: getColorByGreenState(marker.green?.green_state)
         })
       : await CreatePinIcon({ glyph: marker.icon?.file_path })
+
+  if (marker.green) {
+    content = createGreenMarkerContent(marker, content)
+    const label = content.querySelector('[data-inventory-number]')
+    if (label) label.classList.toggle('hidden', !shouldShowInventoryNumbers())
+  }
   
   if (cancelToken.cancelled) return
   return new AdvancedMarkerElement({
@@ -141,6 +188,7 @@ async function updateMarkersInViewport(cancelToken = currentCancelToken) {
   const currentZoom = parkStore.map.getZoom()
 
   updateZoomNotice(currentZoom)
+  updateInventoryNumberVisibility(currentZoom)
 
   if (parkStore.isSingleParkView) {
     filterVisibleMarkers(currentZoom)
@@ -295,6 +343,7 @@ async function renderSortedMarkers(sortedMarkers, bounds, currentZoom, cancelTok
       mapMarkers.value.push(renderedMarker)
       mapMarker.setMap(parkStore.map)
       attachMapLine(mapMarker, mapLine, marker)
+      updateInventoryNumberVisibility(currentZoom)
 
       if(selected) updateMarkerBackgrounds(marker.id)
     }
@@ -363,9 +412,10 @@ async function updateMarkerBackgrounds(newId, oldId) {
     const isSelected = marker.id === newId
     if (marker.green) {
       const highlightClasses = ['scale-[2.3]', 'transition-transform']
+      const icon = mapMarker.content.querySelector('[data-green-marker-icon]')
       isSelected
-        ? mapMarker.content.classList.add(...highlightClasses)
-        : mapMarker.content.classList.remove(...highlightClasses)
+        ? icon?.classList.add(...highlightClasses)
+        : icon?.classList.remove(...highlightClasses)
     } else if(marker.type === 'park') {
       mapMarker.content = await createParkMarkerContent(marker, isSelected)
     } else {
@@ -392,6 +442,11 @@ watch(
 watch(
   () => parkStore.markerCountsByPark,
   () => updateParkMarkerCounts()
+)
+
+watch(
+  () => parkStore.showInventoryNumbers,
+  () => updateInventoryNumberVisibility()
 )
 
 watch(

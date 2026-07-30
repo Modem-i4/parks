@@ -14,6 +14,7 @@ export const useParkStore = defineStore('park', () => {
   const pickedMarkers = ref([])
   const showPanel = ref(false)
   const showFindMarker = ref(false)
+  const showInventoryNumbers = ref(false)
   const selectedMarkerLocked = ref(false)
   const singleParkContentMode = ref('green')
   const defaultCenter = { 
@@ -43,6 +44,7 @@ export const useParkStore = defineStore('park', () => {
     pickedMarkerFilterIds.value = []
     showPanel.value = false
     showFindMarker.value = false
+    showInventoryNumbers.value = false
     map.value = null
     mapElement.value = null
   }
@@ -114,6 +116,7 @@ export const useParkStore = defineStore('park', () => {
     pickedMarkers,
     showPanel,
     showFindMarker,
+    showInventoryNumbers,
     map,
     mapElement,
     defaultCenter,
