@@ -16,6 +16,7 @@ import DictHedgeShape from '@/Components/Dictionaries/DictHedgeShape.vue'
 import DictPlots from '@/Components/Dictionaries/DictPlots.vue'
 import { cacheMarkerCoords, getCoordsFromMarker } from '@/Helpers/Maps/MapHelper'
 import FormError from '@/Components/Custom/FormError.vue'
+import MarkerDescriptionEditor from './MarkerDescriptionEditor.vue'
 
 const props = defineProps({ marker: Object })
 
@@ -107,6 +108,7 @@ async function save() {
       await axios.post('/api/markers', marker.value).then((response) => {
         marker.value.id = response.data.id
         marker.value.icon = response.data.icon
+        marker.value.description = response.data.description
         marker.value.isDraft = false
         cacheMarkerCoords(marker.value)
         parkStore.markers.push(marker.value)
@@ -115,6 +117,7 @@ async function save() {
       })
     } else {
       await axios.patch(`/api/markers/${marker.value.id}`, marker.value).then((response) => {
+        marker.value.description = response.data.description
         const keysToCopy = ['coordinates', 'description', 'type', 'plot_id', 'green', 'infrastructure']
         for (const key of keysToCopy) {
           if (key in marker.value)
@@ -242,7 +245,7 @@ const selectHedgeRow = (row) => {
 
       <div class="space-y-1">
         <label class="text-sm font-medium text-gray-700">Опис</label>
-        <textarea v-model="marker.description" class="w-full border border-gray-300 rounded px-2 py-1" rows="3" />
+        <MarkerDescriptionEditor v-model="marker.description" />
         <FormError :errors="errors['description']" />
       </div>
     </div>

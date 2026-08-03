@@ -10,6 +10,10 @@ use Illuminate\Validation\ValidationException;
 
 class ValidateMarkerService
 {
+    public function __construct(
+        private SanitizeMarkerDescriptionService $descriptionSanitizer,
+    ) {}
+
     public function validate(array $data): array
     {
         $validator = Validator::make($data, [
@@ -58,7 +62,12 @@ class ValidateMarkerService
             throw new ValidationException($validator);
         }
 
-        return $validator->validated();
+        $validated = $validator->validated();
+        if (array_key_exists('description', $validated)) {
+            $validated['description'] = $this->descriptionSanitizer->sanitize($validated['description']);
+        }
+
+        return $validated;
     }
 
     private function validCoordinates(mixed $coordinates): bool

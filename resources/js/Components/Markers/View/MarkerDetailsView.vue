@@ -104,10 +104,10 @@ defineExpose({ forceImageUpdate })
       v-model="props.marker.green.works" :loading="props.loading" :greenId="props.marker.green.id"/>
 
     <div v-if="props.marker.description"
-      class="bg-white rounded px-4 text-gray-600 py-6"
+      class="bg-white rounded px-4 text-gray-600 py-6 mb-2"
     >
       <h3 class="text-lg font-semibold pb-2">Опис</h3>
-      <p>{{ props.marker.description }}</p>
+      <div class="marker-description" v-html="props.marker.description" />
     </div>
     <div v-if="props.marker.infrastructure?.infrastructure_type" class="bg-white rounded px-4 text-gray-600">
       <p v-if="props.marker.infrastructure?.infrastructure_type?.name"><b>Тип:</b> {{ props.marker.infrastructure?.infrastructure_type?.name }}</p>
@@ -165,3 +165,8 @@ defineExpose({ forceImageUpdate })
       <SecondaryButton @click="confirmingDelete = !confirmingDelete" class="w-full">Видалити маркер</SecondaryButton>
     </div>
 </template>
+
+<style scoped>
+.marker-description :deep(p) { margin: .35rem 0; }
+.marker-description :deep(a) { color: #2563eb; text-decoration: underline; }
+</style>

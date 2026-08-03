@@ -134,7 +134,11 @@ class MarkerController extends Controller
             $data = $this->validateMarkerService->validate($request->all());
             $this->updateMarkerService->handle($marker, $data);
             $marker->refresh();
-            return response()->json(['success' => true, 'icon' => ($marker->toArray()['icon'] ?? null)]);
+            return response()->json([
+                'success' => true,
+                'icon' => ($marker->toArray()['icon'] ?? null),
+                'description' => $marker->description,
+            ]);
         } catch (ValidationException $e) {
             return response()->json([
                 'message' => 'Validation failed',
@@ -154,7 +158,12 @@ class MarkerController extends Controller
             $marker = new Marker();
             $this->updateMarkerService->handle($marker, $data);
             $marker->refresh();
-            return response()->json(['success' => true, 'id' => $marker->id, 'icon' => ($marker->toArray()['icon'] ?? null)]);
+            return response()->json([
+                'success' => true,
+                'id' => $marker->id,
+                'icon' => ($marker->toArray()['icon'] ?? null),
+                'description' => $marker->description,
+            ]);
         } catch (ValidationException $e) {
             return response()->json([
                 'message' => 'Validation failed',
