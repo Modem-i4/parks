@@ -509,6 +509,15 @@ function mapMarkerCoords(coords, maxMarkers) {
   }
 }
 
+function reportMapMarkerIconUrl() {
+  if (typeof window === 'undefined') return null
+
+  const localHosts = new Set(['localhost', '127.0.0.1', '[::1]'])
+  if (window.location.protocol !== 'https:' || localHosts.has(window.location.hostname)) return null
+
+  return new URL('/img/icons/markers/all-map_icon.png', window.location.origin).toString()
+}
+
 function staticMap(markers, options = {}) {
   const key = import.meta.env.VITE_GOOGLE_MAPS_API_KEY
   if (!key) return null
@@ -541,12 +550,15 @@ function staticMap(markers, options = {}) {
   let markerLimit = Math.min(options.maxMarkers ?? 350, coords.length)
   let preparedMarkers
   let url
+  const markerIconUrl = reportMapMarkerIconUrl()
+  const markerStyle = markerIconUrl
+    ? ['anchor:center', `icon:${markerIconUrl}`]
+    : ['size:tiny', 'color:0x007c57']
 
   do {
     preparedMarkers = mapMarkerCoords(coords, markerLimit)
     params.set('markers', [
-      'size:tiny',
-      'color:0x007c57',
+      ...markerStyle,
       ...preparedMarkers.coords
         .map(item => `${item.lat.toFixed(5)},${item.lng.toFixed(5)}`)
     ].join('|'))
