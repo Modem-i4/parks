@@ -17,11 +17,13 @@ import ParentFitModal from '../Custom/ParentFitModal.vue'
 import SecondaryButton from '@/Components/Default/SecondaryButton.vue'
 import MapLegendPane from './MapLegendPane.vue'
 import CollapsibleSidebar from '@/Components/Custom/CollapsibleSidebar.vue'
+import FullscreenButton from '@/Components/Custom/FullscreenButton.vue'
 
 const parkStore = useParkStore()
 const { showUserPosition } = useUserLocationMarker(toRef(parkStore, 'map'), toRef(parkStore, 'mapCustomMessage'))
 const { addMarker, addMarkerFinished } = useAddMarkerHelper(parkStore)
 const showModal = ref({ legend: false })
+const mapContainer = ref(null)
 
 const authStore = useAuthStore()
 parkStore.showInventoryNumbers = authStore.can.view
@@ -44,7 +46,7 @@ watch(() => parkStore.selectedMarker, (newVal) => {
 </script>
 
 <template>
-  <div class="flex h-[calc(100dvh-86px)]">
+  <div ref="mapContainer" class="flex h-[calc(100dvh-86px)] fullscreen:h-screen">
     <!-- Desktop sidebar -->
     <CollapsibleSidebar>
       <div id="sidebar-target">
@@ -54,6 +56,10 @@ watch(() => parkStore.selectedMarker, (newVal) => {
 
     <!-- Main map -->
     <div class="w-full md:w-2/3 relative touch-none focus:ring-0 focus:outline-none h-full flex-1">
+      <FullscreenButton
+        :target="mapContainer"
+        class="absolute left-0 top-[4.55rem] z-40 hidden h-12 w-5 items-center justify-center rounded-r-lg border border-l-0 border-gray-300 bg-gray-100 text-base text-gray-600 shadow-md transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-green-500 md:flex"
+      />
       <MapUpperMessage />
       <MapView />
       <MapLegendPane 
