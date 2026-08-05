@@ -65,6 +65,7 @@ const reportTextSizeClasses = {
 
 const parkPageBreakMarkerCount = 150
 const staticMapMaxUrlLength = 15000
+const reportMapGeometryToleranceMeters = 1
 
 const collator = new Intl.Collator('uk-UA', { sensitivity: 'base' })
 
@@ -330,18 +331,90 @@ function encodePath(path) {
   }).join('')
 }
 
+function samePoint(first, second) {
+  return first?.lat === second?.lat && first?.lng === second?.lng
+}
+
+function pointSegmentDistanceMeters(point, start, end) {
+  const latitudeRadians = ((start.lat + end.lat + point.lat) / 3) * Math.PI / 180
+  const metersPerLngDegree = 111320 * Math.cos(latitudeRadians)
+  const toXY = coordinate => ({
+    x: coordinate.lng * metersPerLngDegree,
+    y: coordinate.lat * 111320,
+  })
+  const target = toXY(point)
+  const from = toXY(start)
+  const to = toXY(end)
+  const dx = to.x - from.x
+  const dy = to.y - from.y
+  const lengthSquared = dx * dx + dy * dy
+  const ratio = lengthSquared === 0
+    ? 0
+    : Math.max(0, Math.min(1, ((target.x - from.x) * dx + (target.y - from.y) * dy) / lengthSquared))
+
+  return Math.hypot(
+    target.x - (from.x + ratio * dx),
+    target.y - (from.y + ratio * dy),
+  )
+}
+
+function simplifyOpenPath(path, toleranceMeters) {
+  if (path.length <= 2) return path
+
+  let farthestDistance = 0
+  let farthestIndex = 0
+
+  for (let index = 1; index < path.length - 1; index += 1) {
+    const distance = pointSegmentDistanceMeters(path[index], path[0], path[path.length - 1])
+    if (distance > farthestDistance) {
+      farthestDistance = distance
+      farthestIndex = index
+    }
+  }
+
+  if (farthestDistance <= toleranceMeters) return [path[0], path[path.length - 1]]
+
+  const before = simplifyOpenPath(path.slice(0, farthestIndex + 1), toleranceMeters)
+  const after = simplifyOpenPath(path.slice(farthestIndex), toleranceMeters)
+  return [...before.slice(0, -1), ...after]
+}
+
+function simplifyRing(ring, toleranceMeters) {
+  if (ring.length <= 4) return ring
+
+  const points = samePoint(ring[0], ring[ring.length - 1]) ? ring.slice(0, -1) : [...ring]
+  let splitIndex = 1
+  let farthestDistance = 0
+
+  for (let index = 1; index < points.length; index += 1) {
+    const distance = pointSegmentDistanceMeters(points[index], points[0], points[0])
+    if (distance > farthestDistance) {
+      farthestDistance = distance
+      splitIndex = index
+    }
+  }
+
+  const firstArc = simplifyOpenPath(points.slice(0, splitIndex + 1), toleranceMeters)
+  const secondArc = simplifyOpenPath([...points.slice(splitIndex), points[0]], toleranceMeters)
+  const simplified = [...firstArc.slice(0, -1), ...secondArc]
+
+  return simplified.length >= 4 ? simplified : ring
+}
+
 function appendGeometryPaths(params, park) {
   const plots = park?.plots || []
 
   for (const plot of plots) {
     for (const subplot of plot.subplots || []) {
       for (const ring of geometryRings(subplot.coordinates)) {
-        params.append('path', `color:0x000000cc|weight:1|fillcolor:0x00000020|enc:${encodePath(ring)}`)
+        const simplified = simplifyRing(ring, reportMapGeometryToleranceMeters)
+        params.append('path', `color:0x000000cc|weight:1|fillcolor:0x00000020|enc:${encodePath(simplified)}`)
       }
     }
 
     for (const ring of geometryRings(plot.coordinates)) {
-      params.append('path', `color:0x000000ff|weight:3|fillcolor:0x00000000|enc:${encodePath(ring)}`)
+      const simplified = simplifyRing(ring, reportMapGeometryToleranceMeters)
+      params.append('path', `color:0x000000ff|weight:3|fillcolor:0x00000000|enc:${encodePath(simplified)}`)
     }
   }
 }
@@ -475,7 +548,7 @@ function staticMap(markers, options = {}) {
       'size:tiny',
       'color:0x007c57',
       ...preparedMarkers.coords
-        .map(item => `${item.lat.toFixed(6)},${item.lng.toFixed(6)}`)
+        .map(item => `${item.lat.toFixed(5)},${item.lng.toFixed(5)}`)
     ].join('|'))
     url = `${baseUrl}${params.toString()}`
 
@@ -727,6 +800,7 @@ function reportMapSection(markers, options = {}) {
       const park = parksById.get(String(group.park.id)) || group.park
       const map = staticMap(group.markers, {
         maptype: 'roadmap',
+        markPlots: options.markPlots,
         maxMarkers: 350,
         park,
         size: '640x400',
