@@ -16,6 +16,7 @@ import MapLegendInfo from './MapLegendInfo.vue'
 import ParentFitModal from '../Custom/ParentFitModal.vue'
 import SecondaryButton from '@/Components/Default/SecondaryButton.vue'
 import MapLegendPane from './MapLegendPane.vue'
+import CollapsibleSidebar from '@/Components/Custom/CollapsibleSidebar.vue'
 
 const parkStore = useParkStore()
 const { showUserPosition } = useUserLocationMarker(toRef(parkStore, 'map'), toRef(parkStore, 'mapCustomMessage'))
@@ -45,9 +46,11 @@ watch(() => parkStore.selectedMarker, (newVal) => {
 <template>
   <div class="flex h-[calc(100dvh-86px)]">
     <!-- Desktop sidebar -->
-    <div class="hidden md:block w-1/3 min-w-[300px] border-r overflow-y-auto overflow-x-clip relative bg-gray-100" id="sidebar-target"> <!-- Має обмежуватись висотою екрана, а не flex-батьком -->
-      <!-- Panel Teleport -->
-    </div>
+    <CollapsibleSidebar>
+      <div id="sidebar-target">
+        <!-- Panel Teleport -->
+      </div>
+    </CollapsibleSidebar>
 
     <!-- Main map -->
     <div class="w-full md:w-2/3 relative touch-none focus:ring-0 focus:outline-none h-full flex-1">
