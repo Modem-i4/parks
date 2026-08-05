@@ -437,7 +437,7 @@ function mercatorY(latitude) {
   return (1 - Math.log(Math.tan(radians) + (1 / Math.cos(radians))) / Math.PI) / 2
 }
 
-function mapZoomForBounds(bounds, size) {
+function mapViewportForBounds(bounds, size) {
   const [width, height] = String(size).split('x').map(Number)
   const usableWidth = Number.isFinite(width) ? width : 640
   const usableHeight = Number.isFinite(height) ? height : 400
@@ -445,19 +445,41 @@ function mapZoomForBounds(bounds, size) {
   const latSpan = Math.abs(mercatorY(bounds.maxLat) - mercatorY(bounds.minLat))
   const lngZoom = lngSpan > 0 ? Math.log2(usableWidth / (256 * lngSpan)) : 20
   const latZoom = latSpan > 0 ? Math.log2(usableHeight / (256 * latSpan)) : 20
+  const exactZoom = Math.min(lngZoom, latZoom, 20)
+  const closerZoom = Math.ceil(exactZoom)
+  const markerPadding = 20
+  const requiredWidth = Math.ceil(256 * lngSpan * (2 ** closerZoom) + markerPadding)
+  const requiredHeight = Math.ceil(256 * latSpan * (2 ** closerZoom) + markerPadding)
 
-  return Math.max(0, Math.min(20, Math.floor(Math.min(lngZoom, latZoom))))
+  if (requiredWidth <= 640 && requiredHeight <= 640) {
+    return {
+      zoom: closerZoom,
+      size: `${Math.max(usableWidth, requiredWidth)}x${Math.max(usableHeight, requiredHeight)}`,
+    }
+  }
+
+  return {
+    zoom: Math.max(0, Math.floor(exactZoom)),
+    size: `${usableWidth}x${usableHeight}`,
+  }
 }
 
 function markerMapViewport(coords, options) {
   const center = mapCenter(coords)
   if (!center) return null
-  if (coords.length < 5) return { center, zoom: options.zoom ?? 18 }
+  if (coords.length < 5) {
+    return {
+      center,
+      zoom: options.zoom ?? 18,
+      size: options.size ?? '640x400',
+    }
+  }
 
   const bounds = mapBounds(coords)
+  const viewport = mapViewportForBounds(bounds, options.size ?? '640x400')
   return {
     center: boundsCenter(bounds),
-    zoom: mapZoomForBounds(bounds, options.size ?? '640x400'),
+    ...viewport,
   }
 }
 
@@ -530,17 +552,16 @@ function staticMap(markers, options = {}) {
 
   const coords = markers.map(markerCoords).filter(Boolean)
   if (!coords.length) return null
+  const viewport = markerMapViewport(coords, options)
+  if (!viewport) return null
+
   const params = new URLSearchParams({
-    size: options.size ?? '640x400',
+    size: viewport.size,
     scale: '2',
     maptype: options.maptype ?? 'roadmap',
     key,
   })
-  const viewport = markerMapViewport(coords, options)
-  const center = viewport?.center
-  if (!center) return null
-
-  params.set('center', `${center.lat.toFixed(6)},${center.lng.toFixed(6)}`)
+  params.set('center', `${viewport.center.lat.toFixed(6)},${viewport.center.lng.toFixed(6)}`)
   params.set('zoom', String(viewport.zoom))
 
   if (options.markPlots === true) appendGeometryPaths(params, options.park)
