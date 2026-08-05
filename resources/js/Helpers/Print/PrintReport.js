@@ -64,6 +64,7 @@ const reportTextSizeClasses = {
 }
 
 const parkPageBreakMarkerCount = 150
+const staticMapMaxUrlLength = 15000
 
 const collator = new Intl.Collator('uk-UA', { sensitivity: 'base' })
 
@@ -278,6 +279,73 @@ function coordinatePoints(coords) {
   return coords.flatMap(coordinatePoints)
 }
 
+function geometryRings(geoJson) {
+  if (!geoJson || typeof geoJson !== 'object') return []
+
+  if (geoJson.type === 'Feature') return geometryRings(geoJson.geometry)
+  if (geoJson.type === 'FeatureCollection') {
+    return (geoJson.features || []).flatMap(geometryRings)
+  }
+  if (geoJson.type === 'GeometryCollection') {
+    return (geoJson.geometries || []).flatMap(geometryRings)
+  }
+  if (geoJson.type === 'Polygon') {
+    return (geoJson.coordinates || [])
+      .map(ring => ring.map(coordsFromPair).filter(Boolean))
+      .filter(ring => ring.length > 1)
+  }
+  if (geoJson.type === 'MultiPolygon') {
+    return (geoJson.coordinates || []).flatMap(polygon => geometryRings({
+      type: 'Polygon',
+      coordinates: polygon,
+    }))
+  }
+
+  return []
+}
+
+function encodeSignedNumber(value) {
+  let encoded = value < 0 ? ~(value << 1) : value << 1
+  let output = ''
+
+  while (encoded >= 0x20) {
+    output += String.fromCharCode((0x20 | (encoded & 0x1f)) + 63)
+    encoded >>= 5
+  }
+
+  return output + String.fromCharCode(encoded + 63)
+}
+
+function encodePath(path) {
+  let previousLat = 0
+  let previousLng = 0
+
+  return path.map(point => {
+    const lat = Math.round(point.lat * 1e5)
+    const lng = Math.round(point.lng * 1e5)
+    const encoded = encodeSignedNumber(lat - previousLat) + encodeSignedNumber(lng - previousLng)
+    previousLat = lat
+    previousLng = lng
+    return encoded
+  }).join('')
+}
+
+function appendGeometryPaths(params, park) {
+  const plots = park?.plots || []
+
+  for (const plot of plots) {
+    for (const subplot of plot.subplots || []) {
+      for (const ring of geometryRings(subplot.coordinates)) {
+        params.append('path', `color:0x000000cc|weight:1|fillcolor:0x00000020|enc:${encodePath(ring)}`)
+      }
+    }
+
+    for (const ring of geometryRings(plot.coordinates)) {
+      params.append('path', `color:0x000000ff|weight:3|fillcolor:0x00000000|enc:${encodePath(ring)}`)
+    }
+  }
+}
+
 function mapBounds(coords) {
   if (!coords.length) return null
 
@@ -374,9 +442,6 @@ function staticMap(markers, options = {}) {
 
   const coords = markers.map(markerCoords).filter(Boolean)
   if (!coords.length) return null
-  const maxMarkers = options.maxMarkers ?? 350
-  const preparedMarkers = mapMarkerCoords(coords, maxMarkers)
-
   const params = new URLSearchParams({
     size: options.size ?? '640x400',
     scale: '2',
@@ -397,15 +462,29 @@ function staticMap(markers, options = {}) {
     params.set('zoom', String(options.zoom ?? 20))
   }
 
-  params.append('markers', [
-    'size:tiny',
-    'color:0x007c57',
-    ...preparedMarkers.coords
-    .map(item => `${item.lat.toFixed(6)},${item.lng.toFixed(6)}`)
-  ].join('|'))
+  if (options.markPlots === true) appendGeometryPaths(params, options.park)
+
+  const baseUrl = 'https://maps.googleapis.com/maps/api/staticmap?'
+  let markerLimit = Math.min(options.maxMarkers ?? 350, coords.length)
+  let preparedMarkers
+  let url
+
+  do {
+    preparedMarkers = mapMarkerCoords(coords, markerLimit)
+    params.set('markers', [
+      'size:tiny',
+      'color:0x007c57',
+      ...preparedMarkers.coords
+        .map(item => `${item.lat.toFixed(6)},${item.lng.toFixed(6)}`)
+    ].join('|'))
+    url = `${baseUrl}${params.toString()}`
+
+    if (url.length <= staticMapMaxUrlLength || markerLimit === 1) break
+    markerLimit = Math.max(1, Math.floor(markerLimit * 0.75))
+  } while (true)
 
   return {
-    url: `https://maps.googleapis.com/maps/api/staticmap?${params.toString()}`,
+    url,
     markerCount: preparedMarkers.coords.length,
     originalCount: coords.length,
     clustered: preparedMarkers.clustered,

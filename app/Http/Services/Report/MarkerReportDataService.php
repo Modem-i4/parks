@@ -3,6 +3,7 @@
 namespace App\Http\Services\Report;
 
 use App\Models\Marker;
+use App\Models\Park;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 
@@ -39,5 +40,23 @@ class MarkerReportDataService
             ->get()
             ->sortBy(fn (Marker $marker) => $order[$marker->id] ?? PHP_INT_MAX)
             ->values();
+    }
+
+    public function getParks(Collection $markers): Collection
+    {
+        $parkIds = $markers->pluck('park_id')->filter()->unique()->values();
+
+        if ($parkIds->isEmpty()) {
+            return collect();
+        }
+
+        return Park::query()
+            ->select(['id', 'name', 'geo_json'])
+            ->with([
+                'plots:id,park_id,name,coordinates',
+                'plots.subplots:id,plot_id,name,coordinates',
+            ])
+            ->whereIn('id', $parkIds)
+            ->get();
     }
 }

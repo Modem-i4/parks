@@ -79,9 +79,17 @@
           <input type="checkbox" v-model="reportOptions.includeMap" class="rounded border-gray-300">
           <span>Додати мапу</span>
         </label>
-        <label class="inline-flex items-center gap-2">
-          <input type="checkbox" v-model="reportOptions.includeInfrastructure" class="rounded border-gray-300">
-          <span>Додати інфраструктуру</span>
+        <label
+          class="inline-flex items-center gap-2"
+          :class="{ 'cursor-not-allowed text-gray-400': !reportOptions.includeMap }"
+        >
+          <input
+            type="checkbox"
+            v-model="reportOptions.markPlots"
+            :disabled="!reportOptions.includeMap"
+            class="rounded border-gray-300 disabled:cursor-not-allowed disabled:opacity-50"
+          >
+          <span>Позначити виділи</span>
         </label>
         <label class="inline-flex items-center gap-2">
           <input type="checkbox" v-model="reportOptions.colorGroups" class="rounded border-gray-300">
@@ -94,6 +102,10 @@
         <label class="inline-flex items-center gap-2">
           <input type="checkbox" v-model="reportOptions.includeFilterSummary" class="rounded border-gray-300">
           <span>Описати фільтри вибірки</span>
+        </label>
+        <label class="inline-flex items-center gap-2">
+          <input type="checkbox" v-model="reportOptions.includeInfrastructure" class="rounded border-gray-300">
+          <span>Додати інфраструктуру</span>
         </label>
       </div>
     </div>
@@ -145,6 +157,7 @@ const pendingReport = ref(null)
 const reportOptions = ref({
   textSize: 'normal',
   includeMap: false,
+  markPlots: true,
   includeInfrastructure: false,
   colorGroups: true,
   colorTreeSizes: true,
@@ -253,15 +266,12 @@ async function onCreateReport() {
   clearPendingReport()
 
   try {
-    const [{ data }, { data: parks }] = await Promise.all([
-      axios.post('/api/markers/report-data', reportPayload()),
-      axios.get('/api/parks'),
-    ])
+    const { data } = await axios.post('/api/markers/report-data', reportPayload())
 
     const report = await printReport(data.markers, {
       title: 'Звіт по насадженнях',
       fallbackPark: parkStore.selectedPark,
-      parks,
+      parks: data.parks || [],
       filterSummary: data.filter_summary || [],
       ...reportOptions.value,
     })

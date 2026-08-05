@@ -79,8 +79,10 @@ class MarkerController extends Controller
             return response()->json(['message' => 'No markers provided'], 422);
         }
 
+        $markers = $service->getMarkers($ids);
         $response = [
-            'markers' => $service->getMarkers($ids),
+            'markers' => $markers,
+            'parks' => $service->getParks($markers),
         ];
 
         if ($request->boolean('include_filter_summary')) {
