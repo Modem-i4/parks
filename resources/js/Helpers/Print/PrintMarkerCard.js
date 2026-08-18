@@ -419,7 +419,10 @@ function buildHtml(marker, media) {
             row('Тип', typeLabel),
             row('Парк', marker.park?.name),
             rowHtml('Інв. номер', green?.inventory_number
-              ? `<a class="print-link" href="${escapeHtml(inventoryUrl(green.inventory_number))}" target="_blank">${escapeHtml(green.inventory_number)}</a>`
+              ? `<a class="print-link" href="${escapeHtml(inventoryUrl(green.inventory_number))}" target="_blank">${escapeHtml(green.inventory_number)}</a>
+              ${green.tree?.inventory_tag
+                ? ` <i>(${escapeHtml(green.tree.inventory_tag)})</i>`
+                : ''}`
               : ''
             ),
             rowHtml('Стан', stateBadge(green?.green_state)),

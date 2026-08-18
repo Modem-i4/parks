@@ -149,7 +149,10 @@ function initializeMarkerType(marker, type) {
     marker.green.species_id ||= null
     marker.green.subplot_id ||= null
     marker.green.subplot ||= {}
-    if (type === 'tree') marker.green.tree ||= {}
+    if (type === 'tree') {
+      marker.green.tree ||= {}
+      marker.green.tree.inventory_tag ??= null
+    }
     if (type === 'bush') marker.green.bush ||= {}
     if (type === 'hedge') marker.green.hedge ||= {}
   }
@@ -257,6 +260,12 @@ const selectHedgeRow = (row) => {
         <label class="text-sm font-medium text-gray-700">Інвентарний номер</label>
         <input v-model="marker.green.inventory_number" class="w-full border border-gray-300 rounded px-2 py-1" />
         <FormError :errors="errors['green.inventory_number']" />
+      </div>
+
+      <div v-if="marker.type === 'tree'" class="space-y-1">
+        <label class="text-sm font-medium text-gray-700">Номер бірки</label>
+        <input v-model="marker.green.tree.inventory_tag" class="w-full border border-gray-300 rounded px-2 py-1" />
+        <FormError :errors="errors['green.tree.inventory_tag']" />
       </div>
 
       <div class="space-y-1">

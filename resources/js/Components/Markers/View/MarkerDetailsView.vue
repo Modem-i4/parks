@@ -68,12 +68,44 @@ defineExpose({ forceImageUpdate })
     />
 
     <div
+      v-if="props.marker.green?.tree?.inventory_tag && !authStore.can.view"
+      class="bg-white rounded px-4 py-3 flex items-center justify-between gap-3 text-gray-700 my-2"
+    >
+      <div>
+        <span v-if="props.marker.green?.tree?.inventory_tag" class="block font-medium min-w-0">
+          <b>Бірка:</b> {{ props.marker.green.tree.inventory_tag }}
+        </span>
+      </div>
+      <div class="flex shrink-0 items-center">
+        <div class="relative group">
+          <button
+            type="button"
+            class="inline-flex h-8 w-8 items-center justify-center rounded-md transition-colors hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-500"
+            aria-label="Скопіювати номер бірки"
+            @click="copyToClipboard(props.marker.green.tree.inventory_tag)"
+            @mouseenter="copyCompleted = false"
+          >
+            <img src="/img/icons/copy-icon.svg" alt="" class="w-5 h-5" />
+          </button>
+          <Tooltip>
+            {{ copyCompleted ? 'Скопійовано!' : 'Скопіювати' }}
+          </Tooltip>
+        </div>
+      </div>
+    </div>
+
+    <div
       v-if="props.marker.green?.inventory_number && authStore.can.view"
       class="bg-white rounded px-4 py-3 flex items-center justify-between gap-3 text-gray-700 my-2"
     >
-      <span class="font-medium min-w-0">Інвентарний номер: {{ props.marker.green.inventory_number }}
-        <span class="text-xs italic" v-if="props.marker.green.inventory_number_old">(було: {{ props.marker.green.inventory_number_old }})</span>
-      </span>
+      <div>
+        <span class="font-medium min-w-0"><b>Інвентарний номер:</b> {{ props.marker.green.inventory_number }}
+          <span class="text-xs italic" v-if="props.marker.green.inventory_number_old">(було: {{ props.marker.green.inventory_number_old }})</span>
+        </span>
+        <span v-if="props.marker.green?.tree?.inventory_tag" class="block font-medium min-w-0">
+          <b>Бірка:</b> {{ props.marker.green.tree.inventory_tag }}
+        </span>
+      </div>
       <div class="flex shrink-0 items-center">
         <div class="relative group">
           <button

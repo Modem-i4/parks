@@ -10,6 +10,7 @@ use App\Models\Concerns\LogsChanges;
  * Class Tree
  * 
  * @property int $id
+ * @property string|null $inventory_tag
  * @property float|null $height_m
  * @property float|null $trunk_diameter_cm
  * @property float|null $trunk_circumference_cm
@@ -40,6 +41,7 @@ class Tree extends Model
 
     protected $fillable = [
         'id',
+        'inventory_tag',
         'height_m',
         'trunk_circumference_cm',
         'tilt_degree',

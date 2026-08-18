@@ -38,6 +38,7 @@ class ValidateMarkerService
             'green.green_state_note' => ['sometimes', 'nullable', 'string'],
             'green.species.family_type' => ['sometimes', Rule::in(array_column(GreenType::cases(), 'value'))],
 
+            'green.tree.inventory_tag' => ['sometimes', 'nullable', 'string'],
             'green.tree.height_m' => ['sometimes', 'nullable', 'numeric'],
             'green.tree.trunk_circumference_cm' => ['sometimes', 'nullable', 'numeric'],
             'green.tree.tilt_degree' => ['sometimes', 'nullable', 'numeric'],

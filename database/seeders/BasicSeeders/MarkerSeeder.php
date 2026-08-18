@@ -22,6 +22,7 @@ class MarkerSeeder extends Seeder
     private array $rowMap = [];
     private array $shapeMap = [];
     private array $inventoryNumberMap = [];
+    private array $inventoryTagMap = [];
 
     private array $plots = [];
     private array $subplots = [];
@@ -30,6 +31,7 @@ class MarkerSeeder extends Seeder
     {
         $data = include database_path('data/Markers.php');
         $this->inventoryNumberMap = include database_path('data/GreenInventoryNumbers.php');
+        $this->inventoryTagMap = include database_path('data/TreeInventoryTags.php');
 
         $this->parkIds = Park::query()->whereNotNull('slug')->pluck('id', 'slug')->all();
 
@@ -92,6 +94,7 @@ class MarkerSeeder extends Seeder
                     if ($type === 'tree') {
                         Tree::create([
                             'id' => $green->id,
+                            'inventory_tag' => $this->inventoryTagMap[$green->inventory_number] ?? null,
                             'height_m' => $tProps['height_m'] ?? null,
                             'trunk_circumference_cm' => $tProps['trunk_circumference_cm'] ?? null,
                             'tilt_degree' => $tProps['tilt_degree'] ?? null,
