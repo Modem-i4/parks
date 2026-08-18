@@ -21,6 +21,7 @@ class MarkerSeeder extends Seeder
     private array $recMap = [];
     private array $rowMap = [];
     private array $shapeMap = [];
+    private array $inventoryNumberMap = [];
 
     private array $plots = [];
     private array $subplots = [];
@@ -28,6 +29,7 @@ class MarkerSeeder extends Seeder
     public function run(): void
     {
         $data = include database_path('data/Markers.php');
+        $this->inventoryNumberMap = include database_path('data/GreenInventoryNumbers.php');
 
         $this->parkIds = Park::query()->whereNotNull('slug')->pluck('id', 'slug')->all();
 
@@ -74,9 +76,12 @@ class MarkerSeeder extends Seeder
                         'description' => $props['description'] ?? null,
                     ]);
 
+                    $oldInventoryNumber = (string) $props['inventory_number'];
+
                     $green = Green::create([
                         'id' => $marker->id,
-                        'inventory_number' => isset($props['inventory_number']) ? (string)$props['inventory_number'] : null,
+                        'inventory_number' => (string) $this->inventoryNumberMap[$oldInventoryNumber],
+                        'inventory_number_old' => $oldInventoryNumber,
                         'subplot_id' => $subplotId,
                         'species_id' => $speciesId,
                         'planting_date' => $props['planting_date'] ?? null,

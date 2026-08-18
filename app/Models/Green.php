@@ -14,6 +14,7 @@ use App\Models\Concerns\LogsChanges;
  * 
  * @property int $id
  * @property string|null $inventory_number
+ * @property string|null $inventory_number_old
  * @property int $species_id
  * @property int|null $plot_id
  * @property int|null $subplot_id
@@ -47,6 +48,7 @@ class Green extends Model
 
 	protected $fillable = [
 		'inventory_number',
+		'inventory_number_old',
 		'species_id',
 		'subplot_id',
 		'planting_date',

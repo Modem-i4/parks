@@ -71,7 +71,9 @@ defineExpose({ forceImageUpdate })
       v-if="props.marker.green?.inventory_number && authStore.can.view"
       class="bg-white rounded px-4 py-3 flex items-center justify-between gap-3 text-gray-700 my-2"
     >
-      <span class="font-medium min-w-0">Інвентарний номер: {{ props.marker.green.inventory_number }}</span>
+      <span class="font-medium min-w-0">Інвентарний номер: {{ props.marker.green.inventory_number }}
+        <span class="text-xs italic" v-if="props.marker.green.inventory_number_old">(було: {{ props.marker.green.inventory_number_old }})</span>
+      </span>
       <div class="flex shrink-0 items-center">
         <div class="relative group">
           <button
