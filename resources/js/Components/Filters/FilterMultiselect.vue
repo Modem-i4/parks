@@ -37,9 +37,14 @@ const handleCheckboxChange = (id, event) => {
     <div class="font-medium">{{ node.name }}</div>
     <div class="flex flex-wrap gap-2">
       <template v-if="node.type === 'multiselect'">
-        <label v-for="opt in node.options" :key="opt.id" class="inline-flex items-center space-x-1">
+        <label
+          v-for="opt in node.options"
+          :key="opt.id"
+          class="inline-flex w-max min-w-[calc(50%-0.25rem)] max-w-full shrink-0 items-center space-x-1"
+        >
           <input
             type="checkbox"
+            class="shrink-0"
             :value="opt.name"
             :checked="GetFilterTargetNode(filters, [...path,props.node.slug])?.includes(opt.id)"
             @change="handleCheckboxChange(opt.id, $event)"
