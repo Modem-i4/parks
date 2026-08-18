@@ -8,7 +8,7 @@
       <input
         v-model="search"
         type="text"
-        placeholder="Введіть інвентарний номер"
+        placeholder="Інвентарний номер або номер бірки"
         class="min-w-0 flex-1 px-4 py-2 border rounded-lg shadow focus:outline-none focus:ring focus:border-blue-300 text-center"
         @keyup.enter="addMarker"
       />
@@ -86,7 +86,7 @@
 
 <script setup>
 import { useParkStore } from '@/Stores/useParkStore'
-import { useFindMarker } from '@/Helpers/Maps/FindMarkerHelper'
+import { splitMarkerNumbers, useFindMarker } from '@/Helpers/Maps/FindMarkerHelper'
 import { getMarkerTitle, typeUkr } from '@/Helpers/Maps/GetMarkerTitle'
 import PrimaryButton from '@/Components/Default/PrimaryButton.vue'
 import SecondaryButton from '@/Components/Default/SecondaryButton.vue'
@@ -105,10 +105,7 @@ async function goToMarker() {
 }
 
 async function addMarker() {
-  const inventoryNumbers = search.value
-    .split(/[,;\s]+/)
-    .map(number => number.trim())
-    .filter(Boolean)
+  const inventoryNumbers = splitMarkerNumbers(search.value)
   const markers = await findMarkers(inventoryNumbers)
 
   const pickedIds = new Set(

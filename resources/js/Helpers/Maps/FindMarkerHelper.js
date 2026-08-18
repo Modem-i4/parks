@@ -2,16 +2,34 @@ import { ref, watch } from 'vue'
 import axios from 'axios'
 import { setViewToParkMarker } from '@/Helpers/Maps/SetParkView'
 
+export function normalizeMarkerNumber(value) {
+  const number = String(value ?? '').trim()
+  const match = number.toLocaleUpperCase('uk-UA').match(/^([АМШ])[\s-]*0*(\d+)$/u)
+
+  if (!match) return number
+
+  const width = match[1] === 'Ш' ? 6 : 5
+  return `${match[1]}${match[2].padStart(width, '0')}`
+}
+
+export function splitMarkerNumbers(value) {
+  return value
+    .replace(/([аАмМшШ])[\s-]*(\d+)/gu, '$1$2')
+    .split(/[,;\s]+/)
+    .map(normalizeMarkerNumber)
+    .filter(Boolean)
+}
+
 export function useFindMarker(parkStore) {
   const search = ref('')
   const errorMessage = ref('')
   const loading = ref(false)
 
   async function findMarker() {
-    const inventoryNumber = search.value.trim()
+    const inventoryNumber = normalizeMarkerNumber(search.value)
 
     if (!inventoryNumber) {
-      errorMessage.value = 'Введіть інвентарний номер'
+      errorMessage.value = 'Введіть інвентарний номер або номер бірки'
       return null
     }
 
@@ -36,10 +54,10 @@ export function useFindMarker(parkStore) {
   }
 
   async function findMarkers(inventoryNumbers) {
-    const uniqueNumbers = [...new Set(inventoryNumbers)]
+    const uniqueNumbers = [...new Set(inventoryNumbers.map(normalizeMarkerNumber).filter(Boolean))]
 
     if (!uniqueNumbers.length) {
-      errorMessage.value = 'Введіть інвентарний номер'
+      errorMessage.value = 'Введіть інвентарний номер або номер бірки'
       return []
     }
 

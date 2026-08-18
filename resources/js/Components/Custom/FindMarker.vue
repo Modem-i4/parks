@@ -7,7 +7,7 @@
     <input
       v-model="search"
       type="text"
-      placeholder="Введіть інвентарний номер"
+      placeholder="Номер бірки"
       class="w-full px-4 py-2 border rounded-lg shadow focus:outline-none focus:ring focus:border-blue-300 text-center"
       @keyup.enter="find"
     />

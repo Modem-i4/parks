@@ -39,8 +39,10 @@ class MarkerController extends Controller
         return response()->json($marker);
     }
 
-    public function getSingleMarkerByInv($inv) {
-        $marker = $this->markerService->findByInventory($inv);
+    public function getSingleMarkerByInv($inv)
+    {
+        $marker = $this->markerService->findByInventoryOrTag($inv);
+
         return $marker;
     }
 

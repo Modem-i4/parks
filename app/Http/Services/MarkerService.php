@@ -38,8 +38,43 @@ class MarkerService
     public function findByInventory(string $inv): ?Marker
     {
         return Marker::with(self::RELATIONS)
-            ->whereHas('green', fn($q) => $q->where('inventory_number', $inv))
+            ->whereHas('green', fn ($q) => $q->where('inventory_number', $inv))
             ->first();
+    }
+
+    public function findByInventoryOrTag(string $number): ?Marker
+    {
+        $number = trim($number);
+        $inventoryTag = $this->normalizeInventoryTag($number);
+
+        return Marker::with(self::RELATIONS)
+            ->where(function ($query) use ($number, $inventoryTag) {
+                $query->whereHas(
+                    'green',
+                    fn ($greenQuery) => $greenQuery->where('inventory_number', $number)
+                );
+
+                if ($inventoryTag !== null) {
+                    $query->orWhereHas(
+                        'green.tree',
+                        fn ($treeQuery) => $treeQuery->where('inventory_tag', $inventoryTag)
+                    );
+                }
+            })
+            ->first();
+    }
+
+    private function normalizeInventoryTag(string $number): ?string
+    {
+        $number = mb_strtoupper(trim($number));
+
+        if (! preg_match('/^([АМШ])[\s-]*0*(\d+)$/u', $number, $matches)) {
+            return null;
+        }
+
+        $width = $matches[1] === 'Ш' ? 6 : 5;
+
+        return $matches[1].str_pad($matches[2], $width, '0', STR_PAD_LEFT);
     }
 
     public function ensureBelongsToPark(Marker $marker, Park $park): Marker
@@ -47,6 +82,7 @@ class MarkerService
         if ($marker->park_id !== $park->id) {
             abort(404);
         }
+
         return $marker;
     }
 }
