@@ -28,7 +28,7 @@ class MarkerFilterConfigService {
     protected function getDefaultFilters(UserRole $userRole): array
     {
         // Get dynamic options
-        $recommendations = Recommendation::select('id', 'name')->get()->toArray();
+        $recommendations = Recommendation::select('id', 'name')->orderBy('name')->get()->toArray();
         $hedgeRows = HedgeRow::select('id', 'name')->get()->toArray();
         $hedgeShapes = HedgeShape::select('id', 'name')->get()->toArray();
         $infrastructureTypes = InfrastructureType::with('icon')
