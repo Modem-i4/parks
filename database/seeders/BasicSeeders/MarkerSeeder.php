@@ -23,6 +23,7 @@ class MarkerSeeder extends Seeder
     private array $shapeMap = [];
     private array $inventoryNumberMap = [];
     private array $inventoryTagMap = [];
+    private array $inventoryMappingV2 = [];
 
     private array $plots = [];
     private array $subplots = [];
@@ -32,6 +33,7 @@ class MarkerSeeder extends Seeder
         $data = include database_path('data/Markers.php');
         $this->inventoryNumberMap = include database_path('data/GreenInventoryNumbers.php');
         $this->inventoryTagMap = include database_path('data/TreeInventoryTags.php');
+        $this->inventoryMappingV2 = include database_path('data/GreenInvTagMapping_v2.php');
 
         $this->parkIds = Park::query()->whereNotNull('slug')->pluck('id', 'slug')->all();
 
@@ -78,12 +80,14 @@ class MarkerSeeder extends Seeder
                         'description' => $props['description'] ?? null,
                     ]);
 
-                    $oldInventoryNumber = (string) $props['inventory_number'];
+                    $originalInventoryNumber = (string) $props['inventory_number'];
+                    $inventoryNumber = (string) $this->inventoryNumberMap[$originalInventoryNumber];
+                    $inventoryMappingV2 = $this->inventoryMappingV2[$inventoryNumber] ?? null;
 
                     $green = Green::create([
                         'id' => $marker->id,
-                        'inventory_number' => (string) $this->inventoryNumberMap[$oldInventoryNumber],
-                        'inventory_number_old' => $oldInventoryNumber,
+                        'inventory_number' => (string) ($inventoryMappingV2['inv'] ?? $inventoryNumber),
+                        'inventory_number_old' => $originalInventoryNumber,
                         'subplot_id' => $subplotId,
                         'species_id' => $speciesId,
                         'planting_date' => $props['planting_date'] ?? null,
@@ -94,7 +98,9 @@ class MarkerSeeder extends Seeder
                     if ($type === 'tree') {
                         Tree::create([
                             'id' => $green->id,
-                            'inventory_tag' => $this->inventoryTagMap[$green->inventory_number] ?? null,
+                            'inventory_tag' => $inventoryMappingV2 !== null
+                                ? $inventoryMappingV2['tag']
+                                : ($this->inventoryTagMap[$inventoryNumber] ?? null),
                             'height_m' => $tProps['height_m'] ?? null,
                             'trunk_circumference_cm' => $tProps['trunk_circumference_cm'] ?? null,
                             'tilt_degree' => $tProps['tilt_degree'] ?? null,
