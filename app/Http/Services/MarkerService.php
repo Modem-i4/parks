@@ -38,7 +38,9 @@ class MarkerService
     public function findByInventory(string $inv): ?Marker
     {
         return Marker::with(self::RELATIONS)
-            ->whereHas('green', fn ($q) => $q->where('inventory_number', $inv))
+            ->whereHas('green', fn ($q) => $q
+                ->where('inventory_number', $inv)
+                ->orWhere('inventory_number_old', $inv))
             ->first();
     }
 
@@ -51,7 +53,9 @@ class MarkerService
             ->where(function ($query) use ($number, $inventoryTag) {
                 $query->whereHas(
                     'green',
-                    fn ($greenQuery) => $greenQuery->where('inventory_number', $number)
+                    fn ($greenQuery) => $greenQuery
+                        ->where('inventory_number', $number)
+                        ->orWhere('inventory_number_old', $number)
                 );
 
                 if ($inventoryTag !== null) {
