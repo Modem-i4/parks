@@ -426,10 +426,13 @@ function buildHtml(marker, media) {
               : ''
             ),
             rowHtml('Стан', stateBadge(green?.green_state)),
-            row('Дата посадки', formatDate(green?.planting_date)),
+            rowHtml('Дата посадки', `~${formatDate(green?.planting_date)}`),
             row('Вік', formatAge(green?.age)),
             row('Виділ', green?.subplot?.plot?.name || green?.plot?.name),
-            row('Оновлено', formatDate(green?.updated_at || marker.updated_at)),
+            row('Зміна стану', formatDate(green?.green_state_changed_at)),
+            formatDate(green?.green_state_changed_at) !== formatDate(green?.updated_at || marker.updated_at)
+              ? row('Оновлено', formatDate(green?.updated_at || marker.updated_at))
+              : '',
             row('Ділянка', green?.subplot?.name),
             rowHtml('Координати', `<a class="print-link" href="${escapeHtml(coordinatesUrl)}" target="_blank">${escapeHtml(coordinates)}</a>`),
           ])}

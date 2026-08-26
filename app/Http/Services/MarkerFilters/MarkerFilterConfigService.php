@@ -119,6 +119,11 @@ class MarkerFilterConfigService {
                                 'options' => GreenState::values(),
                             ],
                             [
+                                'name' => 'Дата набуття стану',
+                                'slug' => 'green_state_changed_at_range',
+                                'type' => 'dates',
+                            ],
+                            [
                                 'name' => 'Виділ',
                                 'slug' => 'plot',
                                 'type' => 'plots',

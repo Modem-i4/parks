@@ -6,7 +6,11 @@ const props = defineProps({
   green: Object,
   type: String,
 })
-const showDetails = computed(() => (props.green[props.type] && ['tree', 'bush', 'hedge'].includes(props.type)) || props.green.age)
+const showDetails = computed(() =>
+  (props.green[props.type] && ['tree', 'bush', 'hedge'].includes(props.type))
+  || props.green.age
+  || props.green.green_state_changed_at
+)
 const authStore = useAuthStore()
 </script>
 
@@ -17,6 +21,7 @@ const authStore = useAuthStore()
     <p v-if="green.subplot?.plot?.name && authStore.can.view"><strong>Виділ:</strong> {{ green.subplot.plot.name }}</p>
     <p v-if="green.subplot?.name && authStore.can.view"><strong>Ділянка:</strong> {{ green.subplot.name }}</p>
     <p v-if="green.age"><strong>Вік:</strong> {{ Math.floor(green.age%12) }} р. {{ Math.floor(green.age/12) }} м.</p>
+    <p v-if="green.green_state_changed_at"><strong>Дата набуття стану:</strong> {{ green.green_state_changed_at.split('T')[0] }}</p>
 
     <div v-if="type === 'hedge'" class="space-y-1">
       <p><strong>Довжина:</strong> {{ green.hedge.length_m }} м</p>
@@ -36,6 +41,8 @@ const authStore = useAuthStore()
       <p v-if="authStore.can.view && green.tree.crown_condition_percent"><strong>Стан крони:</strong> {{ green.tree.crown_condition_percent }}%</p>
     </div>
 
-    <p v-if="green.updated_at"><strong>Дата оновлення:</strong> {{ green.updated_at.split('T')[0] }}</p>
+    <p v-if="green.updated_at
+      && green.updated_at.split('T')[0] !== green.green_state_changed_at?.split('T')[0]"
+    ><strong>Дата оновлення:</strong> {{ green.updated_at.split('T')[0] }}</p>
   </div>
 </template>

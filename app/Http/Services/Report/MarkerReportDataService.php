@@ -13,7 +13,7 @@ class MarkerReportDataService
         'park:id,name,geo_json',
         'park.icon',
         'tags:id,name',
-        'green:id,inventory_number,species_id,subplot_id,green_state',
+        'green:id,inventory_number,species_id,subplot_id,green_state,green_state_changed_at',
         'green.tree:id,height_m,trunk_circumference_cm',
         'green.subplot:id,plot_id,name',
         'green.subplot.plot:id,name',

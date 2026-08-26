@@ -60,6 +60,12 @@ class MarkerGreenFilterService {
                 $q->whereIn('green_state', $filters['general']['green_state']);
             }
 
+            if (!empty($filters['general']['green_state_changed_at_range'])) {
+                [$from, $to] = $filters['general']['green_state_changed_at_range'];
+                if ($from) $q->whereDate('green_state_changed_at', '>=', $from);
+                if ($to) $q->whereDate('green_state_changed_at', '<=', $to);
+            }
+
             if (!empty($filters['general']['plots'])) {
                 $this->applyPlots($q, $filters['general']['plots']);
             }

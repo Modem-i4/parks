@@ -109,6 +109,8 @@ async function save() {
         marker.value.id = response.data.id
         marker.value.icon = response.data.icon
         marker.value.description = response.data.description
+        if (marker.value.green)
+          marker.value.green.green_state_changed_at = response.data.green_state_changed_at
         marker.value.isDraft = false
         cacheMarkerCoords(marker.value)
         parkStore.markers.push(marker.value)
@@ -118,6 +120,8 @@ async function save() {
     } else {
       await axios.patch(`/api/markers/${marker.value.id}`, marker.value).then((response) => {
         marker.value.description = response.data.description
+        if (marker.value.green)
+          marker.value.green.green_state_changed_at = response.data.green_state_changed_at
         const keysToCopy = ['coordinates', 'description', 'type', 'plot_id', 'green', 'infrastructure']
         for (const key of keysToCopy) {
           if (key in marker.value)
@@ -145,6 +149,7 @@ function initializeMarkerType(marker, type) {
     marker.green ||= {}
     marker.green.inventory_number ||= null
     marker.green.green_state ||= null
+    marker.green.green_state_changed_at ||= null
     marker.green.green_state_note ||= null
     marker.green.species_id ||= null
     marker.green.subplot_id ||= null
@@ -272,6 +277,12 @@ const selectHedgeRow = (row) => {
         <label class="text-sm font-medium text-gray-700">Стан</label>
         <StateSelector v-model="marker.green.green_state" />
         <FormError :errors="errors['green.green_state']" />
+      </div>
+
+      <div class="space-y-1">
+        <label class="text-sm font-medium text-gray-700">Дата набуття стану</label>
+        <input type="date" v-model="marker.green.green_state_changed_at" class="w-full border border-gray-300 rounded px-2 py-1" />
+        <FormError :errors="errors['green.green_state_changed_at']" />
       </div>
 
       <div class="space-y-1">
