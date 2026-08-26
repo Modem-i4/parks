@@ -142,6 +142,7 @@ class MarkerController extends Controller
                 'success' => true,
                 'icon' => ($marker->toArray()['icon'] ?? null),
                 'description' => $marker->description,
+                'green_state_changed_at' => $marker->green?->green_state_changed_at?->toDateString(),
             ]);
         } catch (ValidationException $e) {
             return response()->json([
@@ -167,6 +168,7 @@ class MarkerController extends Controller
                 'id' => $marker->id,
                 'icon' => ($marker->toArray()['icon'] ?? null),
                 'description' => $marker->description,
+                'green_state_changed_at' => $marker->green?->green_state_changed_at?->toDateString(),
             ]);
         } catch (ValidationException $e) {
             return response()->json([

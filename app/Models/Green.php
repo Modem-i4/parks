@@ -20,6 +20,7 @@ use App\Models\Concerns\LogsChanges;
  * @property int|null $subplot_id
  * @property Carbon|null $planting_date
  * @property string|null $green_state
+ * @property Carbon|null $green_state_changed_at
  * @property string|null $green_state_note
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
@@ -43,7 +44,8 @@ class Green extends Model
 	protected $casts = [
 		'species_id' => 'int',
 		'subplot_id' => 'int',
-		'planting_date' => 'datetime'
+		'planting_date' => 'datetime',
+		'green_state_changed_at' => 'date:Y-m-d'
 	];
 
 	protected $fillable = [
@@ -53,10 +55,26 @@ class Green extends Model
 		'subplot_id',
 		'planting_date',
 		'green_state',
+		'green_state_changed_at',
 		'green_state_note'
 	];
 
 	protected $appends = ['age', 'plot', 'plot_id'];
+
+	protected static function booted(): void
+	{
+		static::creating(function (Green $green) {
+			if (!$green->green_state_changed_at) {
+				$green->green_state_changed_at = today();
+			}
+		});
+
+		static::updating(function (Green $green) {
+			if ($green->isDirty('green_state') && !$green->isDirty('green_state_changed_at')) {
+				$green->green_state_changed_at = today();
+			}
+		});
+	}
 
 	protected function age(): Attribute
 	{
