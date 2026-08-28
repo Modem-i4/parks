@@ -128,11 +128,9 @@ watch(() => props.startingItem, (item) => {
 }, { immediate: true })
 
 const filteredList = computed(() => {
-  if (!search.value) return dataList.value
-  const q = search.value.toLowerCase()
-  return dataList.value.filter(item =>
-    item[labelField.value].toLowerCase().includes(q)
-  )
+  return dataList.value
+    .filter(item => item[labelField.value].toLowerCase().includes(search.value.toLowerCase()))
+    .sort((a, b) => a[labelField.value].localeCompare(b[labelField.value], 'uk'))
 })
 
 const endpoint = computed(() => {
