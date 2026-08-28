@@ -119,9 +119,19 @@ class MarkerFilterConfigService {
                                 'options' => GreenState::values(),
                             ],
                             [
-                                'name' => 'Дата набуття стану',
+                                'name' => 'Дата висадки',
+                                'slug' => 'planting_date_range',
+                                'type' => 'dates',
+                            ],
+                            [
+                                'name' => 'Дата видалення',
                                 'slug' => 'green_state_changed_at_range',
                                 'type' => 'dates',
+                                'visibleWhen' => [
+                                    'path' => 'green.general.green_state',
+                                    'operator' => 'includes',
+                                    'value' => GreenState::REMOVED->value,
+                                ],
                             ],
                             [
                                 'name' => 'Виділ',

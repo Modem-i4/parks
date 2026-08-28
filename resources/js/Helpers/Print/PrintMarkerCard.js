@@ -426,7 +426,7 @@ function buildHtml(marker, media) {
               : ''
             ),
             rowHtml('Стан', stateBadge(green?.green_state)),
-            rowHtml('Дата посадки', `~${formatDate(green?.planting_date)}`),
+            rowHtml('Дата посадки', formatDate(green?.planting_date)),
             row('Вік', formatAge(green?.age)),
             row('Виділ', green?.subplot?.plot?.name || green?.plot?.name),
             row('Зміна стану', formatDate(green?.green_state_changed_at)),

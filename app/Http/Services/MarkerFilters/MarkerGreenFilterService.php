@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Services\MarkerFilters;
 
+use App\Enums\GreenState;
+
 class MarkerGreenFilterService {
 
     private array $typeMap = [
@@ -62,8 +64,15 @@ class MarkerGreenFilterService {
 
             if (!empty($filters['general']['green_state_changed_at_range'])) {
                 [$from, $to] = $filters['general']['green_state_changed_at_range'];
+                $q->where('green_state', GreenState::REMOVED->value);
                 if ($from) $q->whereDate('green_state_changed_at', '>=', $from);
                 if ($to) $q->whereDate('green_state_changed_at', '<=', $to);
+            }
+
+            if (!empty($filters['general']['planting_date_range'])) {
+                [$from, $to] = $filters['general']['planting_date_range'];
+                if ($from) $q->whereDate('planting_date', '>=', $from);
+                if ($to) $q->whereDate('planting_date', '<=', $to);
             }
 
             if (!empty($filters['general']['plots'])) {

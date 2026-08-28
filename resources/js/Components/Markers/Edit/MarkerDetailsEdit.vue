@@ -186,11 +186,11 @@ const subGreenTitle = computed(() => ({
   flower: 'квітів',
 }[marker.value.type] || ''))
 
-const plantingMonth = computed({
-  get: () => marker.value.green?.planting_date?.slice(0, 7) ?? '',
+const plantingDate = computed({
+  get: () => marker.value.green?.planting_date?.slice(0, 10) ?? '',
   set: val => {
     if (!marker.value.green) marker.value.green = {}
-    marker.value.green.planting_date = val + '-01'
+    marker.value.green.planting_date = val || null
   }
 })
 
@@ -342,8 +342,8 @@ const selectHedgeRow = (row) => {
       </Modal>
 
       <div class="space-y-1">
-        <label class="text-sm font-medium text-gray-700">Приблизна дата посадки</label>
-        <input type="month" v-model="plantingMonth" class="w-full border border-gray-300 rounded px-2 py-1" />
+        <label class="text-sm font-medium text-gray-700">Дата посадки</label>
+        <input type="date" v-model="plantingDate" class="w-full border border-gray-300 rounded px-2 py-1" />
         <FormError :errors="errors['green.planting_date']" />
       </div>
     </div>
