@@ -43,7 +43,8 @@ function formatNumber(value, suffix = '') {
 
 function formatAge(value) {
   if (!present(value)) return ''
-  return `${Math.floor(value)} р.`
+  const totalMonths = Math.max(0, Math.floor(Number(value)))
+  return `${Math.floor(totalMonths / 12)} р. ${totalMonths % 12} міс.`
 }
 
 function row(label, value) {
@@ -427,7 +428,7 @@ function buildHtml(marker, media) {
             ),
             rowHtml('Стан', stateBadge(green?.green_state)),
             rowHtml('Дата посадки', formatDate(green?.planting_date)),
-            row('Вік', formatAge(green?.age)),
+            row('Вік', formatAge(green?.age_months)),
             row('Виділ', green?.subplot?.plot?.name || green?.plot?.name),
             green?.green_state === 'removed'
               ? row('Дата видалення', formatDate(green?.green_state_changed_at))

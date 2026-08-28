@@ -22,6 +22,8 @@ use App\Models\Concerns\LogsChanges;
  * @property string|null $green_state
  * @property Carbon|null $green_state_changed_at
  * @property string|null $green_state_note
+ * @property float|null $age
+ * @property int|null $age_months
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * 
@@ -59,7 +61,7 @@ class Green extends Model
 		'green_state_note'
 	];
 
-	protected $appends = ['age', 'plot', 'plot_id'];
+	protected $appends = ['age', 'age_months', 'plot', 'plot_id'];
 
 	protected static function booted(): void
 	{
@@ -80,6 +82,13 @@ class Green extends Model
 	{
 		return Attribute::get(fn () =>
 			$this->planting_date ? $this->planting_date->diffInYears(now()) : null
+		);
+	}
+
+	protected function ageMonths(): Attribute
+	{
+		return Attribute::get(fn () =>
+			$this->planting_date ? (int) $this->planting_date->diffInMonths(now()) : null
 		);
 	}
 

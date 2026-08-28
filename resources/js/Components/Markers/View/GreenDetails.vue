@@ -8,7 +8,7 @@ const props = defineProps({
 })
 const showDetails = computed(() =>
   (props.green[props.type] && ['tree', 'bush', 'hedge'].includes(props.type))
-  || props.green.age
+  || props.green.age_months != null
   || Number(props.green.planting_date?.slice(0, 4)) >= 2026
   || (props.green.green_state === 'removed' && props.green.green_state_changed_at)
 )
@@ -16,6 +16,11 @@ const showPlantingDate = computed(() =>
   Number(props.green.planting_date?.slice(0, 4)) >= 2026
 )
 const authStore = useAuthStore()
+
+function formatAgeMonths(value) {
+  const totalMonths = Math.max(0, Math.floor(Number(value)))
+  return `${Math.floor(totalMonths / 12)} р. ${totalMonths % 12} міс.`
+}
 </script>
 
 <template>
@@ -25,7 +30,7 @@ const authStore = useAuthStore()
     <p v-if="green.subplot?.plot?.name && authStore.can.view"><strong>Виділ:</strong> {{ green.subplot.plot.name }}</p>
     <p v-if="green.subplot?.name && authStore.can.view"><strong>Ділянка:</strong> {{ green.subplot.name }}</p>
     <p v-if="showPlantingDate"><strong>Дата висадки:</strong> {{ green.planting_date.split('T')[0] }}</p>
-    <p v-if="green.age"><strong>Вік:</strong> {{ Math.floor(green.age%12) }} р. {{ Math.floor(green.age/12) }} м.</p>
+    <p v-if="green.age_months != null"><strong>Вік:</strong> {{ formatAgeMonths(green.age_months) }}</p>
     <p v-if="green.green_state === 'removed' && green.green_state_changed_at"><strong>Дата видалення:</strong> {{ green.green_state_changed_at.split('T')[0] }}</p>
 
     <div v-if="type === 'hedge'" class="space-y-1">
