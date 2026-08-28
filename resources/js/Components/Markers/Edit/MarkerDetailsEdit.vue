@@ -279,8 +279,8 @@ const selectHedgeRow = (row) => {
         <FormError :errors="errors['green.green_state']" />
       </div>
 
-      <div class="space-y-1">
-        <label class="text-sm font-medium text-gray-700">Дата набуття стану</label>
+      <div v-if="marker.green.green_state === 'removed'" class="space-y-1">
+        <label class="text-sm font-medium text-gray-700">Дата видалення</label>
         <input type="date" v-model="marker.green.green_state_changed_at" class="w-full border border-gray-300 rounded px-2 py-1" />
         <FormError :errors="errors['green.green_state_changed_at']" />
       </div>

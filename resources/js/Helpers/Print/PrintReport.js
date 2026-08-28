@@ -769,7 +769,7 @@ function markersTable(markers, tags, ranges, settings) {
             <th class="side-col">Виділ</th>
             <th class="side-col">Ділянка</th>
             <th class="state-col">Стан</th>
-            <th class="state-date-col">Дата набуття стану</th>
+            <th class="state-date-col">Дата видалення</th>
             <th class="species-col">Вид, укр</th>
             <th class="measure-col">Діаметр на 1, 3 м, в см</th>
             <th class="measure-col">Висота, м</th>
@@ -793,7 +793,11 @@ function markersTable(markers, tags, ranges, settings) {
                 <td class="side-cell plot-group-cell ${settings.colorGroups ? plotGroupClass : ''}"><span>${escapeHtml(plotName(marker))}</span></td>
                 <td class="side-cell subplot-group-cell ${settings.colorGroups ? subplotGroupClass : ''}"><span>${escapeHtml(subplotName(marker))}</span></td>
                 ${markerStateCell(marker)}
-                <td class="state-date-cell">${escapeHtml(formatDate(marker.green?.green_state_changed_at) || '—')}</td>
+                <td class="state-date-cell">${escapeHtml(
+                  marker.green?.green_state === 'removed'
+                    ? formatDate(marker.green?.green_state_changed_at) || '—'
+                    : '—'
+                )}</td>
                 <td>${escapeHtml(speciesName(marker))}</td>
                 ${measureCell(marker, 'trunk_diameter_cm', ranges, settings)}
                 ${measureCell(marker, 'height_m', ranges, settings)}

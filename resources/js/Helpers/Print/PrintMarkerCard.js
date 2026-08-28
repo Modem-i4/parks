@@ -429,7 +429,9 @@ function buildHtml(marker, media) {
             rowHtml('Дата посадки', formatDate(green?.planting_date)),
             row('Вік', formatAge(green?.age)),
             row('Виділ', green?.subplot?.plot?.name || green?.plot?.name),
-            row('Зміна стану', formatDate(green?.green_state_changed_at)),
+            green?.green_state === 'removed'
+              ? row('Дата видалення', formatDate(green?.green_state_changed_at))
+              : '',
             formatDate(green?.green_state_changed_at) !== formatDate(green?.updated_at || marker.updated_at)
               ? row('Оновлено', formatDate(green?.updated_at || marker.updated_at))
               : '',
