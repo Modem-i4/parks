@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\MediaLibrary;
 use App\Services\HeicImageConverter;
 use App\Services\MediaThumbnailGenerator;
+use App\Services\UploadedImageOptimizer;
 use enshrined\svgSanitize\Sanitizer;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
@@ -20,7 +21,10 @@ class MediaLibraryController extends Controller
     }
 
     public function store(
-        Request $request,HeicImageConverter $heicConverter,MediaThumbnailGenerator $thumbnailGenerator,
+        Request $request,
+        HeicImageConverter $heicConverter,
+        UploadedImageOptimizer $imageOptimizer,
+        MediaThumbnailGenerator $thumbnailGenerator,
     ) {
         $request->validate([
             'file' => 'required|mimetypes:image/jpeg,image/png,image/webp,image/bmp,image/gif,image/svg+xml,image/svg,image/heic,image/heif,image/heic-sequence,image/heif-sequence|max:10240',
@@ -37,6 +41,13 @@ class MediaLibraryController extends Controller
             } catch (\Throwable $exception) {
                 report($exception);
                 throw ValidationException::withMessages(['file' => 'Не вдалося обробити HEIC/HEIF зображення.']);
+            }
+        } elseif ($imageOptimizer->shouldOptimize($file)) {
+            try {
+                $path = $imageOptimizer->optimize($file);
+            } catch (\Throwable $exception) {
+                report($exception);
+                throw ValidationException::withMessages(['file' => 'Не вдалося оптимізувати зображення.']);
             }
         } elseif (in_array($mime, ['image/svg+xml', 'image/svg'])) {
             $cleanSvg = $this->sanitizeSvg($file);
@@ -55,7 +66,7 @@ class MediaLibraryController extends Controller
             'type' => $request->type ?? 'image',
         ]);
 
-        if ($thumbnailPath === null && $isHeic) {
+        if ($thumbnailPath === null) {
             try {
                 $mediaFile->thumbnail_path = $thumbnailGenerator->generate($mediaFile);
                 $mediaFile->saveQuietly();

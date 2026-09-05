@@ -53,7 +53,10 @@ const sendFile = async (file) => {
   loading.value = true;
 
   try {
-    const uploadFile = await compressImage(file, props.type);
+    const uploadFile = await compressImage(file, props.type).catch((error) => {
+      console.warn('Client image optimization failed; uploading the original for server-side processing:', error);
+      return file;
+    });
     const thumbnail = await createThumbnail(uploadFile, props.type).catch((error) => {
       console.warn('Thumbnail creation failed; uploading the original without it:', error);
       return null;
