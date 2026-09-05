@@ -15,6 +15,7 @@
               :selected="selectedArr"
               :multiple="false"
               @toggle="toggleSelect"
+              @deleted="handleDeleted"
             />
           </div>
 
@@ -79,6 +80,10 @@ function toggleSelect(mediaFile) {
 }
 function clearSelected() {
   selected.value = null
+}
+function handleDeleted(mediaFile) {
+  library.value = library.value.filter(item => item.id !== mediaFile.id)
+  if (selected.value?.id === mediaFile.id) clearSelected()
 }
 
 function save() {

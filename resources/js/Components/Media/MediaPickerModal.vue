@@ -20,6 +20,7 @@
               :selected="selected"
               :multiple="isMultiple"
               @toggle="toggleSelect"
+              @deleted="handleDeleted"
             />
           </div>
           <div class="flex-[1] min-h-0 overflow-y-auto">
@@ -114,6 +115,11 @@ const toggleSelect = (mediaFile) => {
 
 const removeSelected = (mediaFileId) => {
   selected.value = selected.value.filter(i => i.media_library_id !== mediaFileId);
+};
+
+const handleDeleted = (mediaFile) => {
+  library.value = library.value.filter(item => item.id !== mediaFile.id);
+  removeSelected(mediaFile.id);
 };
 
 const updateOrder = (newOrder) => {

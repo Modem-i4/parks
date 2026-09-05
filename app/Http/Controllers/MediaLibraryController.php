@@ -83,11 +83,17 @@ class MediaLibraryController extends Controller
 
     public function destroy(MediaLibrary $mediaLibrary)
     {
-        Storage::disk('public')->delete($mediaLibrary->getRawOriginal('file_path'));
-        if ($mediaLibrary->getRawOriginal('thumbnail_path')) {
-            Storage::disk('public')->delete($mediaLibrary->getRawOriginal('thumbnail_path'));
-        }
+        $attributes = $mediaLibrary->getAttributes();
+        $paths = array_values(array_filter(
+            [$attributes['file_path'] ?? null, $attributes['thumbnail_path'] ?? null],
+            fn ($path) => is_string($path) && $path !== '',
+        ));
+
         $mediaLibrary->delete();
+
+        if ($paths !== []) {
+            Storage::disk('public')->delete($paths);
+        }
 
         return response()->noContent();
     }
