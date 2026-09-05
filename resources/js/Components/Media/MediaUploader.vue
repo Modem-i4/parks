@@ -8,7 +8,7 @@
       type="file"
       ref="fileInput"
       class="hidden"
-      accept="image/*"
+      accept="image/*,.heic,.heif"
       @change="upload"
     />
 

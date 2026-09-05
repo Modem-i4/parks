@@ -6,6 +6,9 @@ const IMAGE_MIN_EDGE = 640;
 const IMAGE_RESIZE_FACTOR = 0.8;
 const IMAGE_QUALITIES = [0.86, 0.78, 0.7, 0.62, 0.54, 0.46];
 const COMPRESSIBLE_MIME_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/bmp'];
+const HEIC_MIME_TYPES = ['image/heic', 'image/heif', 'image/heic-sequence', 'image/heif-sequence'];
+
+const isHeic = (file) => HEIC_MIME_TYPES.includes(file.type) || /\.hei[cf]$/i.test(file.name);
 
 const loadImage = async (file) => {
   const objectUrl = URL.createObjectURL(file);
@@ -55,7 +58,7 @@ const webpFile = (blob, originalName, suffix = '') => {
 
 export const compressImage = async (file, mediaType) => {
   if (mediaType !== 'image' || !COMPRESSIBLE_MIME_TYPES.includes(file.type)) {
-    if (mediaType === 'image' && file.size > IMAGE_MAX_BYTES) {
+    if (mediaType === 'image' && file.size > IMAGE_MAX_BYTES && !isHeic(file)) {
       throw new Error('Цей формат неможливо автоматично стиснути. Оберіть файл розміром до 1.8 МБ.');
     }
 
