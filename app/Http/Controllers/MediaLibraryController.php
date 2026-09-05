@@ -17,7 +17,7 @@ class MediaLibraryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'file' => 'required|mimetypes:image/jpeg,image/png,image/webp,image/bmp,image/gif,image/svg+xml,image/svg',
+            'file' => 'required|mimetypes:image/jpeg,image/png,image/webp,image/bmp,image/gif,image/svg+xml,image/svg|max:2048',
             'thumbnail' => 'nullable|mimetypes:image/webp|max:512',
             'type' => 'nullable|string',
         ]);

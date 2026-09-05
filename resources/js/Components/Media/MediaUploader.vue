@@ -26,6 +26,7 @@
 <script setup>
 import { ref } from 'vue';
 import axios from 'axios';
+import { compressImage, createThumbnail } from '@/Helpers/Media/ImageUploadProcessor';
 
 const emit = defineEmits(['uploaded']);
 
@@ -35,44 +36,6 @@ const props = defineProps({
 
 const fileInput = ref(null);
 const loading = ref(false);
-
-const THUMBNAIL_MAX_EDGE = 480;
-const THUMBNAIL_QUALITY = 0.72;
-
-const createThumbnail = async (file) => {
-  if (props.type !== 'image' || !['image/jpeg', 'image/png', 'image/webp', 'image/bmp'].includes(file.type)) {
-    return null;
-  }
-
-  const objectUrl = URL.createObjectURL(file);
-
-  try {
-    const image = new Image();
-    image.src = objectUrl;
-    await image.decode();
-
-    const scale = Math.min(1, THUMBNAIL_MAX_EDGE / Math.max(image.naturalWidth, image.naturalHeight));
-    const canvas = document.createElement('canvas');
-    canvas.width = Math.max(1, Math.round(image.naturalWidth * scale));
-    canvas.height = Math.max(1, Math.round(image.naturalHeight * scale));
-
-    const context = canvas.getContext('2d');
-    if (!context) return null;
-
-    context.drawImage(image, 0, 0, canvas.width, canvas.height);
-
-    const blob = await new Promise((resolve) => {
-      canvas.toBlob(resolve, 'image/webp', THUMBNAIL_QUALITY);
-    });
-
-    if (!blob) return null;
-
-    const basename = file.name.replace(/\.[^.]+$/, '') || 'image';
-    return new File([blob], `${basename}.preview.webp`, { type: 'image/webp' });
-  } finally {
-    URL.revokeObjectURL(objectUrl);
-  }
-};
 
 const upload = async (e) => {
   const file = e.target.files[0];
@@ -89,23 +52,26 @@ const handleDrop = async (e) => {
 const sendFile = async (file) => {
   loading.value = true;
 
-  const formData = new FormData();
-  formData.append('file', file);
-  formData.append('type', props.type);
   try {
-    const thumbnail = await createThumbnail(file).catch((error) => {
+    const uploadFile = await compressImage(file, props.type);
+    const thumbnail = await createThumbnail(uploadFile, props.type).catch((error) => {
       console.warn('Thumbnail creation failed; uploading the original without it:', error);
       return null;
     });
+
+    const formData = new FormData();
+    formData.append('file', uploadFile);
+    formData.append('type', props.type);
     if (thumbnail) formData.append('thumbnail', thumbnail);
 
     await axios.post('/api/media-library', formData);
     emit('uploaded');
   } catch (e) {
     console.error('Upload failed:', e);
-    alert('Помилка під час завантаження зображення');
+    alert(e.response?.data?.message || e.message || 'Помилка під час завантаження зображення');
   } finally {
     loading.value = false;
+    if (fileInput.value) fileInput.value.value = '';
   }
 };
 </script>
