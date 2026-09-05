@@ -53,14 +53,18 @@ const sendFile = async (file) => {
   loading.value = true;
 
   try {
+    let clientProcessingSucceeded = true;
     const uploadFile = await compressImage(file, props.type).catch((error) => {
+      clientProcessingSucceeded = false;
       console.warn('Client image optimization failed; uploading the original for server-side processing:', error);
       return file;
     });
-    const thumbnail = await createThumbnail(uploadFile, props.type).catch((error) => {
-      console.warn('Thumbnail creation failed; uploading the original without it:', error);
-      return null;
-    });
+    const thumbnail = clientProcessingSucceeded
+      ? await createThumbnail(uploadFile, props.type).catch((error) => {
+          console.warn('Thumbnail creation failed; the server will create it instead:', error);
+          return null;
+        })
+      : null;
 
     const formData = new FormData();
     formData.append('file', uploadFile);

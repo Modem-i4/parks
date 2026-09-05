@@ -26,6 +26,8 @@ class MediaLibraryController extends Controller
         UploadedImageOptimizer $imageOptimizer,
         MediaThumbnailGenerator $thumbnailGenerator,
     ) {
+        $this->ensureUploadsAreValid($request);
+
         $request->validate([
             'file' => 'required|mimetypes:image/jpeg,image/png,image/webp,image/bmp,image/gif,image/svg+xml,image/svg,image/heic,image/heif,image/heic-sequence,image/heif-sequence|max:10240',
             'thumbnail' => 'nullable|mimetypes:image/webp|max:512',
@@ -76,6 +78,29 @@ class MediaLibraryController extends Controller
         }
 
         return response()->json($mediaFile, 201);
+    }
+
+    private function ensureUploadsAreValid(Request $request): void
+    {
+        foreach (['file', 'thumbnail'] as $field) {
+            $file = $request->file($field);
+
+            if (! $file instanceof UploadedFile || $file->isValid()) {
+                continue;
+            }
+
+            $message = match ($file->getError()) {
+                UPLOAD_ERR_INI_SIZE => 'Файл перевищує серверний upload_max_filesize ('.ini_get('upload_max_filesize').').',
+                UPLOAD_ERR_FORM_SIZE => 'Файл перевищує дозволений розмір форми.',
+                UPLOAD_ERR_PARTIAL => 'Файл завантажився лише частково. Спробуйте ще раз.',
+                UPLOAD_ERR_NO_TMP_DIR => 'На сервері відсутня тимчасова директорія для завантажень.',
+                UPLOAD_ERR_CANT_WRITE => 'Сервер не зміг записати файл у тимчасову директорію.',
+                UPLOAD_ERR_EXTENSION => 'PHP-розширення зупинило завантаження файла.',
+                default => 'Сервер не зміг прийняти файл.',
+            };
+
+            throw ValidationException::withMessages([$field => $message]);
+        }
     }
 
     public function sanitizeSvg(UploadedFile $file): string
