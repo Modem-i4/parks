@@ -18,6 +18,7 @@ class MediaLibraryController extends Controller
     {
         $request->validate([
             'file' => 'required|mimetypes:image/jpeg,image/png,image/webp,image/bmp,image/gif,image/svg+xml,image/svg',
+            'thumbnail' => 'nullable|mimetypes:image/webp|max:512',
             'type' => 'nullable|string',
         ]);
 
@@ -33,8 +34,11 @@ class MediaLibraryController extends Controller
             $path = $file->store('uploads', 'public');
         }
 
+        $thumbnailPath = $request->file('thumbnail')?->store('uploads/thumbnails', 'public');
+
         $mediaFile = MediaLibrary::create([
             'file_path' => $path,
+            'thumbnail_path' => $thumbnailPath,
             'type' => $request->type ?? 'image',
         ]);
 
@@ -57,7 +61,10 @@ class MediaLibraryController extends Controller
 
     public function destroy(MediaLibrary $mediaLibrary)
     {
-        Storage::disk('public')->delete($mediaLibrary->file_path);
+        Storage::disk('public')->delete($mediaLibrary->getRawOriginal('file_path'));
+        if ($mediaLibrary->getRawOriginal('thumbnail_path')) {
+            Storage::disk('public')->delete($mediaLibrary->getRawOriginal('thumbnail_path'));
+        }
         $mediaLibrary->delete();
 
         return response()->noContent();

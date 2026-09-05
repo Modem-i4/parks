@@ -26,6 +26,7 @@ class MediaLibrary extends Model
 
     protected $fillable = [
         'file_path',
+        'thumbnail_path',
         'type'
     ];
 
@@ -36,10 +37,20 @@ class MediaLibrary extends Model
 
     public function getFilePathAttribute($value): string
     {
+        return $this->publicPath($value);
+    }
+
+    public function getThumbnailPathAttribute($value): ?string
+    {
+        return $value ? $this->publicPath($value) : null;
+    }
+
+    private function publicPath(string $value): string
+    {
         $path = ltrim($value, '/');
         if (Storage::disk('public')->exists($path)) {
             return '/storage/' . $path;
         }
-        return '/' . ($path ?? '');
+        return '/' . $path;
     }
 }

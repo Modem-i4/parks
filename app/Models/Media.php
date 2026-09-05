@@ -39,6 +39,7 @@ class Media extends Model
 
     protected $appends = [
         'file_path',
+        'thumbnail_path',
     ];
     protected $hidden = ['mediaFile'];
 
@@ -55,6 +56,11 @@ class Media extends Model
     public function getFilePathAttribute(): ?string
     {
         return $this->mediaFile?->file_path;
+    }
+
+    public function getThumbnailPathAttribute(): ?string
+    {
+        return $this->mediaFile?->thumbnail_path;
     }
 
     public function getTypeAttribute(): ?string

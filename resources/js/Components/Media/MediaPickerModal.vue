@@ -89,6 +89,7 @@ const toggleSelect = (mediaFile) => {
     selected.value = [{
       media_library_id: mediaFile.id,
       file_path: mediaFile.file_path,
+      thumbnail_path: mediaFile.thumbnail_path,
       model_type: props.modelType,
       model_id: props.modelId,
       order: 0
@@ -103,6 +104,7 @@ const toggleSelect = (mediaFile) => {
     selected.value.push({
       media_library_id: mediaFile.id,
       file_path: mediaFile.file_path,
+      thumbnail_path: mediaFile.thumbnail_path,
       model_type: props.modelType,
       model_id: props.modelId,
       order: selected.value.length

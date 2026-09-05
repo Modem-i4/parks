@@ -19,7 +19,7 @@
           class="flex items-center gap-2 bg-gray-100 p-2 rounded relative handle select-none cursor-move"
         >
           <img
-            :src="element.file_path"
+            :src="element.thumbnail_path || element.file_path"
             class="w-12 h-12 object-cover rounded"
           />
           <div class="flex-1 text-sm truncate">

@@ -20,7 +20,7 @@
 
           <div class="flex items-center justify-between border rounded-lg p-3" v-if="selected">
             <div class="flex items-center gap-3">
-              <img :src="selected.file_path" alt="" class="w-16 h-16 object-cover rounded" />
+              <img :src="selected.thumbnail_path || selected.file_path" alt="" class="w-16 h-16 object-cover rounded" />
               <div class="text-sm text-gray-700 truncate max-w-[45ch]">
                 {{ selected.file_path }}
               </div>
@@ -70,7 +70,11 @@ function toggleSelect(mediaFile) {
   if (selected.value && selected.value.id === mediaFile.id) {
     selected.value = null
   } else {
-    selected.value = { id: mediaFile.id, file_path: mediaFile.file_path }
+    selected.value = {
+      id: mediaFile.id,
+      file_path: mediaFile.file_path,
+      thumbnail_path: mediaFile.thumbnail_path,
+    }
   }
 }
 function clearSelected() {
