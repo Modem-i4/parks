@@ -79,7 +79,16 @@ function escapeHtml(value) {
 }
 
 function markerInventory(marker) {
-  return marker.green?.inventory_number || '—'
+  const green = marker.green
+  const number = String(green?.inventory_number ?? '').trim()
+  const oldNumber = String(green?.inventory_number_old ?? '').trim()
+  const tag = String(green?.tree?.inventory_tag ?? '').trim()
+
+  let html = escapeHtml(number)
+  if (oldNumber) html += `${html ? '/' : ''}<i>${escapeHtml(oldNumber)}</i>`
+  if (tag) html += `${html ? ' ' : ''}(${escapeHtml(tag)})`
+
+  return html || '—'
 }
 
 function markerStateLabel(marker) {
@@ -758,18 +767,18 @@ function parkHeader(group) {
   `
 }
 
-function markersTable(markers, tags, ranges, settings) {
+function markersTable(markers, tags, ranges, settings, hasRemovedMarkers) {
   return `
     <section class="table-section">
       <table class="report-table">
         <thead>
           <tr>
             <th class="num-col">№ п/п</th>
-            <th class="inv-col">№ інв.</th>
+            <th class="inv-col">№ інв.<br>/<i>№ старий</i> (бірка)</th>
             <th class="side-col">Виділ</th>
             <th class="side-col">Ділянка</th>
             <th class="state-col">Стан</th>
-            <th class="state-date-col">Дата видалення</th>
+            ${hasRemovedMarkers ? '<th class="state-date-col">Дата видалення</th>' : ''}
             <th class="species-col">Вид, укр</th>
             <th class="measure-col">Діаметр на 1, 3 м, в см</th>
             <th class="measure-col">Висота, м</th>
@@ -789,15 +798,15 @@ function markersTable(markers, tags, ranges, settings) {
             return `
               <tr>
                 <td class="num-col">${index + 1}</td>
-                <td class="inv-cell">${escapeHtml(markerInventory(marker))}</td>
+                <td class="inv-cell">${markerInventory(marker)}</td>
                 <td class="side-cell plot-group-cell ${settings.colorGroups ? plotGroupClass : ''}"><span>${escapeHtml(plotName(marker))}</span></td>
                 <td class="side-cell subplot-group-cell ${settings.colorGroups ? subplotGroupClass : ''}"><span>${escapeHtml(subplotName(marker))}</span></td>
                 ${markerStateCell(marker)}
-                <td class="state-date-cell">${escapeHtml(
+                ${hasRemovedMarkers ? `<td class="state-date-cell">${escapeHtml(
                   marker.green?.green_state === 'removed'
                     ? formatDate(marker.green?.green_state_changed_at) || '—'
                     : '—'
-                )}</td>
+                )}</td>` : ''}
                 <td>${escapeHtml(speciesName(marker))}</td>
                 ${measureCell(marker, 'trunk_diameter_cm', ranges, settings)}
                 ${measureCell(marker, 'height_m', ranges, settings)}
@@ -819,6 +828,7 @@ function markersTable(markers, tags, ranges, settings) {
 function parkSections(markers, options = {}) {
   const settings = reportSettings(options)
   const tags = uniqueTags(markers)
+  const hasRemovedMarkers = markers.some(marker => marker.green?.green_state === 'removed')
   const ranges = measureRanges(markers)
   const groups = groupMarkersByPark(markers, options.fallbackPark)
   const separateParks = markers.length > parkPageBreakMarkerCount
@@ -826,7 +836,7 @@ function parkSections(markers, options = {}) {
   return groups.map((group, index) => `
     <section class="park-section ${separateParks && index > 0 ? 'park-section-new-page' : ''}">
       ${parkHeader(group)}
-      ${markersTable(group.markers, tags, ranges, settings)}
+      ${markersTable(group.markers, tags, ranges, settings, hasRemovedMarkers)}
     </section>
   `).join('')
 }
@@ -1296,13 +1306,13 @@ function buildHtml(markers, options = {}) {
           .subplot-group-a { background: #f5fff8; }
           .subplot-group-b { background: #fff5fb; }
           .num-col { width: 23px; text-align: center; }
-          .inv-col { width: 38px; }
+          .inv-col { width: 90px; }
           .inv-cell {
-            width: 38px;
             font-size: var(--inv-font-size);
-            line-height: 1;
-            white-space: nowrap;
+            line-height: 1.15;
+            white-space: normal;
             word-break: normal;
+            overflow-wrap: anywhere;
             text-align: center;
           }
           .side-col {
