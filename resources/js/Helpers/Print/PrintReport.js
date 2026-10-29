@@ -133,6 +133,11 @@ function formatDate(value) {
   return String(value).split('T')[0]
 }
 
+function formatPlantingDate(value) {
+  const date = formatDate(value)
+  return /^\d{4}-01-01$/.test(date) ? date.slice(0, 4) : date
+}
+
 function plotName(marker) {
   return marker.green?.subplot?.plot?.name || marker.green?.plot?.name || '—'
 }
@@ -778,6 +783,7 @@ function markersTable(markers, tags, ranges, settings, hasRemovedMarkers) {
             <th class="side-col">Виділ</th>
             <th class="side-col">Ділянка</th>
             <th class="state-col">Стан</th>
+            <th class="state-date-col">Дата висадки</th>
             ${hasRemovedMarkers ? '<th class="state-date-col">Дата видалення</th>' : ''}
             <th class="species-col">Вид, укр</th>
             <th class="measure-col">Діаметр на 1, 3 м, в см</th>
@@ -802,6 +808,7 @@ function markersTable(markers, tags, ranges, settings, hasRemovedMarkers) {
                 <td class="side-cell plot-group-cell ${settings.colorGroups ? plotGroupClass : ''}"><span>${escapeHtml(plotName(marker))}</span></td>
                 <td class="side-cell subplot-group-cell ${settings.colorGroups ? subplotGroupClass : ''}"><span>${escapeHtml(subplotName(marker))}</span></td>
                 ${markerStateCell(marker)}
+                <td class="state-date-cell">${escapeHtml(formatPlantingDate(marker.green?.planting_date) || '—')}</td>
                 ${hasRemovedMarkers ? `<td class="state-date-cell">${escapeHtml(
                   marker.green?.green_state === 'removed'
                     ? formatDate(marker.green?.green_state_changed_at) || '—'
