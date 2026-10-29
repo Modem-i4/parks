@@ -17,6 +17,7 @@ import DictPlots from '@/Components/Dictionaries/DictPlots.vue'
 import { cacheMarkerCoords, getCoordsFromMarker } from '@/Helpers/Maps/MapHelper'
 import FormError from '@/Components/Custom/FormError.vue'
 import MarkerDescriptionEditor from './MarkerDescriptionEditor.vue'
+import { getTodayDate } from '@/Helpers/LocalDate'
 
 const props = defineProps({ marker: Object })
 
@@ -281,7 +282,7 @@ const selectHedgeRow = (row) => {
 
       <div v-if="marker.green.green_state === 'removed'" class="space-y-1">
         <label class="text-sm font-medium text-gray-700">Дата видалення</label>
-        <input type="date" v-model="marker.green.green_state_changed_at" class="w-full border border-gray-300 rounded px-2 py-1" />
+        <input type="date" :max="getTodayDate()" v-model="marker.green.green_state_changed_at" class="w-full border border-gray-300 rounded px-2 py-1" />
         <FormError :errors="errors['green.green_state_changed_at']" />
       </div>
 
@@ -343,7 +344,7 @@ const selectHedgeRow = (row) => {
 
       <div class="space-y-1">
         <label class="text-sm font-medium text-gray-700">Дата посадки</label>
-        <input type="date" v-model="plantingDate" class="w-full border border-gray-300 rounded px-2 py-1" />
+        <input type="date" :max="getTodayDate()" v-model="plantingDate" class="w-full border border-gray-300 rounded px-2 py-1" />
         <FormError :errors="errors['green.planting_date']" />
       </div>
     </div>

@@ -1,6 +1,7 @@
 <script setup>
 import { ref, watch } from 'vue'
 import { GetOrCreateFilterTargetNode } from '@/Helpers/Maps/GetFilterTargetNode'
+import { getTodayDate } from '@/Helpers/LocalDate'
 
 const props = defineProps({
   node: Object,
@@ -35,6 +36,7 @@ watch([from, to], update)
         <label class="text-xs text-gray-500 mb-0.5 text-center px-1">Від</label>
         <input
           type="date"
+          :max="getTodayDate()"
           v-model="from"
           class="border border-gray-300 rounded px-2 py-1 text-sm w-full"
         >
@@ -45,6 +47,7 @@ watch([from, to], update)
         <label class="text-xs text-gray-500 mb-0.5 text-center px-1">До</label>
         <input
           type="date"
+          :max="getTodayDate()"
           v-model="to"
           class="border border-gray-300 rounded px-2 py-1 text-sm w-full"
         >
