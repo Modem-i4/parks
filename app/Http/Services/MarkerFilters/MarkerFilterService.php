@@ -55,7 +55,7 @@ class MarkerFilterService
             ->pluck('markers_count', 'park_id');
     }
 
-    public function filteredIds($filters): array
+    public function filteredIds($filters, ?int $parkId = null): array
     {
         if (!$this->hasMarkerIdsFilter($filters)
             && !isset($filters['green'])
@@ -63,7 +63,7 @@ class MarkerFilterService
             return [];
         }
 
-        $query = Marker::query();
+        $query = Marker::query()->when($parkId, fn ($q) => $q->where('park_id', $parkId));
 
         if (!$this->applyMarkerIdsFilter($query, $filters)) {
             $this->applyParkFilters($query, $filters);

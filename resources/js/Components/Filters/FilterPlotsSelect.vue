@@ -1,7 +1,7 @@
 <script setup>
 import { computed, ref, watch } from 'vue'
 import axios from 'axios'
-import { GetOrCreateFilterTargetNode } from '@/Helpers/Maps/GetFilterTargetNode'
+import { GetFilterTargetNode, GetOrCreateFilterTargetNode } from '@/Helpers/Maps/GetFilterTargetNode'
 import { useParkStore } from '@/Stores/useParkStore'
 import PlotsOption from '@/Components/Plots/PlotsOption.vue'
 
@@ -97,6 +97,10 @@ async function addPlotsOption() {
 function removePlotsOption(index) {
   entries.value.splice(index, 1)
 }
+
+// Hydrate without creating an inactive filter group merely by rendering it.
+target.value = GetFilterTargetNode(props.filters, props.path)
+hydrateEntries()
 
 watch(entries, () => {
   if (!target.value) return

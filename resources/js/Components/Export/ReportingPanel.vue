@@ -79,6 +79,11 @@
           <input type="checkbox" v-model="reportOptions.includeMap" class="rounded border-gray-300">
           <span>Додати мапу</span>
         </label>
+        <label class="inline-flex items-center gap-2">
+          <input type="checkbox" v-model="reportOptions.includeQrCode" class="rounded border-gray-300">
+          <span>Додати QR-код</span>
+        </label>
+        <!--
         <label
           class="inline-flex items-center gap-2"
           :class="{ 'cursor-not-allowed text-gray-400': !reportOptions.includeMap }"
@@ -91,6 +96,7 @@
           >
           <span>Позначити виділи</span>
         </label>
+        -->
         <label class="inline-flex items-center gap-2">
           <input type="checkbox" v-model="reportOptions.colorGroups" class="rounded border-gray-300">
           <span>Фарбувати виділи і ділянки</span>
@@ -143,6 +149,8 @@ import PrimaryButton from '@/Components/Default/PrimaryButton.vue'
 import PanelHeader from '@/Components/Custom/PanelHeader.vue'
 import { getMarkerTitle, typeUkr } from '@/Helpers/Maps/GetMarkerTitle'
 import GreenStateIndicator from '@/Components/Markers/View/GreenStateIndicator.vue'
+import { getTodayDate } from '@/Helpers/LocalDate'
+import { reportFiltersAsOf, reportMapUrl } from '@/Helpers/Filters/ReportFilterLink'
 import { printReport } from '@/Helpers/Print/PrintReport'
 
 const props = defineProps({ loading: Boolean })
@@ -157,6 +165,7 @@ const pendingReport = ref(null)
 const reportOptions = ref({
   textSize: 'normal',
   includeMap: false,
+  includeQrCode: true,
   markPlots: true,
   includeInfrastructure: false,
   colorGroups: true,
@@ -184,51 +193,26 @@ function cloneFilters(value) {
   return JSON.parse(JSON.stringify(value || {}))
 }
 
-function filteredPayload() {
-  const filters = reportFiltersForRequest()
+function reportPayload(date) {
+  const mode = parkStore.singleParkContentMode
+  const defaults = mode === 'works' ? { green: { works: { completion: ['uncompleted'] } } } : { [mode]: {} }
+  let filters = cloneFilters(parkStore.savedMarkerFilters ?? defaults)
+  if (parkStore.isSingleParkView) delete filters.park
+  if (!reportOptions.value.includeInfrastructure) delete filters.infrastructure
+  filters = reportFiltersAsOf(filters, date)
 
-  if (parkStore.isSingleParkView) {
-    return {
-      markers: parkStore.markers.filter(isObjectMarker).map(marker => marker.id),
-      filters,
-    }
-  }
-
-  if (parkStore.activeMarkerPreset === 'picked') {
-    return {
-      markers: parkStore.pickedMarkerFilterIds,
-      filters,
-    }
+  if (reportingScope.value === 'picked' || parkStore.activeMarkerPreset === 'picked') {
+    filters.marker_ids = reportingScope.value === 'picked'
+      ? pickedObjectMarkers.value.map(marker => marker.id)
+      : [...parkStore.pickedMarkerFilterIds]
   }
 
   return {
     filters,
-  }
-}
-
-function reportFiltersForRequest() {
-  if (parkStore.activeMarkerPreset === 'picked') {
-    return { marker_ids: parkStore.pickedMarkerFilterIds }
-  }
-
-  const filters = cloneFilters(parkStore.savedMarkerFilters || { green: {}, infrastructure: {} })
-  if (parkStore.isSingleParkView) delete filters.park
-  return filters
-}
-
-function reportPayload() {
-  const payload = reportingScope.value === 'picked'
-    ? {
-        markers: pickedObjectMarkers.value.map(marker => marker.id),
-        filters: reportFiltersForRequest(),
-      }
-    : filteredPayload()
-
-  return {
-    ...payload,
+    park_id: parkStore.isSingleParkView ? parkStore.selectedPark.id : undefined,
     include_filter_summary: reportOptions.value.includeFilterSummary,
     selection: reportingScope.value,
-    filter_mode: parkStore.singleParkContentMode,
+    filter_mode: mode,
     filter_scope: parkStore.isSingleParkView ? 'local' : 'global',
   }
 }
@@ -266,14 +250,28 @@ async function onCreateReport() {
   clearPendingReport()
 
   try {
-    const { data } = await axios.post('/api/markers/report-data', reportPayload())
+    const options = { ...reportOptions.value }
+    const date = getTodayDate()
+    const payload = reportPayload(date)
+    const { data } = await axios.post('/api/markers/report-data', payload)
+    if (payload.filters.marker_ids) {
+      payload.filters.marker_ids = data.markers
+        .filter(marker => options.includeInfrastructure || marker.type !== 'infrastructure')
+        .map(marker => marker.id)
+    }
+    const mapUrl = reportMapUrl(window.location.origin, payload.park_id, {
+      filters: payload.filters,
+      mode: payload.filter_mode,
+    })
 
     const report = await printReport(data.markers, {
       title: 'Звіт по насадженнях',
+      mapUrl,
+      createdDate: date,
       fallbackPark: parkStore.selectedPark,
       parks: data.parks || [],
       filterSummary: data.filter_summary || [],
-      ...reportOptions.value,
+      ...options,
     })
 
     if (report?.opened) {

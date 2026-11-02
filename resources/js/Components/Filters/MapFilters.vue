@@ -69,12 +69,6 @@ function cloneFilters(value) {
   return JSON.parse(JSON.stringify(value || {}))
 }
 
-function hasFilters() {
-  const savedFilters = cloneFilters(filters.value)
-  delete savedFilters.park
-  return Object.keys(savedFilters).length > 0
-}
-
 function filtersForRequest() {
   if (parkStore.activeMarkerPreset === 'picked') {
     return { marker_ids: parkStore.pickedMarkerFilterIds }
@@ -183,7 +177,7 @@ watch(
 
 onMounted(() => {
   const restored = restoreFilters()
-  if (restored && hasFilters()) {
+  if (restored) {
     filterMarkers(false, false)
   } else {
     setPresetFilters()

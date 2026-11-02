@@ -1,6 +1,6 @@
 <script setup>
 import { ref, watch } from 'vue'
-import { GetOrCreateFilterTargetNode } from '@/Helpers/Maps/GetFilterTargetNode'
+import { GetFilterTargetNode, GetOrCreateFilterTargetNode } from '@/Helpers/Maps/GetFilterTargetNode'
 import { getTodayDate } from '@/Helpers/LocalDate'
 
 const props = defineProps({
@@ -9,8 +9,9 @@ const props = defineProps({
   path: Array
 })
 
-const from = ref('')
-const to = ref('')
+const saved = GetFilterTargetNode(props.filters, [...props.path, props.node.slug])
+const from = ref(saved?.[0] || '')
+const to = ref(saved?.[1] || '')
 
 const update = () => {
   const target = GetOrCreateFilterTargetNode(props.filters, props.path)

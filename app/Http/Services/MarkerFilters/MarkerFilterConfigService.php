@@ -128,9 +128,10 @@ class MarkerFilterConfigService {
                                 'slug' => 'green_state_changed_at_range',
                                 'type' => 'dates',
                                 'visibleWhen' => [
-                                    'path' => 'green.general.green_state',
-                                    'operator' => 'includes',
-                                    'value' => GreenState::REMOVED->value,
+                                    'any' => [
+                                        ['path' => 'green.general.green_state', 'operator' => 'includes', 'value' => GreenState::REMOVED->value],
+                                        ['path' => 'green.general.removal_as_of', 'operator' => '=', 'value' => true],
+                                    ],
                                 ],
                             ],
                             [

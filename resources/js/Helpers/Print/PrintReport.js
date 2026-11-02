@@ -1,3 +1,4 @@
+import QRCode from 'qrcode'
 import { getMarkerTitle } from '@/Helpers/Maps/GetMarkerTitle'
 
 const greenStateLabels = {
@@ -1074,6 +1075,8 @@ function buildHtml(markers, options = {}) {
           }
           .logo { max-width: 112px; max-height: 38px; object-fit: contain; }
           .logo-interreg { max-width: 164px; }
+          .report-qr { text-align: center; color: #007c57; font-size: 9px; text-decoration: none; }
+          .report-qr img { display: block; width: 36mm; height: 36mm; }
           .meta { text-align: right; color: #4b5563; font-size: 9px; }
           .filter-summary {
             margin: 0 0 8px;
@@ -1504,12 +1507,13 @@ function buildHtml(markers, options = {}) {
               <h1>${escapeHtml(title)}</h1>
               <p class="subtitle">Маркерів у звіті: ${preparedMarkers.length}</p>
             </div>
+            ${options.qrDataUrl ? `<a class="report-qr" href="${escapeHtml(options.mapUrl)}"><img src="${escapeHtml(options.qrDataUrl)}" alt="QR-код мапи з фільтрами звіту"></a>` : ''}
             <div>
               <div class="logos">
                 <img class="logo logo-interreg" src="/img/icons/logo-interreg.png" alt="Interreg NEXT Poland-Ukraine">
                 <img class="logo" src="/img/icons/logo-parks-matter.png" alt="ParksMatter">
               </div>
-              <div class="meta">Сформовано: ${escapeHtml(new Date().toLocaleDateString('uk-UA'))}</div>
+              <div class="meta">Сформовано: ${escapeHtml(options.createdDate || new Date().toLocaleDateString('uk-UA'))}</div>
             </div>
           </header>
           ${settings.includeFilterSummary ? filterSummarySection(options) : ''}
@@ -1579,6 +1583,14 @@ function preparedReport(printUrl) {
 
 export async function printReport(markers, options = {}) {
   if (!markers?.length) return null
+
+  if (options.includeQrCode !== false && options.mapUrl) {
+    try {
+      options = { ...options, qrDataUrl: await QRCode.toDataURL(options.mapUrl, { errorCorrectionLevel: 'M', margin: 4, scale: 6 }) }
+    } catch {
+      throw new Error('Не вдалося створити QR-код. Спробуйте зменшити кількість обраних маркерів або спростити фільтри.')
+    }
+  }
 
   const printBlob = new Blob([buildHtml(markers, options)], { type: 'text/html' })
   const printUrl = URL.createObjectURL(printBlob)

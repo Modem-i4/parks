@@ -11,6 +11,7 @@ export function GetValueByPath(source, path) {
 
 export function MatchesFilterCondition(condition, filters) {
   if (!condition) return true
+  if (condition.any) return condition.any.some(item => MatchesFilterCondition(item, filters))
 
   const actual = GetValueByPath(filters, condition.path)
   const expected = condition.value

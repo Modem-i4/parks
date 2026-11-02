@@ -64,15 +64,33 @@ class MarkerGreenFilterService {
 
             if (!empty($filters['general']['green_state_changed_at_range'])) {
                 [$from, $to] = $filters['general']['green_state_changed_at_range'];
-                $q->where('green_state', GreenState::REMOVED->value);
-                if ($from) $q->whereDate('green_state_changed_at', '>=', $from);
-                if ($to) $q->whereDate('green_state_changed_at', '<=', $to);
+                $applyRemovalDates = function ($dates) use ($from, $to) {
+                    $dates->where('green_state', GreenState::REMOVED->value);
+                    if ($from) $dates->whereDate('green_state_changed_at', '>=', $from);
+                    if ($to) $dates->whereDate('green_state_changed_at', '<=', $to);
+                };
+                if (!empty($filters['general']['removal_as_of']) && !$from) {
+                    // A report cutoff must not turn an all-states selection into removed-only.
+                    $q->where(function ($states) use ($applyRemovalDates) {
+                        $states->where('green_state', '!=', GreenState::REMOVED->value)
+                            ->orWhereNull('green_state')
+                            ->orWhereNull('green_state_changed_at')
+                            ->orWhere($applyRemovalDates);
+                    });
+                } else {
+                    $applyRemovalDates($q);
+                }
             }
 
             if (!empty($filters['general']['planting_date_range'])) {
                 [$from, $to] = $filters['general']['planting_date_range'];
-                if ($from) $q->whereDate('planting_date', '>=', $from);
-                if ($to) $q->whereDate('planting_date', '<=', $to);
+                $q->where(function ($dates) use ($from, $to, $filters) {
+                    if ($from) $dates->whereDate('planting_date', '>=', $from);
+                    if ($to) $dates->whereDate('planting_date', '<=', $to);
+                    if (!$from && !empty($filters['general']['planting_as_of'])) {
+                        $dates->orWhereNull('planting_date');
+                    }
+                });
             }
 
             if (!empty($filters['general']['plots'])) {

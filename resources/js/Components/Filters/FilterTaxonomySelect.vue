@@ -1,8 +1,8 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import axios from 'axios'
 import TaxonOption from '@/Components/Taxonomy/TaxonOption.vue'
-import { GetOrCreateFilterTargetNode } from '@/Helpers/Maps/GetFilterTargetNode'
+import { GetFilterTargetNode, GetOrCreateFilterTargetNode } from '@/Helpers/Maps/GetFilterTargetNode'
 
 const props = defineProps({
   filters: Object,
@@ -10,7 +10,7 @@ const props = defineProps({
   node: Object
 })
 
-const target = ref(null)
+const target = ref(GetFilterTargetNode(props.filters, props.path))
 const type = props.path[props.path.length - 1]
 const endpointType = {
   trees: 'tree',
@@ -63,6 +63,12 @@ function removeTaxonomyOption(index) {
     delete target.value.taxonomy
   }
 }
+onMounted(async () => {
+  if (target.value?.taxonomy?.length) {
+    await loadAllOptions()
+    optionsLoaded.value = true
+  }
+})
 </script>
 
 

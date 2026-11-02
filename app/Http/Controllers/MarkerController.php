@@ -70,12 +70,13 @@ class MarkerController extends Controller
             'markers' => ['sometimes', 'array', 'min:1'],
             'markers.*' => ['integer', 'exists:markers,id'],
             'filters' => ['sometimes', 'array'],
+            'park_id' => ['sometimes', 'integer', 'exists:parks,id'],
             'include_filter_summary' => ['sometimes', 'boolean'],
             'selection' => ['sometimes', 'string'],
             'filter_mode' => ['sometimes', 'string'],
             'filter_scope' => ['sometimes', 'string'],
         ]);
-        $ids = $data['markers'] ?? $this->filterService->filteredIds($data['filters'] ?? []);
+        $ids = $data['markers'] ?? $this->filterService->filteredIds($data['filters'] ?? [], $data['park_id'] ?? null);
 
         if (empty($ids)) {
             return response()->json(['message' => 'No markers provided'], 422);

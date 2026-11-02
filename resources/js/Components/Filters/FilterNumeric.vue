@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { GetOrCreateFilterTargetNode } from '@/Helpers/Maps/GetFilterTargetNode'
+import { GetFilterTargetNode, GetOrCreateFilterTargetNode } from '@/Helpers/Maps/GetFilterTargetNode'
 
 const props = defineProps({
   node: Object,
@@ -8,8 +8,9 @@ const props = defineProps({
   path: Array
 })
 
-const minValue = ref(props.node.min)
-const maxValue = ref(props.node.max)
+const saved = GetFilterTargetNode(props.filters, [...props.path, props.node.slug])
+const minValue = ref(saved?.[0] ?? props.node.min)
+const maxValue = ref(saved?.[1] ?? props.node.max)
 
 const clamp = (value) => Math.min(props.node.max, Math.max(props.node.min, value))
 
