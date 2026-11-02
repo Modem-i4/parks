@@ -69,17 +69,17 @@ class MarkerGreenFilterService {
                     if ($from) $dates->whereDate('green_state_changed_at', '>=', $from);
                     if ($to) $dates->whereDate('green_state_changed_at', '<=', $to);
                 };
-                if (!empty($filters['general']['removal_as_of']) && !$from) {
-                    // A report cutoff must not turn an all-states selection into removed-only.
-                    $q->where(function ($states) use ($applyRemovalDates) {
-                        $states->where('green_state', '!=', GreenState::REMOVED->value)
-                            ->orWhereNull('green_state')
-                            ->orWhereNull('green_state_changed_at')
-                            ->orWhere($applyRemovalDates);
-                    });
-                } else {
-                    $applyRemovalDates($q);
-                }
+                // Removal dates constrain removed plants only, regardless of selected states.
+                $q->where(function ($states) use ($applyRemovalDates, $filters, $from) {
+                    $states->where('green_state', '!=', GreenState::REMOVED->value)
+                        ->orWhereNull('green_state');
+
+                    if (!empty($filters['general']['removal_as_of']) && !$from) {
+                        $states->orWhereNull('green_state_changed_at');
+                    }
+
+                    $states->orWhere($applyRemovalDates);
+                });
             }
 
             if (!empty($filters['general']['planting_date_range'])) {
