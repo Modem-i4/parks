@@ -184,15 +184,17 @@ class MarkerGreenFilterService {
                     'quantity' => 'quantity',
                     'area' => 'area',
                     'length' => 'length_m',
-                    'type_row' => 'hedge_row',
-                    'type_shape' => 'hedge_shape',
+                    'type_row' => 'hedge_row_id',
+                    'type_shape' => 'hedge_shape_id',
                     default => null,
                 };
                 if($column == 'trunk_circumference_cm') {
                     $value = [$value[0] * M_PI, $value[1] * M_PI];
                 }
                 if ($column) {
-                    if (is_array($value)) {
+                    if (in_array($key, ['type_row', 'type_shape'], true)) {
+                        $q->whereIn($column, (array)$value);
+                    } elseif (is_array($value)) {
                         $q->whereBetween($column, $value);
                     } else {
                         $q->whereIn($column, (array)$value);
