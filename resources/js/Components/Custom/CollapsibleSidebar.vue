@@ -22,5 +22,8 @@ const isCollapsed = ref(false)
     >
       <span aria-hidden="true">{{ isCollapsed ? '›' : '‹' }}</span>
     </button>
+    <div class="absolute right-0 top-[11.05rem] z-40 translate-x-full">
+      <slot name="actions" />
+    </div>
   </aside>
 </template>

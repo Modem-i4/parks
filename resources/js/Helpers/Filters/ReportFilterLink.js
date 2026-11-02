@@ -35,6 +35,19 @@ export function reportFiltersAsOf(filters, date) {
   return snapshot
 }
 
+export function mapFilterSnapshot(parkStore, date) {
+  const mode = parkStore.singleParkContentMode
+  const defaults = mode === 'works'
+    ? { green: { works: { completion: ['uncompleted'] } } }
+    : { [mode]: {} }
+  const filters = reportFiltersAsOf(parkStore.savedMarkerFilters ?? defaults, date)
+  if (parkStore.isSingleParkView) delete filters.park
+  if (parkStore.activeMarkerPreset === 'picked') {
+    filters.marker_ids = [...parkStore.pickedMarkerFilterIds]
+  }
+  return { filters, mode }
+}
+
 export function reportMapUrl(origin, parkId, snapshot) {
   const url = new URL(parkId ? `/parks/${encodeURIComponent(parkId)}` : '/parks', origin)
   url.searchParams.set('rf', encodeReportFilters(snapshot))

@@ -150,7 +150,7 @@ import PanelHeader from '@/Components/Custom/PanelHeader.vue'
 import { getMarkerTitle, typeUkr } from '@/Helpers/Maps/GetMarkerTitle'
 import GreenStateIndicator from '@/Components/Markers/View/GreenStateIndicator.vue'
 import { getTodayDate } from '@/Helpers/LocalDate'
-import { reportFiltersAsOf, reportMapUrl } from '@/Helpers/Filters/ReportFilterLink'
+import { mapFilterSnapshot, reportMapUrl } from '@/Helpers/Filters/ReportFilterLink'
 import { printReport } from '@/Helpers/Print/PrintReport'
 
 const props = defineProps({ loading: Boolean })
@@ -189,17 +189,9 @@ function isObjectMarker(marker) {
   return marker?.type && marker.type !== 'park'
 }
 
-function cloneFilters(value) {
-  return JSON.parse(JSON.stringify(value || {}))
-}
-
 function reportPayload(date) {
-  const mode = parkStore.singleParkContentMode
-  const defaults = mode === 'works' ? { green: { works: { completion: ['uncompleted'] } } } : { [mode]: {} }
-  let filters = cloneFilters(parkStore.savedMarkerFilters ?? defaults)
-  if (parkStore.isSingleParkView) delete filters.park
+  const { filters, mode } = mapFilterSnapshot(parkStore, date)
   if (!reportOptions.value.includeInfrastructure) delete filters.infrastructure
-  filters = reportFiltersAsOf(filters, date)
 
   if (reportingScope.value === 'picked' || parkStore.activeMarkerPreset === 'picked') {
     filters.marker_ids = reportingScope.value === 'picked'

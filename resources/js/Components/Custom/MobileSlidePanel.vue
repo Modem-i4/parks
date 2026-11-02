@@ -49,7 +49,10 @@ function onTouchEnd() {
       <div class="flex items-center px-3 space-x-2 text-lg font-semibold">
         <slot name="header" />
       </div>
-      <button @click="emit('close')" class="text-gray-600 text-4xl">×</button>
+      <div class="flex shrink-0 items-center gap-2" @touchstart.stop @touchmove.stop @touchend.stop>
+        <slot name="actions" />
+        <button @click="emit('close')" class="text-gray-600 text-4xl">×</button>
+      </div>
     </div>
 
     <slot />

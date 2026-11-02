@@ -19,7 +19,35 @@ import MapLegendPane from './MapLegendPane.vue'
 import CollapsibleSidebar from '@/Components/Custom/CollapsibleSidebar.vue'
 import FullscreenButton from '@/Components/Custom/FullscreenButton.vue'
 
+import ShareIcon from '@/Components/Custom/Icons/ShareIcon.vue'
+import { mapFilterSnapshot, reportMapUrl } from '@/Helpers/Filters/ReportFilterLink'
+import { getTodayDate } from '@/Helpers/LocalDate'
+import { copyToClipboard } from '@/Helpers/CopyToClipboard'
+
 const parkStore = useParkStore()
+const isCopyingLink = ref(false)
+
+async function shareMap() {
+  if (!authStore.can.view || isCopyingLink.value) return
+  isCopyingLink.value = true
+  parkStore.mapCustomMessage = ''
+  try {
+    const url = reportMapUrl(
+      window.location.origin,
+      parkStore.isSingleParkView ? parkStore.selectedPark.id : null,
+      mapFilterSnapshot(parkStore, getTodayDate()),
+    )
+    const copied = await copyToClipboard(url)
+    parkStore.mapCustomMessage = copied
+      ? 'Посилання на мапу з фільтрами скопійовано!'
+      : 'Не вдалося скопіювати посилання. Дозвольте доступ до буфера обміну та спробуйте ще раз.'
+  } catch {
+    parkStore.mapCustomMessage = 'Не вдалося створити посилання на мапу.'
+  } finally {
+    isCopyingLink.value = false
+  }
+}
+
 const { showUserPosition } = useUserLocationMarker(toRef(parkStore, 'map'), toRef(parkStore, 'mapCustomMessage'))
 const { addMarker, addMarkerFinished } = useAddMarkerHelper(parkStore)
 const showModal = ref({ legend: false })
@@ -49,6 +77,17 @@ watch(() => parkStore.selectedMarker, (newVal) => {
   <div ref="mapContainer" class="flex h-[calc(100dvh-86px)] fullscreen:h-screen">
     <!-- Desktop sidebar -->
     <CollapsibleSidebar>
+      <template #actions>
+        <button
+          type="button"
+          v-if="authStore.can.view"
+          aria-label="Поділитися мапою"
+          title="Скопіювати посилання на мапу"
+          :disabled="isCopyingLink"
+          class="flex h-12 w-5 items-center justify-center rounded-r-lg border border-l-0 border-gray-300 bg-gray-100 text-gray-600 shadow-md transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-green-500 disabled:opacity-50"
+          @click="shareMap"
+        ><ShareIcon class="h-3.5 w-3.5" /></button>
+      </template>
       <div id="sidebar-target">
         <!-- Panel Teleport -->
       </div>
@@ -77,6 +116,17 @@ watch(() => parkStore.selectedMarker, (newVal) => {
         class="md:hidden fixed bottom-0 left-0 right-0"
       >
         
+        <template #actions>
+          <button
+            type="button"
+            v-if="authStore.can.view"
+            aria-label="Поділитися мапою"
+            title="Скопіювати посилання на мапу"
+            :disabled="isCopyingLink"
+            class="flex h-10 w-10 items-center justify-center rounded text-gray-600 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-green-500 disabled:opacity-50"
+            @click.stop="shareMap"
+          ><ShareIcon class="h-5 w-5" /></button>
+        </template>
         <template #header>
             <div class="flex-shrink-0 w-8 h-8 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center">
               <img

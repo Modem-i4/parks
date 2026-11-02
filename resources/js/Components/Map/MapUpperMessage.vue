@@ -2,6 +2,8 @@
   <transition name="fade">
     <div
       v-show="show"
+      role="status"
+      aria-live="polite"
       class="text-center text-white bg-black bg-opacity-60 
         py-1 px-4 rounded shadow-md absolute top-2 left-1/2 transform -translate-x-1/2 z-[1000] w-[75%] md:w-auto">
       {{ message }}
@@ -11,11 +13,12 @@
 
 <script setup>
 import { useParkStore } from '@/Stores/useParkStore';
-import { ref, watch } from 'vue';
+import { ref, watch, onUnmounted } from 'vue';
 
 const parkStore = useParkStore()
 const message = ref("")
 const show = ref(false)
+let hideTimer
 
 watch(
   () => parkStore.markerStates,
@@ -27,11 +30,16 @@ watch(
 watch(
   () => parkStore.mapCustomMessage,
   (msg) => {
-    show.value = !(msg === '')
-    if(show.value) message.value = msg
-    setTimeout(() => parkStore.mapCustomMessage = '', 5000)
+    clearTimeout(hideTimer)
+    show.value = msg !== ''
+    if (show.value) {
+      message.value = msg
+      hideTimer = setTimeout(() => { parkStore.mapCustomMessage = '' }, 5000)
+    }
   }
 )
+
+onUnmounted(() => clearTimeout(hideTimer))
 
 function resolveMessage(conds) {
   switch (true) {
