@@ -50,7 +50,7 @@ import { ref, computed, watch } from 'vue'
 import axios from 'axios'
 
 const props = defineProps({
-  modelValue: [Number, Array, null],
+  modelValue: [Number, String, Array, null],
   mode: { type: String, required: true }, // 'species' | 'infrastructureType' | 'tags' | 'hedgeRows' | 'hedgeShapes' | 'recommendations' | 'plots' | 'subplots'
   startingItem: [Object, null],
   type: String, // 'trees', 'bushes', 'hedges', 'flowers'
@@ -116,16 +116,26 @@ const labelNewShort = computed(() => {
   }
 })
 
-watch(() => props.startingItem, (item) => {
-  const name = item?.[labelField.value] ?? ''
-  selectedName.value = name
-  search.value = name
+watch(
+  [() => props.modelValue, () => props.startingItem, dataList, labelField],
+  () => {
+    if (props.mode === 'tags') return
+    const selected = dataList.value.find(item => String(item.id) === String(props.modelValue))
+    const startingItem = props.startingItem
+    const matchingStart = startingItem && String(startingItem.id) === String(props.modelValue)
+      ? startingItem
+      : null
+    const name = matchingStart?.[labelField.value] ?? selected?.[labelField.value] ?? ''
+    selectedName.value = name
+    if (!dropdownVisible.value) search.value = name
 
-  if (item?.edited && props.mode !== 'tags') {
-    preventNextOpen.value = true
-    delete item.edited
-  }
-}, { immediate: true })
+    if (startingItem?.edited) {
+      preventNextOpen.value = true
+      delete startingItem.edited
+    }
+  },
+  { immediate: true },
+)
 
 const filteredList = computed(() => {
   return dataList.value
@@ -153,16 +163,18 @@ const endpoint = computed(() => {
   }
 })
 
-watch(() => props.preloadedOptions, loadData, { immediate: true })
-watch(() => [props.type, props.parentId], loadData)
+let loadRevision = 0
+watch([() => props.preloadedOptions, endpoint], loadData, { immediate: true })
 
 async function loadData() {
-  if (props.preloadedOptions?.length) {
+  const revision = ++loadRevision
+  if (Array.isArray(props.preloadedOptions)) {
     dataList.value = props.preloadedOptions
     return
   }
   try {
     const { data } = await axios.get(endpoint.value)
+    if (revision !== loadRevision) return
     if (props.mode === 'tags') {
       dataList.value = data.filter(item => !props.modelValue.some(tag => tag.id === item.id))
     } else {

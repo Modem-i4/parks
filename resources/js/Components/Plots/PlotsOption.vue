@@ -52,7 +52,7 @@ function removeSubplot(index) {
         mode="plots"
         v-model="plotId"
         :startingItem="plotId ? { id: plotId, name: plotOptionsById[plotId] } : null"
-        :parkId="parkId"
+        :parentId="parkId"
         :preloadedOptions="plotOptions"
         :showLabel="false"
         :canAddNew="false"
@@ -77,6 +77,7 @@ function removeSubplot(index) {
           <SelectWithSearchAndAdd
             class="flex-1"
             mode="subplots"
+            :parentId="plotId"
             :modelValue="subplotId"
             :startingItem="subplotId ? { id: subplotId, name: subplotsById[subplotId] } : null"
             :preloadedOptions="subplotsByPlotId[plotId] ?? []"

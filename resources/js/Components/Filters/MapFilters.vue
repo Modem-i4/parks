@@ -40,10 +40,12 @@ const areFiltersDefault = computed(
   .some( preset => JSON.stringify(preset) === JSON.stringify(filters.value) )
 )
 
+let configRequestRevision = 0
 const getFilters = async () => {
+  const revision = ++configRequestRevision
   try {
     const response = await axios.get(`/api/markers/filters-config?mode=${parkStore.singleParkContentMode}&scope=${scope.value}`)
-    filtersConfig.value = response.data
+    if (revision === configRequestRevision) filtersConfig.value = response.data
   } catch (error) {
     console.error('Помилка завантаження конфігурації фільтрів:', error)
   }
@@ -154,7 +156,7 @@ const filterMarkers = async (moveToClosest = true, saveSnapshot = true) => {
   }
 }
 
-watch(() => parkStore.singleParkContentMode,
+watch([() => parkStore.singleParkContentMode, scope],
  () => getFilters(),
  { immediate:true }
 )

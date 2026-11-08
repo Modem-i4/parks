@@ -10,11 +10,36 @@ const props = defineProps({
 
 const isBig = computed(() => props.node.size === 'big')
 
+const selectedValues = computed(() => GetFilterTargetNode(props.filters, [...props.path, props.node.slug]))
+
+function isSelected(id) {
+  const selected = selectedValues.value
+  if (Array.isArray(selected)) return selected.some(value => String(value) === String(id))
+  return props.node.slug === 'park' && !!selected && (
+    Object.hasOwn(selected, id) || (selected.parks ?? []).some(value => String(value) === String(id))
+  )
+}
+
 const handleCheckboxChange = (id, event) => {
   const val = event.target.checked
 
   const target = GetOrCreateFilterTargetNode(props.filters, props.path)
   const key = props.node.slug
+
+  // Shared links may contain detailed park selections even for a guest's
+  // simple park selector. Keep nested plot/subplot restrictions intact.
+  if (key === 'park' && target[key] && !Array.isArray(target[key])) {
+    if (val) target[key][id] ??= {}
+    else {
+      delete target[key][id]
+      if (Array.isArray(target[key].parks)) {
+        target[key].parks = target[key].parks.filter(value => String(value) !== String(id))
+        if (!target[key].parks.length) delete target[key].parks
+      }
+      if (!Object.keys(target[key]).length) delete target[key]
+    }
+    return
+  }
 
   target[key] ??= []
 
@@ -46,7 +71,7 @@ const handleCheckboxChange = (id, event) => {
             type="checkbox"
             class="shrink-0"
             :value="opt.name"
-            :checked="GetFilterTargetNode(filters, [...path,props.node.slug])?.includes(opt.id)"
+            :checked="isSelected(opt.id)"
             @change="handleCheckboxChange(opt.id, $event)"
           >
           <span>{{ opt.name }}</span>
@@ -73,7 +98,7 @@ const handleCheckboxChange = (id, event) => {
           <input
             type="checkbox"
             :value="opt.name"
-            :checked="GetFilterTargetNode(filters, [...path,props.node.slug])?.includes(opt.id)"
+            :checked="isSelected(opt.id)"
             @change="handleCheckboxChange(opt.id, $event)"  
           />
         </label>

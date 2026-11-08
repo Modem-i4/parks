@@ -11,8 +11,11 @@ const emit = defineEmits(['update:modelValue', 'remove'])
 
 const modalVisible = ref(false)
 
-const selectedType = ref(Object.keys(props.modelValue || {})[0] || 'species')
-const selectedId = ref(Object.values(props.modelValue || {})[0] || null)
+const selectedType = computed({
+  get: () => Object.keys(props.modelValue || {})[0] || 'species',
+  set: type => emit('update:modelValue', { [type]: null }),
+})
+const selectedId = computed(() => props.modelValue?.[selectedType.value] ?? null)
 
 const availableTypes = [
   { key: 'families', label: 'Родина' },
@@ -30,10 +33,6 @@ function updateTaxon(id) {
   modalVisible.value = false
 }
 
-function onTypeChange(event) {
-  selectedType.value = event.target.value
-  value.value = { [selectedType.value]: null }
-}
 </script>
 
 <template>
@@ -41,7 +40,6 @@ function onTypeChange(event) {
     <select class="border rounded px-2 py-1 text-sm"
         :class="{ 'no-arrow': selectedType === 'families' }"
         v-model="selectedType" 
-        @change="onTypeChange" 
     >
       <option
         v-for="type in availableTypes"
