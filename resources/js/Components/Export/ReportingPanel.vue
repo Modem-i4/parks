@@ -56,10 +56,25 @@
     </div>
 
     <div class="rounded border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-600">
-      Буде сформовано друкований звіт по поточній вибірці маркерів.
+      {{ reportOptions.format === 'excel'
+        ? 'Буде завантажено звіт Excel по поточній вибірці маркерів.'
+        : 'Буде сформовано друкований звіт по поточній вибірці маркерів.' }}
     </div>
 
     <div class="rounded border border-gray-200 bg-white px-3 py-2 space-y-3">
+      <div>
+        <div class="text-sm text-gray-600 text-center mb-1">Формат виведення</div>
+        <div class="flex justify-center">
+          <Switch
+            v-model="reportOptions.format"
+            :options="[
+              { value: 'pdf', label: 'PDF', color: 'green' },
+              { value: 'excel', label: 'Excel', color: 'blue' },
+            ]"
+          />
+        </div>
+      </div>
+
       <div>
         <div class="text-sm text-gray-600 text-center mb-1">Розмір тексту</div>
         <div class="flex justify-center">
@@ -140,7 +155,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onUnmounted } from 'vue'
+import { ref, computed, watch, onUnmounted } from 'vue'
 import axios from 'axios'
 import { useParkStore } from '@/Stores/useParkStore'
 import Switch from '@/Components/Custom/Switch.vue'
@@ -152,6 +167,7 @@ import GreenStateIndicator from '@/Components/Markers/View/GreenStateIndicator.v
 import { getTodayDate } from '@/Helpers/LocalDate'
 import { mapFilterSnapshot, reportMapUrl } from '@/Helpers/Filters/ReportFilterLink'
 import { printReport } from '@/Helpers/Print/PrintReport'
+import { exportExcelReport } from '@/Helpers/Report/ExportExcelReport'
 
 const props = defineProps({ loading: Boolean })
 const emit = defineEmits(['done', 'cancel'])
@@ -163,6 +179,7 @@ const isPreparing = ref(false)
 const errorMessage = ref('')
 const pendingReport = ref(null)
 const reportOptions = ref({
+  format: 'pdf',
   textSize: 'normal',
   includeMap: false,
   includeQrCode: true,
@@ -236,7 +253,7 @@ function openPreparedReport() {
 }
 
 async function onCreateReport() {
-  if (reportDisabled.value) return
+  if (reportDisabled.value || props.loading || isPreparing.value) return
   isPreparing.value = true
   errorMessage.value = ''
   clearPendingReport()
@@ -256,7 +273,7 @@ async function onCreateReport() {
       mode: payload.filter_mode,
     })
 
-    const report = await printReport(data.markers, {
+    const outputOptions = {
       title: 'Звіт по насадженнях',
       mapUrl,
       createdDate: date,
@@ -264,7 +281,15 @@ async function onCreateReport() {
       parks: data.parks || [],
       filterSummary: data.filter_summary || [],
       ...options,
-    })
+    }
+
+    if (options.format === 'excel') {
+      await exportExcelReport(data.markers, outputOptions)
+      emit('done')
+      return
+    }
+
+    const report = await printReport(data.markers, outputOptions)
 
     if (report?.opened) {
       emit('done')
@@ -285,5 +310,6 @@ async function onCreateReport() {
   }
 }
 
+watch(() => reportOptions.value.format, clearPendingReport)
 onUnmounted(clearPendingReport)
 </script>
